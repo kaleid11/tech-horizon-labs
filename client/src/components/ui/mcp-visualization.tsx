@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Database, Mail, FileSpreadsheet, MessageSquare, CreditCard, Github, Globe, Server, Bot, Zap } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function McpVisualization() {
   const [activePath, setActivePath] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Apps connected to MCP
   const apps = [
@@ -24,11 +25,67 @@ export function McpVisualization() {
   }, [apps.length]);
 
   return (
-    <div className="relative w-full h-[600px] bg-aubergine-900/50 rounded-3xl border border-white/10 overflow-hidden flex items-center justify-center">
+    <div ref={containerRef} className="relative w-full h-[600px] bg-aubergine-900/50 rounded-3xl border border-white/10 overflow-hidden flex items-center justify-center">
       {/* Background Grid & Glow */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-aubergine-900/80"></div>
       
+      {/* Shared SVG Layer for Connections - Centered */}
+      {/* We use a viewBox that places (0,0) at the center to simplify polar math */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible" viewBox="-300 -300 600 600">
+        {apps.map((app, index) => {
+          const radius = 180;
+          const radian = (app.angle * Math.PI) / 180;
+          const x = radius * Math.cos(radian);
+          const y = radius * Math.sin(radian);
+          const isActive = index === activePath;
+
+          return (
+            <g key={`connection-${app.id}`}>
+               <line 
+                x1="0" 
+                y1="0" 
+                x2={x} 
+                y2={y} 
+                stroke={isActive ? app.color : "rgba(255,255,255,0.1)"} 
+                strokeWidth={isActive ? 2 : 1}
+                strokeDasharray="4 4"
+                className="transition-all duration-300"
+              />
+              
+              {/* Data Packet Animation (Outbound) */}
+              {isActive && (
+                <motion.circle
+                  r="4"
+                  fill={app.color}
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    cx: [0, x],
+                    cy: [0, y],
+                    opacity: [0, 1, 1, 0]
+                  }}
+                  transition={{ duration: 1.0, ease: "linear", times: [0, 0.1, 0.9, 1] }}
+                />
+              )}
+               {/* Response Packet Animation (Inbound) */}
+               {isActive && (
+                <motion.circle
+                  r="4"
+                  fill="#ffffff"
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    cx: [x, 0],
+                    cy: [y, 0],
+                    opacity: [0, 1, 1, 0]
+                  }}
+                  transition={{ duration: 1.0, ease: "linear", delay: 0.8, times: [0, 0.1, 0.9, 1] }}
+                />
+              )}
+            </g>
+          );
+        })}
+      </svg>
+
       {/* Central Core: The LLM / MCP Hub */}
       <div className="relative z-20 flex flex-col items-center justify-center">
         {/* The Brain (LLM) */}
@@ -51,9 +108,8 @@ export function McpVisualization() {
       </div>
 
       {/* Connected Apps (Satellites) */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
         {apps.map((app, index) => {
-          // Calculate position on the circle (radius 180px for better fit)
           const radius = 180;
           const radian = (app.angle * Math.PI) / 180;
           const x = radius * Math.cos(radian);
@@ -64,56 +120,12 @@ export function McpVisualization() {
           return (
             <motion.div
               key={app.id}
-              className="absolute z-10 flex flex-col items-center justify-center"
+              className="absolute flex flex-col items-center justify-center"
               style={{ x, y }}
             >
-              {/* Connection Line - SVG absolute to the center */}
-              <svg className="absolute w-[360px] h-[360px] overflow-visible pointer-events-none" style={{ left: -x, top: -y, transform: `translate(-50%, -50%)` }}>
-                 {/* Line drawing logic needs to be relative to the center of the SVG, which is now the center of the container */}
-                 <line 
-                  x1="0" 
-                  y1="0" 
-                  x2={x} 
-                  y2={y} 
-                  stroke={isActive ? app.color : "rgba(255,255,255,0.05)"} 
-                  strokeWidth={isActive ? 2 : 1}
-                  strokeDasharray="4 4"
-                  className="transition-all duration-300"
-                />
-                
-                {/* Data Packet Animation */}
-                {isActive && (
-                  <motion.circle
-                    r="3"
-                    fill={app.color}
-                    initial={{ opacity: 0 }}
-                    animate={{ 
-                      cx: [x, 0],
-                      cy: [y, 0],
-                      opacity: [0, 1, 1, 0]
-                    }}
-                    transition={{ duration: 1.2, ease: "easeInOut", times: [0, 0.1, 0.9, 1] }}
-                  />
-                )}
-                 {/* Response Packet Animation */}
-                 {isActive && (
-                  <motion.circle
-                    r="3"
-                    fill="#ffffff"
-                    initial={{ opacity: 0 }}
-                    animate={{ 
-                      cx: [0, x],
-                      cy: [0, y],
-                      opacity: [0, 1, 1, 0]
-                    }}
-                    transition={{ duration: 1.2, ease: "easeInOut", delay: 0.6, times: [0, 0.1, 0.9, 1] }}
-                  />
-                )}
-              </svg>
-
               {/* App Icon Node */}
               <div className={`
-                w-14 h-14 rounded-xl flex items-center justify-center border transition-all duration-500 relative z-20
+                w-14 h-14 rounded-xl flex items-center justify-center border transition-all duration-500 relative
                 ${isActive ? 'bg-white/10 border-white/40 scale-110 shadow-[0_0_20px_rgba(255,255,255,0.1)]' : 'bg-aubergine-800/80 border-white/10 grayscale'}
               `}>
                 <app.icon className="w-6 h-6" style={{ color: isActive ? app.color : '#666' }} />
@@ -128,7 +140,7 @@ export function McpVisualization() {
         })}
       </div>
 
-      {/* Agent-to-Agent Overlay (Bottom Left - Moved to avoid overlap) */}
+      {/* Agent-to-Agent Overlay (Bottom Left) */}
       <div className="absolute bottom-6 left-6 right-6 md:right-auto md:w-80 bg-black/60 backdrop-blur-xl p-4 rounded-xl border border-white/10 shadow-2xl z-30">
         <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/5">
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
