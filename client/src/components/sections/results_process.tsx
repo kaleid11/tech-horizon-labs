@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileText, Settings, Database, Building, Briefcase, ShoppingBag } from "lucide-react";
+import { ArrowRight, FileText, Settings, Database, Building, Briefcase, ShoppingBag, Check } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 export function Results() {
   const cases = [
@@ -9,7 +10,7 @@ export function Results() {
       problem: "40+ subcontractors, invoices in every format, 6+ hours manual data entry twice/month",
       solution: "Automated invoice processing with Claude + Make.com",
       result: "5 hours saved every 2 weeks = 130 hours/year",
-      color: "bg-blue-50 text-blue-700"
+      color: "bg-blue-100 text-blue-700"
     },
     {
       icon: Briefcase,
@@ -17,7 +18,7 @@ export function Results() {
       problem: "Manual client onboarding, 47 emails per client, 3 hours per process",
       solution: "Automated workflow with Skills + templates",
       result: "2.5 hours saved per client × 24/year = 60 hours",
-      color: "bg-purple-50 text-purple-700"
+      color: "bg-purple-100 text-purple-700"
     },
     {
       icon: ShoppingBag,
@@ -25,40 +26,52 @@ export function Results() {
       problem: "Manual inventory updates, 2 hours daily, frequent stockouts",
       solution: "Real-time sync across 3 platforms with automation",
       result: "10 hours/week saved = 520 hours/year",
-      color: "bg-emerald-50 text-emerald-700"
+      color: "bg-green-100 text-green-700"
     }
   ];
 
   return (
     <section id="results" className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-4xl font-bold text-primary mb-16 text-center">Real Businesses. Real Results.</h2>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl font-bold text-aubergine-900 mb-4">Real Businesses. Real Results.</h2>
+            <p className="text-lg text-gray-600">We don't deal in theoreticals. Here's what happens when you fix the infrastructure first.</p>
+          </div>
+          <Button variant="outline" className="rounded-full border-aubergine-900 text-aubergine-900 hover:bg-aubergine-50">
+            View All Case Studies
+          </Button>
+        </div>
         
         <div className="grid md:grid-cols-3 gap-8">
           {cases.map((item, i) => (
-            <div key={i} className="border border-gray-100 p-8 hover:border-gray-300 transition-colors flex flex-col h-full bg-white shadow-sm hover:shadow-md">
-              <div className={`w-12 h-12 ${item.color} flex items-center justify-center mb-6 rounded-none`}>
-                <item.icon className="w-6 h-6" />
+            <div key={i} className="group border border-gray-100 p-8 rounded-2xl hover:border-salmon-300 transition-all flex flex-col h-full bg-cream-50 hover:shadow-lg">
+              <div className={`w-14 h-14 ${item.color} flex items-center justify-center mb-6 rounded-xl group-hover:scale-110 transition-transform`}>
+                <item.icon className="w-7 h-7" />
               </div>
-              <h3 className="text-lg font-bold text-primary mb-2">{item.company}</h3>
+              <h3 className="text-lg font-bold text-aubergine-900 mb-2">{item.company}</h3>
               
-              <div className="space-y-4 mb-8 flex-grow">
+              <div className="space-y-6 mb-8 flex-grow">
                 <div>
-                  <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Problem</div>
-                  <p className="text-sm text-gray-600">{item.problem}</p>
+                  <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">The Problem</div>
+                  <p className="text-sm text-gray-700 leading-relaxed">{item.problem}</p>
                 </div>
-                <div>
-                  <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Solution</div>
-                  <p className="text-sm text-gray-600">{item.solution}</p>
+                <div className="bg-white p-4 rounded-lg border border-gray-100">
+                  <div className="text-xs font-semibold text-salmon-600 uppercase tracking-wider mb-2 flex items-center gap-2">
+                    <Settings className="w-3 h-3" /> The Solution
+                  </div>
+                  <p className="text-sm text-gray-700">{item.solution}</p>
                 </div>
-                <div className="pt-4 border-t border-gray-100">
-                  <div className="text-xs font-semibold text-accent-foreground uppercase tracking-wider mb-1">Result</div>
-                  <p className="font-bold text-primary">{item.result}</p>
+                <div className="pt-2">
+                  <div className="text-xs font-semibold text-green-600 uppercase tracking-wider mb-1 flex items-center gap-2">
+                     <Check className="w-3 h-3" /> The Result
+                  </div>
+                  <p className="font-bold text-aubergine-900 text-lg">{item.result}</p>
                 </div>
               </div>
 
-              <Button variant="link" className="p-0 h-auto justify-start text-primary hover:text-accent-foreground group">
-                Read Case Study <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <Button variant="link" className="p-0 h-auto justify-start text-salmon-600 hover:text-salmon-700 group-hover:translate-x-1 transition-all font-semibold">
+                Read Case Study <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
           ))}
@@ -70,75 +83,76 @@ export function Results() {
 
 export function Process() {
   return (
-    <section className="py-24 bg-primary text-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-bold mb-4">Infrastructure First. Automation Second. Scale Third.</h2>
-          <p className="text-blue-100 text-lg">Our proven methodology for sustainable AI adoption.</p>
+    <section className="py-24 bg-aubergine-900 text-white relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <Badge className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-400 mb-6">OUR METHODOLOGY</Badge>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Infrastructure First.<br/>Automation Second.</h2>
+          <p className="text-gray-300 text-lg">We refuse to build fragile systems. Our 3-step process ensures your AI implementation is secure, scalable, and actually useful.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 relative">
           {/* Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-blue-800 z-0"></div>
+          <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-px bg-gradient-to-r from-gray-700 via-salmon-500/50 to-gray-700 z-0"></div>
 
           {/* Step 1 */}
-          <div className="relative z-10 flex flex-col items-center text-center">
-            <div className="w-24 h-24 bg-navy-800 border-2 border-accent rounded-full flex items-center justify-center mb-6 shadow-lg shadow-black/20">
-              <Database className="w-10 h-10 text-accent" />
+          <div className="relative z-10 flex flex-col items-center text-center group">
+            <div className="w-24 h-24 bg-aubergine-800 border border-salmon-500/30 rounded-full flex items-center justify-center mb-8 shadow-2xl shadow-black/50 group-hover:border-salmon-500 transition-colors">
+              <Database className="w-10 h-10 text-salmon-500" />
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-accent">Foundation</h3>
-            <ul className="space-y-2 text-blue-100 text-sm mb-6">
-              <li>AI Opportunity Audit</li>
-              <li>Security setup</li>
-              <li>Data organization</li>
-              <li>Skills creation</li>
+            <h3 className="text-2xl font-bold mb-4 text-white">Foundation</h3>
+            <ul className="space-y-3 text-gray-400 text-sm mb-8 text-left inline-block">
+              <li className="flex gap-2"><Check className="w-4 h-4 text-green-500" /> AI Opportunity Audit</li>
+              <li className="flex gap-2"><Check className="w-4 h-4 text-green-500" /> Security protocols</li>
+              <li className="flex gap-2"><Check className="w-4 h-4 text-green-500" /> Data cleaning & org</li>
             </ul>
-            <div className="mt-auto pt-4 border-t border-blue-900 w-full">
-              <p className="text-xs text-blue-300 uppercase tracking-widest mb-1">Timeline</p>
-              <p className="font-bold">2-4 weeks</p>
+            <div className="mt-auto pt-4 border-t border-white/10 w-full max-w-[200px]">
+              <p className="text-xs text-salmon-400 uppercase tracking-widest mb-1">Timeline</p>
+              <p className="font-bold text-white">2-4 weeks</p>
             </div>
           </div>
 
           {/* Step 2 */}
-          <div className="relative z-10 flex flex-col items-center text-center">
-            <div className="w-24 h-24 bg-navy-800 border-2 border-gray-600 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-black/20">
-              <Settings className="w-10 h-10 text-gray-300" />
+          <div className="relative z-10 flex flex-col items-center text-center group">
+            <div className="w-24 h-24 bg-aubergine-800 border border-white/10 rounded-full flex items-center justify-center mb-8 shadow-2xl shadow-black/50 group-hover:border-white/30 transition-colors">
+              <Settings className="w-10 h-10 text-blue-400" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">Implementation</h3>
-            <ul className="space-y-2 text-blue-100 text-sm mb-6">
-              <li>Build automation system</li>
-              <li>Integrate with tools</li>
-              <li>Test & refine</li>
-              <li>Full training</li>
+            <h3 className="text-2xl font-bold mb-4 text-white">Implementation</h3>
+            <ul className="space-y-3 text-gray-400 text-sm mb-8 text-left inline-block">
+              <li className="flex gap-2"><Check className="w-4 h-4 text-blue-500" /> Build automation system</li>
+              <li className="flex gap-2"><Check className="w-4 h-4 text-blue-500" /> API integrations</li>
+              <li className="flex gap-2"><Check className="w-4 h-4 text-blue-500" /> Team training</li>
             </ul>
-            <div className="mt-auto pt-4 border-t border-blue-900 w-full">
-              <p className="text-xs text-blue-300 uppercase tracking-widest mb-1">Timeline</p>
-              <p className="font-bold">4-8 weeks</p>
+            <div className="mt-auto pt-4 border-t border-white/10 w-full max-w-[200px]">
+              <p className="text-xs text-blue-400 uppercase tracking-widest mb-1">Timeline</p>
+              <p className="font-bold text-white">4-8 weeks</p>
             </div>
           </div>
 
           {/* Step 3 */}
-          <div className="relative z-10 flex flex-col items-center text-center">
-            <div className="w-24 h-24 bg-navy-800 border-2 border-gray-600 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-black/20">
-              <FileText className="w-10 h-10 text-gray-300" />
+          <div className="relative z-10 flex flex-col items-center text-center group">
+            <div className="w-24 h-24 bg-aubergine-800 border border-white/10 rounded-full flex items-center justify-center mb-8 shadow-2xl shadow-black/50 group-hover:border-white/30 transition-colors">
+              <FileText className="w-10 h-10 text-green-400" />
             </div>
-            <h3 className="text-2xl font-bold mb-4">Scale</h3>
-            <ul className="space-y-2 text-blue-100 text-sm mb-6">
-              <li>Ongoing optimization</li>
-              <li>New systems added</li>
-              <li>Strategic advisory</li>
-              <li>Priority support</li>
+            <h3 className="text-2xl font-bold mb-4 text-white">Scale</h3>
+            <ul className="space-y-3 text-gray-400 text-sm mb-8 text-left inline-block">
+              <li className="flex gap-2"><Check className="w-4 h-4 text-green-500" /> Ongoing optimization</li>
+              <li className="flex gap-2"><Check className="w-4 h-4 text-green-500" /> New systems added</li>
+              <li className="flex gap-2"><Check className="w-4 h-4 text-green-500" /> Priority support</li>
             </ul>
-            <div className="mt-auto pt-4 border-t border-blue-900 w-full">
-              <p className="text-xs text-blue-300 uppercase tracking-widest mb-1">Timeline</p>
-              <p className="font-bold">Ongoing</p>
+            <div className="mt-auto pt-4 border-t border-white/10 w-full max-w-[200px]">
+              <p className="text-xs text-green-400 uppercase tracking-widest mb-1">Timeline</p>
+              <p className="font-bold text-white">Ongoing</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-16 text-center">
-          <Button size="lg" className="bg-accent text-accent-foreground hover:bg-yellow-400 font-semibold text-lg px-8 h-14 rounded-none">
-            Book Discovery Call
+        <div className="mt-20 text-center">
+          <Button size="lg" className="bg-white text-aubergine-900 hover:bg-gray-100 font-bold text-lg px-8 h-14 rounded-full">
+            Start With An Audit
           </Button>
         </div>
       </div>

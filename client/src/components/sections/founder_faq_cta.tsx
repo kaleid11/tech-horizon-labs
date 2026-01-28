@@ -4,56 +4,49 @@ import founderImage from "@/assets/founder.png";
 
 export function Founder() {
   return (
-    <section id="founder" className="py-24 bg-white">
+    <section id="founder" className="py-24 bg-cream-50">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="order-2 md:order-1 relative">
+            <div className="absolute inset-0 bg-salmon-500 rounded-3xl rotate-3 opacity-20 transform translate-x-4 translate-y-4"></div>
             <img 
               src={founderImage} 
               alt="Huxley Patterson" 
-              className="w-full max-w-md mx-auto md:mr-auto rounded-none grayscale hover:grayscale-0 transition-all duration-500 shadow-xl"
+              className="w-full max-w-md mx-auto md:mr-auto rounded-3xl grayscale hover:grayscale-0 transition-all duration-500 shadow-2xl relative z-10"
             />
           </div>
           
-          <div className="order-1 md:order-2 space-y-6">
-            <h2 className="text-4xl font-bold text-primary mb-6">Why We're Different</h2>
+          <div className="order-1 md:order-2 space-y-8">
+            <h2 className="text-4xl font-bold text-aubergine-900 mb-6">Why We're Different</h2>
             
-            <div className="prose prose-lg text-gray-600">
-              <p className="font-medium text-primary">I'm Huxley, founder of Tech Horizon Labs.</p>
+            <div className="prose prose-lg text-gray-700 leading-relaxed">
+              <p className="font-bold text-salmon-600 text-xl">I'm Huxley, founder of Tech Horizon Labs.</p>
               
               <p>I built this firm after watching businesses waste money on AI tools they weren't ready for.</p>
               
               <p>They'd buy Claude Pro, ChatGPT Enterprise, automation platforms - then realize their data was too messy to use them. Files named 'Final_FINAL_v3_ACTUAL.docx'. No security protocols. No processes.</p>
               
               <p>So we do it differently:</p>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Infrastructure before automation</li>
-                <li>Education is mandatory (not optional)</li>
-                <li>Security is default (not an add-on)</li>
-                <li>We're tool-agnostic (no vendor kickbacks)</li>
+              <ul className="list-none pl-0 space-y-2">
+                <li className="flex gap-2 items-center"><span className="w-2 h-2 bg-salmon-500 rounded-full"></span> Infrastructure before automation</li>
+                <li className="flex gap-2 items-center"><span className="w-2 h-2 bg-salmon-500 rounded-full"></span> Education is mandatory (not optional)</li>
+                <li className="flex gap-2 items-center"><span className="w-2 h-2 bg-salmon-500 rounded-full"></span> Security is default (not an add-on)</li>
+                <li className="flex gap-2 items-center"><span className="w-2 h-2 bg-salmon-500 rounded-full"></span> We're tool-agnostic (no vendor kickbacks)</li>
               </ul>
               
-              <p>We're slower than competitors promising "30-day AI transformation." We're more expensive than offshore agencies.</p>
-              
-              <p className="font-bold text-primary">But our clients own their systems, understand their infrastructure, and aren't dependent on us.</p>
+              <p className="text-sm italic text-gray-500 mt-6 border-l-4 border-salmon-200 pl-4">
+                We're slower than competitors promising "30-day AI transformation." We're more expensive than offshore agencies. But our clients own their systems, understand their infrastructure, and aren't dependent on us.
+              </p>
             </div>
 
-            <div className="pt-8 grid grid-cols-2 gap-6">
+            <div className="pt-8 grid grid-cols-2 gap-8 border-t border-gray-200">
               <div>
-                <div className="text-3xl font-bold text-accent-foreground">100+</div>
-                <div className="text-sm text-gray-500">Implementations</div>
+                <div className="text-4xl font-bold text-aubergine-900">100+</div>
+                <div className="text-sm text-gray-500 uppercase tracking-wider font-semibold">Implementations</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-accent-foreground">$2.1M</div>
-                <div className="text-sm text-gray-500">Saved for clients</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-accent-foreground">0</div>
-                <div className="text-sm text-gray-500">Security incidents</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-accent-foreground">97%</div>
-                <div className="text-sm text-gray-500">Satisfaction</div>
+                <div className="text-4xl font-bold text-aubergine-900">$2.1M</div>
+                <div className="text-sm text-gray-500 uppercase tracking-wider font-semibold">Saved for clients</div>
               </div>
             </div>
           </div>
@@ -74,17 +67,17 @@ export function FAQ() {
   ];
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
-        <h2 className="text-3xl font-bold text-primary mb-12 text-center">Common Questions</h2>
+        <h2 className="text-3xl font-bold text-aubergine-900 mb-12 text-center">Common Questions</h2>
         
         <Accordion type="single" collapsible className="w-full space-y-4">
           {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border border-gray-200 bg-white px-6">
-              <AccordionTrigger className="text-left font-medium text-primary hover:text-accent-foreground py-6">
+            <AccordionItem key={i} value={`item-${i}`} className="border border-gray-100 bg-cream-50 px-8 rounded-xl">
+              <AccordionTrigger className="text-left font-bold text-aubergine-900 hover:text-salmon-600 py-6 text-lg">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pb-6 leading-relaxed">
+              <AccordionContent className="text-gray-600 pb-6 leading-relaxed text-base">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
@@ -97,25 +90,28 @@ export function FAQ() {
 
 export function CTA() {
   return (
-    <section className="py-32 bg-primary text-white text-center">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Build Infrastructure That Actually Works?</h2>
-        <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
-          Book a free 15-minute discovery call. No sales pressure.
+    <section className="py-32 bg-aubergine-900 text-white text-center relative overflow-hidden">
+      {/* Background gradients */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-aubergine-900 via-aubergine-900 to-salmon-900/20"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to Build Infrastructure That <span className="text-gradient-salmon">Actually Works?</span></h2>
+        <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Book a free 15-minute discovery call. No sales pressure. Just an honest assessment of whether you're ready for automation.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-          <Button size="lg" className="bg-accent text-accent-foreground hover:bg-yellow-400 font-bold text-lg px-10 h-16 rounded-none w-full sm:w-auto">
+          <Button size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-10 h-16 rounded-full w-full sm:w-auto shadow-xl shadow-salmon-500/20">
             Book Discovery Call
           </Button>
-          <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 font-medium text-lg px-10 h-16 rounded-none w-full sm:w-auto">
+          <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-10 h-16 rounded-full w-full sm:w-auto">
             Join Free Academy
           </Button>
         </div>
         
-        <p className="text-sm text-blue-300 max-w-md mx-auto">
-          Discovery call includes: Current state assessment, honest recommendations (even if it's "not ready yet"), roadmap overview, next steps.
-        </p>
+        <div className="inline-block bg-white/5 rounded-full px-6 py-2 border border-white/10 text-sm text-gray-400">
+          Discovery call includes: Current state assessment, honest recommendations, and next steps.
+        </div>
       </div>
     </section>
   );
