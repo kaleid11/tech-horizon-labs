@@ -1,0 +1,374 @@
+Build a modern consulting website for Tech Horizon Labs - AI implementation consulting based in Brisbane, Australia.
+
+BRAND POSITIONING:
+"The AI consulting firm that builds infrastructure before automation"
+
+We're the anti-hype AI consultants. While others promise "AI transformation in 30 days," we tell businesses the truth: if your data is messy, your files are disorganized, and you have no security protocols, you're not ready to automate anything.
+
+DESIGN INSPIRATION:
+- Stripe.com (clean, minimal, technical confidence)
+- Linear.app (dark mode, sharp typography, subtle animations)
+- Basecamp.com (opinionated voice, no-BS copy)
+- NOT like: Generic corporate agency sites, stock photos, vague promises
+
+COLOR SCHEME:
+Primary: Deep navy (#0a1f3d)
+Accent: Electric yellow (#ffd500) 
+Background: White (#ffffff) and light gray (#f8f8f8)
+Text: Near-black (#1a1a1a)
+
+TYPOGRAPHY:
+Headings: Inter Bold (clean, modern)
+Body: Inter Regular
+Size: Large and readable (18px body minimum)
+
+LAYOUT STYLE:
+- Clean, spacious, lots of white space
+- Dark navy sections alternating with white sections
+- Sharp edges, minimal rounded corners
+- Grid-based, aligned perfectly
+- Mobile-first responsive
+
+---
+
+HOMEPAGE STRUCTURE:
+
+HERO SECTION:
+Layout: 60/40 split (text left, visual right)
+
+Headline: "Everyone's Buying AI Tools. Nobody's Building AI Infrastructure."
+
+Subhead: "We're the consulting firm that won't let you automate chaos. Infrastructure first. Security default. No vendor lock-in."
+
+2 buttons: 
+- "Book Discovery Call" (yellow, prominent)
+- "Join Free Academy →" (outline)
+
+Below buttons: Trust badges
+- "ISO 27001 Certified"
+- "Featured: Noosa Chamber of Commerce"
+- "100+ Australian SMEs"
+
+Right side: Real screenshot of Claude Desktop with Skills panel open (placeholder for now - show dashboard mockup)
+
+---
+
+SECTION 2: THE PROBLEM
+Background: Light gray
+
+Headline: "The Infrastructure Gap"
+
+3 columns with icons:
+
+COLUMN 1: "What's Trending"
+- ChatGPT Enterprise: $60/user/month
+- Claude Pro: $20/user/month
+- AI automation tools: $100+/month
+- Personal AI assistants going viral
+[Icon: Trending up arrow]
+
+COLUMN 2: "What Businesses Haven't Done"
+- Downloaded Claude Desktop (it's free)
+- Fixed messy file naming
+- Set up security settings
+- Organized data for AI
+- Created basic processes
+[Icon: Warning triangle]
+
+COLUMN 3: "The Result"
+- $1000s/month on AI subscriptions
+- Tools sitting unused
+- No ROI
+- Teams frustrated
+- Falling further behind
+[Icon: Money burning]
+
+Bottom text: "You can't automate chaos. You can't secure what you don't understand."
+
+---
+
+SECTION 3: REAL RESULTS
+Background: White
+
+Headline: "Real Businesses. Real Results."
+
+3 case study cards (side by side):
+
+CARD 1:
+Company: "Construction Company, Brisbane"
+Problem: "40+ subcontractors, invoices in every format, 6+ hours manual data entry twice/month"
+Solution: "Automated invoice processing with Claude + Make.com"
+Result: "5 hours saved every 2 weeks = 130 hours/year"
+[Show before/after screenshot placeholders]
+Button: "Read Case Study →"
+
+CARD 2:
+Company: "Professional Services, Sunshine Coast"
+Problem: "Manual client onboarding, 47 emails per client, 3 hours per process"
+Solution: "Automated workflow with Skills + templates"
+Result: "2.5 hours saved per client × 24/year = 60 hours"
+[Show workflow diagram placeholder]
+Button: "Read Case Study →"
+
+CARD 3:
+Company: "E-commerce, Gold Coast"
+Problem: "Manual inventory updates, 2 hours daily, frequent stockouts"
+Solution: "Real-time sync across 3 platforms with automation"
+Result: "10 hours/week saved = 520 hours/year"
+[Show dashboard placeholder]
+Button: "Read Case Study →"
+
+---
+
+SECTION 4: HOW WE WORK
+Background: Dark navy (white text)
+
+Headline: "Infrastructure First. Automation Second. Scale Third."
+
+3 steps with connecting arrows:
+
+STEP 1: "Foundation"
+Icon: Building blocks
+- AI Opportunity Audit
+- Security setup
+- Data organization
+- Skills creation
+- Team training
+Timeline: 2-4 weeks
+Investment: Starting at $2,500
+
+STEP 2: "Implementation"
+Icon: Gears
+- Build automation system
+- Integrate with your tools
+- Test & refine
+- Full training
+- Documentation
+Timeline: 4-8 weeks
+Investment: $10,000 - $25,000
+
+STEP 3: "Scale"
+Icon: Rocket
+- Ongoing optimization
+- New systems added
+- Strategic advisory
+- Priority support
+- Continuous improvement
+Timeline: Ongoing
+Investment: From $5,000/month
+
+Button: "Book Discovery Call"
+
+---
+
+SECTION 5: PRICING
+Background: White
+
+Headline: "Transparent Pricing"
+
+4 pricing cards:
+
+CARD 1: "AI Opportunity Audit"
+Price: "$2,500"
+- 2-week engagement
+- Workflow analysis
+- Security audit
+- ROI projection (top 3 opportunities)
+- Implementation roadmap
+- 90-min leadership presentation
+Button: "Book Audit"
+
+CARD 2: "Automation Accelerator"
+Price: "$10K - $25K"
+- 4-8 week project
+- One core system built
+- Full integration
+- Team training (4 hours)
+- 30-day support
+- Based on complexity
+Button: "Book Discovery"
+
+CARD 3: "Transformation Partner"
+Price: "From $5K/month"
+- 3-month minimum
+- Continuous optimization
+- New implementations monthly
+- Strategic advisory
+- Priority support
+- Quarterly reviews
+Button: "Book Discovery"
+
+CARD 4: "Quick Support"
+Price: "$150/hour"
+- 4-hour minimum
+- For Academy members
+- Same-week availability
+- Hands-on help
+- No long-term commitment
+Button: "Academy Members →"
+
+---
+
+SECTION 6: THE ACADEMY CONNECTION
+Background: Light gray
+
+Split layout:
+
+LEFT SIDE:
+Headline: "Not Ready for Consulting?"
+Text: "Start learning for free at Tech Horizon Academy"
+- Weekly workshops on Claude, Skills, automation
+- 800+ members
+- Free tier + paid memberships ($97-$330/mo)
+- No consulting pressure
+Button: "Join Free Workshop →"
+
+RIGHT SIDE:
+Headline: "Best Value: Hybrid Path"
+Text: "Combine Academy + Consulting"
+- Learn principles in Academy
+- We build the systems via consulting
+- Academy members get 15% off
+- Most cost-effective approach
+Button: "Book Hybrid Discovery →"
+
+---
+
+SECTION 7: FOUNDER
+Background: White
+
+Layout: Image left (professional photo placeholder), text right
+
+Headline: "Why We're Different"
+
+Text:
+"I'm Huxley, founder of Tech Horizon Labs.
+
+I built this firm after watching businesses waste money on AI tools they weren't ready for.
+
+They'd buy Claude Pro, ChatGPT Enterprise, automation platforms - then realize their data was too messy to use them. Files named 'Final_FINAL_v3_ACTUAL.docx'. No security protocols. No processes.
+
+So we do it differently:
+• Infrastructure before automation
+• Education is mandatory (not optional)
+• Security is default (not an add-on)
+• We're tool-agnostic (no vendor kickbacks)
+
+We're slower than competitors promising '30-day AI transformation.' We're more expensive than offshore agencies.
+
+But our clients own their systems, understand their infrastructure, and aren't dependent on us.
+
+That's how it should work."
+
+— Huxley Patterson, Founder
+
+Below: 4 stats
+- "100+ implementations"
+- "$2.1M saved across clients"
+- "Zero security incidents"
+- "97% satisfaction"
+
+---
+
+SECTION 8: FAQ
+Background: Light gray
+
+Headline: "Common Questions"
+
+Accordion FAQ (6 questions):
+
+Q: "What makes you different from other AI consultants?"
+A: "We build infrastructure before automation. Most consultants skip straight to tools and automation. We fix your foundation first: data organization, security, processes. It's slower but it actually works."
+
+Q: "Should I join the Academy or hire you for consulting?"
+A: "Academy: You have time, some technical ability, and want to learn + build yourself with community support. 
+Consulting: You need it done fast, with expert implementation and guaranteed results.
+Most cost-effective: Both (learn the principles, we build the systems)."
+
+Q: "Why do you show pricing ranges?"
+A: "Because honest pricing depends on scope. Basic invoice automation: $10K. Complex multi-system integration: $25K. We show ranges to set expectations, then provide fixed quotes after discovery. No surprises."
+
+Q: "Do you work outside Queensland?"
+A: "Yes, 40% of our clients are interstate. We're fully remote-capable while being Brisbane-based for local clients who want in-person workshops."
+
+Q: "What if the ROI doesn't work out?"
+A: "Our audit phase projects ROI before you commit. If we can't show 3-5x ROI within 12 months, we'll tell you not to proceed. We've turned away 30% of prospects because timing wasn't right."
+
+Q: "How long until I see results?"
+A: "Audit results: Immediate (you get the roadmap). First automation: 4-8 weeks to launch. ROI positive: Typically 6-12 weeks after launch."
+
+---
+
+SECTION 9: FINAL CTA
+Background: Dark navy
+
+Headline: "Ready to Build Infrastructure That Actually Works?"
+
+Subhead: "Book a free 15-minute discovery call. No sales pressure."
+
+2 buttons:
+- "Book Discovery Call" (yellow, large)
+- "Join Free Academy" (white outline)
+
+Below: "Discovery call includes: Current state assessment, honest recommendations (even if it's 'not ready yet'), roadmap overview, next steps"
+
+---
+
+FOOTER:
+4 columns:
+
+COLUMN 1: Company
+- About Us
+- Why Us
+- Founder Story
+- Contact
+
+COLUMN 2: Services
+- AI Opportunity Audit
+- Automation Accelerator
+- Transformation Partner
+- Quick Support
+
+COLUMN 3: Learning
+- Tech Horizon Academy
+- Blog
+- Case Studies
+- Newsletter
+
+COLUMN 4: Legal
+- Privacy Policy
+- Terms of Service
+- Security
+
+Bottom: "© 2026 Tech Horizon Labs • Brisbane, Queensland, Australia"
+Social links: LinkedIn, Email
+
+---
+
+ADDITIONAL PAGES NEEDED:
+
+1. Services page (detail each service)
+2. Case Studies page (full case study library)
+3. About page (team, values, story)
+4. Contact page (form + booking)
+
+---
+
+TECHNICAL REQUIREMENTS:
+
+- Mobile responsive (320px to 2560px)
+- Fast loading (<2 second page load)
+- Modern, clean code (Next.js or React)
+- Contact form functional
+- Booking widget integration (Calendly)
+- SEO optimized (meta tags, schema markup)
+- Accessible (WCAG 2.1 AA)
+
+STYLE NOTES:
+- No stock photos of people high-fiving
+- No corporate jargon
+- Real screenshots, real results, real founder
+- Write like a human, not a marketing bot
+- Show don't tell
+
+Build this website. Modern, clean, conversion-focused. Make it look expensive but not corporate.
