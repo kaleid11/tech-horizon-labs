@@ -40,7 +40,7 @@ export function McpVisualization() {
           <Bot className="w-12 h-12 text-white" />
           
           {/* MCP Label Badge */}
-          <div className="absolute -bottom-10 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-xs font-mono text-salmon-200">
+          <div className="absolute -bottom-10 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-xs font-mono text-salmon-200 whitespace-nowrap">
             Model Context Protocol
           </div>
         </motion.div>
@@ -51,101 +51,107 @@ export function McpVisualization() {
       </div>
 
       {/* Connected Apps (Satellites) */}
-      {apps.map((app, index) => {
-        // Calculate position on the circle (radius 220px)
-        const radius = 220;
-        const radian = (app.angle * Math.PI) / 180;
-        const x = radius * Math.cos(radian);
-        const y = radius * Math.sin(radian);
-        
-        const isActive = index === activePath;
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {apps.map((app, index) => {
+          // Calculate position on the circle (radius 180px for better fit)
+          const radius = 180;
+          const radian = (app.angle * Math.PI) / 180;
+          const x = radius * Math.cos(radian);
+          const y = radius * Math.sin(radian);
+          
+          const isActive = index === activePath;
 
-        return (
-          <motion.div
-            key={app.id}
-            className="absolute z-10"
-            style={{ x, y }}
-          >
-            {/* Connection Line */}
-            <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] h-[440px] pointer-events-none overflow-visible" style={{ left: -x, top: -y }}>
-              <line 
-                x1="220" 
-                y1="220" 
-                x2={220 + x} 
-                y2={220 + y} 
-                stroke={isActive ? app.color : "rgba(255,255,255,0.05)"} 
-                strokeWidth={isActive ? 2 : 1}
-                strokeDasharray="4 4"
-              />
+          return (
+            <motion.div
+              key={app.id}
+              className="absolute z-10 flex flex-col items-center justify-center"
+              style={{ x, y }}
+            >
+              {/* Connection Line - SVG absolute to the center */}
+              <svg className="absolute w-[360px] h-[360px] overflow-visible pointer-events-none" style={{ left: -x, top: -y, transform: `translate(-50%, -50%)` }}>
+                 {/* Line drawing logic needs to be relative to the center of the SVG, which is now the center of the container */}
+                 <line 
+                  x1="0" 
+                  y1="0" 
+                  x2={x} 
+                  y2={y} 
+                  stroke={isActive ? app.color : "rgba(255,255,255,0.05)"} 
+                  strokeWidth={isActive ? 2 : 1}
+                  strokeDasharray="4 4"
+                  className="transition-all duration-300"
+                />
+                
+                {/* Data Packet Animation */}
+                {isActive && (
+                  <motion.circle
+                    r="3"
+                    fill={app.color}
+                    initial={{ opacity: 0 }}
+                    animate={{ 
+                      cx: [x, 0],
+                      cy: [y, 0],
+                      opacity: [0, 1, 1, 0]
+                    }}
+                    transition={{ duration: 1.2, ease: "easeInOut", times: [0, 0.1, 0.9, 1] }}
+                  />
+                )}
+                 {/* Response Packet Animation */}
+                 {isActive && (
+                  <motion.circle
+                    r="3"
+                    fill="#ffffff"
+                    initial={{ opacity: 0 }}
+                    animate={{ 
+                      cx: [0, x],
+                      cy: [0, y],
+                      opacity: [0, 1, 1, 0]
+                    }}
+                    transition={{ duration: 1.2, ease: "easeInOut", delay: 0.6, times: [0, 0.1, 0.9, 1] }}
+                  />
+                )}
+              </svg>
+
+              {/* App Icon Node */}
+              <div className={`
+                w-14 h-14 rounded-xl flex items-center justify-center border transition-all duration-500 relative z-20
+                ${isActive ? 'bg-white/10 border-white/40 scale-110 shadow-[0_0_20px_rgba(255,255,255,0.1)]' : 'bg-aubergine-800/80 border-white/10 grayscale'}
+              `}>
+                <app.icon className="w-6 h-6" style={{ color: isActive ? app.color : '#666' }} />
+              </div>
               
-              {/* Data Packet Animation */}
-              {isActive && (
-                <motion.circle
-                  r="4"
-                  fill={app.color}
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ 
-                    cx: [220 + x, 220],
-                    cy: [220 + y, 220],
-                    opacity: [0, 1, 1, 0]
-                  }}
-                  transition={{ duration: 1.5, ease: "easeInOut", times: [0, 0.1, 0.9, 1] }}
-                />
-              )}
-               {/* Response Packet Animation */}
-               {isActive && (
-                <motion.circle
-                  r="4"
-                  fill="#ffffff"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ 
-                    cx: [220, 220 + x],
-                    cy: [220, 220 + y],
-                    opacity: [0, 1, 1, 0]
-                  }}
-                  transition={{ duration: 1.5, ease: "easeInOut", delay: 0.8, times: [0, 0.1, 0.9, 1] }}
-                />
-              )}
-            </svg>
+              {/* App Name Label */}
+              <div className={`absolute top-16 whitespace-nowrap text-[10px] font-medium tracking-wider uppercase transition-colors duration-300 ${isActive ? 'text-white' : 'text-gray-600'}`}>
+                {app.name}
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
 
-            {/* App Icon Node */}
-            <div className={`
-              w-16 h-16 rounded-xl flex items-center justify-center border transition-all duration-500
-              ${isActive ? 'bg-white/10 border-white/40 scale-110 shadow-[0_0_30px_rgba(255,255,255,0.1)]' : 'bg-aubergine-800/50 border-white/5 grayscale'}
-            `}>
-              <app.icon className="w-8 h-8" style={{ color: isActive ? app.color : '#666' }} />
-            </div>
-            
-            {/* App Name Label */}
-            <div className={`absolute top-20 left-1/2 -translate-x-1/2 text-xs font-medium tracking-wider transition-colors duration-300 ${isActive ? 'text-white' : 'text-gray-600'}`}>
-              {app.name}
-            </div>
-          </motion.div>
-        );
-      })}
-
-      {/* Agent-to-Agent Overlay (Top Right) */}
-      <div className="absolute top-8 right-8 bg-black/40 backdrop-blur-md p-4 rounded-xl border border-white/10 max-w-xs">
-        <div className="flex items-center gap-3 mb-3">
-          <Zap className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-          <span className="text-xs font-bold text-white uppercase tracking-wider">Live Agent Hand-off</span>
+      {/* Agent-to-Agent Overlay (Bottom Left - Moved to avoid overlap) */}
+      <div className="absolute bottom-6 left-6 right-6 md:right-auto md:w-80 bg-black/60 backdrop-blur-xl p-4 rounded-xl border border-white/10 shadow-2xl z-30">
+        <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/5">
+          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+          <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Live Agent Activity</span>
         </div>
         <div className="space-y-3">
-          <div className="flex items-start gap-3 text-xs text-gray-300">
-             <div className="w-6 h-6 rounded bg-blue-500/20 flex items-center justify-center shrink-0 border border-blue-500/30">
+          <div className="flex items-start gap-3">
+             <div className="mt-0.5 w-5 h-5 rounded bg-blue-500/20 flex items-center justify-center shrink-0 border border-blue-500/30">
                <Bot className="w-3 h-3 text-blue-400" />
              </div>
              <div>
-               <span className="text-blue-400 font-bold">Research Agent:</span> Found 14 new invoices in Gmail matching "Q4 Project".
+               <div className="text-[11px] font-bold text-blue-300">Research Agent</div>
+               <div className="text-[10px] text-gray-400 leading-tight">Found 14 new invoices in Gmail matching "Q4 Project".</div>
              </div>
           </div>
-          <div className="w-px h-4 bg-gray-700 ml-3"></div>
-          <div className="flex items-start gap-3 text-xs text-gray-300">
-             <div className="w-6 h-6 rounded bg-green-500/20 flex items-center justify-center shrink-0 border border-green-500/30">
-               <FileSpreadsheet className="w-3 h-3 text-green-400" />
+          <div className="w-px h-3 bg-white/10 ml-2.5"></div>
+          <div className="flex items-start gap-3">
+             <div className="mt-0.5 w-5 h-5 rounded bg-salmon-500/20 flex items-center justify-center shrink-0 border border-salmon-500/30">
+               <FileSpreadsheet className="w-3 h-3 text-salmon-400" />
              </div>
              <div>
-               <span className="text-green-400 font-bold">Finance Agent:</span> Extracted data via MCP. Reconciling in Xero now...
+               <div className="text-[11px] font-bold text-salmon-300">Finance Agent</div>
+               <div className="text-[10px] text-gray-400 leading-tight">Extracted data via MCP. Reconciling in Xero now...</div>
              </div>
           </div>
         </div>

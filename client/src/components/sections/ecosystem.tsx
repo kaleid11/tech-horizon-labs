@@ -52,8 +52,10 @@ export function Ecosystem() {
           </div>
 
           {/* Visualization */}
-          <div className="relative">
-             <McpVisualization />
+          <div className="relative h-full min-h-[500px] lg:min-h-[600px] flex items-center">
+             <div className="w-full">
+               <McpVisualization />
+             </div>
           </div>
         </div>
 
