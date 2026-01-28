@@ -13,7 +13,12 @@ export async function registerRoutes(
       const validatedData = insertContactSubmissionSchema.parse(req.body);
       const submission = await storage.createContactSubmission(validatedData);
       
-      await sendContactNotification(validatedData);
+      await sendContactNotification({
+        name: validatedData.name,
+        email: validatedData.email,
+        company: validatedData.company || undefined,
+        message: validatedData.message
+      });
       
       res.json({ success: true, id: submission.id });
     } catch (error) {
