@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import founderImage from "@/assets/huxley-profile.jpg";
-import { Check, ShieldCheck, Play } from "lucide-react";
+import { ShieldCheck, Play, Calendar, ArrowRight } from "lucide-react";
 import videoPlaceholder from "@/assets/video-placeholder.png";
-import { ContactFormDialog } from "@/components/contact-form-dialog";
-import { NewsletterDialog } from "@/components/newsletter-dialog";
+import { BOOKING_URL } from "@/components/contact-form-dialog";
 
 export function Founder() {
   return (
@@ -138,16 +137,18 @@ export function CTA() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-          <ContactFormDialog>
-            <Button data-testid="button-book-discovery" size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-10 h-16 rounded-full w-full sm:w-auto shadow-xl shadow-salmon-500/20">
+          <Button data-testid="button-book-discovery" size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-10 h-16 rounded-full w-full sm:w-auto shadow-xl shadow-salmon-500/20 transition-all hover:scale-105 group" asChild>
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+              <Calendar className="mr-2 h-5 w-5" />
               Book Discovery Call
-            </Button>
-          </ContactFormDialog>
-          <NewsletterDialog>
-            <Button data-testid="button-join-academy" variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-10 h-16 rounded-full w-full sm:w-auto">
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </Button>
+          <Button data-testid="button-join-academy" variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-10 h-16 rounded-full w-full sm:w-auto" asChild>
+            <a href="/academy">
               Join Free Academy
-            </Button>
-          </NewsletterDialog>
+            </a>
+          </Button>
         </div>
         
         <div className="inline-block bg-white/5 rounded-full px-6 py-2 border border-white/10 text-sm text-gray-400">

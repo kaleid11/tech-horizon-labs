@@ -34,9 +34,16 @@ Preferred communication style: Simple, everyday language.
 - `/resources` - Articles, weekly workshops schedule, newsletter, downloadable tools
 
 ### Booking Integration
-- All CTAs now link to Klipy CRM booking: https://app.klipycrm.com/book/pre-discovery/free-pre-discovery
-- ContactFormDialog offers both direct calendar booking and message form options
+- All CTAs now link directly to Klipy CRM booking: https://app.klipycrm.com/book/pre-discovery/free-pre-discovery
+- ContactFormDialog offers both direct calendar booking and message form options (used in navbar only)
+- All page CTAs use direct `<a href={BOOKING_URL}>` links with Calendar icon for immediate booking
 - BOOKING_URL constant exported from contact-form-dialog.tsx for consistency
+
+### Navigation Improvements
+- Services dropdown menu in navbar with links to all 3 service pages
+- Each service item shows icon, name, and short description
+- Mobile menu updated with dedicated Services section
+- All buttons have hover:scale-105 micro-interaction for premium feel
 
 ### Navigation & Footer
 - Updated navigation: Services, Portfolio, Locations, Academy

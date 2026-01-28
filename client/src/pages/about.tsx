@@ -1,7 +1,7 @@
 import { Navbar, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { ContactFormDialog } from "@/components/contact-form-dialog";
-import { User, Award, MapPin, Briefcase, GraduationCap, Users } from "lucide-react";
+import { BOOKING_URL } from "@/components/contact-form-dialog";
+import { User, Award, MapPin, Briefcase, Users, Calendar } from "lucide-react";
 
 export default function About() {
   return (
@@ -203,11 +203,12 @@ export default function About() {
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
               15-minute discovery call. No sales pitch—just honest conversation about whether AI makes sense for your specific situation.
             </p>
-            <ContactFormDialog>
-              <Button data-testid="button-about-cta-book" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8">
+            <Button data-testid="button-about-cta-book" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105" asChild>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                <Calendar className="mr-2 h-5 w-5" />
                 Book Free Discovery Call
-              </Button>
-            </ContactFormDialog>
+              </a>
+            </Button>
           </div>
         </section>
       </main>

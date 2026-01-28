@@ -1,7 +1,7 @@
 import { Navbar, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { ContactFormDialog } from "@/components/contact-form-dialog";
-import { MapPin, CheckCircle2, Building2, Factory, Briefcase, TrendingUp } from "lucide-react";
+import { BOOKING_URL } from "@/components/contact-form-dialog";
+import { MapPin, CheckCircle2, Building2, Factory, Briefcase, TrendingUp, Calendar } from "lucide-react";
 import { Link } from "wouter";
 import { LocationSchema } from "@/components/seo/location-schema";
 
@@ -49,11 +49,12 @@ export default function BrisbaneLocation() {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
-              <ContactFormDialog>
-                <Button data-testid="button-bne-book-discovery" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8">
+              <Button data-testid="button-bne-book-discovery" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105" asChild>
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                  <Calendar className="mr-2 h-5 w-5" />
                   Book Free Discovery Call
-                </Button>
-              </ContactFormDialog>
+                </a>
+              </Button>
               <Button variant="outline" size="lg" className="border-gray-600 text-white hover:bg-white/10 rounded-full px-8" asChild>
                 <Link href="/portfolio">View Brisbane Case Studies</Link>
               </Button>
@@ -209,11 +210,12 @@ export default function BrisbaneLocation() {
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
               15-minute discovery call. We'll identify your highest-impact automation opportunity and give you honest advice about whether AI is the right solution.
             </p>
-            <ContactFormDialog>
-              <Button data-testid="button-bne-cta-book" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8">
+            <Button data-testid="button-bne-cta-book" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105" asChild>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                <Calendar className="mr-2 h-5 w-5" />
                 Book Free Discovery Call
-              </Button>
-            </ContactFormDialog>
+              </a>
+            </Button>
             <p className="text-sm text-gray-400 mt-4">
               Serving Brisbane CBD, South Bank, Fortitude Valley, and all SEQ suburbs
             </p>

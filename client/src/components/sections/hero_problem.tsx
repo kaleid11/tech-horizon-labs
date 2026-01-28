@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, ShieldCheck, Award, TrendingUp, AlertTriangle, Flame, ArrowRight, Zap } from "lucide-react";
+import { CheckCircle2, ShieldCheck, TrendingUp, AlertTriangle, Flame, ArrowRight, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { Terminal } from "@/components/ui/terminal";
+import { BOOKING_URL } from "@/components/contact-form-dialog";
 
 export function Hero() {
   return (
@@ -40,12 +41,16 @@ export function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-8 h-14 rounded-full shadow-lg shadow-salmon-500/25 group transition-all hover:scale-105">
-                Book Discovery Call
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Button size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-8 h-14 rounded-full shadow-lg shadow-salmon-500/25 group transition-all hover:scale-105" asChild>
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-book">
+                  Book Discovery Call
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
-              <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-8 h-14 rounded-full backdrop-blur-sm">
-                Join Free Academy
+              <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-8 h-14 rounded-full backdrop-blur-sm" asChild>
+                <a href="/academy">
+                  Join Free Academy
+                </a>
               </Button>
             </div>
 

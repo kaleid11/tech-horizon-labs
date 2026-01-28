@@ -1,8 +1,7 @@
 import { Navbar, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { ContactFormDialog } from "@/components/contact-form-dialog";
-import { Building2, HardHat, Home, Factory, Heart, TrendingUp, Clock, Shield, ArrowRight } from "lucide-react";
-import { Link } from "wouter";
+import { BOOKING_URL } from "@/components/contact-form-dialog";
+import { Building2, HardHat, Home, Factory, Heart, Clock, Shield, Calendar } from "lucide-react";
 
 const caseStudies = [
   {
@@ -239,11 +238,12 @@ export default function Portfolio() {
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
               15-minute discovery call. We'll identify your highest-impact automation opportunity and give you honest advice about whether AI is the right solution for your business.
             </p>
-            <ContactFormDialog>
-              <Button data-testid="button-portfolio-cta-book" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8">
+            <Button data-testid="button-portfolio-cta-book" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105" asChild>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                <Calendar className="mr-2 h-5 w-5" />
                 Book Free Discovery Call
-              </Button>
-            </ContactFormDialog>
+              </a>
+            </Button>
             <p className="text-sm text-gray-400 mt-4">
               Based in Sunshine Coast • Serving Brisbane, Gold Coast, and all of Queensland
             </p>

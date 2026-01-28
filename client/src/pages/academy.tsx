@@ -91,7 +91,7 @@ export default function Academy() {
                 </ul>
                 <p className="text-sm text-gray-500 mb-4">Best for: Businesses needing custom solutions</p>
                 <Button variant="outline" className="w-full rounded-full" asChild>
-                  <a href="/#services">Explore Consulting Services</a>
+                  <a href="/services/audit">Explore Consulting Services</a>
                 </Button>
               </div>
 

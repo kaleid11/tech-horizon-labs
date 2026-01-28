@@ -1,10 +1,16 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, ChevronDown, Search, Zap, Users, Calendar } from "lucide-react";
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo.png";
-import { ContactFormDialog } from "@/components/contact-form-dialog";
+import { BOOKING_URL } from "@/components/contact-form-dialog";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,8 +24,13 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const serviceItems = [
+    { name: "AI Opportunity Audit", href: "/services/audit", icon: Search, desc: "Free 15-min discovery call" },
+    { name: "Automation Accelerator", href: "/services/accelerator", icon: Zap, desc: "4-week implementation sprint" },
+    { name: "Transformation Partner", href: "/services/partner", icon: Users, desc: "Ongoing AI partnership" },
+  ];
+
   const navItems = [
-    { name: "Services", href: "#services" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Locations", href: "/locations/queensland" },
     { name: "Academy", href: "/academy" },
@@ -28,13 +39,43 @@ export function Navbar() {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-aubergine-900/95 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-6"}`}>
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+        <Link href="/" className="text-xl font-bold tracking-tight text-white flex items-center gap-2 hover:opacity-90 transition-opacity">
           <img src={logo} alt="Tech Horizon Labs - AI Consulting Sunshine Coast" className="h-10 w-auto" />
-          Tech Horizon Labs
+          <span className="hidden sm:inline">Tech Horizon Labs</span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button 
+                className="text-sm font-medium text-gray-300 hover:text-salmon-500 transition-colors flex items-center gap-1 outline-none"
+                data-testid="nav-services-dropdown"
+              >
+                Services
+                <ChevronDown className="h-4 w-4" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-72 bg-white border border-gray-100 shadow-xl rounded-xl p-2">
+              {serviceItems.map((item) => (
+                <DropdownMenuItem key={item.name} asChild>
+                  <a 
+                    href={item.href}
+                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
+                  >
+                    <div className="w-10 h-10 bg-salmon-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <item.icon className="h-5 w-5 text-salmon-600" />
+                    </div>
+                    <div>
+                      <div className="font-medium text-aubergine-900">{item.name}</div>
+                      <div className="text-xs text-gray-500">{item.desc}</div>
+                    </div>
+                  </a>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           {navItems.map((item) => (
             <a 
               key={item.name} 
@@ -44,11 +85,12 @@ export function Navbar() {
               {item.name}
             </a>
           ))}
-          <ContactFormDialog>
-            <Button data-testid="button-nav-book-discovery" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-semibold shadow-lg shadow-salmon-500/20 rounded-full px-6">
+          <Button data-testid="button-nav-book-discovery" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-semibold shadow-lg shadow-salmon-500/20 rounded-full px-6 transition-all hover:scale-105" asChild>
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+              <Calendar className="mr-2 h-4 w-4" />
               Book Discovery
-            </Button>
-          </ContactFormDialog>
+            </a>
+          </Button>
         </div>
 
         {/* Mobile Nav */}
@@ -61,21 +103,40 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent className="bg-aubergine-900 border-gray-800 text-white">
               <div className="flex flex-col gap-6 mt-10">
-                {navItems.map((item) => (
-                  <a 
-                    key={item.name} 
-                    href={item.href}
-                    className="text-lg font-medium hover:text-salmon-500 transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </a>
-                ))}
-                <ContactFormDialog>
-                  <Button data-testid="button-mobile-book-discovery" className="w-full bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold">
+                <div className="space-y-2">
+                  <div className="text-xs uppercase tracking-wider text-gray-500 mb-3">Services</div>
+                  {serviceItems.map((item) => (
+                    <a 
+                      key={item.name} 
+                      href={item.href}
+                      className="flex items-center gap-3 py-2 text-gray-300 hover:text-salmon-500 transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <item.icon className="h-5 w-5" />
+                      <span>{item.name}</span>
+                    </a>
+                  ))}
+                </div>
+                
+                <div className="border-t border-gray-800 pt-6 space-y-4">
+                  {navItems.map((item) => (
+                    <a 
+                      key={item.name} 
+                      href={item.href}
+                      className="block text-lg font-medium hover:text-salmon-500 transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+                
+                <Button data-testid="button-mobile-book-discovery" className="w-full bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold mt-4" asChild>
+                  <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+                    <Calendar className="mr-2 h-4 w-4" />
                     Book Discovery
-                  </Button>
-                </ContactFormDialog>
+                  </a>
+                </Button>
               </div>
             </SheetContent>
           </Sheet>
