@@ -1,0 +1,286 @@
+# Tech Horizon Academy — Brand Baseline Document
+**Version 1.0 | January 2026**
+
+---
+
+## 📌 PRIMARY VALUE PROPOSITION
+
+**"Practical up-to-date AI systems you can deploy now—for operators who want to stay ahead without the research overhead."**
+
+Our living Academy platform and weekly workshops keep you current as tools change. When you're stuck, we run live sessions. 1,300+ tested workflows, Australian compliance mapped, 300+ SEQ operators already in.
+
+---
+
+## 🎯 THE CORE PROMISE
+
+**What we do:** We track AI tool releases, test them with Australian business operators, map compliance, and hand you production-ready workflows—so you stay competitive without hiring someone full-time to do the research.
+
+**Who we serve:** Small business operators (5-50 people) in Australia who want to move fast, stay current with AI tools, and deploy workflows now
+
+**Why it matters:** AI changes weekly. Big companies have research teams and consulting budgets. You don't. But you're small enough to move fast. We level that playing field.
+
+---
+
+## 💡 BRAND PILLARS
+
+### **1. PRACTICAL**
+- No theory, no fluff, no "AI for beginners" courses
+- Production-ready templates you copy-paste today
+- Workflows tested with real Australian businesses
+- Australian compliance already mapped (Privacy Act, NDIS, industry regs)
+
+### **2. UP-TO-DATE**
+- When DeepSeek launches Monday at $0.55 per million tokens, you have the template Friday
+- When OpenAI Operator goes live in Australia, we cover it in the Tuesday workshop
+- Living platform, not a frozen course from 2024
+- Tools tracked in real-time, documented weekly
+
+### **3. DEPLOY NOW**
+- Not "learn AI theory for 12 weeks"
+- Not "certification course that takes 6 months"
+- Week 1: You get the templates
+- Week 2: You're running workflows
+- Live drop-ins when you hit snags
+
+### **4. STAY AHEAD**
+- For operators who move fast, not corporates who move committees
+- Early mover advantage: test tools before mainstream adoption
+- 300+ SEQ operators already ahead—you get their collective knowledge
+- Competitive edge through speed, not budget
+
+### **5. NO RESEARCH OVERHEAD**
+- You don't research which tool works best—we do
+- You don't map compliance—we do
+- You don't figure out integration—we do
+- You deploy and iterate
+
+---
+
+## 🏢 IDEAL CUSTOMER PROFILE
+
+### **Psychographics:**
+- **Movement:** Willing to test new tools before they're "proven"
+- **Speed:** Prefers to ship and iterate rather than wait for perfect
+- **Budget:** $1.2K–$3.6K/year (can't afford $20K consultants)
+- **Size:** 5–50 employees (small enough to move fast)
+- **Confidence:** Knows AI matters, not sure which tools/workflows apply
+
+### **Industries:**
+- Construction (quotes, scheduling, safety compliance)
+- Legal (intake, contract review, compliance)
+- Healthcare (patient intake, scheduling, compliance-heavy)
+- Finance/Accounting (data processing, reporting, compliance)
+- Retail/E-commerce (inventory, customer service, personalization)
+
+### **Pain Points:**
+- "AI could help but I don't know where to start"
+- "New tool launches every week—how do I keep up?"
+- "I tried ChatGPT but didn't know what to do with it"
+- "I can't afford a consultant but I can't ignore this"
+- "I need to stay competitive but I'm too busy to research"
+
+### **Motivation:**
+- Stay ahead of slower competitors
+- Get more done with same-size team
+- Reduce time on manual, repetitive work
+- Compliance peace of mind
+- Not be left behind as AI becomes standard
+
+---
+
+## 📋 WHAT WE DELIVER
+
+### **The Living Academy Platform**
+- **1,300+ Production-Ready Templates:** Organized by industry and workflow type
+- **Weekly Updates:** New tools tracked, tested, documented
+- **Australian Compliance Built-In:** Privacy Act, industry regs, sector-specific requirements
+- **Search & Filter:** Find templates by industry, tool, workflow type
+- **Integration Guides:** How to use each tool with your existing systems
+
+### **Live Workshops (Weekly)**
+- **Tuesday 10am AEST:** "What's New in AI"—latest tool release walkthrough
+- **Thursday 2pm AEST:** "Workshop Wednesdays"—deep dive into specific workflow
+- **Friday 4pm AEST:** "Ask Us Anything"—live drop-in, bring your questions
+
+### **Community (300+ Operators)**
+- **Slack Channel:** Share workflows, ask questions, post wins
+- **Case Studies:** "How [Company] Uses DeepSeek for [Workflow]"
+- **Shared Templates:** When someone documents a workflow, everyone gets it
+- **Accountability:** You're not figuring this out alone
+
+### **Ongoing Support**
+- **Stuck on a Prompt?** Email us, we iterate it with you
+- **New Tool Launched?** We test it, you get the how-to by EOW
+- **Compliance Question?** We map it to Australian regs
+- **Integration Trouble?** We troubleshoot live or async
+
+---
+
+## 🗣️ MESSAGING FRAMEWORK
+
+### **Core Message:**
+"AI tools change weekly. We track them, test them, map compliance, and hand you working templates—so you stay ahead without the research overhead."
+
+### **Three-Pillar Messaging:**
+
+#### **Pillar 1: Speed**
+- "Deploy now, not study later"
+- "New tool launches Monday, you have the template Friday"
+- "Move fast. Your competitors can't."
+
+#### **Pillar 2: Confidence**
+- "Compliance already mapped for Australian businesses"
+- "1,300+ tested templates from 300+ operators"
+- "Someone in the Academy already solved your problem"
+
+#### **Pillar 3: Competitive Edge**
+- "Early mover advantage through weekly tool testing"
+- "Stay ahead of slower, bigger competitors"
+- "Small enough to move fast, smart enough to move together"
+
+---
+
+## 📧 SALES & OUTREACH TONE
+
+### **Voice Characteristics:**
+- **Grounded, not hype-driven:** Talk like a real operator, not an AI bot
+- **Specific, not generic:** "DeepSeek at $0.55" not "save money on AI"
+- **Confident, not pushy:** We know what works, we're not desperate
+- **Australian, not American:** Brisbane-Noosa-Gold Coast references, local compliance focus
+- **Peer-to-peer, not salesy:** You're talking to another operator who figured something out
+
+### **Example Openings:**
+- "Love what you're doing at {{companyName}}—figured you might be exploring AI workflows like the other operators we work with"
+- "Saw {{companyName}} in {{location}}—quick question: How are you currently handling {{specificTask}}?"
+- "Quick question: Are you tracking new AI tools or is that on the backlog?"
+
+### **Example Value Statements:**
+- "We run the Academy for SEQ operators—basically you get 1,300+ tested templates and live support when tools change"
+- "We work with {{industry}} businesses who want to stay ahead—we handle the research, you get the working version"
+- "The Academy keeps you current as tools change. When DeepSeek launches Monday, you have the template Friday"
+
+---
+
+## 🎨 VISUAL/BRAND ELEMENTS
+
+### **Colors & Feel:**
+- Practical, not flashy
+- Modern, not corporate
+- Brisbane-based, not Silicon Valley
+- Trust-building, not hype-building
+
+### **Imagery:**
+- Real Australian operators (not stock photos)
+- Tool interfaces, workflows, templates
+- Charts showing ROI, time savings, adoption
+- Community collaboration (not lone genius)
+
+### **Taglines (In Order of Use):**
+1. **Primary:** "Practical up-to-date AI systems you can deploy now"
+2. **Secondary:** "Stay ahead without the research overhead"
+3. **Tertiary:** "Built for operators who move fast"
+4. **Community:** "600+ SEQ operators already ahead"
+
+---
+
+## 📊 KEY STATS TO REFERENCE
+
+- **1,300+** tested, production-ready templates
+- **500+** SEQ operators in our free facebook community
+- **Weekly** tool releases tracked and tested
+- **Australian compliance** mapped into every template
+- **Live workshops** every week (Tuesday 10am, Thursday 2pm, Friday 4pm AEST)
+- **50+** new operators joining every quarter
+- **DeepSeek cost:** $0.55 per million tokens (vs ChatGPT's $15)
+
+---
+
+## 🔄 LIFECYCLE MESSAGING
+
+### **Awareness Stage:**
+*"AI tools change weekly. We track them, test them, hand you templates."*
+
+### **Consideration Stage:**
+*"1,300+ tested templates, live workshops, Australian compliance—$97–$300/month. No consultant fees."*
+
+### **Decision Stage:**
+*"300+ SEQ operators already using it. You're not figuring this out alone."*
+
+### **Onboarding Stage:**
+*"Week 1: Get templates. Week 2: Deploy workflows. Week 3: Optimize. Live support every step."*
+
+### **Retention Stage:**
+*"New tool launches? We test it, you get the template. Stuck? Live drop-in Friday 4pm. Community keeps growing."*
+
+---
+
+## ✋ WHAT WE DON'T SAY
+
+- ❌ "Revolutionary AI for business" (hype)
+- ❌ "We'll transform your entire company" (overselling)
+- ❌ "Get certified in AI" (we're not an education company)
+- ❌ "AI will do everything" (unrealistic)
+- ❌ "Guaranteed ROI in 30 days" (no promises)
+- ❌ "Enterprise-grade AI implementation" (we're for SMEs, not enterprises)
+- ❌ "No training required" (training happens, just practically)
+
+---
+
+## 🎯 CALL-TO-ACTION FRAMEWORK
+
+### **For Cold Outreach:**
+"Worth 15 minutes to compare notes on what's working in {{industry}}?"  
+[Book here](link)
+
+### **For Consideration:**
+"Free workflow audit: we'll map one of your current manual processes and show you the AI version. Takes 15 minutes."
+
+### **For Decision:**
+"Join 300+ SEQ operators—start with the free audit, then explore the full template library."
+
+### **For Onboarding:**
+"You're in. Week 1: Explore templates by industry. Week 2: Join a live workshop. Week 3: Deploy your first workflow."
+
+---
+
+## 📝 SAMPLE COLD EMAIL (Using This Framework)
+
+**Subject:** {{companyName}} + AI workflows
+
+**Body:**
+
+Hi {{firstName}},
+
+Love what {{companyName}} is building.
+
+Quick question: How are you currently handling {{specificTask}}—manual, or testing some AI tools?
+
+We run the Academy for SEQ operators exploring AI workflows. 1,300+ tested templates, weekly workshops (tools change every week, we keep up), and live support when you're stuck. Australian compliance mapped into everything.
+
+{{localExample}} already uses it for {{specificWorkflow}}.
+
+Worth 15 minutes to compare notes?
+
+[Book here](link)
+
+Cheers,  
+{{name}}
+
+---
+
+## 🚀 ROLLOUT CHECKLIST
+
+- [ ] Website homepage updated with this positioning
+- [ ] Sales deck rewritten with this messaging
+- [ ] Cold email templates updated
+- [ ] LinkedIn content calendar aligned
+- [ ] Newsletter introduction updated
+- [ ] Sales calls use this language (not generic AI talk)
+- [ ] Testimonials requested from current users with this framework
+- [ ] Workshop descriptions rewritten
+- [ ] FAQ updated
+- [ ] Team briefed on tone and messaging
+
+---
+
+**This is your baseline. Everything—sales, marketing, workshops, community—flows from these pillars.**
