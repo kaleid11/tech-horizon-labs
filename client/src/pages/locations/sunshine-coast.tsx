@@ -3,10 +3,31 @@ import { Button } from "@/components/ui/button";
 import { ContactFormDialog } from "@/components/contact-form-dialog";
 import { MapPin, Clock, CheckCircle2, Building2, Users, TrendingUp } from "lucide-react";
 import { Link } from "wouter";
+import { LocationSchema } from "@/components/seo/location-schema";
+
+const sunshineCoastFaqs = [
+  {
+    question: "Do you offer on-site AI consultations on the Sunshine Coast?",
+    answer: "Yes, we're based right here on the Sunshine Coast. For local businesses, we offer in-person discovery meetings, on-site implementation support, and face-to-face training sessions. We typically work with clients from Noosa to Caloundra and everywhere in between."
+  },
+  {
+    question: "What does private AI mean for my Sunshine Coast business?",
+    answer: "Private AI means your sensitive data—client financials, patient records, business intelligence—never leaves your premises. The AI runs on your own computers or Australian-hosted infrastructure. This is critical for compliance with Australian privacy laws and builds trust with your local client base."
+  },
+  {
+    question: "How much does AI consulting cost on the Sunshine Coast?",
+    answer: "Our AI Opportunity Audit is free—15 minutes to identify your highest-impact automation opportunity. Implementation projects typically start at $5,000 for a focused 4-week sprint. We're transparent about pricing because hidden costs waste everyone's time."
+  }
+];
 
 export default function SunshineCoastLocation() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <LocationSchema 
+        location="Sunshine Coast"
+        description="AI consulting services on the Sunshine Coast, Queensland. Private AI systems for local businesses in Noosa, Maroochydore, Caloundra and surrounds."
+        faqs={sunshineCoastFaqs}
+      />
       <Navbar />
       
       <main>

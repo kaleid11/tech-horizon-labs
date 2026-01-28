@@ -3,10 +3,31 @@ import { Button } from "@/components/ui/button";
 import { ContactFormDialog } from "@/components/contact-form-dialog";
 import { MapPin, CheckCircle2, Hotel, Building2, Users, TrendingUp } from "lucide-react";
 import { Link } from "wouter";
+import { LocationSchema } from "@/components/seo/location-schema";
+
+const goldCoastFaqs = [
+  {
+    question: "Do you work with seasonal businesses on the Gold Coast?",
+    answer: "Absolutely. Many Gold Coast hospitality and tourism businesses have seasonal peaks. Our AI systems scale with your demand—handling high-volume periods efficiently while keeping costs reasonable during quieter times."
+  },
+  {
+    question: "How do you handle multi-language requirements?",
+    answer: "Our AI systems support multiple languages out of the box. For Gold Coast tourism businesses serving international visitors, we configure guest communication in Mandarin, Japanese, Korean, German, French, and more—all while keeping data private and secure."
+  },
+  {
+    question: "Can AI integrate with our existing booking system?",
+    answer: "Yes. We integrate with major hospitality platforms including property management systems, channel managers, and booking engines. The goal is to enhance your existing workflow, not replace it entirely."
+  }
+];
 
 export default function GoldCoastLocation() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <LocationSchema 
+        location="Gold Coast"
+        description="AI consulting for Gold Coast tourism, hospitality, and real estate businesses. Private AI systems with multi-language support for international visitors."
+        faqs={goldCoastFaqs}
+      />
       <Navbar />
       
       <main>

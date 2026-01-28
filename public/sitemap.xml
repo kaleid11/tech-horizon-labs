@@ -38,26 +38,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Service Pages -->
-  <url>
-    <loc>https://techhorizonlabs.com/services/audit</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/services/accelerator</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/services/partner</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <!-- Portfolio / Case Studies -->
   <url>
     <loc>https://techhorizonlabs.com/portfolio</loc>
@@ -65,32 +45,10 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Academy Preview -->
   <url>
-    <loc>https://techhorizonlabs.com/portfolio/accounting-firm</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/portfolio/construction-builder</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/portfolio/real-estate-agency</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/portfolio/manufacturing</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/portfolio/healthcare-clinic</loc>
+    <loc>https://techhorizonlabs.com/academy</loc>
     <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -108,26 +66,6 @@
     <lastmod>2026-01-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/academy</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Legal Pages -->
-  <url>
-    <loc>https://techhorizonlabs.com/privacy</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/terms</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
 
 </urlset>

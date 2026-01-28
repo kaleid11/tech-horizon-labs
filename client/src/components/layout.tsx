@@ -117,9 +117,9 @@ export function Footer() {
           <div>
             <h4 className="font-bold mb-4 text-white">Services</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/services/audit" className="hover:text-salmon-500 transition-colors">AI Opportunity Audit</a></li>
-              <li><a href="/services/accelerator" className="hover:text-salmon-500 transition-colors">Automation Accelerator</a></li>
-              <li><a href="/services/partner" className="hover:text-salmon-500 transition-colors">Transformation Partner</a></li>
+              <li><a href="/#services" className="hover:text-salmon-500 transition-colors">AI Opportunity Audit</a></li>
+              <li><a href="/#services" className="hover:text-salmon-500 transition-colors">Automation Accelerator</a></li>
+              <li><a href="/#services" className="hover:text-salmon-500 transition-colors">Transformation Partner</a></li>
               <li><a href="/portfolio" className="hover:text-salmon-500 transition-colors">Case Studies</a></li>
             </ul>
           </div>

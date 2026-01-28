@@ -3,10 +3,31 @@ import { Button } from "@/components/ui/button";
 import { ContactFormDialog } from "@/components/contact-form-dialog";
 import { MapPin, CheckCircle2, Building2, Factory, Briefcase, TrendingUp } from "lucide-react";
 import { Link } from "wouter";
+import { LocationSchema } from "@/components/seo/location-schema";
+
+const brisbaneFaqs = [
+  {
+    question: "Do you work with Brisbane businesses remotely?",
+    answer: "Yes. While we're based on the Sunshine Coast, Brisbane is just an hour away. We work with Brisbane clients through a mix of remote collaboration and on-site visits as needed. Most implementation work happens remotely with regular check-ins."
+  },
+  {
+    question: "How does AI help Brisbane manufacturers?",
+    answer: "The biggest wins for Brisbane manufacturers are predictive maintenance (reducing unexpected downtime by 30%+), quality control automation, and supply chain optimization. These systems run on your own infrastructure, keeping proprietary data secure."
+  },
+  {
+    question: "What's the difference between your approach and big consulting firms?",
+    answer: "We're not here to sell you a 6-month discovery phase. Our 4-week Automation Accelerator delivers a working AI system—not a PowerPoint deck. We're built for Brisbane SMEs, not enterprise clients with unlimited budgets."
+  }
+];
 
 export default function BrisbaneLocation() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <LocationSchema 
+        location="Brisbane"
+        description="AI consulting services in Brisbane and South East Queensland. Private AI systems for manufacturers, professional services, and growing businesses."
+        faqs={brisbaneFaqs}
+      />
       <Navbar />
       
       <main>

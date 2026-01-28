@@ -3,10 +3,31 @@ import { Button } from "@/components/ui/button";
 import { ContactFormDialog } from "@/components/contact-form-dialog";
 import { MapPin, CheckCircle2, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
+import { LocationSchema } from "@/components/seo/location-schema";
+
+const queenslandFaqs = [
+  {
+    question: "What makes you different from other AI consultants in Queensland?",
+    answer: "We're the 'anti-hype' firm. No buzzwords, no 6-month discovery phases, no enterprise pricing. We build practical AI systems for SMEs with 5-50 employees. Our 4-week Automation Accelerator delivers a working system, not a PowerPoint deck."
+  },
+  {
+    question: "Do you work with regional Queensland businesses?",
+    answer: "Yes. Our remote collaboration model works for businesses anywhere in Queensland. Plus, our AI systems are designed to work offline—critical for regional areas with unreliable internet. We've worked with clients from Cairns to the Darling Downs."
+  },
+  {
+    question: "How do you ensure Australian data compliance?",
+    answer: "All our AI systems are designed with Australian compliance built in. We use Australian-hosted infrastructure, implement Privacy Act 1988 requirements, and map industry-specific regulations (healthcare, financial services, etc.) into every solution. Your data never leaves Australian soil."
+  }
+];
 
 export default function QueenslandLocation() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <LocationSchema 
+        location="Queensland"
+        description="Queensland's anti-hype AI consulting firm. Private, production-ready AI systems for Australian SMEs—from the Sunshine Coast to the Outback."
+        faqs={queenslandFaqs}
+      />
       <Navbar />
       
       <main>
