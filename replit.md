@@ -21,6 +21,9 @@ Preferred communication style: Simple, everyday language.
 - Generated XML sitemap with proper priorities
 
 ### New Pages
+- `/services/audit` - AI Opportunity Audit service page with Service schema, FAQs, direct booking link
+- `/services/accelerator` - Automation Accelerator service page (4-week sprint, $5K+ pricing)
+- `/services/partner` - Transformation Partner ongoing partnership page
 - `/locations/sunshine-coast` - Local SEO page with FAQ schema
 - `/locations/brisbane` - Brisbane/SEQ focus with manufacturing case studies
 - `/locations/queensland` - State-wide overview and hub page
@@ -29,6 +32,11 @@ Preferred communication style: Simple, everyday language.
 - `/academy` - Preview page linking to academy.techhorizonlabs.com (separate subdomain for training/workshops)
 - `/about` - Huxley Peckham bio, E-E-A-T signals, ABN disclosure, partner affiliations
 - `/resources` - Articles, weekly workshops schedule, newsletter, downloadable tools
+
+### Booking Integration
+- All CTAs now link to Klipy CRM booking: https://app.klipycrm.com/book/pre-discovery/free-pre-discovery
+- ContactFormDialog offers both direct calendar booking and message form options
+- BOOKING_URL constant exported from contact-form-dialog.tsx for consistency
 
 ### Navigation & Footer
 - Updated navigation: Services, Portfolio, Locations, Academy

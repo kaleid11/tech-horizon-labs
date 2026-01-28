@@ -13,6 +13,9 @@ import Portfolio from "@/pages/portfolio";
 import Academy from "@/pages/academy";
 import About from "@/pages/about";
 import Resources from "@/pages/resources";
+import AuditService from "@/pages/services/audit";
+import AcceleratorService from "@/pages/services/accelerator";
+import PartnerService from "@/pages/services/partner";
 
 function Router() {
   return (
@@ -26,6 +29,9 @@ function Router() {
       <Route path="/academy" component={Academy} />
       <Route path="/about" component={About} />
       <Route path="/resources" component={Resources} />
+      <Route path="/services/audit" component={AuditService} />
+      <Route path="/services/accelerator" component={AcceleratorService} />
+      <Route path="/services/partner" component={PartnerService} />
       <Route component={NotFound} />
     </Switch>
   );

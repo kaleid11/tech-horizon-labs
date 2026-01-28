@@ -6,7 +6,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2 } from "lucide-react";
+import { Loader2, Calendar, Mail } from "lucide-react";
+
+export const BOOKING_URL = "https://app.klipycrm.com/book/pre-discovery/free-pre-discovery";
 
 interface ContactFormData {
   name: string;
@@ -71,11 +73,33 @@ export function ContactFormDialog({ children }: { children: React.ReactNode }) {
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-aubergine-900">Book Discovery Call</DialogTitle>
           <DialogDescription className="text-gray-600">
-            Tell us about your business and we'll reach out within 24 hours to schedule a free 15-minute discovery call.
+            Schedule a free 15-minute discovery call to explore AI opportunities for your business.
           </DialogDescription>
         </DialogHeader>
+
+        <div className="mt-4 space-y-4">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 w-full bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold h-12 rounded-full transition-colors"
+            data-testid="link-book-calendar"
+          >
+            <Calendar className="h-5 w-5" />
+            Book Now - Pick a Time
+          </a>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-gray-200" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-white px-2 text-gray-500">Or send a message</span>
+            </div>
+          </div>
+        </div>
         
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+        <form onSubmit={handleSubmit} className="space-y-4 mt-2">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-aubergine-900 font-medium">Name *</Label>
             <Input
@@ -132,7 +156,8 @@ export function ContactFormDialog({ children }: { children: React.ReactNode }) {
             type="submit"
             data-testid="button-submit-contact"
             disabled={submitMutation.isPending}
-            className="w-full bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold h-12 rounded-full"
+            variant="outline"
+            className="w-full border-gray-300 text-aubergine-900 font-medium h-12 rounded-full hover:bg-gray-50"
           >
             {submitMutation.isPending ? (
               <>
@@ -140,7 +165,10 @@ export function ContactFormDialog({ children }: { children: React.ReactNode }) {
                 Sending...
               </>
             ) : (
-              "Send Message"
+              <>
+                <Mail className="mr-2 h-4 w-4" />
+                Send Message Instead
+              </>
             )}
           </Button>
         </form>
