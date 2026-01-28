@@ -4,6 +4,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo.png";
+import { ContactFormDialog } from "@/components/contact-form-dialog";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,9 +46,11 @@ export function Navbar() {
               {item.name}
             </a>
           ))}
-          <Button className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-semibold shadow-lg shadow-salmon-500/20 rounded-full px-6">
-            Book Discovery
-          </Button>
+          <ContactFormDialog>
+            <Button data-testid="button-nav-book-discovery" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-semibold shadow-lg shadow-salmon-500/20 rounded-full px-6">
+              Book Discovery
+            </Button>
+          </ContactFormDialog>
         </div>
 
         {/* Mobile Nav */}
@@ -70,9 +73,11 @@ export function Navbar() {
                     {item.name}
                   </a>
                 ))}
-                <Button className="w-full bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold">
-                  Book Discovery
-                </Button>
+                <ContactFormDialog>
+                  <Button data-testid="button-mobile-book-discovery" className="w-full bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold">
+                    Book Discovery
+                  </Button>
+                </ContactFormDialog>
               </div>
             </SheetContent>
           </Sheet>

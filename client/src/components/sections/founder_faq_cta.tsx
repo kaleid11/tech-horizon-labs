@@ -3,6 +3,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import founderImage from "@/assets/huxley-profile.jpg";
 import { Check, ShieldCheck, Play } from "lucide-react";
 import videoPlaceholder from "@/assets/video-placeholder.png";
+import { ContactFormDialog } from "@/components/contact-form-dialog";
+import { NewsletterDialog } from "@/components/newsletter-dialog";
 
 export function Founder() {
   return (
@@ -136,12 +138,16 @@ export function CTA() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-          <Button size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-10 h-16 rounded-full w-full sm:w-auto shadow-xl shadow-salmon-500/20">
-            Book Discovery Call
-          </Button>
-          <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-10 h-16 rounded-full w-full sm:w-auto">
-            Join Free Academy
-          </Button>
+          <ContactFormDialog>
+            <Button data-testid="button-book-discovery" size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-10 h-16 rounded-full w-full sm:w-auto shadow-xl shadow-salmon-500/20">
+              Book Discovery Call
+            </Button>
+          </ContactFormDialog>
+          <NewsletterDialog>
+            <Button data-testid="button-join-academy" variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-10 h-16 rounded-full w-full sm:w-auto">
+              Join Free Academy
+            </Button>
+          </NewsletterDialog>
         </div>
         
         <div className="inline-block bg-white/5 rounded-full px-6 py-2 border border-white/10 text-sm text-gray-400">
