@@ -41,8 +41,9 @@ export function Founder() {
             <div className="relative z-10 bg-white p-2 rounded-3xl shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
                <img 
                 src={founderImage} 
-                alt="Huxley Peckham" 
+                alt="Huxley Peckham - Founder of Tech Horizon Labs, AI Infrastructure Consultant" 
                 className="w-full h-auto rounded-2xl object-cover aspect-[4/5]"
+                loading="lazy"
               />
               <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-xl border border-white/50 shadow-lg">
                 <div className="flex items-center gap-3">
@@ -73,7 +74,7 @@ export function Founder() {
           <div className="relative max-w-4xl mx-auto group cursor-pointer">
             <div className="absolute inset-0 bg-aubergine-900 rounded-2xl transform rotate-1 group-hover:rotate-0 transition-transform opacity-10"></div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20">
-               <img src={videoPlaceholder} alt="Testimonial Video" className="w-full h-auto" />
+               <img src={videoPlaceholder} alt="Testimonial Video - BuildRight Construction QLD Case Study" className="w-full h-auto" loading="lazy" />
                <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/30 transition-colors">
                  <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform">
                    <Play className="w-8 h-8 text-white fill-white ml-1" />

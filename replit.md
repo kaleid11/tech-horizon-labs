@@ -45,6 +45,18 @@ Preferred communication style: Simple, everyday language.
 - Mobile menu updated with dedicated Services section
 - All buttons have hover:scale-105 micro-interaction for premium feel
 
+### Trust Signals & Partners (January 2026)
+- Added TrustBar component on homepage with partner logos (Google, Anthropic, OpenAI, AWS, n8n, Docker, fal.ai)
+- industry.gov.au National AI Directory listing badge prominently displayed
+- Updated footer with SVG partner icons and hover effects
+- About page includes expanded Partners & Affiliations section
+- National AI Directory badge with government link in about page
+
+### Performance Optimizations
+- All images have loading="lazy" attribute for faster page loads
+- Profile photo on about page uses huxley-profile.jpg from assets
+- Founder photo on homepage uses founder.png with lazy loading
+
 ### Navigation & Footer
 - Updated navigation: Services, Portfolio, Locations, Academy
 - Footer includes: ABN 80 976 285 425, Sunshine Coast address, location links, partner logos (AWS, OpenAI, Noosa Chamber, Source Media)

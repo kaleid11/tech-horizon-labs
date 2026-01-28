@@ -1,5 +1,5 @@
 import { Navbar, Footer } from "@/components/layout";
-import { Hero, Problem } from "@/components/sections/hero_problem";
+import { Hero, TrustBar, Problem } from "@/components/sections/hero_problem";
 import { Ecosystem } from "@/components/sections/ecosystem";
 import { Results, Process } from "@/components/sections/results_process";
 import { Pricing, Academy } from "@/components/sections/pricing_academy";
@@ -11,6 +11,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <TrustBar />
         <Problem />
         <Ecosystem />
         <Results />

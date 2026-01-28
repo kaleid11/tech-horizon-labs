@@ -1,7 +1,8 @@
 import { Navbar, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
-import { User, Award, MapPin, Briefcase, Users, Calendar } from "lucide-react";
+import { Award, MapPin, Briefcase, Users, Calendar, ExternalLink, Shield, BadgeCheck } from "lucide-react";
+import huxleyProfile from "@/assets/huxley-profile.jpg";
 
 export default function About() {
   return (
@@ -29,9 +30,14 @@ export default function About() {
               <div className="grid md:grid-cols-3 gap-12">
                 <div className="md:col-span-1">
                   <div className="sticky top-24">
-                    <div className="w-48 h-48 bg-gray-200 rounded-2xl mb-4 flex items-center justify-center">
-                      <User className="h-24 w-24 text-gray-400" />
-                    </div>
+                    <img 
+                      src={huxleyProfile} 
+                      alt="Huxley Peckham - AI Infrastructure Consultant, Tech Horizon Labs" 
+                      className="w-48 h-48 object-cover rounded-2xl mb-4 shadow-lg"
+                      loading="lazy"
+                      itemProp="image"
+                      data-testid="img-founder-profile"
+                    />
                     <h2 className="text-2xl font-bold text-aubergine-900" itemProp="name">Huxley Peckham</h2>
                     <p className="text-salmon-600 font-medium mb-4" itemProp="jobTitle">Founder & AI Infrastructure Consultant</p>
                     
@@ -174,6 +180,14 @@ export default function About() {
                   <ul className="space-y-3 text-sm">
                     <li className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-salmon-500 rounded-full"></span>
+                      <span>Google Cloud Partner</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-salmon-500 rounded-full"></span>
+                      <span>Anthropic (Claude) Integration Partner</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-salmon-500 rounded-full"></span>
                       <span>AWS Technology Partner</span>
                     </li>
                     <li className="flex items-center gap-2">
@@ -182,13 +196,45 @@ export default function About() {
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-salmon-500 rounded-full"></span>
-                      <span>Noosa Chamber of Commerce Member</span>
+                      <span>n8n Automation Partner</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-salmon-500 rounded-full"></span>
-                      <span>Source Media Partner</span>
+                      <span>Docker Certified</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-salmon-500 rounded-full"></span>
+                      <span>fal.ai Partner</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-salmon-500 rounded-full"></span>
+                      <span>Noosa Chamber of Commerce Member</span>
                     </li>
                   </ul>
+                </div>
+
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <BadgeCheck className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-aubergine-900 mb-2">National AI Directory Listed</h3>
+                      <p className="text-sm text-gray-600 mb-3">
+                        Officially listed on the Australian Government's National AI Centre directory as a verified AI training and consulting provider.
+                      </p>
+                      <a 
+                        href="https://www.industry.gov.au/science-technology-and-innovation/technology/national-ai-centre/national-ai-directory" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                        data-testid="link-about-ai-directory"
+                      >
+                        View on industry.gov.au
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
