@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
+import logo from "@/assets/logo.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,12 +29,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link href="/">
           <a className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-salmon-500 to-orange-400 flex items-center justify-center shadow-lg shadow-salmon-500/20">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" strokeOpacity="0.2" />
-                <path d="M12 2a10 10 0 0 1 10 10" />
-              </svg>
-            </div>
+            <img src={logo} alt="Tech Horizon Labs" className="h-10 w-auto" />
             Tech Horizon Labs
           </a>
         </Link>
@@ -93,11 +89,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
             <div className="text-xl font-bold text-white flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-gradient-to-tr from-salmon-500 to-orange-400"></div>
+              <img src={logo} alt="Tech Horizon Labs" className="h-8 w-auto grayscale opacity-80" />
               Tech Horizon Labs
             </div>
             <p className="text-sm leading-relaxed">
-              We build the infrastructure before the automation. The anti-hype AI consulting firm.
+              Practical up-to-date AI systems you can deploy now.
             </p>
           </div>
           
@@ -133,7 +129,7 @@ export function Footer() {
         </div>
         
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-          <div>© 2026 Tech Horizon Labs • Brisbane, Australia</div>
+          <div>© 2026 Tech Horizon Labs • Sunshine Coast, Australia</div>
           <div className="flex gap-4">
             <a href="#" className="hover:text-salmon-500 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-salmon-500 transition-colors">Terms of Service</a>

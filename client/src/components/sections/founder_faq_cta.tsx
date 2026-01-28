@@ -1,56 +1,91 @@
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import founderImage from "@/assets/founder.png";
+import founderImage from "@/assets/huxley-profile.jpg";
+import { Check, ShieldCheck, Play } from "lucide-react";
+import videoPlaceholder from "@/assets/video-placeholder.png";
 
 export function Founder() {
   return (
-    <section id="founder" className="py-24 bg-cream-50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div className="order-2 md:order-1 relative">
-            <div className="absolute inset-0 bg-salmon-500 rounded-3xl rotate-3 opacity-20 transform translate-x-4 translate-y-4"></div>
-            <img 
-              src={founderImage} 
-              alt="Huxley Patterson" 
-              className="w-full max-w-md mx-auto md:mr-auto rounded-3xl grayscale hover:grayscale-0 transition-all duration-500 shadow-2xl relative z-10"
-            />
-          </div>
+    <section id="founder" className="py-24 bg-cream-50 relative overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
           
-          <div className="order-1 md:order-2 space-y-8">
-            <h2 className="text-4xl font-bold text-aubergine-900 mb-6">Why We're Different</h2>
+          <div className="order-2 md:order-1 space-y-8">
+            <h2 className="text-4xl font-bold text-aubergine-900 mb-6">Built For Operators.<br/>By An Operator.</h2>
             
             <div className="prose prose-lg text-gray-700 leading-relaxed">
-              <p className="font-bold text-salmon-600 text-xl">I'm Huxley, founder of Tech Horizon Labs.</p>
+              <p className="font-bold text-salmon-600 text-xl">I'm Huxley Peckham.</p>
               
-              <p>I built this firm after watching businesses waste money on AI tools they weren't ready for.</p>
+              <p>I spent 18 months consulting with Australian businesses on AI implementation. I heard the same questions every time: "Which tool?", "How do I start?", "What about compliance?"</p>
               
-              <p>They'd buy Claude Pro, ChatGPT Enterprise, automation platforms - then realize their data was too messy to use them. Files named 'Final_FINAL_v3_ACTUAL.docx'. No security protocols. No processes.</p>
+              <p>So I built what I wish existed: <strong>Tech Horizon Academy.</strong></p>
               
-              <p>So we do it differently:</p>
-              <ul className="list-none pl-0 space-y-2">
-                <li className="flex gap-2 items-center"><span className="w-2 h-2 bg-salmon-500 rounded-full"></span> Infrastructure before automation</li>
-                <li className="flex gap-2 items-center"><span className="w-2 h-2 bg-salmon-500 rounded-full"></span> Education is mandatory (not optional)</li>
-                <li className="flex gap-2 items-center"><span className="w-2 h-2 bg-salmon-500 rounded-full"></span> Security is default (not an add-on)</li>
-                <li className="flex gap-2 items-center"><span className="w-2 h-2 bg-salmon-500 rounded-full"></span> We're tool-agnostic (no vendor kickbacks)</li>
-              </ul>
+              <p>It's a living platform with 1,300+ tested AI workflows that update weekly as tools change. Not a course that goes stale. Not consulting at $20K+. Just practical systems operators can deploy now.</p>
               
-              <p className="text-sm italic text-gray-500 mt-6 border-l-4 border-salmon-200 pl-4">
-                We're slower than competitors promising "30-day AI transformation." We're more expensive than offshore agencies. But our clients own their systems, understand their infrastructure, and aren't dependent on us.
-              </p>
-            </div>
+              <div className="bg-white p-6 rounded-xl border-l-4 border-salmon-500 shadow-sm mt-8">
+                <p className="italic text-gray-600 font-medium mb-0">
+                  "The goal: level the playing field so small businesses compete through speed."
+                </p>
+              </div>
 
-            <div className="pt-8 grid grid-cols-2 gap-8 border-t border-gray-200">
-              <div>
-                <div className="text-4xl font-bold text-aubergine-900">100+</div>
-                <div className="text-sm text-gray-500 uppercase tracking-wider font-semibold">Implementations</div>
+              <div className="flex flex-wrap gap-4 mt-8">
+                <div className="px-4 py-2 bg-aubergine-100 text-aubergine-900 rounded-full text-sm font-semibold">Founder & AI Systems Architect</div>
+                <div className="px-4 py-2 bg-blue-100 text-blue-900 rounded-full text-sm font-semibold">Blockchain Security Expert</div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-aubergine-900">$2.1M</div>
-                <div className="text-sm text-gray-500 uppercase tracking-wider font-semibold">Saved for clients</div>
+            </div>
+          </div>
+
+          <div className="order-1 md:order-2 relative">
+             {/* Profile Image Card */}
+            <div className="relative z-10 bg-white p-2 rounded-3xl shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
+               <img 
+                src={founderImage} 
+                alt="Huxley Peckham" 
+                className="w-full h-auto rounded-2xl object-cover aspect-[4/5]"
+              />
+              <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-xl border border-white/50 shadow-lg">
+                <div className="flex items-center gap-3">
+                   <div className="bg-green-100 p-2 rounded-full">
+                     <ShieldCheck className="w-5 h-5 text-green-600" />
+                   </div>
+                   <div>
+                     <p className="text-xs text-gray-500 uppercase font-bold">Experience</p>
+                     <p className="font-bold text-aubergine-900">Reduced client costs by 40%</p>
+                   </div>
+                </div>
               </div>
+            </div>
+            
+            {/* Background Decor */}
+            <div className="absolute top-10 -right-10 w-full h-full bg-salmon-500 rounded-3xl -z-10 opacity-20 transform rotate-6"></div>
+          </div>
+          
+        </div>
+
+        {/* Video Testimonial Section */}
+        <div className="mt-32">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-aubergine-900">Don't Take My Word For It</h3>
+            <p className="text-gray-600 mt-4">See how real Australian businesses are using the Academy.</p>
+          </div>
+          
+          <div className="relative max-w-4xl mx-auto group cursor-pointer">
+            <div className="absolute inset-0 bg-aubergine-900 rounded-2xl transform rotate-1 group-hover:rotate-0 transition-transform opacity-10"></div>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+               <img src={videoPlaceholder} alt="Testimonial Video" className="w-full h-auto" />
+               <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/30 transition-colors">
+                 <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform">
+                   <Play className="w-8 h-8 text-white fill-white ml-1" />
+                 </div>
+               </div>
+               <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
+                 <p className="text-white text-xl font-bold">"The Academy saved us 20 hours a week on admin."</p>
+                 <p className="text-gray-300 text-sm mt-1">Sarah Jenkins, Director @ BuildRight Construction QLD</p>
+               </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
