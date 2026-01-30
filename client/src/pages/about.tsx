@@ -236,6 +236,43 @@ export default function About() {
                     </div>
                   </div>
                 </div>
+
+                <div className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-6 border border-orange-100">
+                  <div className="flex items-start gap-4">
+                    <a 
+                      href="https://www.goodfirms.co/company/tech-horizon-labs" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex-shrink-0 hover:opacity-80 transition-opacity"
+                      data-testid="link-about-goodfirms"
+                    >
+                      <img 
+                        src="https://assets.goodfirms.co/badges/color-badge/artificial-intelligence.svg" 
+                        alt="Top Artificial Intelligence Company on Goodfirms" 
+                        title="Top Artificial Intelligence Company"
+                        className="w-20 h-auto"
+                        loading="lazy"
+                        data-testid="img-about-goodfirms"
+                      />
+                    </a>
+                    <div>
+                      <h3 className="font-bold text-aubergine-900 mb-2">Top AI Company on GoodFirms</h3>
+                      <p className="text-sm text-gray-600 mb-3">
+                        Recognized as a Top Artificial Intelligence Company by GoodFirms, a leading B2B research and reviews platform.
+                      </p>
+                      <a 
+                        href="https://www.goodfirms.co/company/tech-horizon-labs" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm text-orange-600 hover:text-orange-800 font-medium transition-colors"
+                        data-testid="link-about-goodfirms-view"
+                      >
+                        View on GoodFirms
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

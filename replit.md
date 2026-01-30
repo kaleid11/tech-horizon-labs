@@ -48,8 +48,9 @@ Preferred communication style: Simple, everyday language.
 ### Trust Signals & Partners (January 2026)
 - Added TrustBar component on homepage with partner logos (Google, Anthropic, OpenAI, AWS, n8n, Docker, fal.ai)
 - industry.gov.au National AI Directory listing badge prominently displayed
+- GoodFirms "Top Artificial Intelligence Company" badge added to TrustBar, Footer, and About page
 - Updated footer with SVG partner icons and hover effects
-- About page includes expanded Partners & Affiliations section
+- About page includes expanded Partners & Affiliations section with both government and GoodFirms badges
 - National AI Directory badge with government link in about page
 
 ### Performance Optimizations

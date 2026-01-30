@@ -229,7 +229,7 @@ export function Footer() {
               <span className="text-sm font-medium">fal.ai</span>
             </div>
           </div>
-          <div className="mt-6 text-center">
+          <div className="mt-6 flex flex-wrap justify-center items-center gap-6">
             <a 
               href="https://www.industry.gov.au/science-technology-and-innovation/technology/national-ai-centre/national-ai-directory" 
               target="_blank" 
@@ -239,6 +239,22 @@ export function Footer() {
             >
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
               Listed on industry.gov.au National AI Directory
+            </a>
+            <a 
+              href="https://www.goodfirms.co/company/tech-horizon-labs" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              data-testid="link-footer-goodfirms"
+            >
+              <img 
+                src="https://assets.goodfirms.co/badges/color-badge/artificial-intelligence.svg" 
+                alt="Top Artificial Intelligence Company on Goodfirms" 
+                title="Top Artificial Intelligence Company"
+                className="h-10"
+                loading="lazy"
+                data-testid="img-footer-goodfirms"
+              />
             </a>
           </div>
         </div>

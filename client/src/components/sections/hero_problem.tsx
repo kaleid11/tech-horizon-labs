@@ -156,16 +156,34 @@ export function TrustBar() {
               <span className="text-sm font-semibold">fal.ai</span>
             </div>
           </div>
-          <a 
-            href="https://www.industry.gov.au/science-technology-and-innovation/technology/national-ai-centre/national-ai-directory" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded-full text-blue-700 text-sm font-medium transition-colors"
-            data-testid="link-trustbar-ai-directory"
-          >
-            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-            Listed on industry.gov.au National AI Directory
-          </a>
+          <div className="flex flex-wrap justify-center items-center gap-4">
+            <a 
+              href="https://www.industry.gov.au/science-technology-and-innovation/technology/national-ai-centre/national-ai-directory" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded-full text-blue-700 text-sm font-medium transition-colors"
+              data-testid="link-trustbar-ai-directory"
+            >
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              Listed on industry.gov.au National AI Directory
+            </a>
+            <a 
+              href="https://www.goodfirms.co/company/tech-horizon-labs" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              data-testid="link-trustbar-goodfirms"
+            >
+              <img 
+                src="https://assets.goodfirms.co/badges/color-badge/artificial-intelligence.svg" 
+                alt="Top Artificial Intelligence Company on Goodfirms" 
+                title="Top Artificial Intelligence Company"
+                className="h-12"
+                loading="lazy"
+                data-testid="img-trustbar-goodfirms"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </section>
