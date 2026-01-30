@@ -250,7 +250,7 @@ export default function About() {
                         src="https://assets.goodfirms.co/badges/color-badge/artificial-intelligence.svg" 
                         alt="Top Artificial Intelligence Company on Goodfirms" 
                         title="Top Artificial Intelligence Company"
-                        className="w-20 h-auto"
+                        className="w-24 h-auto"
                         loading="lazy"
                         data-testid="img-about-goodfirms"
                       />

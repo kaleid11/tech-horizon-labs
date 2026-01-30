@@ -91,8 +91,8 @@ export function Hero() {
                   <TrendingUp className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-xs text-gray-300">DeepSeek API Cost</div>
-                  <div className="text-lg font-bold text-white">$0.55 / M Tokens</div>
+                  <div className="text-xs text-gray-300">Avg. Admin Time Saved</div>
+                  <div className="text-lg font-bold text-white">15+ hrs/week</div>
                 </div>
               </div>
             </motion.div>
@@ -178,7 +178,7 @@ export function TrustBar() {
                 src="https://assets.goodfirms.co/badges/color-badge/artificial-intelligence.svg" 
                 alt="Top Artificial Intelligence Company on Goodfirms" 
                 title="Top Artificial Intelligence Company"
-                className="h-12"
+                className="h-10"
                 loading="lazy"
                 data-testid="img-trustbar-goodfirms"
               />
@@ -208,10 +208,10 @@ export function Problem() {
             </div>
             <h3 className="text-xl font-bold text-aubergine-900 mb-4">What's Happening</h3>
             <ul className="space-y-3 text-gray-600">
-              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">•</span> DeepSeek launches at $0.55</li>
-              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">•</span> OpenAI Operator goes live</li>
-              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">•</span> 1,000+ new AI tools/month</li>
-              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">•</span> Competitors moving fast</li>
+              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">•</span> AI costs dropping 90% yearly</li>
+              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">•</span> New automation tools weekly</li>
+              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">•</span> Your competitors are adopting</li>
+              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">•</span> Staff time wasted on repetition</li>
             </ul>
           </div>
 
