@@ -251,7 +251,7 @@ export function Footer() {
                 src="https://assets.goodfirms.co/badges/color-badge/artificial-intelligence.svg" 
                 alt="Top Artificial Intelligence Company on Goodfirms" 
                 title="Top Artificial Intelligence Company"
-                className="h-10"
+                className="h-12"
                 loading="lazy"
                 data-testid="img-footer-goodfirms"
               />

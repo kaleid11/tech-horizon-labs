@@ -32,12 +32,12 @@ export function Hero() {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-              Deploy Now, <br/>
-              <span className="text-gradient-salmon">Not Study Later.</span>
+              Stop Drowning in Admin. <br/>
+              <span className="text-gradient-salmon">Start Growing Your Business.</span>
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
-              We track AI tool releases, test them with Australian business operators, map compliance, and hand you production-ready workflows.
+              We identify your top 3 automation opportunities and build a practical AI roadmap that delivers a clear ROI. The no-nonsense approach to AI for South East Queensland businesses.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
@@ -55,17 +55,17 @@ export function Hero() {
             </div>
 
             <div className="pt-8 flex flex-wrap gap-x-8 gap-y-4 text-sm text-gray-400 items-center border-t border-white/10">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-salmon-500" />
-                <span>1,300+ Tested Templates</span>
+              <div className="flex items-center gap-3 bg-salmon-500/20 px-4 py-2 rounded-full border border-salmon-500/30">
+                <span className="text-2xl font-bold text-salmon-500">40%</span>
+                <span className="text-white font-medium">Admin Reduction</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-green-500" />
-                <span>ISO 27001 Mapped</span>
+                <span>Privacy Act Ready</span>
               </div>
               <div className="flex items-center gap-2">
                 <Zap className="w-5 h-5 text-blue-400" />
-                <span>Live Weekly Updates</span>
+                <span>Noosa Chamber Featured</span>
               </div>
             </div>
           </motion.div>
@@ -120,70 +120,69 @@ export function Hero() {
   );
 }
 
+const partners = [
+  { name: "Google", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> },
+  { name: "Microsoft", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6 0H12.6V0H24v11.4z"/></svg> },
+  { name: "AWS", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.264-.168.312a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.415-.287-.806-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167z"/></svg> },
+  { name: "OpenAI", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg> },
+  { name: "Apple", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg> },
+  { name: "Canva", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.567 15.264c-.272.605-.777 1.12-1.519 1.558-.742.437-1.622.662-2.64.676-.106 0-.161-.039-.161-.116 0-.091.05-.15.151-.178.45-.11.74-.254.869-.431.13-.178.194-.37.194-.577 0-.356-.194-.534-.583-.534-.336 0-.64.135-.91.403-.27.269-.404.577-.404.924 0 .538.206.98.619 1.324.413.344.952.516 1.617.516.72 0 1.378-.19 1.973-.571.596-.381.893-.907.893-1.578 0-.606-.26-1.135-.78-1.587-.52-.452-1.217-.717-2.093-.795.016-.025.06-.099.13-.222.07-.122.128-.241.174-.358a5.04 5.04 0 0 0 .17-.532c.044-.17.067-.327.067-.47 0-.349-.097-.608-.291-.778-.194-.17-.432-.255-.713-.255-.304 0-.606.108-.906.324-.301.216-.542.492-.724.828-.183.336-.291.69-.326 1.062a.89.89 0 0 0-.014.163c0 .24.08.44.24.597.161.158.36.237.596.237.24 0 .45-.079.628-.237.178-.157.267-.35.267-.577 0-.129-.037-.226-.113-.29-.077-.065-.174-.097-.294-.097-.099 0-.187.03-.267.089-.08.06-.12.14-.12.24 0 .1.043.18.13.24.086.06.158.09.218.09.03 0 .05-.01.06-.03.01-.02.01-.04 0-.06-.06-.03-.11-.08-.15-.15-.02-.03-.03-.08-.03-.14 0-.18.07-.31.22-.39.15-.08.3-.12.46-.12.24 0 .44.09.59.26.15.17.22.38.22.62 0 .24-.06.47-.17.69-.11.22-.28.4-.49.55-.21.15-.46.23-.74.23-.35 0-.65-.11-.91-.34-.26-.23-.39-.52-.39-.87 0-.34.11-.66.34-.96.22-.3.51-.54.86-.72.35-.18.7-.27 1.07-.27.55 0 .98.18 1.29.54.31.36.47.82.47 1.37 0 .5-.11.97-.33 1.41z"/></svg> },
+  { name: "Noosa Chamber", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> },
+  { name: "Source Media", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 12.5v-9l6 4.5-6 4.5z"/></svg> },
+  { name: "Klipy", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.58L18 11l-6 6z"/></svg> },
+  { name: "Anthropic", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> },
+  { name: "Docker", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186"/></svg> },
+  { name: "n8n", icon: <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg> },
+];
+
 export function TrustBar() {
   return (
-    <section className="py-12 bg-white border-y border-gray-100">
+    <section className="py-8 bg-white border-y border-gray-100 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center gap-6">
-          <p className="text-sm text-gray-500 text-center">Trusted technology partners powering our AI solutions</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12" data-testid="trustbar-partners">
-            <div className="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors" data-testid="partner-google">
-              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-              <span className="text-sm font-semibold">Google</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors" data-testid="partner-anthropic">
-              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-              <span className="text-sm font-semibold">Anthropic</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors" data-testid="partner-openai">
-              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3L4 14h7l-2 7 9-11h-7l2-7z"/></svg>
-              <span className="text-sm font-semibold">OpenAI</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors" data-testid="partner-aws">
-              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z"/></svg>
-              <span className="text-sm font-semibold">AWS</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors" data-testid="partner-n8n">
-              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              <span className="text-sm font-semibold">n8n</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors" data-testid="partner-docker">
-              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.185-.186h-2.119a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/></svg>
-              <span className="text-sm font-semibold">Docker</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors" data-testid="partner-falai">
-              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <span className="text-sm font-semibold">fal.ai</span>
-            </div>
+        <p className="text-sm text-gray-500 text-center mb-6">Technology & Community Partners</p>
+        
+        <div className="relative">
+          <div className="flex animate-marquee" data-testid="trustbar-partners">
+            {[...partners, ...partners].map((partner, i) => (
+              <div 
+                key={`${partner.name}-${i}`}
+                className="flex items-center gap-2 text-gray-400 hover:text-gray-600 transition-colors mx-8 flex-shrink-0"
+                data-testid={`partner-${partner.name.toLowerCase().replace(/\s/g, '-')}-${i}`}
+              >
+                {partner.icon}
+                <span className="text-sm font-semibold whitespace-nowrap">{partner.name}</span>
+              </div>
+            ))}
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-4">
-            <a 
-              href="https://www.industry.gov.au/science-technology-and-innovation/technology/national-ai-centre/national-ai-directory" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded-full text-blue-700 text-sm font-medium transition-colors"
-              data-testid="link-trustbar-ai-directory"
-            >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-              Listed on industry.gov.au National AI Directory
-            </a>
-            <a 
-              href="https://www.goodfirms.co/company/tech-horizon-labs" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity"
-              data-testid="link-trustbar-goodfirms"
-            >
-              <img 
-                src="https://assets.goodfirms.co/badges/color-badge/artificial-intelligence.svg" 
-                alt="Top Artificial Intelligence Company on Goodfirms" 
-                title="Top Artificial Intelligence Company"
-                className="h-10"
-                loading="lazy"
-                data-testid="img-trustbar-goodfirms"
-              />
-            </a>
-          </div>
+        </div>
+
+        <div className="flex flex-wrap justify-center items-center gap-4 mt-6">
+          <a 
+            href="https://www.industry.gov.au/science-technology-and-innovation/technology/national-ai-centre/national-ai-directory" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded-full text-blue-700 text-sm font-medium transition-colors"
+            data-testid="link-trustbar-ai-directory"
+          >
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            Listed on industry.gov.au National AI Directory
+          </a>
+          <a 
+            href="https://www.goodfirms.co/company/tech-horizon-labs" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:opacity-80 transition-opacity"
+            data-testid="link-trustbar-goodfirms"
+          >
+            <img 
+              src="https://assets.goodfirms.co/badges/color-badge/artificial-intelligence.svg" 
+              alt="Top Artificial Intelligence Company on Goodfirms" 
+              title="Top Artificial Intelligence Company"
+              className="h-14"
+              loading="lazy"
+              data-testid="img-trustbar-goodfirms"
+            />
+          </a>
         </div>
       </div>
     </section>
