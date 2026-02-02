@@ -55,15 +55,15 @@ export function Hero() {
             </div>
 
             <div className="pt-8 flex flex-wrap gap-x-8 gap-y-4 text-sm text-gray-400 items-center border-t border-white/10">
-              <div className="flex items-center gap-3 bg-salmon-500/20 px-4 py-2 rounded-full border border-salmon-500/30">
+              <div className="flex items-center gap-3 bg-salmon-500/20 px-4 py-2 rounded-full border border-salmon-500/30" data-testid="badge-admin-reduction">
                 <span className="text-2xl font-bold text-salmon-500">40%</span>
                 <span className="text-white font-medium">Admin Reduction</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2" data-testid="badge-privacy-act">
                 <ShieldCheck className="w-5 h-5 text-green-500" />
                 <span>Privacy Act Ready</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2" data-testid="badge-noosa-chamber">
                 <Zap className="w-5 h-5 text-blue-400" />
                 <span>Noosa Chamber Featured</span>
               </div>
