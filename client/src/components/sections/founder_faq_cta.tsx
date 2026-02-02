@@ -64,7 +64,8 @@ export function Founder() {
           
         </div>
 
-        {/* Video Testimonial Section */}
+        {/* Video Testimonial Section - Hidden until video is available */}
+        {/* 
         <div className="mt-32">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-aubergine-900">Don't Take My Word For It</h3>
@@ -87,6 +88,7 @@ export function Founder() {
             </div>
           </div>
         </div>
+        */}
 
       </div>
     </section>
