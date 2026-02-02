@@ -60,16 +60,16 @@ export default function About() {
                   <meta itemProp="worksFor" content="Tech Horizon Labs" />
                   
                   <h3 className="text-2xl font-bold text-aubergine-900 mb-6">
-                    The Anti-Hype AI Consultant
+                    Your Fractional AI Ops Lead
                   </h3>
                   
                   <div className="prose prose-lg text-gray-600 space-y-6" itemProp="description">
                     <p>
-                      I started Tech Horizon Labs because I was tired of seeing small business owners get sold expensive AI solutions that didn't work.
+                      I test 200+ AI tools every month so you don't have to. I started Tech Horizon Labs because I was tired of seeing small business owners get sold expensive AI solutions that didn't work—and I knew they deserved someone in the trenches testing what actually works, not a boardroom consultant selling last year's tech.
                     </p>
                     
                     <p>
-                      The AI industry has a hype problem. Every week there's a new "revolutionary" tool that's going to "transform your business." Most of it is noise. Most of it doesn't work for SMEs with 5-50 employees. Most of it sends your sensitive data to overseas servers.
+                      The AI industry has a hype problem. Every week there's a new "revolutionary" tool that's going to "transform your business." Most of it is noise. Most of it doesn't work for SMEs with 5-50 employees. Most of it sends your sensitive data to overseas servers. And most consultants pushing it haven't actually deployed it in a real business—they've just watched the demo.
                     </p>
                     
                     <p>
@@ -77,7 +77,7 @@ export default function About() {
                     </p>
 
                     <blockquote className="border-l-4 border-salmon-500 pl-6 italic text-aubergine-800 bg-gray-50 p-4 rounded-r-lg">
-                      "I'd rather give you a working system in 4 weeks than a PowerPoint deck in 6 months."
+                      "Think of me as your fractional AI ops lead—someone to bounce ideas off, sense-check what vendors are telling you, and actually build the systems that work for your business."
                     </blockquote>
                     
                     <h4 className="text-xl font-bold text-aubergine-900 mt-8">What I Believe</h4>

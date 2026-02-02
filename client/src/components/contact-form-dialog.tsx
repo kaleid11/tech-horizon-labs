@@ -8,7 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Calendar, Mail } from "lucide-react";
 
-export const BOOKING_URL = "https://app.klipycrm.com/book/pre-discovery/free-pre-discovery";
+export const BOOKING_URL = "https://app.klipy.ai/book/pre-discovery/free-pre-discovery";
 
 interface ContactFormData {
   name: string;
