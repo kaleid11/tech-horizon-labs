@@ -1,0 +1,131 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "Open Sans",
+      "role": "body"
+    },
+    {
+      "family": "Roboto Condensed",
+      "role": "heading"
+    },
+    {
+      "family": "Arial",
+      "role": "unknown"
+    }
+  ],
+  "colors": {
+    "primary": "#638181",
+    "accent": "#767263",
+    "background": "#484848",
+    "textPrimary": "#484848",
+    "link": "#767263"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Open Sans",
+      "heading": "Roboto Condensed"
+    },
+    "fontStacks": {
+      "heading": [
+        "Roboto Condensed"
+      ],
+      "body": [
+        "Open Sans"
+      ],
+      "paragraph": [
+        "Open Sans"
+      ]
+    },
+    "fontSizes": {
+      "h1": "30.8px",
+      "h2": "26px",
+      "body": "14px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#767263",
+      "textColor": "#FFFFFF",
+      "borderRadius": "2px",
+      "borderRadiusCorners": {
+        "topLeft": "2px",
+        "topRight": "2px",
+        "bottomRight": "2px",
+        "bottomLeft": "2px"
+      },
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#FFFFFF",
+      "textColor": "#AFA993",
+      "borderRadius": "2px",
+      "borderRadiusCorners": {
+        "topLeft": "2px",
+        "topRight": "2px",
+        "bottomRight": "2px",
+        "bottomLeft": "2px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "https://noosachamberofcommerce.com.au/resources/Pictures/white-transparent-bkgr.png",
+    "favicon": null,
+    "ogImage": null
+  },
+  "__framework_hints": [],
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Selected #0 because it is the most visible and appropriately sized logo that represents the 'Noosa Chamber of Commerce & Industry'. It is located at the top of the page, which is typical for a brand logo.",
+    "confidence": 0.8,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 2,
+      "text": "View Member Directory",
+      "reasoning": "Button #2 ('View Member Directory') is selected as the primary CTA because it uses the accent color #767263, which is more vibrant and stands out compared to the white buttons. It also has a clear action-oriented text."
+    },
+    "secondary": {
+      "index": 0,
+      "text": "Sign up for Updates",
+      "reasoning": "Button #0 ('Sign up for Updates') is selected as the secondary CTA because it has a different background color (#FFFFFF) and offers a supportive action to the primary CTA."
+    },
+    "confidence": 0.9
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals and local businesses"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.9,
+    "colors": 0.9,
+    "overall": 0.9
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 0,
+        "selectedLogoReasoning": "Selected #0 because it is the most visible and appropriately sized logo that represents the 'Noosa Chamber of Commerce & Industry'. It is located at the top of the page, which is typical for a brand logo.",
+        "confidence": 0.8
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}

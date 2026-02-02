@@ -1,0 +1,138 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Anthropic Serif",
+      "role": "heading"
+    },
+    {
+      "family": "Georgia",
+      "role": "body"
+    },
+    {
+      "family": "Anthropic Sans",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#C6613F",
+    "accent": "#141413",
+    "background": "#F0EEE6",
+    "textPrimary": "#141413",
+    "link": "#D97757"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Georgia",
+      "heading": "Anthropic Serif"
+    },
+    "fontStacks": {
+      "heading": [
+        "Anthropic Sans",
+        "Arial",
+        "sans-serif"
+      ],
+      "body": [
+        "Anthropic Serif",
+        "Georgia",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Anthropic Serif",
+        "Georgia",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "64px",
+      "h2": "110px",
+      "body": "24px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "2px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#141413",
+      "textColor": "#FAF9F5",
+      "borderRadius": "8px",
+      "borderRadiusCorners": {
+        "topLeft": "8px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "8px"
+      },
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#F0EEE6",
+      "textColor": "#141413",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "File saved at: attached_assets/logo.svg",
+    "favicon": "File saved at: attached_assets/favicon.png",
+    "ogImage": "File saved at: attached_assets/ogImage.jpg",
+    "logoHref": "https://www.anthropic.com/"
+  },
+  "__framework_hints": [],
+  "__llm_logo_reasoning": {
+    "selectedIndex": 3,
+    "reasoning": "Selected #3 because it is visible, located in the header, links to the homepage, and matches the brand name 'Anthropic'.",
+    "confidence": 0.95,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 0,
+      "text": "Try Claude",
+      "reasoning": "Button #0 'Try Claude' is likely the primary CTA due to its action-oriented text and dark background color, which stands out against the page's light color scheme."
+    },
+    "secondary": {
+      "index": 1,
+      "text": "Read More",
+      "reasoning": "Button #1 'Read More' is selected as secondary because it has a different background color (#F0EEE6) and serves as a less prominent action compared to 'Try Claude'."
+    },
+    "confidence": 0.9
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "tech professionals and AI researchers"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.9,
+    "colors": 0.95,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 3,
+        "selectedLogoReasoning": "Selected #3 because it is visible, located in the header, links to the homepage, and matches the brand name 'Anthropic'.",
+        "confidence": 0.95
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}
