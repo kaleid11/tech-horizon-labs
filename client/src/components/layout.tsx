@@ -10,6 +10,7 @@ import {
 import { Menu, ChevronDown, Search, Zap, Users, Calendar } from "lucide-react";
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo.png";
+import noosaChamberLogo from "@/assets/noosa-chamber.webp";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 
 export function Navbar() {
@@ -200,9 +201,12 @@ export function Footer() {
         <div className="py-8 border-t border-gray-800 mb-8">
           <p className="text-xs text-center mb-6 text-gray-500">Technology & Community Partners</p>
           <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6" data-testid="footer-partners">
-            <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg" alt="Canva" className="h-5 w-auto opacity-60 hover:opacity-100 transition-opacity" loading="lazy" data-testid="footer-partner-canva" />
-            <img src="https://noosachamberofcommerce.com.au/resources/Pictures/white-transparent-bkgr.png" alt="Noosa Chamber" className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity" loading="lazy" data-testid="footer-partner-noosa" />
-            <img src="https://www.sourcemedia.com.au/wp-content/uploads/2025/12/SM-2025-colour-text-only-white-outline-horizontal-LARGE-scaled-scaled.webp" alt="Source Media" className="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity" loading="lazy" data-testid="footer-partner-source-media" />
+            <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg" alt="Canva" className="h-5 w-auto opacity-70 hover:opacity-100 transition-opacity" loading="lazy" data-testid="footer-partner-canva" />
+            <img src={noosaChamberLogo} alt="Noosa Chamber of Commerce" className="h-8 w-auto invert opacity-70 hover:opacity-100 transition-opacity" loading="lazy" data-testid="footer-partner-noosa" />
+            <div className="flex items-center gap-1.5 text-gray-400 hover:text-gray-300 transition-colors" data-testid="footer-partner-source-media">
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 12.5v-9l6 4.5-6 4.5z"/></svg>
+              <span className="text-xs font-medium">Source Media</span>
+            </div>
             <div className="flex items-center gap-1.5 text-gray-400 hover:text-gray-300 transition-colors" data-testid="footer-partner-klipy">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="#1A5EFF"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>
               <span className="text-xs font-medium">Klipy</span>
