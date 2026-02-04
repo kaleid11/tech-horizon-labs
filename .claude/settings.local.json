@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(xargs cat:*)",
+      "Bash(du:*)",
+      "Bash(wc:*)",
+      "WebSearch",
+      "Bash(npm run build:*)",
+      "Bash(timeout 10 npm run dev:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(npm audit:*)",
+      "Bash(npm install:*)",
+      "Bash(convert:*)",
+      "Bash(timeout 8 npm run dev:*)",
+      "Bash(file:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
