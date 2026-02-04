@@ -1,32 +1,36 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, FileText, Settings, Database, Building, Briefcase, ShoppingBag, Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "wouter";
 
 export function Results() {
   const cases = [
     {
       icon: Building,
-      company: "Construction Company, Brisbane",
-      problem: "40+ subcontractors, invoices in every format, 6+ hours manual data entry twice/month",
-      solution: "Automated invoice processing with Claude + Make.com",
-      result: "5 hours saved every 2 weeks = 130 hours/year",
-      color: "bg-blue-100 text-blue-700"
+      company: "Manufacturing, Brisbane",
+      problem: "Unpredictable equipment failures causing costly production halts",
+      solution: "Predictive maintenance with IoT sensors + private AI",
+      result: "30% reduced downtime = $50K+ annual savings",
+      color: "bg-blue-100 text-blue-700",
+      link: "/portfolio/manufacturing"
     },
     {
       icon: Briefcase,
-      company: "Professional Services, Sunshine Coast",
-      problem: "Manual client onboarding, 47 emails per client, 3 hours per process",
-      solution: "Automated workflow with Skills + templates",
-      result: "2.5 hours saved per client × 24/year = 60 hours",
-      color: "bg-purple-100 text-purple-700"
+      company: "Accounting Firm, Noosa",
+      problem: "Half the day spent on manual data entry instead of advisory work",
+      solution: "Private on-device AI for document processing",
+      result: "40% admin reduction, 100% data privacy",
+      color: "bg-purple-100 text-purple-700",
+      link: "/portfolio/accounting-firm"
     },
     {
       icon: ShoppingBag,
-      company: "E-commerce, Gold Coast",
-      problem: "Manual inventory updates, 2 hours daily, frequent stockouts",
-      solution: "Real-time sync across 3 platforms with automation",
-      result: "10 hours/week saved = 520 hours/year",
-      color: "bg-green-100 text-green-700"
+      company: "Construction, Sunshine Coast",
+      problem: "Complex quotes taking hours, couldn't work offline on-site",
+      solution: "Offline AI quoting app on tablets",
+      result: "60% faster quotes, zero errors",
+      color: "bg-green-100 text-green-700",
+      link: "/portfolio/construction-builder"
     }
   ];
 
@@ -38,9 +42,11 @@ export function Results() {
             <h2 className="text-4xl font-bold text-aubergine-900 mb-4">Real Businesses. Real Results.</h2>
             <p className="text-lg text-gray-600">We don't deal in theoreticals. Here's what happens when you fix the infrastructure first.</p>
           </div>
-          <Button variant="outline" className="rounded-full border-aubergine-900 text-aubergine-900 hover:bg-aubergine-50">
-            View All Case Studies
-          </Button>
+          <Link href="/portfolio">
+            <Button variant="outline" className="rounded-full border-aubergine-900 text-aubergine-900 hover:bg-aubergine-50">
+              View All Case Studies
+            </Button>
+          </Link>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">
@@ -70,9 +76,11 @@ export function Results() {
                 </div>
               </div>
 
-              <Button variant="link" className="p-0 h-auto justify-start text-salmon-600 hover:text-salmon-700 group-hover:translate-x-1 transition-all font-semibold">
-                Read Case Study <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
+              <Link href={item.link}>
+                <Button variant="link" className="p-0 h-auto justify-start text-salmon-600 hover:text-salmon-700 group-hover:translate-x-1 transition-all font-semibold">
+                  Read Case Study <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
             </div>
           ))}
         </div>

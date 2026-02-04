@@ -25,18 +25,18 @@ export function McpVisualization() {
   }, [apps.length]);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6 w-full h-full min-h-[600px] bg-aubergine-900/50 rounded-3xl border border-white/10 overflow-hidden p-6 relative">
+    <div className="flex flex-col lg:flex-row gap-8 w-full h-full min-h-[550px] bg-aubergine-900/50 rounded-3xl border border-white/10 overflow-hidden p-8 relative">
        {/* Background Gradient - clean premium look */}
       <div className="absolute inset-0 bg-gradient-to-br from-aubergine-800/30 via-transparent to-salmon-500/5 pointer-events-none"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-aubergine-900/80 pointer-events-none"></div>
 
       {/* Main Visualization Area */}
-      <div className="relative flex-grow flex items-center justify-center min-h-[400px]">
+      <div className="relative flex-1 flex items-center justify-center min-h-[350px] lg:min-h-[400px]">
         
         {/* Shared SVG Layer for Connections */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible" viewBox="-300 -300 600 600">
+        <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible" viewBox="-250 -250 500 500">
           {apps.map((app, index) => {
-            const radius = 160; // Slightly smaller to fit better
+            const radius = 120;
             const radian = (app.angle * Math.PI) / 180;
             const x = radius * Math.cos(radian);
             const y = radius * Math.sin(radian);
@@ -91,23 +91,23 @@ export function McpVisualization() {
           <motion.div 
             animate={{ boxShadow: ["0 0 20px rgba(243, 155, 109, 0.2)", "0 0 60px rgba(243, 155, 109, 0.6)", "0 0 20px rgba(243, 155, 109, 0.2)"] }}
             transition={{ duration: 3, repeat: Infinity }}
-            className="w-20 h-20 rounded-2xl bg-gradient-to-br from-salmon-500 to-orange-600 flex items-center justify-center shadow-2xl z-30 relative"
+            className="w-16 h-16 lg:w-18 lg:h-18 rounded-2xl bg-gradient-to-br from-salmon-500 to-orange-600 flex items-center justify-center shadow-2xl z-30 relative"
           >
-            <Bot className="w-10 h-10 text-white" />
+            <Bot className="w-8 h-8 lg:w-9 lg:h-9 text-white" />
             
-            <div className="absolute -bottom-8 bg-white/10 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/20 text-[10px] font-mono text-salmon-200 whitespace-nowrap">
+            <div className="absolute -bottom-7 bg-white/10 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/20 text-[9px] font-mono text-salmon-200 whitespace-nowrap">
               MCP Core
             </div>
           </motion.div>
 
-          <div className="absolute w-[320px] h-[320px] border border-white/5 rounded-full animate-spin-slow pointer-events-none"></div>
-          <div className="absolute w-[450px] h-[450px] border border-white/5 rounded-full animate-spin-reverse-slow pointer-events-none"></div>
+          <div className="absolute w-[240px] h-[240px] border border-white/5 rounded-full animate-spin-slow pointer-events-none"></div>
+          <div className="absolute w-[320px] h-[320px] border border-white/5 rounded-full animate-spin-reverse-slow pointer-events-none"></div>
         </div>
 
         {/* Nodes */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
           {apps.map((app, index) => {
-            const radius = 160;
+            const radius = 120;
             const radian = (app.angle * Math.PI) / 180;
             const x = radius * Math.cos(radian);
             const y = radius * Math.sin(radian);
@@ -120,12 +120,12 @@ export function McpVisualization() {
                 style={{ x, y }}
               >
                 <div className={`
-                  w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-500 relative
+                  w-10 h-10 lg:w-11 lg:h-11 rounded-xl flex items-center justify-center border transition-all duration-500 relative
                   ${isActive ? 'bg-white/10 border-white/40 scale-110 shadow-[0_0_20px_rgba(255,255,255,0.1)]' : 'bg-aubergine-800/80 border-white/10 grayscale'}
                 `}>
-                  <app.icon className="w-6 h-6" style={{ color: isActive ? app.color : '#666' }} />
+                  <app.icon className="w-5 h-5" style={{ color: isActive ? app.color : '#666' }} />
                 </div>
-                <div className={`absolute top-14 whitespace-nowrap text-[9px] font-medium tracking-wider uppercase transition-colors duration-300 ${isActive ? 'text-white' : 'text-gray-600'}`}>
+                <div className={`absolute top-12 whitespace-nowrap text-[8px] font-medium tracking-wider uppercase transition-colors duration-300 ${isActive ? 'text-white' : 'text-gray-600'}`}>
                   {app.name}
                 </div>
               </motion.div>
@@ -134,8 +134,8 @@ export function McpVisualization() {
         </div>
       </div>
 
-      {/* Live Activity Feed - Moved to Right Column */}
-      <div className="w-full lg:w-80 flex flex-col gap-4 relative z-30">
+      {/* Live Activity Feed - Right Column */}
+      <div className="w-full lg:w-72 xl:w-80 flex flex-col gap-3 relative z-30 shrink-0">
         <LiveActivityFeed />
       </div>
     </div>

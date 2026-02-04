@@ -21,6 +21,11 @@ const AcceleratorService = lazy(() => import("@/pages/services/accelerator"));
 const PartnerService = lazy(() => import("@/pages/services/partner"));
 const Privacy = lazy(() => import("@/pages/privacy"));
 const Terms = lazy(() => import("@/pages/terms"));
+const AccountingFirmCaseStudy = lazy(() => import("@/pages/portfolio/accounting-firm"));
+const ConstructionBuilderCaseStudy = lazy(() => import("@/pages/portfolio/construction-builder"));
+const RealEstateAgencyCaseStudy = lazy(() => import("@/pages/portfolio/real-estate-agency"));
+const ManufacturingCaseStudy = lazy(() => import("@/pages/portfolio/manufacturing"));
+const HealthcareClinicCaseStudy = lazy(() => import("@/pages/portfolio/healthcare-clinic"));
 
 // Simple loading fallback
 function PageLoader() {
@@ -41,6 +46,11 @@ function Router() {
         <Route path="/locations/queensland" component={QueenslandLocation} />
         <Route path="/locations/gold-coast" component={GoldCoastLocation} />
         <Route path="/portfolio" component={Portfolio} />
+        <Route path="/portfolio/accounting-firm" component={AccountingFirmCaseStudy} />
+        <Route path="/portfolio/construction-builder" component={ConstructionBuilderCaseStudy} />
+        <Route path="/portfolio/real-estate-agency" component={RealEstateAgencyCaseStudy} />
+        <Route path="/portfolio/manufacturing" component={ManufacturingCaseStudy} />
+        <Route path="/portfolio/healthcare-clinic" component={HealthcareClinicCaseStudy} />
         <Route path="/academy" component={Academy} />
         <Route path="/about" component={About} />
         <Route path="/resources" component={Resources} />
