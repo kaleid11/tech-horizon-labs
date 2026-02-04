@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, ShieldCheck, TrendingUp, AlertTriangle, Flame, ArrowRight, Zap } from "lucide-react";
+import { CheckCircle2, ShieldCheck, TrendingUp, ArrowRight, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import noosaChamberLogo from "@/assets/noosa-chamber.webp";
 import { Terminal } from "@/components/ui/terminal";
@@ -29,16 +29,16 @@ export function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-salmon-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-salmon-500"></span>
               </span>
-              Practical up-to-date AI systems
+              AI Infrastructure Consulting
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-              Stop Wasting Money on <br/>
-              <span className="text-gradient-salmon">AI Advice That Doesn't Work.</span>
+              Production-Ready AI Systems.<br/>
+              <span className="text-gradient-salmon">Deployed in Weeks.</span>
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
-              We test 200+ AI tools monthly so Queensland businesses get what actually works—not what's being sold. Your fractional AI advisor who's in the trenches, not the boardroom.
+              We architect and deploy private AI infrastructure for Australian enterprises. Privacy Act compliant. Vendor-neutral. Working systems in 4 weeks, not 6-month roadmaps.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
@@ -56,17 +56,17 @@ export function Hero() {
             </div>
 
             <div className="pt-8 flex flex-wrap gap-x-8 gap-y-4 text-sm text-gray-400 items-center border-t border-white/10">
-              <div className="flex items-center gap-3 bg-salmon-500/20 px-4 py-2 rounded-full border border-salmon-500/30" data-testid="badge-admin-reduction">
-                <span className="text-2xl font-bold text-salmon-500">40%</span>
-                <span className="text-white font-medium">Admin Reduction</span>
+              <div className="flex items-center gap-3 bg-salmon-500/20 px-4 py-2 rounded-full border border-salmon-500/30" data-testid="badge-tools-tested">
+                <span className="text-2xl font-bold text-salmon-500">200+</span>
+                <span className="text-white font-medium">Tools Tested Monthly</span>
               </div>
               <div className="flex items-center gap-2" data-testid="badge-privacy-act">
                 <ShieldCheck className="w-5 h-5 text-green-500" />
-                <span>Privacy Act Ready</span>
+                <span>Privacy Act Compliant</span>
               </div>
-              <div className="flex items-center gap-2" data-testid="badge-noosa-chamber">
+              <div className="flex items-center gap-2" data-testid="badge-gov-listed">
                 <Zap className="w-5 h-5 text-blue-400" />
-                <span>Noosa Chamber Featured</span>
+                <span>Gov AI Directory Listed</span>
               </div>
             </div>
           </motion.div>
@@ -201,66 +201,66 @@ export function Problem() {
     <section className="py-24 bg-cream-50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <Badge variant="outline" className="mb-4 border-red-500/30 text-red-600 bg-red-50 rounded-full px-4 py-1">SOUND FAMILIAR?</Badge>
-          <h2 className="text-4xl font-bold text-aubergine-900 mb-6">You've Already Wasted Time & Money<br/>on AI "Advice"</h2>
-          <p className="text-xl text-gray-600">Hours on YouTube tutorials. Thousands on workshops that end with "you should use AI." Tool-locked sessions pushing one vendor's solution. We've heard it all.</p>
+          <Badge variant="outline" className="mb-4 border-salmon-500/30 text-salmon-600 bg-salmon-50 rounded-full px-4 py-1">OUR APPROACH</Badge>
+          <h2 className="text-4xl font-bold text-aubergine-900 mb-6">Infrastructure Before Automation</h2>
+          <p className="text-xl text-gray-600">We don't sell you AI tools. We build the foundation that makes AI actually work for your business—private, compliant, and integrated with your existing systems.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Column 1 - The YouTube Trap */}
-          <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group" data-testid="problem-youtube">
-            <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <AlertTriangle className="w-6 h-6 text-red-600" />
-            </div>
-            <h3 className="text-xl font-bold text-aubergine-900 mb-4">The YouTube Rabbit Hole</h3>
-            <ul className="space-y-3 text-gray-600">
-              <li className="flex items-start gap-2"><span className="text-red-500 font-bold">✗</span> Hours watching tutorials</li>
-              <li className="flex items-start gap-2"><span className="text-red-500 font-bold">✗</span> Outdated info (AI moves fast)</li>
-              <li className="flex items-start gap-2"><span className="text-red-500 font-bold">✗</span> No one to sense-check ideas</li>
-              <li className="flex items-start gap-2"><span className="text-red-500 font-bold">✗</span> Still confused about where to start</li>
-            </ul>
-          </div>
-
-          {/* Column 2 - The Workshop Scam */}
-          <div className="bg-aubergine-900 p-8 rounded-2xl border border-aubergine-800 shadow-xl relative overflow-hidden text-white transform md:-translate-y-4 group" data-testid="problem-workshops">
-            <div className="absolute top-0 right-0 bg-salmon-500 text-aubergine-900 text-xs font-bold px-3 py-1 rounded-bl-xl">$5K+ WASTED</div>
-            <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Flame className="w-6 h-6 text-salmon-500" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-4">The $5K Workshop Trap</h3>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-2"><span className="text-salmon-500 font-bold">✗</span> Paid thousands to attend</li>
-              <li className="flex items-start gap-2"><span className="text-salmon-500 font-bold">✗</span> Left with "you should use AI"</li>
-              <li className="flex items-start gap-2"><span className="text-salmon-500 font-bold">✗</span> No implementation roadmap</li>
-              <li className="flex items-start gap-2"><span className="text-salmon-500 font-bold">✗</span> Still at square one</li>
-            </ul>
-          </div>
-
-          {/* Column 3 - The Vendor Lock */}
-          <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group" data-testid="problem-vendor-lock">
+          {/* Column 1 - Vendor Neutral */}
+          <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group" data-testid="approach-vendor-neutral">
             <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <TrendingUp className="w-6 h-6 text-blue-600" />
+              <ShieldCheck className="w-6 h-6 text-blue-600" />
             </div>
-            <h3 className="text-xl font-bold text-aubergine-900 mb-4">The Vendor Lock-In</h3>
+            <h3 className="text-xl font-bold text-aubergine-900 mb-4">Vendor-Neutral Selection</h3>
             <ul className="space-y-3 text-gray-600">
-              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">✗</span> MS Copilot pushed at you</li>
-              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">✗</span> Consultant sells one tool</li>
-              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">✗</span> Better alternatives ignored</li>
-              <li className="flex items-start gap-2"><span className="text-blue-500 font-bold">✗</span> Paying more than needed</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> 200+ tools tested monthly</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Best fit for your use case</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> No commission-driven recommendations</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Honest ROI assessments</li>
+            </ul>
+          </div>
+
+          {/* Column 2 - Private Infrastructure */}
+          <div className="bg-aubergine-900 p-8 rounded-2xl border border-aubergine-800 shadow-xl relative overflow-hidden text-white transform md:-translate-y-4 group" data-testid="approach-private">
+            <div className="absolute top-0 right-0 bg-salmon-500 text-aubergine-900 text-xs font-bold px-3 py-1 rounded-bl-xl">CORE FOCUS</div>
+            <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <ShieldCheck className="w-6 h-6 text-salmon-500" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-4">Private AI Infrastructure</h3>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Your data stays on your systems</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Privacy Act 1988 compliant</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Australian-hosted infrastructure</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Enterprise-grade security</li>
+            </ul>
+          </div>
+
+          {/* Column 3 - Rapid Deployment */}
+          <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group" data-testid="approach-rapid">
+            <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <TrendingUp className="w-6 h-6 text-green-600" />
+            </div>
+            <h3 className="text-xl font-bold text-aubergine-900 mb-4">Rapid Deployment</h3>
+            <ul className="space-y-3 text-gray-600">
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Working systems in 4 weeks</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Not 6-month roadmaps</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Integrated with existing tools</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Team training included</li>
             </ul>
           </div>
         </div>
 
-        {/* The Alternative */}
-        <div className="mt-16 bg-gradient-to-r from-aubergine-900 to-aubergine-800 rounded-3xl p-8 md:p-12 text-white text-center" data-testid="problem-solution">
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">There's a Better Way</h3>
+        {/* Credentials Bar */}
+        <div className="mt-16 bg-gradient-to-r from-aubergine-900 to-aubergine-800 rounded-3xl p-8 md:p-12 text-white text-center" data-testid="approach-credentials">
+          <h3 className="text-2xl md:text-3xl font-bold mb-4">Trusted by Australian Enterprises</h3>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-6">
-            Work with someone who tests 200+ AI tools monthly, isn't locked to any vendor, and gives you honest advice based on what actually works—not what pays them commission.
+            Listed on the National AI Directory. GoodFirms Top AI Company. Delivering production AI systems across Queensland since 2024.
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-green-400" /><span>Vendor-neutral advice</span></div>
-            <div className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-green-400" /><span>Front-line testing</span></div>
-            <div className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-green-400" /><span>Someone to bounce ideas off</span></div>
+            <div className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-green-400" /><span>National AI Directory Listed</span></div>
+            <div className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-green-400" /><span>GoodFirms Top AI Company</span></div>
+            <div className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-green-400" /><span>ABN 80 976 285 425</span></div>
           </div>
         </div>
       </div>
