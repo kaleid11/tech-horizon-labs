@@ -3,6 +3,8 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSubmissionSchema, insertNewsletterSignupSchema } from "@shared/schema";
 import { sendContactNotification, sendNewsletterWelcome } from "./email";
+import path from "path";
+import fs from "fs";
 
 // Simple admin authentication middleware
 // In production, use proper session-based auth or OAuth
@@ -31,6 +33,46 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  // Serve sitemap.xml with correct content type
+  app.get("/sitemap.xml", (_req, res) => {
+    const sitemapPath = path.resolve(process.cwd(), "public", "sitemap.xml");
+    if (fs.existsSync(sitemapPath)) {
+      res.setHeader("Content-Type", "application/xml");
+      res.sendFile(sitemapPath);
+    } else {
+      res.status(404).send("Sitemap not found");
+    }
+  });
+
+  // Serve robots.txt
+  app.get("/robots.txt", (_req, res) => {
+    const robotsPath = path.resolve(process.cwd(), "public", "robots.txt");
+    if (fs.existsSync(robotsPath)) {
+      res.setHeader("Content-Type", "text/plain");
+      res.sendFile(robotsPath);
+    } else {
+      res.status(404).send("Robots.txt not found");
+    }
+  });
+
+  // 301 Redirects from old URLs to new equivalents
+  app.get("/for-business/", (_req, res) => res.redirect(301, "/services/audit"));
+  app.get("/for-business", (_req, res) => res.redirect(301, "/services/audit"));
+  app.get("/contact-us/", (_req, res) => res.redirect(301, "/"));
+  app.get("/contact-us", (_req, res) => res.redirect(301, "/"));
+  app.get("/about-us/", (_req, res) => res.redirect(301, "/about"));
+  app.get("/about-us", (_req, res) => res.redirect(301, "/about"));
+  app.get("/resources/", (_req, res) => res.redirect(301, "/resources"));
+  app.get("/portfolio/", (_req, res) => res.redirect(301, "/portfolio"));
+  app.get("/blog/", (_req, res) => res.redirect(301, "/resources"));
+  app.get("/blog", (_req, res) => res.redirect(301, "/resources"));
+  app.get("/membership", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/membership/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/workshops", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/workshops/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/ai-workshop-business-sunshine-coast/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/ai-workshop-business-sunshine-coast", (_req, res) => res.redirect(301, "/academy"));
+
   app.post("/api/contact", async (req, res) => {
     try {
       const validatedData = insertContactSubmissionSchema.parse(req.body);

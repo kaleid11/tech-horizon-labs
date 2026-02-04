@@ -1,0 +1,40 @@
+# Tech Horizon Labs - AI Consulting Queensland
+# https://techhorizonlabs.com
+
+# Allow all search engine crawlers
+User-agent: *
+Allow: /
+
+# Allow AI crawlers for AEO/GEO optimization
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Sitemap location
+Sitemap: https://techhorizonlabs.com/sitemap.xml
+
+# Host
+Host: https://techhorizonlabs.com
