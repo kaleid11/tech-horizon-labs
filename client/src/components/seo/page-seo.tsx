@@ -98,7 +98,7 @@ export function PageSEO({
 export const SEO_CONFIGS = {
   home: {
     title: 'AI Readiness Consulting',
-    description: "Australia's practical AI readiness partner. We prepare organisations to thrive with AI—private infrastructure, compliant by design, teams trained to deliver results.",
+    description: "Australia's practical AI readiness partner. We prepare organisations to thrive with AI. Private infrastructure, compliant by design, teams trained to deliver results.",
     canonical: BASE_URL,
   },
   about: {

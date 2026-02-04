@@ -17,7 +17,7 @@ const sunshineCoastFaqs = [
   },
   {
     question: "How much does AI consulting cost on the Sunshine Coast?",
-    answer: "Our AI Opportunity Audit is free—15 minutes to identify your highest-impact automation opportunity. Implementation projects typically start at $5,000 for a focused 4-week sprint. We're transparent about pricing because hidden costs waste everyone's time."
+    answer: "Our AI Opportunity Audit is free. 15 minutes to identify your highest-impact automation opportunity. Implementation projects typically start at $5,000 for a focused 4-week sprint. We're transparent about pricing because hidden costs waste everyone's time."
   }
 ];
 
@@ -93,7 +93,7 @@ export default function SunshineCoastLocation() {
               
               <div className="prose prose-lg text-gray-600 mb-12">
                 <p>
-                  <strong>Answer first:</strong> Because we understand your market, we're a 15-minute drive away, and we build systems that keep sensitive client data on Australian soil.
+                  <strong>Answer first:</strong> Because we understand your market, we're a 15-minute drive away. And we build systems that keep sensitive client data on Australian soil.
                 </p>
                 
                 <p>
@@ -193,7 +193,7 @@ export default function SunshineCoastLocation() {
               Ready to Talk AI for Your Sunshine Coast Business?
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-              15-minute discovery call. No sales pitch—just honest conversation about whether AI makes sense for your specific situation.
+              15-minute discovery call. No sales pitch. Just honest conversation about whether AI makes sense for your specific situation.
             </p>
             <Button data-testid="button-sc-cta-book" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105" asChild>
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
@@ -231,7 +231,7 @@ export default function SunshineCoastLocation() {
               <div className="border-b border-gray-200 pb-6">
                 <h3 className="font-bold text-aubergine-900 mb-2">How much does AI consulting cost on the Sunshine Coast?</h3>
                 <p className="text-gray-600">
-                  Our AI Opportunity Audit is free—15 minutes to identify your highest-impact automation opportunity. Implementation projects typically start at $5,000 for a focused 4-week sprint. We're transparent about pricing because hidden costs waste everyone's time.
+                  Our AI Opportunity Audit is free. 15 minutes to identify your highest-impact automation opportunity. Implementation projects typically start at $5,000 for a focused 4-week sprint. We're transparent about pricing because hidden costs waste everyone's time.
                 </p>
               </div>
             </div>

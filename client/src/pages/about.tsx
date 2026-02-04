@@ -82,11 +82,11 @@ export default function About() {
                     </p>
                     
                     <p>
-                      I believe in a different approach: <strong>infrastructure before automation</strong>. Before we talk about AI, we need to understand your data, your workflows, your compliance requirements. Then we build systems that actually work—private, secure, and practical.
+                      I believe in a different approach: <strong>infrastructure before automation</strong>. Before we talk about AI, we need to understand your data, your workflows, your compliance requirements. Then we build systems that actually work. Private, secure, and practical.
                     </p>
 
                     <blockquote className="border-l-4 border-salmon-500 pl-6 italic text-aubergine-800 bg-gray-50 p-4 rounded-r-lg">
-                      "Think of me as your fractional AI ops lead—someone to bounce ideas off, sense-check what vendors are telling you, and actually build the systems that work for your business."
+                      "Think of me as your fractional AI ops lead. Someone to bounce ideas off, sense-check what vendors are telling you, and actually build the systems that work for your business."
                     </blockquote>
                     
                     <h3 className="text-xl font-bold text-aubergine-900 mt-8">What I Believe</h3>
@@ -293,7 +293,7 @@ export default function About() {
               Let's Talk About Your AI Opportunity
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-              15-minute discovery call. No sales pitch—just honest conversation about whether AI makes sense for your specific situation.
+              15-minute discovery call. No sales pitch. Just honest conversation about whether AI makes sense for your specific situation.
             </p>
             <Button data-testid="button-about-cta-book" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105" asChild>
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">

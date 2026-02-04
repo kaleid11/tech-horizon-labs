@@ -13,7 +13,7 @@ const queenslandFaqs = [
   },
   {
     question: "Do you work with regional Queensland businesses?",
-    answer: "Yes. Our remote collaboration model works for businesses anywhere in Queensland. Plus, our AI systems are designed to work offline—critical for regional areas with unreliable internet. We've worked with clients from Cairns to the Darling Downs."
+    answer: "Yes. Our remote collaboration model works for businesses anywhere in Queensland. Plus, our AI systems are designed to work offline. Critical for regional areas with unreliable internet. We've worked with clients from Cairns to the Darling Downs."
   },
   {
     question: "How do you ensure Australian data compliance?",
@@ -48,7 +48,7 @@ export default function QueenslandLocation() {
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
-              <strong>TL;DR:</strong> Queensland's anti-hype AI consulting firm. We build private, production-ready AI systems for Australian SMEs—from the Sunshine Coast to the Outback.
+              <strong>TL;DR:</strong> Queensland's anti-hype AI consulting firm. We build private, production-ready AI systems for Australian SMEs. From the Sunshine Coast to the Outback.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
@@ -90,7 +90,7 @@ export default function QueenslandLocation() {
               
               <div className="prose prose-lg text-gray-600 mb-12">
                 <p>
-                  <strong>Answer first:</strong> Queensland's economy is different from Sydney or Melbourne. Our industries—construction, mining services, agriculture, tourism, healthcare—have unique requirements that generic AI solutions don't address.
+                  <strong>Answer first:</strong> Queensland's economy is different from Sydney or Melbourne. Our industries. Construction, mining services, agriculture, tourism, healthcare. Have unique requirements that generic AI solutions don't address.
                 </p>
                 
                 <p>
@@ -98,14 +98,14 @@ export default function QueenslandLocation() {
                 </p>
                 
                 <ul>
-                  <li><strong>Private AI systems</strong>—your data stays in Queensland, not Silicon Valley</li>
-                  <li><strong>Offline capability</strong>—essential for regional and remote operations</li>
-                  <li><strong>Australian compliance</strong>—Privacy Act, industry regulations, all mapped</li>
-                  <li><strong>Practical implementation</strong>—4 weeks to production, not 6 months of discovery</li>
+                  <li><strong>Private AI systems</strong>. Your data stays in Queensland, not Silicon Valley.</li>
+                  <li><strong>Offline capability</strong>. Essential for regional and remote operations.</li>
+                  <li><strong>Australian compliance</strong>. Privacy Act, industry regulations, all mapped.</li>
+                  <li><strong>Practical implementation</strong>. 4 weeks to production, not 6 months of discovery.</li>
                 </ul>
                 
                 <p>
-                  <strong>Key statistic:</strong> Queensland SMEs using private AI systems report 40% reduction in administrative workload and 60% faster quote generation—without compromising data security.
+                  <strong>Key statistic:</strong> Queensland SMEs using private AI systems report 40% reduction in administrative workload and 60% faster quote generation. Without compromising data security.
                 </p>
               </div>
             </div>
@@ -251,7 +251,7 @@ export default function QueenslandLocation() {
               Ready to Explore AI for Your Queensland Business?
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-              15-minute discovery call. We'll identify your highest-impact automation opportunity and give you honest advice—no sales pitch.
+              15-minute discovery call. We'll identify your highest-impact automation opportunity and give you honest advice. No sales pitch.
             </p>
             <Button data-testid="button-qld-cta-book" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105" asChild>
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">

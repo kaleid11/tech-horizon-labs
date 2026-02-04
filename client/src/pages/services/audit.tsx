@@ -49,7 +49,7 @@ export default function AuditService() {
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
-              <strong>TL;DR:</strong> Free 15-minute call. We identify your highest-impact automation opportunity. No sales pitch—just honest advice about whether AI makes sense for your situation.
+              <strong>TL;DR:</strong> Free 15-minute call. We identify your highest-impact automation opportunity. No sales pitch. Just honest advice about whether AI makes sense for your situation.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
@@ -121,7 +121,7 @@ export default function AuditService() {
                   <div>
                     <h3 className="font-bold text-aubergine-900 mb-1">Honest Next Steps</h3>
                     <p className="text-gray-600">
-                      If AI is the right fit, we'll explain what implementation looks like. If it's not, we'll tell you that too—no hard sell. 5 minutes.
+                      If AI is the right fit, we'll explain what implementation looks like. If it's not, we'll tell you that too. No hard sell. 5 minutes.
                     </p>
                   </div>
                 </div>

@@ -36,7 +36,7 @@ export function Hero() {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
-              We don't just implement AI—we prepare your organisation to thrive with it. Private infrastructure, compliant by design, built on your data, evolved with the latest tools.
+              We don't just implement AI. We prepare your organisation to thrive with it. Private infrastructure, compliant by design, built on your data, evolved with the latest tools.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -205,7 +205,7 @@ export function Problem() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <Badge variant="outline" className="mb-4 border-salmon-500/30 text-salmon-600 bg-salmon-50 rounded-full px-4 py-1">OUR APPROACH</Badge>
           <h2 className="text-4xl font-bold text-aubergine-900 mb-6">Foundation First. Then Automate.</h2>
-          <p className="text-xl text-gray-600">We don't sell you AI tools. We prepare your organisation with the data, knowledge bases, and skills that make AI actually deliver results—ready for today's tools and tomorrow's.</p>
+          <p className="text-xl text-gray-600">We don't sell you AI tools. We prepare your organisation with the data, knowledge bases, and skills that make AI actually deliver results. Ready for today's tools and tomorrow's.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">

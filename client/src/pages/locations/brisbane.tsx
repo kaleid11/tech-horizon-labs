@@ -17,7 +17,7 @@ const brisbaneFaqs = [
   },
   {
     question: "What's the difference between your approach and big consulting firms?",
-    answer: "We're not here to sell you a 6-month discovery phase. Our 4-week Automation Accelerator delivers a working AI system—not a PowerPoint deck. We're built for Brisbane SMEs, not enterprise clients with unlimited budgets."
+    answer: "We're not here to sell you a 6-month discovery phase. Our 4-week Automation Accelerator delivers a working AI system. Not a PowerPoint deck. We're built for Brisbane SMEs, not enterprise clients with unlimited budgets."
   }
 ];
 
@@ -48,7 +48,7 @@ export default function BrisbaneLocation() {
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
-              <strong>TL;DR:</strong> Brisbane businesses are moving fast on AI. We help SEQ companies implement private, production-ready AI systems without the enterprise price tag.
+              <strong>TL;DR:</strong> Brisbane businesses are moving fast on AI. We help SEQ companies implement private, production-ready AI systems. Without the enterprise price tag.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
@@ -249,7 +249,7 @@ export default function BrisbaneLocation() {
               <div className="border-b border-gray-200 pb-6">
                 <h3 className="font-bold text-aubergine-900 mb-2">What's the difference between your approach and big consulting firms?</h3>
                 <p className="text-gray-600">
-                  We're not here to sell you a 6-month discovery phase. Our 4-week Automation Accelerator delivers a working AI system—not a PowerPoint deck. We're built for Brisbane SMEs, not enterprise clients with unlimited budgets.
+                  We're not here to sell you a 6-month discovery phase. Our 4-week Automation Accelerator delivers a working AI system. Not a PowerPoint deck. We're built for Brisbane SMEs, not enterprise clients with unlimited budgets.
                 </p>
               </div>
             </div>
