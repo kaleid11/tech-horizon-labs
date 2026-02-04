@@ -80,7 +80,7 @@ export function Ecosystem() {
              <div className="grid md:grid-cols-3 gap-6 text-left mb-12">
                <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
                  <div className="font-bold text-aubergine-900 mb-2">Weekly Lab Reports</div>
-                 <p className="text-sm text-gray-600">We verify which new models (DeepSeek, Claude 3.7) are actually production-ready.</p>
+                 <p className="text-sm text-gray-600">We verify which new models (DeepSeek, Claude) are actually production-ready.</p>
                </div>
                <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
                  <div className="font-bold text-aubergine-900 mb-2">Compliance Mapping</div>
