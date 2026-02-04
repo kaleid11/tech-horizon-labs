@@ -1,9 +1,10 @@
-import { Navbar, Footer } from "@/components/layout";
+import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { MapPin, Clock, CheckCircle2, Building2, Users, TrendingUp, Calendar } from "lucide-react";
 import { Link } from "wouter";
 import { LocationSchema } from "@/components/seo/location-schema";
+import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 
 const sunshineCoastFaqs = [
   {
@@ -23,14 +24,16 @@ const sunshineCoastFaqs = [
 export default function SunshineCoastLocation() {
   return (
     <div className="min-h-screen font-sans bg-background">
-      <LocationSchema 
+      <PageSEO {...SEO_CONFIGS.locations.sunshineCoast} />
+      <LocationSchema
         location="Sunshine Coast"
-        description="AI consulting services on the Sunshine Coast, Queensland. Private AI systems for local businesses in Noosa, Maroochydore, Caloundra and surrounds."
+        description="Sunshine Coast-based AI consulting. Local expertise, enterprise-grade AI infrastructure for Sunshine Coast businesses."
         faqs={sunshineCoastFaqs}
       />
+      <SkipLink />
       <Navbar />
-      
-      <main>
+
+      <main id="main-content">
         <section className="relative pt-32 pb-20 bg-gradient-to-br from-aubergine-900 via-aubergine-800 to-aubergine-900 text-white overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-salmon-500/10 via-transparent to-transparent" />
           <div className="container mx-auto px-4 md:px-6 relative z-10">

@@ -9,9 +9,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu, ChevronDown, Search, Zap, Users, Calendar } from "lucide-react";
 import { useState, useEffect } from "react";
-import logo from "@/assets/logo.png";
+import logoWebp from "@/assets/logo.webp";
+import logoPng from "@/assets/logo.png";
 import noosaChamberLogo from "@/assets/noosa-chamber.webp";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
+
+// Skip link component for accessibility
+export function SkipLink() {
+  return (
+    <a
+      href="#main-content"
+      className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-salmon-500 focus:text-aubergine-900 focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold focus:shadow-lg"
+    >
+      Skip to main content
+    </a>
+  );
+}
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,9 +39,9 @@ export function Navbar() {
   }, []);
 
   const serviceItems = [
-    { name: "AI Opportunity Audit", href: "/services/audit", icon: Search, desc: "Free 15-min discovery call" },
-    { name: "Automation Accelerator", href: "/services/accelerator", icon: Zap, desc: "4-week implementation sprint" },
-    { name: "Transformation Partner", href: "/services/partner", icon: Users, desc: "Ongoing AI partnership" },
+    { name: "Readiness Assessment", href: "/services/audit", icon: Search, desc: "Free 15-min discovery call" },
+    { name: "Foundation Sprint", href: "/services/accelerator", icon: Zap, desc: "4-week implementation sprint" },
+    { name: "Ongoing Evolution", href: "/services/partner", icon: Users, desc: "Continuous AI partnership" },
   ];
 
   const navItems = [
@@ -38,10 +51,17 @@ export function Navbar() {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-aubergine-900/95 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-6"}`}>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-aubergine-900/95 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-6"}`}
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link href="/" className="text-xl font-bold tracking-tight text-white flex items-center gap-2 hover:opacity-90 transition-opacity">
-          <img src={logo} alt="Tech Horizon Labs - AI Consulting Sunshine Coast" className="h-10 w-auto" />
+          <picture>
+            <source srcSet={logoWebp} type="image/webp" />
+            <img src={logoPng} alt="Tech Horizon Labs - AI Consulting Sunshine Coast" className="h-10 w-auto" width={40} height={40} />
+          </picture>
           <span className="hidden sm:inline">Tech Horizon Labs</span>
         </Link>
 
@@ -49,12 +69,14 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-6">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button 
-                className="text-sm font-medium text-gray-300 hover:text-salmon-500 transition-colors flex items-center gap-1 outline-none"
+              <button
+                className="text-sm font-medium text-gray-300 hover:text-salmon-500 transition-colors flex items-center gap-1 outline-none focus-visible:ring-2 focus-visible:ring-salmon-500 focus-visible:ring-offset-2 focus-visible:ring-offset-aubergine-900 rounded"
                 data-testid="nav-services-dropdown"
+                aria-label="Services menu"
+                aria-haspopup="menu"
               >
                 Services
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown className="h-4 w-4" aria-hidden="true" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-72 bg-white border border-gray-100 shadow-xl rounded-xl p-2">
@@ -98,8 +120,13 @@ export function Navbar() {
         <div className="md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
-                <Menu className="h-6 w-6" />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-white hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-salmon-500"
+                aria-label="Open navigation menu"
+              >
+                <Menu className="h-6 w-6" aria-hidden="true" />
               </Button>
             </SheetTrigger>
             <SheetContent className="bg-aubergine-900 border-gray-800 text-white">
@@ -154,7 +181,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
             <div className="text-xl font-bold text-white flex items-center gap-2">
-              <img src={logo} alt="Tech Horizon Labs" className="h-8 w-auto grayscale opacity-80" />
+              <picture>
+                <source srcSet={logoWebp} type="image/webp" />
+                <img src={logoPng} alt="Tech Horizon Labs" className="h-8 w-auto grayscale opacity-80" width={32} height={32} />
+              </picture>
               <span itemProp="name">Tech Horizon Labs</span>
             </div>
             <p className="text-sm leading-relaxed" itemProp="description">
@@ -179,10 +209,10 @@ export function Footer() {
           <div>
             <h4 className="font-bold mb-4 text-white">Services</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/services/audit" className="hover:text-salmon-500 transition-colors">AI Opportunity Audit</a></li>
-              <li><a href="/services/accelerator" className="hover:text-salmon-500 transition-colors">Automation Accelerator</a></li>
-              <li><a href="/services/partner" className="hover:text-salmon-500 transition-colors">Transformation Partner</a></li>
-              <li><a href="/portfolio" className="hover:text-salmon-500 transition-colors">Case Studies</a></li>
+              <li><a href="/services/audit" className="hover:text-salmon-500 transition-colors focus-visible:text-salmon-500 focus-visible:underline">Readiness Assessment</a></li>
+              <li><a href="/services/accelerator" className="hover:text-salmon-500 transition-colors focus-visible:text-salmon-500 focus-visible:underline">Foundation Sprint</a></li>
+              <li><a href="/services/partner" className="hover:text-salmon-500 transition-colors focus-visible:text-salmon-500 focus-visible:underline">Ongoing Evolution</a></li>
+              <li><a href="/portfolio" className="hover:text-salmon-500 transition-colors focus-visible:text-salmon-500 focus-visible:underline">Case Studies</a></li>
             </ul>
           </div>
 
@@ -262,7 +292,7 @@ export function Footer() {
           <div className="flex gap-4">
             <a href="/privacy" className="hover:text-salmon-500 transition-colors">Privacy Policy</a>
             <a href="/terms" className="hover:text-salmon-500 transition-colors">Terms of Service</a>
-            <a href="#contact" className="hover:text-salmon-500 transition-colors">Contact</a>
+            <a href="/#contact" className="hover:text-salmon-500 transition-colors focus-visible:text-salmon-500 focus-visible:underline">Contact</a>
           </div>
         </div>
       </div>

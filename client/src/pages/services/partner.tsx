@@ -1,19 +1,21 @@
-import { Navbar, Footer } from "@/components/layout";
+import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { Users, CheckCircle2, Calendar, TrendingUp, Shield, Headphones } from "lucide-react";
+import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 
 export default function PartnerService() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <PageSEO {...SEO_CONFIGS.services.partner} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Transformation Partner",
-            "description": "Ongoing AI infrastructure partnership with quarterly roadmap reviews, priority support, and continuous optimization. Long-term success through sustained partnership.",
+            "name": "Ongoing Evolution",
+            "description": "Continuous AI partnership keeping your infrastructure current as tools and capabilities advance. Quarterly roadmap reviews, priority support, and continuous optimization.",
             "provider": {
               "@type": "LocalBusiness",
               "name": "Tech Horizon Labs",
@@ -23,9 +25,10 @@ export default function PartnerService() {
           })
         }}
       />
+      <SkipLink />
       <Navbar />
-      
-      <main>
+
+      <main id="main-content">
         <section className="relative pt-32 pb-20 bg-gradient-to-br from-aubergine-900 via-aubergine-800 to-aubergine-900 text-white overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-salmon-500/10 via-transparent to-transparent" />
           <div className="container mx-auto px-4 md:px-6 relative z-10">

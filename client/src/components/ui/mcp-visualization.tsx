@@ -26,8 +26,8 @@ export function McpVisualization() {
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 w-full h-full min-h-[600px] bg-aubergine-900/50 rounded-3xl border border-white/10 overflow-hidden p-6 relative">
-       {/* Background Grid & Glow */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+       {/* Background Gradient - clean premium look */}
+      <div className="absolute inset-0 bg-gradient-to-br from-aubergine-800/30 via-transparent to-salmon-500/5 pointer-events-none"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-aubergine-900/80 pointer-events-none"></div>
 
       {/* Main Visualization Area */}

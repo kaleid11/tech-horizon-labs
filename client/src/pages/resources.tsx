@@ -1,7 +1,8 @@
-import { Navbar, Footer } from "@/components/layout";
+import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { NewsletterDialog } from "@/components/newsletter-dialog";
 import { FileText, Video, Download, ExternalLink, Calendar, ArrowRight } from "lucide-react";
+import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 
 const articles = [
   {
@@ -70,9 +71,11 @@ const workshops = [
 export default function Resources() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <PageSEO {...SEO_CONFIGS.resources} />
+      <SkipLink />
       <Navbar />
-      
-      <main>
+
+      <main id="main-content">
         <section className="relative pt-32 pb-20 bg-gradient-to-br from-aubergine-900 via-aubergine-800 to-aubergine-900 text-white overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-salmon-500/10 via-transparent to-transparent" />
           <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -104,12 +107,17 @@ export default function Resources() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
               {articles.map((article) => (
-                <article 
+                <article
                   key={article.id}
-                  className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow"
+                  className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow relative"
                   itemScope
                   itemType="https://schema.org/Article"
                 >
+                  <div className="absolute top-4 right-4">
+                    <span className="text-xs bg-aubergine-100 text-aubergine-700 px-2 py-1 rounded-full font-medium">
+                      Coming Soon
+                    </span>
+                  </div>
                   <div className="flex items-center gap-2 text-sm text-salmon-600 mb-3">
                     <FileText className="h-4 w-4" />
                     <span>{article.category}</span>
@@ -122,10 +130,12 @@ export default function Resources() {
                   <p className="text-gray-600 text-sm mb-4" itemProp="description">
                     {article.description}
                   </p>
-                  <div className="flex items-center text-salmon-600 text-sm font-medium group cursor-pointer">
-                    <span>Read Article</span>
-                    <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  <NewsletterDialog>
+                    <button className="flex items-center text-salmon-600 text-sm font-medium group hover:text-salmon-700 transition-colors">
+                      <span>Get Notified When Published</span>
+                      <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </NewsletterDialog>
                 </article>
               ))}
             </div>
@@ -220,9 +230,12 @@ export default function Resources() {
                   <p className="text-gray-600 text-sm mb-3">
                     10 questions to assess if your business is ready for AI implementation.
                   </p>
-                  <span className="text-salmon-600 text-sm font-medium cursor-pointer hover:underline">
-                    Download PDF
-                  </span>
+                  <NewsletterDialog>
+                    <button className="text-salmon-600 text-sm font-medium hover:underline focus-visible:underline flex items-center gap-1">
+                      <Download className="h-4 w-4" />
+                      Subscribe to Download
+                    </button>
+                  </NewsletterDialog>
                 </div>
               </div>
 
@@ -235,9 +248,12 @@ export default function Resources() {
                   <p className="text-gray-600 text-sm mb-3">
                     Spreadsheet to calculate potential time and cost savings from AI automation.
                   </p>
-                  <span className="text-salmon-600 text-sm font-medium cursor-pointer hover:underline">
-                    Download Spreadsheet
-                  </span>
+                  <NewsletterDialog>
+                    <button className="text-salmon-600 text-sm font-medium hover:underline focus-visible:underline flex items-center gap-1">
+                      <Download className="h-4 w-4" />
+                      Subscribe to Download
+                    </button>
+                  </NewsletterDialog>
                 </div>
               </div>
             </div>
@@ -253,7 +269,7 @@ export default function Resources() {
               Resources are great for learning, but sometimes you need direct advice. Book a free 15-minute discovery call.
             </p>
             <Button size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8" asChild>
-              <a href="/#services">Explore Consulting Services</a>
+              <a href="/services/audit">Book a Free Readiness Assessment</a>
             </Button>
           </div>
         </section>

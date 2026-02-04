@@ -1,9 +1,10 @@
-import { Navbar, Footer } from "@/components/layout";
+import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { MapPin, CheckCircle2, ArrowRight, Calendar } from "lucide-react";
 import { Link } from "wouter";
 import { LocationSchema } from "@/components/seo/location-schema";
+import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 
 const queenslandFaqs = [
   {
@@ -23,14 +24,16 @@ const queenslandFaqs = [
 export default function QueenslandLocation() {
   return (
     <div className="min-h-screen font-sans bg-background">
-      <LocationSchema 
+      <PageSEO {...SEO_CONFIGS.locations.queensland} />
+      <LocationSchema
         location="Queensland"
-        description="Queensland's anti-hype AI consulting firm. Private, production-ready AI systems for Australian SMEs—from the Sunshine Coast to the Outback."
+        description="Enterprise AI consulting across Queensland. Private infrastructure, compliant by design, serving Brisbane, Gold Coast, Sunshine Coast and regional QLD."
         faqs={queenslandFaqs}
       />
+      <SkipLink />
       <Navbar />
-      
-      <main>
+
+      <main id="main-content">
         <section className="relative pt-32 pb-20 bg-gradient-to-br from-aubergine-900 via-aubergine-800 to-aubergine-900 text-white overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-salmon-500/10 via-transparent to-transparent" />
           <div className="container mx-auto px-4 md:px-6 relative z-10">

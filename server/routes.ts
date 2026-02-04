@@ -1,8 +1,31 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSubmissionSchema, insertNewsletterSignupSchema } from "@shared/schema";
 import { sendContactNotification, sendNewsletterWelcome } from "./email";
+
+// Simple admin authentication middleware
+// In production, use proper session-based auth or OAuth
+const adminAuth = (req: Request, res: Response, next: NextFunction) => {
+  const adminKey = req.headers['x-admin-key'] || req.query.adminKey;
+  const expectedKey = process.env.ADMIN_API_KEY;
+
+  if (!expectedKey) {
+    // If no admin key is configured, block access entirely in production
+    if (process.env.NODE_ENV === 'production') {
+      return res.status(503).json({ error: 'Admin API not configured' });
+    }
+    // In development, allow access with warning
+    console.warn('WARNING: ADMIN_API_KEY not set. Admin endpoints accessible without auth.');
+    return next();
+  }
+
+  if (adminKey !== expectedKey) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  next();
+};
 
 export async function registerRoutes(
   httpServer: Server,
@@ -56,7 +79,8 @@ export async function registerRoutes(
     }
   });
 
-  app.get("/api/contact-submissions", async (req, res) => {
+  // Protected admin endpoints - require authentication
+  app.get("/api/contact-submissions", adminAuth, async (req, res) => {
     try {
       const submissions = await storage.getAllContactSubmissions();
       res.json(submissions);
@@ -66,7 +90,7 @@ export async function registerRoutes(
     }
   });
 
-  app.get("/api/newsletter-signups", async (req, res) => {
+  app.get("/api/newsletter-signups", adminAuth, async (req, res) => {
     try {
       const signups = await storage.getAllNewsletterSignups();
       res.json(signups);

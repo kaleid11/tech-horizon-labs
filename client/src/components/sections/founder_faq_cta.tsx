@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import founderImage from "@/assets/huxley-profile.jpg";
+import founderImageWebp from "@/assets/huxley-profile.webp";
+import founderImageJpg from "@/assets/huxley-profile.jpg";
 import { ShieldCheck, Play, Calendar, ArrowRight } from "lucide-react";
-import videoPlaceholder from "@/assets/video-placeholder.png";
+import videoPlaceholderWebp from "@/assets/video-placeholder.webp";
+import videoPlaceholderPng from "@/assets/video-placeholder.png";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 
 export function Founder() {
@@ -30,7 +32,7 @@ export function Founder() {
               </div>
 
               <div className="flex flex-wrap gap-4 mt-8">
-                <div className="px-4 py-2 bg-aubergine-100 text-aubergine-900 rounded-full text-sm font-semibold">Founder & AI Systems Architect</div>
+                <div className="px-4 py-2 bg-aubergine-100 text-aubergine-900 rounded-full text-sm font-semibold">Founder – AI Systems Architect</div>
                 <div className="px-4 py-2 bg-blue-100 text-blue-900 rounded-full text-sm font-semibold">Blockchain Security Expert</div>
               </div>
             </div>
@@ -39,12 +41,17 @@ export function Founder() {
           <div className="order-1 md:order-2 relative">
              {/* Profile Image Card */}
             <div className="relative z-10 bg-white p-2 rounded-3xl shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
-               <img 
-                src={founderImage} 
-                alt="Huxley Peckham - Founder of Tech Horizon Labs, AI Infrastructure Consultant" 
-                className="w-full h-auto rounded-2xl object-cover aspect-[4/5]"
-                loading="lazy"
-              />
+               <picture>
+                 <source srcSet={founderImageWebp} type="image/webp" />
+                 <img
+                   src={founderImageJpg}
+                   alt="Huxley Peckham - Founder, Tech Horizon Labs – AI Systems Architect for QLD/Aussie SMEs"
+                   className="w-full h-auto rounded-2xl object-cover aspect-[4/5]"
+                   loading="lazy"
+                   width={480}
+                   height={600}
+                 />
+               </picture>
               <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-xl border border-white/50 shadow-lg">
                 <div className="flex items-center gap-3">
                    <div className="bg-green-100 p-2 rounded-full">
@@ -129,7 +136,7 @@ export function FAQ() {
 
 export function CTA() {
   return (
-    <section className="py-32 bg-aubergine-900 text-white text-center relative overflow-hidden">
+    <section id="contact" className="py-32 bg-aubergine-900 text-white text-center relative overflow-hidden">
       {/* Background gradients */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-aubergine-900 via-aubergine-900 to-salmon-900/20"></div>
       

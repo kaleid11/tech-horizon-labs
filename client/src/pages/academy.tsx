@@ -1,13 +1,16 @@
-import { Navbar, Footer } from "@/components/layout";
+import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Users, Calendar, FileText, CheckCircle2, ArrowRight, ExternalLink } from "lucide-react";
+import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 
 export default function Academy() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <PageSEO {...SEO_CONFIGS.academy} />
+      <SkipLink />
       <Navbar />
-      
-      <main>
+
+      <main id="main-content">
         <section className="relative pt-32 pb-20 bg-gradient-to-br from-aubergine-900 via-aubergine-800 to-aubergine-900 text-white overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-salmon-500/10 via-transparent to-transparent" />
           <div className="container mx-auto px-4 md:px-6 relative z-10">

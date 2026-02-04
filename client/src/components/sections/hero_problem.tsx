@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, ShieldCheck, TrendingUp, ArrowRight, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import noosaChamberLogo from "@/assets/noosa-chamber.webp";
-import { Terminal } from "@/components/ui/terminal";
+import { JourneyVisualization } from "@/components/ui/journey-visualization";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 
 export function Hero() {
@@ -13,8 +13,6 @@ export function Hero() {
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-salmon-500/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
       
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-[1.1fr_1fr] gap-16 items-center">
@@ -22,51 +20,55 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="space-y-10"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-salmon-500 text-sm font-medium backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-salmon-500 text-sm font-medium backdrop-blur-md">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-salmon-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-salmon-500"></span>
               </span>
-              AI Infrastructure Consulting
+              AI Readiness for Australian Enterprise
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-              Production-Ready AI Systems.<br/>
-              <span className="text-gradient-salmon">Deployed in Weeks.</span>
+            <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-bold tracking-tight leading-[1.05]">
+              AI Systems That Work.<br/>
+              <span className="text-gradient-salmon">Teams That Know How to Use Them.</span>
             </h1>
-            
-            <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
-              We architect and deploy private AI infrastructure for Australian enterprises. Privacy Act compliant. Vendor-neutral. Working systems in 4 weeks, not 6-month roadmaps.
+
+            <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
+              We don't just implement AI—we prepare your organisation to thrive with it. Private infrastructure, compliant by design, built on your data, evolved with the latest tools.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-8 h-14 rounded-full shadow-lg shadow-salmon-500/25 group transition-all hover:scale-105" asChild>
                 <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-book">
-                  Book Discovery Call
+                  Book a Readiness Assessment
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-8 h-14 rounded-full backdrop-blur-sm" asChild>
-                <a href="/academy">
-                  Join Free Academy
+                <a href="#approach">
+                  See How We Work
                 </a>
               </Button>
             </div>
 
-            <div className="pt-8 flex flex-wrap gap-x-8 gap-y-4 text-sm text-gray-400 items-center border-t border-white/10">
-              <div className="flex items-center gap-3 bg-salmon-500/20 px-4 py-2 rounded-full border border-salmon-500/30" data-testid="badge-tools-tested">
-                <span className="text-2xl font-bold text-salmon-500">200+</span>
-                <span className="text-white font-medium">Tools Tested Monthly</span>
+            <div className="pt-8 flex flex-wrap gap-x-6 gap-y-4 text-sm text-gray-400 items-center border-t border-white/10">
+              <div className="flex items-center gap-2 bg-blue-500/20 px-4 py-2 rounded-full border border-blue-500/30" data-testid="badge-gov-listed">
+                <ShieldCheck className="w-5 h-5 text-blue-400" />
+                <span className="text-white font-medium">National AI Directory Listed</span>
+              </div>
+              <div className="flex items-center gap-3 bg-salmon-500/10 px-4 py-2 rounded-full border border-salmon-500/20" data-testid="badge-tools-tested">
+                <span className="text-xl font-bold text-salmon-500">200+</span>
+                <span className="text-white/90">AI Tools Evaluated Monthly</span>
               </div>
               <div className="flex items-center gap-2" data-testid="badge-privacy-act">
                 <ShieldCheck className="w-5 h-5 text-green-500" />
-                <span>Privacy Act Compliant</span>
+                <span>Privacy Act 1988 Compliant</span>
               </div>
-              <div className="flex items-center gap-2" data-testid="badge-gov-listed">
-                <Zap className="w-5 h-5 text-blue-400" />
-                <span>Gov AI Directory Listed</span>
+              <div className="flex items-center gap-2" data-testid="badge-location">
+                <Zap className="w-5 h-5 text-salmon-500" />
+                <span>Queensland-Based, Australia-Wide</span>
               </div>
             </div>
           </motion.div>
@@ -78,7 +80,7 @@ export function Hero() {
             className="relative"
           >
             <div className="relative z-10">
-              <Terminal />
+              <JourneyVisualization />
             </div>
             
             {/* Floating Elements - Animated */}
@@ -198,55 +200,58 @@ export function TrustBar() {
 
 export function Problem() {
   return (
-    <section className="py-24 bg-cream-50">
+    <section id="approach" className="py-24 bg-cream-50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <Badge variant="outline" className="mb-4 border-salmon-500/30 text-salmon-600 bg-salmon-50 rounded-full px-4 py-1">OUR APPROACH</Badge>
-          <h2 className="text-4xl font-bold text-aubergine-900 mb-6">Infrastructure Before Automation</h2>
-          <p className="text-xl text-gray-600">We don't sell you AI tools. We build the foundation that makes AI actually work for your business—private, compliant, and integrated with your existing systems.</p>
+          <h2 className="text-4xl font-bold text-aubergine-900 mb-6">Foundation First. Then Automate.</h2>
+          <p className="text-xl text-gray-600">We don't sell you AI tools. We prepare your organisation with the data, knowledge bases, and skills that make AI actually deliver results—ready for today's tools and tomorrow's.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Column 1 - Vendor Neutral */}
-          <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group" data-testid="approach-vendor-neutral">
+          {/* Column 1 - Data Preparation */}
+          <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group" data-testid="approach-data">
             <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <ShieldCheck className="w-6 h-6 text-blue-600" />
             </div>
-            <h3 className="text-xl font-bold text-aubergine-900 mb-4">Vendor-Neutral Selection</h3>
+            <h3 className="text-xl font-bold text-aubergine-900 mb-4">Data Preparation</h3>
+            <p className="text-gray-500 text-sm mb-4">Your data, organised and AI-ready</p>
             <ul className="space-y-3 text-gray-600">
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> 200+ tools tested monthly</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Best fit for your use case</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> No commission-driven recommendations</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Honest ROI assessments</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Audit existing data sources</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Clean and structure for AI consumption</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Privacy-compliant pipelines</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Continuous data quality</li>
             </ul>
           </div>
 
-          {/* Column 2 - Private Infrastructure */}
-          <div className="bg-aubergine-900 p-8 rounded-2xl border border-aubergine-800 shadow-xl relative overflow-hidden text-white transform md:-translate-y-4 group" data-testid="approach-private">
+          {/* Column 2 - Knowledge Base Architecture */}
+          <div className="bg-aubergine-900 p-8 rounded-2xl border border-aubergine-800 shadow-xl relative overflow-hidden text-white transform md:-translate-y-4 group" data-testid="approach-knowledge">
             <div className="absolute top-0 right-0 bg-salmon-500 text-aubergine-900 text-xs font-bold px-3 py-1 rounded-bl-xl">CORE FOCUS</div>
             <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <ShieldCheck className="w-6 h-6 text-salmon-500" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-4">Private AI Infrastructure</h3>
+            <h3 className="text-xl font-bold text-white mb-4">Knowledge Base Architecture</h3>
+            <p className="text-gray-400 text-sm mb-4">Context your AI can actually use</p>
             <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Your data stays on your systems</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Privacy Act 1988 compliant</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Australian-hosted infrastructure</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Enterprise-grade security</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Vector databases & embeddings</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> RAG infrastructure on your systems</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Tool-agnostic design</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Evolves with new AI capabilities</li>
             </ul>
           </div>
 
-          {/* Column 3 - Rapid Deployment */}
-          <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group" data-testid="approach-rapid">
+          {/* Column 3 - Team Enablement */}
+          <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group" data-testid="approach-team">
             <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <TrendingUp className="w-6 h-6 text-green-600" />
             </div>
-            <h3 className="text-xl font-bold text-aubergine-900 mb-4">Rapid Deployment</h3>
+            <h3 className="text-xl font-bold text-aubergine-900 mb-4">Team Enablement</h3>
+            <p className="text-gray-500 text-sm mb-4">Skills that scale with the tools</p>
             <ul className="space-y-3 text-gray-600">
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Working systems in 4 weeks</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Not 6-month roadmaps</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Integrated with existing tools</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Team training included</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Hands-on AI fluency training</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Prompt engineering workshops</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Use case identification</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Ongoing capability building</li>
             </ul>
           </div>
         </div>

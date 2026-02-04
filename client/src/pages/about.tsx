@@ -1,15 +1,19 @@
-import { Navbar, Footer } from "@/components/layout";
+import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { Award, MapPin, Briefcase, Users, Calendar, ExternalLink, Shield, BadgeCheck } from "lucide-react";
-import huxleyProfile from "@/assets/huxley-profile.jpg";
+import huxleyProfileWebp from "@/assets/huxley-profile.webp";
+import huxleyProfileJpg from "@/assets/huxley-profile.jpg";
+import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 
 export default function About() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <PageSEO {...SEO_CONFIGS.about} />
+      <SkipLink />
       <Navbar />
-      
-      <main>
+
+      <main id="main-content">
         <section className="relative pt-32 pb-20 bg-gradient-to-br from-aubergine-900 via-aubergine-800 to-aubergine-900 text-white overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-salmon-500/10 via-transparent to-transparent" />
           <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -30,16 +34,21 @@ export default function About() {
               <div className="grid md:grid-cols-3 gap-12">
                 <div className="md:col-span-1">
                   <div className="sticky top-24">
-                    <img 
-                      src={huxleyProfile} 
-                      alt="Huxley Peckham - AI Infrastructure Consultant, Tech Horizon Labs" 
-                      className="w-48 h-48 object-cover rounded-2xl mb-4 shadow-lg"
-                      loading="lazy"
-                      itemProp="image"
-                      data-testid="img-founder-profile"
-                    />
+                    <picture>
+                      <source srcSet={huxleyProfileWebp} type="image/webp" />
+                      <img
+                        src={huxleyProfileJpg}
+                        alt="Huxley Peckham - Founder, Tech Horizon Labs – AI Systems Architect"
+                        className="w-48 h-48 object-cover rounded-2xl mb-4 shadow-lg"
+                        loading="lazy"
+                        itemProp="image"
+                        data-testid="img-founder-profile"
+                        width={192}
+                        height={192}
+                      />
+                    </picture>
                     <h2 className="text-2xl font-bold text-aubergine-900" itemProp="name">Huxley Peckham</h2>
-                    <p className="text-salmon-600 font-medium mb-4" itemProp="jobTitle">Founder & AI Infrastructure Consultant</p>
+                    <p className="text-salmon-600 font-medium mb-4" itemProp="jobTitle">Founder – AI Systems Architect for QLD/Aussie SMEs</p>
                     
                     <div className="space-y-2 text-sm text-gray-600">
                       <div className="flex items-center gap-2">
@@ -56,12 +65,12 @@ export default function About() {
 
                 <div className="md:col-span-2" itemScope itemType="https://schema.org/Person">
                   <meta itemProp="name" content="Huxley Peckham" />
-                  <meta itemProp="jobTitle" content="Founder & AI Infrastructure Consultant" />
+                  <meta itemProp="jobTitle" content="Founder, Tech Horizon Labs – AI Systems Architect for QLD/Aussie SMEs" />
                   <meta itemProp="worksFor" content="Tech Horizon Labs" />
                   
-                  <h3 className="text-2xl font-bold text-aubergine-900 mb-6">
+                  <h2 className="text-2xl font-bold text-aubergine-900 mb-6">
                     Your Fractional AI Ops Lead
-                  </h3>
+                  </h2>
                   
                   <div className="prose prose-lg text-gray-600 space-y-6" itemProp="description">
                     <p>
@@ -80,7 +89,7 @@ export default function About() {
                       "Think of me as your fractional AI ops lead—someone to bounce ideas off, sense-check what vendors are telling you, and actually build the systems that work for your business."
                     </blockquote>
                     
-                    <h4 className="text-xl font-bold text-aubergine-900 mt-8">What I Believe</h4>
+                    <h3 className="text-xl font-bold text-aubergine-900 mt-8">What I Believe</h3>
                     
                     <ul>
                       <li><strong>Your data stays yours.</strong> Private AI systems that run on your infrastructure, not Silicon Valley servers.</li>
@@ -89,7 +98,7 @@ export default function About() {
                       <li><strong>Honest about what works.</strong> If AI isn't the right solution, I'll tell you.</li>
                     </ul>
 
-                    <h4 className="text-xl font-bold text-aubergine-900 mt-8">The Academy</h4>
+                    <h3 className="text-xl font-bold text-aubergine-900 mt-8">The Academy</h3>
                     
                     <p>
                       Beyond consulting, I run the <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener" className="text-salmon-600 hover:underline">Tech Horizon Academy</a>—a community of 300+ SEQ business operators learning to deploy AI workflows together. 1,300+ templates, weekly workshops, Australian compliance pre-mapped.

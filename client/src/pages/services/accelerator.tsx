@@ -1,20 +1,22 @@
-import { Navbar, Footer } from "@/components/layout";
+import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { Zap, Clock, CheckCircle2, Calendar } from "lucide-react";
 import { Link } from "wouter";
+import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 
 export default function AcceleratorService() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <PageSEO {...SEO_CONFIGS.services.accelerator} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Automation Accelerator",
-            "description": "4-week sprint to build and deploy your first production AI system. Private, secure, Australian-hosted. Working solution in weeks, not months.",
+            "name": "Foundation Sprint",
+            "description": "4-week implementation sprint to build your AI-ready knowledge base and deploy private infrastructure. Working solution in weeks, not months.",
             "provider": {
               "@type": "LocalBusiness",
               "name": "Tech Horizon Labs",
@@ -30,9 +32,10 @@ export default function AcceleratorService() {
           })
         }}
       />
+      <SkipLink />
       <Navbar />
-      
-      <main>
+
+      <main id="main-content">
         <section className="relative pt-32 pb-20 bg-gradient-to-br from-aubergine-900 via-aubergine-800 to-aubergine-900 text-white overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-salmon-500/10 via-transparent to-transparent" />
           <div className="container mx-auto px-4 md:px-6 relative z-10">
