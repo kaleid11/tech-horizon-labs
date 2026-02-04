@@ -9,9 +9,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu, ChevronDown, Search, Zap, Users, Calendar } from "lucide-react";
 import { useState, useEffect } from "react";
-import logoWebp from "@/assets/logo.webp";
+import logoWebp from "@/assets/logo-80.webp";
 import logoPng from "@/assets/logo.png";
-import noosaChamberLogo from "@/assets/noosa-chamber.webp";
+import noosaChamberLogo from "@/assets/noosa-chamber-160.webp";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 
 // Skip link component for accessibility

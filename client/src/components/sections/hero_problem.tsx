@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, ShieldCheck, TrendingUp, ArrowRight, Zap } from "lucide-react";
 import { motion } from "framer-motion";
-import noosaChamberLogo from "@/assets/noosa-chamber.webp";
+import noosaChamberLogo from "@/assets/noosa-chamber-160.webp";
 import { JourneyVisualization } from "@/components/ui/journey-visualization";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 

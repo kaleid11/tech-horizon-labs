@@ -1,10 +1,14 @@
 import express, { type Request, Response, NextFunction } from "express";
 import helmet from "helmet";
+import compression from "compression";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
 
 const app = express();
+
+// Enable gzip/brotli compression for all responses
+app.use(compression());
 
 // Security headers
 app.use(helmet({

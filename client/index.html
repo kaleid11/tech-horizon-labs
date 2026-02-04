@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    
+    <!-- Critical preconnects - must be first -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://assets.goodfirms.co" crossorigin />
+    <link rel="dns-prefetch" href="https://app.klipycrm.com" />
 
     <title>AI Readiness Consulting | Tech Horizon Labs - Enterprise AI Systems Australia</title>
     <meta name="description" content="Australia's practical AI readiness partner. We prepare organisations to thrive with AI. Private infrastructure, compliant by design, teams trained to deliver results. Queensland-based, serving all of Australia." />
@@ -238,11 +244,6 @@
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#1e1b4b" />
     
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://app.klipycrm.com" />
-    
     <!-- Preload critical fonts for faster LCP -->
     <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin />
     
@@ -255,5 +256,11 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Critical inline CSS for above-fold content to prevent FOIT -->
+    <style>
+      body{font-family:'Inter',system-ui,-apple-system,sans-serif;margin:0;background:#f9f8f4;color:#381d2a}
+      #root{min-height:100vh}
+      .loading-state{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#381d2a}
+    </style>
   </body>
 </html>
