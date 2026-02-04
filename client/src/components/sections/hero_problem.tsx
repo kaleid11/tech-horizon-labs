@@ -167,7 +167,7 @@ export function TrustBar() {
 
         <div className="flex flex-wrap justify-center items-center gap-4 mt-6">
           <a 
-            href="https://www.industry.gov.au/science-technology-and-innovation/technology/national-ai-centre/national-ai-directory" 
+            href="https://aidirectory.industry.gov.au/organisation/tech-horizon-labs" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded-full text-blue-700 text-sm font-medium transition-colors"

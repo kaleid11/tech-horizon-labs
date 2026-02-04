@@ -256,7 +256,7 @@ export function Footer() {
           </div>
           <div className="mt-6 flex flex-wrap justify-center items-center gap-6">
             <a 
-              href="https://www.industry.gov.au/science-technology-and-innovation/technology/national-ai-centre/national-ai-directory" 
+              href="https://aidirectory.industry.gov.au/organisation/tech-horizon-labs" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-xs text-blue-400 hover:text-blue-300 transition-colors"

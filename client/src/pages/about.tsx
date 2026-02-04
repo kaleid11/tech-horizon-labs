@@ -233,7 +233,7 @@ export default function About() {
                         Officially listed on the Australian Government's National AI Centre directory as a verified AI training and consulting provider.
                       </p>
                       <a 
-                        href="https://www.industry.gov.au/science-technology-and-innovation/technology/national-ai-centre/national-ai-directory" 
+                        href="https://aidirectory.industry.gov.au/organisation/tech-horizon-labs" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors"
