@@ -63,7 +63,6 @@ export async function registerRoutes(
   app.get("/about-us/", (_req, res) => res.redirect(301, "/about"));
   app.get("/about-us", (_req, res) => res.redirect(301, "/about"));
   app.get("/resources/", (_req, res) => res.redirect(301, "/resources"));
-  app.get("/portfolio/", (_req, res) => res.redirect(301, "/portfolio"));
   app.get("/blog/", (_req, res) => res.redirect(301, "/resources"));
   app.get("/blog", (_req, res) => res.redirect(301, "/resources"));
   app.get("/membership", (_req, res) => res.redirect(301, "/academy"));
