@@ -160,9 +160,8 @@ export default function AuditService() {
                 <ul className="space-y-3">
                   {[
                     "Businesses looking for free consulting",
-                    "Enterprises with dedicated IT departments",
-                    "Companies that need immediate implementation",
-                    "Those wanting cloud-only solutions",
+                    "Companies that need a solution delivered overnight",
+                    "Organisations not willing to invest in proper foundations",
                     "Businesses outside Australia"
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-gray-500">
