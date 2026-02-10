@@ -62,7 +62,6 @@ export async function registerRoutes(
   app.get("/contact-us", (_req, res) => res.redirect(301, "/"));
   app.get("/about-us/", (_req, res) => res.redirect(301, "/about"));
   app.get("/about-us", (_req, res) => res.redirect(301, "/about"));
-  app.get("/resources/", (_req, res) => res.redirect(301, "/resources"));
   app.get("/blog/", (_req, res) => res.redirect(301, "/resources"));
   app.get("/blog", (_req, res) => res.redirect(301, "/resources"));
   app.get("/membership", (_req, res) => res.redirect(301, "/academy"));
@@ -71,6 +70,41 @@ export async function registerRoutes(
   app.get("/workshops/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/ai-workshop-business-sunshine-coast/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/ai-workshop-business-sunshine-coast", (_req, res) => res.redirect(301, "/academy"));
+
+  // Catch-all redirects for old blog/category/tag URLs (WordPress patterns)
+  app.get("/blog/:slug", (_req, res) => res.redirect(301, "/resources"));
+  app.get("/blog/:slug/", (_req, res) => res.redirect(301, "/resources"));
+  app.get("/category/:slug", (_req, res) => res.redirect(301, "/resources"));
+  app.get("/category/:slug/", (_req, res) => res.redirect(301, "/resources"));
+  app.get("/tag/:slug", (_req, res) => res.redirect(301, "/resources"));
+  app.get("/tag/:slug/", (_req, res) => res.redirect(301, "/resources"));
+
+  // Old WordPress page patterns
+  app.get("/page/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/page/:slug/", (_req, res) => res.redirect(301, "/"));
+  app.get("/wp-content/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/wp-admin", (_req, res) => res.redirect(301, "/"));
+  app.get("/wp-login.php", (_req, res) => res.redirect(301, "/"));
+  app.get("/feed", (_req, res) => res.redirect(301, "/"));
+  app.get("/feed/", (_req, res) => res.redirect(301, "/"));
+
+  // Old service/workshop page patterns
+  app.get("/services", (_req, res) => res.redirect(301, "/services/audit"));
+  app.get("/services/", (_req, res) => res.redirect(301, "/services/audit"));
+  app.get("/workshop/:slug", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/workshop/:slug/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/workshops/:slug", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/workshops/:slug/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/course/:slug", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/course/:slug/", (_req, res) => res.redirect(301, "/academy"));
+
+  // Common old page variants
+  app.get("/home", (_req, res) => res.redirect(301, "/"));
+  app.get("/home/", (_req, res) => res.redirect(301, "/"));
+  app.get("/index.html", (_req, res) => res.redirect(301, "/"));
+  app.get("/index.php", (_req, res) => res.redirect(301, "/"));
+  app.get("/contact", (_req, res) => res.redirect(301, "/"));
+  app.get("/contact/", (_req, res) => res.redirect(301, "/"));
 
   app.post("/api/contact", async (req, res) => {
     try {
