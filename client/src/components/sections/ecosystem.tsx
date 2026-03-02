@@ -92,9 +92,11 @@ export function Ecosystem() {
                </div>
              </div>
 
-             <Button size="lg" className="bg-aubergine-900 text-white hover:bg-aubergine-800 rounded-full px-10 h-14 font-semibold text-lg">
-               Hire Your AI Department
-               <ArrowRight className="ml-2 w-5 h-5" />
+             <Button size="lg" className="bg-aubergine-900 text-white hover:bg-aubergine-800 rounded-full px-10 h-14 font-semibold text-lg transition-all hover:scale-105" asChild>
+               <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer" data-testid="link-hire-ai-department">
+                 Hire Your AI Department
+                 <ArrowRight className="ml-2 w-5 h-5" />
+               </a>
              </Button>
            </div>
         </div>

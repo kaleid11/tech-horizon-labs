@@ -340,23 +340,24 @@ function RoundDetail({ r, accent }: { r: FundingRound; accent: string }) {
 function FundingPanel({ rounds, accent }: { rounds: FundingRound[]; accent: string }) {
   const [active, setActive] = useState<number | null>(null);
   const maxTotal = Math.max(...rounds.map(x => x.total));
+  const minBarWidth = 70;
   return (
     <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
       <div className="overflow-x-auto pb-3">
-        <div className="flex gap-1 items-end min-w-fit pt-2">
+        <div className="flex gap-2 items-end pt-2 relative" style={{ minWidth: `${rounds.length * minBarWidth}px` }}>
           {rounds.map((r, i) => {
             const h = Math.max(24, (r.total / maxTotal) * 120);
-            const barW = Math.max(44, Math.min(80, 600 / rounds.length));
             return (
               <button key={i} onClick={() => setActive(active === i ? null : i)} data-testid={`funding-round-${i}`}
-                className="flex flex-col items-center gap-1" style={{ width: barW }}>
-                <span className="font-mono text-[7px] text-gray-500">{fmt(r.total)}</span>
-                <div className="w-full rounded-t transition-all duration-300"
+                className="flex flex-col items-center gap-1 flex-1" style={{ minWidth: minBarWidth }}>
+                <span className="font-mono text-[8px] text-gray-500 whitespace-nowrap">{fmt(r.total)}</span>
+                <div className="w-4/5 rounded-t transition-all duration-300"
                   style={{ height: h, backgroundColor: active === i ? accent : accent + "44", border: active === i ? `2px solid ${accent}` : "none" }} />
-                <span className="font-mono text-[7px] text-gray-500 text-center leading-tight">{r.label}</span>
+                <span className="font-mono text-[8px] text-gray-500 text-center leading-tight whitespace-nowrap">{r.label}</span>
               </button>
             );
           })}
+          <div className="absolute bottom-[18px] left-0 right-0 h-px bg-gray-200" />
         </div>
       </div>
       {active !== null ? (
@@ -426,21 +427,128 @@ function InvestorPanel({ company }: { company: CompanyData }) {
 }
 
 function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: string }) {
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const vals = rounds.filter(r => r.val).map(r => ({ label: r.label, val: r.val!, date: r.date }));
-  const maxV = Math.max(...vals.map(v => v.val));
   if (vals.length === 0) return <p className="text-gray-500 text-sm p-8 text-center">No valuation data available.</p>;
+
+  const parseDate = (d: string): number => {
+    const months: Record<string, number> = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+    const [mon, yr] = d.split(" ");
+    return new Date(parseInt(yr), months[mon] || 0, 1).getTime();
+  };
+
+  const timestamps = vals.map(v => parseDate(v.date));
+  const minT = Math.min(...timestamps);
+  const maxT = Math.max(...timestamps);
+  const maxV = Math.max(...vals.map(v => v.val));
+
+  const pad = { top: 40, right: 50, bottom: 60, left: 70 };
+  const w = 700;
+  const h = 320;
+  const chartW = w - pad.left - pad.right;
+  const chartH = h - pad.top - pad.bottom;
+
+  const getX = (t: number) => pad.left + (maxT === minT ? chartW / 2 : ((t - minT) / (maxT - minT)) * chartW);
+  const getY = (v: number) => pad.top + chartH - (v / maxV) * chartH;
+
+  const points = vals.map((v, i) => ({ x: getX(timestamps[i]), y: getY(v.val), ...v, idx: i }));
+
+  const gridLines = 5;
+  const gridVals = Array.from({ length: gridLines + 1 }, (_, i) => (maxV / gridLines) * i);
+
+  const pathD = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
+
+  const staggerLabel = (idx: number): number => {
+    if (idx === 0) return 0;
+    const prev = points[idx - 1];
+    const curr = points[idx];
+    if (Math.abs(curr.x - prev.x) < 40 || Math.abs(curr.y - prev.y) < 16) {
+      return idx % 2 === 0 ? -14 : 6;
+    }
+    return 0;
+  };
+
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-      <div className="flex items-end gap-1 h-48 p-2">
-        {vals.map((v, i) => (
-          <div key={i} className="flex-1 flex flex-col items-center justify-end h-full">
-            <p className="font-mono text-[8px] mb-1 text-center" style={{ color: accent }}>{fmt(v.val)}</p>
-            <div className="w-4/5 rounded-t min-h-[4px] transition-all duration-500"
-              style={{ height: `${(v.val / maxV) * 160}px`, background: `linear-gradient(180deg, ${accent}, ${accent}44)` }} />
-            <p className="font-mono text-[7px] text-gray-500 mt-1 text-center leading-tight">{v.label}<br />{v.date.split(" ")[0]}</p>
-          </div>
-        ))}
+    <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-4">
+      <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
+        <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 400 }} preserveAspectRatio="xMidYMid meet">
+          {gridVals.map((gv, i) => {
+            const y = getY(gv);
+            return (
+              <g key={i}>
+                <line x1={pad.left} y1={y} x2={w - pad.right} y2={y} stroke="#e5e7eb" strokeWidth="1" strokeDasharray={i === 0 ? "0" : "4 3"} />
+                <text x={pad.left - 8} y={y + 4} textAnchor="end" fill="#9ca3af" fontSize="9" fontFamily="monospace">
+                  {gv >= 1000 ? `$${(gv / 1000).toFixed(0)}B` : `$${gv.toFixed(0)}M`}
+                </text>
+              </g>
+            );
+          })}
+
+          <line x1={pad.left} y1={pad.top} x2={pad.left} y2={pad.top + chartH} stroke="#d1d5db" strokeWidth="1" />
+          <line x1={pad.left} y1={pad.top + chartH} x2={w - pad.right} y2={pad.top + chartH} stroke="#d1d5db" strokeWidth="1" />
+
+          <defs>
+            <linearGradient id={`val-area-${accent.replace("#", "")}`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={accent} stopOpacity="0.15" />
+              <stop offset="100%" stopColor={accent} stopOpacity="0.02" />
+            </linearGradient>
+          </defs>
+          {points.length > 1 && (
+            <path
+              d={`${pathD} L ${points[points.length - 1].x} ${pad.top + chartH} L ${points[0].x} ${pad.top + chartH} Z`}
+              fill={`url(#val-area-${accent.replace("#", "")})`}
+            />
+          )}
+
+          <path d={pathD} fill="none" stroke={accent} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+
+          {points.map((p, i) => (
+            <g key={i} className="cursor-pointer" onClick={() => setActiveIdx(activeIdx === i ? null : i)} data-testid={`valuation-dot-${i}`}>
+              <circle cx={p.x} cy={p.y} r={activeIdx === i ? 7 : 5} fill={activeIdx === i ? accent : "white"} stroke={accent} strokeWidth="2.5"
+                style={{ transition: "r 0.2s, fill 0.2s" }} />
+
+              <text x={p.x} y={p.y - 10 + staggerLabel(i)} textAnchor="middle" fill={accent} fontSize="8" fontWeight="bold" fontFamily="monospace">
+                {p.val >= 1000 ? `$${(p.val / 1000).toFixed(0)}B` : `$${p.val}M`}
+              </text>
+
+              <text x={p.x} y={pad.top + chartH + 14} textAnchor="middle" fill="#6b7280" fontSize="7" fontFamily="monospace">
+                {p.label}
+              </text>
+              <text x={p.x} y={pad.top + chartH + 24} textAnchor="middle" fill="#9ca3af" fontSize="7" fontFamily="monospace">
+                {p.date}
+              </text>
+            </g>
+          ))}
+        </svg>
       </div>
+      {activeIdx !== null && (
+        <div className="bg-white rounded-lg p-4 border border-gray-200 animate-in fade-in slide-in-from-bottom-2 duration-200">
+          <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
+            <div>
+              <p className="text-lg font-bold text-aubergine-900">{vals[activeIdx].label}</p>
+              <p className="font-mono text-[10px] text-gray-500">{vals[activeIdx].date}</p>
+            </div>
+            <div className="text-left sm:text-right">
+              <p className="text-xl font-bold" style={{ color: accent }}>{fmt(vals[activeIdx].val)}</p>
+              <p className="font-mono text-[10px] text-gray-500">valuation</p>
+            </div>
+          </div>
+          {activeIdx > 0 && (
+            <div className="mt-2 pt-2 border-t border-gray-200 flex gap-4">
+              <div>
+                <p className="font-mono text-[8px] text-gray-500">CHANGE</p>
+                <p className="font-mono text-sm font-bold" style={{ color: vals[activeIdx].val >= vals[activeIdx - 1].val ? "#44c488" : "#e05555" }}>
+                  {vals[activeIdx].val >= vals[activeIdx - 1].val ? "+" : ""}{(((vals[activeIdx].val - vals[activeIdx - 1].val) / vals[activeIdx - 1].val) * 100).toFixed(0)}%
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-[8px] text-gray-500">FROM PREVIOUS</p>
+                <p className="font-mono text-sm text-gray-700">{fmt(vals[activeIdx - 1].val)} → {fmt(vals[activeIdx].val)}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -636,7 +744,7 @@ export default function ResearchPage() {
       <SkipLink />
       <Navbar />
 
-      <main id="main-content" className="max-w-5xl mx-auto px-4 py-6">
+      <main id="main-content" className="max-w-5xl mx-auto px-4 pt-32 pb-6">
         {!company ? (
           <HeroSection onSelectCompany={selectCompany} />
         ) : (

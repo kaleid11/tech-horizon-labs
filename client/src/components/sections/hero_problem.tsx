@@ -20,23 +20,27 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-10"
+            className="space-y-8"
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-salmon-500 text-sm font-medium backdrop-blur-md">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-salmon-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-salmon-500"></span>
               </span>
-              AI Solutions for Business — Sunshine Coast & Australia-Wide
+              AI Strategy & Implementation — Sunshine Coast & Australia-Wide
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-bold tracking-tight leading-[1.05]">
-              AI for Business.<br/>
-              <span className="text-gradient-salmon">Infrastructure First. Results Guaranteed.</span>
+              We Cut Through the AI Hype.<br/>
+              <span className="text-gradient-salmon">You Get What Actually Works.</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
-              A construction director cut invoice processing from 2 days to 1 hour. Setup took 2 hours. We build AI solutions for business on your private infrastructure — compliant by design, built on your data, ready for today's tools and tomorrow's.
+              A construction director cut invoice processing from <strong className="text-white">2 days to 1 hour</strong>. We evaluate 200+ AI tools monthly so you don't have to — then build only what makes sense for <em>your</em> business, on your private infrastructure, compliant by design.
+            </p>
+
+            <p className="text-lg text-salmon-400/90 max-w-2xl leading-relaxed font-medium" data-testid="text-hero-mission">
+              Every week we see SMEs losing revenue to manual processes AI can handle in minutes. We're on a mission to unlock that hidden potential — starting with Queensland, aiming to help lift Australia's GDP by 5%.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -47,7 +51,7 @@ export function Hero() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-8 h-14 rounded-full backdrop-blur-sm" asChild>
-                <a href="#approach">
+                <a href="#approach" data-testid="link-hero-approach">
                   See How We Work
                 </a>
               </Button>
