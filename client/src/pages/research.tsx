@@ -24,6 +24,232 @@ function MetricCard({ label, value, color }: { label: string; value: string; col
   );
 }
 
+function ComparisonDashboard({ onSelectCompany }: { onSelectCompany: (id: string) => void }) {
+  const [view, setView] = useState<"valuation" | "funding" | "stats">("valuation");
+
+  const parseDate = (d: string): number => {
+    const months: Record<string, number> = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+    const parts = d.split(" ");
+    if (parts.length === 2) return new Date(parseInt(parts[1]), months[parts[0]] || 0, 1).getTime();
+    return new Date(parseInt(parts[0]), 0, 1).getTime();
+  };
+
+  const companyValuations = useMemo(() => {
+    return companyOrder.map(id => {
+      const co = companies[id];
+      const valRounds = co.fundingRounds.filter(r => r.val);
+      const points = valRounds.map(r => ({ date: parseDate(r.date), val: r.val!, label: r.date }));
+      const latestVal = points.length > 0 ? points[points.length - 1].val : null;
+      const totalRaised = co.fundingRounds.reduce((s, r) => s + r.total, 0);
+      return { id, name: co.meta.name, color: co.meta.color, points, latestVal, totalRaised };
+    });
+  }, []);
+
+  const views = [
+    { id: "valuation" as const, label: "Valuation Race" },
+    { id: "funding" as const, label: "Total Funding" },
+    { id: "stats" as const, label: "Quick Stats" },
+  ];
+
+  return (
+    <div className="mt-10">
+      <div className="flex items-center gap-2 mb-4">
+        <p className="font-mono text-[9px] tracking-[2px] font-bold text-aubergine-700">COMPARE</p>
+        <div className="flex gap-1 ml-auto">
+          {views.map(v => (
+            <button key={v.id} onClick={() => setView(v.id)} data-testid={`dashboard-tab-${v.id}`}
+              className={`px-3 py-1.5 rounded-md font-mono text-[9px] tracking-wide border transition-all ${view === v.id ? "bg-aubergine-900 text-white border-aubergine-900 font-bold" : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"}`}>
+              {v.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {view === "valuation" && <ValuationRaceChart data={companyValuations} onSelect={onSelectCompany} />}
+      {view === "funding" && <FundingComparisonChart data={companyValuations} onSelect={onSelectCompany} />}
+      {view === "stats" && <StatsGrid data={companyValuations} onSelect={onSelectCompany} />}
+    </div>
+  );
+}
+
+function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: string; color: string; points: { date: number; val: number; label: string }[]; latestVal: number | null; totalRaised: number }[]; onSelect: (id: string) => void }) {
+  const withVals = data.filter(d => d.points.length > 0);
+  if (withVals.length === 0) return null;
+
+  const allPts = withVals.flatMap(d => d.points);
+  const minT = Math.min(...allPts.map(p => p.date));
+  const maxT = Math.max(...allPts.map(p => p.date));
+  const maxV = Math.max(...allPts.map(p => p.val));
+
+  const pad = { top: 20, right: 120, bottom: 30, left: 60 };
+  const w = 900;
+  const h = 280;
+  const chartW = w - pad.left - pad.right;
+  const chartH = h - pad.top - pad.bottom;
+
+  const getX = (t: number) => pad.left + (maxT === minT ? chartW / 2 : ((t - minT) / (maxT - minT)) * chartW);
+  const getY = (v: number) => pad.top + chartH - (v / maxV) * chartH;
+
+  const gridLines = 4;
+  const gridVals = Array.from({ length: gridLines + 1 }, (_, i) => (maxV / gridLines) * i);
+  const fmtVal = (v: number) => v >= 1000 ? `$${(v / 1000).toFixed(v >= 100000 ? 0 : 1)}B` : `$${v}M`;
+
+  const years = new Set<number>();
+  for (let y = new Date(minT).getFullYear(); y <= new Date(maxT).getFullYear(); y++) years.add(y);
+
+  return (
+    <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
+      <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 500 }} preserveAspectRatio="xMidYMid meet">
+        {gridVals.map((gv, i) => {
+          const y = getY(gv);
+          return (
+            <g key={i}>
+              <line x1={pad.left} y1={y} x2={w - pad.right} y2={y} stroke="#f3f4f6" strokeWidth="1" strokeDasharray={i === 0 ? "0" : "3 3"} />
+              <text x={pad.left - 6} y={y + 3} textAnchor="end" fill="#c0c0c0" fontSize="7" fontFamily="monospace">{fmtVal(gv)}</text>
+            </g>
+          );
+        })}
+
+        {Array.from(years).map(yr => {
+          const x = getX(new Date(yr, 0, 1).getTime());
+          return x >= pad.left && x <= w - pad.right ? (
+            <text key={yr} x={x} y={h - 4} textAnchor="middle" fill="#c0c0c0" fontSize="8" fontFamily="monospace">{yr}</text>
+          ) : null;
+        })}
+
+        <line x1={pad.left} y1={pad.top + chartH} x2={w - pad.right} y2={pad.top + chartH} stroke="#e5e7eb" strokeWidth="1" />
+
+        {withVals.map(co => {
+          if (co.points.length < 2) return null;
+          const pts = co.points.sort((a, b) => a.date - b.date);
+          const d = pts.map((p, i) => `${i === 0 ? "M" : "L"} ${getX(p.date)} ${getY(p.val)}`).join(" ");
+          const lastPt = pts[pts.length - 1];
+          return (
+            <g key={co.id} className="cursor-pointer" onClick={() => onSelect(co.id)} data-testid={`race-line-${co.id}`}>
+              <path d={d} fill="none" stroke={co.color} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" opacity="0.8" />
+              <circle cx={getX(lastPt.date)} cy={getY(lastPt.val)} r="3.5" fill={co.color} stroke="white" strokeWidth="1.5" />
+              <text x={w - pad.right + 8} y={getY(lastPt.val) + 3} fill={co.color} fontSize="8" fontWeight="bold" fontFamily="monospace">
+                {co.name.split("(")[0].trim().split(" ")[0]}
+              </text>
+              <text x={w - pad.right + 8} y={getY(lastPt.val) + 12} fill="#999" fontSize="6" fontFamily="monospace">
+                {fmtVal(lastPt.val)}
+              </text>
+            </g>
+          );
+        })}
+
+        {withVals.filter(co => co.points.length === 1).map(co => {
+          const pt = co.points[0];
+          return (
+            <g key={co.id} className="cursor-pointer" onClick={() => onSelect(co.id)} data-testid={`race-dot-${co.id}`}>
+              <circle cx={getX(pt.date)} cy={getY(pt.val)} r="4" fill={co.color} stroke="white" strokeWidth="1.5" />
+              <text x={getX(pt.date) + 6} y={getY(pt.val) + 3} fill={co.color} fontSize="7" fontWeight="bold" fontFamily="monospace">
+                {co.name.split("(")[0].trim().split(" ")[0]}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
+function FundingComparisonChart({ data, onSelect }: { data: { id: string; name: string; color: string; totalRaised: number }[]; onSelect: (id: string) => void }) {
+  const sorted = [...data].sort((a, b) => b.totalRaised - a.totalRaised);
+  const maxFunding = Math.max(...sorted.map(d => d.totalRaised));
+  const fmtVal = (v: number) => v >= 1000 ? `$${(v / 1000).toFixed(1)}B` : `$${v}M`;
+
+  return (
+    <div className="bg-white rounded-lg border border-gray-200 p-4 space-y-2">
+      {sorted.map(co => {
+        const pct = (co.totalRaised / maxFunding) * 100;
+        return (
+          <button key={co.id} onClick={() => onSelect(co.id)} data-testid={`funding-bar-${co.id}`}
+            className="w-full flex items-center gap-3 group hover:bg-gray-50 rounded-md p-1.5 transition-colors text-left">
+            <span className="font-mono text-[9px] font-bold w-24 shrink-0 truncate" style={{ color: co.color }}>
+              {co.name.split("(")[0].trim()}
+            </span>
+            <div className="flex-1 h-5 bg-gray-100 rounded-full overflow-hidden">
+              <div className="h-full rounded-full transition-all duration-500 group-hover:opacity-90"
+                style={{ width: `${Math.max(pct, 2)}%`, backgroundColor: co.color + "cc" }} />
+            </div>
+            <span className="font-mono text-[10px] font-bold text-gray-600 w-16 text-right shrink-0">
+              {fmtVal(co.totalRaised)}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function StatsGrid({ data, onSelect }: { data: { id: string; name: string; color: string; latestVal: number | null; totalRaised: number }[]; onSelect: (id: string) => void }) {
+  const fmtVal = (v: number | null) => {
+    if (v === null) return "—";
+    return v >= 1000 ? `$${(v / 1000).toFixed(v >= 100000 ? 0 : 1)}B` : `$${v}M`;
+  };
+
+  const getOpenSource = (id: string): string => {
+    const osMap: Record<string, string> = {
+      "meta-ai": "Yes (LLaMA)", "mistral": "Yes (Apache)", "deepseek": "Yes (MIT)",
+      "qwen": "Yes (Apache)", "kimi": "No", "anthropic": "No", "openai": "No",
+      "google-deepmind": "No", "xai": "Partial (Grok)", "perplexity": "No",
+    };
+    return osMap[id] || "—";
+  };
+
+  const getKeyModel = (id: string): string => {
+    const models: Record<string, string> = {
+      anthropic: "Claude 3.5", openai: "GPT-4o", "google-deepmind": "Gemini 2.0",
+      "meta-ai": "LLaMA 3.2", xai: "Grok-2", deepseek: "R1",
+      qwen: "Qwen2.5", perplexity: "pplx-api", kimi: "Moonshot", mistral: "Mistral Large",
+    };
+    return models[id] || "—";
+  };
+
+  return (
+    <div className="bg-white rounded-lg border border-gray-200 overflow-x-auto">
+      <table className="w-full text-xs">
+        <thead>
+          <tr className="border-b border-gray-100">
+            <th className="text-left p-3 font-mono text-[8px] tracking-wider text-gray-400 font-bold">COMPANY</th>
+            <th className="text-right p-3 font-mono text-[8px] tracking-wider text-gray-400 font-bold">VALUATION</th>
+            <th className="text-right p-3 font-mono text-[8px] tracking-wider text-gray-400 font-bold">TOTAL RAISED</th>
+            <th className="text-left p-3 font-mono text-[8px] tracking-wider text-gray-400 font-bold hidden sm:table-cell">KEY MODEL</th>
+            <th className="text-left p-3 font-mono text-[8px] tracking-wider text-gray-400 font-bold hidden md:table-cell">OPEN SOURCE</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map(co => (
+            <tr key={co.id} onClick={() => onSelect(co.id)} data-testid={`stats-row-${co.id}`}
+              className="border-b border-gray-50 hover:bg-gray-50 cursor-pointer transition-colors">
+              <td className="p-3">
+                <span className="font-mono text-[10px] font-bold" style={{ color: co.color }}>
+                  {co.name}
+                </span>
+              </td>
+              <td className="p-3 text-right font-mono text-[10px] font-bold text-aubergine-900" data-testid={`text-valuation-${co.id}`}>
+                {fmtVal(co.latestVal)}
+              </td>
+              <td className="p-3 text-right font-mono text-[10px] text-gray-600" data-testid={`text-raised-${co.id}`}>
+                {fmtVal(co.totalRaised)}
+              </td>
+              <td className="p-3 font-mono text-[10px] text-gray-500 hidden sm:table-cell">
+                {getKeyModel(co.id)}
+              </td>
+              <td className="p-3 font-mono text-[10px] hidden md:table-cell">
+                <span className={getOpenSource(co.id).startsWith("Yes") ? "text-green-600" : getOpenSource(co.id) === "Partial (Grok)" ? "text-amber-500" : "text-gray-400"}>
+                  {getOpenSource(co.id)}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function HeroSection({ onSelectCompany }: { onSelectCompany: (id: string) => void }) {
   return (
     <div className="py-12 md:py-20">
@@ -37,7 +263,7 @@ function HeroSection({ onSelectCompany }: { onSelectCompany: (id: string) => voi
           Free and open research from Tech Horizon Labs.
         </p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
         {companyOrder.map(id => {
           const co = companies[id];
           return (
@@ -52,6 +278,8 @@ function HeroSection({ onSelectCompany }: { onSelectCompany: (id: string) => voi
           );
         })}
       </div>
+
+      <ComparisonDashboard onSelectCompany={onSelectCompany} />
     </div>
   );
 }
@@ -429,7 +657,7 @@ function InvestorPanel({ company }: { company: CompanyData }) {
 function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: string }) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const vals = rounds.filter(r => r.val).map(r => ({ label: r.label, val: r.val!, date: r.date }));
-  if (vals.length === 0) return <p className="text-gray-500 text-sm p-8 text-center">No valuation data available.</p>;
+  if (vals.length === 0) return <p className="text-gray-500 text-sm p-8 text-center" data-testid="valuation-empty">No valuation data available.</p>;
 
   const parseDate = (d: string): number => {
     const months: Record<string, number> = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
@@ -442,9 +670,11 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   const maxT = Math.max(...timestamps);
   const maxV = Math.max(...vals.map(v => v.val));
 
-  const pad = { top: 40, right: 50, bottom: 60, left: 70 };
-  const w = 700;
-  const h = 320;
+  const dense = vals.length > 6;
+  const pad = { top: 30, right: 30, bottom: dense ? 70 : 50, left: 65 };
+  const baseW = Math.max(600, vals.length * 80);
+  const w = baseW;
+  const h = 300;
   const chartW = w - pad.left - pad.right;
   const chartH = h - pad.top - pad.bottom;
 
@@ -453,44 +683,35 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
 
   const points = vals.map((v, i) => ({ x: getX(timestamps[i]), y: getY(v.val), ...v, idx: i }));
 
-  const gridLines = 5;
+  const gridLines = 4;
   const gridVals = Array.from({ length: gridLines + 1 }, (_, i) => (maxV / gridLines) * i);
 
   const pathD = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
 
-  const staggerLabel = (idx: number): number => {
-    if (idx === 0) return 0;
-    const prev = points[idx - 1];
-    const curr = points[idx];
-    if (Math.abs(curr.x - prev.x) < 40 || Math.abs(curr.y - prev.y) < 16) {
-      return idx % 2 === 0 ? -14 : 6;
-    }
-    return 0;
-  };
+  const fmtVal = (v: number) => v >= 1000 ? `$${(v / 1000).toFixed(v >= 10000 ? 0 : 1)}B` : `$${v}M`;
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-4">
+    <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-3">
       <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
         <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 400 }} preserveAspectRatio="xMidYMid meet">
           {gridVals.map((gv, i) => {
             const y = getY(gv);
             return (
               <g key={i}>
-                <line x1={pad.left} y1={y} x2={w - pad.right} y2={y} stroke="#e5e7eb" strokeWidth="1" strokeDasharray={i === 0 ? "0" : "4 3"} />
-                <text x={pad.left - 8} y={y + 4} textAnchor="end" fill="#9ca3af" fontSize="9" fontFamily="monospace">
-                  {gv >= 1000 ? `$${(gv / 1000).toFixed(0)}B` : `$${gv.toFixed(0)}M`}
+                <line x1={pad.left} y1={y} x2={w - pad.right} y2={y} stroke="#f0f0f0" strokeWidth="1" strokeDasharray={i === 0 ? "0" : "3 3"} />
+                <text x={pad.left - 8} y={y + 3} textAnchor="end" fill="#b0b0b0" fontSize="8" fontFamily="monospace">
+                  {fmtVal(gv)}
                 </text>
               </g>
             );
           })}
 
-          <line x1={pad.left} y1={pad.top} x2={pad.left} y2={pad.top + chartH} stroke="#d1d5db" strokeWidth="1" />
-          <line x1={pad.left} y1={pad.top + chartH} x2={w - pad.right} y2={pad.top + chartH} stroke="#d1d5db" strokeWidth="1" />
+          <line x1={pad.left} y1={pad.top + chartH} x2={w - pad.right} y2={pad.top + chartH} stroke="#e0e0e0" strokeWidth="1" />
 
           <defs>
             <linearGradient id={`val-area-${accent.replace("#", "")}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={accent} stopOpacity="0.15" />
-              <stop offset="100%" stopColor={accent} stopOpacity="0.02" />
+              <stop offset="0%" stopColor={accent} stopOpacity="0.12" />
+              <stop offset="100%" stopColor={accent} stopOpacity="0.01" />
             </linearGradient>
           </defs>
           {points.length > 1 && (
@@ -500,28 +721,44 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
             />
           )}
 
-          <path d={pathD} fill="none" stroke={accent} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+          <path d={pathD} fill="none" stroke={accent} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
 
           {points.map((p, i) => (
             <g key={i} className="cursor-pointer" onClick={() => setActiveIdx(activeIdx === i ? null : i)} data-testid={`valuation-dot-${i}`}>
-              <circle cx={p.x} cy={p.y} r={activeIdx === i ? 7 : 5} fill={activeIdx === i ? accent : "white"} stroke={accent} strokeWidth="2.5"
-                style={{ transition: "r 0.2s, fill 0.2s" }} />
+              <circle cx={p.x} cy={p.y} r="12" fill="transparent" />
+              <circle cx={p.x} cy={p.y} r={activeIdx === i ? 6 : 4} fill={activeIdx === i ? accent : "white"} stroke={accent} strokeWidth="2"
+                style={{ transition: "r 0.15s, fill 0.15s" }} />
 
-              <text x={p.x} y={p.y - 10 + staggerLabel(i)} textAnchor="middle" fill={accent} fontSize="8" fontWeight="bold" fontFamily="monospace">
-                {p.val >= 1000 ? `$${(p.val / 1000).toFixed(0)}B` : `$${p.val}M`}
-              </text>
+              {activeIdx === i && (
+                <g>
+                  <rect x={p.x - 30} y={p.y - 26} width="60" height="18" rx="4" fill={accent} opacity="0.95" />
+                  <text x={p.x} y={p.y - 14} textAnchor="middle" fill="white" fontSize="9" fontWeight="bold" fontFamily="monospace">
+                    {fmtVal(p.val)}
+                  </text>
+                </g>
+              )}
 
-              <text x={p.x} y={pad.top + chartH + 14} textAnchor="middle" fill="#6b7280" fontSize="7" fontFamily="monospace">
-                {p.label}
-              </text>
-              <text x={p.x} y={pad.top + chartH + 24} textAnchor="middle" fill="#9ca3af" fontSize="7" fontFamily="monospace">
-                {p.date}
-              </text>
+              {dense ? (
+                <text x={p.x + 4} y={pad.top + chartH + 12} textAnchor="start" fill="#888" fontSize="7" fontFamily="monospace"
+                  transform={`rotate(40, ${p.x + 4}, ${pad.top + chartH + 12})`}>
+                  {p.label}
+                </text>
+              ) : (
+                <g>
+                  <text x={p.x} y={pad.top + chartH + 14} textAnchor="middle" fill="#6b7280" fontSize="8" fontFamily="monospace">
+                    {p.label}
+                  </text>
+                  <text x={p.x} y={pad.top + chartH + 24} textAnchor="middle" fill="#b0b0b0" fontSize="7" fontFamily="monospace">
+                    {p.date}
+                  </text>
+                </g>
+              )}
             </g>
           ))}
         </svg>
       </div>
-      {activeIdx !== null && (
+
+      {activeIdx !== null ? (
         <div className="bg-white rounded-lg p-4 border border-gray-200 animate-in fade-in slide-in-from-bottom-2 duration-200">
           <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
             <div>
@@ -548,6 +785,8 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
             </div>
           )}
         </div>
+      ) : (
+        <p className="text-center text-xs text-gray-400 font-mono" data-testid="valuation-hint">Click a data point to see details</p>
       )}
     </div>
   );
@@ -732,7 +971,7 @@ export default function ResearchPage() {
     : "AI Company Research: Power, Money & Control";
   const seoDescription = company
     ? `Deep analysis of ${company.meta.name}'s governance, funding rounds, investors, and policy. Free research from Tech Horizon Labs.`
-    : "Deep analysis of governance, funding, and policy across Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, Perplexity, Kimi, and Mistral. Free AI industry research from Tech Horizon Labs.";
+    : "Deep analysis of governance, funding, and policy across Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen, Perplexity, Kimi, and Mistral. Free AI industry research from Tech Horizon Labs.";
 
   return (
     <div className="min-h-screen font-sans bg-gray-50">

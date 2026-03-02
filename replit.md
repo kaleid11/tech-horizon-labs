@@ -25,12 +25,17 @@ Preferred communication style: Simple, everyday language.
 - Generated XML sitemap with 20 URLs, all dates set to 2026-03-02
 
 ### AI Research Hub (`/research`)
-- New section: deep analysis of 8 major AI companies (Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, Perplexity, Kimi, Mistral)
+- Deep analysis of 10 AI companies (Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen, Perplexity, Kimi, Mistral)
 - Covers governance, funding rounds, investor breakdowns, policy shifts, timelines, safety issues, controversies, supply chain
-- Data files in `client/src/data/research/` (types.ts, index.ts, + 8 company files)
+- Data files in `client/src/data/research/` (types.ts, index.ts, + 10 company files)
+- Comparison dashboard on landing page: Valuation Race (multi-line chart), Total Funding (horizontal bars), Quick Stats (table)
+- Valuation chart redesigned: clean SVG line chart, show values on click only, rotated labels for dense data, dynamic width
+- Meta AI data updated: Yann LeCun departure (Nov 2025), Alexandr Wang (Chief AI Officer), Shengjia Zhao (Chief Scientist MSL)
+- DeepSeek added: self-funded from High-Flyer quant, R1 model, US sanctions controversies
+- Qwen (Alibaba Cloud) added: Tongyi Lab, Apache 2.0 open-source, $53B infrastructure pledge
 - Integrated with THL's design system (aubergine/salmon palette), Navbar/Footer, PageSEO
 - CTA callout linking to Klipy CRM booking for AI platform assessment
-- Targets informational queries: "claude", "openai", "perplexity ai", "AI company research"
+- Targets informational queries: "claude", "openai", "perplexity ai", "deepseek", "qwen", "AI company research"
 
 ### Pages
 - `/` - Homepage with hero, trust bar, service cards, case study highlights
@@ -48,7 +53,7 @@ Preferred communication style: Simple, everyday language.
 - `/portfolio/manufacturing` - Manufacturing AI case study
 - `/portfolio/healthcare-clinic` - Healthcare AI case study
 - `/academy` - Preview page linking to academy.techhorizonlabs.com
-- `/research` - AI Research Hub: 8 companies, governance/funding/policy analysis
+- `/research` - AI Research Hub: 10 companies, governance/funding/policy analysis, comparison dashboard
 - `/about` - Huxley Peckham bio, E-E-A-T signals, ABN disclosure, partner affiliations
 - `/resources` - Articles, weekly workshops schedule, newsletter, downloadable tools
 - `/privacy` - Privacy policy
@@ -111,7 +116,7 @@ Preferred communication style: Simple, everyday language.
 │   │   │   ├── contact-form-dialog.tsx  # BOOKING_URL constant + dialog
 │   │   │   └── newsletter-dialog.tsx
 │   │   ├── data/
-│   │   │   └── research/         # AI Research Hub data (8 company files)
+│   │   │   └── research/         # AI Research Hub data (10 company files)
 │   │   │       ├── types.ts      # TypeScript interfaces
 │   │   │       ├── index.ts      # Company registry, helpers, color constants
 │   │   │       ├── anthropic.ts
@@ -119,6 +124,8 @@ Preferred communication style: Simple, everyday language.
 │   │   │       ├── google-deepmind.ts
 │   │   │       ├── meta-ai.ts
 │   │   │       ├── xai.ts
+│   │   │       ├── deepseek.ts
+│   │   │       ├── qwen.ts
 │   │   │       ├── perplexity.ts
 │   │   │       ├── kimi.ts
 │   │   │       └── mistral.ts
