@@ -1,12 +1,61 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
+import { PageSEO } from "@/components/seo/page-seo";
 import { HardHat, Clock, Shield, Calendar, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How can AI help construction businesses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI can dramatically reduce admin time in construction. One Sunshine Coast construction director went from spending 2 days processing invoices and timesheets to just 1 hour — set up in only 2 hours. AI also enables offline quoting on job sites, eliminates calculation errors, and frees up weekends previously lost to paperwork."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI work offline on construction sites?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We build offline-first AI solutions that run on tablets without internet connectivity. The system syncs data when a connection is available, so your team can generate accurate quotes and process documents right from remote job sites."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to implement AI for a construction company?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our Foundation Sprint delivers a working AI solution in 4 weeks. One construction director was fully set up and saving time within 2 hours of the initial deployment. We focus on fast, practical implementation — not months of consulting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What results can construction companies expect from AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Real results from our clients include: 60% faster quote generation, zero quoting errors, 100% offline capability, and a construction director reducing invoice and timesheet processing from 2 days to 1 hour. Results vary by business but are consistently measurable."
+      }
+    }
+  ]
+};
 
 export default function ConstructionBuilderCaseStudy() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <PageSEO
+        title="AI for Construction | Builder Case Study"
+        description="Construction director went from 2 days processing invoices and timesheets to 1 hour. Setup took 2 hours. See how AI transforms construction businesses on the Sunshine Coast."
+        canonical="https://techhorizonlabs.com/portfolio/construction-builder"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+      />
       <SkipLink />
       <Navbar />
 
@@ -28,7 +77,7 @@ export default function ConstructionBuilderCaseStudy() {
                   Construction • Sunshine Coast
                 </div>
                 <h1 data-testid="heading-casestudy-title" className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                  Builder Accelerates Sales Cycle with Offline AI
+                  AI for Construction: Builder Accelerates Sales Cycle with Offline AI
                 </h1>
               </div>
             </div>
@@ -129,6 +178,15 @@ export default function ConstructionBuilderCaseStudy() {
                       <div className="text-sm text-gray-600">Quoting errors</div>
                     </div>
                   </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-salmon-50 to-salmon-100 rounded-xl p-8 border border-salmon-200">
+                  <h3 className="font-bold text-xl text-aubergine-900 mb-3" data-testid="heading-academy-metric">
+                    Real Result from Tech Horizon Academy
+                  </h3>
+                  <p className="text-lg text-aubergine-800 leading-relaxed">
+                    A construction director who completed our Academy training went from <strong className="text-salmon-600">2 days processing invoices and timesheets to just 1 hour</strong>. The entire setup took <strong className="text-salmon-600">2 hours</strong>. This is a real outcome from a real business operator — not a hypothetical.
+                  </p>
                 </div>
 
                 <blockquote className="bg-aubergine-50 rounded-xl p-8 border-l-4 border-salmon-500">

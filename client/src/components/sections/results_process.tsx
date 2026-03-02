@@ -12,7 +12,8 @@ export function Results() {
       solution: "Predictive maintenance with IoT sensors + private AI",
       result: "30% reduced downtime = $50K+ annual savings",
       color: "bg-blue-100 text-blue-700",
-      link: "/portfolio/manufacturing"
+      link: "/portfolio/manufacturing",
+      locationLink: "/locations/brisbane"
     },
     {
       icon: Briefcase,
@@ -55,7 +56,13 @@ export function Results() {
               <div className={`w-14 h-14 ${item.color} flex items-center justify-center mb-6 rounded-xl group-hover:scale-110 transition-transform`}>
                 <item.icon className="w-7 h-7" />
               </div>
-              <h3 className="text-lg font-bold text-aubergine-900 mb-2">{item.company}</h3>
+              <h3 className="text-lg font-bold text-aubergine-900 mb-2">
+                {'locationLink' in item && item.locationLink ? (
+                  <Link href={item.locationLink} className="hover:text-salmon-600 transition-colors">{item.company}</Link>
+                ) : (
+                  item.company
+                )}
+              </h3>
               
               <div className="space-y-6 mb-8 flex-grow">
                 <div>

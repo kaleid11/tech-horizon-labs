@@ -1,0 +1,76 @@
+import type { CompanyData } from "./types";
+import { C } from "./types";
+
+export const openaiData: CompanyData = {
+  meta: {
+    id: "openai", name: "OpenAI", color: "#10A37F",
+    tagline: "Nonprofit to PBC pivot. $730B pre-money. Musk trial Mar 2026.",
+    headerTitle: "OpenAI — From Nonprofit", headerSubtitle: "To $730B For-Profit",
+  },
+  tabs: [
+    { id: "governance", label: "Governance" },
+    { id: "timeline", label: "Key Events" },
+    { id: "safety", label: "Safety Issues", badge: "!" },
+    { id: "restructuring", label: "Restructuring" },
+    { id: "funding", label: "Funding" },
+    { id: "investors", label: "Investors" },
+  ],
+  ownership: [
+    { label: "Microsoft", pct: 27, color: "#00BCF2", note: "~$13B invested across multiple tranches" },
+    { label: "OpenAI Foundation", pct: 26, color: "#10A37F", note: "Nonprofit retains control via special voting rights" },
+    { label: "Employees", pct: 25, color: C.gold, note: "Including Altman's disputed equity" },
+    { label: "2025 Investors", pct: 13, color: C.purple, note: "SoftBank, Amazon, Nvidia etc." },
+    { label: "Other/Earlier", pct: 9, color: C.dim, note: "Pre-2025 investors, secondaries" },
+  ],
+  boardMembers: [
+    { name: "Bret Taylor", role: "Board Chair", tag: "Chair", color: "#10A37F", desc: "Former Salesforce co-CEO, Google Maps co-creator. Appointed Chair after Altman's brief ouster Nov 2023. Leads the restructured board." },
+    { name: "Sam Altman", role: "CEO", tag: "CEO", color: "#10A37F", desc: "Co-founder. Fired Nov 17 2023, reinstated Nov 22. Drove nonprofit to PBC conversion. Y Combinator president 2014-2019. Reportedly owns no equity (disputed)." },
+    { name: "Adam D'Angelo", role: "Board Member", tag: "Pre-crisis", color: C.blue, desc: "Quora CEO. Only board member who survived the Nov 2023 crisis. Voted to fire Altman, then helped reinstate him. Facebook's first CTO." },
+    { name: "Sue Desmond-Hellmann", role: "Board Member", tag: "Post-crisis", color: C.purple, desc: "Former Gates Foundation CEO, Genentech president. Joined post-crisis Jan 2024. Brings pharma/nonprofit governance." },
+    { name: "Zico Kolter", role: "Board Member", tag: "Post-crisis", color: C.teal, desc: "CMU CS professor, AI/ML researcher. Joined Jan 2024. Provides technical AI expertise the board lacked." },
+    { name: "Paul Nakasone", role: "Board Member", tag: "National Security", color: C.red, desc: "Retired 4-star general. Former NSA Director & US Cyber Command chief (2018-2024). The Pentagon's man on the board." },
+    { name: "Nicole Seligman", role: "Board Member", tag: "Legal", color: C.orange, desc: "Former Sony Entertainment president. Top litigator — argued 5 Supreme Court cases. Ex-Clinton defense team." },
+    { name: "Adebayo Ogunlesi", role: "Board Member", tag: "Finance", color: C.gold, desc: "Global Infrastructure Partners founder. Nigerian-born. Credit Suisse First Boston head of investment banking. $10B+ infrastructure fund." },
+  ],
+  timeline: [
+    { date: "Dec 2015", title: "OpenAI Founded", sev: "info", desc: "Founded as nonprofit by Sam Altman, Elon Musk, Greg Brockman, Ilya Sutskever and others. $1B initial pledge. Mission: ensure AGI benefits all of humanity." },
+    { date: "Feb 2018", title: "Musk Departs Board", sev: "warn", desc: "Elon Musk leaves board citing Tesla AI conflict of interest. Later claims he left because Altman was pivoting to profit." },
+    { date: "Mar 2019", title: "Capped-Profit Created", sev: "critical", desc: "OpenAI LP formed as capped-profit subsidiary. Investors get max 100x return. Greg Brockman diary: 'it was a lie' — the nonprofit mission was always going to be secondary." },
+    { date: "Jul 2019", title: "Microsoft $1B", sev: "info", desc: "Microsoft invests $1B. Exclusive cloud partnership begins. First major corporate entanglement with the 'nonprofit' mission." },
+    { date: "Jan 2023", title: "Microsoft $10B", sev: "warn", desc: "Microsoft invests $10B for 49% of profits. Altman reportedly receives no equity — claims he does this 'for humanity.' Profit cap raised to allow the deal." },
+    { date: "Nov 17, 2023", title: "Altman Fired", sev: "critical", desc: "Board fires Altman citing he was 'not consistently candid.' Ilya Sutskever, chief scientist and safety advocate, initially supports the move. Microsoft blindsided." },
+    { date: "Nov 22, 2023", title: "Altman Reinstated", sev: "critical", desc: "5 days of chaos. 95% of staff threaten to quit. Microsoft offers to hire everyone. Altman returns. Entire old board replaced except D'Angelo. Sutskever sidelined." },
+    { date: "May 2024", title: "Safety Team Exodus", sev: "critical", desc: "Ilya Sutskever and Jan Leike resign. Superalignment team disbanded. Leike: 'safety has taken a back seat to shiny products.' Leike joins Anthropic same week." },
+    { date: "Sep 2024", title: "CTO Mira Leaves", sev: "warn", desc: "CTO Mira Murati, along with research leads Barret Zoph and Bob McGrew, resign on the same day. Major brain drain." },
+    { date: "Oct 2025", title: "PBC Conversion Complete", sev: "critical", desc: "Nonprofit to Public Benefit Corporation conversion finalized. Foundation gets 26% equity, retains special voting rights to appoint all for-profit board members." },
+    { date: "Feb 2026", title: "$110B Round", sev: "info", desc: "Largest private funding round in history. $730B pre-money valuation. Amazon $50B, Nvidia $30B, SoftBank $30B. Total raised: ~$58B." },
+    { date: "Mar 2026", title: "Musk Trial Begins", sev: "critical", desc: "Elon Musk v. OpenAI trial. Alleges fraud: nonprofit was always a front for profit. Key evidence: Brockman diary, internal emails. Seeks return to nonprofit or injunction." },
+  ],
+  safetyIssues: [
+    { date: "2025-2026", title: "Wrongful Death Lawsuits", sev: "critical", desc: "9 lawsuits filed alleging ChatGPT contributed to user suicides. Raine v. OpenAI: ChatGPT mentioned suicide 1,275 times to a 16-year-old boy before his death. OpenAI claims Section 230 protection." },
+    { date: "May 2024", title: "Superalignment Team Dissolved", sev: "critical", desc: "Sutskever and Leike's Superalignment team — meant to solve AI alignment before superintelligence — was dissolved. 20% of compute promise never honored." },
+    { date: "Oct 2025", title: "Profit Cap Removal", sev: "warn", desc: "Original 100x cap on investor returns quietly removed during PBC conversion. No more ceiling on profits. The 'capped' in capped-profit was the last fig leaf." },
+    { date: "May 2024", title: "Voice Mode Controversy", sev: "info", desc: "GPT-4o 'Sky' voice was pulled after Scarlett Johansson accused OpenAI of cloning her voice without permission. Altman had tweeted 'her' as a reference to the film." },
+    { date: "2024-2026", title: "Copyright Litigation", sev: "warn", desc: "Sued by NYT, Authors Guild, Getty Images, and others for training on copyrighted material. OpenAI argues fair use. NYT suit is the landmark case — trial expected 2026." },
+  ],
+  restructuring: [
+    { phase: "Phase 1: Nonprofit (2015-2019)", color: C.green, desc: "Pure nonprofit. $1B pledged by donors including Musk and Altman. Mission: ensure AGI benefits humanity. All research open-sourced. No profit motive." },
+    { phase: "Phase 2: Capped-Profit (2019-2025)", color: C.warn, desc: "OpenAI LP created. Investors get max 100x returns. Microsoft invests $1B, then $10B. 'Capped' profit becomes increasingly theoretical as revenue scales." },
+    { phase: "Phase 3: PBC Conversion (Oct 2025)", color: "#10A37F", desc: "Completed conversion to for-profit Public Benefit Corporation. Foundation retains 26% equity and special voting rights. Profit cap removed entirely. IPO planned." },
+    { phase: "Phase 4: IPO Path (2026-2027)", color: C.purple, desc: "$730B pre-money valuation. $14B projected loss in 2026. Revenue target: $100B by 2029. $500B committed cloud infrastructure. Could be largest tech listing in history." },
+  ],
+  financials: [
+    { label: "2024 REVENUE", value: "$3.7B", color: C.green },
+    { label: "2024 LOSS", value: "-$5B", color: C.red },
+    { label: "2026 PROJ. LOSS", value: "-$14B", color: C.red },
+    { label: "2029 TARGET", value: "$100B", color: "#10A37F" },
+  ],
+  fundingRounds: [
+    { date: "2016", label: "Initial Funding", total: 130, val: null, lead: "Various", inv: [{ n: "Elon Musk", a: 50 }, { n: "Sam Altman", a: 10 }, { n: "Other donors", a: 70 }], events: ["Nonprofit donations"] },
+    { date: "Jul 2019", label: "Microsoft I", total: 1000, val: null, lead: "Microsoft", inv: [{ n: "Microsoft", a: 1000 }], events: ["Azure exclusive cloud deal", "Capped-profit structure"] },
+    { date: "Jan 2023", label: "Microsoft II", total: 10000, val: 29000, lead: "Microsoft", inv: [{ n: "Microsoft", a: 10000 }], events: ["49% profit share", "$29B valuation"] },
+    { date: "Oct 2024", label: "Secondary", total: 6600, val: 157000, lead: "Thrive Capital", inv: [{ n: "Thrive Capital", a: 1500 }, { n: "Microsoft", a: 750 }, { n: "Nvidia", a: 500 }, { n: "SoftBank", a: 500 }, { n: "Khosla Ventures", a: 300 }, { n: "Other", a: 3050 }], events: ["$157B valuation", "Employee liquidity"] },
+    { date: "Mar 2025", label: "SoftBank Led", total: 40000, val: 260000, lead: "SoftBank", inv: [{ n: "SoftBank", a: 30000 }, { n: "Microsoft", a: 5000 }, { n: "Other", a: 5000 }], events: ["$300B post-money", "SoftBank's largest single bet"] },
+    { date: "Feb 2026", label: "Mega Round", total: 110000, val: 730000, lead: "Amazon / Nvidia / SoftBank", inv: [{ n: "Amazon", a: 50000, note: "Largest single check" }, { n: "Nvidia", a: 30000 }, { n: "SoftBank", a: 30000 }], events: ["Largest private round EVER", "$730B pre-money", "Total raised: ~$58B"] },
+  ],
+};

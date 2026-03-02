@@ -46,6 +46,7 @@ export function Navbar() {
 
   const navItems = [
     { name: "Portfolio", href: "/portfolio" },
+    { name: "Research", href: "/research" },
     { name: "Locations", href: "/locations/queensland" },
     { name: "Academy", href: "/academy" },
   ];

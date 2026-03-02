@@ -97,8 +97,8 @@ export function PageSEO({
  */
 export const SEO_CONFIGS = {
   home: {
-    title: 'AI Readiness Consulting',
-    description: "Australia's practical AI readiness partner. We prepare organisations to thrive with AI. Private infrastructure, compliant by design, teams trained to deliver results.",
+    title: 'AI Business Training Sunshine Coast & QLD',
+    description: 'Construction directors saving 2 days per week on invoices and timesheets — set up in 2 hours. AI business training, private infrastructure & consulting for Sunshine Coast and Queensland SMEs.',
     canonical: BASE_URL,
   },
   about: {
@@ -107,18 +107,18 @@ export const SEO_CONFIGS = {
     canonical: `${BASE_URL}/about`,
   },
   portfolio: {
-    title: 'Case Studies & Results',
-    description: 'Real AI implementation results from Australian businesses. See how we help organisations achieve measurable outcomes with private AI infrastructure.',
+    title: 'AI Case Studies Australia | Real Business Results',
+    description: 'Real AI case studies from Australian businesses. Construction directors saving 2 days/week, manufacturers cutting downtime 30%, accounting firms reducing admin 40%. See measurable results.',
     canonical: `${BASE_URL}/portfolio`,
   },
   academy: {
-    title: 'Tech Horizon Academy',
-    description: 'Join 300+ Queensland business operators learning to deploy AI workflows. 1,300+ templates, weekly workshops, Australian compliance pre-mapped.',
+    title: 'AI Training Sunshine Coast | Tech Horizon Academy',
+    description: 'Hands-on AI training workshops for Sunshine Coast & QLD businesses. 300+ operators trained, 1,300+ templates, real results — construction firms cut admin from 2 days to 1 hour.',
     canonical: `${BASE_URL}/academy`,
   },
   resources: {
-    title: 'AI Resources & Guides',
-    description: 'Free AI resources, guides, and templates for Australian businesses. Learn practical AI implementation strategies.',
+    title: 'AI Workshop Resources & Training Guides',
+    description: 'Free AI workshop materials, training guides, and templates for Australian businesses. Practical AI skills for teams — from invoice automation to workflow optimisation.',
     canonical: `${BASE_URL}/resources`,
   },
   services: {
@@ -138,6 +138,11 @@ export const SEO_CONFIGS = {
       canonical: `${BASE_URL}/services/partner`,
     },
   },
+  research: {
+    title: 'AI Company Research: Governance, Funding & Power',
+    description: 'Deep analysis of Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, Perplexity, Kimi, and Mistral. Governance, funding rounds, investor breakdowns, and policy shifts. Free research from Tech Horizon Labs.',
+    canonical: `${BASE_URL}/research`,
+  },
   locations: {
     queensland: {
       title: 'AI Consulting Queensland',
@@ -145,8 +150,8 @@ export const SEO_CONFIGS = {
       canonical: `${BASE_URL}/locations/queensland`,
     },
     brisbane: {
-      title: 'AI Consulting Brisbane',
-      description: 'Enterprise AI consulting in Brisbane. Private AI infrastructure, Privacy Act compliant, built for Queensland businesses.',
+      title: 'AI Consulting Brisbane | AI Solutions for Brisbane Business',
+      description: 'Brisbane AI consultants helping manufacturers cut downtime by 30% and professional services firms reduce admin by 40%. Private infrastructure, 4-week implementation, Privacy Act compliant.',
       canonical: `${BASE_URL}/locations/brisbane`,
     },
     sunshineCoast: {

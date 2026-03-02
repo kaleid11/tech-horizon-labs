@@ -1,12 +1,61 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
+import { PageSEO } from "@/components/seo/page-seo";
 import { Factory, Clock, Shield, Calendar, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How can AI reduce downtime in manufacturing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI-powered predictive maintenance monitors equipment in real-time using IoT sensors, detecting anomalies in vibration, temperature, and power consumption. Our Brisbane manufacturing client reduced unplanned downtime by 30% and saves over $50K annually by predicting failures 7+ days before they occur."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is predictive maintenance AI for manufacturing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Predictive maintenance AI uses machine learning models trained on your equipment's historical data to identify patterns that precede failures. Instead of waiting for breakdowns or following rigid schedules, the AI tells your maintenance team exactly when intervention is needed, minimising both downtime and unnecessary maintenance costs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does AI cost for a manufacturing business in Queensland?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our Foundation Sprint delivers a working predictive maintenance system in 4 weeks. The investment typically pays for itself within 3-6 months through reduced downtime and maintenance costs. Our Brisbane client saves $50K+ annually — a significant ROI on their initial investment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI integrate with existing manufacturing equipment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We retrofit existing equipment with IoT sensors (vibration, temperature, power) without replacing machinery. The AI system integrates with your current setup and provides a real-time dashboard accessible from any device, along with automatic alerts when maintenance is needed."
+      }
+    }
+  ]
+};
 
 export default function ManufacturingCaseStudy() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <PageSEO
+        title="AI for Manufacturing Queensland | Predictive Maintenance Case Study"
+        description="Brisbane manufacturer reduced machine downtime by 30% and saves $50K+ annually with AI-powered predictive maintenance. Real Queensland manufacturing AI case study."
+        canonical="https://techhorizonlabs.com/portfolio/manufacturing"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+      />
       <SkipLink />
       <Navbar />
 
@@ -25,10 +74,10 @@ export default function ManufacturingCaseStudy() {
               </div>
               <div>
                 <div className="text-sm text-salmon-400 font-medium mb-2">
-                  Manufacturing • Brisbane, Queensland
+                  Manufacturing • <Link href="/locations/brisbane" className="hover:text-salmon-300 underline">Brisbane, Queensland</Link>
                 </div>
                 <h1 data-testid="heading-casestudy-title" className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                  Manufacturer Reduces Machine Downtime by 30%
+                  AI for Manufacturing Queensland: Reducing Machine Downtime by 30%
                 </h1>
               </div>
             </div>

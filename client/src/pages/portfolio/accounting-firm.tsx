@@ -1,12 +1,61 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
+import { PageSEO } from "@/components/seo/page-seo";
 import { Building2, Clock, Shield, Calendar, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does AI invoice processing work for accounting firms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI invoice processing uses on-device machine learning to extract data from invoices, receipts, and financial documents automatically. Our solution deploys a private AI model that processes documents locally — no sensitive financial data ever leaves your office. It integrates directly with accounting software like Xero for seamless workflows."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AI safe for handling sensitive accounting data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, when deployed correctly. Our approach uses private, on-premises AI that processes all data locally. Unlike cloud-based AI tools, sensitive client financial data never leaves your office network. This approach is compliant with Australian Privacy Act requirements and maintains full data sovereignty."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much time can AI save an accounting firm?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our Noosa accounting firm client reduced admin time by 40%, with staff previously spending 50%+ of their day on data entry now focusing on high-value advisory work. Client onboarding was cut from 5-7 business days to under 2 days. The full implementation took just 4 weeks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI integrate with Xero and other accounting software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Our AI solutions integrate seamlessly with existing accounting software stacks including Xero, MYOB, and QuickBooks. The AI handles document extraction, data validation, and automated intake workflows while your existing tools continue to manage the accounting processes you already rely on."
+      }
+    }
+  ]
+};
 
 export default function AccountingFirmCaseStudy() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <PageSEO
+        title="Invoice AI & Accounting Automation | Case Study"
+        description="Noosa accounting firm cut admin by 40% with private AI invoice processing. On-premises AI keeps sensitive data secure. Real Australian accounting AI case study."
+        canonical="https://techhorizonlabs.com/portfolio/accounting-firm"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+      />
       <SkipLink />
       <Navbar />
 
@@ -28,7 +77,7 @@ export default function AccountingFirmCaseStudy() {
                   Professional Services • Noosa, Sunshine Coast
                 </div>
                 <h1 data-testid="heading-casestudy-title" className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                  Noosa Accounting Firm Cuts Admin by 40%
+                  Invoice AI: Noosa Accounting Firm Cuts Admin by 40%
                 </h1>
               </div>
             </div>

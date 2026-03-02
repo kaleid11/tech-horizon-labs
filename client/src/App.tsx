@@ -26,6 +26,7 @@ const ConstructionBuilderCaseStudy = lazy(() => import("@/pages/portfolio/constr
 const RealEstateAgencyCaseStudy = lazy(() => import("@/pages/portfolio/real-estate-agency"));
 const ManufacturingCaseStudy = lazy(() => import("@/pages/portfolio/manufacturing"));
 const HealthcareClinicCaseStudy = lazy(() => import("@/pages/portfolio/healthcare-clinic"));
+const Research = lazy(() => import("@/pages/research"));
 
 // Simple loading fallback
 function PageLoader() {
@@ -59,6 +60,7 @@ function Router() {
         <Route path="/services/partner" component={PartnerService} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
+        <Route path="/research" component={Research} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>

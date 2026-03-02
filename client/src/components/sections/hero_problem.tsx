@@ -27,16 +27,16 @@ export function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-salmon-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-salmon-500"></span>
               </span>
-              AI Readiness for Australian Enterprise
+              AI Solutions for Business — Sunshine Coast & Australia-Wide
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-bold tracking-tight leading-[1.05]">
-              AI Systems That Work.<br/>
-              <span className="text-gradient-salmon">Teams That Know How to Use Them.</span>
+              AI for Business.<br/>
+              <span className="text-gradient-salmon">Infrastructure First. Results Guaranteed.</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
-              We don't just implement AI. We prepare your organisation to thrive with it. Private infrastructure, compliant by design, built on your data, evolved with the latest tools.
+              A construction director cut invoice processing from 2 days to 1 hour. Setup took 2 hours. We build AI solutions for business on your private infrastructure — compliant by design, built on your data, ready for today's tools and tomorrow's.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -94,8 +94,8 @@ export function Hero() {
                   <TrendingUp className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-xs text-gray-300">Avg. Admin Time Saved</div>
-                  <div className="text-lg font-bold text-white">15+ hrs/week</div>
+                  <div className="text-xs text-gray-300">Invoice Processing Time</div>
+                  <div className="text-lg font-bold text-white">2 Days → 1 Hour</div>
                 </div>
               </div>
             </motion.div>

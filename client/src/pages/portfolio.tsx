@@ -2,6 +2,7 @@ import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { Building2, HardHat, Home, Factory, Heart, Clock, Shield, Calendar } from "lucide-react";
+import { Link } from "wouter";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 
 const caseStudies = [
@@ -248,7 +249,7 @@ export default function Portfolio() {
               </a>
             </Button>
             <p className="text-sm text-gray-400 mt-4">
-              Based in Sunshine Coast • Serving Brisbane, Gold Coast, and all of Queensland
+              Based in Sunshine Coast • Serving <Link href="/locations/brisbane" className="text-salmon-400 hover:text-salmon-300 underline">Brisbane</Link>, <Link href="/locations/gold-coast" className="text-salmon-400 hover:text-salmon-300 underline">Gold Coast</Link>, and all of <Link href="/locations/queensland" className="text-salmon-400 hover:text-salmon-300 underline">Queensland</Link>
             </p>
           </div>
         </section>
