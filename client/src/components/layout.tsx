@@ -231,10 +231,10 @@ export function Footer() {
           <div>
             <h4 className="font-bold mb-4 text-white">Academy</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener" className="hover:text-salmon-500 transition-colors">Tech Horizon Academy ↗</a></li>
+              <li><a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer" className="hover:text-salmon-500 transition-colors">Tech Horizon Academy ↗</a></li>
               <li><a href="/resources" className="hover:text-salmon-500 transition-colors">Resources</a></li>
               <li><a href="/about" className="hover:text-salmon-500 transition-colors">About Huxley</a></li>
-              <li><a href="https://tech-horizon.beehiiv.com" target="_blank" rel="noopener" className="hover:text-salmon-500 transition-colors">Newsletter ↗</a></li>
+              <li><a href="https://tech-horizon.beehiiv.com" target="_blank" rel="noopener noreferrer" className="hover:text-salmon-500 transition-colors">Newsletter ↗</a></li>
               <li><a href="/ai-ethics" className="hover:text-salmon-500 transition-colors">AI Ethics</a></li>
             </ul>
           </div>

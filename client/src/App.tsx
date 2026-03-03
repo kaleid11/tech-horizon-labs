@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { ErrorBoundary } from "@/components/error-boundary";
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
 
@@ -91,7 +92,9 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <GoogleAnalytics />
-        <Router />
+        <ErrorBoundary>
+          <Router />
+        </ErrorBoundary>
         <CookieConsentBanner />
       </TooltipProvider>
     </QueryClientProvider>

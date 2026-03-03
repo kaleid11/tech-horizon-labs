@@ -29,12 +29,16 @@ export function useCookieConsent() {
   }, []);
 
   const acceptAll = useCallback(() => {
-    localStorage.setItem(STORAGE_KEY, "all");
+    try {
+      localStorage.setItem(STORAGE_KEY, "all");
+    } catch {}
     setConsent("all");
   }, []);
 
   const rejectNonEssential = useCallback(() => {
-    localStorage.setItem(STORAGE_KEY, "essential");
+    try {
+      localStorage.setItem(STORAGE_KEY, "essential");
+    } catch {}
     setConsent("essential");
   }, []);
 

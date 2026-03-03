@@ -113,7 +113,7 @@ export default function About() {
                     <h3 className="text-xl font-bold text-aubergine-900 mt-8">The Academy</h3>
                     
                     <p>
-                      Beyond consulting, I run the <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener" className="text-salmon-600 hover:underline">Tech Horizon Academy</a>—a community of 300+ SEQ business operators learning to deploy AI workflows together. 1,300+ templates, weekly workshops, Australian compliance pre-mapped.
+                      Beyond consulting, I run the <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer" className="text-salmon-600 hover:underline">Tech Horizon Academy</a>—a community of 300+ SEQ business operators learning to deploy AI workflows together. 1,300+ templates, weekly workshops, Australian compliance pre-mapped.
                     </p>
                     
                     <p>

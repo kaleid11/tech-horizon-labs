@@ -79,6 +79,7 @@ export function PageSEO({
     }
 
     // Twitter
+    setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', ogTitle || fullTitle);
     setMeta('twitter:description', ogDescription || description);
     setMeta('twitter:image', ogImage);
@@ -98,7 +99,7 @@ export function PageSEO({
 export const SEO_CONFIGS = {
   home: {
     title: 'AI Consulting Sunshine Coast & Brisbane | Find & Fix Your Biggest Bottleneck',
-    description: "AI won't save your business — fixing the right problem will. Queensland AI consulting that finds your costliest bottleneck and fixes it in 4 weeks. Free 15-min assessment.",
+    description: "AI won't save your business — fixing the right problem will. Queensland AI consulting that finds your costliest bottleneck and fixes it in 4 weeks.",
     canonical: BASE_URL,
   },
   about: {
@@ -108,7 +109,7 @@ export const SEO_CONFIGS = {
   },
   portfolio: {
     title: 'AI Case Studies Australia | Real Business Results',
-    description: 'Real AI case studies from Australian businesses. Construction directors saving 2 days/week, manufacturers cutting downtime 30%, accounting firms reducing admin 40%. See measurable results.',
+    description: 'Real AI case studies from Australian businesses. Construction directors saving 2 days/week, manufacturers cutting downtime 30%. See measurable results.',
     canonical: `${BASE_URL}/portfolio`,
   },
   academy: {
@@ -118,7 +119,7 @@ export const SEO_CONFIGS = {
   },
   resources: {
     title: 'AI Workshop Resources & Training Guides',
-    description: 'Free AI workshop materials, training guides, and templates for Australian businesses. Practical AI skills for teams — from invoice automation to workflow optimisation.',
+    description: 'Free AI workshop materials, training guides, and templates for Australian businesses. Practical AI skills — from invoice automation to workflow optimisation.',
     canonical: `${BASE_URL}/resources`,
   },
   services: {
@@ -129,29 +130,29 @@ export const SEO_CONFIGS = {
     },
     accelerator: {
       title: 'Foundation Sprint',
-      description: '4-week implementation sprint to build your AI-ready knowledge base and deploy private infrastructure.',
+      description: '4-week implementation sprint to build your AI-ready knowledge base and deploy private infrastructure. Hands-on setup, staff training, and measurable results.',
       canonical: `${BASE_URL}/services/accelerator`,
     },
     partner: {
       title: 'Ongoing Evolution',
-      description: 'Continuous AI partnership keeping your infrastructure current as tools and capabilities advance.',
+      description: 'Continuous AI partnership keeping your infrastructure current as tools and capabilities advance. Monthly reviews, priority support, and proactive updates.',
       canonical: `${BASE_URL}/services/partner`,
     },
   },
   research: {
     title: 'AI Research Hub | Claude vs ChatGPT, Company Analysis & Trends',
-    description: 'Deep analysis of Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, Perplexity, Kimi, and Mistral. Claude vs ChatGPT 2026 comparison, governance, funding rounds, and policy shifts.',
+    description: 'Deep analysis of Anthropic, OpenAI, Google DeepMind, Meta AI and more. Claude vs ChatGPT 2026 comparison, governance, funding rounds, and policy shifts.',
     canonical: `${BASE_URL}/research`,
   },
   locations: {
     queensland: {
       title: 'AI Consulting Queensland',
-      description: 'Queensland AI consulting that finds the bottleneck costing your business the most — and fixes it. Private infrastructure, compliant by design, serving Brisbane, Gold Coast, Sunshine Coast and regional QLD.',
+      description: 'Queensland AI consulting that finds your costliest bottleneck and fixes it. Private infrastructure, compliant by design, serving Brisbane to the Gold Coast.',
       canonical: `${BASE_URL}/locations/queensland`,
     },
     brisbane: {
       title: 'AI Consulting Brisbane | AI Solutions for Brisbane Business',
-      description: 'Brisbane AI consulting that finds the right problem before selling you tools. Manufacturers cut downtime 30%, accounting firms reduce admin 40%. 4-week implementation, Privacy Act compliant.',
+      description: 'Brisbane AI consulting that finds the right problem before selling you tools. Manufacturers cut downtime 30%, firms reduce admin 40%. Privacy Act compliant.',
       canonical: `${BASE_URL}/locations/brisbane`,
     },
     sunshineCoast: {

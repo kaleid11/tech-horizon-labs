@@ -30,7 +30,7 @@ export default function Academy() {
 
             <div className="flex flex-wrap gap-4 mb-12">
               <Button size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8" asChild>
-                <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener">
+                <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer">
                   Visit the Academy <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
               </Button>
@@ -123,7 +123,7 @@ export default function Academy() {
                 </ul>
                 <p className="text-sm text-gray-500 mb-4">Best for: Teams learning AI themselves</p>
                 <Button className="w-full bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full" asChild>
-                  <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener">
+                  <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer">
                     Visit the Academy <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
@@ -231,7 +231,7 @@ export default function Academy() {
               Join 300+ SEQ operators who are deploying AI workflows every week. Templates, workshops, community—$97-$300/month.
             </p>
             <Button size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8" asChild>
-              <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener">
+              <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer">
                 Explore the Academy <ExternalLink className="ml-2 h-4 w-4" />
               </a>
             </Button>

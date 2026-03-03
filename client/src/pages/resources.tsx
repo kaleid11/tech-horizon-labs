@@ -190,7 +190,7 @@ export default function Resources() {
 
               <div className="text-center mt-8">
                 <Button variant="outline" className="rounded-full" asChild>
-                  <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener">
+                  <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer">
                     Join Academy for Workshops <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
@@ -223,7 +223,7 @@ export default function Resources() {
                     </Button>
                   </NewsletterDialog>
                   <Button variant="outline" size="lg" className="border-gray-600 text-white hover:bg-white/10 rounded-full" asChild>
-                    <a href="https://tech-horizon.beehiiv.com" target="_blank" rel="noopener">
+                    <a href="https://tech-horizon.beehiiv.com" target="_blank" rel="noopener noreferrer">
                       View Past Issues <ExternalLink className="ml-2 h-4 w-4" />
                     </a>
                   </Button>
