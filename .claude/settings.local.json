@@ -16,7 +16,11 @@
       "Bash(timeout 8 npm run dev:*)",
       "Bash(file:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npx tsc:*)",
+      "WebFetch(domain:developer.klipycrm.com)",
+      "Bash(do echo:*)",
+      "Bash(node:*)"
     ]
   }
 }
