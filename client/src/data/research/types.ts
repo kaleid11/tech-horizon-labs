@@ -5,6 +5,9 @@ export interface CompanyMeta {
   tagline: string;
   headerTitle: string;
   headerSubtitle: string;
+  lastUpdated: string;
+  keyModel: string;
+  openSource: string;
 }
 
 export interface TabDef {
@@ -148,6 +151,18 @@ export interface CompanyData {
   financials?: FinancialMetric[];
   pentagonTimeline?: TimelineEvent[];
   competitorStats?: FinancialMetric[];
+}
+
+export function parseDate(d: string): number {
+  const months: Record<string, number> = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+  const parts = d.split(" ");
+  if (parts.length === 2) return new Date(parseInt(parts[1]), months[parts[0]] || 0, 1).getTime();
+  return new Date(parseInt(parts[0]), 0, 1).getTime();
+}
+
+export function fmtVal(v: number | null): string {
+  if (v === null) return "—";
+  return v >= 1000 ? `$${(v / 1000).toFixed(v >= 100000 ? 0 : v >= 10000 ? 0 : 1)}B` : `$${v}M`;
 }
 
 export const C = {

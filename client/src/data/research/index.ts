@@ -29,4 +29,4 @@ export const companyOrder = [
 ];
 
 export type { CompanyData, CompanyMeta, TabDef, BoardMember, DepartedMember, TimelineEvent, FundingRound, InvestorProfile, PolicyShift, SupplyChainEntity, OwnershipSlice, Competitor, ShareClass, FinancialMetric, RestructuringPhase } from "./types";
-export { C, getInvestorColor, fmt, computeInvestorTotals } from "./types";
+export { C, getInvestorColor, fmt, computeInvestorTotals, parseDate, fmtVal } from "./types";

@@ -6,6 +6,7 @@ export const perplexityData: CompanyData = {
     id: "perplexity", name: "Perplexity", color: "#20B2AA",
     tagline: "AI search engine. $20B valuation. Copyright wars.",
     headerTitle: "Perplexity — AI Search", headerSubtitle: "vs. Copyright Law",
+    lastUpdated: "Mar 2026", keyModel: "pplx-api", openSource: "No",
   },
   tabs: [
     { id: "governance", label: "Leadership" },

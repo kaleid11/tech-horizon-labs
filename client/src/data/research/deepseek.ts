@@ -6,6 +6,7 @@ export const deepseekData: CompanyData = {
     id: "deepseek", name: "DeepSeek", color: "#4D6BFE",
     tagline: "Self-funded open-source AI lab from China. R1 rivaled GPT-4o at a fraction of the cost.",
     headerTitle: "DeepSeek — China's", headerSubtitle: "Open-Source Disruptor",
+    lastUpdated: "Mar 2026", keyModel: "DeepSeek V3", openSource: "Yes (MIT)",
   },
   tabs: [
     { id: "governance", label: "Leadership" },

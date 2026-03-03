@@ -6,6 +6,7 @@ export const openaiData: CompanyData = {
     id: "openai", name: "OpenAI", color: "#10A37F",
     tagline: "Nonprofit to PBC pivot. $730B pre-money. Musk trial Mar 2026.",
     headerTitle: "OpenAI — From Nonprofit", headerSubtitle: "To $730B For-Profit",
+    lastUpdated: "Mar 2026", keyModel: "GPT-5.2 / o4", openSource: "No",
   },
   tabs: [
     { id: "governance", label: "Governance" },
@@ -43,7 +44,7 @@ export const openaiData: CompanyData = {
     { date: "May 2024", title: "Safety Team Exodus", sev: "critical", desc: "Ilya Sutskever and Jan Leike resign. Superalignment team disbanded. Leike: 'safety has taken a back seat to shiny products.' Leike joins Anthropic same week." },
     { date: "Sep 2024", title: "CTO Mira Leaves", sev: "warn", desc: "CTO Mira Murati, along with research leads Barret Zoph and Bob McGrew, resign on the same day. Major brain drain." },
     { date: "Oct 2025", title: "PBC Conversion Complete", sev: "critical", desc: "Nonprofit to Public Benefit Corporation conversion finalized. Foundation gets 26% equity, retains special voting rights to appoint all for-profit board members." },
-    { date: "Feb 2026", title: "$110B Round", sev: "info", desc: "Largest private funding round in history. $730B pre-money valuation. Amazon $50B, Nvidia $30B, SoftBank $30B. Total raised: ~$58B." },
+    { date: "Feb 2026", title: "$110B Round", sev: "info", desc: "Largest private funding round in history. $730B pre-money valuation. Amazon $50B, Nvidia $30B, SoftBank $30B. Total raised: ~$168B." },
     { date: "Mar 2026", title: "Musk Trial Begins", sev: "critical", desc: "Elon Musk v. OpenAI trial. Alleges fraud: nonprofit was always a front for profit. Key evidence: Brockman diary, internal emails. Seeks return to nonprofit or injunction." },
   ],
   safetyIssues: [
@@ -71,6 +72,6 @@ export const openaiData: CompanyData = {
     { date: "Jan 2023", label: "Microsoft II", total: 10000, val: 29000, lead: "Microsoft", inv: [{ n: "Microsoft", a: 10000 }], events: ["49% profit share", "$29B valuation"] },
     { date: "Oct 2024", label: "Secondary", total: 6600, val: 157000, lead: "Thrive Capital", inv: [{ n: "Thrive Capital", a: 1500 }, { n: "Microsoft", a: 750 }, { n: "Nvidia", a: 500 }, { n: "SoftBank", a: 500 }, { n: "Khosla Ventures", a: 300 }, { n: "Other", a: 3050 }], events: ["$157B valuation", "Employee liquidity"] },
     { date: "Mar 2025", label: "SoftBank Led", total: 40000, val: 260000, lead: "SoftBank", inv: [{ n: "SoftBank", a: 30000 }, { n: "Microsoft", a: 5000 }, { n: "Other", a: 5000 }], events: ["$300B post-money", "SoftBank's largest single bet"] },
-    { date: "Feb 2026", label: "Mega Round", total: 110000, val: 730000, lead: "Amazon / Nvidia / SoftBank", inv: [{ n: "Amazon", a: 50000, note: "Largest single check" }, { n: "Nvidia", a: 30000 }, { n: "SoftBank", a: 30000 }], events: ["Largest private round EVER", "$730B pre-money", "Total raised: ~$58B"] },
+    { date: "Feb 2026", label: "Mega Round", total: 110000, val: 730000, lead: "Amazon / Nvidia / SoftBank", inv: [{ n: "Amazon", a: 50000, note: "Largest single check" }, { n: "Nvidia", a: 30000 }, { n: "SoftBank", a: 30000 }], events: ["Largest private round EVER", "$730B pre-money", "Total raised: ~$168B"] },
   ],
 };

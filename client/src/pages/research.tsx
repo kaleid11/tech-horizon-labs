@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { companies, companyOrder, C, fmt, getInvestorColor, computeInvestorTotals } from "@/data/research/index";
+import { companies, companyOrder, C, fmt, getInvestorColor, computeInvestorTotals, parseDate, fmtVal } from "@/data/research/index";
 import type { BoardMember, TimelineEvent, FundingRound, PolicyShift, SupplyChainEntity, CompanyData, FinancialMetric, RestructuringPhase } from "@/data/research/types";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,7 @@ function SevDot({ sev }: { sev: string }) {
 function MetricCard({ label, value, color }: { label: string; value: string; color: string }) {
   return (
     <div className="bg-white rounded-md p-3 border border-gray-200 text-center">
-      <p className="font-mono text-[7px] tracking-wider text-gray-500">{label}</p>
+      <p className="font-mono text-[9px] tracking-wider text-gray-500">{label}</p>
       <p className="font-serif text-lg font-bold" style={{ color }}>{value}</p>
     </div>
   );
@@ -26,13 +26,6 @@ function MetricCard({ label, value, color }: { label: string; value: string; col
 
 function ComparisonDashboard({ onSelectCompany }: { onSelectCompany: (id: string) => void }) {
   const [view, setView] = useState<"valuation" | "funding" | "stats">("valuation");
-
-  const parseDate = (d: string): number => {
-    const months: Record<string, number> = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
-    const parts = d.split(" ");
-    if (parts.length === 2) return new Date(parseInt(parts[1]), months[parts[0]] || 0, 1).getTime();
-    return new Date(parseInt(parts[0]), 0, 1).getTime();
-  };
 
   const companyValuations = useMemo(() => {
     return companyOrder.map(id => {
@@ -92,14 +85,13 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
 
   const gridLines = 4;
   const gridVals = Array.from({ length: gridLines + 1 }, (_, i) => (maxV / gridLines) * i);
-  const fmtVal = (v: number) => v >= 1000 ? `$${(v / 1000).toFixed(v >= 100000 ? 0 : 1)}B` : `$${v}M`;
 
   const years = new Set<number>();
   for (let y = new Date(minT).getFullYear(); y <= new Date(maxT).getFullYear(); y++) years.add(y);
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
-      <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 500 }} preserveAspectRatio="xMidYMid meet">
+      <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 500 }} preserveAspectRatio="xMidYMid meet" role="img" aria-label="Valuation race chart comparing AI companies over time">
         {gridVals.map((gv, i) => {
           const y = getY(gv);
           return (
@@ -157,7 +149,6 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
 function FundingComparisonChart({ data, onSelect }: { data: { id: string; name: string; color: string; totalRaised: number }[]; onSelect: (id: string) => void }) {
   const sorted = [...data].sort((a, b) => b.totalRaised - a.totalRaised);
   const maxFunding = Math.max(...sorted.map(d => d.totalRaised));
-  const fmtVal = (v: number) => v >= 1000 ? `$${(v / 1000).toFixed(1)}B` : `$${v}M`;
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-4 space-y-2">
@@ -184,66 +175,46 @@ function FundingComparisonChart({ data, onSelect }: { data: { id: string; name: 
 }
 
 function StatsGrid({ data, onSelect }: { data: { id: string; name: string; color: string; latestVal: number | null; totalRaised: number }[]; onSelect: (id: string) => void }) {
-  const fmtVal = (v: number | null) => {
-    if (v === null) return "—";
-    return v >= 1000 ? `$${(v / 1000).toFixed(v >= 100000 ? 0 : 1)}B` : `$${v}M`;
-  };
-
-  const getOpenSource = (id: string): string => {
-    const osMap: Record<string, string> = {
-      "meta-ai": "Yes (LLaMA)", "mistral": "Yes (Apache)", "deepseek": "Yes (MIT)",
-      "qwen": "Yes (Apache)", "kimi": "No", "anthropic": "No", "openai": "No",
-      "google-deepmind": "No", "xai": "Partial (Grok)", "perplexity": "No",
-    };
-    return osMap[id] || "—";
-  };
-
-  const getKeyModel = (id: string): string => {
-    const models: Record<string, string> = {
-      anthropic: "Claude 3.5", openai: "GPT-4o", "google-deepmind": "Gemini 2.0",
-      "meta-ai": "LLaMA 3.2", xai: "Grok-2", deepseek: "R1",
-      qwen: "Qwen2.5", perplexity: "pplx-api", kimi: "Moonshot", mistral: "Mistral Large",
-    };
-    return models[id] || "—";
-  };
-
   return (
     <div className="bg-white rounded-lg border border-gray-200 overflow-x-auto">
       <table className="w-full text-xs">
         <thead>
           <tr className="border-b border-gray-100">
-            <th className="text-left p-3 font-mono text-[8px] tracking-wider text-gray-400 font-bold">COMPANY</th>
-            <th className="text-right p-3 font-mono text-[8px] tracking-wider text-gray-400 font-bold">VALUATION</th>
-            <th className="text-right p-3 font-mono text-[8px] tracking-wider text-gray-400 font-bold">TOTAL RAISED</th>
-            <th className="text-left p-3 font-mono text-[8px] tracking-wider text-gray-400 font-bold hidden sm:table-cell">KEY MODEL</th>
-            <th className="text-left p-3 font-mono text-[8px] tracking-wider text-gray-400 font-bold hidden md:table-cell">OPEN SOURCE</th>
+            <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold">COMPANY</th>
+            <th className="text-right p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold">VALUATION</th>
+            <th className="text-right p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold">TOTAL RAISED</th>
+            <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden sm:table-cell">KEY MODEL</th>
+            <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden md:table-cell">OPEN SOURCE</th>
           </tr>
         </thead>
         <tbody>
-          {data.map(co => (
-            <tr key={co.id} onClick={() => onSelect(co.id)} data-testid={`stats-row-${co.id}`}
-              className="border-b border-gray-50 hover:bg-gray-50 cursor-pointer transition-colors">
-              <td className="p-3">
-                <span className="font-mono text-[10px] font-bold" style={{ color: co.color }}>
-                  {co.name}
-                </span>
-              </td>
-              <td className="p-3 text-right font-mono text-[10px] font-bold text-aubergine-900" data-testid={`text-valuation-${co.id}`}>
-                {fmtVal(co.latestVal)}
-              </td>
-              <td className="p-3 text-right font-mono text-[10px] text-gray-600" data-testid={`text-raised-${co.id}`}>
-                {fmtVal(co.totalRaised)}
-              </td>
-              <td className="p-3 font-mono text-[10px] text-gray-500 hidden sm:table-cell">
-                {getKeyModel(co.id)}
-              </td>
-              <td className="p-3 font-mono text-[10px] hidden md:table-cell">
-                <span className={getOpenSource(co.id).startsWith("Yes") ? "text-green-600" : getOpenSource(co.id) === "Partial (Grok)" ? "text-amber-500" : "text-gray-400"}>
-                  {getOpenSource(co.id)}
-                </span>
-              </td>
-            </tr>
-          ))}
+          {data.map(co => {
+            const os = companies[co.id].meta.openSource;
+            return (
+              <tr key={co.id} onClick={() => onSelect(co.id)} data-testid={`stats-row-${co.id}`}
+                className="border-b border-gray-50 hover:bg-gray-50 cursor-pointer transition-colors">
+                <td className="p-3">
+                  <span className="font-mono text-[10px] font-bold" style={{ color: co.color }}>
+                    {co.name}
+                  </span>
+                </td>
+                <td className="p-3 text-right font-mono text-[10px] font-bold text-aubergine-900" data-testid={`text-valuation-${co.id}`}>
+                  {fmtVal(co.latestVal)}
+                </td>
+                <td className="p-3 text-right font-mono text-[10px] text-gray-600" data-testid={`text-raised-${co.id}`}>
+                  {fmtVal(co.totalRaised)}
+                </td>
+                <td className="p-3 font-mono text-[10px] text-gray-500 hidden sm:table-cell">
+                  {companies[co.id].meta.keyModel}
+                </td>
+                <td className="p-3 font-mono text-[10px] hidden md:table-cell">
+                  <span className={os.startsWith("Yes") ? "text-green-600" : os.startsWith("Partial") ? "text-amber-500" : "text-gray-400"}>
+                    {os}
+                  </span>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
@@ -435,10 +406,12 @@ function TimelinePanel({ events, accent, title }: { events: TimelineEvent[]; acc
 
 function PentagonPanel({ events }: { events: TimelineEvent[] }) {
   const [expanded, setExpanded] = useState<number | null>(null);
+  const latestCritical = [...events].filter(e => e.sev === "critical").sort((a, b) => parseDate(b.date) - parseDate(a.date))[0];
+  const crisisDate = latestCritical ? latestCritical.date.toUpperCase() : "FEB 2026";
   return (
     <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
       <div className="rounded-lg p-4 border" style={{ background: `linear-gradient(135deg, ${C.red}12, transparent)`, borderColor: C.red + "30" }}>
-        <p className="font-mono text-[9px] tracking-[2px] font-bold mb-2" style={{ color: C.red }}>BREAKING · FEBRUARY 27, 2026</p>
+        <p className="font-mono text-[9px] tracking-[2px] font-bold mb-2" style={{ color: C.red }}>PENTAGON CRISIS · {crisisDate}</p>
         <h2 className="text-xl md:text-2xl font-bold text-aubergine-900 mb-2 leading-tight">
           Trump Bans All Federal Agencies from Using Anthropic
         </h2>
@@ -582,10 +555,10 @@ function FundingPanel({ rounds, accent }: { rounds: FundingRound[]; accent: stri
             return (
               <button key={i} onClick={() => setActive(active === i ? null : i)} data-testid={`funding-round-${i}`}
                 className="flex flex-col items-center gap-1 flex-1" style={{ minWidth: minBarWidth }}>
-                <span className="font-mono text-[8px] text-gray-500 whitespace-nowrap">{fmt(r.total)}</span>
+                <span className="font-mono text-[10px] text-gray-500 whitespace-nowrap">{fmt(r.total)}</span>
                 <div className="w-4/5 rounded-t transition-all duration-300"
                   style={{ height: h, backgroundColor: active === i ? accent : accent + "44", border: active === i ? `2px solid ${accent}` : "none" }} />
-                <span className="font-mono text-[8px] text-gray-500 text-center leading-tight whitespace-nowrap">{r.label}</span>
+                <span className="font-mono text-[10px] text-gray-500 text-center leading-tight whitespace-nowrap">{r.label}</span>
               </button>
             );
           })}
@@ -639,7 +612,7 @@ function InvestorPanel({ company }: { company: CompanyData }) {
                     { l: "HQ", v: profile.hq, c: C.sub },
                   ].map((m, j) => (
                     <div key={j} className="bg-gray-50 rounded p-2 border border-gray-200">
-                      <p className="font-mono text-[7px] tracking-wider text-gray-500">{m.l}</p>
+                      <p className="font-mono text-[9px] tracking-wider text-gray-500">{m.l}</p>
                       <p className="text-[11px] font-semibold" style={{ color: m.c }}>{m.v}</p>
                     </div>
                   ))}
@@ -662,12 +635,6 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const vals = rounds.filter(r => r.val).map(r => ({ label: r.label, val: r.val!, date: r.date }));
   if (vals.length === 0) return <p className="text-gray-500 text-sm p-8 text-center" data-testid="valuation-empty">No valuation data available.</p>;
-
-  const parseDate = (d: string): number => {
-    const months: Record<string, number> = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
-    const [mon, yr] = d.split(" ");
-    return new Date(parseInt(yr), months[mon] || 0, 1).getTime();
-  };
 
   const timestamps = vals.map(v => parseDate(v.date));
   const minT = Math.min(...timestamps);
@@ -692,12 +659,10 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
 
   const pathD = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
 
-  const fmtVal = (v: number) => v >= 1000 ? `$${(v / 1000).toFixed(v >= 10000 ? 0 : 1)}B` : `$${v}M`;
-
   return (
     <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-3">
       <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
-        <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 400 }} preserveAspectRatio="xMidYMid meet">
+        <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 400 }} preserveAspectRatio="xMidYMid meet" role="img" aria-label="Company valuation history chart">
           {gridVals.map((gv, i) => {
             const y = getY(gv);
             return (
@@ -777,13 +742,13 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
           {activeIdx > 0 && (
             <div className="mt-2 pt-2 border-t border-gray-200 flex gap-4">
               <div>
-                <p className="font-mono text-[8px] text-gray-500">CHANGE</p>
+                <p className="font-mono text-[10px] text-gray-500">CHANGE</p>
                 <p className="font-mono text-sm font-bold" style={{ color: vals[activeIdx].val >= vals[activeIdx - 1].val ? "#44c488" : "#e05555" }}>
                   {vals[activeIdx].val >= vals[activeIdx - 1].val ? "+" : ""}{(((vals[activeIdx].val - vals[activeIdx - 1].val) / vals[activeIdx - 1].val) * 100).toFixed(0)}%
                 </p>
               </div>
               <div>
-                <p className="font-mono text-[8px] text-gray-500">FROM PREVIOUS</p>
+                <p className="font-mono text-[10px] text-gray-500">FROM PREVIOUS</p>
                 <p className="font-mono text-sm text-gray-700">{fmt(vals[activeIdx - 1].val)} → {fmt(vals[activeIdx].val)}</p>
               </div>
             </div>
@@ -909,7 +874,7 @@ function CompanyView({ company, tabId, setTabId, onPersonClick, onBack }: {
       </button>
       <div className="mb-6">
         <p className="font-mono text-[9px] tracking-[3px] mb-2 font-bold" style={{ color: accent }}>
-          {company.meta.name.toUpperCase()} · UPDATED FEB 2026
+          {company.meta.name.toUpperCase()} · UPDATED {company.meta.lastUpdated.toUpperCase()}
         </p>
         <h2 className="text-3xl md:text-4xl font-bold text-aubergine-900 mb-1 leading-tight">
           {company.meta.headerTitle}<br />{company.meta.headerSubtitle}
@@ -925,7 +890,7 @@ function CompanyView({ company, tabId, setTabId, onPersonClick, onBack }: {
               : { backgroundColor: "transparent", color: "#6b7280", borderColor: "#e5e7eb" }}>
             {tab.label}
             {tab.badge && (
-              <span className="ml-1 px-1 rounded text-[7px] font-bold"
+              <span className="ml-1 px-1 rounded text-[9px] font-bold"
                 style={{
                   backgroundColor: tabId === tab.id ? "#ffffff44" : C.red + "30",
                   color: tabId === tab.id ? "#ffffff" : C.red,
@@ -952,8 +917,19 @@ function CompanyView({ company, tabId, setTabId, onPersonClick, onBack }: {
 }
 
 export default function ResearchPage() {
-  const [companyId, setCompanyId] = useState<string | null>(null);
-  const [tabId, setTabId] = useState("");
+  const [companyId, setCompanyId] = useState<string | null>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const co = params.get("company");
+    return co && companies[co] ? co : null;
+  });
+  const [tabId, setTabId] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    const co = params.get("company");
+    const tab = params.get("tab");
+    if (co && companies[co] && tab && companies[co].tabs.some(t => t.id === tab)) return tab;
+    if (co && companies[co]) return companies[co].tabs[0]?.id || "";
+    return "";
+  });
   const [selectedPerson, setSelectedPerson] = useState<BoardMember | null>(null);
 
   const company = companyId ? companies[companyId] : null;
@@ -963,6 +939,20 @@ export default function ResearchPage() {
     setTabId(companies[id].tabs[0]?.id || "");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  useEffect(() => {
+    if (companyId && tabId) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("company", companyId);
+      url.searchParams.set("tab", tabId);
+      window.history.replaceState(null, "", url.toString());
+    } else if (!companyId) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("company");
+      url.searchParams.delete("tab");
+      window.history.replaceState(null, "", url.pathname);
+    }
+  }, [companyId, tabId]);
 
   useEffect(() => {
     if (company) {
@@ -1016,7 +1006,7 @@ export default function ResearchPage() {
         </section>
 
         <div className="text-center pb-8">
-          <p className="font-mono text-[8px] text-gray-400">
+          <p className="font-mono text-[10px] text-gray-400">
             Sources: SEC filings, Crunchbase, FT, Bloomberg, CNBC, AP, Reuters, Semafor, DefenseScoop, TechCrunch, SCMP
           </p>
         </div>

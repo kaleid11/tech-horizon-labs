@@ -6,6 +6,7 @@ export const anthropicData: CompanyData = {
     id: "anthropic", name: "Anthropic", color: C.gold,
     tagline: "Safety-focused AI lab. $380B valuation. Federal ban Feb 2026.",
     headerTitle: "Who Funded Anthropic", headerSubtitle: "And Who Controls It",
+    lastUpdated: "Mar 2026", keyModel: "Claude Sonnet 4.6", openSource: "No",
   },
   tabs: [
     { id: "governance", label: "Governance" },
