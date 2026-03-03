@@ -6,7 +6,7 @@ export function McpVisualization() {
   const [activePath, setActivePath] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Apps connected to MCP
+  // Apps connected to AI Core
   const apps = [
     { id: 1, name: "Xero", icon: CreditCard, color: "#00B7E0", angle: 0 },
     { id: 2, name: "Gmail", icon: Mail, color: "#EA4335", angle: 60 },
@@ -96,7 +96,7 @@ export function McpVisualization() {
             <Bot className="w-8 h-8 lg:w-9 lg:h-9 text-white" />
             
             <div className="absolute -bottom-7 bg-white/10 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/20 text-[9px] font-mono text-salmon-200 whitespace-nowrap">
-              MCP Core
+              AI Core
             </div>
           </motion.div>
 
@@ -167,7 +167,7 @@ function LiveActivityFeed() {
       { type: "process", text: "DeepSeek: Analyzing sentiment..." },
       { type: "info", text: "Airtable: Record updated" },
       { type: "warn", text: "Rate limit approach: 80%" },
-      { type: "success", text: "MCP: Handshake established" },
+      { type: "success", text: "Core: Handshake established" },
       { type: "process", text: "Slack: Notifying #finance" },
     ];
 

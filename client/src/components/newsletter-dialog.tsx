@@ -72,7 +72,7 @@ export function NewsletterDialog({ children }: { children: React.ReactNode }) {
               <li>• 1,300+ tested AI workflow templates</li>
               <li>• Weekly tool tracking & updates</li>
               <li>• Australian compliance mappings</li>
-              <li>• MCP integration guides</li>
+              <li>• AI integration guides</li>
             </ul>
           </div>
           

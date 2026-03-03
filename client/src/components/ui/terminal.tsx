@@ -5,7 +5,7 @@ import { Terminal as TerminalIcon, Check, Circle, X } from 'lucide-react';
 export function Terminal() {
   const [lines, setLines] = useState<string[]>([]);
   const fullCommand = [
-    "> init mcp-server --name 'claude-finance-bot'",
+    "> init ai-server --name 'claude-finance-bot'",
     "> connecting to banking_api...",
     "> [SUCCESS] secure connection established",
     "> indexing 14,000 invoices...",
