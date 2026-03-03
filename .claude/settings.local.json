@@ -20,7 +20,8 @@
       "Bash(npx tsc:*)",
       "WebFetch(domain:developer.klipycrm.com)",
       "Bash(do echo:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(git push:*)"
     ]
   }
 }
