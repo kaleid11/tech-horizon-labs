@@ -46,9 +46,12 @@ export function Navbar() {
 
   const navItems = [
     { name: "Portfolio", href: "/portfolio" },
+    { name: "AI Readiness Quiz", href: "/audit-tool" },
+    { name: "Resources", href: "/resources" },
     { name: "Research", href: "/research" },
     { name: "Locations", href: "/locations/queensland" },
     { name: "Academy", href: "/academy" },
+    { name: "AI Ethics", href: "/ai-ethics" },
   ];
 
   return (

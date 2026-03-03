@@ -40,7 +40,7 @@ export function Hero() {
             </p>
 
             <p className="text-lg text-salmon-400/90 max-w-2xl leading-relaxed font-medium" data-testid="text-hero-mission">
-              We'll tell you what you actually need — even if it's nothing. That's not a tagline. We turn away 30% of prospects because the timing isn't right. The other 70% trust us because of it.
+              We'll tell you what you actually need — even if it's nothing. We turn away 30% of prospects because the timing isn't right.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -51,8 +51,8 @@ export function Hero() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-8 h-14 rounded-full backdrop-blur-sm" asChild>
-                <a href="/portfolio" data-testid="link-hero-approach">
-                  See Real Results
+                <a href="/audit-tool" data-testid="link-hero-approach">
+                  Take the Free AI Quiz
                 </a>
               </Button>
             </div>
@@ -234,11 +234,11 @@ export function Problem() {
             <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <ShieldCheck className="w-6 h-6 text-salmon-500" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-4">Knowledge Base Architecture</h3>
+            <h3 className="text-xl font-bold text-white mb-4">Business Knowledge Systems</h3>
             <p className="text-gray-400 text-sm mb-4">Context your AI can actually use</p>
             <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Vector databases & embeddings</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> RAG infrastructure on your systems</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Organise your documents, SOPs & expertise so AI can actually use them</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Keep everything searchable and up to date — automatically</li>
               <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Tool-agnostic design</li>
               <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Evolves with new AI capabilities</li>
             </ul>
@@ -262,7 +262,7 @@ export function Problem() {
 
         {/* Credentials Bar */}
         <div className="mt-16 bg-gradient-to-r from-aubergine-900 to-aubergine-800 rounded-3xl p-8 md:p-12 text-white text-center" data-testid="approach-credentials">
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">Trusted by Australian Enterprises</h3>
+          <h3 className="text-2xl md:text-3xl font-bold mb-4">Trusted by Growing Australian Businesses</h3>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-6">
             Listed on the National AI Directory. GoodFirms Top AI Company. Delivering production AI systems across Queensland since 2024.
           </p>

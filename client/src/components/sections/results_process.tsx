@@ -166,8 +166,10 @@ export function Process() {
         </div>
 
         <div className="mt-20 text-center">
-          <Button size="lg" className="bg-white text-aubergine-900 hover:bg-gray-100 font-bold text-lg px-8 h-14 rounded-full">
-            Start With An Audit
+          <Button size="lg" className="bg-white text-aubergine-900 hover:bg-gray-100 font-bold text-lg px-8 h-14 rounded-full" asChild>
+            <a href="/audit-tool">
+              Start With An Audit
+            </a>
           </Button>
         </div>
       </div>

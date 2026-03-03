@@ -15,14 +15,14 @@ export function Ecosystem() {
           {/* Text Content */}
           <div>
             <Badge className="bg-blue-500/20 text-blue-300 border border-blue-500/30 hover:bg-blue-500/30 mb-6 px-4 py-1.5 text-sm">
-              THE NERVOUS SYSTEM
+              HOW IT ALL CONNECTS
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               One Brain. <br/>
               <span className="text-gradient-salmon">Connected To Everything.</span>
             </h2>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              Forget "copy-pasting" into ChatGPT. We build <strong className="text-white">Model Context Protocol (MCP)</strong> servers that connect your AI directly to your live business data.
+              Forget "copy-pasting" into ChatGPT. We build <strong className="text-white">secure connections</strong> that link your AI directly to your live business data.
             </p>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
               When your AI can read your Xero, search your Gmail, and update your Airtable securely, it stops being a chatbot and starts being a workforce.
@@ -44,7 +44,7 @@ export function Ecosystem() {
                   <Users className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white">Agent-to-Agent Workflows</h4>
+                  <h4 className="font-bold text-white">Automated Handoffs</h4>
                   <p className="text-sm text-gray-400">Your Research Agent passes data to your Finance Agent automatically.</p>
                 </div>
               </div>
