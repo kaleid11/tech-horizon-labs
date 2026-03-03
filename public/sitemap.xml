@@ -174,10 +174,18 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- AI Ethics -->
+  <url>
+    <loc>https://techhorizonlabs.com/ai-ethics</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Legal Pages -->
   <url>
     <loc>https://techhorizonlabs.com/privacy</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

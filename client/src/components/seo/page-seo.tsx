@@ -204,4 +204,9 @@ export const SEO_CONFIGS = {
     description: 'Take our free 2-minute AI readiness assessment. 10 questions, instant results with a personalised radar chart showing your strengths and gaps. Find your biggest bottleneck.',
     canonical: `${BASE_URL}/audit-tool`,
   },
+  aiEthics: {
+    title: 'AI Ethics & Transparency | Our Principles & Commitments',
+    description: 'How Tech Horizon Labs uses AI responsibly. Our five principles, data handling commitments, and clear boundaries — because walking the talk matters more than talking about it.',
+    canonical: `${BASE_URL}/ai-ethics`,
+  },
 };

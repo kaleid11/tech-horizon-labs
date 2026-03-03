@@ -4,6 +4,8 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { CookieConsentBanner } from "@/components/cookie-consent-banner";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
 
@@ -34,6 +36,7 @@ const HealthcareIndustry = lazy(() => import("@/pages/industries/healthcare"));
 const RetailIndustry = lazy(() => import("@/pages/industries/retail"));
 const ClaudeVsChatGPT2026 = lazy(() => import("@/pages/insights/claude-vs-chatgpt-2026"));
 const AuditTool = lazy(() => import("@/pages/audit-tool"));
+const AIEthics = lazy(() => import("@/pages/ai-ethics"));
 
 // Simple loading fallback
 function PageLoader() {
@@ -75,6 +78,7 @@ function Router() {
         <Route path="/industries/retail" component={RetailIndustry} />
         <Route path="/insights/claude-vs-chatgpt-2026" component={ClaudeVsChatGPT2026} />
         <Route path="/audit-tool" component={AuditTool} />
+        <Route path="/ai-ethics" component={AIEthics} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
@@ -86,7 +90,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <GoogleAnalytics />
         <Router />
+        <CookieConsentBanner />
       </TooltipProvider>
     </QueryClientProvider>
   );

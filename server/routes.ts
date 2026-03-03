@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSubmissionSchema, insertNewsletterSignupSchema, insertAuditSubmissionSchema } from "@shared/schema";
 import { sendContactNotification, sendNewsletterWelcome, sendAuditResults, sendAuditNotification } from "./email";
+import { pushToKlipy } from "./klipy";
 import path from "path";
 import fs from "fs";
 
@@ -121,7 +122,15 @@ export async function registerRoutes(
         company: validatedData.company || undefined,
         message: validatedData.message
       });
-      
+
+      // Fire-and-forget CRM sync
+      pushToKlipy({
+        name: validatedData.name,
+        email: validatedData.email,
+        company: validatedData.company || undefined,
+        source: "website-contact",
+      });
+
       res.json({ success: true, id: submission.id });
     } catch (error) {
       console.error("Contact submission error:", error);
@@ -161,6 +170,15 @@ export async function registerRoutes(
         tier: validatedData.suggestedTier,
       });
 
+      // Fire-and-forget CRM sync
+      pushToKlipy({
+        name: validatedData.name,
+        email: validatedData.email,
+        company: validatedData.business || undefined,
+        source: "website-audit",
+        metadata: { score: validatedData.score, tier: validatedData.suggestedTier },
+      });
+
       res.json({ success: true, id: submission.id });
     } catch (error) {
       console.error("Audit submission error:", error);
@@ -186,7 +204,14 @@ export async function registerRoutes(
       const signup = await storage.createNewsletterSignup(validatedData);
       
       await sendNewsletterWelcome(validatedData.email);
-      
+
+      // Fire-and-forget CRM sync
+      pushToKlipy({
+        name: validatedData.email.split("@")[0],
+        email: validatedData.email,
+        source: "website-newsletter",
+      });
+
       res.json({ success: true, id: signup.id });
     } catch (error) {
       console.error("Newsletter signup error:", error);
