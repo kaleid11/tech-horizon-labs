@@ -1,10 +1,13 @@
-import { 
-  type ContactSubmission, 
+import {
+  type ContactSubmission,
   type InsertContactSubmission,
   type NewsletterSignup,
   type InsertNewsletterSignup,
+  type AuditSubmission,
+  type InsertAuditSubmission,
   contactSubmissions,
-  newsletterSignups
+  newsletterSignups,
+  auditSubmissions,
 } from "@shared/schema";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
@@ -12,10 +15,12 @@ import { eq } from "drizzle-orm";
 export interface IStorage {
   createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission>;
   getAllContactSubmissions(): Promise<ContactSubmission[]>;
-  
+
   createNewsletterSignup(signup: InsertNewsletterSignup): Promise<NewsletterSignup>;
   getNewsletterSignupByEmail(email: string): Promise<NewsletterSignup | undefined>;
   getAllNewsletterSignups(): Promise<NewsletterSignup[]>;
+
+  createAuditSubmission(submission: InsertAuditSubmission): Promise<AuditSubmission>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -40,6 +45,11 @@ export class DatabaseStorage implements IStorage {
 
   async getAllNewsletterSignups(): Promise<NewsletterSignup[]> {
     return await db.select().from(newsletterSignups);
+  }
+
+  async createAuditSubmission(submission: InsertAuditSubmission): Promise<AuditSubmission> {
+    const [result] = await db.insert(auditSubmissions).values(submission).returning();
+    return result;
   }
 }
 

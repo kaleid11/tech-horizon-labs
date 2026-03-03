@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, timestamp, integer } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -33,3 +33,23 @@ export const insertNewsletterSignupSchema = createInsertSchema(newsletterSignups
 
 export type InsertNewsletterSignup = z.infer<typeof insertNewsletterSignupSchema>;
 export type NewsletterSignup = typeof newsletterSignups.$inferSelect;
+
+export const auditSubmissions = pgTable("audit_submissions", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  business: text("business"),
+  score: integer("score").notNull(),
+  answers: text("answers").notNull(),
+  results: text("results").notNull(),
+  suggestedTier: text("suggested_tier").notNull(),
+  submittedAt: timestamp("submitted_at").notNull().defaultNow(),
+});
+
+export const insertAuditSubmissionSchema = createInsertSchema(auditSubmissions).omit({
+  id: true,
+  submittedAt: true,
+});
+
+export type InsertAuditSubmission = z.infer<typeof insertAuditSubmissionSchema>;
+export type AuditSubmission = typeof auditSubmissions.$inferSelect;

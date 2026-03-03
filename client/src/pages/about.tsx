@@ -98,6 +98,18 @@ export default function About() {
                       <li><strong>Honest about what works.</strong> If AI isn't the right solution, I'll tell you.</li>
                     </ul>
 
+                    <h3 className="text-xl font-bold text-aubergine-900 mt-8">Origin Story</h3>
+
+                    <p>
+                      A construction company spent $45K on an AI vendor who delivered a chatbot nobody used. Great slides, working demos — but nobody checked whether the company's data was even in a format AI could read. That's when THL was born: not to sell tools, but to find the right problem first.
+                    </p>
+
+                    <h3 className="text-xl font-bold text-aubergine-900 mt-8">The Honesty Policy</h3>
+
+                    <p>
+                      We turn away roughly 30% of prospects. Not because they're bad businesses — because the timing isn't right, or the ROI doesn't justify it, or they'd be better served by our Academy. A client who gets real results refers three more. A client who got oversold refers zero.
+                    </p>
+
                     <h3 className="text-xl font-bold text-aubergine-900 mt-8">The Academy</h3>
                     
                     <p>

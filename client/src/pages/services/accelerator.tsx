@@ -50,7 +50,7 @@ export default function AcceleratorService() {
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
-              <strong>TL;DR:</strong> 4-week sprint to deploy your first production AI system. Private infrastructure, Australian compliance, working solution—not a PowerPoint deck.
+              <strong>One bottleneck. One fix. Four weeks.</strong> We identify the right problem, build the right solution — private infrastructure, Australian compliance, working system — not a PowerPoint deck.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">

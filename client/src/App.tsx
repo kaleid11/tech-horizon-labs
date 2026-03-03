@@ -27,6 +27,13 @@ const RealEstateAgencyCaseStudy = lazy(() => import("@/pages/portfolio/real-esta
 const ManufacturingCaseStudy = lazy(() => import("@/pages/portfolio/manufacturing"));
 const HealthcareClinicCaseStudy = lazy(() => import("@/pages/portfolio/healthcare-clinic"));
 const Research = lazy(() => import("@/pages/research"));
+const ConstructionIndustry = lazy(() => import("@/pages/industries/construction"));
+const AccountingIndustry = lazy(() => import("@/pages/industries/accounting"));
+const LegalIndustry = lazy(() => import("@/pages/industries/legal"));
+const HealthcareIndustry = lazy(() => import("@/pages/industries/healthcare"));
+const RetailIndustry = lazy(() => import("@/pages/industries/retail"));
+const ClaudeVsChatGPT2026 = lazy(() => import("@/pages/insights/claude-vs-chatgpt-2026"));
+const AuditTool = lazy(() => import("@/pages/audit-tool"));
 
 // Simple loading fallback
 function PageLoader() {
@@ -61,6 +68,13 @@ function Router() {
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
         <Route path="/research" component={Research} />
+        <Route path="/industries/construction" component={ConstructionIndustry} />
+        <Route path="/industries/accounting" component={AccountingIndustry} />
+        <Route path="/industries/legal" component={LegalIndustry} />
+        <Route path="/industries/healthcare" component={HealthcareIndustry} />
+        <Route path="/industries/retail" component={RetailIndustry} />
+        <Route path="/insights/claude-vs-chatgpt-2026" component={ClaudeVsChatGPT2026} />
+        <Route path="/audit-tool" component={AuditTool} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>

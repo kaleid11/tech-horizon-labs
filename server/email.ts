@@ -68,6 +68,81 @@ export async function sendContactNotification(data: {
   }
 }
 
+export async function sendAuditResults(data: {
+  email: string;
+  name: string;
+  score: number;
+  tier: string;
+  recommendations: string[];
+}) {
+  try {
+    const { client, fromEmail } = await getUncachableResendClient();
+
+    const recsHtml = data.recommendations
+      .map(r => `<li style="margin-bottom:8px;">${r}</li>`)
+      .join('');
+
+    await client.emails.send({
+      from: fromEmail,
+      to: data.email,
+      subject: `Your AI Readiness Score: ${data.score}/100 — Tech Horizon Labs`,
+      html: `
+        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
+          <h2 style="color:#381d2a;">Hi ${data.name},</h2>
+          <p>Here are your AI Readiness Self-Assessment results:</p>
+
+          <div style="background:#f9f8f4;border-radius:12px;padding:24px;text-align:center;margin:24px 0;">
+            <div style="font-size:48px;font-weight:bold;color:#e76f51;">${data.score}</div>
+            <div style="color:#6b7280;font-size:14px;">out of 100</div>
+          </div>
+
+          <p><strong>Recommended next step:</strong> ${data.tier}</p>
+
+          <h3 style="color:#381d2a;">Your Personalised Recommendations</h3>
+          <ul style="color:#4b5563;line-height:1.6;">${recsHtml}</ul>
+
+          <div style="background:#381d2a;border-radius:12px;padding:24px;text-align:center;margin:24px 0;">
+            <p style="color:white;margin-bottom:16px;">Ready to find your biggest bottleneck?</p>
+            <a href="https://cal.com/techhorizonlabs/discovery" style="background:#e76f51;color:#381d2a;padding:12px 32px;border-radius:999px;text-decoration:none;font-weight:bold;display:inline-block;">Book Free 15-Min Audit</a>
+          </div>
+
+          <p style="color:#9ca3af;font-size:12px;">Tech Horizon Labs · Sunshine Coast, QLD · techhorizonlabs.com</p>
+        </div>
+      `
+    });
+  } catch (error) {
+    console.error('Failed to send audit results email:', error);
+  }
+}
+
+export async function sendAuditNotification(data: {
+  name: string;
+  email: string;
+  business: string;
+  score: number;
+  tier: string;
+}) {
+  try {
+    const { client, fromEmail } = await getUncachableResendClient();
+
+    await client.emails.send({
+      from: fromEmail,
+      to: fromEmail,
+      subject: `New Audit Submission: ${data.name} (${data.score}/100 → ${data.tier})`,
+      html: `
+        <h2>New AI Readiness Audit Submission</h2>
+        <p><strong>Name:</strong> ${data.name}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        ${data.business ? `<p><strong>Business:</strong> ${data.business}</p>` : ''}
+        <p><strong>Score:</strong> ${data.score}/100</p>
+        <p><strong>Suggested Tier:</strong> ${data.tier}</p>
+      `
+    });
+  } catch (error) {
+    console.error('Failed to send audit notification:', error);
+  }
+}
+
 export async function sendNewsletterWelcome(email: string) {
   try {
     const { client, fromEmail } = await getUncachableResendClient();

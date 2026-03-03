@@ -141,16 +141,16 @@ export function CTA() {
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-aubergine-900 via-aubergine-900 to-salmon-900/20"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to Build Infrastructure That <span className="text-gradient-salmon">Actually Works?</span></h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-8">AI Won't Fix Everything. But the Right Fix <span className="text-gradient-salmon">Changes Everything.</span></h2>
         <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-          Book a free 15-minute discovery call. No sales pressure. Just an honest assessment of whether you're ready for automation.
+          15-minute call. We'll find the bottleneck that's costing you the most — or tell you honestly there isn't one worth fixing right now. No pitch, no pressure.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
           <Button data-testid="button-book-discovery" size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-10 h-16 rounded-full w-full sm:w-auto shadow-xl shadow-salmon-500/20 transition-all hover:scale-105 group" asChild>
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
               <Calendar className="mr-2 h-5 w-5" />
-              Book Discovery Call
+              Find My Bottleneck
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </Button>
@@ -162,7 +162,7 @@ export function CTA() {
         </div>
         
         <div className="inline-block bg-white/5 rounded-full px-6 py-2 border border-white/10 text-sm text-gray-400">
-          Discovery call includes: Current state assessment, honest recommendations, and next steps.
+          Includes: bottleneck assessment, honest recommendation, and clear next steps.
         </div>
       </div>
     </section>

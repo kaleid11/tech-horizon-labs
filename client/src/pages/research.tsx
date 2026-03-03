@@ -262,6 +262,10 @@ function HeroSection({ onSelectCompany }: { onSelectCompany: (id: string) => voi
           Deep analysis of governance, funding, and policy across the world's most important AI companies.
           Free and open research from Tech Horizon Labs.
         </p>
+        <a href="/insights/claude-vs-chatgpt-2026" className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-salmon-50 border border-salmon-200 rounded-full text-salmon-700 text-sm font-medium hover:bg-salmon-100 transition-colors">
+          <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-salmon-500 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-salmon-500" /></span>
+          New: Claude vs ChatGPT 2026 — Honest Comparison →
+        </a>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
         {companyOrder.map(id => {

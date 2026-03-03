@@ -6,6 +6,15 @@ import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 
 const articles = [
   {
+    id: "claude-vs-chatgpt-2026",
+    title: "Claude vs ChatGPT 2026: Honest Comparison from a Consultant Who Uses Both",
+    description: "Most comparison articles are written by people who've never deployed either in a real business. We have. Here's what actually matters.",
+    category: "Comparison",
+    readTime: "8 min read",
+    keywords: ["claude vs chatgpt", "AI comparison 2026", "business AI"],
+    link: "/insights/claude-vs-chatgpt-2026"
+  },
+  {
     id: "ai-implementation-roadmap",
     title: "AI Implementation Roadmap for Australian SMEs",
     description: "A practical 4-step framework for implementing AI in your small business—without the enterprise complexity or Silicon Valley assumptions.",
@@ -114,9 +123,15 @@ export default function Resources() {
                   itemType="https://schema.org/Article"
                 >
                   <div className="absolute top-4 right-4">
-                    <span className="text-xs bg-aubergine-100 text-aubergine-700 px-2 py-1 rounded-full font-medium">
-                      Coming Soon
-                    </span>
+                    {'link' in article && article.link ? (
+                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">
+                        Published
+                      </span>
+                    ) : (
+                      <span className="text-xs bg-aubergine-100 text-aubergine-700 px-2 py-1 rounded-full font-medium">
+                        Coming Soon
+                      </span>
+                    )}
                   </div>
                   <div className="flex items-center gap-2 text-sm text-salmon-600 mb-3">
                     <FileText className="h-4 w-4" />
@@ -130,12 +145,19 @@ export default function Resources() {
                   <p className="text-gray-600 text-sm mb-4" itemProp="description">
                     {article.description}
                   </p>
-                  <NewsletterDialog>
-                    <button className="flex items-center text-salmon-600 text-sm font-medium group hover:text-salmon-700 transition-colors">
-                      <span>Get Notified When Published</span>
+                  {'link' in article && article.link ? (
+                    <a href={article.link} className="flex items-center text-salmon-600 text-sm font-medium group hover:text-salmon-700 transition-colors">
+                      <span>Read Article</span>
                       <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                  </NewsletterDialog>
+                    </a>
+                  ) : (
+                    <NewsletterDialog>
+                      <button className="flex items-center text-salmon-600 text-sm font-medium group hover:text-salmon-700 transition-colors">
+                        <span>Get Notified When Published</span>
+                        <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </button>
+                    </NewsletterDialog>
+                  )}
                 </article>
               ))}
             </div>

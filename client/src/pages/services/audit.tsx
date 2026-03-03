@@ -49,7 +49,7 @@ export default function AuditService() {
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
-              <strong>TL;DR:</strong> Free 15-minute call. We identify your highest-impact automation opportunity. No sales pitch. Just honest advice about whether AI makes sense for your situation.
+              <strong>TL;DR:</strong> Free 15-minute call. We find the one bottleneck costing you the most — and tell you honestly whether AI can fix it.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">

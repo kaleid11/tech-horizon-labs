@@ -31,28 +31,28 @@ export function Hero() {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-bold tracking-tight leading-[1.05]">
-              We Cut Through the AI Hype.<br/>
-              <span className="text-gradient-salmon">You Get What Actually Works.</span>
+              AI Won't Save Your Business.<br/>
+              <span className="text-gradient-salmon">Fixing the Right Problem Will.</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
-              A construction director cut invoice processing from <strong className="text-white">2 days to 1 hour</strong>. We evaluate 200+ AI tools monthly so you don't have to — then build only what makes sense for <em>your</em> business, on your private infrastructure, compliant by design.
+              Every AI consultant wants to sell you tools. We'd rather find the one bottleneck that's costing you growth, weekends, or both — then fix it with whatever actually works.
             </p>
 
             <p className="text-lg text-salmon-400/90 max-w-2xl leading-relaxed font-medium" data-testid="text-hero-mission">
-              Every week we see SMEs losing revenue to manual processes AI can handle in minutes. We're on a mission to unlock that hidden potential — starting with Queensland, aiming to help lift Australia's GDP by 5%.
+              We'll tell you what you actually need — even if it's nothing. That's not a tagline. We turn away 30% of prospects because the timing isn't right. The other 70% trust us because of it.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-8 h-14 rounded-full shadow-lg shadow-salmon-500/25 group transition-all hover:scale-105" asChild>
                 <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-book">
-                  Book a Readiness Assessment
+                  Find My Bottleneck
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-8 h-14 rounded-full backdrop-blur-sm" asChild>
-                <a href="#approach" data-testid="link-hero-approach">
-                  See How We Work
+                <a href="/portfolio" data-testid="link-hero-approach">
+                  See Real Results
                 </a>
               </Button>
             </div>

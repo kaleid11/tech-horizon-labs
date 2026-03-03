@@ -179,7 +179,7 @@ export function Footer() {
   return (
     <footer className="bg-aubergine-900 border-t border-gray-800 py-16 text-gray-400" itemScope itemType="https://schema.org/LocalBusiness">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-12">
           <div className="space-y-4">
             <div className="text-xl font-bold text-white flex items-center gap-2">
               <picture>
@@ -189,7 +189,7 @@ export function Footer() {
               <span itemProp="name">Tech Horizon Labs</span>
             </div>
             <p className="text-sm leading-relaxed" itemProp="description">
-              Queensland's anti-hype AI consulting firm. Practical, production-ready AI systems you can deploy now.
+              AI won't save your business. Fixing the right problem will. Queensland AI consulting that finds your bottleneck and fixes it — honestly.
             </p>
             <div className="text-xs space-y-1" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
               <p><span itemProp="addressLocality">Sunshine Coast</span>, <span itemProp="addressRegion">Queensland</span></p>
@@ -214,6 +214,17 @@ export function Footer() {
               <li><a href="/services/accelerator" className="hover:text-salmon-500 transition-colors focus-visible:text-salmon-500 focus-visible:underline">Foundation Sprint</a></li>
               <li><a href="/services/partner" className="hover:text-salmon-500 transition-colors focus-visible:text-salmon-500 focus-visible:underline">Ongoing Evolution</a></li>
               <li><a href="/portfolio" className="hover:text-salmon-500 transition-colors focus-visible:text-salmon-500 focus-visible:underline">Case Studies</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-4 text-white">Industries</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="/industries/construction" className="hover:text-salmon-500 transition-colors">Construction</a></li>
+              <li><a href="/industries/accounting" className="hover:text-salmon-500 transition-colors">Accounting</a></li>
+              <li><a href="/industries/legal" className="hover:text-salmon-500 transition-colors">Legal</a></li>
+              <li><a href="/industries/healthcare" className="hover:text-salmon-500 transition-colors">Healthcare</a></li>
+              <li><a href="/industries/retail" className="hover:text-salmon-500 transition-colors">Retail</a></li>
             </ul>
           </div>
 

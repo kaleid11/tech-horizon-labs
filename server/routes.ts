@@ -1,8 +1,8 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSubmissionSchema, insertNewsletterSignupSchema } from "@shared/schema";
-import { sendContactNotification, sendNewsletterWelcome } from "./email";
+import { insertContactSubmissionSchema, insertNewsletterSignupSchema, insertAuditSubmissionSchema } from "@shared/schema";
+import { sendContactNotification, sendNewsletterWelcome, sendAuditResults, sendAuditNotification } from "./email";
 import path from "path";
 import fs from "fs";
 
@@ -71,6 +71,10 @@ export async function registerRoutes(
   app.get("/ai-workshop-business-sunshine-coast/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/ai-workshop-business-sunshine-coast", (_req, res) => res.redirect(301, "/academy"));
 
+  // Blog to insights redirects
+  app.get("/blog/claude-vs-chatgpt-2026", (_req, res) => res.redirect(301, "/insights/claude-vs-chatgpt-2026"));
+  app.get("/blog/claude-vs-chatgpt-2026/", (_req, res) => res.redirect(301, "/insights/claude-vs-chatgpt-2026"));
+
   // Catch-all redirects for old blog/category/tag URLs (WordPress patterns)
   app.get("/blog/:slug", (_req, res) => res.redirect(301, "/resources"));
   app.get("/blog/:slug/", (_req, res) => res.redirect(301, "/resources"));
@@ -124,6 +128,45 @@ export async function registerRoutes(
       res.status(400).json({ 
         success: false, 
         error: error instanceof Error ? error.message : "Invalid submission" 
+      });
+    }
+  });
+
+  app.post("/api/audit-submission", async (req, res) => {
+    try {
+      const validatedData = insertAuditSubmissionSchema.parse(req.body);
+      const submission = await storage.createAuditSubmission(validatedData);
+
+      // Parse results for email
+      let recommendations: string[] = [];
+      try {
+        const parsed = JSON.parse(validatedData.results);
+        recommendations = parsed.recommendations || [];
+      } catch { /* ignore parse errors */ }
+
+      // Send emails in background
+      sendAuditResults({
+        email: validatedData.email,
+        name: validatedData.name,
+        score: validatedData.score,
+        tier: validatedData.suggestedTier,
+        recommendations,
+      });
+
+      sendAuditNotification({
+        name: validatedData.name,
+        email: validatedData.email,
+        business: validatedData.business || '',
+        score: validatedData.score,
+        tier: validatedData.suggestedTier,
+      });
+
+      res.json({ success: true, id: submission.id });
+    } catch (error) {
+      console.error("Audit submission error:", error);
+      res.status(400).json({
+        success: false,
+        error: error instanceof Error ? error.message : "Invalid submission"
       });
     }
   });

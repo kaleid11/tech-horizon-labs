@@ -43,7 +43,7 @@ export default function PartnerService() {
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
-              <strong>TL;DR:</strong> Ongoing AI partnership. Quarterly roadmap reviews, priority support, continuous optimization. We grow your AI capabilities as your business evolves.
+              <strong>Your fractional AI department.</strong> We find the next bottleneck, fix it, train your team, and keep your business evolving. Quarterly roadmaps, priority support, continuous optimization.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
