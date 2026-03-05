@@ -33,12 +33,14 @@ export const googleDeepMindData: CompanyData = {
     { date: "Oct 2024", title: "Nobel Prize for AlphaFold", sev: "info", desc: "Demis Hassabis and John Jumper awarded Nobel Prize in Chemistry for AlphaFold. First Nobel for an AI system's contribution." },
   ],
   fundingRounds: [
-    { date: "2014", label: "Acquisition", total: 500, val: 500, lead: "Google (Alphabet)", inv: [{ n: "Google", a: 500, note: "Acquisition price ~$500M" }], events: ["DeepMind acquired by Google"] },
-    { date: "2023-2026", label: "Internal R&D", total: 40000, val: null, lead: "Alphabet Internal", inv: [{ n: "Google", a: 40000, note: "Estimated annual AI R&D spend" }], events: ["$40B+ annual AI investment", "Custom TPU chips", "2,000+ researchers"] },
+    { date: "Jan 2014", label: "Acquisition", total: 500, val: 500, lead: "Google (Alphabet)", inv: [{ n: "Google", a: 500, note: "Acquisition price ~$500M" }], events: ["DeepMind acquired by Google"] },
+    { date: "2023", label: "AI CapEx", total: 32000, val: 200000, lead: "Alphabet Internal", inv: [{ n: "Alphabet", a: 32000, note: "AI infrastructure capex" }], events: ["Google Cloud AI revenue $33B", "Custom TPU v5 chips", "$300M invested in Anthropic"] },
+    { date: "2024", label: "AI CapEx", total: 50000, val: 350000, lead: "Alphabet Internal", inv: [{ n: "Alphabet", a: 50000, note: "AI infrastructure capex" }], events: ["Google Cloud AI revenue $43B", "Gemini 2.0 launched", "Nobel Prize for AlphaFold"] },
+    { date: "2025", label: "AI CapEx", total: 75000, val: 500000, lead: "Alphabet Internal", inv: [{ n: "Alphabet", a: 75000, note: "Committed AI infrastructure" }], events: ["$75B AI infrastructure commitment", "Gemini 3.0", "2,000+ DeepMind researchers"] },
   ],
   financials: [
     { label: "ALPHABET REVENUE", value: "$350B", color: "#4285F4" },
-    { label: "AI R&D SPEND", value: "~$40B/yr", color: C.warn },
+    { label: "AI CAPEX (2025)", value: "$75B", color: C.warn },
     { label: "CLOUD AI REV", value: "$43B", color: C.green },
     { label: "MARKET CAP", value: "$2.3T", color: "#34A853" },
   ],
