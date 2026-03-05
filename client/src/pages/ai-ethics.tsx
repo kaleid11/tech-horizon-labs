@@ -255,6 +255,20 @@ export default function AIEthics() {
           </div>
         </section>
 
+        {/* Explore More */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+            <div className="mt-12 pt-8 border-t border-gray-200">
+              <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Explore More</h3>
+              <div className="flex flex-wrap gap-4">
+                <a href="/about" className="text-salmon-600 hover:text-salmon-700 underline">About Us</a>
+                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free Assessment</a>
+                <a href="/privacy" className="text-salmon-600 hover:text-salmon-700 underline">Privacy Policy</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="py-16 bg-aubergine-900 text-white">
           <div className="container mx-auto px-4 md:px-6 text-center max-w-2xl">

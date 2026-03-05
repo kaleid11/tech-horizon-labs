@@ -63,6 +63,16 @@ export default function HealthcareIndustry() {
           answer: "Often yes — small practices feel admin overhead the most because every hour counts. The free 15-minute audit will identify whether the ROI justifies it for your specific situation. If it doesn't, we'll tell you.",
         },
       ]}
-    />
+    >
+      <div className="mt-12 pt-8 border-t border-gray-200">
+        <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Related Services & Industries</h3>
+        <div className="flex flex-wrap gap-4">
+          <a href="/portfolio/healthcare-clinic" className="text-salmon-600 hover:text-salmon-700 underline">Case Study</a>
+          <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
+          <a href="/industries/accounting" className="text-salmon-600 hover:text-salmon-700 underline">AI for Accounting</a>
+          <a href="/locations/queensland" className="text-salmon-600 hover:text-salmon-700 underline">Queensland Coverage</a>
+        </div>
+      </div>
+    </IndustryLandingTemplate>
   );
 }

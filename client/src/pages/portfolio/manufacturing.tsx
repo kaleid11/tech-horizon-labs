@@ -49,7 +49,7 @@ export default function ManufacturingCaseStudy() {
     <div className="min-h-screen font-sans bg-background">
       <PageSEO
         title="AI for Manufacturing Queensland | Predictive Maintenance Case Study"
-        description="Brisbane manufacturer reduced machine downtime by 30% and saves $50K+ annually with AI-powered predictive maintenance. Real Queensland manufacturing AI case study."
+        description="Brisbane manufacturer reduced machine downtime by 30% and saves $50K+ annually with AI-powered predictive maintenance. Queensland case study."
         canonical="https://techhorizonlabs.com/portfolio/manufacturing"
       />
       <script
@@ -188,6 +188,14 @@ export default function ManufacturingCaseStudy() {
                     — Operations Director, Brisbane Manufacturing
                   </footer>
                 </blockquote>
+
+                <div className="mt-12 pt-8 border-t border-gray-200">
+                  <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Related</h3>
+                  <div className="flex flex-wrap gap-4">
+                    <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
+                    <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">All Case Studies</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -42,6 +42,7 @@ interface IndustryLandingProps {
   caseStudyLink?: string;
   caseStudyLabel?: string;
   faqs: IndustryFAQ[];
+  children?: React.ReactNode;
 }
 
 export default function IndustryLandingTemplate({
@@ -59,6 +60,7 @@ export default function IndustryLandingTemplate({
   caseStudyLink,
   caseStudyLabel,
   faqs,
+  children,
 }: IndustryLandingProps) {
   const faqSchema = {
     "@context": "https://schema.org",
@@ -228,6 +230,14 @@ export default function IndustryLandingTemplate({
             </div>
           </div>
         </section>
+
+        {children && (
+          <section className="py-12 bg-white">
+            <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+              {children}
+            </div>
+          </section>
+        )}
       </main>
 
       <Footer />

@@ -61,6 +61,16 @@ export default function LegalIndustry() {
           answer: "Any practice area with document-heavy workflows benefits. We've seen the biggest impact in property/conveyancing, family law, commercial, and estate planning — but the bottleneck audit will tell you exactly where your firm's biggest opportunity is.",
         },
       ]}
-    />
+    >
+      <div className="mt-12 pt-8 border-t border-gray-200">
+        <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Related Services & Industries</h3>
+        <div className="flex flex-wrap gap-4">
+          <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
+          <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
+          <a href="/industries/accounting" className="text-salmon-600 hover:text-salmon-700 underline">AI for Accounting</a>
+          <a href="/locations/queensland" className="text-salmon-600 hover:text-salmon-700 underline">Queensland Coverage</a>
+        </div>
+      </div>
+    </IndustryLandingTemplate>
   );
 }

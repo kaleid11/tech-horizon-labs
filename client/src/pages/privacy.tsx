@@ -6,7 +6,7 @@ export default function Privacy() {
     <div className="min-h-screen font-sans bg-background">
       <PageSEO
         title="Privacy Policy"
-        description="Tech Horizon Labs privacy policy. How we collect, use, and protect your personal information under the Australian Privacy Act 1988. Named third-party services, cookie details, and your rights."
+        description="Tech Horizon Labs privacy policy. How we collect, use, and protect your personal information under the Australian Privacy Act 1988."
         canonical="https://techhorizonlabs.com/privacy"
       />
       <SkipLink />

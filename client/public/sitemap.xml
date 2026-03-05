@@ -7,7 +7,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://techhorizonlabs.com/</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,45 +15,77 @@
   <!-- Service Pages -->
   <url>
     <loc>https://techhorizonlabs.com/services/audit</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://techhorizonlabs.com/services/accelerator</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://techhorizonlabs.com/services/partner</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Location Pages - High Priority for Local SEO -->
+  <!-- Location Pages -->
   <url>
     <loc>https://techhorizonlabs.com/locations/queensland</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://techhorizonlabs.com/locations/sunshine-coast</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://techhorizonlabs.com/locations/brisbane</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://techhorizonlabs.com/locations/gold-coast</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Industry Pages -->
+  <url>
+    <loc>https://techhorizonlabs.com/industries/construction</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/industries/accounting</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/industries/legal</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/industries/healthcare</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/industries/retail</loc>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -61,15 +93,61 @@
   <!-- Portfolio / Case Studies -->
   <url>
     <loc>https://techhorizonlabs.com/portfolio</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://techhorizonlabs.com/portfolio/accounting-firm</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/portfolio/construction-builder</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/portfolio/real-estate-agency</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/portfolio/manufacturing</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/portfolio/healthcare-clinic</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
-  <!-- Academy Preview -->
+  <!-- Insights / Articles -->
+  <url>
+    <loc>https://techhorizonlabs.com/insights/claude-vs-chatgpt-2026</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Tools -->
+  <url>
+    <loc>https://techhorizonlabs.com/audit-tool</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Academy -->
   <url>
     <loc>https://techhorizonlabs.com/academy</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -77,7 +155,7 @@
   <!-- Research Hub -->
   <url>
     <loc>https://techhorizonlabs.com/research</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -85,27 +163,35 @@
   <!-- About & Resources -->
   <url>
     <loc>https://techhorizonlabs.com/about</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://techhorizonlabs.com/resources</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- AI Ethics -->
+  <url>
+    <loc>https://techhorizonlabs.com/ai-ethics</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <!-- Legal Pages -->
   <url>
     <loc>https://techhorizonlabs.com/privacy</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://techhorizonlabs.com/terms</loc>
-    <lastmod>2026-03-02</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

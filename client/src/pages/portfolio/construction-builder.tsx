@@ -49,7 +49,7 @@ export default function ConstructionBuilderCaseStudy() {
     <div className="min-h-screen font-sans bg-background">
       <PageSEO
         title="AI for Construction | Builder Case Study"
-        description="Construction director went from 2 days processing invoices and timesheets to 1 hour. Setup took 2 hours. See how AI transforms construction businesses on the Sunshine Coast."
+        description="Construction director went from 2 days processing invoices and timesheets to 1 hour. See how AI transforms construction businesses."
         canonical="https://techhorizonlabs.com/portfolio/construction-builder"
       />
       <script
@@ -197,6 +197,15 @@ export default function ConstructionBuilderCaseStudy() {
                     — Owner, Sunshine Coast Building Company
                   </footer>
                 </blockquote>
+
+                <div className="mt-12 pt-8 border-t border-gray-200">
+                  <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Related</h3>
+                  <div className="flex flex-wrap gap-4">
+                    <a href="/industries/construction" className="text-salmon-600 hover:text-salmon-700 underline">AI for Construction</a>
+                    <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
+                    <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">All Case Studies</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

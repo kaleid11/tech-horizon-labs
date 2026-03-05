@@ -194,7 +194,18 @@ export default function AuditService() {
 
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
-            <h2 className="text-2xl font-bold text-aubergine-900 mb-8 text-center">
+            <div className="max-w-3xl mx-auto">
+              <div className="mt-12 pt-8 border-t border-gray-200">
+                <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Explore More</h3>
+                <div className="flex flex-wrap gap-4">
+                  <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
+                  <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
+                  <a href="/audit-tool" className="text-salmon-600 hover:text-salmon-700 underline">Self-Assessment Tool</a>
+                </div>
+              </div>
+            </div>
+
+            <h2 className="text-2xl font-bold text-aubergine-900 mb-8 text-center mt-16">
               Frequently Asked Questions
             </h2>
             

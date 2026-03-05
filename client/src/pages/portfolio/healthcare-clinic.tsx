@@ -1,12 +1,14 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
+import { PageSEO } from '@/components/seo/page-seo';
 import { Heart, Clock, Shield, Calendar, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
 
 export default function HealthcareClinicCaseStudy() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <PageSEO title="Healthcare AI — Patient Privacy Case Study" description="Allied health clinic guarantees patient privacy with private AI systems. Reduced admin burden while maintaining full health data compliance." canonical="https://techhorizonlabs.com/portfolio/healthcare-clinic" />
       <SkipLink />
       <Navbar />
 
@@ -139,6 +141,15 @@ export default function HealthcareClinicCaseStudy() {
                     — Practice Owner, Sunshine Coast Allied Health Clinic
                   </footer>
                 </blockquote>
+
+                <div className="mt-12 pt-8 border-t border-gray-200">
+                  <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Related</h3>
+                  <div className="flex flex-wrap gap-4">
+                    <a href="/industries/healthcare" className="text-salmon-600 hover:text-salmon-700 underline">AI for Healthcare</a>
+                    <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
+                    <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">All Case Studies</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

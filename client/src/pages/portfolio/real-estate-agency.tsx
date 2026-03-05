@@ -1,12 +1,14 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
+import { PageSEO } from '@/components/seo/page-seo';
 import { Home, Clock, Shield, Calendar, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
 
 export default function RealEstateAgencyCaseStudy() {
   return (
     <div className="min-h-screen font-sans bg-background">
+      <PageSEO title="Real Estate AI — Tenant Onboarding" description="Real estate agency automates tenant onboarding workflow with private AI. Faster processing, fewer errors, and better tenant experience." canonical="https://techhorizonlabs.com/portfolio/real-estate-agency" />
       <SkipLink />
       <Navbar />
 
@@ -139,6 +141,15 @@ export default function RealEstateAgencyCaseStudy() {
                     — Operations Manager, Noosa Real Estate Agency
                   </footer>
                 </blockquote>
+
+                <div className="mt-12 pt-8 border-t border-gray-200">
+                  <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Related</h3>
+                  <div className="flex flex-wrap gap-4">
+                    <a href="/industries/retail" className="text-salmon-600 hover:text-salmon-700 underline">AI for Retail &amp; Property</a>
+                    <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
+                    <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">All Case Studies</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

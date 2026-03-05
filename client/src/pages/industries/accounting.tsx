@@ -63,6 +63,16 @@ export default function AccountingIndustry() {
           answer: "The bottleneck audit takes 15 minutes and gives you immediate clarity. If we implement, the Accelerator is a 4-week sprint — most firms see measurable time savings within the first month.",
         },
       ]}
-    />
+    >
+      <div className="mt-12 pt-8 border-t border-gray-200">
+        <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Related Services & Industries</h3>
+        <div className="flex flex-wrap gap-4">
+          <a href="/portfolio/accounting-firm" className="text-salmon-600 hover:text-salmon-700 underline">Case Study</a>
+          <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
+          <a href="/industries/construction" className="text-salmon-600 hover:text-salmon-700 underline">AI for Construction</a>
+          <a href="/locations/queensland" className="text-salmon-600 hover:text-salmon-700 underline">Queensland Coverage</a>
+        </div>
+      </div>
+    </IndustryLandingTemplate>
   );
 }
