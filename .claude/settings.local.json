@@ -25,7 +25,8 @@
       "Bash(for f in ad7ff798c96fb3885 ac7d7fd0038b6fb7f a470f8fac6638877a afc606e64ffd75c37)",
       "Read(//tmp/claude-1000/-home-runner-workspace/tasks/**)",
       "Bash(done)",
-      "Bash(for f in ab0b6d7305ac77358 af535ac51df4e24eb a4b4420235885fabf)"
+      "Bash(for f in ab0b6d7305ac77358 af535ac51df4e24eb a4b4420235885fabf)",
+      "Bash(git status:*)"
     ]
   }
 }
