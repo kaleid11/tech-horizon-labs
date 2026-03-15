@@ -36,14 +36,10 @@ export function Hero() {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
-              We help Australian businesses set up Claude and ChatGPT properly — not just the tools, but the workflows, knowledge bases, and compliance around them. Learn fast through our Academy, or let us map everything out with precision consulting.
+              We set up Claude and ChatGPT for Australian businesses — the workflows, compliance, and training around them.
             </p>
 
-            <p className="text-lg text-salmon-400/90 max-w-2xl leading-relaxed font-medium" data-testid="text-hero-mission">
-              Two paths: learn it yourself at the Academy, or let us build it for you. Either way, your team gets AI that actually works.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Button size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-8 h-14 rounded-full shadow-lg shadow-salmon-500/25 group transition-all hover:scale-105" asChild>
                 <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-book">
                   Book Free Discovery Call
@@ -51,28 +47,44 @@ export function Hero() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-8 h-14 rounded-full backdrop-blur-sm" asChild>
-                <a href="/academy" data-testid="link-hero-approach">
-                  Start Learning at the Academy
+                <a href="/audit-tool" data-testid="link-hero-approach">
+                  Take the Free AI Quiz
                 </a>
               </Button>
             </div>
 
-            <div className="pt-8 flex flex-wrap gap-x-6 gap-y-4 text-sm text-gray-400 items-center border-t border-white/10">
-              <div className="flex items-center gap-2 bg-blue-500/20 px-4 py-2 rounded-full border border-blue-500/30" data-testid="badge-gov-listed">
-                <ShieldCheck className="w-5 h-5 text-blue-400" />
-                <span className="text-white font-medium">National AI Directory Listed</span>
+            {/* Stats Strip */}
+            <div className="pt-6 grid grid-cols-3 gap-4">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-4 text-center hover:border-salmon-500/30 transition-colors">
+                <div className="text-2xl md:text-3xl font-bold text-salmon-500">40%</div>
+                <div className="text-xs text-gray-400 mt-1">Admin Reduction</div>
               </div>
-              <div className="flex items-center gap-3 bg-salmon-500/10 px-4 py-2 rounded-full border border-salmon-500/20" data-testid="badge-tools-tested">
-                <span className="text-xl font-bold text-salmon-500">200+</span>
-                <span className="text-white/90">AI Tools Evaluated Monthly</span>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-4 text-center hover:border-salmon-500/30 transition-colors">
+                <div className="text-2xl md:text-3xl font-bold text-salmon-500">60%</div>
+                <div className="text-xs text-gray-400 mt-1">Faster Quotes</div>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-4 text-center hover:border-salmon-500/30 transition-colors">
+                <div className="text-2xl md:text-3xl font-bold text-salmon-500">4 Weeks</div>
+                <div className="text-xs text-gray-400 mt-1">To Deploy</div>
+              </div>
+            </div>
+
+            <div className="pt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-400 items-center border-t border-white/10">
+              <div className="flex items-center gap-2 bg-blue-500/20 px-3 py-1.5 rounded-full border border-blue-500/30" data-testid="badge-gov-listed">
+                <ShieldCheck className="w-4 h-4 text-blue-400" />
+                <span className="text-white font-medium text-xs">National AI Directory</span>
+              </div>
+              <div className="flex items-center gap-2 bg-salmon-500/10 px-3 py-1.5 rounded-full border border-salmon-500/20" data-testid="badge-tools-tested">
+                <span className="font-bold text-salmon-500">200+</span>
+                <span className="text-white/90 text-xs">Tools Tested</span>
               </div>
               <div className="flex items-center gap-2" data-testid="badge-privacy-act">
-                <ShieldCheck className="w-5 h-5 text-green-500" />
-                <span>Privacy Act 1988 Compliant</span>
+                <ShieldCheck className="w-4 h-4 text-green-500" />
+                <span className="text-xs">Privacy Act Compliant</span>
               </div>
               <div className="flex items-center gap-2" data-testid="badge-location">
-                <Zap className="w-5 h-5 text-salmon-500" />
-                <span>Queensland-Based, Australia-Wide</span>
+                <Zap className="w-4 h-4 text-salmon-500" />
+                <span className="text-xs">Queensland & Australia-Wide</span>
               </div>
             </div>
           </motion.div>
