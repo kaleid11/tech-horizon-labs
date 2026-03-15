@@ -201,6 +201,7 @@ export default function ManufacturingCaseStudy() {
                   <div className="flex flex-wrap gap-4">
                     <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
                     <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">All Case Studies</a>
+                    <a href="/academy" className="text-salmon-600 hover:text-salmon-700 underline">AI Academy</a>
                   </div>
                 </div>
               </div>

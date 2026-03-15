@@ -61,19 +61,19 @@ export function calculateResults(answers: Record<string, number>): AuditResults 
       "You're early in the AI journey — and that's fine. The best next step is building foundational knowledge before investing in implementation.";
   } else if (percentage <= 50) {
     tier = "audit";
-    tierLabel = "Free Bottleneck Audit";
+    tierLabel = "Free AI Assessment";
     tierDescription =
-      "There's clear potential, but we need to dig deeper to find the right opportunity. A free 15-minute audit will identify your biggest bottleneck.";
+      "There's clear potential, but we need to dig deeper to find the right opportunity. A free 15-minute discovery call will identify your highest-impact AI use case.";
   } else if (percentage <= 75) {
     tier = "accelerator";
     tierLabel = "Accelerator";
     tierDescription =
-      "Your business is ready to implement. One focused bottleneck, one fix, four weeks — the Accelerator is designed for businesses at your stage.";
+      "Your business is ready to implement. One problem, one solution, four weeks — the Accelerator is designed for businesses at your stage.";
   } else {
     tier = "partner";
     tierLabel = "Transformation Partner";
     tierDescription =
-      "You're ready to scale AI across your business. A fractional AI department that continuously finds and fixes the next bottleneck.";
+      "You're ready to scale AI across your business. A fractional AI department that continuously identifies and implements the next opportunity.";
   }
 
   // Generate recommendations
@@ -133,15 +133,15 @@ function generateRecommendations(
       break;
     case "audit":
       recs.push(
-        "Book a free 15-minute bottleneck audit to identify the one task that would give you the biggest return from automation."
+        "Book a free 15-minute discovery call to identify the one task that would give you the biggest return from AI automation."
       );
       recs.push(
-        "Meanwhile, start documenting your repetitive processes — timing them will reveal surprising bottlenecks."
+        "Meanwhile, start documenting your repetitive processes — timing them will reveal surprising opportunities."
       );
       break;
     case "accelerator":
       recs.push(
-        "Your business is prime for a focused 4-week Accelerator sprint. One bottleneck, one fix, measurable results."
+        "Your business is prime for a focused 4-week Accelerator sprint. One problem, one solution, measurable results."
       );
       recs.push(
         "Consider which process, if automated, would free up the most valuable time in your business."
@@ -149,7 +149,7 @@ function generateRecommendations(
       break;
     case "partner":
       recs.push(
-        "You're ready for ongoing AI partnership. A fractional AI department can continuously identify and solve the next bottleneck."
+        "You're ready for ongoing AI partnership. A fractional AI department can continuously identify and implement the next AI opportunity."
       );
       recs.push(
         "Think about a 12-month AI roadmap — which processes should be automated first, second, and third?"

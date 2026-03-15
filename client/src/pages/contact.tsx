@@ -79,7 +79,7 @@ export default function Contact() {
     {
       question: "What happens on the discovery call?",
       answer:
-        "We spend 15 minutes understanding your business workflows, identify your most expensive bottleneck, and assess whether AI can help. No sales pitch. If AI isn't the right solution, we'll tell you.",
+        "We spend 15 minutes understanding your business workflows, identify your highest-impact AI opportunity, and assess whether it's worth pursuing. No sales pitch. If AI isn't the right solution, we'll tell you.",
     },
     {
       question: "How fast do you respond?",

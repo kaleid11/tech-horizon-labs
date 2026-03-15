@@ -152,9 +152,9 @@ export default function RealEstateAgencyCaseStudy() {
                 <div className="mt-12 pt-8 border-t border-gray-200">
                   <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Related</h3>
                   <div className="flex flex-wrap gap-4">
-                    <a href="/industries/retail" className="text-salmon-600 hover:text-salmon-700 underline">AI for Retail &amp; Property</a>
                     <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
                     <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">All Case Studies</a>
+                    <a href="/academy" className="text-salmon-600 hover:text-salmon-700 underline">AI Academy</a>
                   </div>
                 </div>
               </div>
