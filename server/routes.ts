@@ -108,8 +108,7 @@ export async function registerRoutes(
   app.get("/home/", (_req, res) => res.redirect(301, "/"));
   app.get("/index.html", (_req, res) => res.redirect(301, "/"));
   app.get("/index.php", (_req, res) => res.redirect(301, "/"));
-  app.get("/contact", (_req, res) => res.redirect(301, "/"));
-  app.get("/contact/", (_req, res) => res.redirect(301, "/"));
+  // /contact is now a real page — removed legacy redirect
 
   app.post("/api/contact", async (req, res) => {
     try {

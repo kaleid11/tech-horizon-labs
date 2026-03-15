@@ -44,7 +44,7 @@ export default function PartnerService() {
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
-              <strong>Your fractional AI department.</strong> We find the next bottleneck, fix it, train your team, and keep your business evolving. Quarterly roadmaps, priority support, continuous optimization.
+              <strong>Your fractional AI department.</strong> We identify the next opportunity, implement it, train your team, and keep your business evolving. Weekly strategy, flexible credits, continuous optimization.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">

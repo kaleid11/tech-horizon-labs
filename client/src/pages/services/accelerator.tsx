@@ -51,7 +51,7 @@ export default function AcceleratorService() {
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
-              <strong>One bottleneck. One fix. Four weeks.</strong> We identify the right problem, build the right solution — private infrastructure, Australian compliance, working system — not a PowerPoint deck.
+              <strong>One problem. One solution. Four weeks.</strong> We identify the right opportunity, build the right system — private infrastructure, Australian compliance, working deployment — not a PowerPoint deck.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">

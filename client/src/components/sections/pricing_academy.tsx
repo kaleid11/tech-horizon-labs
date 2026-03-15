@@ -15,7 +15,7 @@ export function Pricing() {
             <h3 className="text-lg font-bold text-aubergine-900 mb-2">AI Opportunity Audit</h3>
             <div className="text-3xl font-bold mb-2 text-salmon-500">Free</div>
             <div className="text-xs text-gray-500 mb-6">15-minute discovery call</div>
-            <p className="text-sm text-gray-500 mb-6">We find the one bottleneck costing you the most — growth, time, or both. 15 minutes. If AI isn't the answer, we'll say so.</p>
+            <p className="text-sm text-gray-500 mb-6">We identify your highest-impact AI opportunity — growth, time, or both. 15 minutes. If AI isn't the answer, we'll say so.</p>
             <ul className="space-y-4 mb-8 flex-grow text-sm text-gray-700">
               <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> No cost, no obligation</li>
               <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Honest AI fit assessment</li>
@@ -33,7 +33,7 @@ export function Pricing() {
             <h3 className="text-lg font-bold mb-2 text-salmon-100">Automation Accelerator</h3>
             <div className="text-3xl font-bold mb-2 text-white">From $5K</div>
             <div className="text-xs text-gray-400 mb-6">4-week implementation sprint</div>
-            <p className="text-sm text-gray-300 mb-6">One bottleneck. One fix. Four weeks. Private, compliant, integrated — and actually solving the right problem.</p>
+            <p className="text-sm text-gray-300 mb-6">One problem. One solution. Four weeks. Private, compliant, integrated — Claude and ChatGPT set up properly for your business.</p>
             <ul className="space-y-4 mb-8 flex-grow text-sm text-gray-300">
               <li className="flex gap-3"><Check className="w-4 h-4 text-salmon-500 shrink-0 mt-0.5" /> 4-week delivery</li>
               <li className="flex gap-3"><Check className="w-4 h-4 text-salmon-500 shrink-0 mt-0.5" /> Private infrastructure</li>
@@ -51,7 +51,7 @@ export function Pricing() {
             <h3 className="text-lg font-bold text-aubergine-900 mb-2">Transformation Partner</h3>
             <div className="text-3xl font-bold mb-2 text-aubergine-900">Ongoing</div>
             <div className="text-xs text-gray-500 mb-6">Weekly strategy + flexible credits</div>
-            <p className="text-sm text-gray-500 mb-6">Your fractional AI department. We find the next bottleneck, fix it, train your team, and keep your business evolving.</p>
+            <p className="text-sm text-gray-500 mb-6">Your fractional AI department. We identify the next opportunity, implement it, train your team, and keep your business evolving.</p>
             <ul className="space-y-4 mb-8 flex-grow text-sm text-gray-700">
               <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Weekly strategy sessions</li>
               <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Flexible monthly work credits</li>
@@ -69,7 +69,7 @@ export function Pricing() {
             <h3 className="text-lg font-bold text-aubergine-900 mb-2 mt-2">Academy</h3>
             <div className="text-3xl font-bold mb-2 text-gray-600">From Free</div>
             <div className="text-xs text-gray-500 mb-6">Learn at your own pace</div>
-            <p className="text-sm text-gray-500 mb-6">Learn to find and fix bottlenecks yourself. Weekly workshops, 1,300+ templates, real operators sharing what actually works.</p>
+            <p className="text-sm text-gray-500 mb-6">Learn to use Claude and ChatGPT yourself. Weekly workshops, 1,300+ templates, real operators sharing what actually works.</p>
             <ul className="space-y-4 mb-8 flex-grow text-sm text-gray-600">
               <li className="flex gap-3"><Check className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" /> Free tier to get started</li>
               <li className="flex gap-3"><Check className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" /> Weekly live workshops</li>
