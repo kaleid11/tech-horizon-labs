@@ -39,10 +39,10 @@ const upcomingTopics = [
 ];
 
 const eventFormat = [
-  { time: "6:00 PM", label: "Doors Open", desc: "Grab a drink at the surf club bar, ocean views" },
-  { time: "6:30 PM", label: "Featured Talk", desc: "30-minute presentation on the evening's topic" },
-  { time: "7:00 PM", label: "Live Demo", desc: "30-minute hands-on demo with audience participation" },
-  { time: "7:30 PM", label: "Networking", desc: "Open conversation, Q&A, drinks and sunset" },
+  { time: "5:00 PM", label: "Doors Open", desc: "Grab a drink at the surf club bar, ocean views" },
+  { time: "5:30 PM", label: "Featured Talk", desc: "30-minute presentation on the evening's topic" },
+  { time: "6:00 PM", label: "Live Demo", desc: "30-minute hands-on demo with audience participation" },
+  { time: "6:30 PM", label: "Networking", desc: "Open conversation, Q&A, drinks and sunset until 7:30 PM" },
 ];
 
 export default function EventsPage() {
@@ -81,8 +81,9 @@ export default function EventsPage() {
                   "@type": "Schedule",
                   "repeatFrequency": "P2M",
                   "byDay": "https://schema.org/Thursday",
-                  "startTime": "18:00",
-                  "endTime": "20:00"
+                  "startDate": "2026-04-02",
+                  "startTime": "17:00",
+                  "endTime": "19:30"
                 }
               }
             ]
@@ -134,7 +135,7 @@ export default function EventsPage() {
                 <div className="text-sm text-gray-400">Entry</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-salmon-500">6:00 PM</div>
+                <div className="text-3xl font-bold text-salmon-500">5:00 PM</div>
                 <div className="text-sm text-gray-400">Doors Open</div>
               </div>
               <div>
@@ -155,10 +156,10 @@ export default function EventsPage() {
                 </div>
                 <div className="bg-white rounded-xl p-6 shadow-sm">
                   <p className="text-lg text-aubergine-900 font-medium mb-2">
-                    Date to be announced
+                    Thursday, April 2nd 2026 — 5:00 PM to 7:30 PM
                   </p>
                   <p className="text-gray-600 mb-4">
-                    We're finalising the schedule for our next meetup. Sign up for the newsletter to be the first to know when RSVPs open.
+                    First Thursday of every second month at Sunshine Beach Surf Club. Doors open at 5:00 PM with a featured talk at 5:30 PM, live demo at 6:00 PM, and networking until 7:30 PM.
                   </p>
                   <div className="flex flex-wrap gap-3">
                     <Button data-testid="button-events-newsletter" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-6 transition-all hover:scale-105" asChild>
