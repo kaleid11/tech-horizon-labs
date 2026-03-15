@@ -129,7 +129,7 @@ export default function IndustryLandingTemplate({
               <Button size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105 group" asChild>
                 <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
                   <Calendar className="mr-2 h-5 w-5" />
-                  Find My Bottleneck
+                  Book Free AI Assessment
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
@@ -265,16 +265,16 @@ export default function IndustryLandingTemplate({
         <section className="py-20 bg-aubergine-900 text-white">
           <div className="container mx-auto px-4 md:px-6 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Every {industry} Business Has a Bottleneck.<br />
+              Every {industry} Business Has an AI Opportunity.<br />
               <span className="text-salmon-500">Let's Find Yours.</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-              15-minute call. We'll find the bottleneck costing you the most — or tell you honestly there isn't one worth fixing right now.
+              15-minute call. We'll identify your highest-impact AI opportunity — or tell you honestly if the timing isn't right.
             </p>
             <Button size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105 group" asChild>
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
                 <Calendar className="mr-2 h-5 w-5" />
-                Find My Bottleneck
+                Book Free AI Assessment
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>

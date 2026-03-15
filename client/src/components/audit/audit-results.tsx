@@ -32,8 +32,8 @@ const tierColors = {
 
 const tierCTAs: Record<string, { label: string; href: string }> = {
   academy: { label: "Join Free Academy", href: "https://academy.techhorizonlabs.com" },
-  audit: { label: "Find My Bottleneck", href: BOOKING_URL },
-  accelerator: { label: "Find My Bottleneck", href: BOOKING_URL },
+  audit: { label: "Book Free Discovery Call", href: BOOKING_URL },
+  accelerator: { label: "Book Free Discovery Call", href: BOOKING_URL },
   partner: { label: "Discuss Partnership", href: BOOKING_URL },
 };
 

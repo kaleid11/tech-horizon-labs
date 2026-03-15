@@ -284,7 +284,7 @@ export function Footer() {
               <span itemProp="name">Tech Horizon Labs</span>
             </div>
             <p className="text-sm leading-relaxed" itemProp="description">
-              AI won't save your business. Fixing the right problem will. Queensland AI consulting that finds your bottleneck and fixes it — honestly.
+              We set up Claude and ChatGPT for Australian businesses — the workflows, compliance, and training around them. Queensland AI consulting, done right.
             </p>
             <div className="text-xs space-y-1" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
               <p><span itemProp="addressLocality">Sunshine Coast</span>, <span itemProp="addressRegion">Queensland</span></p>

@@ -234,7 +234,7 @@ export default function AIImpactByIndustry() {
               <Button size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105 group" asChild>
                 <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-testid="button-cta-booking">
                   <Calendar className="mr-2 h-5 w-5" />
-                  Find My Bottleneck
+                  Book Free Discovery Call
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>

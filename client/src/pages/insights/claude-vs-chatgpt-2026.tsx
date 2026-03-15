@@ -260,12 +260,12 @@ export default function ClaudeVsChatGPT2026() {
               Not Sure Which AI Is Right for Your Business?
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-              15-minute call. We'll find your bottleneck and recommend the right tool — or tell you honestly that you don't need AI yet.
+              15-minute call. We'll assess your workflows and recommend the right tool — or tell you honestly that you don't need AI yet.
             </p>
             <Button size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105 group" asChild>
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
                 <Calendar className="mr-2 h-5 w-5" />
-                Find My Bottleneck
+                Book Free Discovery Call
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>

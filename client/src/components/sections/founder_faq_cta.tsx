@@ -135,7 +135,7 @@ export function CTA() {
         </div>
         
         <div className="inline-block bg-white/5 rounded-full px-6 py-2 border border-white/10 text-sm text-gray-400">
-          Includes: bottleneck assessment, honest recommendation, and clear next steps.
+          Includes: workflow assessment, honest recommendation, and clear next steps.
         </div>
       </div>
     </section>
