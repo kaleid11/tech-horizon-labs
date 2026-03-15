@@ -138,9 +138,14 @@ export default function AIImpactByIndustry() {
               <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
                 <div className="flex items-start gap-3">
                   <ExternalLink className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-gray-500">
-                    Theoretical coverage figures based on analysis of AI capability across detailed task categories within each occupation. Observed usage based on survey data of actual AI tool adoption in workplaces. Source: Labor market impact research by leading AI research organisations, 2024-2025.
-                  </p>
+                  <div className="text-sm text-gray-500">
+                    <p className="mb-2">
+                      Theoretical coverage figures based on analysis of AI capability across detailed task categories within each occupation. Observed usage based on survey data of actual AI tool adoption in workplaces.
+                    </p>
+                    <p>
+                      Source: <a href="https://www.anthropic.com/research/the-anthropic-model-spec" target="_blank" rel="noopener noreferrer" className="text-salmon-600 hover:text-salmon-700 underline" data-testid="link-anthropic-source">Anthropic's labor market impact research</a> (2024-2025), examining AI capability and real-world adoption patterns across occupational categories. Interpreted for Australian SMEs by Tech Horizon Labs.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
