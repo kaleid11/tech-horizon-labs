@@ -31,16 +31,16 @@ export function Hero() {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-bold tracking-tight leading-[1.05]">
-              AI Won't Save Your Business.<br/>
-              <span className="text-gradient-salmon">Fixing the Right Problem Will.</span>
+              Your Team Doesn't Need More AI Tools.<br/>
+              <span className="text-gradient-salmon">They Need 20 Hours Back Per Week.</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
-              Every AI consultant wants to sell you tools. We'd rather find the one bottleneck that's costing you growth, weekends, or both — then fix it with whatever actually works.
+              Most AI agencies sell you ChatGPT setup and Zapier flows. We map your workflows, calculate the ROI, and build systems designed to last 3+ years. Your client doesn't care which model we use. They care that their ops team stopped drowning.
             </p>
 
             <p className="text-lg text-salmon-400/90 max-w-2xl leading-relaxed font-medium" data-testid="text-hero-mission">
-              We'll tell you what you actually need — even if it's nothing. We turn away 30% of prospects because the timing isn't right.
+              We sell the map before the build. We turn away 30% of prospects because the ROI doesn't justify it yet.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
