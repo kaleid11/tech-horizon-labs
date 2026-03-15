@@ -143,7 +143,7 @@ export default function AIImpactByIndustry() {
                       Theoretical coverage figures based on analysis of AI capability across detailed task categories within each occupation. Observed usage based on survey data of actual AI tool adoption in workplaces.
                     </p>
                     <p>
-                      Source: <a href="https://www.anthropic.com/research/the-anthropic-model-spec" target="_blank" rel="noopener noreferrer" className="text-salmon-600 hover:text-salmon-700 underline" data-testid="link-anthropic-source">Anthropic's labor market impact research</a> (2024-2025), examining AI capability and real-world adoption patterns across occupational categories. Interpreted for Australian SMEs by Tech Horizon Labs.
+                      Source: <a href="https://www.anthropic.com/research/economic-tasks-ai-labor" target="_blank" rel="noopener noreferrer" className="text-salmon-600 hover:text-salmon-700 underline" data-testid="link-anthropic-source">Anthropic's research on AI's economic impact on the labor market</a> (2024-2025), examining AI capability and real-world adoption patterns across occupational categories. Interpreted for Australian SMEs by Tech Horizon Labs.
                     </p>
                   </div>
                 </div>
