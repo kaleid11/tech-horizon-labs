@@ -12,6 +12,7 @@ export const metaAIData: CompanyData = {
     { id: "governance", label: "Leadership" },
     { id: "timeline", label: "Key Events" },
     { id: "funding", label: "Investment" },
+    { id: "valuation", label: "Market Cap" },
     { id: "investors", label: "Strategy" },
   ],
   boardMembers: [
@@ -39,7 +40,9 @@ export const metaAIData: CompanyData = {
     { date: "Feb 2026", title: "LLaMA 4 Expected", sev: "info", desc: "LLaMA 4 in development. Expected to include mixture-of-experts architecture. Targeting GPT-4+ performance in open weights." },
   ],
   fundingRounds: [
-    { date: "2023-2026", label: "AI CapEx", total: 65000, val: null, lead: "Meta Internal", inv: [{ n: "Meta Internal", a: 65000, note: "Cumulative AI infrastructure spend" }], events: ["$65B+ in AI infrastructure", "600K+ GPU cluster planned", "Custom MTIA chips"] },
+    { date: "2023", label: "AI CapEx", total: 15000, val: 950000, lead: "Meta Internal", inv: [{ n: "Meta Internal", a: 15000, note: "AI infrastructure spend" }], events: ["LLaMA 2 release drives open-source AI", "Meta market cap ~$950B"] },
+    { date: "2024", label: "AI CapEx", total: 35000, val: 1400000, lead: "Meta Internal", inv: [{ n: "Meta Internal", a: 35000, note: "AI infrastructure spend" }], events: ["LLaMA 3 launch", "Meta AI assistant 700M users", "Meta market cap ~$1.4T"] },
+    { date: "2025", label: "AI CapEx", total: 65000, val: 1600000, lead: "Meta Internal", inv: [{ n: "Meta Internal", a: 65000, note: "AI infrastructure commitment" }], events: ["$60-65B AI capex commitment", "600K+ GPU cluster planned", "Custom MTIA chips", "Meta market cap ~$1.6T"] },
   ],
   financials: [
     { label: "META REVENUE", value: "$160B", color: "#0668E1" },

@@ -58,7 +58,12 @@ function ComparisonDashboard({ onSelectCompany }: { onSelectCompany: (id: string
         </div>
       </div>
 
-      {view === "valuation" && <ValuationRaceChart data={companyValuations} onSelect={onSelectCompany} />}
+      {view === "valuation" && (
+        <div>
+          <ValuationRaceChart data={companyValuations} onSelect={onSelectCompany} />
+          <p className="text-center font-mono text-[8px] text-gray-400 mt-1">Private company valuations only. Google DeepMind and Meta AI shown by parent market cap in their profiles.</p>
+        </div>
+      )}
       {view === "funding" && <FundingComparisonChart data={companyValuations} onSelect={onSelectCompany} />}
       {view === "stats" && <StatsGrid data={companyValuations} onSelect={onSelectCompany} />}
     </div>
@@ -66,7 +71,8 @@ function ComparisonDashboard({ onSelectCompany }: { onSelectCompany: (id: string
 }
 
 function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: string; color: string; points: { date: number; val: number; label: string }[]; latestVal: number | null; totalRaised: number }[]; onSelect: (id: string) => void }) {
-  const withVals = data.filter(d => d.points.length > 0);
+  const publicIds = new Set(["google-deepmind", "meta-ai"]);
+  const withVals = data.filter(d => d.points.length > 0 && !publicIds.has(d.id));
   if (withVals.length === 0) return null;
 
   const allPts = withVals.flatMap(d => d.points);
@@ -633,7 +639,7 @@ function InvestorPanel({ company }: { company: CompanyData }) {
 
 function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: string }) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
-  const vals = rounds.filter(r => r.val).map(r => ({ label: r.label, val: r.val!, date: r.date }));
+  const vals = rounds.filter(r => r.val).map(r => ({ label: r.label, val: r.val!, date: r.date, post: r.post }));
   if (vals.length === 0) return <p className="text-gray-500 text-sm p-8 text-center" data-testid="valuation-empty">No valuation data available.</p>;
 
   const timestamps = vals.map(v => parseDate(v.date));
@@ -642,10 +648,10 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   const maxV = Math.max(...vals.map(v => v.val));
 
   const dense = vals.length > 6;
-  const pad = { top: 30, right: 30, bottom: dense ? 70 : 50, left: 65 };
-  const baseW = Math.max(600, vals.length * 80);
+  const pad = { top: 30, right: 30, bottom: dense ? 90 : 50, left: 65 };
+  const baseW = Math.max(600, vals.length * 90);
   const w = baseW;
-  const h = 300;
+  const h = dense ? 320 : 300;
   const chartW = w - pad.left - pad.right;
   const chartH = h - pad.top - pad.bottom;
 
@@ -653,6 +659,19 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   const getY = (v: number) => pad.top + chartH - (v / maxV) * chartH;
 
   const points = vals.map((v, i) => ({ x: getX(timestamps[i]), y: getY(v.val), ...v, idx: i }));
+
+  const staggeredOffsets = useMemo(() => {
+    const offsets: number[] = new Array(points.length).fill(0);
+    const minGap = 45;
+    const levels = [0, 12, 24];
+    for (let i = 1; i < points.length; i++) {
+      if (Math.abs(points[i].x - points[i - 1].x) < minGap) {
+        const prevLevel = levels.indexOf(offsets[i - 1]);
+        offsets[i] = levels[(prevLevel + 1) % levels.length];
+      }
+    }
+    return offsets;
+  }, [points]);
 
   const gridLines = 4;
   const gridVals = Array.from({ length: gridLines + 1 }, (_, i) => (maxV / gridLines) * i);
@@ -708,8 +727,8 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
               )}
 
               {dense ? (
-                <text x={p.x + 4} y={pad.top + chartH + 12} textAnchor="start" fill="#888" fontSize="7" fontFamily="monospace"
-                  transform={`rotate(40, ${p.x + 4}, ${pad.top + chartH + 12})`}>
+                <text x={p.x} y={pad.top + chartH + 14 + staggeredOffsets[i]} textAnchor="end" fill="#888" fontSize="7" fontFamily="monospace"
+                  transform={`rotate(-45, ${p.x}, ${pad.top + chartH + 14 + staggeredOffsets[i]})`}>
                   {p.label}
                 </text>
               ) : (
@@ -735,8 +754,10 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
               <p className="font-mono text-[10px] text-gray-500">{vals[activeIdx].date}</p>
             </div>
             <div className="text-left sm:text-right">
-              <p className="text-xl font-bold" style={{ color: accent }}>{fmt(vals[activeIdx].val)}</p>
-              <p className="font-mono text-[10px] text-gray-500">valuation</p>
+              <p className="text-xl font-bold" style={{ color: accent }}>{fmtVal(vals[activeIdx].val)}</p>
+              <p className="font-mono text-[10px] text-gray-500">
+                {vals[activeIdx].post ? `${fmtVal(vals[activeIdx].post!)} post-money` : "valuation"}
+              </p>
             </div>
           </div>
           {activeIdx > 0 && (
@@ -749,7 +770,7 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
               </div>
               <div>
                 <p className="font-mono text-[10px] text-gray-500">FROM PREVIOUS</p>
-                <p className="font-mono text-sm text-gray-700">{fmt(vals[activeIdx - 1].val)} → {fmt(vals[activeIdx].val)}</p>
+                <p className="font-mono text-sm text-gray-700">{fmtVal(vals[activeIdx - 1].val)} → {fmtVal(vals[activeIdx].val)}</p>
               </div>
             </div>
           )}

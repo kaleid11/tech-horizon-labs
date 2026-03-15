@@ -28,8 +28,10 @@ Preferred communication style: Simple, everyday language.
 - Deep analysis of 10 AI companies (Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen, Perplexity, Kimi, Mistral)
 - Covers governance, funding rounds, investor breakdowns, policy shifts, timelines, safety issues, controversies, supply chain
 - Data files in `client/src/data/research/` (types.ts, index.ts, + 10 company files)
-- Comparison dashboard on landing page: Valuation Race (multi-line chart), Total Funding (horizontal bars), Quick Stats (table)
-- Valuation chart redesigned: clean SVG line chart, show values on click only, rotated labels for dense data, dynamic width
+- Comparison dashboard on landing page: Valuation Race (multi-line chart, private companies only), Total Funding (horizontal bars), Quick Stats (table)
+- Valuation chart redesigned: clean SVG line chart, show values on click only, rotated labels with stagger for dense data, dynamic width, area fill gradient, post-money display
+- Google DeepMind and Meta AI now have Market Cap tabs with Alphabet/Meta market cap trajectory (excluded from private valuation race chart)
+- fmtVal() supports trillion-scale values ($1.6T format)
 - Meta AI data updated: Yann LeCun departure (Nov 2025), Alexandr Wang (Chief AI Officer), Shengjia Zhao (Chief Scientist MSL)
 - DeepSeek added: self-funded from High-Flyer quant, R1 model, US sanctions controversies
 - Qwen (Alibaba Cloud) added: Tongyi Lab, Apache 2.0 open-source, $53B infrastructure pledge

@@ -162,6 +162,7 @@ export function parseDate(d: string): number {
 
 export function fmtVal(v: number | null): string {
   if (v === null) return "—";
+  if (v >= 1000000) { const t = (v / 1000000).toFixed(1); return `$${t.endsWith('.0') ? t.slice(0, -2) : t}T`; }
   return v >= 1000 ? `$${(v / 1000).toFixed(v >= 100000 ? 0 : v >= 10000 ? 0 : 1)}B` : `$${v}M`;
 }
 
