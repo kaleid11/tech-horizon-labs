@@ -232,8 +232,10 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold mb-4 text-white">Academy</h4>
+            <h4 className="font-bold mb-4 text-white">Community</h4>
             <ul className="space-y-2 text-sm">
+              <li><a href="/events" className="hover:text-salmon-500 transition-colors" data-testid="link-footer-events">AI on the Coast Meetup</a></li>
+              <li><a href="/openclaw" className="hover:text-salmon-500 transition-colors" data-testid="link-footer-openclaw">OpenClaw Setup</a></li>
               <li><a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer" className="hover:text-salmon-500 transition-colors">Tech Horizon Academy ↗</a></li>
               <li><a href="/resources" className="hover:text-salmon-500 transition-colors">Resources</a></li>
               <li><a href="/about" className="hover:text-salmon-500 transition-colors">About Huxley</a></li>

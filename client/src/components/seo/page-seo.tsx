@@ -210,4 +210,14 @@ export const SEO_CONFIGS = {
     description: 'How Tech Horizon Labs uses AI responsibly. Our five principles, data handling commitments, and clear boundaries on what we will and won\'t do.',
     canonical: `${BASE_URL}/ai-ethics`,
   },
+  openclaw: {
+    title: 'OpenClaw Setup Sunshine Coast — Honest Expert Guide',
+    description: 'OpenClaw setup on the Sunshine Coast by a consultant who tells you what it can and can\'t safely do. 512 known vulnerabilities. We deploy it right or recommend something better.',
+    canonical: `${BASE_URL}/openclaw`,
+  },
+  events: {
+    title: 'AI on the Coast — Sunshine Coast AI Meetup',
+    description: 'Free bi-monthly AI meetup at Sunshine Beach Surf Club. Practical talks, live demos, and honest conversations about AI for local businesses. No hype, no vendor pitches.',
+    canonical: `${BASE_URL}/events`,
+  },
 };

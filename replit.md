@@ -56,6 +56,8 @@ Preferred communication style: Simple, everyday language.
 - `/research` - AI Research Hub: 10 companies, governance/funding/policy analysis, comparison dashboard
 - `/about` - Huxley Peckham bio, E-E-A-T signals, ABN disclosure, partner affiliations
 - `/resources` - Articles, weekly workshops schedule, newsletter, downloadable tools
+- `/openclaw` - OpenClaw setup page: honest security assessment, safe vs risky use cases, CVE timeline, safe deployment guide, FAQ schema
+- `/events` - "AI on the Coast" community meetup page: bi-monthly events at Sunshine Beach Surf Club, event format, topics, venue info, Luma placeholder
 - `/privacy` - Privacy policy
 - `/terms` - Terms of service
 
@@ -75,6 +77,7 @@ Preferred communication style: Simple, everyday language.
 - TrustBar component on homepage with partner logos (Google, Anthropic, OpenAI, AWS, n8n, Docker, fal.ai)
 - industry.gov.au National AI Directory listing badge
 - GoodFirms "Top Artificial Intelligence Company" badge
+- Footer "Community" section with links to Events, OpenClaw, Academy, Resources, About, Newsletter, AI Ethics
 - Footer with SVG partner icons, ABN 80 976 285 425, Sunshine Coast address
 
 ## System Architecture

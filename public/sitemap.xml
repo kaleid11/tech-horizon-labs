@@ -182,6 +182,22 @@
     <priority>0.5</priority>
   </url>
 
+  <!-- OpenClaw Setup -->
+  <url>
+    <loc>https://techhorizonlabs.com/openclaw</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Community Events -->
+  <url>
+    <loc>https://techhorizonlabs.com/events</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Legal Pages -->
   <url>
     <loc>https://techhorizonlabs.com/privacy</loc>
