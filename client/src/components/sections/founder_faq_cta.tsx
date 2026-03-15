@@ -7,7 +7,7 @@ import { BOOKING_URL } from "@/components/contact-form-dialog";
 
 export function Founder() {
   return (
-    <section id="founder" className="py-24 bg-cream-50 relative overflow-hidden">
+    <section id="founder" className="py-24 bg-cream-50 relative overflow-hidden bg-dots">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-16 items-start">
           
@@ -109,7 +109,7 @@ export function FAQ() {
 
 export function CTA() {
   return (
-    <section id="contact" className="py-32 bg-aubergine-900 text-white text-center relative overflow-hidden">
+    <section id="contact" className="py-32 bg-aubergine-900 text-white text-center relative overflow-hidden bg-grain">
       {/* Background gradients */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-aubergine-900 via-aubergine-900 to-salmon-900/20"></div>
       

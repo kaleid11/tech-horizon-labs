@@ -98,7 +98,7 @@ export function Results() {
 
 export function Process() {
   return (
-    <section className="py-24 bg-aubergine-900 text-white relative overflow-hidden">
+    <section className="py-24 bg-aubergine-900 text-white relative overflow-hidden bg-grain">
       {/* Clean gradient background for premium feel */}
       <div className="absolute inset-0 bg-gradient-to-br from-aubergine-800/50 via-transparent to-salmon-500/5"></div>
       

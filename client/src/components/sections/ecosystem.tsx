@@ -5,7 +5,7 @@ import { ArrowRight, Microscope, Shield, Users } from "lucide-react";
 
 export function Ecosystem() {
   return (
-    <section className="py-24 bg-aubergine-900 text-white overflow-hidden relative border-t border-white/5">
+    <section className="py-24 bg-aubergine-900 text-white overflow-hidden relative border-t border-white/5 bg-grain">
       {/* Background Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-salmon-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 

@@ -8,7 +8,7 @@ import { BOOKING_URL } from "@/components/contact-form-dialog";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden bg-aubergine-900 text-white min-h-[90vh] flex items-center">
+    <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden bg-aubergine-900 text-white min-h-[90vh] flex items-center bg-grain">
       {/* Abstract Background Accents */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-salmon-500/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
@@ -54,19 +54,21 @@ export function Hero() {
             </div>
 
             {/* Stats Strip */}
-            <div className="pt-6 grid grid-cols-3 gap-4">
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-4 text-center hover:border-salmon-500/30 transition-colors">
-                <div className="text-2xl md:text-3xl font-bold text-salmon-500">40%</div>
-                <div className="text-xs text-gray-400 mt-1">Admin Reduction</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-4 text-center hover:border-salmon-500/30 transition-colors">
-                <div className="text-2xl md:text-3xl font-bold text-salmon-500">60%</div>
-                <div className="text-xs text-gray-400 mt-1">Faster Quotes</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-4 text-center hover:border-salmon-500/30 transition-colors">
-                <div className="text-2xl md:text-3xl font-bold text-salmon-500">4 Weeks</div>
-                <div className="text-xs text-gray-400 mt-1">To Deploy</div>
-              </div>
+            <div className="pt-6 grid grid-cols-3 gap-3 md:gap-4">
+              {[
+                { value: "40%", label: "Admin Reduction", icon: "↓" },
+                { value: "60%", label: "Faster Quotes", icon: "⚡" },
+                { value: "4 Wks", label: "To Deploy", icon: "→" },
+              ].map((stat) => (
+                <div key={stat.label} className="relative bg-white/[0.07] backdrop-blur-sm rounded-xl border border-white/10 p-4 md:p-5 text-center hover:border-salmon-500/40 transition-all group overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-salmon-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative">
+                    <div className="text-xs text-salmon-500/60 mb-1">{stat.icon}</div>
+                    <div className="text-2xl md:text-3xl font-bold text-white tracking-tight">{stat.value}</div>
+                    <div className="text-[11px] text-gray-400 mt-1.5 uppercase tracking-wider font-medium">{stat.label}</div>
+                  </div>
+                </div>
+              ))}
             </div>
 
             <div className="pt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-400 items-center border-t border-white/10">
@@ -216,7 +218,7 @@ export function TrustBar() {
 
 export function Problem() {
   return (
-    <section id="approach" className="py-24 bg-cream-50">
+    <section id="approach" className="py-24 bg-cream-50 bg-dots">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <Badge variant="outline" className="mb-4 border-salmon-500/30 text-salmon-600 bg-salmon-50 rounded-full px-4 py-1">OUR APPROACH</Badge>

@@ -5,7 +5,7 @@ import { BOOKING_URL } from "@/components/contact-form-dialog";
 
 export function Pricing() {
   return (
-    <section className="py-24 bg-cream-50">
+    <section className="py-24 bg-cream-50 bg-dots">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-4xl font-bold text-aubergine-900 mb-16 text-center">Transparent Pricing</h2>
 
