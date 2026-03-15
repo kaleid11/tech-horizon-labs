@@ -199,6 +199,11 @@ export const SEO_CONFIGS = {
       description: 'Honest Claude vs ChatGPT comparison from a consultant who deploys both. Real client data on privacy, cost, quality, and when to use each.',
       canonical: `${BASE_URL}/insights/claude-vs-chatgpt-2026`,
     },
+    aiImpactByIndustry: {
+      title: 'AI Impact by Industry — Capability vs Adoption 2026',
+      description: 'Which industries benefit most from AI? Data shows 94% of admin tasks are AI-ready but only 32% of businesses use it. See the gap by occupation and what it means for your industry.',
+      canonical: `${BASE_URL}/insights/ai-impact-by-industry`,
+    },
   },
   auditTool: {
     title: 'AI Readiness Self-Assessment Tool',

@@ -1,6 +1,7 @@
 import IndustryLandingTemplate from "@/components/industry-landing-template";
 import { SEO_CONFIGS } from "@/components/seo/page-seo";
 import { HardHat, FileText, Clock } from "lucide-react";
+import { getIndustryRelevantData } from "@/data/ai-impact-by-industry";
 
 export default function ConstructionIndustry() {
   return (
@@ -10,6 +11,11 @@ export default function ConstructionIndustry() {
       slug="construction"
       tagline="AI for Construction — Sunshine Coast & QLD"
       heroDescription="Most AI consultants sell construction companies chatbots and dashboards. We find the one bottleneck buried in your quoting, invoicing, or compliance process that's costing you hours every week — then fix it."
+      aiImpact={{
+        headline: "Construction's AI opportunity isn't on the tools — it's in the office.",
+        description: "Research shows construction site work has low AI coverage (30%), but the admin tasks around it — quoting, invoicing, compliance — fall under Office & Admin Support (94% coverage). Only 6% of construction businesses use AI for any task. The gap is enormous.",
+        data: getIndustryRelevantData("construction"),
+      }}
       stats={[
         { value: "60%", label: "Faster Quotes" },
         { value: "2 Days", label: "Saved Per Week" },

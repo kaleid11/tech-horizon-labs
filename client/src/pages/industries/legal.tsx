@@ -1,6 +1,7 @@
 import IndustryLandingTemplate from "@/components/industry-landing-template";
 import { SEO_CONFIGS } from "@/components/seo/page-seo";
 import { Scale, FileText, Search } from "lucide-react";
+import { getIndustryRelevantData } from "@/data/ai-impact-by-industry";
 
 export default function LegalIndustry() {
   return (
@@ -10,6 +11,11 @@ export default function LegalIndustry() {
       slug="legal"
       tagline="AI for Law Firms — QLD & Australia"
       heroDescription="Every legal AI vendor leads with 'document review automation.' But if your firm's documents aren't structured consistently, or your precedent system is a shared drive with 10 years of folders, no AI tool will save you. We find the actual problem first."
+      aiImpact={{
+        headline: "Legal is one of the highest-coverage occupations for AI — but one of the slowest adopters.",
+        description: "At 81% theoretical coverage, legal work ranks among the most AI-ready occupations. Document review, research, and drafting are all strong use cases. Yet only 28% of firms use any AI tools. Privilege concerns and conservative culture slow adoption, but compliant, private solutions exist.",
+        data: getIndustryRelevantData("legal"),
+      }}
       stats={[
         { value: "50%", label: "Faster Document Review" },
         { value: "70%", label: "Less Manual Searching" },

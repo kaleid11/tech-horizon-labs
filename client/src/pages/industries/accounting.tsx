@@ -1,6 +1,7 @@
 import IndustryLandingTemplate from "@/components/industry-landing-template";
 import { SEO_CONFIGS } from "@/components/seo/page-seo";
 import { Calculator, FileSearch, Users } from "lucide-react";
+import { getIndustryRelevantData } from "@/data/ai-impact-by-industry";
 
 export default function AccountingIndustry() {
   return (
@@ -10,6 +11,11 @@ export default function AccountingIndustry() {
       slug="accounting"
       tagline="AI for Accounting Firms — QLD & Australia"
       heroDescription="Your clients expect faster turnarounds. Your staff are drowning in data entry. Most AI vendors pitch document automation without checking whether your data is even structured for it. We find the actual bottleneck first."
+      aiImpact={{
+        headline: "Accounting sits at the intersection of two high-coverage categories.",
+        description: "Office & Admin Support (94% AI coverage) and Business & Financial Operations (78% coverage) are both core to accounting work. Yet only 30% of firms use AI for financial operations. That gap translates directly to lost billable hours.",
+        data: getIndustryRelevantData("accounting"),
+      }}
       stats={[
         { value: "40%", label: "Admin Reduction" },
         { value: "3x", label: "Faster Data Entry" },

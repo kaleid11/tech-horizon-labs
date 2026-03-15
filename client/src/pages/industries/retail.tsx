@@ -1,6 +1,7 @@
 import IndustryLandingTemplate from "@/components/industry-landing-template";
 import { SEO_CONFIGS } from "@/components/seo/page-seo";
 import { ShoppingBag, Package, BarChart3 } from "lucide-react";
+import { getIndustryRelevantData } from "@/data/ai-impact-by-industry";
 
 export default function RetailIndustry() {
   return (
@@ -10,6 +11,11 @@ export default function RetailIndustry() {
       slug="retail"
       tagline="AI for Retail — QLD & Australia"
       heroDescription="Every retail AI pitch starts with 'personalised customer experiences.' But if your inventory data lives in three different systems and your staff spend hours on stock counts, no amount of personalisation will fix your margins. We find the operational bottleneck first."
+      aiImpact={{
+        headline: "Retail AI opportunity spans sales, management, and back-office operations.",
+        description: "Sales & Related occupations have 68% theoretical coverage, Management 60%, and the admin underpinning retail operations sits at 94%. But observed usage across all three categories is below 32%. Inventory forecasting, order processing, and unified reporting are proven use cases waiting for adoption.",
+        data: getIndustryRelevantData("retail"),
+      }}
       stats={[
         { value: "30%", label: "Less Stockouts" },
         { value: "45%", label: "Faster Reordering" },

@@ -60,6 +60,7 @@ Preferred communication style: Simple, everyday language.
 - `/resources` - Articles, weekly workshops schedule, newsletter, downloadable tools
 - `/openclaw` - OpenClaw setup page: honest security assessment, safe vs risky use cases, CVE timeline, safe deployment guide, FAQ schema
 - `/events` - "AI on the Coast" community meetup page: bi-monthly events at Sunshine Beach Surf Club, event format, topics, venue info, Luma placeholder
+- `/insights/ai-impact-by-industry` - AI Impact by Industry: capability vs adoption data across 10 occupations, key findings for Australian SMEs, links to industry pages
 - `/privacy` - Privacy policy
 - `/terms` - Terms of service
 
@@ -121,6 +122,7 @@ Preferred communication style: Simple, everyday language.
 │   │   │   ├── contact-form-dialog.tsx  # BOOKING_URL constant + dialog
 │   │   │   └── newsletter-dialog.tsx
 │   │   ├── data/
+│   │   │   ├── ai-impact-by-industry.ts  # AI capability vs adoption data
 │   │   │   └── research/         # AI Research Hub data (10 company files)
 │   │   │       ├── types.ts      # TypeScript interfaces
 │   │   │       ├── index.ts      # Company registry, helpers, color constants

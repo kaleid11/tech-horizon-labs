@@ -6,6 +6,15 @@ import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 
 const articles = [
   {
+    id: "ai-impact-by-industry",
+    title: "AI Impact by Industry: Which Occupations Benefit Most?",
+    description: "Data shows 94% of admin tasks are AI-ready, but only 32% of businesses use it. We break down the capability vs adoption gap across 10 occupations and what it means for your industry.",
+    category: "Research",
+    readTime: "10 min read",
+    keywords: ["AI impact", "AI adoption", "industry AI", "AI capability"],
+    link: "/insights/ai-impact-by-industry"
+  },
+  {
     id: "claude-vs-chatgpt-2026",
     title: "Claude vs ChatGPT 2026: Honest Comparison from a Consultant Who Uses Both",
     description: "Most comparison articles are written by people who've never deployed either in a real business. We have. Here's what actually matters.",

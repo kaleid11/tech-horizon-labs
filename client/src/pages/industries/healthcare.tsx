@@ -1,6 +1,7 @@
 import IndustryLandingTemplate from "@/components/industry-landing-template";
 import { SEO_CONFIGS } from "@/components/seo/page-seo";
 import { Stethoscope, ClipboardList, UserCheck } from "lucide-react";
+import { getIndustryRelevantData } from "@/data/ai-impact-by-industry";
 
 export default function HealthcareIndustry() {
   return (
@@ -10,6 +11,11 @@ export default function HealthcareIndustry() {
       slug="healthcare"
       tagline="AI for Healthcare — QLD & Australia"
       heroDescription="Healthcare AI is sold as 'clinical decision support' — but most clinics' real bottleneck is the admin around patient care, not the care itself. We find the operational problem that's costing your clinicians time and your practice revenue."
+      aiImpact={{
+        headline: "Healthcare has the lowest AI adoption of any major occupation — and the highest need.",
+        description: "At 56% theoretical coverage, healthcare practitioners have significant room for AI-assisted documentation, referral processing, and intake. But at just 14% observed usage, it's the most under-served occupation. The barrier isn't technology — it's deploying it safely within health data regulations.",
+        data: getIndustryRelevantData("healthcare"),
+      }}
       stats={[
         { value: "35%", label: "Less Admin Time" },
         { value: "50%", label: "Faster Referrals" },

@@ -1,9 +1,11 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
-import { CheckCircle2, TrendingUp, Calendar, ArrowRight } from "lucide-react";
+import { CheckCircle2, TrendingUp, Calendar, ArrowRight, BarChart3 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { Link } from "wouter";
 import { PageSEO } from "@/components/seo/page-seo";
+import type { OccupationAIData } from "@/data/ai-impact-by-industry";
 
 interface IndustryFAQ {
   question: string;
@@ -21,6 +23,12 @@ interface UseCase {
 interface IndustryStat {
   value: string;
   label: string;
+}
+
+interface IndustryAIImpact {
+  headline: string;
+  description: string;
+  data: OccupationAIData[];
 }
 
 interface IndustryLandingProps {
@@ -42,6 +50,7 @@ interface IndustryLandingProps {
   caseStudyLink?: string;
   caseStudyLabel?: string;
   faqs: IndustryFAQ[];
+  aiImpact?: IndustryAIImpact;
   children?: React.ReactNode;
 }
 
@@ -60,6 +69,7 @@ export default function IndustryLandingTemplate({
   caseStudyLink,
   caseStudyLabel,
   faqs,
+  aiImpact,
   children,
 }: IndustryLandingProps) {
   const faqSchema = {
@@ -192,6 +202,59 @@ export default function IndustryLandingTemplate({
             </div>
           </div>
         </section>
+
+        {aiImpact && (
+          <section className="py-16 bg-white border-t border-gray-100" data-testid="section-ai-impact">
+            <div className="container mx-auto px-4 md:px-6">
+              <div className="max-w-3xl mx-auto">
+                <div className="flex items-center gap-3 mb-4">
+                  <BarChart3 className="h-6 w-6 text-salmon-600" />
+                  <h2 className="text-2xl font-bold text-aubergine-900">Industry AI Adoption Data</h2>
+                </div>
+                <p className="text-lg text-gray-600 mb-2 font-medium">{aiImpact.headline}</p>
+                <p className="text-gray-600 mb-8">{aiImpact.description}</p>
+
+                <div className="space-y-4">
+                  {aiImpact.data.map((d) => (
+                    <div key={d.occupation} className="bg-gray-50 rounded-xl p-5 border border-gray-200" data-testid={`impact-bar-${d.occupation.toLowerCase().replace(/[^a-z]/g, '-')}`}>
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="font-semibold text-aubergine-900 text-sm">{d.occupation}</h3>
+                        <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-salmon-50 text-salmon-700">{d.gap}pt gap</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3 mb-3">
+                        <div>
+                          <div className="flex justify-between text-xs text-gray-500 mb-1">
+                            <span>AI Capability</span>
+                            <span className="font-mono font-bold" style={{ color: d.color }}>{d.theoreticalCoverage}%</span>
+                          </div>
+                          <div className="h-2.5 bg-gray-200 rounded-full overflow-hidden">
+                            <div className="h-full rounded-full" style={{ width: `${d.theoreticalCoverage}%`, backgroundColor: d.color }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex justify-between text-xs text-gray-500 mb-1">
+                            <span>Actual Usage</span>
+                            <span className="font-mono font-bold text-gray-500">{d.observedUsage}%</span>
+                          </div>
+                          <div className="h-2.5 bg-gray-200 rounded-full overflow-hidden">
+                            <div className="h-full bg-gray-400 rounded-full" style={{ width: `${d.observedUsage}%` }} />
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600">{d.keyInsight}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex items-center gap-2">
+                  <Link href="/insights/ai-impact-by-industry" className="text-salmon-600 hover:text-salmon-700 text-sm font-medium flex items-center gap-1" data-testid="link-full-research">
+                    See full AI Impact by Industry research <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* CTA */}
         <section className="py-20 bg-aubergine-900 text-white">
