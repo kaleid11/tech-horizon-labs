@@ -59,45 +59,52 @@ export function Ecosystem() {
           </div>
         </div>
 
-        {/* The "Startup Department" Section */}
+        {/* Two Paths Section */}
         <div className="bg-white rounded-3xl p-8 md:p-16 relative overflow-hidden">
            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-aubergine-100 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2"></div>
-           
+
            <div className="relative z-10 text-center max-w-3xl mx-auto">
              <div className="inline-flex items-center justify-center w-16 h-16 bg-salmon-100 rounded-2xl mb-8">
                <Microscope className="w-8 h-8 text-salmon-600" />
              </div>
-             
+
              <h2 className="text-3xl md:text-4xl font-bold text-aubergine-900 mb-6">
-               Not Just A Course. <br/>
-               <span className="text-salmon-600">Your Outsourced AI R&D Team.</span>
+               Two Ways To Get Started. <br/>
+               <span className="text-salmon-600">Pick the Speed That Suits You.</span>
              </h2>
-             
+
              <p className="text-xl text-gray-600 mb-10 leading-relaxed">
-               Hiring a "Head of AI" costs $180k+. Joining the Academy gives you an entire department that researches, tests, and validates tools 40 hours a week—so you don't have to.
+               Want to move fast? Join the Academy and start using Claude and ChatGPT today with 1,300+ ready-made workflows. Need precision? We map your operations first, then build AI systems tailored to exactly how your business works.
              </p>
-             
+
              <div className="grid md:grid-cols-3 gap-6 text-left mb-12">
                <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
-                 <div className="font-bold text-aubergine-900 mb-2">Weekly Lab Reports</div>
-                 <p className="text-sm text-gray-600">We verify which new models (DeepSeek, Claude) are actually production-ready.</p>
+                 <div className="font-bold text-aubergine-900 mb-2">Fast Path — Academy</div>
+                 <p className="text-sm text-gray-600">Start using Claude and ChatGPT this week. Templates, workshops, and a community of 300+ operators to learn alongside.</p>
                </div>
                <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
-                 <div className="font-bold text-aubergine-900 mb-2">Compliance Mapping</div>
-                 <p className="text-sm text-gray-600">Every workflow is stress-tested against Australian Privacy Principles.</p>
+                 <div className="font-bold text-aubergine-900 mb-2">Precision Path — Consulting</div>
+                 <p className="text-sm text-gray-600">We audit your workflows, identify the highest-ROI bottleneck, and build AI systems mapped to your exact operations.</p>
                </div>
                <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
-                 <div className="font-bold text-aubergine-900 mb-2">Implementation Support</div>
-                 <p className="text-sm text-gray-600">Stuck? Our team debugs your prompts and connections live.</p>
+                 <div className="font-bold text-aubergine-900 mb-2">Hybrid — Best of Both</div>
+                 <p className="text-sm text-gray-600">Your team learns at the Academy while we handle the complex builds. Academy members get 15% off consulting.</p>
                </div>
              </div>
 
-             <Button size="lg" className="bg-aubergine-900 text-white hover:bg-aubergine-800 rounded-full px-10 h-14 font-semibold text-lg transition-all hover:scale-105" asChild>
-               <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer" data-testid="link-hire-ai-department">
-                 Hire Your AI Department
-                 <ArrowRight className="ml-2 w-5 h-5" />
-               </a>
-             </Button>
+             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+               <Button size="lg" className="bg-aubergine-900 text-white hover:bg-aubergine-800 rounded-full px-10 h-14 font-semibold text-lg transition-all hover:scale-105" asChild>
+                 <a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer" data-testid="link-hire-ai-department">
+                   Join the Academy
+                   <ArrowRight className="ml-2 w-5 h-5" />
+                 </a>
+               </Button>
+               <Button size="lg" variant="outline" className="border-aubergine-900 text-aubergine-900 hover:bg-aubergine-50 rounded-full px-10 h-14 font-semibold text-lg" asChild>
+                 <a href="/services/audit">
+                   Book Free Discovery Call
+                 </a>
+               </Button>
+             </div>
            </div>
         </div>
 

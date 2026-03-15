@@ -77,8 +77,8 @@ export function Founder() {
 
 export function FAQ() {
   const faqs = [
-    { q: "What makes you different from other AI consultants?", a: "We build infrastructure before automation. Most consultants skip straight to tools and automation. We fix your foundation first: data organization, security, processes. It's slower but it actually works." },
-    { q: "Should I join the Academy or hire you for consulting?", a: "Academy: You have time, some technical ability, and want to learn + build yourself with community support. Consulting: You need it done fast, with expert implementation and guaranteed results. Most cost-effective: Both (learn the principles, we build the systems)." },
+    { q: "What makes you different from other AI consultants?", a: "We don't just plug in ChatGPT and walk away. We prepare your data, build knowledge bases, and set up Claude or ChatGPT the right way — with proper workflows, compliance, and team training. Infrastructure first, automation second." },
+    { q: "Should I join the Academy or hire you for consulting?", a: "Academy (fast path): Start using Claude and ChatGPT this week with 1,300+ templates, workshops, and community support. Consulting (precision path): We map your workflows, identify the highest-ROI bottleneck, and build tailored AI systems. Best value: Both — your team learns at the Academy while we handle the complex builds. Academy members get 15% off consulting." },
     { q: "Why do you show pricing ranges?", a: "Because honest pricing depends on scope. Basic invoice automation: $10K. Complex multi-system integration: $25K. We show ranges to set expectations, then provide fixed quotes after discovery. No surprises." },
     { q: "Do you work outside Queensland?", a: "Yes, 40% of our clients are interstate. We're fully remote-capable while being Brisbane-based for local clients who want in-person workshops." },
     { q: "What if the ROI doesn't work out?", a: "Our audit phase projects ROI before you commit. If we can't show 3-5x ROI within 12 months, we'll tell you not to proceed. We've turned away 30% of prospects because timing wasn't right." },
@@ -114,16 +114,16 @@ export function CTA() {
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-aubergine-900 via-aubergine-900 to-salmon-900/20"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold mb-8">AI Won't Fix Everything. But the Right Fix <span className="text-gradient-salmon">Changes Everything.</span></h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to Get Your Team <span className="text-gradient-salmon">Using AI Properly?</span></h2>
         <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-          15-minute call. We'll find the bottleneck that's costing you the most — or tell you honestly there isn't one worth fixing right now. No pitch, no pressure.
+          Start learning Claude and ChatGPT at the Academy today, or book a free 15-minute call and we'll map out the right approach for your business. No pitch, no pressure.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
           <Button data-testid="button-book-discovery" size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-10 h-16 rounded-full w-full sm:w-auto shadow-xl shadow-salmon-500/20 transition-all hover:scale-105 group" asChild>
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
               <Calendar className="mr-2 h-5 w-5" />
-              Find My Bottleneck
+              Book Free Discovery Call
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </Button>

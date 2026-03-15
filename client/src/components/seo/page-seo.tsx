@@ -98,8 +98,8 @@ export function PageSEO({
  */
 export const SEO_CONFIGS = {
   home: {
-    title: 'AI Consulting Sunshine Coast & Brisbane',
-    description: "AI won't save your business — fixing the right problem will. Queensland AI consulting that finds your costliest bottleneck and fixes it in 4 weeks.",
+    title: 'AI Consulting Sunshine Coast & Brisbane — Claude & ChatGPT Setup',
+    description: "Get your team using Claude and ChatGPT the right way. Learn fast at the Academy or let us map your workflows with precision consulting. Queensland AI consulting for Australian businesses.",
     canonical: BASE_URL,
   },
   about: {

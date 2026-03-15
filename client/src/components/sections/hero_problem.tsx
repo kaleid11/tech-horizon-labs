@@ -31,28 +31,28 @@ export function Hero() {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-bold tracking-tight leading-[1.05]">
-              Your Team Doesn't Need More AI Tools.<br/>
-              <span className="text-gradient-salmon">They Need 20 Hours Back Per Week.</span>
+              Get Your Team Using AI<br/>
+              <span className="text-gradient-salmon">The Right Way, From Day One.</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
-              Most AI agencies sell you ChatGPT setup and Zapier flows. We map your workflows, calculate the ROI, and build systems designed to last 3+ years. Your client doesn't care which model we use. They care that their ops team stopped drowning.
+              We help Australian businesses set up Claude and ChatGPT properly — not just the tools, but the workflows, knowledge bases, and compliance around them. Learn fast through our Academy, or let us map everything out with precision consulting.
             </p>
 
             <p className="text-lg text-salmon-400/90 max-w-2xl leading-relaxed font-medium" data-testid="text-hero-mission">
-              We sell the map before the build. We turn away 30% of prospects because the ROI doesn't justify it yet.
+              Two paths: learn it yourself at the Academy, or let us build it for you. Either way, your team gets AI that actually works.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button size="lg" className="bg-salmon-500 text-aubergine-900 hover:bg-salmon-600 font-bold text-lg px-8 h-14 rounded-full shadow-lg shadow-salmon-500/25 group transition-all hover:scale-105" asChild>
                 <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-book">
-                  Find My Bottleneck
+                  Book Free Discovery Call
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-8 h-14 rounded-full backdrop-blur-sm" asChild>
-                <a href="/audit-tool" data-testid="link-hero-approach">
-                  Take the Free AI Quiz
+                <a href="/academy" data-testid="link-hero-approach">
+                  Start Learning at the Academy
                 </a>
               </Button>
             </div>
@@ -209,7 +209,7 @@ export function Problem() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <Badge variant="outline" className="mb-4 border-salmon-500/30 text-salmon-600 bg-salmon-50 rounded-full px-4 py-1">OUR APPROACH</Badge>
           <h2 className="text-4xl font-bold text-aubergine-900 mb-6">Foundation First. Then Automate.</h2>
-          <p className="text-xl text-gray-600">We don't sell you AI tools. We prepare your organisation with the data, knowledge bases, and skills that make AI actually deliver results. Ready for today's tools and tomorrow's.</p>
+          <p className="text-xl text-gray-600">Getting value from Claude and ChatGPT isn't about signing up — it's about preparing your data, building knowledge bases, and training your team. We set up the foundation so AI delivers real results from day one.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
