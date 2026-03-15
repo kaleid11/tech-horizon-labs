@@ -158,7 +158,7 @@ export default function EventsPage() {
                     Date to be announced
                   </p>
                   <p className="text-gray-600 mb-4">
-                    We're setting up our events page. Sign up for the newsletter to be the first to know when the next AI on the Coast meetup is happening.
+                    We're finalising the schedule for our next meetup. Sign up for the newsletter to be the first to know when RSVPs open.
                   </p>
                   <div className="flex flex-wrap gap-3">
                     <Button data-testid="button-events-newsletter" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-6 transition-all hover:scale-105" asChild>
@@ -168,6 +168,18 @@ export default function EventsPage() {
                       </a>
                     </Button>
                   </div>
+                </div>
+
+                <div className="mt-6 p-6 bg-white rounded-xl border-2 border-dashed border-gray-300" data-testid="luma-embed-placeholder">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-8 h-8 bg-violet-100 rounded-lg flex items-center justify-center">
+                      <Calendar className="h-4 w-4 text-violet-600" />
+                    </div>
+                    <p className="text-sm font-medium text-gray-500">Upcoming events powered by Luma</p>
+                  </div>
+                  <p className="text-sm text-gray-400">
+                    Event RSVPs and ticketing will be available here soon via <a href="https://lu.ma" target="_blank" rel="noopener noreferrer" className="text-salmon-600 hover:text-salmon-700 underline" data-testid="link-luma-platform">lu.ma</a>. In the meantime, join the newsletter to get notified.
+                  </p>
                 </div>
               </div>
             </div>
@@ -281,6 +293,29 @@ export default function EventsPage() {
                   View on Google Maps
                   <ExternalLink className="h-3 w-3" />
                 </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <h2 className="text-3xl font-bold text-aubergine-900 text-center mb-4" data-testid="heading-past-events">
+              Past Events
+            </h2>
+            <p className="text-center text-gray-500 mb-12 max-w-2xl mx-auto">
+              Missed a meetup? Here's what we've covered so far.
+            </p>
+
+            <div className="max-w-3xl mx-auto">
+              <div className="bg-gray-50 rounded-2xl p-8 text-center">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Calendar className="h-8 w-8 text-gray-400" />
+                </div>
+                <p className="text-gray-500 font-medium mb-2">No past events yet</p>
+                <p className="text-sm text-gray-400">
+                  AI on the Coast is a new meetup series. Our first event is coming soon. Sign up for the newsletter to be notified when it's announced.
+                </p>
               </div>
             </div>
           </div>

@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { Shield, ShieldAlert, CheckCircle2, XCircle, AlertTriangle, Calendar, Server, Lock, Terminal, Cpu } from "lucide-react";
 import { Link } from "wouter";
-import { LocationSchema } from "@/components/seo/location-schema";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 
 const openclawFaqs = [
@@ -59,10 +58,51 @@ export default function OpenClawPage() {
   return (
     <div className="min-h-screen font-sans bg-background">
       <PageSEO {...SEO_CONFIGS.openclaw} />
-      <LocationSchema
-        location="Sunshine Coast"
-        description="Honest OpenClaw setup and consulting on the Sunshine Coast. We tell you what it's good at, what it's dangerous for, and how to deploy it safely."
-        faqs={openclawFaqs}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Service",
+                "@id": "https://techhorizonlabs.com/openclaw#service",
+                "name": "OpenClaw Setup & Consulting — Sunshine Coast",
+                "description": "Honest OpenClaw setup and consulting on the Sunshine Coast. We tell you what it's good at, what it's dangerous for, and how to deploy it safely.",
+                "url": "https://techhorizonlabs.com/openclaw",
+                "provider": {
+                  "@type": "Organization",
+                  "@id": "https://techhorizonlabs.com/#organization",
+                  "name": "Tech Horizon Labs"
+                },
+                "areaServed": {
+                  "@type": "City",
+                  "name": "Sunshine Coast",
+                  "containedInPlace": {
+                    "@type": "State",
+                    "name": "Queensland",
+                    "containedInPlace": {
+                      "@type": "Country",
+                      "name": "Australia"
+                    }
+                  }
+                }
+              },
+              {
+                "@type": "FAQPage",
+                "@id": "https://techhorizonlabs.com/openclaw#faq",
+                "mainEntity": openclawFaqs.map(faq => ({
+                  "@type": "Question",
+                  "name": faq.question,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
+                  }
+                }))
+              }
+            ]
+          })
+        }}
       />
       <SkipLink />
       <Navbar />
