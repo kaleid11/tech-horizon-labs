@@ -2,6 +2,7 @@ import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 import { Calendar, ArrowRight, CheckCircle2, XCircle, Shield, Brain, DollarSign, Lock } from "lucide-react";
 
 export default function ClaudeVsChatGPT2026() {
@@ -66,6 +67,11 @@ export default function ClaudeVsChatGPT2026() {
             </p>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "Learn", href: "/resources" },
+          { label: "Claude vs ChatGPT 2026" },
+        ]} />
 
         {/* Article Content */}
         <section className="py-16 bg-white">

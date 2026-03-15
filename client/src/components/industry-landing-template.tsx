@@ -5,6 +5,7 @@ import { CheckCircle2, TrendingUp, Calendar, ArrowRight, BarChart3 } from "lucid
 import type { LucideIcon } from "lucide-react";
 import { Link } from "wouter";
 import { PageSEO } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 import type { OccupationAIData } from "@/data/ai-impact-by-industry";
 
 interface IndustryFAQ {
@@ -51,6 +52,7 @@ interface IndustryLandingProps {
   caseStudyLabel?: string;
   faqs: IndustryFAQ[];
   aiImpact?: IndustryAIImpact;
+  breadcrumbItems?: { label: string; href?: string }[];
   children?: React.ReactNode;
 }
 
@@ -70,6 +72,7 @@ export default function IndustryLandingTemplate({
   caseStudyLabel,
   faqs,
   aiImpact,
+  breadcrumbItems,
   children,
 }: IndustryLandingProps) {
   const faqSchema = {
@@ -147,6 +150,8 @@ export default function IndustryLandingTemplate({
             </div>
           </div>
         </section>
+
+        {breadcrumbItems && <PageBreadcrumb items={breadcrumbItems} />}
 
         {/* The Bottleneck Section */}
         <section className="py-20 bg-white">

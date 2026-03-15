@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { Search, Clock, CheckCircle2, ArrowRight, Calendar } from "lucide-react";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 export default function AuditService() {
   return (
@@ -81,6 +82,11 @@ export default function AuditService() {
             </div>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "Services", href: "/services/audit" },
+          { label: "Readiness Assessment" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">

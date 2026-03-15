@@ -5,6 +5,7 @@ import { MapPin, CheckCircle2, ArrowRight, Calendar } from "lucide-react";
 import { Link } from "wouter";
 import { LocationSchema } from "@/components/seo/location-schema";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const queenslandFaqs = [
   {
@@ -80,6 +81,11 @@ export default function QueenslandLocation() {
             </div>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "About", href: "/about" },
+          { label: "All Queensland" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">

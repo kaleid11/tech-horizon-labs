@@ -4,6 +4,7 @@ import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { MapPin, Calendar, Users, Waves, Lightbulb, ArrowRight, ExternalLink, Clock, Cpu, Bot, Wrench, Code } from "lucide-react";
 import { Link } from "wouter";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const upcomingTopics = [
   { 
@@ -145,6 +146,11 @@ export default function EventsPage() {
             </div>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "About", href: "/about" },
+          { label: "Events" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">
@@ -317,6 +323,20 @@ export default function EventsPage() {
                 <p className="text-sm text-gray-400">
                   AI on the Coast is a new meetup series. Our first event is coming soon. Sign up for the newsletter to be notified when it's announced.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+            <div className="mt-12 pt-8 border-t border-gray-200">
+              <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Explore More</h3>
+              <div className="flex flex-wrap gap-4">
+                <a href="/academy" className="text-salmon-600 hover:text-salmon-700 underline">Tech Horizon Academy</a>
+                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Assessment</a>
+                <a href="/resources" className="text-salmon-600 hover:text-salmon-700 underline">Resources & Guides</a>
+                <a href="/contact" className="text-salmon-600 hover:text-salmon-700 underline">Contact Us</a>
               </div>
             </div>
           </div>

@@ -9,6 +9,11 @@ export default function LegalIndustry() {
       seoConfig={SEO_CONFIGS.industries.legal}
       industry="Legal"
       slug="legal"
+      breadcrumbItems={[
+        { label: "Services", href: "/services/audit" },
+        { label: "Industries", href: "/industries/legal" },
+        { label: "Legal" },
+      ]}
       tagline="AI for Law Firms — QLD & Australia"
       heroDescription="Every legal AI vendor leads with 'document review automation.' But if your firm's documents aren't structured consistently, or your precedent system is a shared drive with 10 years of folders, no AI tool will save you. We find the actual problem first."
       aiImpact={{

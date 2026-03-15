@@ -5,6 +5,7 @@ import { MapPin, CheckCircle2, Building2, Factory, Briefcase, TrendingUp, Calend
 import { Link } from "wouter";
 import { LocationSchema } from "@/components/seo/location-schema";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const brisbaneFaqs = [
   {
@@ -103,6 +104,12 @@ export default function BrisbaneLocation() {
             </div>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "About", href: "/about" },
+          { label: "Locations", href: "/locations/queensland" },
+          { label: "Brisbane" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">

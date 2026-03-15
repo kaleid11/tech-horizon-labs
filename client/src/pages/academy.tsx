@@ -2,6 +2,7 @@ import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Users, Calendar, FileText, CheckCircle2, ArrowRight, ExternalLink } from "lucide-react";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 export default function Academy() {
   return (
@@ -56,6 +57,11 @@ export default function Academy() {
             </div>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "Learn", href: "/resources" },
+          { label: "Academy" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">

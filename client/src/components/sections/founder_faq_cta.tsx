@@ -2,9 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import founderImageWebp from "@/assets/huxley-profile.webp";
 import founderImageJpg from "@/assets/huxley-profile.jpg";
-import { ShieldCheck, Play, Calendar, ArrowRight } from "lucide-react";
-import videoPlaceholderWebp from "@/assets/video-placeholder.webp";
-import videoPlaceholderPng from "@/assets/video-placeholder.png";
+import { ShieldCheck, Calendar, ArrowRight } from "lucide-react";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 
 export function Founder() {
@@ -71,31 +69,6 @@ export function Founder() {
           
         </div>
 
-        {/* Video Testimonial Section - Hidden until video is available */}
-        {/* 
-        <div className="mt-32">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-aubergine-900">Don't Take My Word For It</h3>
-            <p className="text-gray-600 mt-4">See how real Australian businesses are using the Academy.</p>
-          </div>
-          
-          <div className="relative max-w-4xl mx-auto group cursor-pointer">
-            <div className="absolute inset-0 bg-aubergine-900 rounded-2xl transform rotate-1 group-hover:rotate-0 transition-transform opacity-10"></div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20">
-               <img src={videoPlaceholder} alt="Testimonial Video - BuildRight Construction QLD Case Study" className="w-full h-auto" loading="lazy" />
-               <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/30 transition-colors">
-                 <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform">
-                   <Play className="w-8 h-8 text-white fill-white ml-1" />
-                 </div>
-               </div>
-               <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/80 to-transparent">
-                 <p className="text-white text-xl font-bold">"The Academy saved us 20 hours a week on admin."</p>
-                 <p className="text-gray-300 text-sm mt-1">Sarah Jenkins, Director @ BuildRight Construction QLD</p>
-               </div>
-            </div>
-          </div>
-        </div>
-        */}
 
       </div>
     </section>

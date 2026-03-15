@@ -4,6 +4,7 @@ import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { Building2, HardHat, Home, Factory, Heart, Clock, Shield, Calendar } from "lucide-react";
 import { Link } from "wouter";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const caseStudies = [
   {
@@ -123,6 +124,11 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "Work", href: "/portfolio" },
+          { label: "Portfolio" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">

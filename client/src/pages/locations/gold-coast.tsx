@@ -5,6 +5,7 @@ import { MapPin, CheckCircle2, Hotel, Building2, Users, TrendingUp, Calendar } f
 import { Link } from "wouter";
 import { LocationSchema } from "@/components/seo/location-schema";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const goldCoastFaqs = [
   {
@@ -83,6 +84,12 @@ export default function GoldCoastLocation() {
             </div>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "About", href: "/about" },
+          { label: "Locations", href: "/locations/queensland" },
+          { label: "Gold Coast" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">

@@ -4,6 +4,7 @@ import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { Shield, ShieldAlert, CheckCircle2, XCircle, AlertTriangle, Calendar, Server, Lock, Terminal, Cpu } from "lucide-react";
 import { Link } from "wouter";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const openclawFaqs = [
   {
@@ -160,6 +161,10 @@ export default function OpenClawPage() {
             </div>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "OpenClaw Setup" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">

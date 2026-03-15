@@ -50,30 +50,31 @@ export function Pricing() {
           <div className="p-8 bg-white rounded-2xl border border-gray-100 flex flex-col h-full hover:border-salmon-300 hover:shadow-lg transition-all group">
             <h3 className="text-lg font-bold text-aubergine-900 mb-2">Transformation Partner</h3>
             <div className="text-3xl font-bold mb-2 text-aubergine-900">Ongoing</div>
-            <div className="text-xs text-gray-500 mb-6">Quarterly roadmap + priority support</div>
+            <div className="text-xs text-gray-500 mb-6">Weekly strategy + flexible credits</div>
             <p className="text-sm text-gray-500 mb-6">Your fractional AI department. We find the next bottleneck, fix it, train your team, and keep your business evolving.</p>
             <ul className="space-y-4 mb-8 flex-grow text-sm text-gray-700">
-              <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Quarterly strategy sessions</li>
-              <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Priority support access</li>
-              <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Continuous optimization</li>
-              <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Proactive updates</li>
+              <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Weekly strategy sessions</li>
+              <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Flexible monthly work credits</li>
+              <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Academy platform access</li>
+              <li className="flex gap-3"><Check className="w-4 h-4 text-green-500 shrink-0 mt-0.5" /> Phased project delivery</li>
             </ul>
             <Button variant="outline" className="w-full border-aubergine-900 text-aubergine-900 hover:bg-aubergine-50 rounded-full group-hover:border-salmon-500" asChild>
-              <a href="/services/partner">Learn More</a>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book Free Audit First</a>
             </Button>
           </div>
 
-          {/* Card 4 */}
-          <div className="p-8 bg-gray-50 rounded-2xl border border-gray-200 flex flex-col h-full hover:border-salmon-300 transition-all group">
-            <h3 className="text-lg font-bold text-aubergine-900 mb-2">Academy</h3>
-            <div className="text-3xl font-bold mb-2 text-gray-600">Free</div>
+          {/* Card 4 - DIY Path */}
+          <div className="p-8 bg-gray-50 rounded-2xl border border-dashed border-gray-300 flex flex-col h-full hover:border-salmon-300 transition-all group relative">
+            <div className="absolute -top-3 left-6 bg-gray-100 text-gray-500 text-xs font-bold px-3 py-1 rounded-full border border-gray-200">DIY PATH</div>
+            <h3 className="text-lg font-bold text-aubergine-900 mb-2 mt-2">Academy</h3>
+            <div className="text-3xl font-bold mb-2 text-gray-600">From Free</div>
             <div className="text-xs text-gray-500 mb-6">Learn at your own pace</div>
             <p className="text-sm text-gray-500 mb-6">Learn to find and fix bottlenecks yourself. Weekly workshops, 1,300+ templates, real operators sharing what actually works.</p>
             <ul className="space-y-4 mb-8 flex-grow text-sm text-gray-600">
-              <li className="flex gap-3"><Check className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" /> Free tier available</li>
+              <li className="flex gap-3"><Check className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" /> Free tier to get started</li>
               <li className="flex gap-3"><Check className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" /> Weekly live workshops</li>
-              <li className="flex gap-3"><Check className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" /> Template library access</li>
-              <li className="flex gap-3"><Check className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" /> Community support</li>
+              <li className="flex gap-3"><Check className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" /> 1,300+ template library</li>
+              <li className="flex gap-3"><Check className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" /> 300+ operator community</li>
             </ul>
             <Button variant="ghost" className="w-full rounded-full hover:bg-gray-200 group-hover:text-salmon-600" asChild>
               <a href="/academy">Explore Academy →</a>
@@ -97,7 +98,7 @@ export function Academy() {
             <div className="pr-0 md:pr-8 md:border-r border-white/10">
               <h3 className="text-3xl font-bold mb-4">Not Ready for Consulting?</h3>
               <p className="text-gray-300 mb-6 text-lg">
-                Start learning for free at Tech Horizon Academy. Join 800+ members in weekly workshops on Claude, Skills, and automation.
+                Start learning for free at Tech Horizon Academy. Join 300+ SEQ operators in weekly workshops on Claude, Skills, and automation.
               </p>
               <ul className="space-y-3 mb-8 text-sm font-medium text-gray-300">
                 <li className="flex items-center gap-3">

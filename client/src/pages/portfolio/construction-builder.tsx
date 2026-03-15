@@ -2,6 +2,7 @@ import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { PageSEO } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 import { HardHat, Clock, Shield, Calendar, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
 
@@ -98,6 +99,12 @@ export default function ConstructionBuilderCaseStudy() {
             </div>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "Work", href: "/portfolio" },
+          { label: "Portfolio", href: "/portfolio" },
+          { label: "Construction Builder" },
+        ]} />
 
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">

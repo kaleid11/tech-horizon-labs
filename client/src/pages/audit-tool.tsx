@@ -1,6 +1,7 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 import { AuditWizard } from "@/components/audit/audit-wizard";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 export default function AuditToolPage() {
   return (
@@ -10,6 +11,11 @@ export default function AuditToolPage() {
       <Navbar />
 
       <main id="main-content">
+        <PageBreadcrumb items={[
+          { label: "Work", href: "/portfolio" },
+          { label: "AI Readiness Quiz" },
+        ]} />
+
         <section className="pt-32 pb-20 bg-cream-50 min-h-screen">
           <div className="container mx-auto px-4 md:px-6">
             <AuditWizard />

@@ -142,6 +142,28 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Guides -->
+  <url>
+    <loc>https://techhorizonlabs.com/guides/claude-cowork-setup</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/guides/chatgpt-to-claude</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://techhorizonlabs.com/contact</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- Tools -->
   <url>
     <loc>https://techhorizonlabs.com/audit-tool</loc>

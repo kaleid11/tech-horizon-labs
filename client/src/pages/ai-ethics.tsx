@@ -1,5 +1,6 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 import {
   Scale,
   ShieldCheck,
@@ -142,6 +143,11 @@ export default function AIEthics() {
             </p>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "About", href: "/about" },
+          { label: "AI Ethics" },
+        ]} />
 
         {/* Our AI Principles */}
         <section className="py-20 bg-white">

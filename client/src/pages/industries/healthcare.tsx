@@ -9,6 +9,11 @@ export default function HealthcareIndustry() {
       seoConfig={SEO_CONFIGS.industries.healthcare}
       industry="Healthcare"
       slug="healthcare"
+      breadcrumbItems={[
+        { label: "Services", href: "/services/audit" },
+        { label: "Industries", href: "/industries/healthcare" },
+        { label: "Healthcare" },
+      ]}
       tagline="AI for Healthcare — QLD & Australia"
       heroDescription="Healthcare AI is sold as 'clinical decision support' — but most clinics' real bottleneck is the admin around patient care, not the care itself. We find the operational problem that's costing your clinicians time and your practice revenue."
       aiImpact={{

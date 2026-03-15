@@ -6,8 +6,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
-import { Menu, ChevronDown, Search, Zap, Users, Calendar } from "lucide-react";
+import { Menu, ChevronDown, Search, Zap, Users, Calendar, Briefcase, ClipboardCheck, FileText, BookOpen, ArrowLeftRight, BarChart3, GraduationCap, User, Shield, MapPin, Building2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import logoWebp from "@/assets/logo-80.webp";
 import logoPng from "@/assets/logo.png";
@@ -44,15 +46,53 @@ export function Navbar() {
     { name: "Ongoing Evolution", href: "/services/partner", icon: Users, desc: "Continuous AI partnership" },
   ];
 
-  const navItems = [
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "AI Readiness Quiz", href: "/audit-tool" },
-    { name: "Resources", href: "/resources" },
-    { name: "Research", href: "/research" },
-    { name: "Locations", href: "/locations/queensland" },
-    { name: "Academy", href: "/academy" },
-    { name: "AI Ethics", href: "/ai-ethics" },
+  const industryItems = [
+    { name: "Construction", href: "/industries/construction" },
+    { name: "Accounting", href: "/industries/accounting" },
+    { name: "Legal", href: "/industries/legal" },
+    { name: "Healthcare", href: "/industries/healthcare" },
+    { name: "Retail", href: "/industries/retail" },
   ];
+
+  const workItems = [
+    { name: "Portfolio & Case Studies", href: "/portfolio", icon: Briefcase, desc: "Real business results" },
+    { name: "AI Readiness Quiz", href: "/audit-tool", icon: ClipboardCheck, desc: "Free 2-min self-assessment" },
+  ];
+
+  const learnItems = [
+    { name: "Resources Hub", href: "/resources", icon: FileText, desc: "Guides, articles & tools" },
+    { name: "Claude Cowork Guide", href: "/guides/claude-cowork-setup", icon: BookOpen, desc: "Setup guide + best practices" },
+    { name: "ChatGPT to Claude Guide", href: "/guides/chatgpt-to-claude", icon: ArrowLeftRight, desc: "Migration walkthrough" },
+    { name: "Research Dashboard", href: "/research", icon: BarChart3, desc: "AI company deep analysis" },
+    { name: "Academy", href: "/academy", icon: GraduationCap, desc: "1,300+ templates & workshops" },
+  ];
+
+  const aboutItems = [
+    { name: "About Huxley", href: "/about", icon: User, desc: "Founder & company story" },
+    { name: "AI Ethics", href: "/ai-ethics", icon: Shield, desc: "Our transparency principles" },
+    { name: "Events", href: "/events", icon: Calendar, desc: "AI on the Coast meetup" },
+    { name: "Locations", href: "/locations/queensland", icon: MapPin, desc: "Queensland-wide service" },
+  ];
+
+  const triggerClassName = "text-sm font-medium text-gray-300 hover:text-salmon-500 transition-colors flex items-center gap-1 outline-none focus-visible:ring-2 focus-visible:ring-salmon-500 focus-visible:ring-offset-2 focus-visible:ring-offset-aubergine-900 rounded";
+  const dropdownContentClassName = "w-72 bg-white border border-gray-100 shadow-xl rounded-xl p-2";
+
+  const DropdownItemLink = ({ item }: { item: { name: string; href: string; icon: React.ComponentType<{ className?: string }>; desc: string } }) => (
+    <DropdownMenuItem asChild>
+      <a
+        href={item.href}
+        className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
+      >
+        <div className="w-10 h-10 bg-salmon-50 rounded-lg flex items-center justify-center flex-shrink-0">
+          <item.icon className="h-5 w-5 text-salmon-600" />
+        </div>
+        <div>
+          <div className="font-medium text-aubergine-900">{item.name}</div>
+          <div className="text-xs text-gray-500">{item.desc}</div>
+        </div>
+      </a>
+    </DropdownMenuItem>
+  );
 
   return (
     <nav
@@ -70,48 +110,77 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-5">
+          {/* Services Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button
-                className="text-sm font-medium text-gray-300 hover:text-salmon-500 transition-colors flex items-center gap-1 outline-none focus-visible:ring-2 focus-visible:ring-salmon-500 focus-visible:ring-offset-2 focus-visible:ring-offset-aubergine-900 rounded"
-                data-testid="nav-services-dropdown"
-                aria-label="Services menu"
-                aria-haspopup="menu"
-              >
+              <button className={triggerClassName} data-testid="nav-services-dropdown" aria-label="Services menu" aria-haspopup="menu">
                 Services
                 <ChevronDown className="h-4 w-4" aria-hidden="true" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-72 bg-white border border-gray-100 shadow-xl rounded-xl p-2">
+            <DropdownMenuContent align="start" className={dropdownContentClassName}>
               {serviceItems.map((item) => (
+                <DropdownItemLink key={item.name} item={item} />
+              ))}
+              <DropdownMenuSeparator className="my-2" />
+              <DropdownMenuLabel className="text-xs text-gray-400 uppercase tracking-wider px-3 py-1">Industries</DropdownMenuLabel>
+              {industryItems.map((item) => (
                 <DropdownMenuItem key={item.name} asChild>
-                  <a 
-                    href={item.href}
-                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
-                  >
-                    <div className="w-10 h-10 bg-salmon-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <item.icon className="h-5 w-5 text-salmon-600" />
-                    </div>
-                    <div>
-                      <div className="font-medium text-aubergine-900">{item.name}</div>
-                      <div className="text-xs text-gray-500">{item.desc}</div>
-                    </div>
+                  <a href={item.href} className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                    <Building2 className="h-4 w-4 text-gray-400" />
+                    <span className="text-sm text-aubergine-900">{item.name}</span>
                   </a>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {navItems.map((item) => (
-            <a 
-              key={item.name} 
-              href={item.href}
-              className="text-sm font-medium text-gray-300 hover:text-salmon-500 transition-colors"
-            >
-              {item.name}
-            </a>
-          ))}
+          {/* Work Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className={triggerClassName} aria-label="Work menu" aria-haspopup="menu">
+                Work
+                <ChevronDown className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className={dropdownContentClassName}>
+              {workItems.map((item) => (
+                <DropdownItemLink key={item.name} item={item} />
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Learn Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className={triggerClassName} aria-label="Learn menu" aria-haspopup="menu">
+                Learn
+                <ChevronDown className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className={dropdownContentClassName}>
+              {learnItems.map((item) => (
+                <DropdownItemLink key={item.name} item={item} />
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* About Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className={triggerClassName} aria-label="About menu" aria-haspopup="menu">
+                About
+                <ChevronDown className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className={dropdownContentClassName}>
+              {aboutItems.map((item) => (
+                <DropdownItemLink key={item.name} item={item} />
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <Button data-testid="button-nav-book-discovery" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-semibold shadow-lg shadow-salmon-500/20 rounded-full px-6 transition-all hover:scale-105" asChild>
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
               <Calendar className="mr-2 h-4 w-4" />
@@ -121,7 +190,7 @@ export function Navbar() {
         </div>
 
         {/* Mobile Nav */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button
@@ -133,36 +202,59 @@ export function Navbar() {
                 <Menu className="h-6 w-6" aria-hidden="true" />
               </Button>
             </SheetTrigger>
-            <SheetContent className="bg-aubergine-900 border-gray-800 text-white">
+            <SheetContent className="bg-aubergine-900 border-gray-800 text-white overflow-y-auto">
               <div className="flex flex-col gap-6 mt-10">
+                {/* Services */}
                 <div className="space-y-2">
                   <div className="text-xs uppercase tracking-wider text-gray-500 mb-3">Services</div>
                   {serviceItems.map((item) => (
-                    <a 
-                      key={item.name} 
-                      href={item.href}
-                      className="flex items-center gap-3 py-2 text-gray-300 hover:text-salmon-500 transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
+                    <a key={item.name} href={item.href} className="flex items-center gap-3 py-2 text-gray-300 hover:text-salmon-500 transition-colors" onClick={() => setIsOpen(false)}>
+                      <item.icon className="h-5 w-5" />
+                      <span>{item.name}</span>
+                    </a>
+                  ))}
+                  <div className="text-xs uppercase tracking-wider text-gray-500 mt-4 mb-2">Industries</div>
+                  {industryItems.map((item) => (
+                    <a key={item.name} href={item.href} className="flex items-center gap-3 py-1.5 text-gray-400 hover:text-salmon-500 transition-colors text-sm" onClick={() => setIsOpen(false)}>
+                      <Building2 className="h-4 w-4" />
+                      <span>{item.name}</span>
+                    </a>
+                  ))}
+                </div>
+
+                {/* Work */}
+                <div className="border-t border-gray-800 pt-6 space-y-2">
+                  <div className="text-xs uppercase tracking-wider text-gray-500 mb-3">Work</div>
+                  {workItems.map((item) => (
+                    <a key={item.name} href={item.href} className="flex items-center gap-3 py-2 text-gray-300 hover:text-salmon-500 transition-colors" onClick={() => setIsOpen(false)}>
                       <item.icon className="h-5 w-5" />
                       <span>{item.name}</span>
                     </a>
                   ))}
                 </div>
-                
-                <div className="border-t border-gray-800 pt-6 space-y-4">
-                  {navItems.map((item) => (
-                    <a 
-                      key={item.name} 
-                      href={item.href}
-                      className="block text-lg font-medium hover:text-salmon-500 transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
+
+                {/* Learn */}
+                <div className="border-t border-gray-800 pt-6 space-y-2">
+                  <div className="text-xs uppercase tracking-wider text-gray-500 mb-3">Learn</div>
+                  {learnItems.map((item) => (
+                    <a key={item.name} href={item.href} className="flex items-center gap-3 py-2 text-gray-300 hover:text-salmon-500 transition-colors" onClick={() => setIsOpen(false)}>
+                      <item.icon className="h-5 w-5" />
+                      <span>{item.name}</span>
                     </a>
                   ))}
                 </div>
-                
+
+                {/* About */}
+                <div className="border-t border-gray-800 pt-6 space-y-2">
+                  <div className="text-xs uppercase tracking-wider text-gray-500 mb-3">About</div>
+                  {aboutItems.map((item) => (
+                    <a key={item.name} href={item.href} className="flex items-center gap-3 py-2 text-gray-300 hover:text-salmon-500 transition-colors" onClick={() => setIsOpen(false)}>
+                      <item.icon className="h-5 w-5" />
+                      <span>{item.name}</span>
+                    </a>
+                  ))}
+                </div>
+
                 <Button data-testid="button-mobile-book-discovery" className="w-full bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold mt-4" asChild>
                   <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
                     <Calendar className="mr-2 h-4 w-4" />
@@ -232,12 +324,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold mb-4 text-white">Community</h4>
+            <h4 className="font-bold mb-4 text-white">Learn & Community</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/events" className="hover:text-salmon-500 transition-colors" data-testid="link-footer-events">AI on the Coast Meetup</a></li>
-              <li><a href="/openclaw" className="hover:text-salmon-500 transition-colors" data-testid="link-footer-openclaw">OpenClaw Setup</a></li>
-              <li><a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer" className="hover:text-salmon-500 transition-colors">Tech Horizon Academy ↗</a></li>
               <li><a href="/resources" className="hover:text-salmon-500 transition-colors">Resources</a></li>
+              <li><a href="/guides/claude-cowork-setup" className="hover:text-salmon-500 transition-colors">Claude Cowork Guide</a></li>
+              <li><a href="/guides/chatgpt-to-claude" className="hover:text-salmon-500 transition-colors">ChatGPT to Claude Guide</a></li>
+              <li><a href="https://academy.techhorizonlabs.com" target="_blank" rel="noopener noreferrer" className="hover:text-salmon-500 transition-colors">Tech Horizon Academy ↗</a></li>
+              <li><a href="/events" className="hover:text-salmon-500 transition-colors" data-testid="link-footer-events">AI on the Coast Meetup</a></li>
               <li><a href="/about" className="hover:text-salmon-500 transition-colors">About Huxley</a></li>
               <li><a href="https://tech-horizon.beehiiv.com" target="_blank" rel="noopener noreferrer" className="hover:text-salmon-500 transition-colors">Newsletter ↗</a></li>
               <li><a href="/ai-ethics" className="hover:text-salmon-500 transition-colors">AI Ethics</a></li>
@@ -310,7 +403,7 @@ export function Footer() {
           <div className="flex gap-4">
             <a href="/privacy" className="hover:text-salmon-500 transition-colors">Privacy Policy</a>
             <a href="/terms" className="hover:text-salmon-500 transition-colors">Terms of Service</a>
-            <a href="/#contact" className="hover:text-salmon-500 transition-colors focus-visible:text-salmon-500 focus-visible:underline">Contact</a>
+            <a href="/contact" className="hover:text-salmon-500 transition-colors focus-visible:text-salmon-500 focus-visible:underline">Contact</a>
           </div>
         </div>
       </div>

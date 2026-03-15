@@ -193,6 +193,18 @@ export const SEO_CONFIGS = {
       canonical: `${BASE_URL}/industries/retail`,
     },
   },
+  guides: {
+    claudeCoworkSetup: {
+      title: 'Claude Cowork Setup Guide for Australian Businesses',
+      description: 'Step-by-step Claude Cowork setup with Australian compliance mapping. Desktop app config, connectors, best practices, and Privacy Act considerations.',
+      canonical: `${BASE_URL}/guides/claude-cowork-setup`,
+    },
+    chatgptToClaude: {
+      title: 'Migrating from ChatGPT to Claude — Practical Guide',
+      description: 'How to migrate business workflows from ChatGPT to Claude. Feature comparison, prompt translation, project setup, and hybrid workflow strategies.',
+      canonical: `${BASE_URL}/guides/chatgpt-to-claude`,
+    },
+  },
   insights: {
     claudeVsChatgpt2026: {
       title: 'Claude vs ChatGPT 2026 Comparison',
@@ -204,6 +216,11 @@ export const SEO_CONFIGS = {
       description: 'Which industries benefit most from AI? Data shows 94% of admin tasks are AI-ready but only 32% of businesses use it. See the gap by occupation and what it means for your industry.',
       canonical: `${BASE_URL}/insights/ai-impact-by-industry`,
     },
+  },
+  contact: {
+    title: 'Contact Tech Horizon Labs',
+    description: 'Book a free 15-minute AI discovery call, send us a message, or find our contact details. Sunshine Coast, Queensland — serving all of Australia.',
+    canonical: `${BASE_URL}/contact`,
   },
   auditTool: {
     title: 'AI Readiness Self-Assessment Tool',

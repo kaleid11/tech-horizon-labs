@@ -1,8 +1,9 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
-import { Users, CheckCircle2, Calendar, TrendingUp, Shield, Headphones } from "lucide-react";
+import { Users, CheckCircle2, Calendar, TrendingUp, Shield, Headphones, GraduationCap, Layers } from "lucide-react";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 export default function PartnerService() {
   return (
@@ -57,24 +58,29 @@ export default function PartnerService() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-700">
               <div>
-                <div className="text-3xl font-bold text-salmon-500">Quarterly</div>
-                <div className="text-sm text-gray-400">Roadmap Reviews</div>
+                <div className="text-3xl font-bold text-salmon-500">Weekly</div>
+                <div className="text-sm text-gray-400">Strategy Sessions</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-salmon-500">Priority</div>
-                <div className="text-sm text-gray-400">Support Access</div>
+                <div className="text-3xl font-bold text-salmon-500">Flexible</div>
+                <div className="text-sm text-gray-400">Work Credits</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-salmon-500">Ongoing</div>
-                <div className="text-sm text-gray-400">Optimization</div>
+                <div className="text-3xl font-bold text-salmon-500">Academy</div>
+                <div className="text-sm text-gray-400">Platform Access</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-salmon-500">Long-term</div>
-                <div className="text-sm text-gray-400">Partnership</div>
+                <div className="text-3xl font-bold text-salmon-500">Phased</div>
+                <div className="text-sm text-gray-400">Project Delivery</div>
               </div>
             </div>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "Services", href: "/services/audit" },
+          { label: "Ongoing Evolution" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">
@@ -93,28 +99,36 @@ export default function PartnerService() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-gray-50 rounded-xl p-6 text-center">
                   <TrendingUp className="h-10 w-10 text-salmon-500 mx-auto mb-4" />
-                  <h3 className="font-bold text-aubergine-900 mb-2">Quarterly Roadmap</h3>
+                  <h3 className="font-bold text-aubergine-900 mb-2">Weekly Strategy</h3>
                   <p className="text-gray-600 text-sm">
-                    Strategic planning sessions to identify next automation opportunities
+                    Weekly 30-minute strategy sessions plus quarterly deep-dive roadmap reviews
                   </p>
                 </div>
 
                 <div className="bg-gray-50 rounded-xl p-6 text-center">
-                  <Headphones className="h-10 w-10 text-salmon-500 mx-auto mb-4" />
-                  <h3 className="font-bold text-aubergine-900 mb-2">Priority Support</h3>
+                  <Layers className="h-10 w-10 text-salmon-500 mx-auto mb-4" />
+                  <h3 className="font-bold text-aubergine-900 mb-2">Flexible Credits</h3>
                   <p className="text-gray-600 text-sm">
-                    Direct access for questions, issues, and optimization requests
+                    Monthly work credits to mix development, consulting, and support hours as needed
+                  </p>
+                </div>
+
+                <div className="bg-gray-50 rounded-xl p-6 text-center">
+                  <GraduationCap className="h-10 w-10 text-salmon-500 mx-auto mb-4" />
+                  <h3 className="font-bold text-aubergine-900 mb-2">Academy Access</h3>
+                  <p className="text-gray-600 text-sm">
+                    Full Tech Horizon Academy platform access for your entire team
                   </p>
                 </div>
 
                 <div className="bg-gray-50 rounded-xl p-6 text-center">
                   <Shield className="h-10 w-10 text-salmon-500 mx-auto mb-4" />
-                  <h3 className="font-bold text-aubergine-900 mb-2">Proactive Updates</h3>
+                  <h3 className="font-bold text-aubergine-900 mb-2">Phased Delivery</h3>
                   <p className="text-gray-600 text-sm">
-                    We monitor AI developments and proactively suggest improvements
+                    Structured project milestones with clear checkpoints — not open-ended timelines
                   </p>
                 </div>
               </div>
@@ -132,14 +146,16 @@ export default function PartnerService() {
               <div className="bg-white rounded-2xl p-8 shadow-sm">
                 <div className="space-y-4">
                   {[
-                    "Quarterly AI roadmap review and planning sessions",
-                    "Priority support with 24-hour response time",
+                    "Weekly 30-minute strategy sessions with quarterly deep-dive reviews",
+                    "Monthly flexible work credits — mix development, consulting, and support",
+                    "Full Tech Horizon Academy platform access for your team",
+                    "Priority async support with next-business-day response",
+                    "Phased project delivery with structured milestones and checkpoints",
                     "Monthly system health checks and optimization",
                     "Proactive AI tool and workflow recommendations",
-                    "Discounted rates on additional Accelerator projects",
-                    "Early access to new templates and workflows",
                     "Annual compliance review and updates",
-                    "Dedicated account manager"
+                    "Dedicated account manager",
+                    "Discounted rates on additional build projects"
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <CheckCircle2 className="h-5 w-5 text-salmon-500 flex-shrink-0" />

@@ -9,6 +9,11 @@ export default function ConstructionIndustry() {
       seoConfig={SEO_CONFIGS.industries.construction}
       industry="Construction"
       slug="construction"
+      breadcrumbItems={[
+        { label: "Services", href: "/services/audit" },
+        { label: "Industries", href: "/industries/construction" },
+        { label: "Construction" },
+      ]}
       tagline="AI for Construction — Sunshine Coast & QLD"
       heroDescription="Most AI consultants sell construction companies chatbots and dashboards. We find the one bottleneck buried in your quoting, invoicing, or compliance process that's costing you hours every week — then fix it."
       aiImpact={{

@@ -1,10 +1,11 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
-import { Award, MapPin, Briefcase, Users, Calendar, ExternalLink, Shield, BadgeCheck } from "lucide-react";
+import { Award, MapPin, Briefcase, Users, Calendar, ExternalLink, Shield, BadgeCheck, Monitor } from "lucide-react";
 import huxleyProfileWebp from "@/assets/huxley-profile.webp";
 import huxleyProfileJpg from "@/assets/huxley-profile.jpg";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 export default function About() {
   return (
@@ -27,6 +28,10 @@ export default function About() {
             </p>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "About" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">
@@ -132,7 +137,7 @@ export default function About() {
               Why Work With Us
             </h2>
             
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
               <div className="text-center">
                 <div className="w-16 h-16 bg-salmon-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Award className="h-8 w-8 text-salmon-600" />
@@ -159,7 +164,17 @@ export default function About() {
                 </div>
                 <h3 className="font-bold text-aubergine-900 mb-2">Community Backed</h3>
                 <p className="text-gray-600 text-sm">
-                  300+ SEQ operators in our Academy community. You're not figuring this out alone—you're joining a network.
+                  300+ SEQ operators in our Academy community. You're not figuring this out alone — you're joining a network.
+                </p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-salmon-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Monitor className="h-8 w-8 text-salmon-600" />
+                </div>
+                <h3 className="font-bold text-aubergine-900 mb-2">Full-Stack Tech</h3>
+                <p className="text-gray-600 text-sm">
+                  Beyond AI: we handle the foundation too — networking, email architecture, POS systems, and IT setup for small businesses.
                 </p>
               </div>
             </div>

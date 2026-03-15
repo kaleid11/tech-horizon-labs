@@ -41,6 +41,9 @@ const AuditTool = lazy(() => import("@/pages/audit-tool"));
 const AIEthics = lazy(() => import("@/pages/ai-ethics"));
 const OpenClaw = lazy(() => import("@/pages/openclaw"));
 const Events = lazy(() => import("@/pages/events"));
+const ClaudeCoworkSetupGuide = lazy(() => import("@/pages/guides/claude-cowork-setup"));
+const ChatGPTToClaudeGuide = lazy(() => import("@/pages/guides/chatgpt-to-claude"));
+const Contact = lazy(() => import("@/pages/contact"));
 
 // Simple loading fallback
 function PageLoader() {
@@ -86,6 +89,9 @@ function Router() {
         <Route path="/ai-ethics" component={AIEthics} />
         <Route path="/openclaw" component={OpenClaw} />
         <Route path="/events" component={Events} />
+        <Route path="/guides/claude-cowork-setup" component={ClaudeCoworkSetupGuide} />
+        <Route path="/guides/chatgpt-to-claude" component={ChatGPTToClaudeGuide} />
+        <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { NewsletterDialog } from "@/components/newsletter-dialog";
 import { FileText, Video, Download, ExternalLink, Calendar, ArrowRight } from "lucide-react";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const articles = [
   {
@@ -24,6 +25,24 @@ const articles = [
     link: "/insights/claude-vs-chatgpt-2026"
   },
   {
+    id: "claude-cowork-setup",
+    title: "Claude Cowork Setup Guide: From Zero to Autonomous AI in 15 Minutes",
+    description: "Complete setup from beginner to advanced — Desktop app, connectors, compliance, and best practices for Australian businesses.",
+    category: "Guide",
+    readTime: "15 min read",
+    keywords: ["claude cowork", "AI setup", "Australian compliance", "desktop AI"],
+    link: "/guides/claude-cowork-setup"
+  },
+  {
+    id: "chatgpt-to-claude",
+    title: "Switching from ChatGPT to Claude: Complete Migration Guide",
+    description: "Transfer your prompts, context, and memory in 10 minutes. Feature comparison, project setup, and when to use each tool.",
+    category: "Guide",
+    readTime: "10 min read",
+    keywords: ["chatgpt to claude", "AI migration", "claude guide", "prompt transfer"],
+    link: "/guides/chatgpt-to-claude"
+  },
+  {
     id: "ai-implementation-roadmap",
     title: "AI Implementation Roadmap for Australian SMEs",
     description: "A practical 4-step framework for implementing AI in your small business—without the enterprise complexity or Silicon Valley assumptions.",
@@ -38,30 +57,6 @@ const articles = [
     category: "Explainer",
     readTime: "6 min read",
     keywords: ["private AI", "cloud AI", "data privacy", "Privacy Act"]
-  },
-  {
-    id: "reduce-admin-time-ai",
-    title: "How to Reduce Admin Time by 40% with AI",
-    description: "Real strategies from Queensland businesses that cut administrative workload using private AI systems—with specific workflows you can implement.",
-    category: "Case Study",
-    readTime: "10 min read",
-    keywords: ["reduce admin", "AI automation", "business efficiency"]
-  },
-  {
-    id: "ai-compliance-australia",
-    title: "AI Compliance for Australian Businesses: Privacy Act & Beyond",
-    description: "What you need to know about using AI systems while staying compliant with Australian privacy laws and industry regulations.",
-    category: "Compliance",
-    readTime: "7 min read",
-    keywords: ["AI compliance", "Privacy Act", "Australian regulations"]
-  },
-  {
-    id: "offline-ai-construction",
-    title: "Offline AI for Construction: Quoting on the Job Site",
-    description: "How Sunshine Coast builders are generating accurate quotes on-site without internet using private AI apps on tablets.",
-    category: "Industry",
-    readTime: "5 min read",
-    keywords: ["construction AI", "offline AI", "quoting automation"]
   }
 ];
 
@@ -113,6 +108,11 @@ export default function Resources() {
             </NewsletterDialog>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "Learn", href: "/resources" },
+          { label: "Resources" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">
@@ -169,6 +169,13 @@ export default function Resources() {
                   )}
                 </article>
               ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <a href="/portfolio" className="inline-flex items-center gap-2 text-salmon-600 hover:text-salmon-700 font-medium transition-colors">
+                See real results from Australian businesses
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </div>
           </div>
         </section>

@@ -9,6 +9,11 @@ export default function AccountingIndustry() {
       seoConfig={SEO_CONFIGS.industries.accounting}
       industry="Accounting"
       slug="accounting"
+      breadcrumbItems={[
+        { label: "Services", href: "/services/audit" },
+        { label: "Industries", href: "/industries/accounting" },
+        { label: "Accounting" },
+      ]}
       tagline="AI for Accounting Firms — QLD & Australia"
       heroDescription="Your clients expect faster turnarounds. Your staff are drowning in data entry. Most AI vendors pitch document automation without checking whether your data is even structured for it. We find the actual bottleneck first."
       aiImpact={{

@@ -4,6 +4,7 @@ import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { Zap, Clock, CheckCircle2, Calendar } from "lucide-react";
 import { Link } from "wouter";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 export default function AcceleratorService() {
   return (
@@ -82,6 +83,11 @@ export default function AcceleratorService() {
             </div>
           </div>
         </section>
+
+        <PageBreadcrumb items={[
+          { label: "Services", href: "/services/audit" },
+          { label: "Foundation Sprint" },
+        ]} />
 
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-6">

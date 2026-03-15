@@ -114,6 +114,30 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "Our AI Ethics & Transparency Principles",
     description: "How Tech Horizon Labs uses AI responsibly. Our five principles, data handling commitments, and clear boundaries on what we will and won't do.",
   },
+  "/guides/claude-cowork-setup": {
+    title: "Claude Cowork Setup Guide for Australian Businesses",
+    description: "Step-by-step Claude Cowork setup with Australian compliance mapping. Desktop app config, connectors, best practices, and Privacy Act considerations.",
+  },
+  "/guides/chatgpt-to-claude": {
+    title: "Migrating from ChatGPT to Claude — Practical Guide",
+    description: "How to migrate business workflows from ChatGPT to Claude. Feature comparison, prompt translation, project setup, and hybrid workflow strategies.",
+  },
+  "/contact": {
+    title: "Contact Tech Horizon Labs",
+    description: "Book a free 15-minute AI discovery call, send us a message, or find our contact details. Sunshine Coast, Queensland — serving all of Australia.",
+  },
+  "/events": {
+    title: "AI on the Coast — Sunshine Coast AI Meetup",
+    description: "Free bi-monthly AI meetup at Sunshine Beach Surf Club. Practical talks, live demos, and honest conversations about AI for local businesses.",
+  },
+  "/openclaw": {
+    title: "OpenClaw Setup Sunshine Coast — Honest Expert Guide",
+    description: "OpenClaw setup on the Sunshine Coast by a consultant who tells you what it can and can't safely do. 512 known vulnerabilities. We deploy it right or recommend something better.",
+  },
+  "/insights/ai-impact-by-industry": {
+    title: "AI Impact by Industry — Capability vs Adoption 2026",
+    description: "Which industries benefit most from AI? Data shows 94% of admin tasks are AI-ready but only 32% of businesses use it. See the gap by occupation.",
+  },
   "/privacy": {
     title: "Privacy Policy",
     description: "Tech Horizon Labs privacy policy. How we collect, use, and protect your personal information under the Australian Privacy Act 1988.",

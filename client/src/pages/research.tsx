@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { PageSEO } from "@/components/seo/page-seo";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 import { ChevronDown, ChevronRight, ArrowLeft, Calendar } from "lucide-react";
 
 const BASE_URL = "https://techhorizonlabs.com";
@@ -999,6 +1000,11 @@ export default function ResearchPage() {
       <Navbar />
 
       <main id="main-content" className="max-w-5xl mx-auto px-4 pt-32 pb-6">
+        <PageBreadcrumb items={[
+          { label: "Learn", href: "/resources" },
+          { label: "Research" },
+        ]} />
+
         {!company ? (
           <HeroSection onSelectCompany={selectCompany} />
         ) : (

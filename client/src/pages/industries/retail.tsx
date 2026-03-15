@@ -9,6 +9,11 @@ export default function RetailIndustry() {
       seoConfig={SEO_CONFIGS.industries.retail}
       industry="Retail"
       slug="retail"
+      breadcrumbItems={[
+        { label: "Services", href: "/services/audit" },
+        { label: "Industries", href: "/industries/retail" },
+        { label: "Retail" },
+      ]}
       tagline="AI for Retail — QLD & Australia"
       heroDescription="Every retail AI pitch starts with 'personalised customer experiences.' But if your inventory data lives in three different systems and your staff spend hours on stock counts, no amount of personalisation will fix your margins. We find the operational bottleneck first."
       aiImpact={{
