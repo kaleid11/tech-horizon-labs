@@ -50,7 +50,7 @@ export default function AuditService() {
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
-              <strong>TL;DR:</strong> Free 15-minute call. We identify your highest-impact AI opportunity — and tell you honestly whether it's worth pursuing.
+              <strong>TL;DR:</strong> Free 15-minute call. We map your biggest bottleneck, calculate the hours you'd get back, and tell you honestly whether AI is the right fix. No pitch deck. No obligation.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
@@ -101,9 +101,9 @@ export default function AuditService() {
                     <span className="font-bold text-salmon-600">1</span>
                   </div>
                   <div>
-                    <h3 className="font-bold text-aubergine-900 mb-1">You Tell Us About Your Business</h3>
+                    <h3 className="font-bold text-aubergine-900 mb-1">You Tell Us Where It Hurts</h3>
                     <p className="text-gray-600">
-                      What you do, where you're spending time on repetitive tasks, what's frustrating your team. 5 minutes.
+                      Where your team is losing hours. What's repetitive, what's frustrating, what's costing you growth or weekends. 5 minutes.
                     </p>
                   </div>
                 </div>
@@ -113,9 +113,9 @@ export default function AuditService() {
                     <span className="font-bold text-salmon-600">2</span>
                   </div>
                   <div>
-                    <h3 className="font-bold text-aubergine-900 mb-1">We Identify the Opportunity</h3>
+                    <h3 className="font-bold text-aubergine-900 mb-1">We Map the Opportunity</h3>
                     <p className="text-gray-600">
-                      Based on what we've seen work for similar Queensland businesses, we pinpoint your highest-impact automation opportunity. 5 minutes.
+                      Based on what we've deployed for similar Queensland businesses, we pinpoint the workflow where AI will give you the biggest time savings. 5 minutes.
                     </p>
                   </div>
                 </div>
@@ -184,10 +184,10 @@ export default function AuditService() {
         <section className="py-20 bg-aubergine-900 text-white">
           <div className="container mx-auto px-4 md:px-6 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Discover Your AI Opportunity?
+              15 Minutes to Find Your Biggest Time Saver
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-              15 minutes. Zero cost. No obligation. Pick a time that works for you.
+              We'll map your highest-impact bottleneck and tell you exactly how many hours you'd get back. Zero cost. No obligation.
             </p>
             <Button size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8" asChild>
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-testid="link-audit-cta-book">

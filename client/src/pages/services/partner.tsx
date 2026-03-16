@@ -44,7 +44,7 @@ export default function PartnerService() {
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
-              <strong>Your fractional AI department.</strong> We identify the next opportunity, implement it, train your team, and keep your business evolving. Weekly strategy, flexible credits, continuous optimization.
+              <strong>Your fractional AI ops lead.</strong> We find the next bottleneck, fix it, train your team, and keep your systems evolving. You get the outcomes of a full-time AI department without the $200K salary.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
@@ -91,11 +91,11 @@ export default function PartnerService() {
               
               <div className="prose prose-lg text-gray-600 mb-12">
                 <p>
-                  <strong>Answer first:</strong> The Transformation Partner program is for businesses who've completed an Automation Accelerator and want ongoing support to expand their AI capabilities.
+                  <strong>Answer first:</strong> The Transformation Partner program is for businesses who've completed an Accelerator and want a fractional AI ops lead on retainer. Someone who knows your systems, spots the next bottleneck, and fixes it before it costs you.
                 </p>
                 
                 <p>
-                  AI isn't a one-and-done project. The tools change weekly. New opportunities emerge. Your business evolves. The Partnership ensures you stay ahead without dedicating internal resources to AI research.
+                  AI isn't a one-and-done project. The tools change weekly. New bottlenecks emerge as you grow. The Partnership means you always have an architect on call who knows your workflows inside out.
                 </p>
               </div>
 
@@ -232,10 +232,10 @@ export default function PartnerService() {
         <section className="py-20 bg-aubergine-900 text-white">
           <div className="container mx-auto px-4 md:px-6 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Interested in Long-Term AI Partnership?
+              Want a Fractional AI Ops Lead?
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-              Start with a free AI Opportunity Audit. If we're a good fit, we can discuss the full pathway from Accelerator to Partnership.
+              Start with a free audit. If we're a good fit, we'll show you exactly how the pathway from Accelerator to Partnership works. Most partners save 20+ hours per week across their team.
             </p>
             <Button size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8" asChild>
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-testid="link-partner-cta-book">

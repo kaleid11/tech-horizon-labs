@@ -252,7 +252,7 @@ export default function SunshineCoastLocation() {
               <div className="flex flex-wrap gap-4">
                 <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
                 <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Assessment</a>
-                <a href="/contact" className="text-salmon-600 hover:text-salmon-700 underline">Contact Us</a>
+                <a href="/events" className="text-salmon-600 hover:text-salmon-700 underline">AI on the Coast Meetup</a>
                 <a href="/locations/queensland" className="text-salmon-600 hover:text-salmon-700 underline">All Queensland</a>
               </div>
             </div>

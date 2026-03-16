@@ -1,10 +1,14 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/components/contact-form-dialog";
-import { MapPin, Calendar, Users, Waves, Lightbulb, ArrowRight, ExternalLink, Clock, Cpu, Bot, Wrench, Code } from "lucide-react";
+import { NewsletterDialog } from "@/components/newsletter-dialog";
+import { MapPin, Calendar, Users, Waves, Lightbulb, ArrowRight, ExternalLink, Clock, Cpu, Bot, Wrench, Code, Mail } from "lucide-react";
 import { Link } from "wouter";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
+
+const LUMA_EVENT_URL = "https://luma.com/5mtx4dxx";
+const LUMA_PROFILE_URL = "https://luma.com/user/usr-BxlvnyuCLwog2S6";
 
 const upcomingTopics = [
   { 
@@ -61,6 +65,7 @@ export default function EventsPage() {
                 "@id": "https://techhorizonlabs.com/events#series",
                 "name": "AI on the Coast",
                 "description": "Bi-monthly AI meetup on the Sunshine Coast. Practical talks, live demos, and community networking at Sunshine Beach Surf Club.",
+                "url": LUMA_PROFILE_URL,
                 "organizer": {
                   "@type": "Organization",
                   "@id": "https://techhorizonlabs.com/#organization",
@@ -86,6 +91,33 @@ export default function EventsPage() {
                   "startTime": "17:00",
                   "endTime": "19:30"
                 }
+              },
+              {
+                "@type": "Event",
+                "name": "AI on the Coast — April 2026",
+                "startDate": "2026-04-02T17:00:00+10:00",
+                "endDate": "2026-04-02T19:30:00+10:00",
+                "url": LUMA_EVENT_URL,
+                "location": {
+                  "@type": "Place",
+                  "name": "Sunshine Beach Surf Life Saving Club",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Duke Street",
+                    "addressLocality": "Sunshine Beach",
+                    "addressRegion": "QLD",
+                    "postalCode": "4567",
+                    "addressCountry": "AU"
+                  }
+                },
+                "organizer": {
+                  "@type": "Organization",
+                  "@id": "https://techhorizonlabs.com/#organization",
+                  "name": "Tech Horizon Labs"
+                },
+                "isAccessibleForFree": true,
+                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                "eventStatus": "https://schema.org/EventScheduled"
               }
             ]
           })
@@ -115,15 +147,18 @@ export default function EventsPage() {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
-              <Button data-testid="button-events-notify" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105" asChild>
-                <a href="https://tech-horizon.beehiiv.com" target="_blank" rel="noopener noreferrer">
+              <Button data-testid="button-events-register" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105" asChild>
+                <a href={LUMA_EVENT_URL} target="_blank" rel="noopener noreferrer">
                   <Calendar className="mr-2 h-5 w-5" />
-                  Get Notified of Next Event
+                  Register for April 2nd
                 </a>
               </Button>
-              <Button data-testid="button-events-about-host" variant="outline" size="lg" className="border-gray-600 text-white hover:bg-white/10 rounded-full px-8" asChild>
-                <Link href="/about">About the Host</Link>
-              </Button>
+              <NewsletterDialog>
+                <Button data-testid="button-events-notify" variant="outline" size="lg" className="border-gray-600 text-white hover:bg-white/10 rounded-full px-8">
+                  <Mail className="mr-2 h-5 w-5" />
+                  Get Notified of Future Events
+                </Button>
+              </NewsletterDialog>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-700">
@@ -164,29 +199,30 @@ export default function EventsPage() {
                   <p className="text-lg text-aubergine-900 font-medium mb-2">
                     Thursday, April 2nd 2026 — 5:00 PM to 7:30 PM
                   </p>
-                  <p className="text-gray-600 mb-4">
-                    First Thursday of every second month at Sunshine Beach Surf Club. Doors open at 5:00 PM with a featured talk at 5:30 PM, live demo at 6:00 PM, and networking until 7:30 PM.
+                  <p className="text-gray-600 mb-2">
+                    Come join us for a cold one at Sunshine Beach SLSC as we talk all things AI. Claude, OpenAI, agents, automation, and wherever the conversation takes us. Whether you're just starting to experiment with AI tools or you're knee-deep in building agentic systems, pull up a seat and swap stories.
+                  </p>
+                  <p className="text-gray-500 text-sm mb-4">
+                    No agenda, no slides, no awkward networking. Just good drinks, great views, and honest conversations about what's actually working (and what's hilariously not) when it comes to running and building businesses in the age of AI.
+                  </p>
+                  <p className="text-sm text-gray-500 mb-4 flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-salmon-500" />
+                    Sunshine Beach SLSC, Duke St, Sunshine Beach QLD 4567. Look for the orange Tech Horizon Labs signs.
                   </p>
                   <div className="flex flex-wrap gap-3">
-                    <Button data-testid="button-events-newsletter" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-6 transition-all hover:scale-105" asChild>
-                      <a href="https://tech-horizon.beehiiv.com" target="_blank" rel="noopener noreferrer">
-                        Join Newsletter for Updates
+                    <Button data-testid="button-events-register-next" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-6 transition-all hover:scale-105" asChild>
+                      <a href={LUMA_EVENT_URL} target="_blank" rel="noopener noreferrer">
+                        Register Free on Luma
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </a>
                     </Button>
+                    <Button variant="outline" className="rounded-full" asChild>
+                      <a href={LUMA_PROFILE_URL} target="_blank" rel="noopener noreferrer" data-testid="link-luma-all-events">
+                        View All Events
+                        <ExternalLink className="ml-2 h-3 w-3" />
+                      </a>
+                    </Button>
                   </div>
-                </div>
-
-                <div className="mt-6 p-6 bg-white rounded-xl border-2 border-dashed border-gray-300" data-testid="luma-embed-placeholder">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-8 h-8 bg-violet-100 rounded-lg flex items-center justify-center">
-                      <Calendar className="h-4 w-4 text-violet-600" />
-                    </div>
-                    <p className="text-sm font-medium text-gray-500">Upcoming events powered by Luma</p>
-                  </div>
-                  <p className="text-sm text-gray-400">
-                    Event RSVPs and ticketing will be available here soon via <a href="https://lu.ma" target="_blank" rel="noopener noreferrer" className="text-salmon-600 hover:text-salmon-700 underline" data-testid="link-luma-platform">lu.ma</a>. In the meantime, join the newsletter to get notified.
-                  </p>
                 </div>
               </div>
             </div>
@@ -290,7 +326,7 @@ export default function EventsPage() {
                 </div>
 
                 <a 
-                  href="https://maps.google.com/?q=Sunshine+Beach+Surf+Life+Saving+Club+Duke+Street+Sunshine+Beach+QLD+4567" 
+                  href="https://www.google.com/maps/search/?api=1&query=Sunshine%20Beach%20SLSC&query_place_id=ChIJi3uZytlrk2sRVs3FwItONME" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-salmon-600 hover:text-salmon-700 font-medium text-sm transition-colors"
@@ -320,9 +356,15 @@ export default function EventsPage() {
                   <Calendar className="h-8 w-8 text-gray-400" />
                 </div>
                 <p className="text-gray-500 font-medium mb-2">No past events yet</p>
-                <p className="text-sm text-gray-400">
-                  AI on the Coast is a new meetup series. Our first event is coming soon. Sign up for the newsletter to be notified when it's announced.
+                <p className="text-sm text-gray-400 mb-4">
+                  AI on the Coast kicks off April 2nd 2026. Register now to secure your spot.
                 </p>
+                <Button variant="outline" className="rounded-full" asChild>
+                  <a href={LUMA_EVENT_URL} target="_blank" rel="noopener noreferrer" data-testid="link-past-events-register">
+                    Register for First Event
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
@@ -336,7 +378,9 @@ export default function EventsPage() {
                 <a href="/academy" className="text-salmon-600 hover:text-salmon-700 underline">Tech Horizon Academy</a>
                 <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Assessment</a>
                 <a href="/resources" className="text-salmon-600 hover:text-salmon-700 underline">Resources & Guides</a>
-                <a href="/contact" className="text-salmon-600 hover:text-salmon-700 underline">Contact Us</a>
+                <a href={LUMA_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="text-salmon-600 hover:text-salmon-700 underline inline-flex items-center gap-1">
+                  All Events on Luma <ExternalLink className="h-3 w-3" />
+                </a>
               </div>
             </div>
           </div>
@@ -348,20 +392,21 @@ export default function EventsPage() {
               Don't Miss the Next Meetup
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-              Join the newsletter to get notified when the next AI on the Coast event is announced. We'll also send you practical AI tips between meetups.
+              April 2nd at Sunshine Beach Surf Club. Free entry, cold drinks, honest AI conversations. Register on Luma or join the newsletter for future event notifications.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button data-testid="button-events-cta-newsletter" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105" asChild>
-                <a href="https://tech-horizon.beehiiv.com" target="_blank" rel="noopener noreferrer">
+              <Button data-testid="button-events-cta-register" size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8 transition-all hover:scale-105" asChild>
+                <a href={LUMA_EVENT_URL} target="_blank" rel="noopener noreferrer">
                   <Calendar className="mr-2 h-5 w-5" />
+                  Register for April 2nd
+                </a>
+              </Button>
+              <NewsletterDialog>
+                <Button data-testid="button-events-cta-newsletter" variant="outline" size="lg" className="border-gray-600 text-white hover:bg-white/10 rounded-full px-8">
+                  <Mail className="mr-2 h-5 w-5" />
                   Join Newsletter
-                </a>
-              </Button>
-              <Button data-testid="button-events-cta-book" variant="outline" size="lg" className="border-gray-600 text-white hover:bg-white/10 rounded-full px-8" asChild>
-                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
-                  Book a Discovery Call Instead
-                </a>
-              </Button>
+                </Button>
+              </NewsletterDialog>
             </div>
             <p className="text-sm text-gray-400 mt-4">
               Sunshine Beach Surf Club • Every 2 Months • Free Entry

@@ -87,20 +87,27 @@ export default function About() {
                     </p>
                     
                     <p>
-                      I believe in a different approach: <strong>infrastructure before automation</strong>. Before we talk about AI, we need to understand your data, your workflows, your compliance requirements. Then we build systems that actually work. Private, secure, and practical.
+                      I believe in a different approach: <strong>sell the map before the build</strong>. Before we talk about AI models or tools, we need to map your workflows, calculate the ROI, and understand where your team is actually losing hours. Then we build systems designed to last 3+ years. Private, secure, and practical.
                     </p>
 
                     <blockquote className="border-l-4 border-salmon-500 pl-6 italic text-aubergine-800 bg-gray-50 p-4 rounded-r-lg">
-                      "Think of me as your fractional AI ops lead. Someone to bounce ideas off, sense-check what vendors are telling you, and actually build the systems that work for your business."
+                      "Your client doesn't care which AI model we use. They care that their ops team got 20 hours back per week."
                     </blockquote>
                     
+                    <h3 className="text-xl font-bold text-aubergine-900 mt-8">Architecture, Not Commodity</h3>
+                    
+                    <p>
+                      There are two types of AI agencies. Commodity vendors sell you ChatGPT setup and Zapier flows. They get stuck under $10K/month because the work is interchangeable. Architecture partners map your workflows, justify the ROI, and build systems designed to outlast the tools they run on. THL is firmly in the architecture camp.
+                    </p>
+
                     <h3 className="text-xl font-bold text-aubergine-900 mt-8">What I Believe</h3>
                     
                     <ul>
-                      <li><strong>Your data stays yours.</strong> Private AI systems that run on your infrastructure, not Silicon Valley servers.</li>
-                      <li><strong>Practical over theoretical.</strong> No 12-week certification courses. Week 1: templates. Week 2: deployment.</li>
-                      <li><strong>Australian compliance first.</strong> Privacy Act 1988, industry regulations—mapped into every solution.</li>
-                      <li><strong>Honest about what works.</strong> If AI isn't the right solution, I'll tell you.</li>
+                      <li><strong>Map first, build second.</strong> Workflow mapping and ROI calculations before a single line of code.</li>
+                      <li><strong>Your data stays yours.</strong> Private AI systems on your infrastructure, not Silicon Valley servers.</li>
+                      <li><strong>Systems designed for longevity.</strong> Tool-agnostic architecture that survives vendor changes and lasts 3+ years.</li>
+                      <li><strong>Australian compliance first.</strong> Privacy Act 1988, industry regulations. Mapped into every solution.</li>
+                      <li><strong>Honest about what works.</strong> If the ROI doesn't justify it, we'll tell you. We turn away 30% of prospects.</li>
                     </ul>
 
                     <h3 className="text-xl font-bold text-aubergine-900 mt-8">Origin Story</h3>

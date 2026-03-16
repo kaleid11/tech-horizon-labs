@@ -211,6 +211,28 @@ export async function registerRoutes(
         source: "website-newsletter",
       });
 
+      // Fire-and-forget Beehiiv sync
+      const beehiivApiKey = process.env.BEEHIIV_API_KEY;
+      const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
+      if (beehiivApiKey && beehiivPubId) {
+        fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${beehiivApiKey}`,
+          },
+          body: JSON.stringify({
+            email: validatedData.email,
+            reactivate_existing: true,
+            send_welcome_email: false,
+            utm_source: "website",
+            utm_medium: "newsletter-popup",
+          }),
+        }).catch((err) => {
+          console.error("Beehiiv sync failed:", err);
+        });
+      }
+
       res.json({ success: true, id: signup.id });
     } catch (error) {
       console.error("Newsletter signup error:", error);

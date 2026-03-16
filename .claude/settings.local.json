@@ -26,7 +26,17 @@
       "Read(//tmp/claude-1000/-home-runner-workspace/tasks/**)",
       "Bash(done)",
       "Bash(for f in ab0b6d7305ac77358 af535ac51df4e24eb a4b4420235885fabf)",
-      "Bash(git status:*)"
+      "Bash(git status:*)",
+      "Bash(npx vite:*)",
+      "WebFetch(domain:academy.techhorizonlabs.com)",
+      "Bash(which puppeteer:*)",
+      "Bash(npx puppeteer:*)",
+      "Read(//home/runner/.cache/puppeteer/**)",
+      "Read(//usr/bin/**)",
+      "Bash(cd:*)",
+      "Bash(apt list:*)",
+      "Bash(curl:*)",
+      "Bash(fuser:*)"
     ]
   }
 }

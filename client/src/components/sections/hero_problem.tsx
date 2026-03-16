@@ -222,8 +222,8 @@ export function Problem() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <Badge variant="outline" className="mb-4 border-salmon-500/30 text-salmon-600 bg-salmon-50 rounded-full px-4 py-1">OUR APPROACH</Badge>
-          <h2 className="text-4xl font-bold text-aubergine-900 mb-6">Foundation First. Then Automate.</h2>
-          <p className="text-xl text-gray-600">Getting value from Claude and ChatGPT isn't about signing up — it's about preparing your data, building knowledge bases, and training your team. We set up the foundation so AI delivers real results from day one.</p>
+          <h2 className="text-4xl font-bold text-aubergine-900 mb-6">We Sell the Map Before the Build.</h2>
+          <p className="text-xl text-gray-600">Most AI agencies skip straight to tools. We start with workflow mapping and ROI calculations. Because a $45K chatbot nobody uses is worse than no AI at all. We build infrastructure that lasts 3+ years, not band-aids that break next quarter.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -232,13 +232,13 @@ export function Problem() {
             <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <ShieldCheck className="w-6 h-6 text-blue-600" />
             </div>
-            <h3 className="text-xl font-bold text-aubergine-900 mb-4">Data Preparation</h3>
-            <p className="text-gray-500 text-sm mb-4">Your data, organised and AI-ready</p>
+            <h3 className="text-xl font-bold text-aubergine-900 mb-4">Workflow Mapping</h3>
+            <p className="text-gray-500 text-sm mb-4">Find the bottleneck before buying the tool</p>
             <ul className="space-y-3 text-gray-600">
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Audit existing data sources</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Clean and structure for AI consumption</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Privacy-compliant pipelines</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Continuous data quality</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Map every process that touches admin time</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Calculate ROI before writing a line of code</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Privacy-compliant data pipelines</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Identify quick wins vs long-term plays</li>
             </ul>
           </div>
 
@@ -248,13 +248,13 @@ export function Problem() {
             <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <ShieldCheck className="w-6 h-6 text-salmon-500" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-4">Business Knowledge Systems</h3>
-            <p className="text-gray-400 text-sm mb-4">Context your AI can actually use</p>
+            <h3 className="text-xl font-bold text-white mb-4">Systems That Last 3+ Years</h3>
+            <p className="text-gray-400 text-sm mb-4">Architecture, not band-aids</p>
             <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Organise your documents, SOPs & expertise so AI can actually use them</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Keep everything searchable and up to date — automatically</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Tool-agnostic design</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Evolves with new AI capabilities</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Private knowledge bases your AI can actually use</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Tool-agnostic design that survives vendor changes</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> SOPs, docs, and expertise structured for automation</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-salmon-500 flex-shrink-0" /> Evolves with new AI capabilities automatically</li>
             </ul>
           </div>
 
@@ -263,13 +263,13 @@ export function Problem() {
             <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <TrendingUp className="w-6 h-6 text-green-600" />
             </div>
-            <h3 className="text-xl font-bold text-aubergine-900 mb-4">Team Enablement</h3>
-            <p className="text-gray-500 text-sm mb-4">Skills that scale with the tools</p>
+            <h3 className="text-xl font-bold text-aubergine-900 mb-4">Team Ownership</h3>
+            <p className="text-gray-500 text-sm mb-4">Your team runs it. We just build it.</p>
             <ul className="space-y-3 text-gray-600">
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Hands-on AI fluency training</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Prompt engineering workshops</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Use case identification</li>
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Ongoing capability building</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Hands-on training, not a slide deck</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Prompt engineering for your actual workflows</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Your staff maintains it without us</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" /> Academy access for ongoing learning</li>
             </ul>
           </div>
         </div>

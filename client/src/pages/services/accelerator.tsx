@@ -51,7 +51,7 @@ export default function AcceleratorService() {
             </h1>
             
             <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
-              <strong>One problem. One solution. Four weeks.</strong> We identify the right opportunity, build the right system — private infrastructure, Australian compliance, working deployment — not a PowerPoint deck.
+              <strong>One bottleneck. One fix. Four weeks.</strong> We map the workflow, calculate the ROI, build the system, and train your team. You leave with a working deployment that gives hours back every week. Not a strategy document.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
@@ -105,9 +105,9 @@ export default function AcceleratorService() {
                     <div className="text-xs text-gray-500">Week 1</div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-aubergine-900 mb-1">Discovery & Architecture</h3>
+                    <h3 className="font-bold text-aubergine-900 mb-1">Workflow Mapping & ROI</h3>
                     <p className="text-gray-600">
-                      Deep dive into your workflow, data sources, and compliance requirements. We design the system architecture and define success metrics.
+                      We map the bottleneck end-to-end, identify data sources, calculate expected time savings, and define success metrics you can measure.
                     </p>
                   </div>
                 </div>
@@ -230,10 +230,10 @@ export default function AcceleratorService() {
         <section className="py-20 bg-aubergine-900 text-white">
           <div className="container mx-auto px-4 md:px-6 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Accelerate Your AI Implementation?
+              Ready to Get 20 Hours Back Per Week?
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-              Start with a free AI Opportunity Audit to identify your highest-impact automation opportunity.
+              Start with a free 15-minute audit. We'll map your biggest bottleneck and show you exactly what a 4-week sprint would deliver.
             </p>
             <Button size="lg" className="bg-salmon-500 hover:bg-salmon-600 text-aubergine-900 font-bold rounded-full px-8" asChild>
               <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-testid="link-accelerator-cta-book">
