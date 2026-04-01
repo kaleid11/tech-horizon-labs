@@ -190,6 +190,12 @@ export async function registerRoutes(
         console.error("Newsletter welcome email failed:", err)
       );
 
+      pushToKlipy({
+        name: validatedData.email.split("@")[0],
+        email: validatedData.email,
+        source: "website-newsletter",
+      });
+
       const beehiivApiKey = process.env.BEEHIIV_API_KEY;
       const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
       if (beehiivApiKey && beehiivPubId) {
