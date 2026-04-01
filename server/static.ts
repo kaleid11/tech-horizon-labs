@@ -34,6 +34,11 @@ const PAGES: Record<string, { file: string; title: string; description: string }
     title: "Contact",
     description: "Get in touch with Tech Horizon Labs. Based in Noosa Heads, Queensland. Serving businesses across Australia.",
   },
+  "/research": {
+    file: "research.html",
+    title: "Research",
+    description: "AI landscape research. Company valuations, funding analysis, and model comparisons. Data we track to pick the right tools for our clients.",
+  },
   "/privacy": {
     file: "privacy.html",
     title: "Privacy Policy",

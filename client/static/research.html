@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — Tech Horizon Labs</title>
+  <meta name="description" content="AI landscape research. Company valuations, funding analysis, and model comparisons. Data we track to pick the right tools for our clients.">
+  <link rel="canonical" href="https://techhorizonlabs.com/research">
+  <meta property="og:title" content="Research — Tech Horizon Labs">
+  <meta property="og:description" content="AI landscape research. Company valuations, funding, model comparisons.">
+  <meta property="og:url" content="https://techhorizonlabs.com/research">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_AU">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+    <section class="hero container">
+      <h1>Research</h1>
+      <p class="subline">We track the AI landscape so we can pick the right tools for each job. This is the data we work from. Updated March 2026.</p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- Valuation Race -->
+    <section class="section container-wide fade-in">
+      <h2>Valuation comparison</h2>
+      <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-sm);">Latest reported valuations in USD. Google DeepMind and Meta AI shown at parent company market cap.</p>
+
+      <div class="bar-chart" id="valuation-chart">
+        <div class="bar-row">
+          <span class="bar-label">Google DeepMind</span>
+          <div class="bar-track"><div class="bar-fill" data-width="100%" style="background: #4285F4;"><span class="bar-value">$2.3T</span></div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Meta AI</span>
+          <div class="bar-track"><div class="bar-fill" data-width="70%" style="background: #0668E1;"><span class="bar-value">$1.6T</span></div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">OpenAI</span>
+          <div class="bar-track"><div class="bar-fill" data-width="32%" style="background: #10A37F;"><span class="bar-value">$730B</span></div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Anthropic</span>
+          <div class="bar-track"><div class="bar-fill" data-width="15%" style="background: #d4a843;"><span class="bar-value">$350B</span></div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">xAI</span>
+          <div class="bar-track"><div class="bar-fill" data-width="3.5%" style="background: #1DA1F2;"><span class="bar-value">$80B</span></div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Perplexity</span>
+          <div class="bar-track"><div class="bar-fill" data-width="0.9%" style="background: #20B8CD; min-width: 60px;"><span class="bar-value">$20B</span></div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Mistral AI</span>
+          <div class="bar-track"><div class="bar-fill" data-width="0.65%" style="background: #FF7000; min-width: 60px;"><span class="bar-value">$15B</span></div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Kimi</span>
+          <div class="bar-track"><div class="bar-fill" data-width="0.45%" style="background: #6366F1; min-width: 60px;"><span class="bar-value">$10B</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- Company Cards -->
+    <section class="section container-wide fade-in">
+      <h2>Company profiles</h2>
+      <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-sm);">Click any card to expand. Ten companies we track closely.</p>
+
+      <div class="company-grid">
+
+        <div class="company-card fade-in">
+          <div class="company-name">Anthropic</div>
+          <div class="company-stat">Key model: <strong>Claude Sonnet 4.6</strong></div>
+          <div class="company-stat">Funding: <strong>$74.8B</strong> across 15 rounds</div>
+          <div class="company-stat">Open source: No</div>
+          <div class="company-detail">
+            <p>Safety-focused AI lab. $350B valuation. Founded by former OpenAI VP of Research Dario Amodei and President Daniela Amodei. Unique governance: Long-Term Benefit Trust with escalating board control. Amazon ($8B) and Google ($2B+) are investors with zero voting rights.</p>
+          </div>
+        </div>
+
+        <div class="company-card fade-in">
+          <div class="company-name">OpenAI</div>
+          <div class="company-stat">Key model: <strong>GPT-5.2 / o4</strong></div>
+          <div class="company-stat">Funding: <strong>$167.7B</strong> across 6 rounds</div>
+          <div class="company-stat">Open source: No</div>
+          <div class="company-detail">
+            <p>Pivoted from nonprofit to public benefit corporation. $730B pre-money valuation. Microsoft holds ~27%. Board reshaped after the Nov 2023 crisis that saw CEO Sam Altman briefly fired and reinstated within 5 days. Musk trial ongoing Mar 2026.</p>
+          </div>
+        </div>
+
+        <div class="company-card fade-in">
+          <div class="company-name">Google DeepMind</div>
+          <div class="company-stat">Key model: <strong>Gemini 3.1 Pro</strong></div>
+          <div class="company-stat">Internal investment: <strong>$157.5B</strong></div>
+          <div class="company-stat">Open source: No</div>
+          <div class="company-detail">
+            <p>World's largest AI lab. Merged Google Brain + DeepMind in 2023. Parent Alphabet is a $2.3T public company. Massive compute infrastructure advantage. Gemini models integrated across Google products.</p>
+          </div>
+        </div>
+
+        <div class="company-card fade-in">
+          <div class="company-name">Meta AI</div>
+          <div class="company-stat">Key model: <strong>LLaMA 4</strong></div>
+          <div class="company-stat">Internal investment: <strong>$115B</strong></div>
+          <div class="company-stat">Open source: Yes (LLaMA)</div>
+          <div class="company-detail">
+            <p>Open-source AI leader. LLaMA models are the most widely used open-weight foundation models. Yann LeCun departed Nov 2025. Meta's $1.6T market cap funds massive AI infrastructure buildout. The open-source strategy creates ecosystem lock-in without licensing revenue.</p>
+          </div>
+        </div>
+
+        <div class="company-card fade-in">
+          <div class="company-name">xAI</div>
+          <div class="company-stat">Key model: <strong>Grok 4</strong></div>
+          <div class="company-stat">Funding: <strong>$30.5B</strong> across 4 rounds</div>
+          <div class="company-stat">Open source: Partial</div>
+          <div class="company-detail">
+            <p>Elon Musk's AI lab. Founded 2023. "Any lawful use" military stance contrasts with Anthropic's safety focus. Built the Memphis Supercluster (100K H100 GPUs). Grok integrated into X (Twitter) platform. $80B valuation.</p>
+          </div>
+        </div>
+
+        <div class="company-card fade-in">
+          <div class="company-name">DeepSeek</div>
+          <div class="company-stat">Key model: <strong>DeepSeek V3</strong></div>
+          <div class="company-stat">Funding: <strong>Self-funded</strong></div>
+          <div class="company-stat">Open source: Yes (MIT)</div>
+          <div class="company-detail">
+            <p>Self-funded open-source lab from China. Backed by quant fund High-Flyer. R1 rivaled GPT-4o at a fraction of the cost, shocking the industry. MIT-licensed models. No external venture funding. Operates under Chinese AI regulations.</p>
+          </div>
+        </div>
+
+        <div class="company-card fade-in">
+          <div class="company-name">Qwen (Alibaba)</div>
+          <div class="company-stat">Key model: <strong>Qwen 3.5</strong></div>
+          <div class="company-stat">Internal investment: <strong>$63B</strong></div>
+          <div class="company-stat">Open source: Yes (Apache)</div>
+          <div class="company-detail">
+            <p>Alibaba Cloud's AI division. Apache 2.0 licensed models. Strong multilingual capabilities. Part of Alibaba's cloud infrastructure play. Qwen2.5 models competitive with Western alternatives at significantly lower cost.</p>
+          </div>
+        </div>
+
+        <div class="company-card fade-in">
+          <div class="company-name">Perplexity</div>
+          <div class="company-stat">Key model: <strong>pplx-api</strong></div>
+          <div class="company-stat">Funding: <strong>$1.6B</strong> across 7 rounds</div>
+          <div class="company-stat">Open source: No</div>
+          <div class="company-detail">
+            <p>AI-native search engine. $20B valuation. Founded by former Google/DeepMind researchers. Ongoing copyright disputes with publishers over content scraping. Growth-stage with 100M+ monthly queries.</p>
+          </div>
+        </div>
+
+        <div class="company-card fade-in">
+          <div class="company-name">Kimi (Moonshot AI)</div>
+          <div class="company-stat">Key model: <strong>Kimi 2.5</strong></div>
+          <div class="company-stat">Funding: <strong>$2.6B</strong> across 5 rounds</div>
+          <div class="company-stat">Open source: No</div>
+          <div class="company-detail">
+            <p>Beijing-based lab. ~80 employees, $240M revenue. Known for long-context capabilities. Accused of training on Claude outputs. $10B valuation. Backed by Alibaba, Tencent, and other Chinese investors.</p>
+          </div>
+        </div>
+
+        <div class="company-card fade-in">
+          <div class="company-name">Mistral AI</div>
+          <div class="company-stat">Key model: <strong>Mistral Large</strong></div>
+          <div class="company-stat">Funding: <strong>$3.2B</strong> across 4 rounds</div>
+          <div class="company-stat">Open source: Yes (Apache)</div>
+          <div class="company-detail">
+            <p>Europe's AI champion. French sovereignty angle. Founded by former DeepMind and Meta researchers. Open-weight model strategy. $15B valuation. EU AI Act compliance built in. Strong enterprise adoption in Europe.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- Quick comparison -->
+    <div class="warm-band">
+      <section class="section container-wide fade-in">
+        <h2>At a glance</h2>
+        <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-sm);">This is the landscape we navigate when picking tools for each project. No single model wins everything.</p>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9375rem;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--accent); text-align: left;">
+                <th style="padding: 0.75rem 1rem 0.75rem 0; font-weight: 600;">Company</th>
+                <th style="padding: 0.75rem 1rem; font-weight: 600;">Key Model</th>
+                <th style="padding: 0.75rem 1rem; font-weight: 600;">Open Source</th>
+                <th style="padding: 0.75rem 1rem; font-weight: 600;">Valuation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Anthropic</td><td style="padding: 0.75rem 1rem;">Claude Sonnet 4.6</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$350B</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">OpenAI</td><td style="padding: 0.75rem 1rem;">GPT-5.2 / o4</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$730B</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Google DeepMind</td><td style="padding: 0.75rem 1rem;">Gemini 3.1 Pro</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$2.3T</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Meta AI</td><td style="padding: 0.75rem 1rem;">LLaMA 4</td><td style="padding: 0.75rem 1rem;">Yes</td><td style="padding: 0.75rem 1rem;">$1.6T</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">xAI</td><td style="padding: 0.75rem 1rem;">Grok 4</td><td style="padding: 0.75rem 1rem;">Partial</td><td style="padding: 0.75rem 1rem;">$80B</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">DeepSeek</td><td style="padding: 0.75rem 1rem;">DeepSeek V3</td><td style="padding: 0.75rem 1rem;">Yes (MIT)</td><td style="padding: 0.75rem 1rem;">Self-funded</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Qwen</td><td style="padding: 0.75rem 1rem;">Qwen 3.5</td><td style="padding: 0.75rem 1rem;">Yes (Apache)</td><td style="padding: 0.75rem 1rem;">&mdash;</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Perplexity</td><td style="padding: 0.75rem 1rem;">pplx-api</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$20B</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Kimi</td><td style="padding: 0.75rem 1rem;">Kimi 2.5</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$10B</td></tr>
+              <tr><td style="padding: 0.75rem 1rem 0.75rem 0;">Mistral</td><td style="padding: 0.75rem 1rem;">Mistral Large</td><td style="padding: 0.75rem 1rem;">Yes (Apache)</td><td style="padding: 0.75rem 1rem;">$15B</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand">Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-right">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>

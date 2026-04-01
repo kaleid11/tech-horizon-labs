@@ -42,6 +42,7 @@
   </script>
 </head>
 <body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
   <a href="#main-content" class="skip-link">Skip to content</a>
 
   <nav class="site-nav" aria-label="Main navigation">
@@ -53,6 +54,7 @@
       <li><a href="/work">Work</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
       <li><a href="/contact">Contact</a></li>
     </ul>
   </nav>
@@ -68,89 +70,99 @@
       <p><a href="/contact" class="link-arrow">Get in touch &rarr;</a></p>
     </section>
 
-    <hr class="section-rule container">
+    <div class="accent-rule container"></div>
 
     <!-- The Horizon Method -->
-    <section class="section container fade-in">
-      <h2>The Horizon Method</h2>
+    <div class="warm-band">
+      <section class="section container-wide fade-in">
+        <h2>The Horizon Method</h2>
 
-      <div class="method-phase">
-        <div class="method-label">01</div>
-        <div class="method-title">Map</div>
-        <div class="method-duration">1&ndash;2 weeks</div>
-        <p>We map how your business actually runs. Every tool, workflow, bottleneck, and opportunity &mdash; before we touch anything. You get The Horizon Report: an operational audit with prioritised AI opportunities and ROI estimates. Not a deck of generalities. Specifics.</p>
-      </div>
+        <div class="method-grid flow-line-container stagger">
+          <div class="method-phase fade-in">
+            <div class="method-number" aria-hidden="true">01</div>
+            <div class="method-title">Map</div>
+            <div class="method-duration">1&ndash;2 weeks</div>
+            <p>We map how your business actually runs. Every tool, workflow, bottleneck, and opportunity &mdash; before we touch anything. You get The Horizon Report: an operational audit with prioritised AI opportunities and ROI estimates. Not a deck of generalities. Specifics.</p>
+          </div>
 
-      <div class="method-phase">
-        <div class="method-label">02</div>
-        <div class="method-title">Blueprint</div>
-        <div class="method-duration">2&ndash;4 weeks</div>
-        <p>We design the architecture: which tools, which workflows, how they connect. We build your Horizon Brain &mdash; the knowledge system your AI runs on, with personal, business, and client layers separated. You get the Architecture Blueprint.</p>
-      </div>
+          <div class="method-phase fade-in">
+            <div class="method-number" aria-hidden="true">02</div>
+            <div class="method-title">Blueprint</div>
+            <div class="method-duration">2&ndash;4 weeks</div>
+            <p>We design the architecture: which tools, which workflows, how they connect. We build your Horizon Brain &mdash; the knowledge system your AI runs on, with personal, business, and client layers separated. You get the Architecture Blueprint.</p>
+          </div>
 
-      <div class="method-phase">
-        <div class="method-label">03</div>
-        <div class="method-title">Deploy</div>
-        <div class="method-duration">4&ndash;8 weeks</div>
-        <p>We build the systems, train your team, go live. Not a prototype. Not a recommendation. Working systems, integrated with your existing tools, deployed into your workflow. Every person gets AI workflows for their actual job. We don't leave until the team owns it.</p>
-      </div>
+          <div class="method-phase fade-in">
+            <div class="method-number" aria-hidden="true">03</div>
+            <div class="method-title">Deploy</div>
+            <div class="method-duration">4&ndash;8 weeks</div>
+            <p>We build the systems, train your team, go live. Not a prototype. Not a recommendation. Working systems, integrated with your existing tools, deployed into your workflow. Every person gets AI workflows for their actual job. We don't leave until the team owns it.</p>
+          </div>
 
-      <div class="method-phase">
-        <div class="method-label">04</div>
-        <div class="method-title">Retain</div>
-        <div class="method-duration">Ongoing</div>
-        <p>We stay on as your AI team. Monitoring, optimising, shipping new systems as your business and the technology evolve. Weekly calls. 24-hour async SLA. A living AI roadmap that updates as the tools do.</p>
-      </div>
-    </section>
+          <div class="method-phase fade-in">
+            <div class="method-number" aria-hidden="true">04</div>
+            <div class="method-title">Retain</div>
+            <div class="method-duration">Ongoing</div>
+            <p>We stay on as your AI team. Monitoring, optimising, shipping new systems as your business and the technology evolve. Weekly calls. 24-hour async SLA. A living AI roadmap that updates as the tools do.</p>
+          </div>
+        </div>
+      </section>
+    </div>
 
-    <hr class="section-rule container">
+    <div class="accent-rule container"></div>
 
     <!-- Selected Work -->
-    <section class="section container fade-in">
+    <section class="section container-wide fade-in">
       <h2>Selected Work</h2>
 
-      <div class="case-study">
-        <div class="case-study-label">Creator Economy &middot; Brisbane</div>
-        <p>Talent agency managing 270+ YouTube creators across AU, EU, and LATAM. 15 staff. Team was manually checking contracts, calculating rates across different deal structures, and drafting emails in inconsistent voices.</p>
-        <p>Built a suite of Claude-powered tools: an email drafter with individual voice profiles for each team member, an agreement checker that queries their entire contract library, and a roster and rate engine pulling live from their CRM. Trained all 15 staff in weekly workshops.</p>
-        <!-- [PLACEHOLDER] Result metrics from Week 4 ROI review -->
-      </div>
+      <div class="stagger">
+        <div class="case-study fade-in">
+          <div class="case-study-label">Creator Economy &middot; Brisbane</div>
+          <p>Talent agency managing 270+ YouTube creators across AU, EU, and LATAM. 15 staff. Team was manually checking contracts, calculating rates across different deal structures, and drafting emails in inconsistent voices.</p>
+          <p>Built a suite of Claude-powered tools: an email drafter with individual voice profiles for each team member, an agreement checker that queries their entire contract library, and a roster and rate engine pulling live from their CRM. Trained all 15 staff in weekly workshops.</p>
+          <!-- [PLACEHOLDER] Result metrics from Week 4 ROI review -->
+        </div>
 
-      <div class="case-study">
-        <div class="case-study-label">Accounting &middot; Noosa</div>
-        <p>Manual data entry was eating the time they should have spent with clients. Every new engagement meant hours of document processing before anyone could give actual advice.</p>
-        <p>Deployed a private, on-device AI to process client documents and automate intake. Data never leaves the building.</p>
-        <p class="result">40% reduction in admin workload.</p>
-      </div>
+        <div class="case-study fade-in">
+          <div class="case-study-label">Accounting &middot; Noosa</div>
+          <div class="metric" data-value="40" data-suffix="%">40%</div>
+          <div class="metric-label">admin workload reduced</div>
+          <p>Manual data entry was eating the time they should have spent with clients. Every new engagement meant hours of document processing before anyone could give actual advice.</p>
+          <p>Deployed a private, on-device AI to process client documents and automate intake. Data never leaves the building.</p>
+        </div>
 
-      <div class="case-study">
-        <div class="case-study-label">Construction &middot; Sunshine Coast</div>
-        <p>Complex quotes were taking hours. The builder couldn't work offline on job sites, and weekends disappeared into quoting.</p>
-        <p>Built an offline quoting app on tablets with AI-assisted quote generation. Works without reception.</p>
-        <p class="result">60% faster quotes. Zero errors. Family got their weekends back.</p>
-      </div>
+        <div class="case-study fade-in">
+          <div class="case-study-label">Construction &middot; Sunshine Coast</div>
+          <div class="metric" data-value="60" data-suffix="%">60%</div>
+          <div class="metric-label">faster quotes</div>
+          <p>Complex quotes were taking hours. The builder couldn't work offline on job sites, and weekends disappeared into quoting.</p>
+          <p>Built an offline quoting app on tablets with AI-assisted quote generation. Works without reception. Zero errors. Family got their weekends back.</p>
+        </div>
 
-      <div class="case-study">
-        <div class="case-study-label">Energy &middot; Vault Energy</div>
-        <p>Needed market intelligence on renewable energy costs per region. The research required manually pulling data from multiple government and international databases.</p>
-        <p>Built a market research agent using OpenClaw, plugged into ABS, RapidAPI energy endpoints, and World Bank data. Automated regional cost analysis that previously took days of manual research.</p>
+        <div class="case-study fade-in">
+          <div class="case-study-label">Energy &middot; Vault Energy</div>
+          <p>Needed market intelligence on renewable energy costs per region. The research required manually pulling data from multiple government and international databases.</p>
+          <p>Built a market research agent using OpenClaw, plugged into ABS, RapidAPI energy endpoints, and World Bank data. Automated regional cost analysis that previously took days of manual research.</p>
+        </div>
       </div>
 
       <p style="margin-top: var(--space-sm);"><a href="/work" class="link-arrow">See all our work &rarr;</a></p>
     </section>
 
-    <hr class="section-rule container">
+    <div class="accent-rule container"></div>
 
     <!-- Principles -->
-    <section class="section container principles fade-in">
-      <p>We're tool-agnostic. No platform lock-in. We pick the best tool for your specific problem.</p>
-      <p>We work with your existing systems. No rip-and-replace.</p>
-      <p>If your data is sensitive, it stays on your hardware. We build private-first.</p>
-      <p>We're a small team. We take on a few projects at a time. That's how we keep the quality high.</p>
-      <p>We don't advise. We build. You get working systems, not recommendations.</p>
-    </section>
+    <div class="warm-band">
+      <section class="section container principles fade-in">
+        <p>We're tool-agnostic. No platform lock-in. We pick the best tool for your specific problem.</p>
+        <p>We work with your existing systems. No rip-and-replace.</p>
+        <p>If your data is sensitive, it stays on your hardware. We build private-first.</p>
+        <p>We're a small team. We take on a few projects at a time. That's how we keep the quality high.</p>
+        <p>We don't advise. We build. You get working systems, not recommendations.</p>
+      </section>
+    </div>
 
-    <hr class="section-rule container">
+    <div class="accent-rule container"></div>
 
     <!-- Two Paths -->
     <section class="section container fade-in">

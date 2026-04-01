@@ -84,7 +84,7 @@ export async function registerRoutes(
   app.get("/guides/:slug/", (_req, res) => res.redirect(301, "/academy"));
 
   // Individual removed pages
-  app.get("/research", (_req, res) => res.redirect(301, "/"));
+  // /research is now a live page — no redirect
   app.get("/audit-tool", (_req, res) => res.redirect(301, "/"));
   app.get("/ai-ethics", (_req, res) => res.redirect(301, "/about"));
   app.get("/openclaw", (_req, res) => res.redirect(301, "/"));
