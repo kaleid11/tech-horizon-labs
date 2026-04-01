@@ -1,24 +1,21 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSubmissionSchema, insertNewsletterSignupSchema, insertAuditSubmissionSchema } from "@shared/schema";
-import { sendContactNotification, sendNewsletterWelcome, sendAuditResults, sendAuditNotification } from "./email";
+import { insertContactSubmissionSchema } from "@shared/schema";
+import { sendContactNotification } from "./email";
 import { pushToKlipy } from "./klipy";
 import path from "path";
 import fs from "fs";
 
 // Simple admin authentication middleware
-// In production, use proper session-based auth or OAuth
 const adminAuth = (req: Request, res: Response, next: NextFunction) => {
   const adminKey = req.headers['x-admin-key'] || req.query.adminKey;
   const expectedKey = process.env.ADMIN_API_KEY;
 
   if (!expectedKey) {
-    // If no admin key is configured, block access entirely in production
     if (process.env.NODE_ENV === 'production') {
       return res.status(503).json({ error: 'Admin API not configured' });
     }
-    // In development, allow access with warning
     console.warn('WARNING: ADMIN_API_KEY not set. Admin endpoints accessible without auth.');
     return next();
   }
@@ -56,35 +53,67 @@ export async function registerRoutes(
     }
   });
 
-  // 301 Redirects from old URLs to new equivalents
-  app.get("/for-business/", (_req, res) => res.redirect(301, "/services/audit"));
-  app.get("/for-business", (_req, res) => res.redirect(301, "/services/audit"));
-  app.get("/contact-us/", (_req, res) => res.redirect(301, "/"));
-  app.get("/contact-us", (_req, res) => res.redirect(301, "/"));
-  app.get("/about-us/", (_req, res) => res.redirect(301, "/about"));
+  // ===== 301 Redirects — old React SPA routes to new static pages =====
+
+  // Portfolio → Work
+  app.get("/portfolio", (_req, res) => res.redirect(301, "/work"));
+  app.get("/portfolio/", (_req, res) => res.redirect(301, "/work"));
+  app.get("/portfolio/:slug", (_req, res) => res.redirect(301, "/work"));
+  app.get("/portfolio/:slug/", (_req, res) => res.redirect(301, "/work"));
+
+  // Services → Homepage
+  app.get("/services", (_req, res) => res.redirect(301, "/"));
+  app.get("/services/", (_req, res) => res.redirect(301, "/"));
+  app.get("/services/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/services/:slug/", (_req, res) => res.redirect(301, "/"));
+
+  // Locations → Homepage
+  app.get("/locations/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/locations/:slug/", (_req, res) => res.redirect(301, "/"));
+
+  // Industries → Homepage
+  app.get("/industries/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/industries/:slug/", (_req, res) => res.redirect(301, "/"));
+
+  // Insights → Homepage
+  app.get("/insights/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/insights/:slug/", (_req, res) => res.redirect(301, "/"));
+
+  // Guides → Academy
+  app.get("/guides/:slug", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/guides/:slug/", (_req, res) => res.redirect(301, "/academy"));
+
+  // Individual removed pages
+  app.get("/research", (_req, res) => res.redirect(301, "/"));
+  app.get("/audit-tool", (_req, res) => res.redirect(301, "/"));
+  app.get("/ai-ethics", (_req, res) => res.redirect(301, "/about"));
+  app.get("/openclaw", (_req, res) => res.redirect(301, "/"));
+  app.get("/events", (_req, res) => res.redirect(301, "/"));
+  app.get("/resources", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/resources/", (_req, res) => res.redirect(301, "/academy"));
+
+  // ===== Legacy redirects (WordPress era + old site) =====
+
+  app.get("/for-business", (_req, res) => res.redirect(301, "/"));
+  app.get("/for-business/", (_req, res) => res.redirect(301, "/"));
+  app.get("/contact-us", (_req, res) => res.redirect(301, "/contact"));
+  app.get("/contact-us/", (_req, res) => res.redirect(301, "/contact"));
   app.get("/about-us", (_req, res) => res.redirect(301, "/about"));
-  app.get("/blog/", (_req, res) => res.redirect(301, "/resources"));
-  app.get("/blog", (_req, res) => res.redirect(301, "/resources"));
+  app.get("/about-us/", (_req, res) => res.redirect(301, "/about"));
+  app.get("/blog", (_req, res) => res.redirect(301, "/"));
+  app.get("/blog/", (_req, res) => res.redirect(301, "/"));
+  app.get("/blog/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/blog/:slug/", (_req, res) => res.redirect(301, "/"));
   app.get("/membership", (_req, res) => res.redirect(301, "/academy"));
   app.get("/membership/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshops", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshops/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/ai-workshop-business-sunshine-coast/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/ai-workshop-business-sunshine-coast", (_req, res) => res.redirect(301, "/academy"));
-
-  // Blog to insights redirects
-  app.get("/blog/claude-vs-chatgpt-2026", (_req, res) => res.redirect(301, "/insights/claude-vs-chatgpt-2026"));
-  app.get("/blog/claude-vs-chatgpt-2026/", (_req, res) => res.redirect(301, "/insights/claude-vs-chatgpt-2026"));
-
-  // Catch-all redirects for old blog/category/tag URLs (WordPress patterns)
-  app.get("/blog/:slug", (_req, res) => res.redirect(301, "/resources"));
-  app.get("/blog/:slug/", (_req, res) => res.redirect(301, "/resources"));
-  app.get("/category/:slug", (_req, res) => res.redirect(301, "/resources"));
-  app.get("/category/:slug/", (_req, res) => res.redirect(301, "/resources"));
-  app.get("/tag/:slug", (_req, res) => res.redirect(301, "/resources"));
-  app.get("/tag/:slug/", (_req, res) => res.redirect(301, "/resources"));
-
-  // Old WordPress page patterns
+  app.get("/ai-workshop-business-sunshine-coast/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/category/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/category/:slug/", (_req, res) => res.redirect(301, "/"));
+  app.get("/tag/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/tag/:slug/", (_req, res) => res.redirect(301, "/"));
   app.get("/page/:slug", (_req, res) => res.redirect(301, "/"));
   app.get("/page/:slug/", (_req, res) => res.redirect(301, "/"));
   app.get("/wp-content/:slug", (_req, res) => res.redirect(301, "/"));
@@ -92,29 +121,24 @@ export async function registerRoutes(
   app.get("/wp-login.php", (_req, res) => res.redirect(301, "/"));
   app.get("/feed", (_req, res) => res.redirect(301, "/"));
   app.get("/feed/", (_req, res) => res.redirect(301, "/"));
-
-  // Old service/workshop page patterns
-  app.get("/services", (_req, res) => res.redirect(301, "/services/audit"));
-  app.get("/services/", (_req, res) => res.redirect(301, "/services/audit"));
   app.get("/workshop/:slug", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshop/:slug/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshops/:slug", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshops/:slug/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/course/:slug", (_req, res) => res.redirect(301, "/academy"));
   app.get("/course/:slug/", (_req, res) => res.redirect(301, "/academy"));
-
-  // Common old page variants
   app.get("/home", (_req, res) => res.redirect(301, "/"));
   app.get("/home/", (_req, res) => res.redirect(301, "/"));
   app.get("/index.html", (_req, res) => res.redirect(301, "/"));
   app.get("/index.php", (_req, res) => res.redirect(301, "/"));
-  // /contact is now a real page — removed legacy redirect
+
+  // ===== API Endpoints =====
 
   app.post("/api/contact", async (req, res) => {
     try {
       const validatedData = insertContactSubmissionSchema.parse(req.body);
       const submission = await storage.createContactSubmission(validatedData);
-      
+
       await sendContactNotification({
         name: validatedData.name,
         email: validatedData.email,
@@ -133,54 +157,6 @@ export async function registerRoutes(
       res.json({ success: true, id: submission.id });
     } catch (error) {
       console.error("Contact submission error:", error);
-      res.status(400).json({ 
-        success: false, 
-        error: error instanceof Error ? error.message : "Invalid submission" 
-      });
-    }
-  });
-
-  app.post("/api/audit-submission", async (req, res) => {
-    try {
-      const validatedData = insertAuditSubmissionSchema.parse(req.body);
-      const submission = await storage.createAuditSubmission(validatedData);
-
-      // Parse results for email
-      let recommendations: string[] = [];
-      try {
-        const parsed = JSON.parse(validatedData.results);
-        recommendations = parsed.recommendations || [];
-      } catch { /* ignore parse errors */ }
-
-      // Send emails in background
-      sendAuditResults({
-        email: validatedData.email,
-        name: validatedData.name,
-        score: validatedData.score,
-        tier: validatedData.suggestedTier,
-        recommendations,
-      });
-
-      sendAuditNotification({
-        name: validatedData.name,
-        email: validatedData.email,
-        business: validatedData.business || '',
-        score: validatedData.score,
-        tier: validatedData.suggestedTier,
-      });
-
-      // Fire-and-forget CRM sync
-      pushToKlipy({
-        name: validatedData.name,
-        email: validatedData.email,
-        company: validatedData.business || undefined,
-        source: "website-audit",
-        metadata: { score: validatedData.score, tier: validatedData.suggestedTier },
-      });
-
-      res.json({ success: true, id: submission.id });
-    } catch (error) {
-      console.error("Audit submission error:", error);
       res.status(400).json({
         success: false,
         error: error instanceof Error ? error.message : "Invalid submission"
@@ -188,62 +164,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post("/api/newsletter", async (req, res) => {
-    try {
-      const validatedData = insertNewsletterSignupSchema.parse(req.body);
-      
-      const existing = await storage.getNewsletterSignupByEmail(validatedData.email);
-      if (existing) {
-        return res.status(400).json({ 
-          success: false, 
-          error: "Email already subscribed" 
-        });
-      }
-      
-      const signup = await storage.createNewsletterSignup(validatedData);
-      
-      await sendNewsletterWelcome(validatedData.email);
-
-      // Fire-and-forget CRM sync
-      pushToKlipy({
-        name: validatedData.email.split("@")[0],
-        email: validatedData.email,
-        source: "website-newsletter",
-      });
-
-      // Fire-and-forget Beehiiv sync
-      const beehiivApiKey = process.env.BEEHIIV_API_KEY;
-      const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
-      if (beehiivApiKey && beehiivPubId) {
-        fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${beehiivApiKey}`,
-          },
-          body: JSON.stringify({
-            email: validatedData.email,
-            reactivate_existing: true,
-            send_welcome_email: false,
-            utm_source: "website",
-            utm_medium: "newsletter-popup",
-          }),
-        }).catch((err) => {
-          console.error("Beehiiv sync failed:", err);
-        });
-      }
-
-      res.json({ success: true, id: signup.id });
-    } catch (error) {
-      console.error("Newsletter signup error:", error);
-      res.status(400).json({ 
-        success: false, 
-        error: error instanceof Error ? error.message : "Invalid email" 
-      });
-    }
-  });
-
-  // Protected admin endpoints - require authentication
+  // Protected admin endpoint
   app.get("/api/contact-submissions", adminAuth, async (req, res) => {
     try {
       const submissions = await storage.getAllContactSubmissions();
@@ -251,16 +172,6 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Error fetching submissions:", error);
       res.status(500).json({ error: "Failed to fetch submissions" });
-    }
-  });
-
-  app.get("/api/newsletter-signups", adminAuth, async (req, res) => {
-    try {
-      const signups = await storage.getAllNewsletterSignups();
-      res.json(signups);
-    } catch (error) {
-      console.error("Error fetching signups:", error);
-      res.status(500).json({ error: "Failed to fetch signups" });
     }
   });
 
