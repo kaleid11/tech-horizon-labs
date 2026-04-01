@@ -12,6 +12,20 @@ The application is built as a full-stack TypeScript project with a React fronten
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes (April 2026)
+
+### Newsletter & Events Integration (Task #5)
+- `/api/newsletter` POST endpoint: validates email, de-dupes, saves to DB, sends Resend welcome email, syncs to Klipy CRM (`source: "website-newsletter"`), and pushes to Beehiiv API (`POST /v2/publications/{pubId}/subscriptions`)
+- Events page fully wired: `LUMA_EVENT_URL = https://luma.com/5mtx4dxx`, `LUMA_PROFILE_URL = https://luma.com/user/usr-BxlvnyuCLwog2S6`
+- All newsletter CTAs on events page use `NewsletterDialog` popup (no external beehiiv.com links except archive/footer)
+- Sunshine Coast page has direct Luma event registration link
+- Removed broken 301 redirect that was blocking the `/events` SPA route
+
+### Research Hub: ValuationPanel Improvements
+- Stagger algorithm rewritten: checks ALL nearby points (not just adjacent pair), 4 stagger levels [0,22,44,66px], minGap 55px. Properly handles groups of 3+ close points
+- Chart now uses post-money valuation (`r.post ?? r.val`) for y-axis — distinguishes rounds with identical pre-money (e.g., Anthropic Nov 2025 vs Feb 2026 both at $350B pre but $365B vs $380B post)
+- Down round indicator: red dot + "DOWN ROUND" badge in detail panel (e.g., Anthropic Series C after Google Strategic)
+
 ## Recent Changes (March 2026)
 
 ### SEO/AEO/GEO Optimization (GSC-Driven)
