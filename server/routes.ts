@@ -204,7 +204,14 @@ export async function registerRoutes(
             reactivate_existing: false,
             send_welcome_email: false,
           }),
-        }).catch((err) => console.error("Beehiiv sync failed:", err));
+        })
+          .then(async (response) => {
+            if (!response.ok) {
+              const body = await response.text().catch(() => "");
+              console.error(`Beehiiv sync returned ${response.status}: ${body}`);
+            }
+          })
+          .catch((err) => console.error("Beehiiv sync failed:", err));
       }
 
       res.json({ success: true, id: signup.id });

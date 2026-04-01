@@ -1,9 +1,7 @@
 import { Navbar, Footer, SkipLink } from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { BOOKING_URL } from "@/components/contact-form-dialog";
 import { NewsletterDialog } from "@/components/newsletter-dialog";
 import { MapPin, Calendar, Users, Waves, Lightbulb, ArrowRight, ExternalLink, Clock, Cpu, Bot, Wrench, Code, Mail } from "lucide-react";
-import { Link } from "wouter";
 import { PageSEO, SEO_CONFIGS } from "@/components/seo/page-seo";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
 

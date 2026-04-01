@@ -253,6 +253,7 @@ export default function SunshineCoastLocation() {
                 <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
                 <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Assessment</a>
                 <a href="/events" className="text-salmon-600 hover:text-salmon-700 underline">AI on the Coast Meetup</a>
+                <a href="https://luma.com/5mtx4dxx" target="_blank" rel="noopener noreferrer" className="text-salmon-600 hover:text-salmon-700 underline inline-flex items-center gap-1" data-testid="link-sc-luma-event">Register Apr 2nd on Luma ↗</a>
                 <a href="/locations/queensland" className="text-salmon-600 hover:text-salmon-700 underline">All Queensland</a>
               </div>
             </div>

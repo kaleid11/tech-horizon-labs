@@ -640,35 +640,47 @@ function InvestorPanel({ company }: { company: CompanyData }) {
 
 function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: string }) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
-  const vals = rounds.filter(r => r.val).map(r => ({ label: r.label, val: r.val!, date: r.date, post: r.post }));
+  const vals = rounds.filter(r => r.val).map(r => ({
+    label: r.label,
+    val: r.val!,
+    displayVal: r.post ?? r.val!,
+    date: r.date,
+    post: r.post,
+  }));
   if (vals.length === 0) return <p className="text-gray-500 text-sm p-8 text-center" data-testid="valuation-empty">No valuation data available.</p>;
 
   const timestamps = vals.map(v => parseDate(v.date));
   const minT = Math.min(...timestamps);
   const maxT = Math.max(...timestamps);
-  const maxV = Math.max(...vals.map(v => v.val));
+  const maxV = Math.max(...vals.map(v => v.displayVal));
 
-  const dense = vals.length > 6;
-  const pad = { top: 30, right: 30, bottom: dense ? 90 : 50, left: 65 };
-  const baseW = Math.max(600, vals.length * 90);
+  const dense = vals.length > 5;
+  const pad = { top: 30, right: 30, bottom: dense ? 100 : 50, left: 65 };
+  const baseW = Math.max(640, vals.length * 100);
   const w = baseW;
-  const h = dense ? 320 : 300;
+  const h = dense ? 340 : 300;
   const chartW = w - pad.left - pad.right;
   const chartH = h - pad.top - pad.bottom;
 
   const getX = (t: number) => pad.left + (maxT === minT ? chartW / 2 : ((t - minT) / (maxT - minT)) * chartW);
   const getY = (v: number) => pad.top + chartH - (v / maxV) * chartH;
 
-  const points = vals.map((v, i) => ({ x: getX(timestamps[i]), y: getY(v.val), ...v, idx: i }));
+  const points = vals.map((v, i) => ({ x: getX(timestamps[i]), y: getY(v.displayVal), ...v, idx: i }));
 
   const staggeredOffsets = useMemo(() => {
     const offsets: number[] = new Array(points.length).fill(0);
-    const minGap = 45;
-    const levels = [0, 12, 24];
+    const minGap = 55;
+    const levels = [0, 22, 44, 66];
     for (let i = 1; i < points.length; i++) {
-      if (Math.abs(points[i].x - points[i - 1].x) < minGap) {
-        const prevLevel = levels.indexOf(offsets[i - 1]);
-        offsets[i] = levels[(prevLevel + 1) % levels.length];
+      const usedLevels = new Set<number>();
+      for (let j = 0; j < i; j++) {
+        if (Math.abs(points[i].x - points[j].x) < minGap) {
+          usedLevels.add(offsets[j]);
+        }
+      }
+      if (usedLevels.size > 0) {
+        const free = levels.find(l => !usedLevels.has(l));
+        offsets[i] = free ?? levels[usedLevels.size % levels.length];
       }
     }
     return offsets;
@@ -682,7 +694,7 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   return (
     <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-3">
       <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
-        <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 400 }} preserveAspectRatio="xMidYMid meet" role="img" aria-label="Company valuation history chart">
+        <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 420 }} preserveAspectRatio="xMidYMid meet" role="img" aria-label="Company valuation history chart">
           {gridVals.map((gv, i) => {
             const y = getY(gv);
             return (
@@ -699,7 +711,7 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
 
           <defs>
             <linearGradient id={`val-area-${accent.replace("#", "")}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={accent} stopOpacity="0.12" />
+              <stop offset="0%" stopColor={accent} stopOpacity="0.14" />
               <stop offset="100%" stopColor={accent} stopOpacity="0.01" />
             </linearGradient>
           </defs>
@@ -712,38 +724,44 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
 
           <path d={pathD} fill="none" stroke={accent} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
 
-          {points.map((p, i) => (
-            <g key={i} className="cursor-pointer" onClick={() => setActiveIdx(activeIdx === i ? null : i)} data-testid={`valuation-dot-${i}`}>
-              <circle cx={p.x} cy={p.y} r="12" fill="transparent" />
-              <circle cx={p.x} cy={p.y} r={activeIdx === i ? 6 : 4} fill={activeIdx === i ? accent : "white"} stroke={accent} strokeWidth="2"
-                style={{ transition: "r 0.15s, fill 0.15s" }} />
+          {points.map((p, i) => {
+            const isDown = i > 0 && p.displayVal < points[i - 1].displayVal;
+            return (
+              <g key={i} className="cursor-pointer" onClick={() => setActiveIdx(activeIdx === i ? null : i)} data-testid={`valuation-dot-${i}`}>
+                <circle cx={p.x} cy={p.y} r="14" fill="transparent" />
+                <circle cx={p.x} cy={p.y} r={activeIdx === i ? 6 : 4}
+                  fill={activeIdx === i ? accent : (isDown ? "#e05555" : "white")}
+                  stroke={isDown ? "#e05555" : accent}
+                  strokeWidth="2"
+                  style={{ transition: "r 0.15s, fill 0.15s" }} />
 
-              {activeIdx === i && (
-                <g>
-                  <rect x={p.x - 30} y={p.y - 26} width="60" height="18" rx="4" fill={accent} opacity="0.95" />
-                  <text x={p.x} y={p.y - 14} textAnchor="middle" fill="white" fontSize="9" fontWeight="bold" fontFamily="monospace">
-                    {fmtVal(p.val)}
-                  </text>
-                </g>
-              )}
+                {activeIdx === i && (
+                  <g>
+                    <rect x={p.x - 32} y={p.y - 28} width="64" height="18" rx="4" fill={accent} opacity="0.95" />
+                    <text x={p.x} y={p.y - 16} textAnchor="middle" fill="white" fontSize="9" fontWeight="bold" fontFamily="monospace">
+                      {fmtVal(p.displayVal)}
+                    </text>
+                  </g>
+                )}
 
-              {dense ? (
-                <text x={p.x} y={pad.top + chartH + 14 + staggeredOffsets[i]} textAnchor="end" fill="#888" fontSize="7" fontFamily="monospace"
-                  transform={`rotate(-45, ${p.x}, ${pad.top + chartH + 14 + staggeredOffsets[i]})`}>
-                  {p.label}
-                </text>
-              ) : (
-                <g>
-                  <text x={p.x} y={pad.top + chartH + 14} textAnchor="middle" fill="#6b7280" fontSize="8" fontFamily="monospace">
+                {dense ? (
+                  <text x={p.x} y={pad.top + chartH + 14 + staggeredOffsets[i]} textAnchor="end" fill="#888" fontSize="7" fontFamily="monospace"
+                    transform={`rotate(-40, ${p.x}, ${pad.top + chartH + 14 + staggeredOffsets[i]})`}>
                     {p.label}
                   </text>
-                  <text x={p.x} y={pad.top + chartH + 24} textAnchor="middle" fill="#b0b0b0" fontSize="7" fontFamily="monospace">
-                    {p.date}
-                  </text>
-                </g>
-              )}
-            </g>
-          ))}
+                ) : (
+                  <g>
+                    <text x={p.x} y={pad.top + chartH + 14} textAnchor="middle" fill="#6b7280" fontSize="8" fontFamily="monospace">
+                      {p.label}
+                    </text>
+                    <text x={p.x} y={pad.top + chartH + 24} textAnchor="middle" fill="#b0b0b0" fontSize="7" fontFamily="monospace">
+                      {p.date}
+                    </text>
+                  </g>
+                )}
+              </g>
+            );
+          })}
         </svg>
       </div>
 
@@ -751,13 +769,18 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
         <div className="bg-white rounded-lg p-4 border border-gray-200 animate-in fade-in slide-in-from-bottom-2 duration-200">
           <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
             <div>
-              <p className="text-lg font-bold text-aubergine-900">{vals[activeIdx].label}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-lg font-bold text-aubergine-900">{vals[activeIdx].label}</p>
+                {activeIdx > 0 && vals[activeIdx].displayVal < vals[activeIdx - 1].displayVal && (
+                  <span className="font-mono text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ backgroundColor: "#e0555515", color: "#e05555" }}>DOWN ROUND</span>
+                )}
+              </div>
               <p className="font-mono text-[10px] text-gray-500">{vals[activeIdx].date}</p>
             </div>
             <div className="text-left sm:text-right">
-              <p className="text-xl font-bold" style={{ color: accent }}>{fmtVal(vals[activeIdx].val)}</p>
+              <p className="text-xl font-bold" style={{ color: accent }}>{fmtVal(vals[activeIdx].displayVal)}</p>
               <p className="font-mono text-[10px] text-gray-500">
-                {vals[activeIdx].post ? `${fmtVal(vals[activeIdx].post!)} post-money` : "valuation"}
+                {vals[activeIdx].post ? "post-money" : "pre-money (estimated)"}
               </p>
             </div>
           </div>
@@ -765,13 +788,13 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
             <div className="mt-2 pt-2 border-t border-gray-200 flex gap-4">
               <div>
                 <p className="font-mono text-[10px] text-gray-500">CHANGE</p>
-                <p className="font-mono text-sm font-bold" style={{ color: vals[activeIdx].val >= vals[activeIdx - 1].val ? "#44c488" : "#e05555" }}>
-                  {vals[activeIdx].val >= vals[activeIdx - 1].val ? "+" : ""}{(((vals[activeIdx].val - vals[activeIdx - 1].val) / vals[activeIdx - 1].val) * 100).toFixed(0)}%
+                <p className="font-mono text-sm font-bold" style={{ color: vals[activeIdx].displayVal >= vals[activeIdx - 1].displayVal ? "#44c488" : "#e05555" }}>
+                  {vals[activeIdx].displayVal >= vals[activeIdx - 1].displayVal ? "+" : ""}{(((vals[activeIdx].displayVal - vals[activeIdx - 1].displayVal) / vals[activeIdx - 1].displayVal) * 100).toFixed(0)}%
                 </p>
               </div>
               <div>
                 <p className="font-mono text-[10px] text-gray-500">FROM PREVIOUS</p>
-                <p className="font-mono text-sm text-gray-700">{fmtVal(vals[activeIdx - 1].val)} → {fmtVal(vals[activeIdx].val)}</p>
+                <p className="font-mono text-sm text-gray-700">{fmtVal(vals[activeIdx - 1].displayVal)} → {fmtVal(vals[activeIdx].displayVal)}</p>
               </div>
             </div>
           )}
