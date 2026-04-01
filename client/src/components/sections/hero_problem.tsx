@@ -31,12 +31,12 @@ export function Hero() {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-bold tracking-tight leading-[1.05]">
-              Get Your Team Using AI<br/>
-              <span className="text-gradient-salmon">The Right Way, From Day One.</span>
+              Your Team Doesn't Need<br/>
+              <span className="text-gradient-salmon">More AI Tools.</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
-              We set up Claude and ChatGPT for Australian businesses — the workflows, compliance, and training around them.
+              They need 20 hours back per week. We map your workflows, calculate the ROI, then build systems designed to last 3+ years. Not Zapier flows that break on Monday.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
