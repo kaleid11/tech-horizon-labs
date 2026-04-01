@@ -1,8 +1,8 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSubmissionSchema } from "@shared/schema";
-import { sendContactNotification } from "./email";
+import { insertContactSubmissionSchema, insertNewsletterSignupSchema } from "@shared/schema";
+import { sendContactNotification, sendNewsletterWelcome } from "./email";
 import { pushToKlipy } from "./klipy";
 import path from "path";
 import fs from "fs";
@@ -88,7 +88,7 @@ export async function registerRoutes(
   app.get("/audit-tool", (_req, res) => res.redirect(301, "/"));
   app.get("/ai-ethics", (_req, res) => res.redirect(301, "/about"));
   app.get("/openclaw", (_req, res) => res.redirect(301, "/"));
-  app.get("/events", (_req, res) => res.redirect(301, "/"));
+  // /events is a live React SPA page — no redirect
   app.get("/resources", (_req, res) => res.redirect(301, "/academy"));
   app.get("/resources/", (_req, res) => res.redirect(301, "/academy"));
 
@@ -172,6 +172,48 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Error fetching submissions:", error);
       res.status(500).json({ error: "Failed to fetch submissions" });
+    }
+  });
+
+  app.post("/api/newsletter", async (req, res) => {
+    try {
+      const validatedData = insertNewsletterSignupSchema.parse(req.body);
+
+      const existing = await storage.getNewsletterSignupByEmail(validatedData.email);
+      if (existing) {
+        return res.status(400).json({ error: "This email is already subscribed." });
+      }
+
+      const signup = await storage.createNewsletterSignup(validatedData);
+
+      sendNewsletterWelcome(validatedData.email).catch((err) =>
+        console.error("Newsletter welcome email failed:", err)
+      );
+
+      const beehiivApiKey = process.env.BEEHIIV_API_KEY;
+      const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
+      if (beehiivApiKey && beehiivPubId) {
+        fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${beehiivApiKey}`,
+          },
+          body: JSON.stringify({
+            email: validatedData.email,
+            reactivate_existing: false,
+            send_welcome_email: false,
+          }),
+        }).catch((err) => console.error("Beehiiv sync failed:", err));
+      }
+
+      res.json({ success: true, id: signup.id });
+    } catch (error) {
+      console.error("Newsletter signup error:", error);
+      res.status(400).json({
+        success: false,
+        error: error instanceof Error ? error.message : "Invalid submission",
+      });
     }
   });
 
