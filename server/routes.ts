@@ -67,7 +67,36 @@ export async function registerRoutes(
   app.get("/services/:slug", (_req, res) => res.redirect(301, "/"));
   app.get("/services/:slug/", (_req, res) => res.redirect(301, "/"));
 
-  // Locations → Homepage
+  // Static location pages — must come BEFORE the wildcard redirect below
+  app.get("/locations/sunshine-coast", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "locations", "sunshine-coast.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+  app.get("/locations/sunshine-coast/", (_req, res) => res.redirect(301, "/locations/sunshine-coast"));
+
+  app.get("/locations/brisbane", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "locations", "brisbane.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+  app.get("/locations/brisbane/", (_req, res) => res.redirect(301, "/locations/brisbane"));
+
+  app.get("/locations/gold-coast", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "locations", "gold-coast.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+  app.get("/locations/gold-coast/", (_req, res) => res.redirect(301, "/locations/gold-coast"));
+
+  app.get("/locations/queensland", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "locations", "queensland.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+  app.get("/locations/queensland/", (_req, res) => res.redirect(301, "/locations/queensland"));
+
+  // Locations → Homepage (wildcard — catches anything not specifically listed above)
   app.get("/locations/:slug", (_req, res) => res.redirect(301, "/"));
   app.get("/locations/:slug/", (_req, res) => res.redirect(301, "/"));
 
