@@ -316,7 +316,7 @@ function StatsGrid({ data, onSelect }: { data: { id: string; name: string; color
             <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden md:table-cell">FOUNDED</th>
             <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden md:table-cell">HQ</th>
             <th className="text-right p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold">VALUATION</th>
-            <th className="text-right p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden sm:table-cell">TOTAL RAISED</th>
+            <th className="text-right p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold">TOTAL RAISED</th>
             <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden sm:table-cell">KEY MODEL</th>
             <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden lg:table-cell">OPEN SOURCE</th>
           </tr>
@@ -347,7 +347,7 @@ function StatsGrid({ data, onSelect }: { data: { id: string; name: string; color
                     </span>
                   )}
                 </td>
-                <td className="p-3 text-right font-mono text-[10px] text-gray-600 hidden sm:table-cell" data-testid={`text-raised-${co.id}`}>
+                <td className="p-3 text-right font-mono text-[10px] text-gray-600" data-testid={`text-raised-${co.id}`}>
                   {fmtVal(co.totalRaised)}
                 </td>
                 <td className="p-3 font-mono text-[10px] text-gray-500 hidden sm:table-cell">
