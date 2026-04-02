@@ -71,6 +71,21 @@ function ComparisonDashboard({ onSelectCompany }: { onSelectCompany: (id: string
   );
 }
 
+function deconflictYs(ys: number[], minGap: number): number[] {
+  const indexed = ys.map((y, i) => ({ y, i })).sort((a, b) => a.y - b.y);
+  const result = [...ys];
+  for (let k = 1; k < indexed.length; k++) {
+    const prev = indexed[k - 1];
+    const curr = indexed[k];
+    const gap = curr.y - result[prev.i];
+    if (gap < minGap) {
+      result[curr.i] = result[prev.i] + minGap;
+      indexed[k] = { ...indexed[k], y: result[curr.i] };
+    }
+  }
+  return result;
+}
+
 function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: string; color: string; points: { date: number; val: number; label: string }[]; latestVal: number | null; totalRaised: number }[]; onSelect: (id: string) => void }) {
   const publicIds = new Set(["google-deepmind", "meta-ai"]);
   const withVals = data.filter(d => d.points.length > 0 && !publicIds.has(d.id));
@@ -102,38 +117,15 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
   }));
   const singlePt = withVals.filter(co => co.points.length === 1);
 
-  const rawLabelYs = multiPt.map(co => getY(co.pts[co.pts.length - 1].val));
+  const adjustedLabelYs = deconflictYs(
+    multiPt.map(co => getY(co.pts[co.pts.length - 1].val)),
+    16
+  );
 
-  const adjustedLabelYs = (function deconflict(ys: number[], minGap: number) {
-    const indexed = ys.map((y, i) => ({ y, i })).sort((a, b) => a.y - b.y);
-    const result = [...ys];
-    for (let k = 1; k < indexed.length; k++) {
-      const prev = indexed[k - 1];
-      const curr = indexed[k];
-      const gap = curr.y - result[prev.i];
-      if (gap < minGap) {
-        result[curr.i] = result[prev.i] + minGap;
-        indexed[k] = { ...indexed[k], y: result[curr.i] };
-      }
-    }
-    return result;
-  })(rawLabelYs, 16);
-
-  const singleRawYs = singlePt.map(co => getY(co.points[0].val));
-  const adjustedSingleYs = (function deconflict(ys: number[], minGap: number) {
-    const indexed = ys.map((y, i) => ({ y, i })).sort((a, b) => a.y - b.y);
-    const result = [...ys];
-    for (let k = 1; k < indexed.length; k++) {
-      const prev = indexed[k - 1];
-      const curr = indexed[k];
-      const gap = curr.y - result[prev.i];
-      if (gap < minGap) {
-        result[curr.i] = result[prev.i] + minGap;
-        indexed[k] = { ...indexed[k], y: result[curr.i] };
-      }
-    }
-    return result;
-  })(singleRawYs, 14);
+  const adjustedSingleYs = deconflictYs(
+    singlePt.map(co => getY(co.points[0].val)),
+    14
+  );
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
