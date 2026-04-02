@@ -4,7 +4,7 @@ import { C } from "./types";
 export const xaiData: CompanyData = {
   meta: {
     id: "xai", name: "xAI", color: "#1DA1F2",
-    tagline: "Elon Musk's AI lab. Grok. $230B valuation. 'Any lawful use' military stance.",
+    tagline: "Elon Musk's AI lab. Grok. 'Any lawful use' military stance.",
     headerTitle: "xAI — Musk's Play", headerSubtitle: "For AI Dominance",
     lastUpdated: "Mar 2026", keyModel: "Grok 4", openSource: "Partial (Grok)",
   },
@@ -27,16 +27,14 @@ export const xaiData: CompanyData = {
     { date: "May 2024", title: "$6B Series B", sev: "critical", desc: "$6B raised at $24B valuation. Investors: a16z, Sequoia, Valor Equity, Saudi Prince Alwaleed. Fastest funding ramp in AI history." },
     { date: "Sep 2024", title: "Colossus Supercluster", sev: "info", desc: "100,000 Nvidia H100 GPU 'Colossus' cluster built in Memphis in 122 days. Largest AI training cluster in the world at the time." },
     { date: "Dec 2024", title: "$6B Series C", sev: "critical", desc: "Another $6B at $45B valuation. a16z, BlackRock, Fidelity, Kingdom Holdings, Sequoia, Nvidia participate." },
-    { date: "Mar 2025", title: "X Corp Merger", sev: "critical", desc: "xAI and X (Twitter) merge into X.AI Holdings Corp. Combined entity valued at ~$113B. Gives xAI access to X's 600M+ user base and real-time data moat." },
     { date: "Mar 2025", title: "Grok 3 Launch", sev: "info", desc: "Grok 3 released. Trained on Colossus. Claims to surpass GPT-4 and Claude on multiple benchmarks. 'Unhinged mode' generates controversy." },
-    { date: "Sep 2025", title: "$10B Series D", sev: "critical", desc: "$10B raised at $200B valuation. Saudi Arabia's PIF leads. Builds Colossus 2 data centre in Tennessee. SpaceX contributes $2B internally." },
-    { date: "Jan 2026", title: "'Any Lawful Use' Pentagon Deal + $20B Series E", sev: "critical", desc: "xAI agrees to 'any lawful use' terms with Pentagon. Grok approved for classified systems. Simultaneously closes $20B Series E at $230B valuation — Valor Equity, QIA, Fidelity, Nvidia, Tesla, Cisco. Total raised: ~$37B+." },
+    { date: "Jan 2026", title: "'Any Lawful Use' Pentagon Deal", sev: "critical", desc: "xAI agrees to 'any lawful use' terms with Pentagon. Grok approved for classified systems. Musk attacks Anthropic: 'Anthropic hates Western Civilization.'" },
+    { date: "Feb 2026", title: "Large Funding Round", sev: "critical", desc: "Reported: additional capital raised at significantly higher valuation. Exact figures vary by source — sovereign wealth funds and tech VCs. Musk's political access drives government contracts. Round details not officially confirmed." },
   ],
   fundingRounds: [
     { date: "Nov 2023", label: "Series A", total: 500, val: 4000, lead: "Various", inv: [{ n: "Various", a: 500, note: "Early investors" }], events: ["$4B valuation", "Grok 1.0 launch"] },
     { date: "May 2024", label: "Series B", total: 6000, val: 24000, lead: "a16z / Sequoia", inv: [{ n: "a16z", a: 1500 }, { n: "Sequoia", a: 1000 }, { n: "Other", a: 3500 }], events: ["$24B valuation", "Fastest AI funding ramp"] },
     { date: "Dec 2024", label: "Series C", total: 6000, val: 45000, lead: "a16z", inv: [{ n: "a16z", a: 1200 }, { n: "BlackRock", a: 1000 }, { n: "Fidelity", a: 800 }, { n: "Nvidia", a: 500 }, { n: "Sequoia", a: 500 }, { n: "Other", a: 2000 }], events: ["$45B valuation", "Colossus operational"] },
-    { date: "Sep 2025", label: "Series D", total: 10000, val: 200000, lead: "Saudi Arabia PIF", inv: [{ n: "Saudi Arabia PIF", a: 3000, note: "Reported — Saudi Arabia's sovereign wealth fund led. Round confirmed via Bloomberg / Reuters Sep 2025." }, { n: "SpaceX", a: 2000, note: "Reported — Musk's internal entity. Some sources count separately from external raise." }, { n: "Other", a: 5000, note: "Reported — institutional investors and VCs." }], events: ["Reported: $200B valuation", "4x from Series C in 9 months", "Colossus 2 Tennessee data centre build-out"] },
-    { date: "Jan 2026", label: "Series E", total: 20000, val: 230000, lead: "Valor Equity / QIA", inv: [{ n: "Valor Equity Partners", a: 3000, note: "Reported — confirmed participant per Bloomberg Jan 2026." }, { n: "Qatar Investment Authority", a: 2500, note: "Reported — confirmed participant." }, { n: "Fidelity", a: 2000, note: "Reported — confirmed participant." }, { n: "Nvidia", a: 2000, note: "Reported — confirmed participant." }, { n: "Tesla", a: 2000, note: "Reported — subject to regulatory approval at time of announcement." }, { n: "Cisco Investments", a: 1000, note: "Reported — confirmed participant." }, { n: "MGX (Abu Dhabi)", a: 1000, note: "Reported — confirmed participant." }, { n: "StepStone Group", a: 1000, note: "Reported — confirmed participant." }, { n: "Other", a: 5500 }], events: ["Reported: $230B valuation (upsized from $15B target to $20B)", "Pentagon 'any lawful use' deal signed", "Grok 4 approved for classified systems"] },
+    { date: "Feb 2026", label: "Late-stage Round", total: 18000, val: null, lead: "Various Sovereign", inv: [{ n: "Various investors", a: 18000, note: "Reported — not officially confirmed. Figures and lead investor vary by source. SoftBank cited in some reports. Total raised ~$30B+ reported." }], events: ["Reported — not officially confirmed", "Sovereign wealth funds and tech VCs", "Pentagon contracts secured"] },
   ],
 };
