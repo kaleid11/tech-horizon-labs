@@ -6,7 +6,7 @@ export const openaiData: CompanyData = {
     id: "openai", name: "OpenAI", color: "#10A37F",
     tagline: "Nonprofit to PBC pivot. $300B+ valuation (Mar 2025). Musk trial Mar 2026.",
     headerTitle: "OpenAI — From Nonprofit", headerSubtitle: "To For-Profit PBC",
-    lastUpdated: "Mar 2026", keyModel: "GPT-5.2 / o4", openSource: "No",
+    lastUpdated: "Mar 2026", keyModel: "GPT-5.2 / o4", openSource: "No", founded: "2015", hq: "SF",
   },
   tabs: [
     { id: "governance", label: "Governance" },

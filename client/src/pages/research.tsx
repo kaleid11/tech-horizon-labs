@@ -50,7 +50,7 @@ function ComparisonDashboard({ onSelectCompany }: { onSelectCompany: (id: string
     <div className="mt-10">
       <div className="flex items-center gap-2 mb-4">
         <p className="font-mono text-[9px] tracking-[2px] font-bold text-aubergine-700">COMPARE</p>
-        <div className="flex gap-1 ml-auto">
+        <div className="flex gap-1 ml-auto flex-wrap justify-end">
           {views.map(v => (
             <button key={v.id} onClick={() => setView(v.id)} data-testid={`dashboard-tab-${v.id}`}
               className={`px-3 py-1.5 rounded-md font-mono text-[9px] tracking-wide border transition-all ${view === v.id ? "bg-aubergine-900 text-white border-aubergine-900 font-bold" : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"}`}>
@@ -62,8 +62,17 @@ function ComparisonDashboard({ onSelectCompany }: { onSelectCompany: (id: string
 
       {view === "valuation" && (
         <div>
-          <ValuationRaceChart data={companyValuations} onSelect={onSelectCompany} />
-          <p className="text-center font-mono text-[8px] text-gray-400 mt-1">Private valuations only. Public companies (Google DeepMind, Meta AI) and self-funded/subsidiary companies (DeepSeek, Qwen) are shown in Quick Stats but excluded from this chart — no independently verified external valuation exists for them.</p>
+          {companyValuations.filter(d => d.points.length > 0 && !["google-deepmind", "meta-ai"].includes(d.id)).length === 0 ? (
+            <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
+              <p className="font-mono text-[10px] text-gray-400">No confirmed external valuations available to chart.</p>
+              <p className="font-mono text-[9px] text-gray-300 mt-1">Check Quick Stats for company details.</p>
+            </div>
+          ) : (
+            <>
+              <ValuationRaceChart data={companyValuations} onSelect={onSelectCompany} />
+              <p className="text-center font-mono text-[8px] text-gray-400 mt-1">Private valuations only. Public companies (Google DeepMind, Meta AI) and self-funded/subsidiary companies (DeepSeek, Qwen) are shown in Quick Stats but excluded from this chart — no independently verified external valuation exists for them.</p>
+            </>
+          )}
         </div>
       )}
       {view === "funding" && <FundingComparisonChart data={companyValuations} onSelect={onSelectCompany} />}
@@ -88,6 +97,7 @@ function deconflictYs(ys: number[], minGap: number): number[] {
 }
 
 function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: string; color: string; points: { date: number; val: number; label: string }[]; latestVal: number | null; totalRaised: number }[]; onSelect: (id: string) => void }) {
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
   const publicIds = new Set(["google-deepmind", "meta-ai"]);
   const withVals = data.filter(d => d.points.length > 0 && !publicIds.has(d.id));
   if (withVals.length === 0) return null;
@@ -154,16 +164,48 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
           const d = co.pts.map((p, i) => `${i === 0 ? "M" : "L"} ${getX(p.date)} ${getY(p.val)}`).join(" ");
           const lastPt = co.pts[co.pts.length - 1];
           const labelY = adjustedLabelYs[idx];
+          const isHovered = hoveredId === co.id;
+          const isDimmed = hoveredId !== null && !isHovered;
           return (
-            <g key={co.id} className="cursor-pointer" onClick={() => onSelect(co.id)} data-testid={`race-line-${co.id}`}>
-              <path d={d} fill="none" stroke={co.color} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" opacity="0.8" />
-              <circle cx={getX(lastPt.date)} cy={getY(lastPt.val)} r="3.5" fill={co.color} stroke="white" strokeWidth="1.5" />
-              <text x={w - pad.right + 8} y={labelY + 3} fill={co.color} fontSize="8" fontWeight="bold" fontFamily="monospace">
+            <g key={co.id} className="cursor-pointer"
+              onClick={() => onSelect(co.id)}
+              onMouseEnter={() => setHoveredId(co.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              data-testid={`race-line-${co.id}`}>
+              <path d={d} fill="none" stroke={co.color}
+                strokeWidth={isHovered ? 3 : 2}
+                strokeLinejoin="round" strokeLinecap="round"
+                opacity={isDimmed ? 0.25 : isHovered ? 1 : 0.8}
+                style={{ transition: "opacity 0.15s, stroke-width 0.1s" }} />
+              <circle cx={getX(lastPt.date)} cy={getY(lastPt.val)} r={isHovered ? 4.5 : 3.5}
+                fill={co.color} stroke="white" strokeWidth="1.5"
+                opacity={isDimmed ? 0.25 : 1}
+                style={{ transition: "opacity 0.15s, r 0.1s" }} />
+              <text x={w - pad.right + 8} y={labelY + 3}
+                fill={co.color} fontSize={isHovered ? 9 : 8}
+                fontWeight="bold" fontFamily="monospace"
+                opacity={isDimmed ? 0.3 : 1}>
                 {co.name.split("(")[0].trim().split(" ")[0]}
               </text>
-              <text x={w - pad.right + 8} y={labelY + 12} fill="#999" fontSize="6" fontFamily="monospace">
+              <text x={w - pad.right + 8} y={labelY + 12}
+                fill={isHovered ? co.color : "#999"} fontSize="6" fontFamily="monospace"
+                opacity={isDimmed ? 0.3 : 1}>
                 {fmtVal(lastPt.val)}
               </text>
+              {isHovered && (
+                <g>
+                  <rect x={getX(lastPt.date) - 38} y={getY(lastPt.val) - 26} width={76} height={22} rx="3" ry="3"
+                    fill={co.color} opacity="0.92" />
+                  <text x={getX(lastPt.date)} y={getY(lastPt.val) - 16} textAnchor="middle"
+                    fill="white" fontSize="7.5" fontWeight="bold" fontFamily="monospace">
+                    {co.name.split("(")[0].trim()}
+                  </text>
+                  <text x={getX(lastPt.date)} y={getY(lastPt.val) - 8} textAnchor="middle"
+                    fill="white" fontSize="6.5" fontFamily="monospace" opacity="0.9">
+                    {fmtVal(lastPt.val)}
+                  </text>
+                </g>
+              )}
             </g>
           );
         })}
@@ -171,16 +213,41 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
         {singlePt.map((co, idx) => {
           const pt = co.points[0];
           const labelY = adjustedSingleYs[idx];
+          const isHovered = hoveredId === co.id;
+          const isDimmed = hoveredId !== null && !isHovered;
           return (
-            <g key={co.id} className="cursor-pointer" onClick={() => onSelect(co.id)} data-testid={`race-dot-${co.id}`}>
-              <circle cx={getX(pt.date)} cy={getY(pt.val)} r="4" fill={co.color} stroke="white" strokeWidth="1.5" />
-              <text x={getX(pt.date) + 6} y={labelY + 3} fill={co.color} fontSize="7" fontWeight="bold" fontFamily="monospace">
+            <g key={co.id} className="cursor-pointer"
+              onClick={() => onSelect(co.id)}
+              onMouseEnter={() => setHoveredId(co.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              data-testid={`race-dot-${co.id}`}>
+              <circle cx={getX(pt.date)} cy={getY(pt.val)} r={isHovered ? 5.5 : 4}
+                fill={co.color} stroke="white" strokeWidth="1.5"
+                opacity={isDimmed ? 0.25 : 1} />
+              <text x={getX(pt.date) + 6} y={labelY + 3}
+                fill={co.color} fontSize="7" fontWeight="bold" fontFamily="monospace"
+                opacity={isDimmed ? 0.25 : 1}>
                 {co.name.split("(")[0].trim().split(" ")[0]}
               </text>
+              {isHovered && (
+                <g>
+                  <rect x={getX(pt.date) - 38} y={getY(pt.val) - 26} width={76} height={22} rx="3" ry="3"
+                    fill={co.color} opacity="0.92" />
+                  <text x={getX(pt.date)} y={getY(pt.val) - 16} textAnchor="middle"
+                    fill="white" fontSize="7.5" fontWeight="bold" fontFamily="monospace">
+                    {co.name.split("(")[0].trim()}
+                  </text>
+                  <text x={getX(pt.date)} y={getY(pt.val) - 8} textAnchor="middle"
+                    fill="white" fontSize="6.5" fontFamily="monospace" opacity="0.9">
+                    {fmtVal(pt.val)}
+                  </text>
+                </g>
+              )}
             </g>
           );
         })}
       </svg>
+      <p className="text-[9px] text-gray-300 font-mono text-center mt-1 md:hidden">← scroll chart →</p>
     </div>
   );
 }
@@ -246,15 +313,18 @@ function StatsGrid({ data, onSelect }: { data: { id: string; name: string; color
         <thead>
           <tr className="border-b border-gray-100">
             <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold">COMPANY</th>
+            <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden md:table-cell">FOUNDED</th>
+            <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden md:table-cell">HQ</th>
             <th className="text-right p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold">VALUATION</th>
-            <th className="text-right p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold">TOTAL RAISED</th>
+            <th className="text-right p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden sm:table-cell">TOTAL RAISED</th>
             <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden sm:table-cell">KEY MODEL</th>
-            <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden md:table-cell">OPEN SOURCE</th>
+            <th className="text-left p-3 font-mono text-[10px] tracking-wider text-gray-400 font-bold hidden lg:table-cell">OPEN SOURCE</th>
           </tr>
         </thead>
         <tbody>
           {data.map(co => {
-            const os = companies[co.id].meta.openSource;
+            const meta = companies[co.id].meta;
+            const os = meta.openSource;
             return (
               <tr key={co.id} onClick={() => onSelect(co.id)} data-testid={`stats-row-${co.id}`}
                 className="border-b border-gray-50 hover:bg-gray-50 cursor-pointer transition-colors">
@@ -262,6 +332,12 @@ function StatsGrid({ data, onSelect }: { data: { id: string; name: string; color
                   <span className="font-mono text-[10px] font-bold" style={{ color: co.color }}>
                     {co.name}
                   </span>
+                </td>
+                <td className="p-3 font-mono text-[10px] text-gray-500 hidden md:table-cell">
+                  {meta.founded ?? "—"}
+                </td>
+                <td className="p-3 font-mono text-[10px] text-gray-500 hidden md:table-cell">
+                  {meta.hq ?? "—"}
                 </td>
                 <td className="p-3 text-right font-mono text-[10px] font-bold text-aubergine-900" data-testid={`text-valuation-${co.id}`}>
                   {co.latestVal !== null ? fmtVal(co.latestVal) : (
@@ -271,13 +347,13 @@ function StatsGrid({ data, onSelect }: { data: { id: string; name: string; color
                     </span>
                   )}
                 </td>
-                <td className="p-3 text-right font-mono text-[10px] text-gray-600" data-testid={`text-raised-${co.id}`}>
+                <td className="p-3 text-right font-mono text-[10px] text-gray-600 hidden sm:table-cell" data-testid={`text-raised-${co.id}`}>
                   {fmtVal(co.totalRaised)}
                 </td>
                 <td className="p-3 font-mono text-[10px] text-gray-500 hidden sm:table-cell">
-                  {companies[co.id].meta.keyModel}
+                  {meta.keyModel}
                 </td>
-                <td className="p-3 font-mono text-[10px] hidden md:table-cell">
+                <td className="p-3 font-mono text-[10px] hidden lg:table-cell">
                   <span className={os.startsWith("Yes") ? "text-green-600" : os.startsWith("Partial") ? "text-amber-500" : "text-gray-400"}>
                     {os}
                   </span>
@@ -757,6 +833,7 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   return (
     <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-3">
       <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
+        <p className="text-[9px] text-gray-300 font-mono text-center mb-1 md:hidden">← scroll chart →</p>
         <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 420 }} preserveAspectRatio="xMidYMid meet" role="img" aria-label="Company valuation history chart">
           {gridVals.map((gv, i) => {
             const y = getY(gv);

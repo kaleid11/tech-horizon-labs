@@ -6,7 +6,7 @@ export const kimiData: CompanyData = {
     id: "kimi", name: "Kimi (Moonshot)", color: "#FF4444",
     tagline: "Beijing AI lab. Accused of scraping Claude. ~80 employees, $240M rev.",
     headerTitle: "Moonshot AI — China's", headerSubtitle: "Global AI Breakout",
-    lastUpdated: "Mar 2026", keyModel: "Kimi 2.5", openSource: "No",
+    lastUpdated: "Mar 2026", keyModel: "Kimi 2.5", openSource: "No", founded: "2023", hq: "Beijing",
   },
   tabs: [
     { id: "governance", label: "Leadership" },

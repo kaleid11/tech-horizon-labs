@@ -6,7 +6,7 @@ export const xaiData: CompanyData = {
     id: "xai", name: "xAI", color: "#1DA1F2",
     tagline: "Elon Musk's AI lab. Grok. 'Any lawful use' military stance.",
     headerTitle: "xAI — Musk's Play", headerSubtitle: "For AI Dominance",
-    lastUpdated: "Mar 2026", keyModel: "Grok 4", openSource: "Partial (Grok)",
+    lastUpdated: "Mar 2026", keyModel: "Grok 4", openSource: "Partial (Grok)", founded: "2023", hq: "Austin",
   },
   tabs: [
     { id: "governance", label: "Leadership" },

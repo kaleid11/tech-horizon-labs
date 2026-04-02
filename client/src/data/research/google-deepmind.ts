@@ -6,7 +6,7 @@ export const googleDeepMindData: CompanyData = {
     id: "google-deepmind", name: "Google DeepMind", color: "#4285F4",
     tagline: "World's largest AI lab. Gemini models. $2.3T parent company.",
     headerTitle: "Google DeepMind", headerSubtitle: "The AI Superpower Within Alphabet",
-    lastUpdated: "Mar 2026", keyModel: "Gemini 3.1 Pro", openSource: "No",
+    lastUpdated: "Mar 2026", keyModel: "Gemini 3.1 Pro", openSource: "No", founded: "2010", hq: "London / SF",
   },
   tabs: [
     { id: "governance", label: "Leadership" },

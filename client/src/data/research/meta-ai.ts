@@ -6,7 +6,7 @@ export const metaAIData: CompanyData = {
     id: "meta-ai", name: "Meta AI", color: "#0668E1",
     tagline: "Open-source AI leader. LLaMA models. LeCun departed Nov 2025. $1.6T market cap.",
     headerTitle: "Meta AI — Open Source", headerSubtitle: "Strategy & The LLaMA Empire",
-    lastUpdated: "Mar 2026", keyModel: "LLaMA 4", openSource: "Yes (LLaMA)",
+    lastUpdated: "Mar 2026", keyModel: "LLaMA 4", openSource: "Yes (LLaMA)", founded: "2013", hq: "Menlo Park",
   },
   tabs: [
     { id: "governance", label: "Leadership" },

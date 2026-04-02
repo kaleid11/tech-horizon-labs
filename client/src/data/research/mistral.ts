@@ -6,7 +6,7 @@ export const mistralData: CompanyData = {
     id: "mistral", name: "Mistral AI", color: "#FF7000",
     tagline: "Europe's AI champion. French sovereignty. Open-weight models.",
     headerTitle: "Mistral AI — Europe's", headerSubtitle: "Answer to Silicon Valley",
-    lastUpdated: "Mar 2026", keyModel: "Mistral Large", openSource: "Yes (Apache)",
+    lastUpdated: "Mar 2026", keyModel: "Mistral Large", openSource: "Yes (Apache)", founded: "2023", hq: "Paris",
   },
   tabs: [
     { id: "governance", label: "Leadership" },

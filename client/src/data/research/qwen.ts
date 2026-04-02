@@ -6,7 +6,7 @@ export const qwenData: CompanyData = {
     id: "qwen", name: "Qwen (Alibaba)", color: "#FF6A00",
     tagline: "Alibaba Cloud's open-source AI. Qwen2.5 models. Apache 2.0 licensed.",
     headerTitle: "Qwen — Alibaba Cloud's", headerSubtitle: "Open-Source AI Division",
-    lastUpdated: "Mar 2026", keyModel: "Qwen 3.5", openSource: "Yes (Apache)",
+    lastUpdated: "Mar 2026", keyModel: "Qwen 3.5", openSource: "Yes (Apache)", founded: "2023", hq: "Hangzhou",
   },
   tabs: [
     { id: "governance", label: "Leadership" },
