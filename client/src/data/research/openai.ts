@@ -58,7 +58,7 @@ export const openaiData: CompanyData = {
     { phase: "Phase 1: Nonprofit (2015-2019)", color: C.green, desc: "Pure nonprofit. $1B pledged by donors including Musk and Altman. Mission: ensure AGI benefits humanity. All research open-sourced. No profit motive." },
     { phase: "Phase 2: Capped-Profit (2019-2025)", color: C.warn, desc: "OpenAI LP created. Investors get max 100x returns. Microsoft invests $1B, then $10B. 'Capped' profit becomes increasingly theoretical as revenue scales." },
     { phase: "Phase 3: PBC Conversion (Oct 2025)", color: "#10A37F", desc: "Completed conversion to for-profit Public Benefit Corporation. Foundation retains 26% equity and special voting rights. Profit cap removed entirely. IPO planned." },
-    { phase: "Phase 4: IPO Path (2026-2027)", color: C.purple, desc: "$730B pre-money valuation. $14B projected loss in 2026. Revenue target: $100B by 2029. $500B committed cloud infrastructure. Could be largest tech listing in history." },
+    { phase: "Phase 4: IPO Path (2026-2027)", color: C.purple, desc: "Reported: ~$730B pre-money valuation (figures unconfirmed). $14B projected loss in 2026. Revenue target: $100B by 2029. $500B committed cloud infrastructure. Could be largest tech listing in history." },
   ],
   financials: [
     { label: "2024 REVENUE", value: "$3.7B", color: C.green },
