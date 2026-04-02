@@ -809,7 +809,7 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   const staggeredOffsets = useMemo(() => {
     const offsets: number[] = new Array(points.length).fill(0);
     const minGap = 55;
-    const levels = [0, 22, 44, 66, 88, 110];
+    const step = 22;
     for (let i = 1; i < points.length; i++) {
       const usedLevels = new Set<number>();
       for (let j = 0; j < i; j++) {
@@ -818,8 +818,9 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
         }
       }
       if (usedLevels.size > 0) {
-        const free = levels.find(l => !usedLevels.has(l));
-        offsets[i] = free ?? levels[usedLevels.size % levels.length];
+        let level = 0;
+        while (usedLevels.has(level)) level += step;
+        offsets[i] = level;
       }
     }
     return offsets;
@@ -886,7 +887,7 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
 
                 {dense ? (
                   <text x={p.x} y={pad.top + chartH + 14 + staggeredOffsets[i]} textAnchor="end" fill="#888" fontSize="7" fontFamily="monospace"
-                    transform={`rotate(-40, ${p.x}, ${pad.top + chartH + 14 + staggeredOffsets[i]})`}>
+                    transform={`rotate(-35, ${p.x}, ${pad.top + chartH + 14 + staggeredOffsets[i]})`}>
                     {p.label
                       .replace("Google Strategic", "Google Strat.")
                       .replace("SK Telecom", "SK Telec.")
