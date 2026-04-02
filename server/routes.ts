@@ -84,6 +84,7 @@ export async function registerRoutes(
   app.get("/guides/:slug/", (_req, res) => res.redirect(301, "/academy"));
 
   // Static pages served directly
+  app.get("/security/", (_req, res) => res.redirect(301, "/security"));
   app.get("/security", (_req, res) => {
     const filePath = path.resolve(process.cwd(), "client", "static", "security.html");
     res.setHeader("Content-Type", "text/html");
