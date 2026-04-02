@@ -379,9 +379,9 @@ function HeroSection({ onSelectCompany }: { onSelectCompany: (id: string) => voi
           Deep analysis of governance, funding, and policy across the world's most important AI companies.
           Free and open research from Tech Horizon Labs.
         </p>
-        <a href="/insights/claude-vs-chatgpt-2026" className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-salmon-50 border border-salmon-200 rounded-full text-salmon-700 text-sm font-medium hover:bg-salmon-100 transition-colors">
+        <a href="/insights/how-australia-uses-ai-2026" className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-salmon-50 border border-salmon-200 rounded-full text-salmon-700 text-sm font-medium hover:bg-salmon-100 transition-colors">
           <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-salmon-500 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-salmon-500" /></span>
-          New: Claude vs ChatGPT 2026 — Honest Comparison →
+          New: How Australian Businesses Are Actually Using AI in 2026 →
         </a>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
@@ -471,6 +471,26 @@ function GovernancePanel({ company, onPersonClick }: { company: CompanyData; onP
           </button>
         ))}
       </div>
+
+      {!company.trustees && company.departedTrustees && company.departedTrustees.length > 0 && (
+        <div className="rounded-lg border p-4 bg-white" style={{ borderColor: C.red + "20" }}>
+          <p className="font-mono text-[9px] tracking-[2px] font-bold mb-1" style={{ color: C.red }}>FORMER LEADERSHIP</p>
+          <div className="space-y-2">
+            {company.departedTrustees.map((d, i) => (
+              <div key={i} className="p-3 rounded-lg border" style={{ borderColor: C.red + "15", backgroundColor: C.red + "05" }}>
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="text-sm text-aubergine-900 font-semibold">{d.name}</p>
+                    <p className="font-mono text-[10px]" style={{ color: C.red }}>{d.role}</p>
+                  </div>
+                  <span className="font-mono text-[9px] px-2 py-0.5 rounded whitespace-nowrap" style={{ backgroundColor: C.red + "15", color: C.red }}>Left {d.departed}</span>
+                </div>
+                <p className="text-[11px] text-gray-500 leading-relaxed mt-1">{d.note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {company.trustees && company.trustees.length > 0 && (
         <div className="rounded-lg border p-4 bg-white" style={{ borderColor: C.green + "20" }}>

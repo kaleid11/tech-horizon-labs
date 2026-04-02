@@ -44,7 +44,7 @@ Preferred communication style: Simple, everyday language.
 - **Navigation**: Main navigation includes Services (dropdown), Portfolio, Research, Locations, and Academy.
 - **Booking Integration**: All CTAs link directly to Klipy CRM booking, with a `ContactFormDialog` for alternative message submissions.
 - **Trust Signals**: Homepage features a `TrustBar` with partner logos (Google, Anthropic, OpenAI, AWS, n8n, Docker, fal.ai), industry badges, and a footer with community links.
-- **AI Research Hub (`/research`)**: Deep analysis of 10 AI companies with comparison dashboards (Valuation Race, Total Funding, Quick Stats), detailed company profiles, and down round indicators.
+- **AI Research Hub (`/research`)**: Deep analysis of 10 AI companies — Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen (Alibaba), Perplexity, Kimi, and Mistral — with comparison dashboards (Valuation Race, Total Funding, Quick Stats), detailed company profiles, down round indicators, and former leadership tracking. Data files in `client/src/data/research/`.
 - **Newsletter & Events Integration**: `/api/newsletter` endpoint for email validation, deduplication, database storage, Resend welcome emails, Klipy CRM syncing, and Beehiiv API integration. Events page is fully wired with Luma integration.
 - **SEO Optimization**: Comprehensive JSON-LD schema markup (LocalBusiness, Organization, FAQPage, Service, Person, BreadcrumbList), `robots.txt` allowing AI crawlers, and a generated XML sitemap.
 
