@@ -35,6 +35,6 @@ export const perplexityData: CompanyData = {
     { date: "Jun 2024", label: "Series B+", total: 250, val: 3000, lead: "IVP", inv: [{ n: "IVP", a: 80 }, { n: "NEA", a: 40 }, { n: "SoftBank", a: 40 }, { n: "Databricks", a: 30 }, { n: "Other", a: 60 }], events: ["$3B valuation", "6x in 5 months"] },
     { date: "Dec 2024", label: "Series C", total: 500, val: 9000, lead: "IVP", inv: [{ n: "IVP", a: 150 }, { n: "Jeff Bezos", a: 50 }, { n: "Nvidia", a: 50 }, { n: "Other", a: 250 }], events: ["$9B valuation", "Triple in 6 months"] },
     { date: "Jun 2025", label: "Series D", total: 500, val: 14000, lead: "Accel", inv: [{ n: "Accel", a: 150 }, { n: "SoftBank", a: 100 }, { n: "Nvidia", a: 50 }, { n: "Other", a: 200 }], events: ["$14B valuation", "30M monthly users"] },
-    { date: "Sep 2025", label: "Series E", total: 200, val: 20000, lead: "SoftBank", inv: [{ n: "SoftBank", a: 100 }, { n: "Other", a: 100 }], events: ["$20B valuation", "~$200M ARR"] },
+    { date: "Sep 2025", label: "Series E", total: 200, val: 20000, lead: "Undisclosed", inv: [{ n: "Existing backers", a: 200, note: "Specific investors not disclosed at announcement. Backers include Nvidia, NEA, Accel, SoftBank, Jeff Bezos." }], events: ["$20B valuation", "43% jump from $14B in 3 months", "~$200M ARR", "30M+ monthly users"] },
   ],
 };

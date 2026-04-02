@@ -44,6 +44,6 @@ export const kimiData: CompanyData = {
     { date: "Feb 2024", label: "Series A", total: 1000, val: 2500, lead: "Alibaba", inv: [{ n: "Alibaba", a: 400 }, { n: "Tencent", a: 200 }, { n: "5Y Capital", a: 100 }, { n: "Other", a: 300 }], events: ["$2.5B valuation", "Alibaba's largest AI bet"] },
     { date: "Aug 2024", label: "Series B", total: 300, val: 3300, lead: "Tencent", inv: [{ n: "Tencent", a: 120 }, { n: "Gaorong Capital", a: 80 }, { n: "Other", a: 100 }], events: ["$3.3B valuation", "36M MAU peak"] },
     { date: "Dec 2025", label: "Series C", total: 500, val: 4300, lead: "IDG Capital", inv: [{ n: "IDG Capital", a: 200 }, { n: "Cathay Capital", a: 100 }, { n: "Andon Hong Kong", a: 80 }, { n: "Other", a: 120 }], events: ["$4.3B valuation", "K1.5 launch"] },
-    { date: "Feb 2026", label: "Series D", total: 700, val: 10000, lead: "TBD", inv: [{ n: "Various (ongoing)", a: 700, note: "Targeting $10-12B val" }], events: ["Targeting $10-12B valuation", "Cash reserves >$1.4B"] },
+    { date: "Feb 2026", label: "Series D (T1)", total: 700, val: 10000, lead: "Alibaba / Tencent / 5Y Capital", inv: [{ n: "Alibaba", a: 250, note: "Existing backer" }, { n: "Tencent", a: 200, note: "Existing backer" }, { n: "5Y Capital", a: 150, note: "Early backer since seed" }, { n: "Other", a: 100 }], events: ["First tranche CLOSED at $10B valuation", "Fastest Chinese AI co to decacorn status", "Cash reserves >$1.4B", "Series D expansion to $18B in discussion (Mar 2026)"] },
   ],
 };
