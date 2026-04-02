@@ -19,7 +19,7 @@ Preferred communication style: Simple, everyday language.
 - **Animations**: Framer Motion for interactive UI elements and a narrative particle canvas that changes behavior based on scroll position.
 - **Build Tool**: Vite with custom Replit integration plugins.
 - **SEO**: Dedicated `PageSEO` component for meta tags and `LocationSchema` for JSON-LD FAQ schema.
-- **Static Site**: The `client/static/` directory hosts the main static pages (`index.html`, `work.html`, `about.html`, `contact.html`, `academy.html`, `research.html`), while the React app handles dynamic routes and deeper content.
+- **Static Site**: The `client/static/` directory hosts the main static pages (`index.html`, `work.html`, `about.html`, `contact.html`, `academy.html`, `research.html`, `security.html`), while the React app handles dynamic routes and deeper content.
 
 ### Backend Architecture
 - **Framework**: Express 5 on Node.js.

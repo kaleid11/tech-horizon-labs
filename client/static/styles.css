@@ -824,7 +824,7 @@ blockquote cite {
 /* --- Security Grid --- */
 .security-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   margin-top: var(--space-sm);
 }
@@ -1126,6 +1126,107 @@ blockquote cite {
   border-radius: 4px;
 }
 
+/* --- Security Page --- */
+.security-section-header {
+  margin-bottom: var(--space-sm);
+}
+
+.security-section-header h2 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-intro {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  max-width: 560px;
+}
+
+.security-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: var(--space-sm);
+}
+
+.security-feature {
+  padding: 1.5rem;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.security-feature:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  border-color: rgba(181, 101, 74, 0.3);
+}
+
+.security-feature h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.security-feature p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.security-sme-context {
+  margin-top: var(--space-sm);
+  padding: 1.75rem 2rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+}
+
+.security-sme-context .security-badge {
+  margin-bottom: 0.75rem;
+}
+
+.security-sme-context p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.section-cta {
+  margin-top: 1.5rem;
+}
+
+.faq-list {
+  margin-top: var(--space-sm);
+}
+
+.faq-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.625rem;
+  color: var(--text);
+}
+
+.faq-item p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
 /* ============================================
    Responsive
    ============================================ */
@@ -1136,6 +1237,14 @@ blockquote cite {
   }
 
   .report-phases {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .security-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .security-feature-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1180,6 +1289,14 @@ blockquote cite {
   .security-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .security-feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .security-sme-context {
+    padding: 1.25rem 1.5rem;
   }
 
   .results-grid {
@@ -1264,6 +1381,10 @@ blockquote cite {
   }
 
   .tool-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .security-feature-grid {
     grid-template-columns: 1fr;
   }
 

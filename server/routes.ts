@@ -83,6 +83,13 @@ export async function registerRoutes(
   app.get("/guides/:slug", (_req, res) => res.redirect(301, "/academy"));
   app.get("/guides/:slug/", (_req, res) => res.redirect(301, "/academy"));
 
+  // Static pages served directly
+  app.get("/security", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "security.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+
   // Individual removed pages
   // /research is now a live page — no redirect
   app.get("/audit-tool", (_req, res) => res.redirect(301, "/"));
