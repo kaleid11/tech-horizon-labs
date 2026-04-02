@@ -557,7 +557,7 @@ a:hover {
 /* --- Client words intro line --- */
 .client-words-intro {
   font-size: 0.875rem;
-  color: var(--text-muted);
+  color: var(--text-muted, #6b7280);
   margin-bottom: 1.5rem;
 }
 
