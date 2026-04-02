@@ -813,8 +813,8 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   const maxT = Math.max(...timestamps);
   const maxV = Math.max(...vals.map(v => v.displayVal));
 
-  const dense = vals.length > 5;
-  const w = Math.max(640, vals.length * 100);
+  const dense = vals.length > 4;
+  const w = Math.max(800, vals.length * 130);
   const padLeft = 65, padRight = 30, padTop = 30;
   const chartW = w - padLeft - padRight;
 
@@ -823,10 +823,11 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   const xs = timestamps.map(t => getX(t));
 
   // Compute stagger offsets before fixing chart height so pad.bottom can adapt
+  // Checks ALL previous points (not just adjacent) so 3+ clustered points are handled correctly
   const staggeredOffsets = (() => {
     const offsets: number[] = new Array(vals.length).fill(0);
-    const minGap = 55;
-    const step = 22;
+    const minGap = 72;
+    const step = 28;
     for (let i = 1; i < vals.length; i++) {
       const used = new Set<number>();
       for (let j = 0; j < i; j++) {
@@ -841,9 +842,9 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
     return offsets;
   })();
 
-  // Adaptive bottom padding: label area = 14px gap + max offset + 22px text clearance
+  // Adaptive bottom padding: label area = 16px gap + max offset + 24px text clearance
   const maxOffset = dense ? Math.max(0, ...staggeredOffsets) : 0;
-  const padBottom = dense ? Math.max(80, 14 + maxOffset + 22) : 50;
+  const padBottom = dense ? Math.max(90, 16 + maxOffset + 24) : 50;
   const pad = { top: padTop, right: padRight, bottom: padBottom, left: padLeft };
   const h = dense ? Math.max(300, padTop + 180 + padBottom) : 300;
   const chartH = h - pad.top - pad.bottom;
@@ -911,16 +912,30 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
                   </g>
                 )}
 
-                {dense ? (
-                  <text x={p.x} y={pad.top + chartH + 14 + staggeredOffsets[i]} textAnchor="end" fill="#888" fontSize="7" fontFamily="monospace"
-                    transform={`rotate(-35, ${p.x}, ${pad.top + chartH + 14 + staggeredOffsets[i]})`}>
-                    {p.label
-                      .replace("Google Strategic", "Google Strat.")
-                      .replace("SK Telecom", "SK Telec.")
-                      .replace("Strategic", "Strat.")
-                      .replace("Investment", "Invest.")}
-                  </text>
-                ) : (
+                {dense ? (() => {
+                  const labelY = pad.top + chartH + 16 + staggeredOffsets[i];
+                  const abbreviatedLabel = p.label
+                    .replace("Google Strategic", "Google Strat.")
+                    .replace("SK Telecom", "SK Telec.")
+                    .replace("Strategic", "Strat.")
+                    .replace("Investment", "Invest.")
+                    .replace("Amazon T", "Amzn T")
+                    .replace("Google Conv.", "Goog Conv.")
+                    .replace("Google Add'l", "Goog Add.")
+                    .replace("MSFT/NVDA", "MSFT/NVDA");
+                  return (
+                    <g>
+                      {staggeredOffsets[i] > 0 && (
+                        <line x1={p.x} y1={pad.top + chartH + 4} x2={p.x} y2={labelY - 2}
+                          stroke="#d0d0d0" strokeWidth="0.5" strokeDasharray="2 2" />
+                      )}
+                      <text x={p.x} y={labelY} textAnchor="end" fill={activeIdx === i ? accent : "#888"} fontSize="7.5" fontFamily="monospace"
+                        transform={`rotate(-38, ${p.x}, ${labelY})`}>
+                        {abbreviatedLabel}
+                      </text>
+                    </g>
+                  );
+                })() : (
                   <g>
                     <text x={p.x} y={pad.top + chartH + 14} textAnchor="middle" fill="#6b7280" fontSize="8" fontFamily="monospace">
                       {p.label}
