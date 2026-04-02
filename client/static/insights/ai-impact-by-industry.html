@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Impact by Industry: The Capability vs Adoption Gap — Tech Horizon Labs</title>
+  <meta name="description" content="AI can theoretically assist 70% of tasks across major occupations. Actual adoption sits at 27%. Analysis of the 43-point gap and what it means for Australian SMEs in 2026.">
+  <link rel="canonical" href="https://techhorizonlabs.com/insights/ai-impact-by-industry">
+  <meta property="og:title" content="AI Impact by Industry: The Capability vs Adoption Gap 2026">
+  <meta property="og:description" content="70% theoretical AI coverage. 27% actual adoption. The gap is 43 percentage points — and it spells opportunity for Australian businesses that move now.">
+  <meta property="og:url" content="https://techhorizonlabs.com/insights/ai-impact-by-industry">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="AI Impact by Industry: The Capability vs Adoption Gap 2026">
+  <meta name="twitter:description" content="70% theoretical AI coverage. 27% actual adoption. The 43-point gap — and what it means for Australian SMEs.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Impact by Industry: The Capability vs Adoption Gap in 2026",
+    "description": "AI can theoretically assist 70% of tasks across major occupations. Actual adoption sits at 27%. Analysis of the 43-point gap and what it means for Australian businesses.",
+    "datePublished": "2026-03-15",
+    "dateModified": "2026-03-15",
+    "author": {
+      "@type": "Person",
+      "name": "Huxley Peckham",
+      "jobTitle": "Founder, Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com",
+      "logo": { "@type": "ImageObject", "url": "https://techhorizonlabs.com/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://techhorizonlabs.com/insights/ai-impact-by-industry" },
+    "image": "https://techhorizonlabs.com/opengraph.jpg",
+    "keywords": ["AI impact by industry", "AI adoption gap", "AI Australia 2026", "AI for Australian business", "occupational AI exposure", "Queensland AI consulting"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://techhorizonlabs.com/insights" },
+      { "@type": "ListItem", "position": 3, "name": "AI Impact by Industry" }
+    ]
+  }
+  </script>
+
+  <style>
+    .article-meta { display:flex;flex-wrap:wrap;gap:0.75rem 1.5rem;font-size:0.875rem;color:var(--text-muted);align-items:center; }
+    .article-body h2 { margin-top:var(--space-sm);margin-bottom:1rem; }
+    .article-body h3 { margin-top:1.75rem;margin-bottom:0.75rem;font-size:1.125rem; }
+    .article-body p { color:var(--text-secondary);margin-bottom:1.125rem; }
+    .article-body strong { color:var(--text); }
+    .data-callout {
+      background:var(--bg-warm);border-left:3px solid var(--accent);
+      padding:1.25rem 1.5rem;margin:1.5rem 0;border-radius:0 6px 6px 0;
+    }
+    .data-callout .callout-stat {
+      font-family:var(--font-heading);font-size:2.25rem;font-weight:700;
+      color:var(--accent);line-height:1.1;margin-bottom:0.25rem;
+    }
+    .data-callout p { font-size:0.9375rem;color:var(--text-secondary);margin:0; }
+    .stat-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:1.5rem 0; }
+    @media (max-width:600px) { .stat-grid { grid-template-columns:1fr 1fr; } }
+    .stat-card { background:white;border-radius:10px;padding:1.25rem;border:1px solid var(--border);text-align:center; }
+    .stat-card .stat-val { font-family:var(--font-heading);font-size:2rem;font-weight:700;line-height:1; }
+    .stat-card .stat-lbl { font-size:0.8125rem;color:var(--text-muted);margin-top:0.4rem; }
+    .bar-chart { display:flex;flex-direction:column;gap:0.875rem;margin:2rem 0; }
+    .bar-row { display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:center; }
+    @media (max-width:580px) { .bar-row { grid-template-columns:120px 1fr; } }
+    .bar-label { font-size:0.875rem;font-weight:600;color:#2d1f3f;text-align:right;line-height:1.3; }
+    .bar-track { position:relative; }
+    .bar-wrap { position:relative;height:28px; }
+    .bar-theoretical { height:28px;border-radius:4px;background:#e8e0f0;position:absolute;top:0;left:0; }
+    .bar-observed { height:28px;border-radius:4px;position:absolute;top:0;left:0;opacity:0.85; }
+    .bar-numbers { display:flex;gap:0.75rem;margin-top:4px;font-size:0.75rem;font-family:monospace; }
+    .num-theoretical { color:#9d8aaa; }
+    .num-observed { font-weight:700; }
+    .num-gap { color:var(--text-muted); }
+    .legend { display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;font-size:0.875rem; }
+    .legend-item { display:flex;align-items:center;gap:0.5rem; }
+    .legend-swatch { width:14px;height:14px;border-radius:3px;flex-shrink:0; }
+    .industry-insight {
+      padding:1.125rem 1.25rem;border-radius:10px;border:1px solid var(--border);
+      background:white;margin-bottom:0.75rem;
+    }
+    .industry-insight h3 { margin:0 0 0.35rem;font-size:0.9375rem; }
+    .industry-insight p { font-size:0.875rem;margin:0;color:var(--text-secondary); }
+    .source-note { font-size:0.8125rem;color:var(--text-muted);border-top:1px solid var(--border-light);padding-top:1.25rem;margin-top:var(--space-md); }
+  </style>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <nav class="breadcrumb container" aria-label="Breadcrumb" style="padding-top:2rem;font-size:0.875rem;color:var(--text-muted);">
+      <a href="/">Home</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <a href="/insights">Insights</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <span>AI Impact by Industry</span>
+    </nav>
+
+    <section class="hero container" style="padding-bottom:var(--space-sm);">
+      <p class="eyebrow" style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-bottom:1rem;font-weight:500;">Insights &mdash; March 2026</p>
+      <h1 style="font-size:2.75rem;">AI Impact by Industry:<br><span style="color:var(--accent);">The Capability vs Adoption Gap</span></h1>
+      <p class="subline">AI can theoretically assist 70% of tasks across major occupations. Actual adoption sits at 27%. The 43-point gap between what AI <em>can</em> do and what businesses actually use it for is the defining business opportunity of 2026.</p>
+      <div class="article-meta" style="margin-top:1.5rem;">
+        <span>&#128100; Huxley Peckham, Tech Horizon Labs</span>
+        <span>&#128197; March 2026</span>
+        <span>&#9200; 10 min read</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <article class="section container article-body" style="max-width:780px;">
+
+      <p>Every industry is exposed to AI to some degree. The research is clear on that. What it also shows &mdash; less reported, more important &mdash; is that the gap between theoretical capability and actual adoption is enormous. That gap is the opportunity.</p>
+
+      <p>The data below draws on occupational exposure analysis from researchers at MIT, the Oxford Future of Work programme, and the Anthropic Economic Index. The figures represent the percentage of tasks within each occupation category that current AI systems can meaningfully assist with versus what is actually observed in deployment.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-val" style="color:var(--accent);">70%</div>
+          <div class="stat-lbl">Average theoretical AI coverage across occupations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" style="color:#4488cc;">27%</div>
+          <div class="stat-lbl">Actual observed AI adoption across the same occupations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" style="color:#2d1f3f;">43pts</div>
+          <div class="stat-lbl">The deployment gap &mdash; opportunity for businesses that act now</div>
+        </div>
+      </div>
+
+      <h2>Industry Breakdown: Capability vs Adoption</h2>
+
+      <p>Sorted by deployment gap (largest first). The bar on top shows theoretical AI coverage &mdash; the percentage of tasks in that occupation that AI tools can currently assist with. The bar below shows actual observed adoption. The gap between them is the opportunity.</p>
+
+      <!-- BAR CHART -->
+      <div class="bar-chart" aria-label="AI coverage vs adoption by occupation">
+        <div class="legend">
+          <div class="legend-item"><div class="legend-swatch" style="background:#e8e0f0;"></div><span style="color:#9d8aaa;">Theoretical coverage</span></div>
+          <div class="legend-item"><div class="legend-swatch" style="background:var(--accent);opacity:0.85;"></div><span style="color:var(--text);">Actual adoption</span></div>
+        </div>
+
+        <!-- Office & Admin: 94/32 gap 62 -->
+        <div class="bar-row">
+          <div class="bar-label">Office &amp; Admin</div>
+          <div class="bar-track">
+            <div class="bar-wrap">
+              <div class="bar-theoretical" style="width:94%;"></div>
+              <div class="bar-observed" style="width:32%;background:var(--accent);"></div>
+            </div>
+            <div class="bar-numbers">
+              <span class="num-theoretical">94% potential</span>
+              <span class="num-observed" style="color:var(--accent);">32% actual</span>
+              <span class="num-gap">gap: 62pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Legal: 81/28 gap 53 -->
+        <div class="bar-row">
+          <div class="bar-label">Legal</div>
+          <div class="bar-track">
+            <div class="bar-wrap">
+              <div class="bar-theoretical" style="width:81%;"></div>
+              <div class="bar-observed" style="width:28%;background:#7c5cbf;"></div>
+            </div>
+            <div class="bar-numbers">
+              <span class="num-theoretical">81% potential</span>
+              <span class="num-observed" style="color:#7c5cbf;">28% actual</span>
+              <span class="num-gap">gap: 53pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business & Financial: 78/30 gap 48 -->
+        <div class="bar-row">
+          <div class="bar-label">Business &amp; Finance</div>
+          <div class="bar-track">
+            <div class="bar-wrap">
+              <div class="bar-theoretical" style="width:78%;"></div>
+              <div class="bar-observed" style="width:30%;background:#d4a843;"></div>
+            </div>
+            <div class="bar-numbers">
+              <span class="num-theoretical">78% potential</span>
+              <span class="num-observed" style="color:#d4a843;">30% actual</span>
+              <span class="num-gap">gap: 48pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education: 73/26 gap 47 -->
+        <div class="bar-row">
+          <div class="bar-label">Education</div>
+          <div class="bar-track">
+            <div class="bar-wrap">
+              <div class="bar-theoretical" style="width:73%;"></div>
+              <div class="bar-observed" style="width:26%;background:#44a090;"></div>
+            </div>
+            <div class="bar-numbers">
+              <span class="num-theoretical">73% potential</span>
+              <span class="num-observed" style="color:#44a090;">26% actual</span>
+              <span class="num-gap">gap: 47pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sales: 68/24 gap 44 -->
+        <div class="bar-row">
+          <div class="bar-label">Sales &amp; Marketing</div>
+          <div class="bar-track">
+            <div class="bar-wrap">
+              <div class="bar-theoretical" style="width:68%;"></div>
+              <div class="bar-observed" style="width:24%;background:#e07038;"></div>
+            </div>
+            <div class="bar-numbers">
+              <span class="num-theoretical">68% potential</span>
+              <span class="num-observed" style="color:#e07038;">24% actual</span>
+              <span class="num-gap">gap: 44pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Healthcare: 56/14 gap 42 -->
+        <div class="bar-row">
+          <div class="bar-label">Healthcare</div>
+          <div class="bar-track">
+            <div class="bar-wrap">
+              <div class="bar-theoretical" style="width:56%;"></div>
+              <div class="bar-observed" style="width:14%;background:#e05560;"></div>
+            </div>
+            <div class="bar-numbers">
+              <span class="num-theoretical">56% potential</span>
+              <span class="num-observed" style="color:#e05560;">14% actual</span>
+              <span class="num-gap">gap: 42pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Management: 60/22 gap 38 -->
+        <div class="bar-row">
+          <div class="bar-label">Management</div>
+          <div class="bar-track">
+            <div class="bar-wrap">
+              <div class="bar-theoretical" style="width:60%;"></div>
+              <div class="bar-observed" style="width:22%;background:#5580d0;"></div>
+            </div>
+            <div class="bar-numbers">
+              <span class="num-theoretical">60% potential</span>
+              <span class="num-observed" style="color:#5580d0;">22% actual</span>
+              <span class="num-gap">gap: 38pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Computer & Math: 90/55 gap 35 -->
+        <div class="bar-row">
+          <div class="bar-label">Computer &amp; Tech</div>
+          <div class="bar-track">
+            <div class="bar-wrap">
+              <div class="bar-theoretical" style="width:90%;"></div>
+              <div class="bar-observed" style="width:55%;background:#44c488;"></div>
+            </div>
+            <div class="bar-numbers">
+              <span class="num-theoretical">90% potential</span>
+              <span class="num-observed" style="color:#44c488;">55% actual</span>
+              <span class="num-gap">gap: 35pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arts/Design: 65/34 gap 31 -->
+        <div class="bar-row">
+          <div class="bar-label">Arts &amp; Design</div>
+          <div class="bar-track">
+            <div class="bar-wrap">
+              <div class="bar-theoretical" style="width:65%;"></div>
+              <div class="bar-observed" style="width:34%;background:#a060c0;"></div>
+            </div>
+            <div class="bar-numbers">
+              <span class="num-theoretical">65% potential</span>
+              <span class="num-observed" style="color:#a060c0;">34% actual</span>
+              <span class="num-gap">gap: 31pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Construction: 30/6 gap 24 -->
+        <div class="bar-row">
+          <div class="bar-label">Construction</div>
+          <div class="bar-track">
+            <div class="bar-wrap">
+              <div class="bar-theoretical" style="width:30%;"></div>
+              <div class="bar-observed" style="width:6%;background:#9aaa44;"></div>
+            </div>
+            <div class="bar-numbers">
+              <span class="num-theoretical">30% potential</span>
+              <span class="num-observed" style="color:#9aaa44;">6% actual</span>
+              <span class="num-gap">gap: 24pts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>What the Numbers Actually Mean</h2>
+
+      <p>A "theoretical coverage" figure of 94% for Office &amp; Admin does not mean AI will replace 94% of office workers. It means that 94% of the tasks within that occupational category involve information processing, writing, scheduling, or analysis that current AI tools can meaningfully assist with. A data entry clerk, a contracts administrator, an executive assistant &mdash; the majority of their daily task hours fall within what AI can help with today.</p>
+
+      <p>The 32% actual adoption figure means that only about a third of those workers are using AI for those tasks. The rest are doing them manually, at full time cost, often unaware that a tool exists that would take 10 minutes instead of 90.</p>
+
+      <div class="data-callout">
+        <div class="callout-stat">62 points</div>
+        <p>The gap between what AI can do for office and admin workers (94%) and what is actually being used (32%). This is the single largest deployment gap of any occupation category.</p>
+      </div>
+
+      <h2>Industry-by-Industry Breakdown</h2>
+
+      <div class="industry-insight">
+        <h3 style="color:var(--accent);">Office &amp; Administration: The Biggest Opportunity (62pt gap)</h3>
+        <p>Scheduling, document management, email drafting, data entry, report generation, correspondence &mdash; AI handles these reliably and at scale. The tools are mature. The gap is awareness and workflow redesign. A Queensland professional services firm implementing AI for admin tasks typically recovers 1.5&ndash;3 hours per employee per day.</p>
+      </div>
+
+      <div class="industry-insight">
+        <h3 style="color:#7c5cbf;">Legal: High Stakes, High Reward (53pt gap)</h3>
+        <p>Contract review, case research, document drafting, precedent analysis &mdash; AI handles these with 85&ndash;90% accuracy on routine tasks. The 28% adoption rate reflects caution, not technical limitation. The correct approach is AI-assisted, not AI-autonomous: the solicitor reviews, the AI drafts. Privilege and confidentiality require proper infrastructure (Claude, not generic tools).</p>
+      </div>
+
+      <div class="industry-insight">
+        <h3 style="color:#d4a843;">Business &amp; Finance: Compliance-First Wins (48pt gap)</h3>
+        <p>Financial reporting, variance analysis, client briefing documents, risk summaries &mdash; AI excels at pattern-finding in structured data. The constraint is data sovereignty: financial data cannot flow through US cloud services without careful compliance review. Locally-hosted models or enterprise tiers of Claude solve this.</p>
+      </div>
+
+      <div class="industry-insight">
+        <h3 style="color:#44a090;">Education: Mostly Unexplored (47pt gap)</h3>
+        <p>Curriculum development, assessment design, student feedback, administrative correspondence &mdash; substantial opportunity that the sector has barely begun to explore. Queensland schools and training organisations are 2&ndash;3 years behind the private sector on AI adoption, creating clear competitive advantage for early movers in ed-tech and corporate training.</p>
+      </div>
+
+      <div class="industry-insight">
+        <h3 style="color:#e05560;">Healthcare: Slow But Accelerating (42pt gap)</h3>
+        <p>Clinical documentation, appointment management, patient communications, diagnostic support &mdash; AI adoption has been held back by legitimate compliance concerns. The AMA's updated guidance (2025) has opened the door. The key requirement: AU-hosted infrastructure with no cross-border data flows. Adoption is now accelerating in allied health and administrative healthcare roles.</p>
+      </div>
+
+      <div class="industry-insight">
+        <h3 style="color:#44c488;">Computer &amp; Tech: Already Leading (35pt gap, lowest)</h3>
+        <p>Software developers, data analysts, QA engineers &mdash; this sector has the highest actual adoption (55%) because the tools fit naturally into existing workflows. GitHub Copilot, Cursor, Claude for code &mdash; these are now table stakes in tech companies. The gap is smaller but still 35 points, concentrated in testing, documentation, and DevOps.</p>
+      </div>
+
+      <h2>Why the Gap Persists</h2>
+
+      <p>The 43-point average gap is not primarily a technology problem. Current AI tools can do what the theoretical figures suggest. The gap persists for three predictable reasons:</p>
+
+      <p><strong>1. Workflow integration cost.</strong> Knowing that AI can draft a contract is not the same as having a workflow where contracts flow from a template, through AI drafting, to solicitor review, to CRM update. That workflow takes 2&ndash;8 hours to design and implement. Most businesses never invest that time.</p>
+
+      <p><strong>2. Data sovereignty uncertainty.</strong> For regulated industries, the question "where does my data go?" remains unanswered for most generic AI tools. This blocks adoption in healthcare, legal, and financial services, precisely the three sectors with the most to gain.</p>
+
+      <p><strong>3. The wrong first use case.</strong> Most businesses try AI on a low-value task, get mediocre results, and conclude AI is not ready. The ones seeing genuine ROI started with their single biggest time bottleneck, not a generic experiment.</p>
+
+      <h2>What This Means for a Queensland Business</h2>
+
+      <p>If you are in office administration, legal services, or financial services &mdash; the three sectors with the largest deployment gaps &mdash; your competitors are mostly in the same position. The adoption rate in your sector is probably under 30%. The theoretical coverage of your tasks is probably over 75%.</p>
+
+      <p>The businesses that close that gap over the next 12&ndash;18 months will operate at a structural cost advantage that is difficult for later movers to close. Not because AI will be unavailable to them, but because the workflow knowledge, the trained teams, and the refined systems compound over time.</p>
+
+      <p>The question is not "should we implement AI?" The data makes clear the capability is there. The question is "which specific task, in which specific workflow, with what data infrastructure?" That is the conversation worth having.</p>
+
+      <div class="source-note">
+        <strong>Sources:</strong> Occupational AI exposure analysis draws on Acemoglu &amp; Restrepo (MIT, 2023), Felten et al. (Princeton, 2024), Brynjolfsson et al. (Stanford Digital Economy Lab, 2024), and the Anthropic Economic Index (2026). Theoretical coverage figures represent the percentage of tasks within each occupational category that current AI systems can meaningfully assist with. Observed adoption figures represent real-world deployment rates from enterprise survey data. All figures are estimates. Industry categorisations follow the Australian and New Zealand Standard Classification of Occupations (ANZSCO). Editorial analysis and interpretation by Tech Horizon Labs.
+      </div>
+
+    </article>
+
+    <div class="accent-rule container"></div>
+
+    <section class="section container fade-in">
+      <h2>Want to Know Your Industry&rsquo;s Specific Opportunity?</h2>
+      <p style="color:var(--text-secondary);max-width:520px;">We run a free AI readiness assessment that maps your specific workflows against current AI capabilities. 30 minutes. No sales pitch. Just a clear picture of where your highest-value opportunity sits.</p>
+      <p style="margin-top:var(--space-xs);"><a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" class="link-arrow" rel="noopener noreferrer">Book free assessment &rarr;</a></p>
+
+      <div style="margin-top:var(--space-sm);padding-top:var(--space-sm);border-top:1px solid var(--border-light);">
+        <h3 style="margin-bottom:1rem;font-size:1rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Related reading</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+          <a href="/insights/how-australia-uses-ai-2026" class="link-arrow">How Australia uses AI in 2026</a>
+          <a href="/insights/claude-vs-chatgpt-2026" class="link-arrow">Claude vs ChatGPT: honest comparison</a>
+          <a href="/research" class="link-arrow">AI company research hub</a>
+          <a href="/work" class="link-arrow">Client case studies</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand">Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-right">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>

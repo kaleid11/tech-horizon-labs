@@ -123,6 +123,16 @@ export async function registerRoutes(
     res.setHeader("Content-Type", "text/html");
     res.sendFile(filePath);
   });
+  app.get("/insights/claude-vs-chatgpt-2026", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "insights", "claude-vs-chatgpt-2026.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+  app.get("/insights/ai-impact-by-industry", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "insights", "ai-impact-by-industry.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
 
   // Insights → Homepage (wildcard — catches anything not specifically listed above)
   app.get("/insights/:slug", (_req, res) => res.redirect(301, "/"));
@@ -143,7 +153,11 @@ export async function registerRoutes(
   // /research is now a live page — no redirect
   app.get("/audit-tool", (_req, res) => res.redirect(301, "/"));
   app.get("/ai-ethics", (_req, res) => res.redirect(301, "/about"));
-  app.get("/openclaw", (_req, res) => res.redirect(301, "/"));
+  app.get("/openclaw", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "openclaw.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
   // /events is a live React SPA page — no redirect
   app.get("/resources", (_req, res) => res.redirect(301, "/academy"));
   app.get("/resources/", (_req, res) => res.redirect(301, "/academy"));

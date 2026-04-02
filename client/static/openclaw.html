@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw Setup Sunshine Coast — Tech Horizon Labs</title>
+  <meta name="description" content="The honest take on OpenClaw: 160K GitHub stars, 512 documented vulnerabilities. We set it up safely on the Sunshine Coast — or tell you when something else is a better fit. Free consultation.">
+  <link rel="canonical" href="https://techhorizonlabs.com/openclaw">
+  <meta property="og:title" content="OpenClaw Setup Sunshine Coast — Tech Horizon Labs">
+  <meta property="og:description" content="The honest take on OpenClaw. 160K GitHub stars. 512 known vulnerabilities. We set it up right, or we tell you when something else fits better.">
+  <meta property="og:url" content="https://techhorizonlabs.com/openclaw">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="OpenClaw Setup Sunshine Coast — Tech Horizon Labs">
+  <meta name="twitter:description" content="160K GitHub stars. 512 known vulnerabilities. Honest OpenClaw setup on the Sunshine Coast.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://techhorizonlabs.com/openclaw#service",
+        "name": "OpenClaw Setup & Consulting — Sunshine Coast",
+        "description": "Honest OpenClaw setup and consulting on the Sunshine Coast. We tell you what it's good at, what it's dangerous for, and how to deploy it safely.",
+        "url": "https://techhorizonlabs.com/openclaw",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://techhorizonlabs.com/#organization",
+          "name": "Tech Horizon Labs"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Sunshine Coast",
+          "containedInPlace": { "@type": "State", "name": "Queensland", "containedInPlace": { "@type": "Country", "name": "Australia" } }
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://techhorizonlabs.com/openclaw#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is OpenClaw and should my business use it?",
+            "acceptedAnswer": { "@type": "Answer", "text": "OpenClaw is a free, open-source AI assistant that runs on your own computer. It can automate tasks like scheduling, file management, and developer workflows. However, it has documented security vulnerabilities including data leaks and prompt injection attacks. Whether it is right for your business depends on the use case. We help you evaluate that honestly." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is OpenClaw safe for managing business emails?",
+            "acceptedAnswer": { "@type": "Answer", "text": "We do not recommend OpenClaw for email or inbox management. Security researchers have documented data exfiltration vulnerabilities, malicious skills in the ClawHub marketplace, and prompt injection attacks that can leak sensitive information. For email automation, we recommend purpose-built tools with proper security audits instead." }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does an OpenClaw setup cost on the Sunshine Coast?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A safe OpenClaw deployment with proper isolation (dedicated VM, separate accounts, vetted skills only) typically runs $2,000-$4,000 depending on your use case complexity. This includes security hardening, workflow configuration, and team training. The initial consultation is free." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can OpenClaw run on local hardware like PicoClaw on ESP32?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. We specialise in local AI deployments including PicoClaw on ESP32 microcontrollers for edge computing, and local AI servers for businesses that need data to stay on-premises. These setups keep your data completely private with zero cloud dependency." }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+          { "@type": "ListItem", "position": 2, "name": "OpenClaw Setup" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .openclaw-hero {
+      background: linear-gradient(135deg, #2d1f3f 0%, #3d2a55 50%, #2d1f3f 100%);
+      color: white;
+      padding: 7rem 0 4rem;
+    }
+    .openclaw-hero h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 1.25rem; }
+    .openclaw-hero .hero-accent { color: var(--accent); }
+    .openclaw-hero p { color: #c8bede; max-width: 580px; margin-bottom: 1rem; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .hero-stat-val { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .hero-stat-val.danger { color: #f87171; }
+    .hero-stat-label { font-size: 0.8125rem; color: #9d8aaa; margin-top: 0.25rem; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 1.75rem; border-radius: 9999px;
+      background: var(--accent); color: #2d1f3f; font-weight: 700;
+      text-decoration: none; font-size: 0.9375rem; transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: scale(1.02); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 1.75rem; border-radius: 9999px;
+      background: transparent; color: white; font-weight: 500;
+      text-decoration: none; font-size: 0.9375rem; border: 1px solid rgba(255,255,255,0.3);
+      transition: background 0.15s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+    .split-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;
+    }
+    @media (max-width: 640px) {
+      .split-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .openclaw-hero h1 { font-size: 2rem; }
+    }
+    .card {
+      background: white; border-radius: 12px; padding: 2rem; border: 1px solid var(--border);
+    }
+    .card-green { border-color: #bbf7d0; }
+    .card-red { border-color: #fecaca; }
+    .card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .card-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      font-size: 1.25rem;
+    }
+    .card-icon.green { background: #f0fdf4; }
+    .card-icon.red { background: #fef2f2; }
+    .card h3 { font-size: 1.0625rem; margin: 0; color: #2d1f3f; }
+    .use-case-item { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1rem; }
+    .use-case-check { flex-shrink: 0; margin-top: 2px; }
+    .use-case-title { font-weight: 600; color: #2d1f3f; font-size: 0.9375rem; margin-bottom: 0.125rem; }
+    .use-case-desc { font-size: 0.875rem; color: var(--text-muted); }
+    .warning-box {
+      margin-top: 1.25rem; padding: 1rem 1.25rem; background: #fef2f2;
+      border-radius: 8px; font-size: 0.875rem; color: #991b1b; font-weight: 500;
+    }
+    .incident-list { display: flex; flex-direction: column; gap: 0.75rem; max-width: 740px; margin: 0 auto; }
+    .incident-item {
+      display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem;
+      border-radius: 10px; border: 1px solid;
+    }
+    .incident-critical { background: #fef2f2; border-color: #fca5a5; }
+    .incident-high { background: #fff7ed; border-color: #fed7aa; }
+    .incident-info { background: #eff6ff; border-color: #bfdbfe; }
+    .incident-badge {
+      display: inline-block; font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; padding: 0.2rem 0.5rem; border-radius: 4px;
+    }
+    .badge-critical { background: #fca5a5; color: #7f1d1d; }
+    .badge-high { background: #fed7aa; color: #7c2d12; }
+    .badge-info { background: #bfdbfe; color: #1e3a8a; }
+    .incident-date { font-size: 0.8125rem; color: var(--text-muted); margin-left: 0.5rem; }
+    .incident-event { font-size: 0.9375rem; color: #1f2937; margin-top: 0.25rem; }
+    .safe-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+    @media (max-width: 768px) { .safe-cards { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .safe-cards { grid-template-columns: 1fr; } }
+    .safe-card { background: white; border-radius: 12px; padding: 1.75rem; border: 1px solid var(--border); }
+    .safe-card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .safe-card h3 { font-size: 0.9375rem; font-weight: 700; color: #2d1f3f; margin-bottom: 0.5rem; }
+    .safe-card p { font-size: 0.875rem; color: var(--text-secondary); }
+    .local-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; max-width: 640px; }
+    @media (max-width: 480px) { .local-grid { grid-template-columns: 1fr; } }
+    .local-card { background: var(--bg-warm); border-radius: 10px; padding: 1.25rem; }
+    .local-card h3 { font-size: 0.9375rem; font-weight: 700; color: #2d1f3f; margin-bottom: 0.4rem; }
+    .local-card p { font-size: 0.875rem; color: var(--text-secondary); }
+    .cta-dark {
+      background: #2d1f3f; color: white; border-radius: 16px;
+      padding: 3.5rem 2rem; text-align: center; margin: 0 0 var(--space-md);
+    }
+    .cta-dark h2 { font-size: 2rem; margin-bottom: 1rem; color: white; }
+    .cta-dark p { color: #c8bede; max-width: 520px; margin: 0 auto 2rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; background: white; margin-bottom: 0.75rem; overflow: hidden; }
+    .faq-item summary {
+      padding: 1.125rem 1.375rem; font-weight: 600; cursor: pointer; font-size: 0.9375rem;
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+      color: #2d1f3f;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; font-size: 1.25rem; color: var(--accent); font-weight: 300; }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item p { padding: 0 1.375rem 1.125rem; font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.65; }
+    .bg-light { background: #f9f9f7; }
+  </style>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <section class="openclaw-hero">
+      <div class="container">
+        <p style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);font-weight:600;margin-bottom:1rem;">OpenClaw Setup &amp; Consulting</p>
+        <h1>OpenClaw Setup<br><span class="hero-accent">Sunshine Coast</span></h1>
+        <p style="font-size:1.125rem;color:#e0d8ec;"><strong style="color:white;">The honest take:</strong> OpenClaw is a powerful open-source AI assistant. It is also a documented security risk. We help you use it safely for what it is actually good at.</p>
+        <p>160,000+ GitHub stars. 512 known vulnerabilities. We set it up right, or we tell you when something else is a better fit.</p>
+        <div class="hero-btns">
+          <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" class="btn-primary" rel="noopener noreferrer">Free OpenClaw Consultation</a>
+          <a href="/services/audit" class="btn-outline">AI Readiness Assessment</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hero-stat-val">160K+</div><div class="hero-stat-label">GitHub Stars</div></div>
+          <div><div class="hero-stat-val">50+</div><div class="hero-stat-label">Integrations</div></div>
+          <div><div class="hero-stat-val">MIT</div><div class="hero-stat-label">Open Source License</div></div>
+          <div><div class="hero-stat-val danger">512</div><div class="hero-stat-label">Known Vulnerabilities</div></div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="breadcrumb container" aria-label="Breadcrumb" style="padding-top:1.5rem;font-size:0.875rem;color:var(--text-muted);">
+      <a href="/">Home</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <span>OpenClaw Setup</span>
+    </nav>
+
+    <section class="section container">
+      <h2>What OpenClaw Actually Is</h2>
+      <p style="max-width:680px;color:var(--text-secondary);font-size:1.0625rem;line-height:1.7;">OpenClaw is an open-source AI assistant created by Peter Steinberger (who has since left to join OpenAI). It runs on your own computer and connects to AI models like Claude, GPT, or Gemini to automate tasks through natural language.</p>
+      <p style="max-width:680px;color:var(--text-secondary);font-size:1.0625rem;line-height:1.7;">It connects to 50+ services including messaging apps (WhatsApp, Slack, Telegram), productivity tools (Notion, GitHub), and smart home devices. It has persistent memory, can run scheduled tasks, and execute shell commands on your machine.</p>
+      <p style="max-width:680px;color:var(--text-secondary);font-size:1.0625rem;line-height:1.7;">The project went viral in January 2026, hitting 160,000+ GitHub stars. A marketplace called ClawHub has 3,000+ community-built skill extensions. It is genuinely impressive technology for certain use cases.</p>
+      <p style="max-width:680px;font-size:1.0625rem;line-height:1.7;"><strong>But here is what most OpenClaw setup services will not tell you:</strong> it has serious, documented security issues that make it unsuitable for anything involving sensitive business data.</p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <section class="section container">
+      <h2 style="text-align:center;margin-bottom:0.5rem;">Honest Assessment: Good At vs. Not Good At</h2>
+      <p style="text-align:center;color:var(--text-muted);max-width:560px;margin:0 auto 2.5rem;">Other OpenClaw consultants will connect it to everything. We think that is irresponsible. Here is our honest breakdown.</p>
+      <div class="split-grid">
+        <div class="card card-green">
+          <div class="card-header">
+            <div class="card-icon green">&#10003;</div>
+            <h3>Safe Use Cases</h3>
+          </div>
+          <div class="use-case-item">
+            <span class="use-case-check" style="color:#22c55e;font-size:1.125rem;">&#10003;</span>
+            <div><div class="use-case-title">Developer Workflows</div><div class="use-case-desc">Code reviews, PR notifications, automated debugging in sandboxed environments</div></div>
+          </div>
+          <div class="use-case-item">
+            <span class="use-case-check" style="color:#22c55e;font-size:1.125rem;">&#10003;</span>
+            <div><div class="use-case-title">Personal Task Automation</div><div class="use-case-desc">Reminders, note-taking, file organisation on a dedicated machine</div></div>
+          </div>
+          <div class="use-case-item">
+            <span class="use-case-check" style="color:#22c55e;font-size:1.125rem;">&#10003;</span>
+            <div><div class="use-case-title">Smart Home Control</div><div class="use-case-desc">Philips Hue, Home Assistant, IoT device management</div></div>
+          </div>
+          <div class="use-case-item">
+            <span class="use-case-check" style="color:#22c55e;font-size:1.125rem;">&#10003;</span>
+            <div><div class="use-case-title">Learning &amp; Experimentation</div><div class="use-case-desc">Trying AI agent workflows, testing prompts, prototyping automations</div></div>
+          </div>
+          <div class="use-case-item">
+            <span class="use-case-check" style="color:#22c55e;font-size:1.125rem;">&#10003;</span>
+            <div><div class="use-case-title">Local AI Server Projects</div><div class="use-case-desc">PicoClaw on ESP32, self-hosted AI for hobby and research projects</div></div>
+          </div>
+          <div class="use-case-item">
+            <span class="use-case-check" style="color:#22c55e;font-size:1.125rem;">&#10003;</span>
+            <div><div class="use-case-title">Internal Dev Tools</div><div class="use-case-desc">Webhook triggers, cron jobs, CI/CD notifications on isolated infrastructure</div></div>
+          </div>
+        </div>
+        <div class="card card-red">
+          <div class="card-header">
+            <div class="card-icon red">&#10007;</div>
+            <h3>Risky Use Cases</h3>
+          </div>
+          <div class="use-case-item">
+            <span class="use-case-check" style="color:#ef4444;font-size:1.125rem;">&#10007;</span>
+            <div><div class="use-case-title">Email &amp; Inbox Management</div><div class="use-case-desc">Data exfiltration risks confirmed by security researchers. Your client data could leak.</div></div>
+          </div>
+          <div class="use-case-item">
+            <span class="use-case-check" style="color:#ef4444;font-size:1.125rem;">&#10007;</span>
+            <div><div class="use-case-title">Client Data Processing</div><div class="use-case-desc">512 vulnerabilities found in audit, 8 critical. Not suitable for sensitive business data.</div></div>
+          </div>
+          <div class="use-case-item">
+            <span class="use-case-check" style="color:#ef4444;font-size:1.125rem;">&#10007;</span>
+            <div><div class="use-case-title">Financial Systems Access</div><div class="use-case-desc">Malicious skills in ClawHub can steal credentials. Never connect to banking or accounting.</div></div>
+          </div>
+          <div class="use-case-item">
+            <span class="use-case-check" style="color:#ef4444;font-size:1.125rem;">&#10007;</span>
+            <div><div class="use-case-title">Production Business Systems</div><div class="use-case-desc">CVE-2026-25253 allows remote code execution. Not hardened for production environments.</div></div>
+          </div>
+          <div class="warning-box">
+            If someone offers to connect OpenClaw to your business email, ask them about CVE-2026-25253 and the ClawHavoc campaign. If they do not know what those are, find a different consultant.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bg-light" style="padding:var(--space-sm) 0;">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:0.5rem;">The Security Reality</h2>
+        <p style="text-align:center;color:var(--text-muted);max-width:560px;margin:0 auto 2rem;">These are not theoretical risks. These are documented incidents from the first three months of 2026.</p>
+        <div class="incident-list">
+          <div class="incident-item incident-critical">
+            <div style="flex-shrink:0;margin-top:2px;">&#9888;</div>
+            <div>
+              <div><span class="incident-badge badge-critical">CRITICAL</span><span class="incident-date">Jan 2026</span></div>
+              <div class="incident-event">Security audit finds 512 vulnerabilities, 8 critical</div>
+            </div>
+          </div>
+          <div class="incident-item incident-critical">
+            <div style="flex-shrink:0;margin-top:2px;">&#9888;</div>
+            <div>
+              <div><span class="incident-badge badge-critical">CRITICAL</span><span class="incident-date">Jan 2026</span></div>
+              <div class="incident-event">CVE-2026-25253 disclosed. Remote code execution via WebSocket (CVSS 8.8)</div>
+            </div>
+          </div>
+          <div class="incident-item incident-critical">
+            <div style="flex-shrink:0;margin-top:2px;">&#9888;</div>
+            <div>
+              <div><span class="incident-badge badge-critical">CRITICAL</span><span class="incident-date">Jan&ndash;Feb 2026</span></div>
+              <div class="incident-event">ClawHavoc campaign. 800+ malicious skills on ClawHub (20% of marketplace)</div>
+            </div>
+          </div>
+          <div class="incident-item incident-high">
+            <div style="flex-shrink:0;margin-top:2px;">&#9651;</div>
+            <div>
+              <div><span class="incident-badge badge-high">HIGH</span><span class="incident-date">Feb 2026</span></div>
+              <div class="incident-event">Data exfiltration and multi-user session leakage confirmed by Giskard</div>
+            </div>
+          </div>
+          <div class="incident-item incident-info">
+            <div style="flex-shrink:0;margin-top:2px;">&#9432;</div>
+            <div>
+              <div><span class="incident-badge badge-info">INFO</span><span class="incident-date">Feb 2026</span></div>
+              <div class="incident-event">Creator Peter Steinberger leaves project to join OpenAI</div>
+            </div>
+          </div>
+          <div class="incident-item incident-high">
+            <div style="flex-shrink:0;margin-top:2px;">&#9651;</div>
+            <div>
+              <div><span class="incident-badge badge-high">HIGH</span><span class="incident-date">Mar 2026</span></div>
+              <div class="incident-event">Chinese government bans OpenClaw on state computers</div>
+            </div>
+          </div>
+          <div class="incident-item incident-high">
+            <div style="flex-shrink:0;margin-top:2px;">&#9651;</div>
+            <div>
+              <div><span class="incident-badge badge-high">HIGH</span><span class="incident-date">Mar 2026</span></div>
+              <div class="incident-event">Link preview exfiltration vulnerability discovered by PromptArmor</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section container">
+      <h2 style="text-align:center;margin-bottom:0.5rem;">How We Set Up OpenClaw Safely</h2>
+      <p style="text-align:center;color:var(--text-muted);max-width:560px;margin:0 auto 2.5rem;">If OpenClaw is right for your use case, we deploy it with proper security guardrails. No shortcuts.</p>
+      <div class="safe-cards">
+        <div class="safe-card">
+          <div class="safe-card-icon">&#128444;</div>
+          <h3>Dedicated VM Isolation</h3>
+          <p>OpenClaw runs in its own virtual machine. Never on your primary work computer. If it gets compromised, your main systems stay safe.</p>
+        </div>
+        <div class="safe-card">
+          <div class="safe-card-icon">&#128274;</div>
+          <h3>Separate Accounts Only</h3>
+          <p>We create dedicated accounts for OpenClaw. Never your real email, calendar, or business tools. Isolated credentials that can be revoked instantly.</p>
+        </div>
+        <div class="safe-card">
+          <div class="safe-card-icon">&#128737;</div>
+          <h3>Vetted Skills Only</h3>
+          <p>We audit every ClawHub skill before installation. 20% of the marketplace has been flagged as malicious. We only install skills we have personally reviewed.</p>
+        </div>
+        <div class="safe-card">
+          <div class="safe-card-icon">&#128187;</div>
+          <h3>Local AI Options</h3>
+          <p>For maximum privacy, we configure OpenClaw with local LLMs via Ollama instead of cloud APIs. Your prompts and data never leave your network.</p>
+        </div>
+        <div class="safe-card">
+          <div class="safe-card-icon">&#128202;</div>
+          <h3>Network Monitoring</h3>
+          <p>We set up outbound network monitoring to detect if OpenClaw or any skill attempts to exfiltrate data to unknown endpoints. Early warning system.</p>
+        </div>
+        <div class="safe-card">
+          <div class="safe-card-icon">&#10003;</div>
+          <h3>Honest Scoping</h3>
+          <p>If your use case is better served by n8n, Claude, or a purpose-built solution, we will tell you. We do not force OpenClaw where it does not belong.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="bg-light" style="padding:var(--space-sm) 0;">
+      <div class="container">
+        <h2>Beyond OpenClaw: Local AI Infrastructure</h2>
+        <p style="max-width:640px;color:var(--text-secondary);margin-bottom:2rem;">OpenClaw is just one piece of the local AI puzzle. We specialise in building complete private AI infrastructure for Sunshine Coast businesses.</p>
+        <div class="local-grid">
+          <div class="local-card">
+            <h3>PicoClaw on ESP32</h3>
+            <p>Tiny AI on microcontrollers. Perfect for IoT, sensor networks, and edge computing where cloud access is not available or desirable.</p>
+          </div>
+          <div class="local-card">
+            <h3>Local AI Servers</h3>
+            <p>Full local LLM infrastructure using Ollama. Run AI models on your own hardware with zero cloud dependency and complete data sovereignty.</p>
+          </div>
+          <div class="local-card">
+            <h3>n8n Automation</h3>
+            <p>Self-hosted workflow automation that is battle-tested for production use. A safer alternative to OpenClaw for business-critical processes.</p>
+          </div>
+          <div class="local-card">
+            <h3>Private AI Deployment</h3>
+            <p>Enterprise-grade AI systems that keep your data on Australian soil. Compliant with Privacy Act 1988 and industry regulations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section container">
+      <h2>Frequently Asked Questions</h2>
+      <div style="max-width:720px;">
+        <details class="faq-item">
+          <summary>What is OpenClaw and should my business use it?</summary>
+          <p>OpenClaw is a free, open-source AI assistant that runs on your own computer. It can automate tasks like scheduling, file management, and developer workflows. However, it has documented security vulnerabilities including data leaks and prompt injection attacks. Whether it is right for your business depends on the use case. We help you evaluate that honestly.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is OpenClaw safe for managing business emails?</summary>
+          <p>We do not recommend OpenClaw for email or inbox management. Security researchers have documented data exfiltration vulnerabilities, malicious skills in the ClawHub marketplace, and prompt injection attacks that can leak sensitive information. For email automation, we recommend purpose-built tools with proper security audits instead.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much does an OpenClaw setup cost on the Sunshine Coast?</summary>
+          <p>A safe OpenClaw deployment with proper isolation (dedicated VM, separate accounts, vetted skills only) typically runs $2,000&ndash;$4,000 depending on your use case complexity. This includes security hardening, workflow configuration, and team training. The initial consultation is free.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What is the difference between Tech Horizon Labs and other OpenClaw setup services?</summary>
+          <p>Most OpenClaw deployment services will connect it to your email, calendar, and business tools without discussing the security risks. We are honest about what OpenClaw can and cannot safely do. We set it up in isolated environments with proper guardrails, and we will tell you when a different tool is a better fit for your needs.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can OpenClaw run on local hardware like PicoClaw on ESP32?</summary>
+          <p>Yes. We specialise in local AI deployments including PicoClaw on ESP32 microcontrollers for edge computing, and local AI servers for businesses that need data to stay on-premises. These setups keep your data completely private with zero cloud dependency.</p>
+        </details>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <section class="container" style="padding-bottom:var(--space-md);">
+      <div class="cta-dark">
+        <h2>Want an Honest OpenClaw Assessment?</h2>
+        <p>Free 15-minute call. We will tell you if OpenClaw is right for your use case, or if something else would work better. No sales pitch, just honest advice.</p>
+        <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" class="btn-primary" rel="noopener noreferrer">Book Free Consultation</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand">Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-right">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>
