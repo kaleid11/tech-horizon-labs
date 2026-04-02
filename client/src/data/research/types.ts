@@ -8,8 +8,8 @@ export interface CompanyMeta {
   lastUpdated: string;
   keyModel: string;
   openSource: string;
-  founded?: string;
-  hq?: string;
+  founded: string;
+  hq: string;
 }
 
 export interface TabDef {
