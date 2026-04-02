@@ -111,6 +111,7 @@ export async function registerRoutes(
   app.get("/industries/:slug", (_req, res) => res.redirect(301, "/"));
 
   // Insights index — must come BEFORE the wildcard redirect below
+  app.get("/insights/", (_req, res) => res.redirect(301, "/insights"));
   app.get("/insights", (_req, res) => {
     const filePath = path.resolve(process.cwd(), "client", "static", "insights", "index.html");
     res.setHeader("Content-Type", "text/html");
@@ -155,6 +156,7 @@ export async function registerRoutes(
   // /research is now a live page — no redirect
   app.get("/audit-tool", (_req, res) => res.redirect(301, "/"));
   app.get("/ai-ethics", (_req, res) => res.redirect(301, "/about"));
+  app.get("/openclaw/", (_req, res) => res.redirect(301, "/openclaw"));
   app.get("/openclaw", (_req, res) => {
     const filePath = path.resolve(process.cwd(), "client", "static", "openclaw.html");
     res.setHeader("Content-Type", "text/html");
