@@ -128,11 +128,13 @@ export async function registerRoutes(
     res.setHeader("Content-Type", "text/html");
     res.sendFile(filePath);
   });
+  app.get("/insights/claude-vs-chatgpt-2026/", (_req, res) => res.redirect(301, "/insights/claude-vs-chatgpt-2026"));
   app.get("/insights/ai-impact-by-industry", (_req, res) => {
     const filePath = path.resolve(process.cwd(), "client", "static", "insights", "ai-impact-by-industry.html");
     res.setHeader("Content-Type", "text/html");
     res.sendFile(filePath);
   });
+  app.get("/insights/ai-impact-by-industry/", (_req, res) => res.redirect(301, "/insights/ai-impact-by-industry"));
 
   // Insights → Homepage (wildcard — catches anything not specifically listed above)
   app.get("/insights/:slug", (_req, res) => res.redirect(301, "/"));
