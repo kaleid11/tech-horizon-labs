@@ -71,13 +71,32 @@ export async function registerRoutes(
   app.get("/locations/:slug", (_req, res) => res.redirect(301, "/"));
   app.get("/locations/:slug/", (_req, res) => res.redirect(301, "/"));
 
-  // Industries → Homepage
-  app.get("/industries/:slug", (_req, res) => res.redirect(301, "/"));
-  app.get("/industries/:slug/", (_req, res) => res.redirect(301, "/"));
+  // Static industry pages — must come BEFORE the wildcard redirect below
+  app.get("/industries/legal", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "industries", "legal.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
 
-  // Insights → Homepage
+  // Industries → Homepage (wildcard — catches anything not specifically listed above)
+  app.get("/industries/:slug", (_req, res) => res.redirect(301, "/"));
+
+  // Insights index — must come BEFORE the wildcard redirect below
+  app.get("/insights", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "insights", "index.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+
+  // Insights articles — must come BEFORE the wildcard redirect below
+  app.get("/insights/how-australia-uses-ai-2026", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "insights", "how-australia-uses-ai-2026.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+
+  // Insights → Homepage (wildcard — catches anything not specifically listed above)
   app.get("/insights/:slug", (_req, res) => res.redirect(301, "/"));
-  app.get("/insights/:slug/", (_req, res) => res.redirect(301, "/"));
 
   // Guides → Academy
   app.get("/guides/:slug", (_req, res) => res.redirect(301, "/academy"));

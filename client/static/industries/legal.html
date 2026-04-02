@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Law Firms — QLD &amp; Australia | Tech Horizon Labs</title>
+  <meta name="description" content="Tech Horizon Labs builds private AI systems for Australian law firms. Precedent search, document drafting, and client intake automation — privilege-aware, on-premise, built on your own data. Queensland-based.">
+  <link rel="canonical" href="https://techhorizonlabs.com/industries/legal">
+  <meta property="og:title" content="AI for Law Firms — QLD &amp; Australia | Tech Horizon Labs">
+  <meta property="og:description" content="Private AI systems for Australian law firms. Privilege-aware, on-premise, built on your own precedents and templates. Tech Horizon Labs, Queensland.">
+  <meta property="og:url" content="https://techhorizonlabs.com/industries/legal">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What about legal professional privilege?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Everything runs on private infrastructure — your client data and communications never leave your control. We build privilege-aware systems that understand the distinction between privileged and non-privileged documents. There is no shared cloud model, no third-party data processing, and no information sent to external AI vendors. Your data stays on your hardware or in an AU-region private cloud environment that only your firm controls."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this AI trained on Australian law?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We do not sell a generic AI tool. We build custom solutions using your firm's own documents, precedents, and templates. The AI understands your context because it is built from your data — not scraped from the internet. When a generic model is used as the base, we layer your firm's specific knowledge on top through a structured knowledge base (the Horizon Brain) so outputs reflect your practice, your state, and your precedents."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "We are worried about AI giving wrong legal advice.",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Good — so are we. Our tools assist lawyers; they do not replace them. AI handles the searching, sorting, and first-draft creation. Every output goes through human review. The goal is to free up your lawyers' time for the work that requires professional judgement, not to automate that judgement away. We build explicit human-in-the-loop checkpoints into every workflow."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What practice areas does this work for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Any practice area with document-heavy workflows benefits. We have seen the biggest impact in property and conveyancing, family law, commercial, and estate planning — but the bottleneck audit will tell you exactly where your firm's biggest opportunity is. The underlying workflows (research, drafting, intake, matter management) are common across practice areas even if the documents differ."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does this interact with our existing practice management system?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We build integrations with the systems your firm already uses — LEAP, Actionstep, InfoTrack, PEXA, and others. Information flows from intake through to matter opening without retyping. The AI tools sit alongside your existing practice management software rather than replacing it, reducing double-handling and manual data entry without forcing a platform migration."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI for Law Firms",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com",
+      "telephone": "+61478919419",
+      "email": "hello@techhorizonlabs.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Noosa Heads", "addressRegion": "QLD", "addressCountry": "AU" }
+    },
+    "areaServed": [{ "@type": "State", "name": "Queensland" }, { "@type": "Country", "name": "Australia" }],
+    "description": "Private AI systems for Australian law firms. Precedent search, document drafting, client intake automation — privilege-aware, on-premise, built on your own data.",
+    "serviceType": "AI Implementation Consulting"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://techhorizonlabs.com/industries/legal" },
+      { "@type": "ListItem", "position": 3, "name": "Legal" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- BREADCRUMB -->
+    <nav class="breadcrumb container" aria-label="Breadcrumb" style="padding-top: 2rem; font-size: 0.875rem; color: var(--text-muted);">
+      <a href="/">Home</a>
+      <span aria-hidden="true" style="margin: 0 0.5rem; color: var(--border);">/</span>
+      <span>Legal</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero container">
+      <p class="eyebrow" style="font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 1rem; font-weight: 500;">Legal Industry</p>
+      <h1>AI for Law Firms &mdash;<br>QLD &amp; Australia</h1>
+      <p class="subline">Every legal AI vendor leads with &ldquo;document review automation.&rdquo; But if your firm&rsquo;s documents are in a shared drive with ten years of folders, no AI tool will save you. We find the actual bottleneck first.</p>
+      <p><a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" class="link-arrow" rel="noopener noreferrer">Book a free pre-discovery call &rarr;</a></p>
+      <div class="trust-row" aria-label="Key statistics">
+        <span class="trust-stat">81% AI coverage for legal occupations</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">50% faster document review</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">100% privilege protected</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">4 weeks to implement</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- AI IMPACT OVERVIEW -->
+    <div class="warm-band">
+      <section class="section container-wide fade-in">
+        <h2>Legal is one of the highest-coverage occupations for AI &mdash; and one of the slowest adopters.</h2>
+        <p style="color: var(--text-secondary); max-width: 640px; margin-bottom: var(--space-sm);">At 81% theoretical AI coverage, legal work ranks among the most AI-ready occupations. Research, document review, and drafting are all strong use cases. Yet only 28% of Australian law firms use any AI tools. Privilege concerns and a conservative culture slow adoption &mdash; but compliant, private solutions exist and are being deployed now.</p>
+
+        <div class="results-grid stagger" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="result-card fade-in">
+            <div class="metric">50%</div>
+            <div class="metric-label">Faster Document Review</div>
+            <p>AI-assisted review cuts the time spent reading and categorising documents for discovery, due diligence, and matter prep.</p>
+          </div>
+          <div class="result-card fade-in">
+            <div class="metric">70%</div>
+            <div class="metric-label">Less Manual Searching</div>
+            <p>Precedent search with natural language queries replaces hours of folder-diving with seconds of structured retrieval.</p>
+          </div>
+          <div class="result-card fade-in">
+            <div class="metric">60%</div>
+            <div class="metric-label">Less Admin Per Matter</div>
+            <p>Automated intake, conflict checks, and matter opening eliminate the administrative loop of entering the same data three times.</p>
+          </div>
+          <div class="result-card fade-in">
+            <div class="metric">4&nbsp;Weeks</div>
+            <div class="metric-label">To Full Deployment</div>
+            <p>From initial workflow audit to a working system your team owns. No months-long implementation projects.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- THE BOTTLENECK -->
+    <section class="section container fade-in">
+      <h2>The Bottleneck Most Law Firms Don&rsquo;t Know They Have</h2>
+      <p>It is not the legal work that is killing your margins &mdash; it is the non-legal work wrapped around it. Finding precedents takes 30 minutes when it should take 30 seconds. Client intake involves retyping the same information into three different systems. File notes are written at 11pm because there was not time during the day. The bottleneck is usually in the workflow, not the lawyering.</p>
+      <p>AI is extremely good at the administrative layer that surrounds legal work. Our process starts by mapping exactly where your team&rsquo;s time goes before we build anything. That way what we build is the fix for your actual problem, not the industry&rsquo;s assumed problem.</p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- USE CASES -->
+    <section class="section container-wide fade-in">
+      <h2>Three use cases with the clearest ROI</h2>
+
+      <div class="tool-grid stagger" style="margin-top: var(--space-sm);">
+        <div class="tool-item fade-in">
+          <div class="tool-name">Precedent Search</div>
+          <div class="tool-tag">Research</div>
+          <p>AI searches your firm&rsquo;s document history using natural language. &ldquo;Find all property settlements with sunset clauses from 2023&rdquo; &mdash; answered in seconds, not hours. Runs entirely on your infrastructure. No document leaves the building.</p>
+          <p style="margin-top: 0.75rem; font-weight: 600; color: var(--accent); font-size: 0.9375rem;">70% faster research</p>
+        </div>
+        <div class="tool-item fade-in">
+          <div class="tool-name">Document Drafting</div>
+          <div class="tool-tag">Productivity</div>
+          <p>AI-assisted first drafts using your firm&rsquo;s templates and precedents. Lawyers review and refine rather than starting from a blank page. Especially high-value for contracts, agreements, and correspondence that follow familiar structures.</p>
+          <p style="margin-top: 0.75rem; font-weight: 600; color: var(--accent); font-size: 0.9375rem;">50% faster first drafts</p>
+        </div>
+        <div class="tool-item fade-in">
+          <div class="tool-name">Client Intake</div>
+          <div class="tool-tag">Operations</div>
+          <p>Automated intake forms, conflict checks, and matter opening. Information flows once and populates everywhere it needs to go &mdash; practice management, billing, file notes. Eliminates the data re-entry loop that consumes hours per week.</p>
+          <p style="margin-top: 0.75rem; font-weight: 600; color: var(--accent); font-size: 0.9375rem;">60% less admin per matter</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- WHAT OTHERS SELL vs WHAT WE DO -->
+    <div class="warm-band">
+      <section class="section container-wide fade-in">
+        <h2>What others sell vs what we actually do</h2>
+        <div class="two-paths">
+          <div class="path">
+            <h3 style="color: var(--text-muted); font-weight: 400; font-size: 1.125rem; margin-bottom: 1rem;">What others sell</h3>
+            <p>An AI contract review tool that has not been trained on Australian law. A &ldquo;legal chatbot&rdquo; that gives generic answers. A pitch about replacing junior lawyers &mdash; which misses the point entirely. A six-month implementation project before you see anything working.</p>
+          </div>
+          <div class="path">
+            <h3 style="color: var(--accent); font-size: 1.125rem; margin-bottom: 1rem;">What we actually do</h3>
+            <p>We map your firm&rsquo;s actual workflow &mdash; intake, research, drafting, review, filing &mdash; find the specific step eating the most non-billable time, and build a focused solution. Private infrastructure, privilege-aware, built on your documents. Working systems in four weeks.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- SECURITY / PRIVILEGE SECTION -->
+    <section class="section container-wide fade-in">
+      <h2>Your data stays in your building</h2>
+      <p style="color: var(--text-secondary); max-width: 640px; margin-bottom: var(--space-sm);">Legal AI is only viable if your clients&rsquo; data is protected. We deploy AI infrastructure that is architecturally incapable of sending privileged material to third-party servers.</p>
+      <div class="security-grid stagger">
+        <div class="security-item fade-in">
+          <div class="security-badge">On-premise models</div>
+          <p>AI runs on your hardware or in an AU-region private cloud you control. No shared model. No data processed by external vendors. Architecturally private by design, not policy.</p>
+        </div>
+        <div class="security-item fade-in">
+          <div class="security-badge">Privilege-aware</div>
+          <p>We build systems that understand the distinction between privileged and non-privileged documents. Access controls at the document level, not just the system level. Every access logged.</p>
+        </div>
+        <div class="security-item fade-in">
+          <div class="security-badge">Zero-trust access</div>
+          <p>KeeperPAM controls who can see which matters. Role-based vaults, MFA enforcement, session recording. When a staff member leaves, access is revoked in seconds &mdash; not weeks.</p>
+        </div>
+        <div class="security-item fade-in">
+          <div class="security-badge">Acronis backup</div>
+          <p>Immutable local and AU-region cloud backup of your entire matter file history. Ransomware-resistant. Point-in-time restore. Your firm&rsquo;s documents survive any hardware failure or incident.</p>
+        </div>
+      </div>
+      <p style="margin-top: var(--space-sm);"><a href="/security" class="link-arrow">See our full security infrastructure &rarr;</a></p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- FAQ -->
+    <section class="section container fade-in">
+      <h2>Common questions</h2>
+
+      <div class="faq-list" style="margin-top: var(--space-sm);">
+        <details class="faq-item" style="border-top: 1px solid var(--border-light); padding: 1.5rem 0;">
+          <summary style="font-family: var(--font-heading); font-size: 1.125rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            What about legal professional privilege?
+            <span aria-hidden="true" style="color: var(--accent); font-size: 1.25rem; flex-shrink: 0; margin-left: 1rem;">+</span>
+          </summary>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">Everything runs on private infrastructure &mdash; your client data and communications never leave your control. We build privilege-aware systems that understand the distinction between privileged and non-privileged documents. There is no shared cloud model, no third-party data processing, and no information sent to external AI vendors. Your data stays on your hardware or in an AU-region private cloud environment that only your firm controls.</p>
+        </details>
+
+        <details class="faq-item" style="border-top: 1px solid var(--border-light); padding: 1.5rem 0;">
+          <summary style="font-family: var(--font-heading); font-size: 1.125rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            Is this AI trained on Australian law?
+            <span aria-hidden="true" style="color: var(--accent); font-size: 1.25rem; flex-shrink: 0; margin-left: 1rem;">+</span>
+          </summary>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">We do not sell a generic AI tool. We build custom solutions using your firm&rsquo;s own documents, precedents, and templates. The AI understands your context because it is built from your data &mdash; not scraped from the internet. When a general-purpose model is used as the base, we layer your firm&rsquo;s specific knowledge on top through the Horizon Brain knowledge system, so outputs reflect your practice, your state, and your precedents.</p>
+        </details>
+
+        <details class="faq-item" style="border-top: 1px solid var(--border-light); padding: 1.5rem 0;">
+          <summary style="font-family: var(--font-heading); font-size: 1.125rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            We are worried about AI giving wrong legal advice.
+            <span aria-hidden="true" style="color: var(--accent); font-size: 1.25rem; flex-shrink: 0; margin-left: 1rem;">+</span>
+          </summary>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">Good &mdash; so are we. Our tools assist lawyers; they do not replace them. AI handles the searching, sorting, and first-draft creation. Every output goes through human review. The goal is to free up your lawyers&rsquo; time for the work that requires professional judgement, not to automate that judgement away. We build explicit human-in-the-loop checkpoints into every workflow.</p>
+        </details>
+
+        <details class="faq-item" style="border-top: 1px solid var(--border-light); padding: 1.5rem 0;">
+          <summary style="font-family: var(--font-heading); font-size: 1.125rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            What practice areas does this work for?
+            <span aria-hidden="true" style="color: var(--accent); font-size: 1.25rem; flex-shrink: 0; margin-left: 1rem;">+</span>
+          </summary>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">Any practice area with document-heavy workflows benefits. We have seen the biggest impact in property and conveyancing, family law, commercial, and estate planning &mdash; but the bottleneck audit will tell you exactly where your firm&rsquo;s biggest opportunity is. The underlying workflows (research, drafting, intake, matter management) are common across practice areas even if the documents differ.</p>
+        </details>
+
+        <details class="faq-item" style="border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 1.5rem 0;">
+          <summary style="font-family: var(--font-heading); font-size: 1.125rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            How does this work with our practice management system?
+            <span aria-hidden="true" style="color: var(--accent); font-size: 1.25rem; flex-shrink: 0; margin-left: 1rem;">+</span>
+          </summary>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">We build integrations with the systems your firm already uses &mdash; LEAP, Actionstep, InfoTrack, PEXA, and others. Information flows from intake through to matter opening without retyping. The AI tools sit alongside your existing practice management software rather than replacing it, reducing double-handling and manual data entry without forcing a platform migration.</p>
+        </details>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- CTA -->
+    <section class="section container fade-in">
+      <h2>Ready to find your firm&rsquo;s bottleneck?</h2>
+      <p style="color: var(--text-secondary); max-width: 520px;">A free pre-discovery call takes 30 minutes. We ask about your workflows, your team size, and where the friction is. No pitch. If there is a clear opportunity, we will show you what it looks like.</p>
+      <p style="margin-top: var(--space-xs);"><a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" class="link-arrow" rel="noopener noreferrer">Book a free pre-discovery call &rarr;</a></p>
+
+      <div style="margin-top: var(--space-sm); padding-top: var(--space-sm); border-top: 1px solid var(--border-light);">
+        <h3 style="margin-bottom: 1rem; font-size: 1rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">Related reading</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+          <a href="/security" class="link-arrow">Security &amp; backup infrastructure</a>
+          <a href="/insights/how-australia-uses-ai-2026" class="link-arrow">How Australia uses AI in 2026</a>
+          <a href="/work" class="link-arrow">Client case studies</a>
+          <a href="/about" class="link-arrow">About Tech Horizon Labs</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand">Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-right">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>
