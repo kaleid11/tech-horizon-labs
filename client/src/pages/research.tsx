@@ -794,37 +794,43 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   const maxV = Math.max(...vals.map(v => v.displayVal));
 
   const dense = vals.length > 5;
-  const pad = { top: 30, right: 30, bottom: dense ? 130 : 50, left: 65 };
-  const baseW = Math.max(640, vals.length * 100);
-  const w = baseW;
-  const h = dense ? 340 : 300;
-  const chartW = w - pad.left - pad.right;
-  const chartH = h - pad.top - pad.bottom;
+  const w = Math.max(640, vals.length * 100);
+  const padLeft = 65, padRight = 30, padTop = 30;
+  const chartW = w - padLeft - padRight;
 
-  const getX = (t: number) => pad.left + (maxT === minT ? chartW / 2 : ((t - minT) / (maxT - minT)) * chartW);
-  const getY = (v: number) => pad.top + chartH - (v / maxV) * chartH;
+  // getX only depends on pad.left/right (not pad.bottom/h) so it's safe to define now
+  const getX = (t: number) => padLeft + (maxT === minT ? chartW / 2 : ((t - minT) / (maxT - minT)) * chartW);
+  const xs = timestamps.map(t => getX(t));
 
-  const points = vals.map((v, i) => ({ x: getX(timestamps[i]), y: getY(v.displayVal), ...v, idx: i }));
-
-  const staggeredOffsets = useMemo(() => {
-    const offsets: number[] = new Array(points.length).fill(0);
+  // Compute stagger offsets before fixing chart height so pad.bottom can adapt
+  const staggeredOffsets = (() => {
+    const offsets: number[] = new Array(vals.length).fill(0);
     const minGap = 55;
     const step = 22;
-    for (let i = 1; i < points.length; i++) {
-      const usedLevels = new Set<number>();
+    for (let i = 1; i < vals.length; i++) {
+      const used = new Set<number>();
       for (let j = 0; j < i; j++) {
-        if (Math.abs(points[i].x - points[j].x) < minGap) {
-          usedLevels.add(offsets[j]);
-        }
+        if (Math.abs(xs[i] - xs[j]) < minGap) used.add(offsets[j]);
       }
-      if (usedLevels.size > 0) {
+      if (used.size > 0) {
         let level = 0;
-        while (usedLevels.has(level)) level += step;
+        while (used.has(level)) level += step;
         offsets[i] = level;
       }
     }
     return offsets;
-  }, [points]);
+  })();
+
+  // Adaptive bottom padding: label area = 14px gap + max offset + 22px text clearance
+  const maxOffset = dense ? Math.max(0, ...staggeredOffsets) : 0;
+  const padBottom = dense ? Math.max(80, 14 + maxOffset + 22) : 50;
+  const pad = { top: padTop, right: padRight, bottom: padBottom, left: padLeft };
+  const h = dense ? Math.max(300, padTop + 180 + padBottom) : 300;
+  const chartH = h - pad.top - pad.bottom;
+
+  const getY = (v: number) => pad.top + chartH - (v / maxV) * chartH;
+
+  const points = vals.map((v, i) => ({ x: getX(timestamps[i]), y: getY(v.displayVal), ...v, idx: i }));
 
   const gridLines = 4;
   const gridVals = Array.from({ length: gridLines + 1 }, (_, i) => (maxV / gridLines) * i);
