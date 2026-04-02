@@ -554,6 +554,13 @@ a:hover {
   font-weight: 500;
 }
 
+/* --- Client words intro line --- */
+.client-words-intro {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
 /* --- Blockquote (testimonials) --- */
 blockquote {
   border-left: 3px solid var(--accent);
