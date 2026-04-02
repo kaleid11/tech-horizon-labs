@@ -67,7 +67,7 @@ export const openaiData: CompanyData = {
     { label: "2029 TARGET", value: "$100B", color: "#10A37F" },
   ],
   fundingRounds: [
-    { date: "2016", label: "Initial Funding", total: 130, val: null, lead: "Various", inv: [{ n: "Elon Musk", a: 50 }, { n: "Sam Altman", a: 10 }, { n: "Other donors", a: 70 }], events: ["Nonprofit donations"] },
+    { date: "2016", label: "Initial Funding", total: 130, val: null, lead: "Various", inv: [{ n: "Elon Musk", a: 50 }, { n: "Sam Altman", a: 10 }, { n: "Other donors", a: 70 }], events: ["Nonprofit donations"], external: false },
     { date: "Jul 2019", label: "Microsoft I", total: 1000, val: null, lead: "Microsoft", inv: [{ n: "Microsoft", a: 1000 }], events: ["Azure exclusive cloud deal", "Capped-profit structure"] },
     { date: "Jan 2023", label: "Microsoft II", total: 10000, val: 29000, lead: "Microsoft", inv: [{ n: "Microsoft", a: 10000 }], events: ["49% profit share", "$29B valuation"] },
     { date: "Oct 2024", label: "Secondary", total: 6600, val: 157000, lead: "Thrive Capital", inv: [{ n: "Thrive Capital", a: 1500 }, { n: "Microsoft", a: 750 }, { n: "Nvidia", a: 500 }, { n: "SoftBank", a: 500 }, { n: "Khosla Ventures", a: 300 }, { n: "Other", a: 3050 }], events: ["$157B valuation", "Employee liquidity"] },

@@ -59,6 +59,7 @@ export interface FundingRound {
   inv: { n: string; a: number; note?: string }[];
   events: string[];
   exits?: { who: string; detail: string }[];
+  external?: boolean;
 }
 
 export interface InvestorProfile {

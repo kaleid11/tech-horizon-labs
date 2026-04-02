@@ -13,6 +13,7 @@ export const mistralData: CompanyData = {
     { id: "timeline", label: "Key Events" },
     { id: "funding", label: "Funding" },
     { id: "investors", label: "Investors" },
+    { id: "competition", label: "Competition" },
   ],
   boardMembers: [
     { name: "Arthur Mensch", role: "CEO & Co-Founder", tag: "CEO", color: "#FF7000", desc: "Former DeepMind researcher. ENS Paris graduate. Led work on Chinchilla scaling laws at DeepMind. Founded Mistral May 2023. The face of European AI sovereignty." },
@@ -34,5 +35,17 @@ export const mistralData: CompanyData = {
     { date: "Dec 2023", label: "Series A", total: 415, val: 2000, lead: "a16z", inv: [{ n: "a16z", a: 150 }, { n: "Lightspeed", a: 80 }, { n: "Nvidia", a: 50 }, { n: "Other", a: 135 }], events: ["$2B valuation", "Largest European AI Series A"] },
     { date: "Jun 2024", label: "Series B", total: 640, val: 6000, lead: "General Catalyst", inv: [{ n: "General Catalyst", a: 200 }, { n: "Nvidia", a: 100 }, { n: "Samsung", a: 50 }, { n: "Other", a: 290 }], events: ["$6B valuation", "3x in 6 months"] },
     { date: "Nov 2025", label: "Series C", total: 2000, val: 15000, lead: "Various", inv: [{ n: "SoftBank", a: 500 }, { n: "Other", a: 1500, note: "Sovereign wealth, European VCs" }], events: ["$15B valuation", "Europe's most valuable AI startup"] },
+  ],
+  competitors: [
+    { name: "OpenAI (GPT-4o)", users: "300M+ weekly", color: "#10A37F", note: "Mistral's primary enterprise target. Mistral Large competes on price-performance: comparable quality at a fraction of GPT-4o's API cost. OpenAI wins on brand recognition, ecosystem integrations, and enterprise sales. Mistral wins on data sovereignty for European deployments." },
+    { name: "Anthropic (Claude)", users: "Unknown MAU", color: "#D4A843", note: "Claude 3.5 Sonnet dominates enterprise writing and analysis. Mistral competes on European data residency — Claude has no EU-hosted offering. Open-weight models give Mistral an on-premise option Claude can't match." },
+    { name: "Meta AI (LLaMA)", users: "700M+ (Meta AI)", color: "#0668E1", note: "The primary open-source competitor. LLaMA 3 70B vs Mistral Large. Meta has unlimited compute and distribution via Facebook and Instagram. Mistral's advantage is efficiency — Mistral 7B and Medium 3 outperform larger LLaMA variants on cost-normalised benchmarks." },
+    { name: "Google Gemini", users: "Unknown enterprise", color: "#4285F4", note: "Gemini 2.0 for enterprise cloud. Google Cloud integration is Mistral's main structural disadvantage in cloud-native shops — enterprises already on GCP rarely switch. Mistral counters with Azure partnership and open-weight deployability." },
+    { name: "DeepSeek", users: "Undisclosed", color: "#4D6BFE", note: "The most dangerous efficiency competitor. DeepSeek V3 was trained for $5.6M vs Mistral's €150M+ investment, and matches or beats Mistral on many benchmarks. Directly challenges Mistral's core positioning as the cost-efficient frontier model. US/EU enterprise adoption is constrained by data sovereignty concerns over DeepSeek." },
+  ],
+  competitorStats: [
+    { label: "SERIES C VALUATION", value: "$15B", color: "#FF7000" },
+    { label: "LE CHAT USERS", value: "10M+", color: C.blue },
+    { label: "MODEL VARIANTS", value: "5+", color: C.green },
   ],
 };

@@ -32,8 +32,8 @@ export const qwenData: CompanyData = {
     { date: "2025", title: "Free API Tier Launch", sev: "info", desc: "Alibaba Cloud launches free API tier for Qwen models, enabling developers to use frontier AI at zero cost. Strategy aims to drive Alibaba Cloud adoption and build ecosystem lock-in." },
   ],
   fundingRounds: [
-    { date: "2023-2025", label: "Cloud AI R&D", total: 10000, val: null, lead: "Alibaba Group", inv: [{ n: "Alibaba Internal", a: 10000, note: "Estimated AI R&D within cloud division" }], events: ["Part of Alibaba Cloud's budget", "DAMO Academy research"] },
-    { date: "Feb 2025", label: "Infrastructure Pledge", total: 53000, val: null, lead: "Alibaba Group", inv: [{ n: "Alibaba Capital", a: 53000, note: "$53B over 3 years for AI + cloud" }], events: ["Largest Chinese AI infrastructure commitment", "Data centers, GPUs, custom chips"] },
+    { date: "2023-2025", label: "Cloud AI R&D", total: 10000, val: null, lead: "Alibaba Group", inv: [{ n: "Alibaba Internal", a: 10000, note: "Estimated AI R&D within cloud division" }], events: ["Part of Alibaba Cloud's budget", "DAMO Academy research"], external: false },
+    { date: "Feb 2025", label: "Infrastructure Pledge", total: 53000, val: null, lead: "Alibaba Group", inv: [{ n: "Alibaba Capital", a: 53000, note: "$53B over 3 years for AI + cloud" }], events: ["Largest Chinese AI infrastructure commitment", "Data centers, GPUs, custom chips"], external: false },
   ],
   financials: [
     { label: "ALIBABA CLOUD REV", value: "$16.3B", color: "#FF6A00" },

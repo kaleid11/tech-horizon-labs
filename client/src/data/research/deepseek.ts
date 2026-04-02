@@ -33,7 +33,7 @@ export const deepseekData: CompanyData = {
     { date: "Mar 2025", title: "DeepSeek-V3-0324 Update", sev: "info", desc: "Updated V3 model with improved reasoning, coding, and creative writing. Closes gap further with frontier models while maintaining cost advantage." },
   ],
   fundingRounds: [
-    { date: "May 2023", label: "Self-Funded", total: 0, val: null, lead: "High-Flyer Capital", inv: [{ n: "High-Flyer (internal)", a: 0, note: "Entirely self-funded from quant fund profits" }], events: ["No external funding raised", "~10,000 A100 GPUs from High-Flyer"] },
+    { date: "May 2023", label: "Self-Funded", total: 0, val: null, lead: "High-Flyer Capital", inv: [{ n: "High-Flyer (internal)", a: 0, note: "Entirely self-funded from quant fund profits" }], events: ["No external funding raised", "~10,000 A100 GPUs from High-Flyer"], external: false },
   ],
   financials: [
     { label: "FUNDING MODEL", value: "Self-Funded", color: "#4D6BFE" },

@@ -35,13 +35,14 @@ function ComparisonDashboard({ onSelectCompany }: { onSelectCompany: (id: string
       const points = valRounds.map(r => ({ date: parseDate(r.date), val: r.val!, label: r.date }));
       const latestVal = points.length > 0 ? points[points.length - 1].val : null;
       const totalRaised = co.fundingRounds.reduce((s, r) => s + r.total, 0);
-      return { id, name: co.meta.name, color: co.meta.color, points, latestVal, totalRaised };
+      const externalRaised = co.fundingRounds.filter(r => r.external !== false).reduce((s, r) => s + r.total, 0);
+      return { id, name: co.meta.name, color: co.meta.color, points, latestVal, totalRaised, externalRaised };
     });
   }, []);
 
   const views = [
     { id: "valuation" as const, label: "Valuation Race" },
-    { id: "funding" as const, label: "Total Funding" },
+    { id: "funding" as const, label: "Capital" },
     { id: "stats" as const, label: "Quick Stats" },
   ];
 
@@ -62,7 +63,7 @@ function ComparisonDashboard({ onSelectCompany }: { onSelectCompany: (id: string
       {view === "valuation" && (
         <div>
           <ValuationRaceChart data={companyValuations} onSelect={onSelectCompany} />
-          <p className="text-center font-mono text-[8px] text-gray-400 mt-1">Private company valuations only. Google DeepMind and Meta AI shown by parent market cap in their profiles.</p>
+          <p className="text-center font-mono text-[8px] text-gray-400 mt-1">Private valuations only. Public companies (Google DeepMind, Meta AI) and self-funded/subsidiary companies (DeepSeek, Qwen) are shown in Quick Stats but excluded from this chart — no independently verified external valuation exists for them.</p>
         </div>
       )}
       {view === "funding" && <FundingComparisonChart data={companyValuations} onSelect={onSelectCompany} />}
@@ -184,30 +185,56 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
   );
 }
 
-function FundingComparisonChart({ data, onSelect }: { data: { id: string; name: string; color: string; totalRaised: number }[]; onSelect: (id: string) => void }) {
-  const sorted = [...data].sort((a, b) => b.totalRaised - a.totalRaised);
-  const maxFunding = Math.max(...sorted.map(d => d.totalRaised));
+function FundingComparisonChart({ data, onSelect }: { data: { id: string; name: string; color: string; totalRaised: number; externalRaised: number }[]; onSelect: (id: string) => void }) {
+  const sorted = [...data].sort((a, b) => b.externalRaised - a.externalRaised);
+  const maxTotal = Math.max(...sorted.map(d => d.totalRaised));
+  const hasCapex = sorted.some(d => d.externalRaised !== d.totalRaised);
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-4 space-y-2">
-      {sorted.map(co => {
-        const pct = (co.totalRaised / maxFunding) * 100;
-        return (
-          <button key={co.id} onClick={() => onSelect(co.id)} data-testid={`funding-bar-${co.id}`}
-            className="w-full flex items-center gap-3 group hover:bg-gray-50 rounded-md p-1.5 transition-colors text-left">
-            <span className="font-mono text-[9px] font-bold w-24 shrink-0 truncate" style={{ color: co.color }}>
-              {co.name.split("(")[0].trim()}
-            </span>
-            <div className="flex-1 h-5 bg-gray-100 rounded-full overflow-hidden">
-              <div className="h-full rounded-full transition-all duration-500 group-hover:opacity-90"
-                style={{ width: `${Math.max(pct, 2)}%`, backgroundColor: co.color + "cc" }} />
-            </div>
-            <span className="font-mono text-[10px] font-bold text-gray-600 w-16 text-right shrink-0">
-              {fmtVal(co.totalRaised)}
-            </span>
-          </button>
-        );
-      })}
+    <div className="bg-white rounded-lg border border-gray-200 p-4">
+      {hasCapex && (
+        <div className="flex items-center gap-4 mb-3 pb-2 border-b border-gray-100">
+          <div className="flex items-center gap-1.5">
+            <div className="w-4 h-2.5 rounded-sm bg-gray-500" />
+            <span className="font-mono text-[8px] text-gray-500">EXTERNAL RAISED</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <div className="w-4 h-2.5 rounded-sm bg-gray-200" />
+            <span className="font-mono text-[8px] text-gray-400">INCL. CAPEX</span>
+          </div>
+        </div>
+      )}
+      <div className="space-y-1.5">
+        {sorted.map(co => {
+          const extPct = maxTotal > 0 ? (co.externalRaised / maxTotal) * 100 : 0;
+          const totalPct = maxTotal > 0 ? (co.totalRaised / maxTotal) * 100 : 0;
+          const hasCapexRow = co.externalRaised !== co.totalRaised;
+          return (
+            <button key={co.id} onClick={() => onSelect(co.id)} data-testid={`funding-bar-${co.id}`}
+              className="w-full flex items-center gap-3 group hover:bg-gray-50 rounded-md p-1.5 transition-colors text-left">
+              <span className="font-mono text-[9px] font-bold w-24 shrink-0 truncate" style={{ color: co.color }}>
+                {co.name.split("(")[0].trim()}
+              </span>
+              <div className="flex-1 space-y-0.5">
+                <div className="h-4 bg-gray-100 rounded-sm overflow-hidden">
+                  <div className="h-full rounded-sm transition-all duration-500 group-hover:opacity-90"
+                    style={{ width: `${extPct}%`, backgroundColor: co.color }} />
+                </div>
+                {hasCapexRow && (
+                  <div className="h-2 bg-gray-100 rounded-sm overflow-hidden">
+                    <div className="h-full rounded-sm transition-all duration-500"
+                      style={{ width: `${totalPct}%`, backgroundColor: co.color + "40" }} />
+                  </div>
+                )}
+              </div>
+              <div className="text-right shrink-0 min-w-[80px]">
+                <span className="font-mono text-[10px] font-bold text-gray-700 block">{fmtVal(co.externalRaised)}</span>
+                {hasCapexRow && <span className="font-mono text-[8px] text-gray-400 block">{fmtVal(co.totalRaised)} total</span>}
+              </div>
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -237,7 +264,9 @@ function StatsGrid({ data, onSelect }: { data: { id: string; name: string; color
                   </span>
                 </td>
                 <td className="p-3 text-right font-mono text-[10px] font-bold text-aubergine-900" data-testid={`text-valuation-${co.id}`}>
-                  {fmtVal(co.latestVal)}
+                  {co.latestVal !== null ? fmtVal(co.latestVal) : (
+                    <span className="text-gray-400 font-normal" title="No independently verified external valuation exists for this company.">No ext. val.</span>
+                  )}
                 </td>
                 <td className="p-3 text-right font-mono text-[10px] text-gray-600" data-testid={`text-raised-${co.id}`}>
                   {fmtVal(co.totalRaised)}
@@ -686,7 +715,7 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   const maxV = Math.max(...vals.map(v => v.displayVal));
 
   const dense = vals.length > 5;
-  const pad = { top: 30, right: 30, bottom: dense ? 110 : 50, left: 65 };
+  const pad = { top: 30, right: 30, bottom: dense ? 130 : 50, left: 65 };
   const baseW = Math.max(640, vals.length * 100);
   const w = baseW;
   const h = dense ? 340 : 300;
@@ -701,7 +730,7 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   const staggeredOffsets = useMemo(() => {
     const offsets: number[] = new Array(points.length).fill(0);
     const minGap = 55;
-    const levels = [0, 22, 44, 66];
+    const levels = [0, 22, 44, 66, 88, 110];
     for (let i = 1; i < points.length; i++) {
       const usedLevels = new Set<number>();
       for (let j = 0; j < i; j++) {
