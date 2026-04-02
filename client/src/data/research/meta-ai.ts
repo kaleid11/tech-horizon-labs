@@ -14,6 +14,7 @@ export const metaAIData: CompanyData = {
     { id: "funding", label: "Investment" },
     { id: "valuation", label: "Market Cap" },
     { id: "investors", label: "Strategy" },
+    { id: "competition", label: "Competition" },
   ],
   boardMembers: [
     { name: "Mark Zuckerberg", role: "CEO & Chairman, Meta", tag: "CEO", color: "#0668E1", desc: "Founded Facebook at 19. Controls Meta through dual-class share structure with ~60% voting power. Bet the company on metaverse, now pivoting to AI. Net worth ~$180B." },
@@ -49,5 +50,17 @@ export const metaAIData: CompanyData = {
     { label: "AI CAPEX 2025", value: "$60-65B", color: C.warn },
     { label: "META AI USERS", value: "700M", color: C.green },
     { label: "MARKET CAP", value: "$1.6T", color: "#0668E1" },
+  ],
+  competitors: [
+    { name: "OpenAI", users: "300M+ weekly users", color: "#10A37F", note: "Meta AI vs ChatGPT is the raw scale war. Meta AI has 700M monthly users across WhatsApp, Instagram, Facebook, and Messenger — more than double ChatGPT's 300M weekly actives. But Meta wins on distribution, not intent: users encounter Meta AI because they're already on the platform. ChatGPT users seek it out. OpenAI dominates premium enterprise and developer mindshare — GPT-4o API usage far exceeds LLaMA deployments in revenue-generating apps. The fundamental question: can Meta AI capture enough monetisable intent (shopping, local services, creative work) to justify $65B in annual AI capex?" },
+    { name: "Google DeepMind", users: "Unknown enterprise", color: "#4285F4", note: "Two data monopolies at war. Google controls search intent (what people want to find); Meta controls the social graph (who people know and what they share). Both are embedding AI deeply into their platforms. The open-source battleground: LLaMA leads open-source adoption by downloads; Gemini leads by raw capability. Meta's $14.5B Scale AI investment is a direct signal that data quality — not model architecture — is the next moat, and Meta is already one of the world's largest data collectors." },
+    { name: "Anthropic", users: "Unknown MAU", color: "#D4A843", note: "Claude is the quality benchmark for enterprise AI writing and analysis. Meta AI is mass-market consumer. These two barely compete directly — except through LLaMA. Developers who use LLaMA to build apps are the same developers who would otherwise license Claude API. Meta's open-source strategy creates a floor on Claude API pricing: if LLaMA is free and good enough, Claude must compete on quality premium alone. Meta's hedge: massive investment in Scale AI signals awareness that enterprise data quality labelling is where the next frontier is built." },
+    { name: "ByteDance (TikTok/Doubao)", users: "160M+ MAU", color: "#FF0050", note: "The rivalry that most resembles Meta's own competitive history. ByteDance built TikTok by taking the young consumer attention Meta thought it owned — now it's doing the same with AI. Doubao has 160M MAU in China and is expanding globally with aggressive API pricing (often 10-50x cheaper than comparable Western models). The TikTok-Meta rivalry extends fully into AI: ByteDance's recommendation algorithms and AI assistants compete for the same young users, the same creator economy, and the same advertising dollars. If TikTok survives US scrutiny, Doubao becomes the next major competitive threat to Meta AI globally." },
+    { name: "Apple Intelligence", users: "1B+ iPhone users", color: "#A2AAAD", note: "Apple's on-device AI and Siri integration represent Meta's most structurally difficult competitive threat. Apple controls the hardware layer for over 1B users — including the most valuable demographic for advertising. If Apple locks AI into device-level workflows (summarising notifications, managing calendars, automating tasks without leaving the phone), Meta's app-layer AI assistant loses relevance on the most lucrative hardware. Apple Intelligence doesn't need to match Meta AI in capability — it just needs to be convenient enough on the device that users stop opening WhatsApp to ask Meta AI questions." },
+  ],
+  competitorStats: [
+    { label: "META AI MAU", value: "700M", color: "#0668E1" },
+    { label: "LLAMA DOWNLOADS", value: "400M+", color: C.green },
+    { label: "REALITY LABS LOSS", value: "$50B+", color: C.red },
   ],
 };

@@ -14,6 +14,7 @@ export const googleDeepMindData: CompanyData = {
     { id: "funding", label: "Investment" },
     { id: "valuation", label: "Market Cap" },
     { id: "investors", label: "Ecosystem" },
+    { id: "competition", label: "Competition" },
   ],
   boardMembers: [
     { name: "Sundar Pichai", role: "CEO, Alphabet & Google", tag: "CEO", color: "#4285F4", desc: "Born in Chennai, India. Stanford MS, Wharton MBA. Led Chrome, Android, and Google's AI pivot. CEO since 2015 (Alphabet 2019). Oversees all AI strategy." },
@@ -44,5 +45,17 @@ export const googleDeepMindData: CompanyData = {
     { label: "AI CAPEX (2025)", value: "$75B", color: C.warn },
     { label: "CLOUD AI REV", value: "$43B", color: C.green },
     { label: "MARKET CAP", value: "$2.3T", color: "#34A853" },
+  ],
+  competitors: [
+    { name: "OpenAI", users: "300M+ weekly users", color: "#10A37F", note: "The defining rivalry. ChatGPT disrupted Google's search monopoly — the first genuine threat in 20 years. Gemini 2.0 Flash vs GPT-4o is the current benchmark battle. Google has more raw research talent and far more training data via Search, YouTube, and Gmail. OpenAI has faster product iteration, stronger developer mindshare, and Microsoft's enterprise distribution. Google Cloud AI generates ~$43B revenue but Azure-OpenAI is eating enterprise budgets. DeepMind's structural advantage: it can train on Google's entire data corpus. Its weakness: moving from research to product has historically taken 2x as long." },
+    { name: "Anthropic", users: "Unknown MAU", color: "#D4A843", note: "The most unusual competitive relationship in AI. Google has invested ~$3.3B in Anthropic — a deliberate hedge — while Gemini directly competes with Claude for the same enterprise contracts. Claude 3.5 Sonnet is DeepMind's primary rival in enterprise writing and long-context reasoning. Google simultaneously funds Anthropic's safety research and tries to beat it commercially. If Claude wins enterprise, Google loses the API battle but wins the investment. If Gemini wins, Google wins both. Only Google is playing both sides of this board." },
+    { name: "Meta AI (LLaMA)", users: "700M MAU", color: "#0668E1", note: "Meta's open-source strategy is an existential threat to Google's API revenue model. If LLaMA 3 70B (free, on-premise) is good enough for enterprise workloads, companies stop paying for Gemini API entirely. Google's response: compete on capability (Gemini Pro/Ultra genuinely outperforms LLaMA on complex tasks) and ecosystem integration (Google Workspace, Vertex AI). DeepMind's structural advantage over LLaMA is genuine — but it narrows every release cycle." },
+    { name: "Microsoft + OpenAI", users: "1.2B Office 365 users", color: "#00BCF2", note: "The Azure-OpenAI partnership is structurally parallel to Google's own AI+Cloud model — but 2-3 years ahead in enterprise adoption. Copilot integration across Office 365 (1.2B users) and Teams reaches the exact enterprise buyers Google targets with Workspace. Microsoft's go-to-market machine is world-class. Google has superior underlying research and a larger data advantage, but Microsoft has already signed the contracts. Enterprise AI adoption is sticky: once Copilot is embedded in workflows, switching to Gemini requires re-training and re-integrating — a significant barrier." },
+    { name: "Apple Intelligence", users: "1B+ iPhone users", color: "#A2AAAD", note: "On-device AI is the emerging battleground Google cannot ignore. Google Gemini Nano runs on-device on Pixel phones; Apple Intelligence runs on iPhone. The stakes: whoever wins the on-device layer controls the most personal and contextually rich AI — calendar, messages, photos, location. Google's Android distribution is broader (3B+ devices) but Apple's hardware-software integration is tighter and its users are higher-value. Google's Gemini Nano partnership with Samsung Galaxy gives it reach, but Apple's vertical control of its supply chain is a durable moat on the device layer." },
+  ],
+  competitorStats: [
+    { label: "ALPHABET MARKET CAP", value: "$2.3T", color: "#4285F4" },
+    { label: "CLOUD AI REVENUE", value: "$43B/yr", color: "#34A853" },
+    { label: "ALPHAFOLD CITATIONS", value: "2M+", color: C.gold },
   ],
 };
