@@ -96,6 +96,45 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
   const years = new Set<number>();
   for (let y = new Date(minT).getFullYear(); y <= new Date(maxT).getFullYear(); y++) years.add(y);
 
+  const multiPt = withVals.filter(co => co.points.length >= 2).map(co => ({
+    ...co,
+    pts: [...co.points].sort((a, b) => a.date - b.date),
+  }));
+  const singlePt = withVals.filter(co => co.points.length === 1);
+
+  const rawLabelYs = multiPt.map(co => getY(co.pts[co.pts.length - 1].val));
+
+  const adjustedLabelYs = (function deconflict(ys: number[], minGap: number) {
+    const indexed = ys.map((y, i) => ({ y, i })).sort((a, b) => a.y - b.y);
+    const result = [...ys];
+    for (let k = 1; k < indexed.length; k++) {
+      const prev = indexed[k - 1];
+      const curr = indexed[k];
+      const gap = curr.y - result[prev.i];
+      if (gap < minGap) {
+        result[curr.i] = result[prev.i] + minGap;
+        indexed[k] = { ...indexed[k], y: result[curr.i] };
+      }
+    }
+    return result;
+  })(rawLabelYs, 16);
+
+  const singleRawYs = singlePt.map(co => getY(co.points[0].val));
+  const adjustedSingleYs = (function deconflict(ys: number[], minGap: number) {
+    const indexed = ys.map((y, i) => ({ y, i })).sort((a, b) => a.y - b.y);
+    const result = [...ys];
+    for (let k = 1; k < indexed.length; k++) {
+      const prev = indexed[k - 1];
+      const curr = indexed[k];
+      const gap = curr.y - result[prev.i];
+      if (gap < minGap) {
+        result[curr.i] = result[prev.i] + minGap;
+        indexed[k] = { ...indexed[k], y: result[curr.i] };
+      }
+    }
+    return result;
+  })(singleRawYs, 14);
+
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
       <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 500 }} preserveAspectRatio="xMidYMid meet" role="img" aria-label="Valuation race chart comparing AI companies over time">
@@ -118,31 +157,31 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
 
         <line x1={pad.left} y1={pad.top + chartH} x2={w - pad.right} y2={pad.top + chartH} stroke="#e5e7eb" strokeWidth="1" />
 
-        {withVals.map(co => {
-          if (co.points.length < 2) return null;
-          const pts = co.points.sort((a, b) => a.date - b.date);
-          const d = pts.map((p, i) => `${i === 0 ? "M" : "L"} ${getX(p.date)} ${getY(p.val)}`).join(" ");
-          const lastPt = pts[pts.length - 1];
+        {multiPt.map((co, idx) => {
+          const d = co.pts.map((p, i) => `${i === 0 ? "M" : "L"} ${getX(p.date)} ${getY(p.val)}`).join(" ");
+          const lastPt = co.pts[co.pts.length - 1];
+          const labelY = adjustedLabelYs[idx];
           return (
             <g key={co.id} className="cursor-pointer" onClick={() => onSelect(co.id)} data-testid={`race-line-${co.id}`}>
               <path d={d} fill="none" stroke={co.color} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" opacity="0.8" />
               <circle cx={getX(lastPt.date)} cy={getY(lastPt.val)} r="3.5" fill={co.color} stroke="white" strokeWidth="1.5" />
-              <text x={w - pad.right + 8} y={getY(lastPt.val) + 3} fill={co.color} fontSize="8" fontWeight="bold" fontFamily="monospace">
+              <text x={w - pad.right + 8} y={labelY + 3} fill={co.color} fontSize="8" fontWeight="bold" fontFamily="monospace">
                 {co.name.split("(")[0].trim().split(" ")[0]}
               </text>
-              <text x={w - pad.right + 8} y={getY(lastPt.val) + 12} fill="#999" fontSize="6" fontFamily="monospace">
+              <text x={w - pad.right + 8} y={labelY + 12} fill="#999" fontSize="6" fontFamily="monospace">
                 {fmtVal(lastPt.val)}
               </text>
             </g>
           );
         })}
 
-        {withVals.filter(co => co.points.length === 1).map(co => {
+        {singlePt.map((co, idx) => {
           const pt = co.points[0];
+          const labelY = adjustedSingleYs[idx];
           return (
             <g key={co.id} className="cursor-pointer" onClick={() => onSelect(co.id)} data-testid={`race-dot-${co.id}`}>
               <circle cx={getX(pt.date)} cy={getY(pt.val)} r="4" fill={co.color} stroke="white" strokeWidth="1.5" />
-              <text x={getX(pt.date) + 6} y={getY(pt.val) + 3} fill={co.color} fontSize="7" fontWeight="bold" fontFamily="monospace">
+              <text x={getX(pt.date) + 6} y={labelY + 3} fill={co.color} fontSize="7" fontWeight="bold" fontFamily="monospace">
                 {co.name.split("(")[0].trim().split(" ")[0]}
               </text>
             </g>
@@ -655,7 +694,7 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
   const maxV = Math.max(...vals.map(v => v.displayVal));
 
   const dense = vals.length > 5;
-  const pad = { top: 30, right: 30, bottom: dense ? 100 : 50, left: 65 };
+  const pad = { top: 30, right: 30, bottom: dense ? 110 : 50, left: 65 };
   const baseW = Math.max(640, vals.length * 100);
   const w = baseW;
   const h = dense ? 340 : 300;
@@ -747,7 +786,11 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
                 {dense ? (
                   <text x={p.x} y={pad.top + chartH + 14 + staggeredOffsets[i]} textAnchor="end" fill="#888" fontSize="7" fontFamily="monospace"
                     transform={`rotate(-40, ${p.x}, ${pad.top + chartH + 14 + staggeredOffsets[i]})`}>
-                    {p.label}
+                    {p.label
+                      .replace("Google Strategic", "Google Strat.")
+                      .replace("SK Telecom", "SK Telec.")
+                      .replace("Strategic", "Strat.")
+                      .replace("Investment", "Invest.")}
                   </text>
                 ) : (
                   <g>
