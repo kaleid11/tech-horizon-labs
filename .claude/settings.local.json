@@ -41,7 +41,12 @@
       "mcp__plugin_playwright_playwright__browser_resize",
       "Bash(npx tsx:*)",
       "Bash(lsof -ti:5000)",
-      "Bash(xargs kill:*)"
+      "Bash(xargs kill:*)",
+      "Bash(echo \"Tool items present \\($\\(curl -s http://localhost:5000/)",
+      "Bash(echo \"Security items present \\($\\(curl -s http://localhost:5000/)",
+      "Bash(echo \"styles.css: $\\(curl -s http://localhost:5000/styles.css)",
+      "Bash(echo \"Report preview: $\\(curl -s http://localhost:5000/)",
+      "Bash(echo \"main.js: $\\(curl -s http://localhost:5000/main.js)"
     ]
   }
 }
