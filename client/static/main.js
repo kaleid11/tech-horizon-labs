@@ -17,7 +17,7 @@
   // NARRATIVE PARTICLE SYSTEM
   // ─────────────────────────────────────────────
   const canvas = document.getElementById('dot-grid');
-  if (canvas && canvas.getContext && window.innerWidth > 640) {
+  if (canvas && canvas.getContext && window.innerWidth > 640 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const ctx = canvas.getContext('2d');
     let w, h, animFrame;
     let mouseX = -9999, mouseY = -9999, mouseDown = false;
@@ -25,7 +25,7 @@
     let scrollProgress = 0; // 0 = top, 1 = bottom
 
     const A = { r: 181, g: 101, b: 74 }; // terracotta accent
-    const COUNT = Math.min(140, Math.floor(window.innerWidth / 10));
+    const COUNT = Math.min(100, Math.floor(window.innerWidth / 12));
     const CONNECT_DIST = 180;
     const MOUSE_RADIUS = 300;
 
@@ -260,9 +260,9 @@
 
     function drawConnections(mode) {
       // Connection density varies by mode
-      const maxDist = mode === 'network' ? CONNECT_DIST * 1.5 :
+      const maxDist = mode === 'network' ? CONNECT_DIST * 0.75 :
                       mode === 'clusters' ? CONNECT_DIST * 0.8 :
-                      mode === 'converge' ? CONNECT_DIST * 2 :
+                      mode === 'converge' ? CONNECT_DIST * 0.9 :
                       mode === 'chaos' ? CONNECT_DIST * 0.5 :
                       CONNECT_DIST;
       const packetChance = mode === 'network' ? 0.003 : mode === 'flow' ? 0.002 : 0.0005;
@@ -274,7 +274,7 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxDist) {
-            let alpha = (1 - dist / maxDist) * 0.15;
+            let alpha = (1 - dist / maxDist) * 0.09;
             let lw = 0.6;
 
             // Strong glow near mouse — lines thicken and brighten

@@ -2,213 +2,73 @@
 
 ## Overview
 
-This is a modern consulting website for Tech Horizon Labs, an AI implementation consulting firm based on the Sunshine Coast, Queensland, Australia (ABN: 80 976 285 425). The site showcases their "infrastructure before automation" approach to AI consulting, featuring service offerings, case studies, pricing, an academy for AI training resources, and an AI industry research hub.
-
-**Target Keywords**: "AI QLD", "AI consulting Australia", "AI consulting Queensland", "AI consulting Sunshine Coast", "AI business training sunshine coast"
-
-The application is built as a full-stack TypeScript project with a React frontend and Express backend, using PostgreSQL for data persistence.
+This project is a modern full-stack TypeScript website for Tech Horizon Labs, an AI implementation consulting firm. It showcases their "infrastructure before automation" approach to AI consulting, featuring service offerings, case studies, pricing, an academy for AI training, and an AI industry research hub. The primary goal is to attract businesses seeking AI solutions and establish the firm as a leader in AI consulting, particularly in the Queensland, Australia region.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
 
-## Recent Changes (April 2026)
-
-### Newsletter & Events Integration (Task #5)
-- `/api/newsletter` POST endpoint: validates email, de-dupes, saves to DB, sends Resend welcome email, syncs to Klipy CRM (`source: "website-newsletter"`), and pushes to Beehiiv API (`POST /v2/publications/{pubId}/subscriptions`)
-- Events page fully wired: `LUMA_EVENT_URL = https://luma.com/5mtx4dxx`, `LUMA_PROFILE_URL = https://luma.com/user/usr-BxlvnyuCLwog2S6`
-- All newsletter CTAs on events page use `NewsletterDialog` popup (no external beehiiv.com links except archive/footer)
-- Sunshine Coast page has direct Luma event registration link
-- Removed broken 301 redirect that was blocking the `/events` SPA route
-
-### Research Hub: ValuationPanel Improvements
-- Stagger algorithm rewritten: checks ALL nearby points (not just adjacent pair), 4 stagger levels [0,22,44,66px], minGap 55px. Properly handles groups of 3+ close points
-- Chart now uses post-money valuation (`r.post ?? r.val`) for y-axis — distinguishes rounds with identical pre-money (e.g., Anthropic Nov 2025 vs Feb 2026 both at $350B pre but $365B vs $380B post)
-- Down round indicator: red dot + "DOWN ROUND" badge in detail panel (e.g., Anthropic Series C after Google Strategic)
-
-## Recent Changes (March 2026)
-
-### SEO/AEO/GEO Optimization (GSC-Driven)
-- Full GSC audit performed: identified "ai business training sunshine coast" (94 impressions, position 5.72, 0% CTR) as #1 quick win
-- Optimized all page titles/descriptions based on real search performance data
-- Brisbane location page content strengthened (was ranking position 73-93)
-- Portfolio case studies updated with real Academy metrics
-- Homepage hero sharpened with concrete outcomes (2 days to 1 hour)
-- Added comprehensive JSON-LD schema markup (LocalBusiness, Organization, FAQPage, Service, Person, BreadcrumbList)
-- Created robots.txt allowing AI crawlers (GPTBot, PerplexityBot, ClaudeBot, etc.)
-- Generated XML sitemap with 20 URLs, all dates set to 2026-03-02
-
-### AI Research Hub (`/research`)
-- Deep analysis of 10 AI companies (Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen, Perplexity, Kimi, Mistral)
-- Covers governance, funding rounds, investor breakdowns, policy shifts, timelines, safety issues, controversies, supply chain
-- Data files in `client/src/data/research/` (types.ts, index.ts, + 10 company files)
-- Comparison dashboard on landing page: Valuation Race (multi-line chart, private companies only), Total Funding (horizontal bars), Quick Stats (table)
-- Valuation chart redesigned: clean SVG line chart, show values on click only, rotated labels with stagger for dense data, dynamic width, area fill gradient, post-money display
-- Google DeepMind and Meta AI now have Market Cap tabs with Alphabet/Meta market cap trajectory (excluded from private valuation race chart)
-- fmtVal() supports trillion-scale values ($1.6T format)
-- Meta AI data updated: Yann LeCun departure (Nov 2025), Alexandr Wang (Chief AI Officer), Shengjia Zhao (Chief Scientist MSL)
-- DeepSeek added: self-funded from High-Flyer quant, R1 model, US sanctions controversies
-- Qwen (Alibaba Cloud) added: Tongyi Lab, Apache 2.0 open-source, $53B infrastructure pledge
-- Integrated with THL's design system (aubergine/salmon palette), Navbar/Footer, PageSEO
-- CTA callout linking to Klipy CRM booking for AI platform assessment
-- Targets informational queries: "claude", "openai", "perplexity ai", "deepseek", "qwen", "AI company research"
-
-### Pages
-- `/` - Homepage with hero, trust bar, service cards, case study highlights
-- `/services/audit` - Readiness Assessment service page with FAQ schema
-- `/services/accelerator` - Foundation Sprint service page (4-week sprint)
-- `/services/partner` - Ongoing Evolution partnership page
-- `/locations/sunshine-coast` - Local SEO page with FAQ schema
-- `/locations/brisbane` - Brisbane/SEQ focus with manufacturing case studies (strengthened content)
-- `/locations/queensland` - State-wide overview and hub page
-- `/locations/gold-coast` - Tourism/hospitality industry focus
-- `/portfolio` - 5 case studies with real metrics (40% admin reduction, 60% faster quotes, 30% downtime, 80% onboarding, 100% privacy)
-- `/portfolio/accounting-firm` - Invoice AI case study
-- `/portfolio/construction-builder` - Construction AI case study (2 days → 1 hour)
-- `/portfolio/real-estate-agency` - Real estate AI case study
-- `/portfolio/manufacturing` - Manufacturing AI case study
-- `/portfolio/healthcare-clinic` - Healthcare AI case study
-- `/academy` - Preview page linking to academy.techhorizonlabs.com
-- `/research` - AI Research Hub: 10 companies, governance/funding/policy analysis, comparison dashboard
-- `/about` - Huxley Peckham bio, E-E-A-T signals, ABN disclosure, partner affiliations
-- `/resources` - Articles, weekly workshops schedule, newsletter, downloadable tools
-- `/openclaw` - OpenClaw setup page: honest security assessment, safe vs risky use cases, CVE timeline, safe deployment guide, FAQ schema
-- `/events` - "AI on the Coast" community meetup page: bi-monthly events at Sunshine Beach Surf Club, event format, topics, venue info, Luma placeholder
-- `/insights/ai-impact-by-industry` - AI Impact by Industry: capability vs adoption data across 10 occupations, key findings for Australian SMEs, links to industry pages
-- `/privacy` - Privacy policy
-- `/terms` - Terms of service
-
-### Booking Integration
-- All CTAs link directly to Klipy CRM booking: https://app.klipycrm.com/book/pre-discovery/free-pre-discovery
-- ContactFormDialog offers both direct calendar booking and message form options (used in navbar only)
-- All page CTAs use direct `<a href={BOOKING_URL}>` links with Calendar icon for immediate booking
-- BOOKING_URL constant exported from contact-form-dialog.tsx for consistency
-
-### Navigation
-- Services dropdown menu in navbar with links to all 3 service pages
-- Main nav: Services (dropdown), Portfolio, Research, Locations, Academy
-- Mobile menu with dedicated Services section and all nav items
-- All buttons have hover:scale-105 micro-interaction for premium feel
-
-### Trust Signals & Partners
-- TrustBar component on homepage with partner logos (Google, Anthropic, OpenAI, AWS, n8n, Docker, fal.ai)
-- industry.gov.au National AI Directory listing badge
-- GoodFirms "Top Artificial Intelligence Company" badge
-- Footer "Community" section with links to Events, OpenClaw, Academy, Resources, About, Newsletter, AI Ethics
-- Footer with SVG partner icons, ABN 80 976 285 425, Sunshine Coast address
-
 ## System Architecture
 
 ### Frontend Architecture
 - **Framework**: React 18 with TypeScript
-- **Routing**: Wouter (lightweight client-side routing)
-- **Styling**: Tailwind CSS v4 with custom theme variables defined in `client/src/index.css`
-- **UI Components**: shadcn/ui component library (New York style) with Radix UI primitives
-- **State Management**: TanStack React Query for server state
-- **Animations**: Framer Motion for interactive visualizations
-- **Build Tool**: Vite with custom plugins for Replit integration
-- **SEO**: PageSEO component for per-page meta tags; LocationSchema for JSON-LD FAQ schema
+- **Routing**: Wouter for lightweight client-side routing
+- **Styling**: Tailwind CSS v4 with a custom theme, using Fraunces (serif headings) and Instrument Sans (body) fonts, and a color palette including `--bg: #FAFAF8` and `--accent: #B5654A`.
+- **UI Components**: shadcn/ui library built on Radix UI primitives.
+- **State Management**: TanStack React Query for server state.
+- **Animations**: Framer Motion for interactive UI elements and a narrative particle canvas that changes behavior based on scroll position.
+- **Build Tool**: Vite with custom Replit integration plugins.
+- **SEO**: Dedicated `PageSEO` component for meta tags and `LocationSchema` for JSON-LD FAQ schema.
+- **Static Site**: The `client/static/` directory hosts the main static pages (`index.html`, `work.html`, `about.html`, `contact.html`, `academy.html`, `research.html`), while the React app handles dynamic routes and deeper content.
 
 ### Backend Architecture
-- **Framework**: Express 5 on Node.js
-- **API Design**: RESTful endpoints under `/api/*` prefix
-- **Database ORM**: Drizzle ORM with PostgreSQL dialect
-- **Schema Validation**: Zod with drizzle-zod for type-safe validation
-- **Email Service**: Resend integration via Replit connectors
+- **Framework**: Express 5 on Node.js.
+- **API Design**: RESTful endpoints under the `/api/*` prefix.
+- **Database ORM**: Drizzle ORM with PostgreSQL dialect.
+- **Schema Validation**: Zod with drizzle-zod for type-safe validation.
 
 ### Data Storage
-- **Database**: PostgreSQL (configured via `DATABASE_URL` environment variable)
-- **Schema Location**: `shared/schema.ts` contains all table definitions
-- **Current Tables**:
-  - `contact_submissions`: Stores contact form submissions (name, email, company, message)
-  - `newsletter_signups`: Stores newsletter email subscriptions with unique constraint
-- **Migrations**: Managed via Drizzle Kit with migrations output to `./migrations`
-
-### Project Structure
-```
-├── client/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── seo/              # SEO components (PageSEO, LocationSchema)
-│   │   │   ├── sections/         # Homepage sections (hero, trust bar, etc.)
-│   │   │   ├── ui/               # shadcn/ui components
-│   │   │   ├── layout.tsx        # Navbar & Footer (exported separately)
-│   │   │   ├── contact-form-dialog.tsx  # BOOKING_URL constant + dialog
-│   │   │   └── newsletter-dialog.tsx
-│   │   ├── data/
-│   │   │   ├── ai-impact-by-industry.ts  # AI capability vs adoption data
-│   │   │   └── research/         # AI Research Hub data (10 company files)
-│   │   │       ├── types.ts      # TypeScript interfaces
-│   │   │       ├── index.ts      # Company registry, helpers, color constants
-│   │   │       ├── anthropic.ts
-│   │   │       ├── openai.ts
-│   │   │       ├── google-deepmind.ts
-│   │   │       ├── meta-ai.ts
-│   │   │       ├── xai.ts
-│   │   │       ├── deepseek.ts
-│   │   │       ├── qwen.ts
-│   │   │       ├── perplexity.ts
-│   │   │       ├── kimi.ts
-│   │   │       └── mistral.ts
-│   │   ├── pages/
-│   │   │   ├── locations/        # Location pages (sunshine-coast, brisbane, queensland, gold-coast)
-│   │   │   ├── portfolio/        # Individual case study pages
-│   │   │   ├── services/         # Service pages (audit, accelerator, partner)
-│   │   │   ├── home.tsx          # Homepage
-│   │   │   ├── portfolio.tsx     # Portfolio index
-│   │   │   ├── research.tsx      # AI Research Hub
-│   │   │   ├── academy.tsx       # Academy preview
-│   │   │   ├── about.tsx         # About/founder page
-│   │   │   ├── resources.tsx     # Resources/articles
-│   │   │   ├── privacy.tsx       # Privacy policy
-│   │   │   └── terms.tsx         # Terms of service
-│   │   ├── hooks/
-│   │   └── lib/
-│   └── index.html                # SEO meta tags & JSON-LD schema
-├── server/
-│   ├── index.ts
-│   ├── routes.ts
-│   ├── storage.ts
-│   └── db.ts
-├── shared/
-│   └── schema.ts
-├── public/
-│   ├── robots.txt               # AI crawler permissions
-│   ├── sitemap.xml              # XML sitemap (20 URLs)
-│   └── og-image.png             # Open Graph image
-```
+- **Database**: PostgreSQL, configured via `DATABASE_URL`.
+- **Schema**: Defined in `shared/schema.ts`, including tables for `contact_submissions` and `newsletter_signups`.
+- **Migrations**: Managed via Drizzle Kit.
 
 ### Key Design Patterns
-- **Shared Schema**: Database schema and Zod validators defined once in `shared/` and imported by both frontend and backend
-- **Storage Abstraction**: `IStorage` interface in `server/storage.ts` abstracts database operations
-- **Path Aliases**: TypeScript configured with `@/` for client src, `@shared/` for shared code
-- **SEO Components**: PageSEO for meta tags, LocationSchema for structured FAQ data
-- **Lazy Loading**: All secondary pages use React.lazy() for code splitting
-- **Research Data**: Static TypeScript data files (no API needed) for AI company research
+- **Shared Schema**: Database schema and Zod validators are defined once in `shared/` for both frontend and backend.
+- **Storage Abstraction**: An `IStorage` interface in `server/storage.ts` abstracts database operations.
+- **Path Aliases**: TypeScript aliases `@/` for client source and `@shared/` for shared code.
+- **SEO Components**: `PageSEO` for meta tags and `LocationSchema` for structured FAQ data.
+- **Lazy Loading**: Secondary pages are lazy-loaded using `React.lazy()` for code splitting.
+- **Research Data**: AI company research data is stored in static TypeScript files (`client/src/data/research/`).
+
+### Feature Specifications
+- **Navigation**: Main navigation includes Services (dropdown), Portfolio, Research, Locations, and Academy.
+- **Booking Integration**: All CTAs link directly to Klipy CRM booking, with a `ContactFormDialog` for alternative message submissions.
+- **Trust Signals**: Homepage features a `TrustBar` with partner logos (Google, Anthropic, OpenAI, AWS, n8n, Docker, fal.ai), industry badges, and a footer with community links.
+- **AI Research Hub (`/research`)**: Deep analysis of 10 AI companies with comparison dashboards (Valuation Race, Total Funding, Quick Stats), detailed company profiles, and down round indicators.
+- **Newsletter & Events Integration**: `/api/newsletter` endpoint for email validation, deduplication, database storage, Resend welcome emails, Klipy CRM syncing, and Beehiiv API integration. Events page is fully wired with Luma integration.
+- **SEO Optimization**: Comprehensive JSON-LD schema markup (LocalBusiness, Organization, FAQPage, Service, Person, BreadcrumbList), `robots.txt` allowing AI crawlers, and a generated XML sitemap.
 
 ## External Dependencies
 
 ### Database
-- **PostgreSQL**: Primary database, connection via `DATABASE_URL` environment variable
-- **Drizzle ORM**: Type-safe database queries and schema management
+- **PostgreSQL**: Primary database.
+- **Drizzle ORM**: For database interactions.
 
 ### Email Service
-- **Resend**: Email delivery for contact notifications and newsletter welcome messages
-- Connected via Replit connectors (fetches credentials from connector API)
+- **Resend**: For sending emails (contact notifications, newsletter welcome).
+
+### CRM & Event Management
+- **Klipy CRM**: For booking integrations and newsletter subscriber syncing.
+- **Luma**: For event management and registration.
+- **Beehiiv**: For newsletter platform integration.
 
 ### Frontend Libraries
-- **TanStack React Query**: Server state management and caching
-- **Framer Motion**: Animation library for UI interactions
-- **Radix UI**: Accessible component primitives (accordion, dialog, dropdown, etc.)
-- **Lucide React**: Icon library
+- **TanStack React Query**: For server state management.
+- **Framer Motion**: For animations.
+- **Radix UI**: For accessible UI primitives.
+- **Lucide React**: For icons.
 
-### Build & Development
-- **Vite**: Frontend build tool with HMR
-- **esbuild**: Server bundling for production
-- **tsx**: TypeScript execution for development server
-
-## Domain Strategy
-
-- **techhorizonlabs.com**: Done-for-you consulting services (this site)
-- **academy.techhorizonlabs.com**: Done-with-you training/workshops (separate subdomain, different keywords to avoid cannibalization)
-- **tech-horizon.beehiiv.com**: Newsletter platform
+### Build & Development Tools
+- **Vite**: Frontend build tool.
+- **esbuild**: Server bundling.
+- **tsx**: TypeScript execution for development.
