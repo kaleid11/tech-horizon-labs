@@ -55,7 +55,7 @@ export const googleDeepMindData: CompanyData = {
   ],
   competitorStats: [
     { label: "ALPHABET MARKET CAP", value: "$2.3T", color: "#4285F4" },
-    { label: "CLOUD AI REVENUE", value: "$43B/yr", color: "#34A853" },
+    { label: "GEMINI API DEVELOPERS", value: "2M+", color: "#34A853" },
     { label: "ALPHAFOLD CITATIONS", value: "2M+", color: C.gold },
   ],
 };
