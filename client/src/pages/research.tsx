@@ -265,7 +265,10 @@ function StatsGrid({ data, onSelect }: { data: { id: string; name: string; color
                 </td>
                 <td className="p-3 text-right font-mono text-[10px] font-bold text-aubergine-900" data-testid={`text-valuation-${co.id}`}>
                   {co.latestVal !== null ? fmtVal(co.latestVal) : (
-                    <span className="text-gray-400 font-normal" title="No independently verified external valuation exists for this company.">No ext. val.</span>
+                    <span className="inline-flex items-center gap-1 text-gray-400 font-normal" title="No independently verified external valuation exists for this company.">
+                      <span className="inline-flex items-center justify-center w-3 h-3 rounded-full border border-gray-300 text-[7px] text-gray-400 font-bold leading-none">?</span>
+                      No ext. val.
+                    </span>
                   )}
                 </td>
                 <td className="p-3 text-right font-mono text-[10px] text-gray-600" data-testid={`text-raised-${co.id}`}>
