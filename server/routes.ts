@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import { insertContactSubmissionSchema, insertNewsletterSignupSchema, insertAuditSubmissionSchema } from "@shared/schema";
-import { sendContactNotification, sendContactAutoReply, sendNewsletterWelcome, sendReportDownloadEmail, sendAuditResults, sendAuditNotification } from "./email";
+import { sendContactNotification, sendContactAutoReply, sendNewsletterWelcome, sendAuditResults, sendAuditNotification } from "./email";
 import { pushToKlipy } from "./klipy";
 import path from "path";
 import fs from "fs";
@@ -304,6 +304,20 @@ export async function registerRoutes(
           sendNewsletterWelcome(validatedData.email, source).catch((err) =>
             console.error("Report re-download email failed:", err)
           );
+          pushToKlipy({
+            name: validatedData.email.split("@")[0],
+            email: validatedData.email,
+            source: "report-download",
+          });
+          const _bApiKey = process.env.BEEHIIV_API_KEY;
+          const _bPubId = process.env.BEEHIIV_PUBLICATION_ID;
+          if (_bApiKey && _bPubId) {
+            fetch(`https://api.beehiiv.com/v2/publications/${_bPubId}/subscriptions`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json", Authorization: `Bearer ${_bApiKey}` },
+              body: JSON.stringify({ email: validatedData.email, reactivate_existing: true, send_welcome_email: false, tags: ["report-download"] }),
+            }).catch((err) => console.error("Beehiiv re-tag failed:", err));
+          }
           return res.json({ success: true, id: existing.id });
         }
         return res.status(400).json({ error: "This email is already subscribed." });
@@ -356,42 +370,6 @@ export async function registerRoutes(
     }
   });
 
-  app.post("/api/report-download", async (req, res) => {
-    try {
-      const schema = z.object({
-        name: z.string().min(1).max(100),
-        email: z.string().email(),
-      });
-      const data = schema.parse(req.body);
-
-      try {
-        await storage.createNewsletterSignup({ email: data.email });
-      } catch {
-        // already subscribed — still send the PDF
-      }
-
-      sendReportDownloadEmail({ name: data.name, email: data.email }).catch((err) =>
-        console.error("Report download email failed:", err)
-      );
-
-      pushToKlipy({ name: data.name, email: data.email, source: "report-download" });
-
-      const beehiivApiKey = process.env.BEEHIIV_API_KEY;
-      const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
-      if (beehiivApiKey && beehiivPubId) {
-        fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Authorization: `Bearer ${beehiivApiKey}` },
-          body: JSON.stringify({ email: data.email, reactivate_existing: true, send_welcome_email: false, tags: ["report-download"] }),
-        }).catch((err) => console.error("Beehiiv report sync failed:", err));
-      }
-
-      res.json({ success: true });
-    } catch (error) {
-      console.error("Report download error:", error);
-      res.status(400).json({ success: false, error: error instanceof Error ? error.message : "Invalid submission" });
-    }
-  });
 
   app.post("/api/audit", async (req, res) => {
     try {
