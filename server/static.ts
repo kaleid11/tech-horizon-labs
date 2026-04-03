@@ -17,31 +17,31 @@ const PAGES: Record<string, { file: string; title: string; description: string; 
   "/work": {
     file: "work.html",
     fullTitle: "AI Systems We've Built for Australian Businesses | Tech Horizon Labs",
-    title: "Clients",
+    title: "AI Systems Portfolio",
     description: "AI systems built and deployed for real businesses across Queensland and Australia. Talent agencies, accounting firms, builders, construction, allied health, energy, and manufacturing.",
   },
   "/about": {
     file: "about.html",
     fullTitle: "About Huxley Peckham — Queensland AI Consultant | Tech Horizon Labs",
-    title: "About",
+    title: "About Huxley Peckham",
     description: "Huxley Peckham runs Tech Horizon Labs from Noosa Heads, Queensland. AI systems and workflow automation for growing Australian businesses. Infrastructure before automation.",
   },
   "/academy": {
     file: "academy.html",
     fullTitle: "AI Workshop Academy — Training for Australian Business Operators | Tech Horizon Labs",
-    title: "Academy",
+    title: "AI Workshop Academy",
     description: "AI workshops, live sessions, and 1,300+ workflow templates for Australian business operators. Weekly live training, 300+ operators. Australian compliance pre-mapped. From $97/month.",
   },
   "/contact": {
     file: "contact.html",
     fullTitle: "Book a Free AI Consultation — Tech Horizon Labs",
-    title: "Contact",
+    title: "Book a Free AI Consultation",
     description: "Book a free pre-discovery call with Tech Horizon Labs. Based in Noosa Heads, Queensland. We reply within one business day. We turn away 30% of inquiries — we'll tell you honestly if it's not the right fit.",
   },
   "/research": {
     file: "research.html",
     fullTitle: "AI Company Research Hub — Power, Money & Control in AI | Tech Horizon Labs",
-    title: "Research",
+    title: "AI Company Research Hub",
     description: "Free AI industry research covering governance, funding, and competitive analysis for Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen, Perplexity, Kimi, and Mistral.",
   },
   "/privacy": {
