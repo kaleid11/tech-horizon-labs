@@ -266,7 +266,14 @@ export async function registerRoutes(
             send_welcome_email: false,
             tags: ["contact-form"],
           }),
-        }).catch((err) => console.error("Beehiiv contact sync failed:", err));
+        })
+          .then(async (response) => {
+            if (!response.ok) {
+              const body = await response.text().catch(() => "");
+              console.error(`Beehiiv contact sync returned ${response.status}: ${body}`);
+            }
+          })
+          .catch((err) => console.error("Beehiiv contact sync failed:", err));
       }
 
       res.json({ success: true, id: submission.id });
