@@ -110,13 +110,13 @@ export async function registerRoutes(
   // Industries → Homepage (wildcard — catches anything not specifically listed above)
   app.get("/industries/:slug", (_req, res) => res.redirect(301, "/"));
 
-  // Insights index — must come BEFORE the wildcard redirect below
-  app.get("/insights/", (_req, res) => res.redirect(301, "/insights"));
+  // Insights index — must come BEFORE the wildcard redirect below; canonical first, slash-redirect second
   app.get("/insights", (_req, res) => {
     const filePath = path.resolve(process.cwd(), "client", "static", "insights", "index.html");
     res.setHeader("Content-Type", "text/html");
     res.sendFile(filePath);
   });
+  app.get("/insights/", (_req, res) => res.redirect(301, "/insights"));
 
   // Insights articles — must come BEFORE the wildcard redirect below
   app.get("/insights/how-australia-uses-ai-2026", (_req, res) => {
@@ -144,24 +144,24 @@ export async function registerRoutes(
   app.get("/guides/:slug", (_req, res) => res.redirect(301, "/academy"));
   app.get("/guides/:slug/", (_req, res) => res.redirect(301, "/academy"));
 
-  // Static pages served directly
-  app.get("/security/", (_req, res) => res.redirect(301, "/security"));
+  // Static pages served directly — canonical route FIRST, trailing-slash redirect SECOND
   app.get("/security", (_req, res) => {
     const filePath = path.resolve(process.cwd(), "client", "static", "security.html");
     res.setHeader("Content-Type", "text/html");
     res.sendFile(filePath);
   });
+  app.get("/security/", (_req, res) => res.redirect(301, "/security"));
 
   // Individual removed pages
   // /research is now a live page — no redirect
   app.get("/audit-tool", (_req, res) => res.redirect(301, "/"));
   app.get("/ai-ethics", (_req, res) => res.redirect(301, "/about"));
-  app.get("/openclaw/", (_req, res) => res.redirect(301, "/openclaw"));
   app.get("/openclaw", (_req, res) => {
     const filePath = path.resolve(process.cwd(), "client", "static", "openclaw.html");
     res.setHeader("Content-Type", "text/html");
     res.sendFile(filePath);
   });
+  app.get("/openclaw/", (_req, res) => res.redirect(301, "/openclaw"));
   // /events is a live React SPA page — no redirect
   app.get("/resources", (_req, res) => res.redirect(301, "/academy"));
   app.get("/resources/", (_req, res) => res.redirect(301, "/academy"));

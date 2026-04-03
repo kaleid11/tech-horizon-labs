@@ -8,7 +8,7 @@ const SITE_NAME = "Tech Horizon Labs";
 /**
  * Route-to-file and meta mapping for the static site.
  */
-const PAGES: Record<string, { file: string; title: string; description: string }> = {
+const PAGES: Record<string, { file: string; title: string; description: string; fullTitle?: string }> = {
   "/": {
     file: "index.html",
     title: "AI Systems for Growing Businesses",
@@ -16,28 +16,33 @@ const PAGES: Record<string, { file: string; title: string; description: string }
   },
   "/work": {
     file: "work.html",
-    title: "Work",
-    description: "AI systems we've built and deployed for real businesses. Talent agencies, accounting firms, builders, manufacturers, and more.",
+    fullTitle: "AI Systems We've Built for Australian Businesses | Tech Horizon Labs",
+    title: "Clients",
+    description: "AI systems built and deployed for real businesses across Queensland and Australia. Talent agencies, accounting firms, builders, construction, allied health, energy, and manufacturing.",
   },
   "/about": {
     file: "about.html",
+    fullTitle: "About Huxley Peckham — Queensland AI Consultant | Tech Horizon Labs",
     title: "About",
-    description: "Tech Horizon Labs is run by Huxley Peckham from Noosa, Queensland. We build and deploy AI systems for growing Australian businesses.",
+    description: "Huxley Peckham runs Tech Horizon Labs from Noosa Heads, Queensland. AI systems and workflow automation for growing Australian businesses. Infrastructure before automation.",
   },
   "/academy": {
     file: "academy.html",
+    fullTitle: "AI Workshop Academy — Training for Australian Business Operators | Tech Horizon Labs",
     title: "Academy",
-    description: "Workshops and courses on AI tools for business. 1,300+ templates, weekly live sessions, 300+ operators. Australian compliance pre-mapped.",
+    description: "AI workshops, live sessions, and 1,300+ workflow templates for Australian business operators. Weekly live training, 300+ operators. Australian compliance pre-mapped. From $97/month.",
   },
   "/contact": {
     file: "contact.html",
+    fullTitle: "Book a Free AI Consultation — Tech Horizon Labs",
     title: "Contact",
-    description: "Get in touch with Tech Horizon Labs. Based in Noosa Heads, Queensland. Serving businesses across Australia.",
+    description: "Book a free pre-discovery call with Tech Horizon Labs. Based in Noosa Heads, Queensland. We reply within one business day. We turn away 30% of inquiries — we'll tell you honestly if it's not the right fit.",
   },
   "/research": {
     file: "research.html",
+    fullTitle: "AI Company Research Hub — Power, Money & Control in AI | Tech Horizon Labs",
     title: "Research",
-    description: "AI landscape research. Company valuations, funding analysis, and model comparisons. Data we track to pick the right tools for our clients.",
+    description: "Free AI industry research covering governance, funding, and competitive analysis for Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen, Perplexity, Kimi, and Mistral.",
   },
   "/privacy": {
     file: "privacy.html",
@@ -58,9 +63,9 @@ function injectMeta(html: string, urlPath: string): string {
   const page = PAGES[urlPath];
   if (!page) return html;
 
-  const fullTitle = urlPath === "/"
+  const fullTitle = page.fullTitle ?? (urlPath === "/"
     ? `${SITE_NAME} — ${page.title}`
-    : `${page.title} — ${SITE_NAME}`;
+    : `${page.title} — ${SITE_NAME}`);
   const canonical = urlPath === "/" ? BASE_URL : `${BASE_URL}${urlPath}`;
 
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${fullTitle}</title>`);
