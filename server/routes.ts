@@ -366,34 +366,107 @@ export async function registerRoutes(
   });
 
 
+  // Server-side scoring data for the 10-question AI readiness assessment
+  const AUDIT_OPTION_SCORES = [0, 3, 7, 10]; // scores for options 0–3 (applies to all 10 questions)
+  const AUDIT_STAGES = [
+    {
+      range: [0, 25], num: "Stage 1", name: "Discovery",
+      recs: [
+        "Run a data audit: list every system where your business information currently lives.",
+        "Identify 2–3 high-volume, repetitive tasks that could realistically be automated first.",
+        "Assign one team member as your AI champion and give them dedicated exploration time.",
+      ],
+    },
+    {
+      range: [26, 50], num: "Stage 2", name: "ChatGPT Plateau",
+      recs: [
+        "Document your 3 most important workflows before connecting any AI system to them.",
+        "Run a focused 30-day pilot: one process, one tool, clear success metrics.",
+        "Get your whole team trained on prompt engineering basics — not just the champions.",
+      ],
+    },
+    {
+      range: [51, 75], num: "Stage 3", name: "Systematically Enabled",
+      recs: [
+        "Audit which current AI tools are genuinely integrated into documented workflows.",
+        "Build a data layer that feeds your AI systems clean, real-time information.",
+        "Establish governance: who owns AI decisions, data quality, and model updates?",
+      ],
+    },
+    {
+      range: [76, 100], num: "Stage 4", name: "Fully AI-Native",
+      recs: [
+        "Shift from tool-level thinking to system-level AI architecture.",
+        "Invest in custom model fine-tuning or RAG systems for domain-specific knowledge.",
+        "Systematically measure ROI across all AI deployments and scale what's working.",
+      ],
+    },
+  ];
+
   app.post("/api/audit", async (req, res) => {
     try {
-      const validatedData = insertAuditSubmissionSchema.parse(req.body);
-      const submission = await storage.createAuditSubmission(validatedData);
+      // Parse and validate request (answers only — score/tier/results computed server-side)
+      const auditRequestSchema = z.object({
+        name: z.string().min(1).max(100),
+        email: z.string().email(),
+        business: z.string().max(200).nullable().optional(),
+        answers: z.string().min(1),  // JSON array of 10 option indices (0-3)
+      });
+      const input = auditRequestSchema.parse(req.body);
 
-      let recommendations: string[] = [];
-      try { recommendations = JSON.parse(validatedData.results); } catch { /* results may be plain text */ }
+      // Deserialise and validate answer indices
+      let answerIndices: number[];
+      try {
+        answerIndices = JSON.parse(input.answers);
+        if (!Array.isArray(answerIndices) || answerIndices.length !== 10) {
+          throw new Error("Expected 10 answer indices");
+        }
+        answerIndices.forEach((idx, i) => {
+          if (typeof idx !== "number" || idx < 0 || idx > 3) {
+            throw new Error(`Answer ${i} out of range: ${idx}`);
+          }
+        });
+      } catch (err) {
+        return res.status(400).json({ success: false, error: "Invalid answers format." });
+      }
+
+      // Compute score server-side
+      const score = answerIndices.reduce((sum, idx) => sum + AUDIT_OPTION_SCORES[idx], 0);
+      const stage = AUDIT_STAGES.find(s => score >= s.range[0] && score <= s.range[1]) ?? AUDIT_STAGES[AUDIT_STAGES.length - 1];
+      const suggestedTier = `${stage.num} — ${stage.name}`;
+      const recommendations = stage.recs;
+
+      // Store to DB
+      const submission = await storage.createAuditSubmission({
+        name: input.name,
+        email: input.email,
+        business: input.business ?? null,
+        score,
+        answers: input.answers,
+        results: JSON.stringify(recommendations),
+        suggestedTier,
+      });
 
       sendAuditResults({
-        email: validatedData.email,
-        name: validatedData.name,
-        score: validatedData.score,
-        tier: validatedData.suggestedTier,
+        email: input.email,
+        name: input.name,
+        score,
+        tier: suggestedTier,
         recommendations,
       }).catch((err) => console.error("Audit results email failed:", err));
 
       sendAuditNotification({
-        name: validatedData.name,
-        email: validatedData.email,
-        business: validatedData.business || "",
-        score: validatedData.score,
-        tier: validatedData.suggestedTier,
+        name: input.name,
+        email: input.email,
+        business: input.business || "",
+        score,
+        tier: suggestedTier,
       }).catch((err) => console.error("Audit notification failed:", err));
 
       pushToKlipy({
-        name: validatedData.name,
-        email: validatedData.email,
-        company: validatedData.business || undefined,
+        name: input.name,
+        email: input.email,
+        company: input.business || undefined,
         source: "ai-readiness-assessment",
       });
 
@@ -403,7 +476,7 @@ export async function registerRoutes(
         fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
           method: "POST",
           headers: { "Content-Type": "application/json", Authorization: `Bearer ${beehiivApiKey}` },
-          body: JSON.stringify({ email: validatedData.email, reactivate_existing: true, send_welcome_email: false, tags: ["ai-readiness-assessment"] }),
+          body: JSON.stringify({ email: input.email, reactivate_existing: true, send_welcome_email: false, tags: ["ai-readiness-assessment"] }),
         }).catch((err) => console.error("Beehiiv audit sync failed:", err));
       }
 

@@ -749,51 +749,47 @@
         range: [0, 25],
         stageNum: "Stage 1",
         name: "Discovery",
-        color: "#e05555",
-        desc: "Your business is at the start of its AI journey. The gap between where you are and where you could be is significant — and that's actually good news. The businesses that move now will hold a real advantage in 12 to 18 months.",
+        color: "#c0392b",
+        desc: "Your business is at the start of its AI journey. This is where 61% of Australian SMBs sit — and the gap between here and where you could be is significant. The businesses that move now will hold a real advantage in 12 to 18 months.",
         recs: [
           "Run a data audit: list every system where your business information currently lives.",
           "Identify 2–3 high-volume, repetitive tasks that could realistically be automated first.",
-          "Assign one team member as your AI champion and give them dedicated exploration time.",
-          "Book a free pre-discovery call to map your highest-value AI starting point."
+          "Assign one team member as your AI champion and give them dedicated exploration time."
         ]
       },
       {
         range: [26, 50],
         stageNum: "Stage 2",
-        name: "Pilot",
-        color: "#e07835",
-        desc: "You're experimenting, but AI hasn't yet made it into your core operations. The gap between pilot and production is where most businesses stall — the right infrastructure and the right plan closes it.",
+        name: "ChatGPT Plateau",
+        color: "#d4712a",
+        desc: "You're experimenting with AI tools — likely ChatGPT or Copilot — but it hasn't made it into your core operations. This is the plateau where most businesses stall. The right infrastructure and a clear plan bridges the gap.",
         recs: [
           "Document your 3 most important workflows before connecting any AI system to them.",
           "Run a focused 30-day pilot: one process, one tool, clear success metrics.",
-          "Get your whole team trained on prompt engineering basics — not just the champions.",
-          "Consider a fractional AI ops consultant to compress your timeline to meaningful results."
+          "Get your whole team trained on prompt engineering basics — not just the champions."
         ]
       },
       {
         range: [51, 75],
         stageNum: "Stage 3",
-        name: "Integration",
-        color: "#c9952a",
-        desc: "AI is working in parts of your business. The challenge now is connecting the pieces and building systems that scale beyond individual tools — and individuals.",
+        name: "Systematically Enabled",
+        color: "#b5943a",
+        desc: "AI is working in parts of your business. The challenge now is connecting the pieces and building systems that scale beyond individual tools — and beyond the individuals who set them up.",
         recs: [
           "Audit which current AI tools are genuinely integrated into documented workflows.",
           "Build a data layer that feeds your AI systems clean, real-time information.",
-          "Establish governance: who owns AI decisions, data quality, and model updates?",
-          "Explore multi-agent workflows for your highest-value, most complex processes."
+          "Establish governance: who owns AI decisions, data quality, and model updates?"
         ]
       },
       {
         range: [76, 100],
         stageNum: "Stage 4",
-        name: "Optimisation",
-        color: "#3aab6e",
-        desc: "You're operating at the frontier of business AI adoption. The focus now is on compounding your advantages and systematically measuring AI's contribution to business outcomes.",
+        name: "Fully AI-Native",
+        color: "#2e8b57",
+        desc: "You're operating at the frontier of business AI adoption — where only 5% of Australian SMBs currently sit. The focus now is compounding your advantages and systematically measuring AI's contribution to business outcomes.",
         recs: [
           "Shift from tool-level thinking to system-level AI architecture.",
           "Invest in custom model fine-tuning or RAG systems for domain-specific knowledge.",
-          "Build AI literacy and AI decision-making into your hiring and onboarding process.",
           "Systematically measure ROI across all AI deployments and scale what's working."
         ]
       }
@@ -946,20 +942,12 @@
       btn.disabled = true;
       btn.textContent = 'Loading…';
 
-      // Build payload
-      var answersSummary = answers.map(function(ansIdx, qIdx) {
-        if (ansIdx === null) return QUESTIONS[qIdx].q + ': (skipped)';
-        return QUESTIONS[qIdx].q + ': ' + QUESTIONS[qIdx].opts[ansIdx].text;
-      }).join('\n');
-
+      // Build payload — send structured answer indices so server can score independently
       var payload = {
         name: name,
         email: email,
         business: business || null,
-        score: totalScore,
-        answers: answersSummary,
-        results: JSON.stringify(finalStage.recs),
-        suggestedTier: finalStage.stageNum + ' — ' + finalStage.name
+        answers: JSON.stringify(answers)  // array of 10 option indices (0-3)
       };
 
       try {
