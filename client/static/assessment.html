@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Readiness Self-Assessment — Tech Horizon Labs</title>
+  <meta name="description" content="Take the free Tech Horizon Labs AI Readiness Assessment. 10 questions. Instant results. Find out where your business sits on the AI maturity curve and what to do next.">
+  <link rel="canonical" href="https://techhorizonlabs.com/assessment">
+  <meta property="og:title" content="AI Readiness Self-Assessment — Tech Horizon Labs">
+  <meta property="og:description" content="Take the free AI Readiness Assessment. 10 questions, instant results. Find out where your business sits on the AI maturity curve.">
+  <meta property="og:url" content="https://techhorizonlabs.com/assessment">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AI Readiness Self-Assessment — Tech Horizon Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="AI Readiness Self-Assessment — Tech Horizon Labs">
+  <meta name="twitter:description" content="Free AI readiness assessment for Australian businesses. 10 questions, instant personalised results.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com" },
+      { "@type": "ListItem", "position": 2, "name": "AI Readiness Assessment", "item": "https://techhorizonlabs.com/assessment" }
+    ]
+  }
+  </script>
+  <style>
+    .assessment-wrap {
+      min-height: 80vh;
+      padding: 4rem 0 6rem;
+    }
+
+    .assessment-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .assessment-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .assessment-header h1 {
+      font-size: clamp(1.75rem, 4vw, 2.625rem);
+      margin-bottom: 0.875rem;
+    }
+
+    .assessment-header .sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Progress bar */
+    .progress-bar-wrap {
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .progress-track {
+      height: 4px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.35s ease;
+    }
+
+    /* Question card */
+    .question-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.25rem 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .question-num {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.625rem;
+    }
+
+    .question-text {
+      font-family: var(--font-heading);
+      font-size: clamp(1.0625rem, 2.5vw, 1.3125rem);
+      font-weight: 500;
+      line-height: 1.35;
+      margin-bottom: 1.75rem;
+      color: var(--text);
+    }
+
+    .options-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      padding: 0.875rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      line-height: 1.45;
+    }
+
+    .option-btn:hover {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .option-btn.selected {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .question-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.75rem;
+      gap: 1rem;
+    }
+
+    .btn-nav {
+      padding: 0.6875rem 1.375rem;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+    }
+
+    .btn-nav:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
+
+    .btn-next {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      padding: 0.6875rem 1.75rem;
+    }
+
+    .btn-next:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    .btn-next:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Contact gate */
+    .gate-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.25rem 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .gate-card h2 {
+      font-size: 1.375rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .gate-card .gate-sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.55;
+    }
+
+    .gate-score-preview {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--accent-light);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .gate-score-ring {
+      width: 3rem;
+      height: 3rem;
+      flex-shrink: 0;
+    }
+
+    .gate-score-text {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .gate-score-text strong {
+      font-size: 1.0625rem;
+      color: var(--accent);
+    }
+
+    .gate-form input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      background: var(--bg);
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .gate-form input:focus {
+      border-color: var(--accent);
+    }
+
+    .gate-form input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .btn-reveal {
+      width: 100%;
+      padding: 0.9rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-top: 0.25rem;
+    }
+
+    .btn-reveal:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-reveal:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .gate-form-error {
+      font-size: 0.8125rem;
+      color: #c0392b;
+      margin-top: 0.375rem;
+      display: none;
+    }
+
+    /* Results */
+    .results-card {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .results-score-row {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      margin-bottom: 1.5rem;
+    }
+
+    .score-ring-wrap {
+      flex-shrink: 0;
+      position: relative;
+      width: 90px;
+      height: 90px;
+    }
+
+    .score-ring-wrap svg {
+      transform: rotate(-90deg);
+    }
+
+    .score-ring-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .score-number {
+      font-family: var(--font-heading);
+      font-size: 1.625rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .score-denom {
+      font-size: 0.6875rem;
+      color: var(--text-muted);
+    }
+
+    .results-stage-info {
+      flex: 1;
+    }
+
+    .results-stage-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .results-stage-name {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .results-stage-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .results-recs {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      margin-bottom: 1.5rem;
+    }
+
+    .results-recs h3 {
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+    }
+
+    .rec-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .rec-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.875rem;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .rec-item:last-child {
+      border-bottom: none;
+    }
+
+    .rec-num {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.125em;
+    }
+
+    .results-cta {
+      background: #1c1215;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .results-cta h3 {
+      color: white;
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .results-cta p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.55;
+    }
+
+    .btn-cta-book {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      transition: background 0.15s;
+    }
+
+    .btn-cta-book:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Section visibility */
+    .section-hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 600px) {
+      .question-card,
+      .gate-card {
+        padding: 1.5rem 1.25rem;
+      }
+      .results-score-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+    <div class="assessment-wrap">
+      <div class="container" style="max-width:760px;">
+
+        <!-- Header -->
+        <div class="assessment-header">
+          <span class="assessment-eyebrow">Free Tool</span>
+          <h1>AI Readiness Self-Assessment</h1>
+          <p class="sub">10 questions. 3 minutes. Find out where your business sits on the AI maturity curve and what to prioritise first.</p>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="progress-bar-wrap" id="progress-wrap">
+          <div class="progress-meta">
+            <span id="progress-label">Question 1 of 10</span>
+            <span id="progress-pct">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+
+        <!-- Question section -->
+        <div id="section-question">
+          <div class="question-card">
+            <p class="question-num" id="q-num">Question 1 of 10</p>
+            <p class="question-text" id="q-text"></p>
+            <ul class="options-list" id="options-list"></ul>
+            <div class="question-nav">
+              <button class="btn-nav" id="btn-back" onclick="goBack()">← Back</button>
+              <button class="btn-next btn-nav" id="btn-next" onclick="goNext()" disabled>Next →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact gate section -->
+        <div id="section-gate" class="section-hidden">
+          <div class="gate-card">
+            <h2>Almost there.</h2>
+            <p class="gate-sub">Enter your details below to see your personalised results and recommendations.</p>
+
+            <div class="gate-score-preview">
+              <svg class="gate-score-ring" width="48" height="48" viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="20" fill="none" stroke="#eceae6" stroke-width="4"/>
+                <circle id="gate-ring-arc" cx="24" cy="24" r="20" fill="none" stroke="#B5654A" stroke-width="4"
+                  stroke-dasharray="125.66" stroke-dashoffset="125.66" stroke-linecap="round"
+                  style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 0.5s ease"/>
+              </svg>
+              <div class="gate-score-text">
+                You scored <strong id="gate-score-display">—</strong> out of 100.<br>
+                See your full readiness profile and next steps.
+              </div>
+            </div>
+
+            <form class="gate-form" id="gate-form" novalidate>
+              <input type="text" id="g-name" name="name" placeholder="Your name" autocomplete="name" required data-testid="input-gate-name">
+              <input type="email" id="g-email" name="email" placeholder="Work email" autocomplete="email" required data-testid="input-gate-email">
+              <input type="text" id="g-business" name="business" placeholder="Business name (optional)" autocomplete="organization" data-testid="input-gate-business">
+              <p class="gate-form-error" id="gate-error"></p>
+              <button type="submit" class="btn-reveal" id="btn-reveal" data-testid="button-reveal-results">Show my results</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Results section -->
+        <div id="section-results" class="section-hidden">
+          <div class="results-card">
+            <div class="results-score-row">
+              <div class="score-ring-wrap">
+                <svg width="90" height="90" viewBox="0 0 90 90">
+                  <circle cx="45" cy="45" r="38" fill="none" stroke="#eceae6" stroke-width="6"/>
+                  <circle id="result-ring-arc" cx="45" cy="45" r="38" fill="none" stroke="#B5654A" stroke-width="6"
+                    stroke-dasharray="238.76" stroke-dashoffset="238.76" stroke-linecap="round"
+                    style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 0.6s ease 0.2s"/>
+                </svg>
+                <div class="score-ring-label">
+                  <span class="score-number" id="result-score">—</span>
+                  <span class="score-denom">/ 100</span>
+                </div>
+              </div>
+              <div class="results-stage-info">
+                <p class="results-stage-label" id="result-stage-num">Stage —</p>
+                <h2 class="results-stage-name" id="result-stage-name"></h2>
+                <p class="results-stage-desc" id="result-stage-desc"></p>
+              </div>
+            </div>
+
+            <div class="results-recs">
+              <h3>Your recommended next steps</h3>
+              <ul class="rec-list" id="rec-list"></ul>
+            </div>
+
+            <div class="results-cta">
+              <h3>Want to compress your timeline?</h3>
+              <p>Book a free 15-minute pre-discovery call. We'll map your highest-value AI starting point and give you a clear plan.</p>
+              <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery"
+                 target="_blank"
+                 rel="noopener"
+                 class="btn-cta-book"
+                 data-testid="link-book-call">
+                Book a free 15-min call
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="brand">Tech Horizon Labs</a>
+        <p>AI systems for growing businesses.<br>Noosa Heads, Queensland. Australia-wide.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/work">Clients</a>
+        <a href="/about">About</a>
+        <a href="/academy">Academy</a>
+        <a href="/research">Research</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+  <script>
+    // ==============================
+    // Assessment data
+    // ==============================
+    var QUESTIONS = [
+      {
+        q: "Does your business have a documented AI strategy or roadmap?",
+        opts: [
+          { text: "No. We haven't seriously considered it yet.", score: 0 },
+          { text: "We've discussed AI informally but have no formal plan.", score: 3 },
+          { text: "We have a basic plan but haven't started implementing it.", score: 7 },
+          { text: "Yes. We have a formal roadmap with clear ownership.", score: 10 }
+        ]
+      },
+      {
+        q: "How would you describe your business data today?",
+        opts: [
+          { text: "Paper-based or scattered across disconnected spreadsheets.", score: 0 },
+          { text: "Digital but siloed — different systems don't talk to each other.", score: 3 },
+          { text: "Mostly centralised, though some gaps remain.", score: 7 },
+          { text: "Centralised, clean, well-structured, and readily accessible.", score: 10 }
+        ]
+      },
+      {
+        q: "What's your team's current level of AI literacy?",
+        opts: [
+          { text: "Very low — most staff are unfamiliar with AI tools.", score: 0 },
+          { text: "Emerging — a few people experimenting on their own.", score: 3 },
+          { text: "Moderate — we've done some training and have internal advocates.", score: 7 },
+          { text: "High — AI literacy is embedded across key team members.", score: 10 }
+        ]
+      },
+      {
+        q: "Are you using AI tools in your business today?",
+        opts: [
+          { text: "No AI tools currently in use.", score: 0 },
+          { text: "Using free tools informally (ChatGPT, Copilot, etc.).", score: 3 },
+          { text: "Using paid tools for specific tasks.", score: 7 },
+          { text: "AI tools are integrated into our core workflows.", score: 10 }
+        ]
+      },
+      {
+        q: "How well-documented are your business processes?",
+        opts: [
+          { text: "Mostly in people's heads — minimal documentation.", score: 0 },
+          { text: "Some processes documented, but inconsistently.", score: 3 },
+          { text: "Key processes documented and regularly updated.", score: 7 },
+          { text: "All critical processes documented and mapped for automation.", score: 10 }
+        ]
+      },
+      {
+        q: "How open is your leadership to automating business processes?",
+        opts: [
+          { text: "Resistant — concerned about reliability or job displacement.", score: 0 },
+          { text: "Curious but cautious — we need to see proof of value first.", score: 3 },
+          { text: "Open to automation in specific, lower-risk areas.", score: 7 },
+          { text: "Actively seeking automation opportunities across the business.", score: 10 }
+        ]
+      },
+      {
+        q: "What's your annual budget appetite for AI and automation?",
+        opts: [
+          { text: "No budget currently allocated for AI.", score: 0 },
+          { text: "$1,000–$5,000 per year.", score: 3 },
+          { text: "$5,000–$20,000 per year.", score: 7 },
+          { text: "$20,000+ per year — AI is a strategic investment.", score: 10 }
+        ]
+      },
+      {
+        q: "How do you currently handle data security and privacy?",
+        opts: [
+          { text: "No formal policies — we manage ad hoc as issues arise.", score: 0 },
+          { text: "Basic awareness, but practices are informal.", score: 3 },
+          { text: "Policies in place, partially enforced across the team.", score: 7 },
+          { text: "Formal policies, regular audits, and compliance frameworks.", score: 10 }
+        ]
+      },
+      {
+        q: "How connected are your current software tools?",
+        opts: [
+          { text: "Fully disconnected — manual re-entry between all systems.", score: 0 },
+          { text: "Some integrations via Zapier or manual API connections.", score: 3 },
+          { text: "Most systems integrated, some automation in place.", score: 7 },
+          { text: "Fully integrated ecosystem with real-time data flows.", score: 10 }
+        ]
+      },
+      {
+        q: "Historically, how has your business adopted new technology?",
+        opts: [
+          { text: "Slow adopter — typically 2+ years behind the mainstream.", score: 0 },
+          { text: "Cautious — we adopt once most competitors already have.", score: 3 },
+          { text: "Average — within 12 months of mainstream availability.", score: 7 },
+          { text: "Early adopter — often first in our industry to try new tools.", score: 10 }
+        ]
+      }
+    ];
+
+    var STAGES = [
+      {
+        range: [0, 25],
+        stageNum: "Stage 1",
+        name: "Discovery",
+        color: "#e05555",
+        desc: "Your business is at the start of its AI journey. The gap between where you are and where you could be is significant — and that's actually good news. The businesses that move now will hold a real advantage in 12 to 18 months.",
+        recs: [
+          "Run a data audit: list every system where your business information currently lives.",
+          "Identify 2–3 high-volume, repetitive tasks that could realistically be automated first.",
+          "Assign one team member as your AI champion and give them dedicated exploration time.",
+          "Book a free pre-discovery call to map your highest-value AI starting point."
+        ]
+      },
+      {
+        range: [26, 50],
+        stageNum: "Stage 2",
+        name: "Pilot",
+        color: "#e07835",
+        desc: "You're experimenting, but AI hasn't yet made it into your core operations. The gap between pilot and production is where most businesses stall — the right infrastructure and the right plan closes it.",
+        recs: [
+          "Document your 3 most important workflows before connecting any AI system to them.",
+          "Run a focused 30-day pilot: one process, one tool, clear success metrics.",
+          "Get your whole team trained on prompt engineering basics — not just the champions.",
+          "Consider a fractional AI ops consultant to compress your timeline to meaningful results."
+        ]
+      },
+      {
+        range: [51, 75],
+        stageNum: "Stage 3",
+        name: "Integration",
+        color: "#c9952a",
+        desc: "AI is working in parts of your business. The challenge now is connecting the pieces and building systems that scale beyond individual tools — and individuals.",
+        recs: [
+          "Audit which current AI tools are genuinely integrated into documented workflows.",
+          "Build a data layer that feeds your AI systems clean, real-time information.",
+          "Establish governance: who owns AI decisions, data quality, and model updates?",
+          "Explore multi-agent workflows for your highest-value, most complex processes."
+        ]
+      },
+      {
+        range: [76, 100],
+        stageNum: "Stage 4",
+        name: "Optimisation",
+        color: "#3aab6e",
+        desc: "You're operating at the frontier of business AI adoption. The focus now is on compounding your advantages and systematically measuring AI's contribution to business outcomes.",
+        recs: [
+          "Shift from tool-level thinking to system-level AI architecture.",
+          "Invest in custom model fine-tuning or RAG systems for domain-specific knowledge.",
+          "Build AI literacy and AI decision-making into your hiring and onboarding process.",
+          "Systematically measure ROI across all AI deployments and scale what's working."
+        ]
+      }
+    ];
+
+    // ==============================
+    // State
+    // ==============================
+    var currentQ = 0;
+    var answers = new Array(QUESTIONS.length).fill(null); // selected option index per question
+    var totalScore = 0;
+    var finalStage = null;
+
+    // ==============================
+    // Render question
+    // ==============================
+    function renderQuestion() {
+      var q = QUESTIONS[currentQ];
+      document.getElementById('q-num').textContent = 'Question ' + (currentQ + 1) + ' of ' + QUESTIONS.length;
+      document.getElementById('q-text').textContent = q.q;
+
+      var list = document.getElementById('options-list');
+      list.innerHTML = '';
+      q.opts.forEach(function(opt, i) {
+        var li = document.createElement('li');
+        var btn = document.createElement('button');
+        btn.className = 'option-btn' + (answers[currentQ] === i ? ' selected' : '');
+        btn.type = 'button';
+        btn.textContent = opt.text;
+        btn.setAttribute('data-testid', 'option-' + currentQ + '-' + i);
+        btn.onclick = function() { selectOption(i); };
+        li.appendChild(btn);
+        list.appendChild(li);
+      });
+
+      updateProgress();
+      updateNavBtns();
+    }
+
+    function selectOption(i) {
+      answers[currentQ] = i;
+      renderQuestion();
+    }
+
+    function updateProgress() {
+      var answered = answers.filter(function(a) { return a !== null; }).length;
+      var pct = Math.round((answered / QUESTIONS.length) * 100);
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-pct').textContent = pct + '%';
+      document.getElementById('progress-label').textContent = 'Question ' + (currentQ + 1) + ' of ' + QUESTIONS.length;
+    }
+
+    function updateNavBtns() {
+      var backBtn = document.getElementById('btn-back');
+      var nextBtn = document.getElementById('btn-next');
+
+      backBtn.style.visibility = currentQ === 0 ? 'hidden' : 'visible';
+      nextBtn.disabled = answers[currentQ] === null;
+
+      if (currentQ === QUESTIONS.length - 1) {
+        nextBtn.textContent = 'See my score →';
+      } else {
+        nextBtn.textContent = 'Next →';
+      }
+    }
+
+    function goNext() {
+      if (answers[currentQ] === null) return;
+
+      if (currentQ < QUESTIONS.length - 1) {
+        currentQ++;
+        renderQuestion();
+      } else {
+        showGate();
+      }
+    }
+
+    function goBack() {
+      if (currentQ > 0) {
+        currentQ--;
+        renderQuestion();
+      }
+    }
+
+    function computeScore() {
+      var score = 0;
+      answers.forEach(function(ansIdx, qIdx) {
+        if (ansIdx !== null) {
+          score += QUESTIONS[qIdx].opts[ansIdx].score;
+        }
+      });
+      return score;
+    }
+
+    function getStage(score) {
+      for (var i = 0; i < STAGES.length; i++) {
+        if (score >= STAGES[i].range[0] && score <= STAGES[i].range[1]) {
+          return STAGES[i];
+        }
+      }
+      return STAGES[STAGES.length - 1];
+    }
+
+    // ==============================
+    // Gate section
+    // ==============================
+    function showGate() {
+      totalScore = computeScore();
+      finalStage = getStage(totalScore);
+
+      document.getElementById('section-question').classList.add('section-hidden');
+      document.getElementById('progress-wrap').classList.add('section-hidden');
+      document.getElementById('section-gate').classList.remove('section-hidden');
+
+      document.getElementById('gate-score-display').textContent = totalScore;
+
+      // Animate gate ring
+      var circumference = 125.66;
+      var offset = circumference - (totalScore / 100) * circumference;
+      setTimeout(function() {
+        var arc = document.getElementById('gate-ring-arc');
+        arc.style.stroke = finalStage.color;
+        arc.style.strokeDashoffset = offset;
+      }, 100);
+    }
+
+    // Gate form submit
+    document.getElementById('gate-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      var name = document.getElementById('g-name').value.trim();
+      var email = document.getElementById('g-email').value.trim();
+      var business = document.getElementById('g-business').value.trim();
+      var errEl = document.getElementById('gate-error');
+      var btn = document.getElementById('btn-reveal');
+
+      errEl.style.display = 'none';
+
+      if (!name) {
+        errEl.textContent = 'Please enter your name.';
+        errEl.style.display = 'block';
+        return;
+      }
+      if (!email || !email.includes('@')) {
+        errEl.textContent = 'Please enter a valid email address.';
+        errEl.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Loading…';
+
+      // Build payload
+      var answersSummary = answers.map(function(ansIdx, qIdx) {
+        if (ansIdx === null) return QUESTIONS[qIdx].q + ': (skipped)';
+        return QUESTIONS[qIdx].q + ': ' + QUESTIONS[qIdx].opts[ansIdx].text;
+      }).join('\n');
+
+      var payload = {
+        name: name,
+        email: email,
+        business: business || null,
+        score: totalScore,
+        answers: answersSummary,
+        results: JSON.stringify(finalStage.recs),
+        suggestedTier: finalStage.stageNum + ' — ' + finalStage.name
+      };
+
+      try {
+        var res = await fetch('/api/audit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        var data = await res.json();
+        if (!data.success && res.status !== 200) {
+          throw new Error(data.error || 'Something went wrong.');
+        }
+      } catch (err) {
+        // Don't block results on API failure — show them anyway
+        console.error('Audit API error:', err);
+      }
+
+      showResults(name);
+    });
+
+    // ==============================
+    // Results section
+    // ==============================
+    function showResults(name) {
+      document.getElementById('section-gate').classList.add('section-hidden');
+      document.getElementById('section-results').classList.remove('section-hidden');
+
+      document.getElementById('result-score').textContent = totalScore;
+      document.getElementById('result-score').style.color = finalStage.color;
+      document.getElementById('result-stage-num').textContent = finalStage.stageNum;
+      document.getElementById('result-stage-name').textContent = finalStage.name;
+      document.getElementById('result-stage-desc').textContent = finalStage.desc;
+
+      // Animate result ring
+      var circumference = 238.76;
+      var offset = circumference - (totalScore / 100) * circumference;
+      setTimeout(function() {
+        var arc = document.getElementById('result-ring-arc');
+        arc.style.stroke = finalStage.color;
+        arc.style.strokeDashoffset = offset;
+      }, 150);
+
+      // Render recommendations
+      var recList = document.getElementById('rec-list');
+      recList.innerHTML = '';
+      finalStage.recs.forEach(function(rec, i) {
+        var li = document.createElement('li');
+        li.className = 'rec-item';
+        li.setAttribute('data-testid', 'rec-item-' + i);
+        li.innerHTML = '<span class="rec-num">' + (i + 1) + '</span><span>' + rec + '</span>';
+        recList.appendChild(li);
+      });
+
+      // Scroll to top of results
+      document.getElementById('section-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ==============================
+    // Init
+    // ==============================
+    renderQuestion();
+  </script>
+</body>
+</html>

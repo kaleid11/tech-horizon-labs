@@ -81,16 +81,27 @@ function ComparisonDashboard({ onSelectCompany }: { onSelectCompany: (id: string
   );
 }
 
-function deconflictYs(ys: number[], minGap: number): number[] {
+function deconflictYs(ys: number[], minGap: number, maxBound?: number): number[] {
+  if (ys.length === 0) return [];
   const indexed = ys.map((y, i) => ({ y, i })).sort((a, b) => a.y - b.y);
   const result = [...ys];
+  // Forward pass: push down to resolve overlaps
   for (let k = 1; k < indexed.length; k++) {
-    const prev = indexed[k - 1];
-    const curr = indexed[k];
-    const gap = curr.y - result[prev.i];
-    if (gap < minGap) {
-      result[curr.i] = result[prev.i] + minGap;
-      indexed[k] = { ...indexed[k], y: result[curr.i] };
+    const gap = result[indexed[k].i] - result[indexed[k - 1].i];
+    if (gap < minGap) result[indexed[k].i] = result[indexed[k - 1].i] + minGap;
+    indexed[k] = { ...indexed[k], y: result[indexed[k].i] };
+  }
+  // Clamp to maxBound and backward pass: pull up from bottom
+  if (maxBound !== undefined) {
+    for (let k = indexed.length - 1; k >= 0; k--) {
+      if (result[indexed[k].i] > maxBound) result[indexed[k].i] = maxBound;
+      indexed[k] = { ...indexed[k], y: result[indexed[k].i] };
+    }
+    for (let k = indexed.length - 2; k >= 0; k--) {
+      if (result[indexed[k + 1].i] - result[indexed[k].i] < minGap) {
+        result[indexed[k].i] = result[indexed[k + 1].i] - minGap;
+        indexed[k] = { ...indexed[k], y: result[indexed[k].i] };
+      }
     }
   }
   return result;
@@ -128,15 +139,14 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
   }));
   const singlePt = withVals.filter(co => co.points.length === 1);
 
-  const adjustedLabelYs = deconflictYs(
-    multiPt.map(co => getY(co.pts[co.pts.length - 1].val)),
-    16
-  );
-
-  const adjustedSingleYs = deconflictYs(
-    singlePt.map(co => getY(co.points[0].val)),
-    14
-  );
+  // Unified label deconfliction across both multi-point and single-point companies
+  const allLabels = [
+    ...multiPt.map(co => ({ id: co.id, rawY: getY(co.pts[co.pts.length - 1].val) })),
+    ...singlePt.map(co => ({ id: co.id, rawY: getY(co.points[0].val) })),
+  ];
+  const allAdjustedYs = deconflictYs(allLabels.map(l => l.rawY), 16, h - 8);
+  const labelYMap: Record<string, number> = {};
+  allLabels.forEach((l, i) => { labelYMap[l.id] = allAdjustedYs[i]; });
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
@@ -160,10 +170,10 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
 
         <line x1={pad.left} y1={pad.top + chartH} x2={w - pad.right} y2={pad.top + chartH} stroke="#e5e7eb" strokeWidth="1" />
 
-        {multiPt.map((co, idx) => {
+        {multiPt.map((co) => {
           const d = co.pts.map((p, i) => `${i === 0 ? "M" : "L"} ${getX(p.date)} ${getY(p.val)}`).join(" ");
           const lastPt = co.pts[co.pts.length - 1];
-          const labelY = adjustedLabelYs[idx];
+          const labelY = labelYMap[co.id];
           const isHovered = hoveredId === co.id;
           const isDimmed = hoveredId !== null && !isHovered;
           return (
@@ -210,9 +220,9 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
           );
         })}
 
-        {singlePt.map((co, idx) => {
+        {singlePt.map((co) => {
           const pt = co.points[0];
-          const labelY = adjustedSingleYs[idx];
+          const labelY = labelYMap[co.id];
           const isHovered = hoveredId === co.id;
           const isDimmed = hoveredId !== null && !isHovered;
           return (
@@ -797,7 +807,7 @@ function InvestorPanel({ company }: { company: CompanyData }) {
   );
 }
 
-function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: string }) {
+function ValuationPanel({ rounds, accent, isMarketCap }: { rounds: FundingRound[]; accent: string; isMarketCap?: boolean }) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const vals = rounds.filter(r => r.val).map(r => ({
     label: r.label,
@@ -860,6 +870,11 @@ function ValuationPanel({ rounds, accent }: { rounds: FundingRound[]; accent: st
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-3">
+      {isMarketCap && (
+        <div className="rounded-lg p-3 border border-gray-100 bg-gray-50 text-[11px] text-gray-500 leading-relaxed">
+          This chart shows the parent company's public market capitalisation over time, not a standalone AI division valuation. No independently verified external valuation exists for this AI lab.
+        </div>
+      )}
       <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
         <p className="text-[9px] text-gray-300 font-mono text-center mb-1 md:hidden">← scroll chart →</p>
         <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 420 }} preserveAspectRatio="xMidYMid meet" role="img" aria-label="Company valuation history chart">
@@ -1136,7 +1151,7 @@ function CompanyView({ company, tabId, setTabId, onPersonClick, onBack }: {
       {tabId === "supply" && company.supplyChain && <SupplyChainPanel entities={company.supplyChain} />}
       {tabId === "funding" && <FundingPanel rounds={company.fundingRounds} accent={accent} />}
       {tabId === "investors" && <InvestorPanel company={company} />}
-      {tabId === "valuation" && <ValuationPanel rounds={company.fundingRounds} accent={accent} />}
+      {tabId === "valuation" && <ValuationPanel rounds={company.fundingRounds} accent={accent} isMarketCap={["google-deepmind", "meta-ai"].includes(company.meta.id)} />}
       {tabId === "timeline" && company.timeline && <TimelinePanel events={company.timeline} accent={accent} />}
       {tabId === "safety" && company.safetyIssues && <TimelinePanel events={company.safetyIssues} accent={C.red} title="SAFETY & ETHICS ISSUES" />}
       {tabId === "restructuring" && company.restructuring && <RestructuringPanel phases={company.restructuring} financials={company.financials} accent={accent} />}

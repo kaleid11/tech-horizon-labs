@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>State of AI Readiness: Australian SMB 2026 — Free Report | Tech Horizon Labs</title>
+  <meta name="description" content="Download the free Tech Horizon Labs report: how Australian small and medium businesses are approaching AI in 2026. 4 maturity stages, industry breakdowns, and a readiness checklist.">
+  <link rel="canonical" href="https://techhorizonlabs.com/report">
+  <meta property="og:title" content="State of AI Readiness: Australian SMB 2026 — Free Report">
+  <meta property="og:description" content="Download the free report: how Australian small and medium businesses are approaching AI in 2026. 4 maturity stages, industry breakdowns, and a readiness checklist.">
+  <meta property="og:url" content="https://techhorizonlabs.com/report">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="State of AI Readiness: Australian SMB 2026 — Free Report">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="State of AI Readiness: Australian SMB 2026 — Free Report">
+  <meta name="twitter:description" content="Download the free report on AI readiness for Australian small and medium businesses in 2026.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com" },
+      { "@type": "ListItem", "position": 2, "name": "AI Readiness Report 2026", "item": "https://techhorizonlabs.com/report" }
+    ]
+  }
+  </script>
+  <style>
+    .report-eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .report-hero {
+      padding-top: 5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .report-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 600;
+      max-width: 680px;
+      margin-bottom: 1.25rem;
+      line-height: 1.15;
+    }
+
+    .report-hero .subtitle {
+      font-size: 1.0625rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    .report-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 2.5rem 0 3.5rem;
+    }
+
+    .report-stat {
+      background: var(--bg);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+    }
+
+    .report-stat-number {
+      font-family: var(--font-heading);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .report-stat-label {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .report-body {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 4rem;
+      align-items: start;
+      padding-bottom: 5rem;
+    }
+
+    .report-toc h2 {
+      font-size: 1.375rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .report-toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+    }
+
+    .report-toc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .report-toc li::before {
+      content: "→";
+      color: var(--accent);
+      flex-shrink: 0;
+      font-size: 0.875rem;
+      margin-top: 0.1em;
+    }
+
+    .report-about {
+      background: var(--accent-light);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .report-gate-card {
+      position: sticky;
+      top: 6rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .report-gate-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.375rem;
+    }
+
+    .report-gate-card .gate-sub {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .report-gate-card .pdf-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.3rem 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .report-form input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      background: var(--bg);
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      transition: border-color 0.15s;
+      outline: none;
+    }
+
+    .report-form input:focus {
+      border-color: var(--accent);
+    }
+
+    .report-form input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .report-form .btn-submit {
+      width: 100%;
+      padding: 0.875rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-top: 0.25rem;
+    }
+
+    .report-form .btn-submit:hover {
+      background: var(--accent-hover);
+    }
+
+    .report-form .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .gate-disclaimer {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.875rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .gate-success {
+      display: none;
+      text-align: center;
+    }
+
+    .gate-success .success-icon {
+      width: 3rem;
+      height: 3rem;
+      background: #e8f5e9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      color: #388e3c;
+      font-size: 1.25rem;
+    }
+
+    .gate-success h4 {
+      font-size: 1.0625rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .gate-success p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .gate-success .btn-download {
+      display: inline-block;
+      padding: 0.875rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      width: 100%;
+      text-align: center;
+      transition: background 0.15s;
+    }
+
+    .gate-success .btn-download:hover {
+      background: var(--accent-hover);
+    }
+
+    .form-error {
+      font-size: 0.8125rem;
+      color: #c0392b;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    @media (max-width: 780px) {
+      .report-stats {
+        grid-template-columns: 1fr;
+      }
+      .report-body {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .report-gate-card {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+    <section class="hero report-hero container">
+      <span class="report-eyebrow">Free Report — 2026</span>
+      <h1>State of AI Readiness:<br>Australian SMB 2026</h1>
+      <p class="subtitle">Where Queensland and Australian small businesses sit on the AI maturity curve. The gap between intention and action. What moves the needle.</p>
+    </section>
+
+    <section class="container">
+      <div class="report-stats">
+        <div class="report-stat">
+          <div class="report-stat-number">89%</div>
+          <div class="report-stat-label">of SMBs say AI adoption is a 2026 priority</div>
+        </div>
+        <div class="report-stat">
+          <div class="report-stat-number">12%</div>
+          <div class="report-stat-label">have a documented AI strategy in place</div>
+        </div>
+        <div class="report-stat">
+          <div class="report-stat-number">$44B</div>
+          <div class="report-stat-label">productivity value AI could unlock for Australian SMBs</div>
+        </div>
+      </div>
+
+      <div class="report-body">
+        <div class="report-toc">
+          <h2>What's inside</h2>
+          <ul>
+            <li>The 4 AI maturity stages and where most Australian businesses actually sit</li>
+            <li>Industry breakdown: professional services, trades, retail, and health</li>
+            <li>The infrastructure gap and why 78% of AI pilots stall before they scale</li>
+            <li>2026 AI tool recommendations by business size and sector</li>
+            <li>The questions to ask before deploying any AI system</li>
+            <li>A printable AI Readiness Checklist for your leadership team</li>
+          </ul>
+
+          <div class="report-about">
+            <strong>About this report.</strong> Tech Horizon Labs works with growing businesses across Queensland and Australia to build AI systems that stick. This report draws on our consulting practice, client engagements, and analysis of global AI adoption research to give you a clear, practical picture of where Australian SMBs stand in 2026.
+          </div>
+        </div>
+
+        <div>
+          <div class="report-gate-card">
+            <span class="pdf-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              PDF — Free Download
+            </span>
+            <h3>Get the full report</h3>
+            <p class="gate-sub">No credit card. Instant access.</p>
+
+            <form class="report-form" id="report-form" novalidate>
+              <input
+                type="text"
+                id="rf-name"
+                name="name"
+                placeholder="Your name"
+                autocomplete="name"
+                required
+                data-testid="input-report-name"
+              >
+              <input
+                type="email"
+                id="rf-email"
+                name="email"
+                placeholder="Work email"
+                autocomplete="email"
+                required
+                data-testid="input-report-email"
+              >
+              <p class="form-error" id="form-error"></p>
+              <button type="submit" class="btn-submit" id="submit-btn" data-testid="button-report-submit">
+                Send me the report
+              </button>
+            </form>
+
+            <div class="gate-success" id="gate-success">
+              <div class="success-icon">&#10003;</div>
+              <h4>On its way.</h4>
+              <p>Check your inbox for the download link. If you don't see it within a couple of minutes, check your spam folder.</p>
+              <a href="/ai-readiness-report-2026.pdf" target="_blank" rel="noopener" class="btn-download" data-testid="link-report-download">
+                Download now
+              </a>
+            </div>
+
+            <p class="gate-disclaimer">
+              You'll also receive our fortnightly AI newsletter.<br>Unsubscribe any time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="brand">Tech Horizon Labs</a>
+        <p>AI systems for growing businesses.<br>Noosa Heads, Queensland. Australia-wide.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/work">Clients</a>
+        <a href="/about">About</a>
+        <a href="/academy">Academy</a>
+        <a href="/research">Research</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+  <script>
+    const form = document.getElementById('report-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const gateSuccess = document.getElementById('gate-success');
+    const formError = document.getElementById('form-error');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('rf-name').value.trim();
+      const email = document.getElementById('rf-email').value.trim();
+
+      formError.style.display = 'none';
+      formError.textContent = '';
+
+      if (!name) {
+        formError.textContent = 'Please enter your name.';
+        formError.style.display = 'block';
+        return;
+      }
+
+      if (!email || !email.includes('@')) {
+        formError.textContent = 'Please enter a valid email address.';
+        formError.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('/api/report-download', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email }),
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          form.style.display = 'none';
+          gateSuccess.style.display = 'block';
+        } else {
+          throw new Error(data.error || 'Something went wrong.');
+        }
+      } catch (err) {
+        formError.textContent = err.message || 'Something went wrong. Please try again.';
+        formError.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send me the report';
+      }
+    });
+  </script>
+</body>
+</html>

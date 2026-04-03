@@ -1,8 +1,9 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSubmissionSchema, insertNewsletterSignupSchema } from "@shared/schema";
-import { sendContactNotification, sendNewsletterWelcome } from "./email";
+import { z } from "zod";
+import { insertContactSubmissionSchema, insertNewsletterSignupSchema, insertAuditSubmissionSchema } from "@shared/schema";
+import { sendContactNotification, sendContactAutoReply, sendNewsletterWelcome, sendReportDownloadEmail, sendAuditResults, sendAuditNotification } from "./email";
 import { pushToKlipy } from "./klipy";
 import path from "path";
 import fs from "fs";
@@ -154,7 +155,22 @@ export async function registerRoutes(
 
   // Individual removed pages
   // /research is now a live page — no redirect
-  app.get("/audit-tool", (_req, res) => res.redirect(301, "/"));
+  app.get("/report", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "report.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+  app.get("/report/", (_req, res) => res.redirect(301, "/report"));
+
+  app.get("/assessment", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "assessment.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+  app.get("/assessment/", (_req, res) => res.redirect(301, "/assessment"));
+
+  app.get("/audit-tool", (_req, res) => res.redirect(301, "/assessment"));
+  app.get("/audit-tool/", (_req, res) => res.redirect(301, "/assessment"));
   app.get("/ai-ethics", (_req, res) => res.redirect(301, "/about"));
   app.get("/openclaw", (_req, res) => {
     const filePath = path.resolve(process.cwd(), "client", "static", "openclaw.html");
@@ -220,6 +236,12 @@ export async function registerRoutes(
         message: validatedData.message
       });
 
+      // Auto-reply to submitter — fire-and-forget
+      sendContactAutoReply({
+        name: validatedData.name,
+        email: validatedData.email,
+      }).catch((err) => console.error("Contact auto-reply failed:", err));
+
       // Fire-and-forget CRM sync
       pushToKlipy({
         name: validatedData.name,
@@ -227,6 +249,25 @@ export async function registerRoutes(
         company: validatedData.company || undefined,
         source: "website-contact",
       });
+
+      // Fire-and-forget Beehiiv subscription (tagged contact-form)
+      const beehiivApiKey = process.env.BEEHIIV_API_KEY;
+      const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
+      if (beehiivApiKey && beehiivPubId) {
+        fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${beehiivApiKey}`,
+          },
+          body: JSON.stringify({
+            email: validatedData.email,
+            reactivate_existing: true,
+            send_welcome_email: false,
+            tags: ["contact-form"],
+          }),
+        }).catch((err) => console.error("Beehiiv contact sync failed:", err));
+      }
 
       res.json({ success: true, id: submission.id });
     } catch (error) {
@@ -301,6 +342,81 @@ export async function registerRoutes(
         success: false,
         error: error instanceof Error ? error.message : "Invalid submission",
       });
+    }
+  });
+
+  app.post("/api/report-download", async (req, res) => {
+    try {
+      const schema = z.object({
+        name: z.string().min(1).max(100),
+        email: z.string().email(),
+      });
+      const data = schema.parse(req.body);
+
+      try {
+        await storage.createNewsletterSignup({ email: data.email });
+      } catch {
+        // already subscribed — still send the PDF
+      }
+
+      sendReportDownloadEmail({ name: data.name, email: data.email }).catch((err) =>
+        console.error("Report download email failed:", err)
+      );
+
+      pushToKlipy({ name: data.name, email: data.email, source: "report-download" });
+
+      const beehiivApiKey = process.env.BEEHIIV_API_KEY;
+      const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
+      if (beehiivApiKey && beehiivPubId) {
+        fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${beehiivApiKey}` },
+          body: JSON.stringify({ email: data.email, reactivate_existing: true, send_welcome_email: false, tags: ["report-download"] }),
+        }).catch((err) => console.error("Beehiiv report sync failed:", err));
+      }
+
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Report download error:", error);
+      res.status(400).json({ success: false, error: error instanceof Error ? error.message : "Invalid submission" });
+    }
+  });
+
+  app.post("/api/audit", async (req, res) => {
+    try {
+      const validatedData = insertAuditSubmissionSchema.parse(req.body);
+      const submission = await storage.createAuditSubmission(validatedData);
+
+      let recommendations: string[] = [];
+      try { recommendations = JSON.parse(validatedData.results); } catch { /* results may be plain text */ }
+
+      sendAuditResults({
+        email: validatedData.email,
+        name: validatedData.name,
+        score: validatedData.score,
+        tier: validatedData.suggestedTier,
+        recommendations,
+      }).catch((err) => console.error("Audit results email failed:", err));
+
+      sendAuditNotification({
+        name: validatedData.name,
+        email: validatedData.email,
+        business: validatedData.business || "",
+        score: validatedData.score,
+        tier: validatedData.suggestedTier,
+      }).catch((err) => console.error("Audit notification failed:", err));
+
+      pushToKlipy({
+        name: validatedData.name,
+        email: validatedData.email,
+        company: validatedData.business || undefined,
+        source: "ai-readiness-assessment",
+      });
+
+      res.json({ success: true, id: submission.id });
+    } catch (error) {
+      console.error("Audit submission error:", error);
+      res.status(400).json({ success: false, error: error instanceof Error ? error.message : "Invalid submission" });
     }
   });
 

@@ -1226,6 +1226,30 @@ blockquote cite {
   margin-bottom: 0;
 }
 
+/* --- About Page --- */
+.about-intro {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-bottom: var(--space-sm);
+}
+
+.about-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  aspect-ratio: 3 / 4;
+  border: 1px solid var(--border-light);
+}
+
+.about-bio p {
+  color: var(--text-secondary);
+}
+
 /* --- Testimonials --- */
 .testimonial-grid {
   display: grid;
@@ -1391,6 +1415,15 @@ blockquote cite {
   h1 { font-size: 2rem; }
   h2 { font-size: 1.5rem; }
   .hero h1 { font-size: 2.5rem; }
+
+  .about-intro {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-photo {
+    max-width: 200px;
+  }
 
   .method-grid {
     grid-template-columns: 1fr;

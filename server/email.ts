@@ -103,7 +103,7 @@ export async function sendAuditResults(data: {
 
           <div style="background:#381d2a;border-radius:12px;padding:24px;text-align:center;margin:24px 0;">
             <p style="color:white;margin-bottom:16px;">Ready to find your biggest bottleneck?</p>
-            <a href="https://cal.com/techhorizonlabs/discovery" style="background:#e76f51;color:#381d2a;padding:12px 32px;border-radius:999px;text-decoration:none;font-weight:bold;display:inline-block;">Book Free 15-Min Audit</a>
+            <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" style="background:#B5654A;color:#ffffff;padding:12px 32px;border-radius:6px;text-decoration:none;font-weight:bold;display:inline-block;">Book a Free 15-Min Call</a>
           </div>
 
           <p style="color:#9ca3af;font-size:12px;">Tech Horizon Labs · Sunshine Coast, QLD · techhorizonlabs.com</p>
@@ -140,6 +140,79 @@ export async function sendAuditNotification(data: {
     });
   } catch (error) {
     console.error('Failed to send audit notification:', error);
+  }
+}
+
+export async function sendContactAutoReply(data: {
+  name: string;
+  email: string;
+}) {
+  try {
+    const { client, fromEmail } = await getUncachableResendClient();
+
+    await client.emails.send({
+      from: fromEmail,
+      to: data.email,
+      reply_to: fromEmail,
+      subject: `Got your message — Tech Horizon Labs`,
+      html: `
+        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a1a;">
+          <p style="font-size:1.1rem;margin-bottom:1rem;">Hi ${data.name},</p>
+          <p style="color:#4a4a4a;line-height:1.6;margin-bottom:1rem;">Got your message. Huxley will review it and be in touch within one business day.</p>
+          <p style="color:#4a4a4a;line-height:1.6;margin-bottom:2rem;">If you'd rather lock in a time now, you can book a free 15-minute pre-discovery call directly:</p>
+          <div style="text-align:left;margin-bottom:2rem;">
+            <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery"
+               style="background:#B5654A;color:#ffffff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;display:inline-block;font-size:0.9375rem;">
+              Book a free 15-min call
+            </a>
+          </div>
+          <p style="color:#7a7a7a;font-size:0.875rem;border-top:1px solid #eceae6;padding-top:1rem;margin-top:1rem;">
+            Tech Horizon Labs &middot; Noosa Heads, Queensland &middot;
+            <a href="https://techhorizonlabs.com" style="color:#B5654A;text-decoration:none;">techhorizonlabs.com</a>
+          </p>
+        </div>
+      `
+    });
+  } catch (error) {
+    console.error('Failed to send contact auto-reply:', error);
+  }
+}
+
+export async function sendReportDownloadEmail(data: { name: string; email: string }) {
+  try {
+    const { client, fromEmail } = await getUncachableResendClient();
+
+    await client.emails.send({
+      from: fromEmail,
+      to: data.email,
+      reply_to: fromEmail,
+      subject: `Your copy: State of AI Readiness — Australian SMB 2026`,
+      html: `
+        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a1a;">
+          <p style="font-size:1.05rem;margin-bottom:1rem;">Hi ${data.name},</p>
+          <p style="color:#4a4a4a;line-height:1.6;margin-bottom:1rem;">Your copy of the <strong>State of AI Readiness: Australian SMB 2026</strong> report is ready to download.</p>
+          <div style="text-align:left;margin:1.5rem 0;">
+            <a href="https://techhorizonlabs.com/ai-readiness-report-2026.pdf"
+               style="background:#B5654A;color:#ffffff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;display:inline-block;font-size:0.9375rem;">
+              Download the report (PDF)
+            </a>
+          </div>
+          <p style="color:#4a4a4a;line-height:1.6;margin-bottom:1rem;">If you'd like to talk through where your business sits on the AI maturity spectrum, book a free 15-minute pre-discovery call:</p>
+          <div style="text-align:left;margin-bottom:2rem;">
+            <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery"
+               style="background:transparent;color:#B5654A;padding:10px 0;border-bottom:2px solid #B5654A;text-decoration:none;font-weight:600;display:inline-block;font-size:0.9rem;">
+              Book a free call →
+            </a>
+          </div>
+          <p style="color:#7a7a7a;font-size:0.875rem;border-top:1px solid #eceae6;padding-top:1rem;margin-top:1rem;">
+            Tech Horizon Labs &middot; Noosa Heads, Queensland &middot;
+            <a href="https://techhorizonlabs.com" style="color:#B5654A;text-decoration:none;">techhorizonlabs.com</a>
+          </p>
+        </div>
+      `
+    });
+  } catch (error) {
+    console.error('Failed to send report download email:', error);
   }
 }
 
