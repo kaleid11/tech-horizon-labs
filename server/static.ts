@@ -44,6 +44,12 @@ const PAGES: Record<string, { file: string; title: string; description: string; 
     title: "AI Company Research Hub",
     description: "Free AI industry research covering governance, funding, and competitive analysis for Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen, Perplexity, Kimi, and Mistral.",
   },
+  "/report": {
+    file: "report.html",
+    fullTitle: "State of AI Readiness: Australian SMB 2026 — Free Report | Tech Horizon Labs",
+    title: "State of AI Readiness: Australian SMB 2026",
+    description: "Free report: first-party survey data from 54 Australian SMBs combined with Anthropic Economic Index, Deloitte, and IDC research. Download the 2026 AI Readiness Report.",
+  },
   "/privacy": {
     file: "privacy.html",
     title: "Privacy Policy",

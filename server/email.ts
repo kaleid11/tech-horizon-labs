@@ -216,26 +216,59 @@ export async function sendReportDownloadEmail(data: { name: string; email: strin
   }
 }
 
-export async function sendNewsletterWelcome(email: string) {
+export async function sendNewsletterWelcome(email: string, source?: string) {
   try {
     const { client, fromEmail } = await getUncachableResendClient();
-    
-    await client.emails.send({
-      from: fromEmail,
-      to: email,
-      subject: 'Welcome to Tech Horizon Labs Newsletter',
-      html: `
-        <h2>Welcome to Tech Horizon Labs!</h2>
-        <p>Thanks for subscribing to our newsletter. We'll keep you updated on:</p>
-        <ul>
-          <li>Latest AI infrastructure insights</li>
-          <li>MCP integration patterns</li>
-          <li>Tech Horizon Academy updates</li>
-          <li>Case studies and practical implementations</li>
-        </ul>
-        <p>Stay ahead of the curve.</p>
-      `
-    });
+
+    if (source === 'report-download') {
+      await client.emails.send({
+        from: fromEmail,
+        to: email,
+        reply_to: fromEmail,
+        subject: 'Your copy: State of AI Readiness — Australian SMB 2026',
+        html: `
+          <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a1a;">
+            <p style="font-size:1.05rem;margin-bottom:1rem;">Thanks for downloading the report.</p>
+            <p style="color:#4a4a4a;line-height:1.65;margin-bottom:1rem;">Australia ranks 7th globally for AI adoption per capita — but just 5% of Australian SMBs are fully AI-enabled. This report maps the four stages of AI maturity, the $44 billion GDP opportunity sitting unclaimed, and the real barriers preventing Queensland businesses from crossing from basic adoption to systematic integration. You'll find the data, the frameworks, and the concrete next steps.</p>
+            <div style="margin-bottom:2rem;">
+              <a href="https://techhorizonlabs.com/ai-readiness-report-2026.pdf"
+                 style="background:#B5654A;color:#ffffff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;display:inline-block;font-size:0.9375rem;">
+                Download the report (PDF)
+              </a>
+            </div>
+            <p style="color:#4a4a4a;line-height:1.65;margin-bottom:0.5rem;">Want to see where your business sits on the maturity curve? The free AI Readiness Assessment takes about 5 minutes and gives you a personalised score and recommendations:</p>
+            <div style="margin-bottom:2rem;">
+              <a href="https://techhorizonlabs.com/assessment"
+                 style="color:#B5654A;text-decoration:none;font-weight:600;">
+                Take the free assessment &rarr;
+              </a>
+            </div>
+            <p style="color:#7a7a7a;font-size:0.875rem;border-top:1px solid #eceae6;padding-top:1rem;margin-top:1rem;">
+              Tech Horizon Labs &middot; Noosa Heads, Queensland &middot;
+              <a href="https://techhorizonlabs.com" style="color:#B5654A;text-decoration:none;">techhorizonlabs.com</a>
+            </p>
+          </div>
+        `
+      });
+    } else {
+      await client.emails.send({
+        from: fromEmail,
+        to: email,
+        reply_to: fromEmail,
+        subject: 'Welcome to Tech Horizon Labs Newsletter',
+        html: `
+          <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a1a;">
+            <p style="font-size:1.05rem;margin-bottom:1rem;">Thanks for subscribing.</p>
+            <p style="color:#4a4a4a;line-height:1.65;margin-bottom:1rem;">We cover AI infrastructure, workflow automation, and what's actually working for Australian businesses. Practical, not hype.</p>
+            <p style="color:#4a4a4a;line-height:1.65;margin-bottom:2rem;">If you have a question or want to talk through an AI project, just reply to this email.</p>
+            <p style="color:#7a7a7a;font-size:0.875rem;border-top:1px solid #eceae6;padding-top:1rem;margin-top:1rem;">
+              Tech Horizon Labs &middot; Noosa Heads, Queensland &middot;
+              <a href="https://techhorizonlabs.com" style="color:#B5654A;text-decoration:none;">techhorizonlabs.com</a>
+            </p>
+          </div>
+        `
+      });
+    }
   } catch (error) {
     console.error('Failed to send newsletter welcome:', error);
   }

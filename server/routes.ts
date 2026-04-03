@@ -155,11 +155,6 @@ export async function registerRoutes(
 
   // Individual removed pages
   // /research is now a live page — no redirect
-  app.get("/report", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "report.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
   app.get("/report/", (_req, res) => res.redirect(301, "/report"));
 
   app.get("/assessment", (_req, res) => {
@@ -299,23 +294,31 @@ export async function registerRoutes(
 
   app.post("/api/newsletter", async (req, res) => {
     try {
-      const validatedData = insertNewsletterSignupSchema.parse(req.body);
+      const { source: rawSource, ...rest } = req.body;
+      const source = typeof rawSource === "string" && rawSource.length < 80 ? rawSource : undefined;
+      const validatedData = insertNewsletterSignupSchema.parse(rest);
 
       const existing = await storage.getNewsletterSignupByEmail(validatedData.email);
       if (existing) {
+        if (source === "report-download") {
+          sendNewsletterWelcome(validatedData.email, source).catch((err) =>
+            console.error("Report re-download email failed:", err)
+          );
+          return res.json({ success: true, id: existing.id });
+        }
         return res.status(400).json({ error: "This email is already subscribed." });
       }
 
       const signup = await storage.createNewsletterSignup(validatedData);
 
-      sendNewsletterWelcome(validatedData.email).catch((err) =>
+      sendNewsletterWelcome(validatedData.email, source).catch((err) =>
         console.error("Newsletter welcome email failed:", err)
       );
 
       pushToKlipy({
         name: validatedData.email.split("@")[0],
         email: validatedData.email,
-        source: "website-newsletter",
+        source: source ?? "website-newsletter",
       });
 
       const beehiivApiKey = process.env.BEEHIIV_API_KEY;
@@ -331,6 +334,7 @@ export async function registerRoutes(
             email: validatedData.email,
             reactivate_existing: false,
             send_welcome_email: false,
+            ...(source ? { tags: [source] } : {}),
           }),
         })
           .then(async (response) => {
