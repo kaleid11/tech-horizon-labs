@@ -157,11 +157,6 @@ export async function registerRoutes(
   // /research is now a live page — no redirect
   app.get("/report/", (_req, res) => res.redirect(301, "/report"));
 
-  app.get("/assessment", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "assessment.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
   app.get("/assessment/", (_req, res) => res.redirect(301, "/assessment"));
 
   app.get("/audit-tool", (_req, res) => res.redirect(301, "/assessment"));
@@ -401,6 +396,16 @@ export async function registerRoutes(
         company: validatedData.business || undefined,
         source: "ai-readiness-assessment",
       });
+
+      const beehiivApiKey = process.env.BEEHIIV_API_KEY;
+      const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
+      if (beehiivApiKey && beehiivPubId) {
+        fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${beehiivApiKey}` },
+          body: JSON.stringify({ email: validatedData.email, reactivate_existing: true, send_welcome_email: false, tags: ["ai-readiness-assessment"] }),
+        }).catch((err) => console.error("Beehiiv audit sync failed:", err));
+      }
 
       res.json({ success: true, id: submission.id });
     } catch (error) {

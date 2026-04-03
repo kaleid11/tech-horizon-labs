@@ -78,35 +78,78 @@ export async function sendAuditResults(data: {
   try {
     const { client, fromEmail } = await getUncachableResendClient();
 
+    // Map tier string to stage context
+    const stageMap: Record<string, { label: string; desc: string; color: string }> = {
+      'Stage 1': { label: 'Stage 1 — Discovery', desc: 'You\'re at the start of your AI journey. The businesses that move now will hold a real advantage in 12–18 months.', color: '#c0392b' },
+      'Stage 2': { label: 'Stage 2 — ChatGPT Plateau', desc: 'You\'re experimenting, but AI hasn\'t yet made it into your core operations. The gap between pilot and production is where most businesses stall.', color: '#d4712a' },
+      'Stage 3': { label: 'Stage 3 — Systematically Enabled', desc: 'AI is working in parts of your business. The challenge now is connecting the pieces into systems that scale.', color: '#b5943a' },
+      'Stage 4': { label: 'Stage 4 — Fully AI-Native', desc: 'You\'re operating at the frontier of business AI adoption. The focus now is compounding your advantages and systematically measuring ROI.', color: '#2e8b57' },
+    };
+
+    // Try to find the matching stage by checking if tier starts with a known stage key
+    const stageKey = Object.keys(stageMap).find(k => data.tier.startsWith(k));
+    const stage = stageKey ? stageMap[stageKey] : { label: data.tier, desc: '', color: '#B5654A' };
+
     const recsHtml = data.recommendations
-      .map(r => `<li style="margin-bottom:8px;">${r}</li>`)
+      .map((r, i) => `<tr><td style="padding:10px 0;border-bottom:1px solid #f0ede8;vertical-align:top;"><span style="display:inline-block;width:22px;height:22px;border-radius:50%;background:#f5e8e2;color:#B5654A;font-size:11px;font-weight:700;text-align:center;line-height:22px;margin-right:10px;flex-shrink:0;">${i + 1}</span><span style="color:#4b5563;font-size:14px;line-height:1.55;">${r}</span></td></tr>`)
       .join('');
 
     await client.emails.send({
       from: fromEmail,
       to: data.email,
-      subject: `Your AI Readiness Score: ${data.score}/100 — Tech Horizon Labs`,
+      subject: `Your AI Readiness Score: ${data.score}/100 — ${stage.label}`,
       html: `
-        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
-          <h2 style="color:#381d2a;">Hi ${data.name},</h2>
-          <p>Here are your AI Readiness Self-Assessment results:</p>
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:600px;margin:0 auto;background:#FAFAF8;border-radius:16px;overflow:hidden;border:1px solid #e8e5e0;">
 
-          <div style="background:#f9f8f4;border-radius:12px;padding:24px;text-align:center;margin:24px 0;">
-            <div style="font-size:48px;font-weight:bold;color:#e76f51;">${data.score}</div>
-            <div style="color:#6b7280;font-size:14px;">out of 100</div>
+          <!-- Header -->
+          <div style="background:#1c1215;padding:28px 32px;">
+            <p style="color:rgba(255,255,255,0.55);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 4px;">Tech Horizon Labs</p>
+            <p style="color:white;font-size:18px;font-weight:600;margin:0;">AI Readiness Assessment Results</p>
           </div>
 
-          <p><strong>Recommended next step:</strong> ${data.tier}</p>
-
-          <h3 style="color:#381d2a;">Your Personalised Recommendations</h3>
-          <ul style="color:#4b5563;line-height:1.6;">${recsHtml}</ul>
-
-          <div style="background:#381d2a;border-radius:12px;padding:24px;text-align:center;margin:24px 0;">
-            <p style="color:white;margin-bottom:16px;">Ready to find your biggest bottleneck?</p>
-            <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" style="background:#B5654A;color:#ffffff;padding:12px 32px;border-radius:6px;text-decoration:none;font-weight:bold;display:inline-block;">Book a Free 15-Min Call</a>
+          <!-- Score band -->
+          <div style="background:#f5e8e2;padding:28px 32px;text-align:center;border-bottom:1px solid #e8e5e0;">
+            <p style="font-size:13px;color:#7a5a50;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin:0 0 8px;">Hi ${data.name}, your score is</p>
+            <p style="font-size:64px;font-weight:700;color:#B5654A;line-height:1;margin:0 0 4px;">${data.score}</p>
+            <p style="font-size:14px;color:#7a5a50;margin:0 0 16px;">out of 100</p>
+            <div style="display:inline-block;background:white;border:1px solid #e8e5e0;border-radius:8px;padding:8px 20px;">
+              <p style="margin:0;font-size:13px;font-weight:700;color:${stage.color};">${stage.label}</p>
+            </div>
           </div>
 
-          <p style="color:#9ca3af;font-size:12px;">Tech Horizon Labs · Sunshine Coast, QLD · techhorizonlabs.com</p>
+          <!-- Stage description -->
+          <div style="padding:24px 32px;border-bottom:1px solid #e8e5e0;">
+            <p style="font-size:14px;color:#4b5563;line-height:1.6;margin:0;">${stage.desc}</p>
+          </div>
+
+          <!-- Recommendations -->
+          <div style="padding:24px 32px;border-bottom:1px solid #e8e5e0;">
+            <p style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1c1215;margin:0 0 12px;">Your recommended next steps</p>
+            <table style="width:100%;border-collapse:collapse;">
+              ${recsHtml}
+            </table>
+          </div>
+
+          <!-- Book CTA -->
+          <div style="background:#1c1215;padding:28px 32px;text-align:center;">
+            <p style="color:white;font-size:16px;font-weight:600;margin:0 0 8px;">Want to compress your timeline?</p>
+            <p style="color:rgba(255,255,255,0.6);font-size:14px;margin:0 0 20px;line-height:1.5;">Book a free 15-minute pre-discovery call. We'll map your highest-value AI starting point and give you a clear plan.</p>
+            <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" style="display:inline-block;background:#B5654A;color:#ffffff;padding:13px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;">Book a Free 15-Min Call</a>
+          </div>
+
+          <!-- Report CTA -->
+          <div style="padding:20px 32px;background:#fdf7f4;border-top:1px solid #e8e5e0;">
+            <p style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B5654A;margin:0 0 4px;">Free Report</p>
+            <p style="font-size:14px;color:#1c1215;font-weight:600;margin:0 0 4px;">State of AI Readiness: Australian SMB 2026</p>
+            <p style="font-size:13px;color:#4b5563;margin:0 0 12px;line-height:1.5;">Benchmark your results against 54 surveyed Australian businesses. $44B GDP opportunity, 5% fully enabled.</p>
+            <a href="https://techhorizonlabs.com/report" style="display:inline-block;background:#B5654A;color:#ffffff;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:600;font-size:13px;">Download free report</a>
+          </div>
+
+          <!-- Footer -->
+          <div style="padding:16px 32px;text-align:center;">
+            <p style="color:#9ca3af;font-size:11px;margin:0;">Tech Horizon Labs · Noosa Heads, QLD · <a href="https://techhorizonlabs.com" style="color:#9ca3af;">techhorizonlabs.com</a></p>
+          </div>
+
         </div>
       `
     });

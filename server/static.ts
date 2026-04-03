@@ -50,6 +50,12 @@ const PAGES: Record<string, { file: string; title: string; description: string; 
     title: "State of AI Readiness: Australian SMB 2026",
     description: "Free report: first-party survey data from 54 Australian SMBs combined with Anthropic Economic Index, Deloitte, and IDC research. Download the 2026 AI Readiness Report.",
   },
+  "/assessment": {
+    file: "assessment.html",
+    fullTitle: "Free AI Readiness Assessment — Where Does Your Business Stand? | Tech Horizon Labs",
+    title: "AI Readiness Self-Assessment",
+    description: "Free AI readiness self-assessment for Australian businesses. 10 questions, instant results. Find out which of the 4 AI Maturity Stages your business is in — Discovery, ChatGPT Plateau, Systematically Enabled, or Fully AI-Native.",
+  },
   "/privacy": {
     file: "privacy.html",
     title: "Privacy Policy",
