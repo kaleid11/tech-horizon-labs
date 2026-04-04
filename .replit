@@ -51,3 +51,7 @@ outputType = "webview"
 stack = "MOCKUP_JS"
 mockupState = "FULLSTACK"
 integrations = ["resend:1.0.0"]
+
+[postMerge]
+path = "scripts/post-merge.sh"
+timeoutMs = 120000
