@@ -859,6 +859,7 @@ function ValuationPanel({ rounds, accent, isMarketCap }: { rounds: FundingRound[
     displayVal: r.post ?? r.val!,
     date: r.date,
     post: r.post,
+    notes: r.inv?.[0]?.note,
   }));
   if (vals.length === 0) return <p className="text-gray-500 text-sm p-8 text-center" data-testid="valuation-empty">No valuation data available.</p>;
 
@@ -867,42 +868,17 @@ function ValuationPanel({ rounds, accent, isMarketCap }: { rounds: FundingRound[
   const maxT = Math.max(...timestamps);
   const maxV = Math.max(...vals.map(v => v.displayVal));
 
-  const dense = vals.length > 4;
-  const w = Math.max(800, vals.length * 130);
+  // Dynamic width: scale with number of points so 9+ round charts have breathing room
+  const w = Math.max(500, vals.length * 75);
   const padLeft = 65, padRight = 30, padTop = 30;
-  const chartW = w - padLeft - padRight;
-
-  // getX only depends on pad.left/right (not pad.bottom/h) so it's safe to define now
-  const getX = (t: number) => padLeft + (maxT === minT ? chartW / 2 : ((t - minT) / (maxT - minT)) * chartW);
-  const xs = timestamps.map(t => getX(t));
-
-  // Compute stagger offsets before fixing chart height so pad.bottom can adapt
-  // Checks ALL previous points (not just adjacent) so 3+ clustered points are handled correctly
-  const staggeredOffsets = (() => {
-    const offsets: number[] = new Array(vals.length).fill(0);
-    const minGap = 80;
-    const step = 40;
-    for (let i = 1; i < vals.length; i++) {
-      const used = new Set<number>();
-      for (let j = 0; j < i; j++) {
-        if (Math.abs(xs[i] - xs[j]) < minGap) used.add(offsets[j]);
-      }
-      if (used.size > 0) {
-        let level = 0;
-        while (used.has(level)) level += step;
-        offsets[i] = level;
-      }
-    }
-    return offsets;
-  })();
-
-  // Adaptive bottom padding: label area = 20px gap + max offset + 48px for rotated text extent
-  const maxOffset = dense ? Math.max(0, ...staggeredOffsets) : 0;
-  const padBottom = dense ? Math.max(110, 20 + maxOffset + 48) : 50;
+  // Bottom padding large enough for 45° rotated labels (approx label width * sin(45°))
+  const padBottom = 90;
   const pad = { top: padTop, right: padRight, bottom: padBottom, left: padLeft };
-  const h = dense ? Math.max(320, padTop + 180 + padBottom) : 300;
+  const chartW = w - padLeft - padRight;
+  const h = 300;
   const chartH = h - pad.top - pad.bottom;
 
+  const getX = (t: number) => padLeft + (maxT === minT ? chartW / 2 : ((t - minT) / (maxT - minT)) * chartW);
   const getY = (v: number) => pad.top + chartH - (v / maxV) * chartH;
 
   const points = vals.map((v, i) => ({ x: getX(timestamps[i]), y: getY(v.displayVal), ...v, idx: i }));
@@ -911,6 +887,11 @@ function ValuationPanel({ rounds, accent, isMarketCap }: { rounds: FundingRound[
   const gridVals = Array.from({ length: gridLines + 1 }, (_, i) => (maxV / gridLines) * i);
 
   const pathD = points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
+
+  // For a single data point, create a minimal area under the dot
+  const areaD = points.length === 1
+    ? `M ${points[0].x - 1} ${points[0].y} L ${points[0].x + 1} ${points[0].y} L ${points[0].x + 1} ${pad.top + chartH} L ${points[0].x - 1} ${pad.top + chartH} Z`
+    : `${pathD} L ${points[points.length - 1].x} ${pad.top + chartH} L ${points[0].x} ${pad.top + chartH} Z`;
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-3">
@@ -921,7 +902,14 @@ function ValuationPanel({ rounds, accent, isMarketCap }: { rounds: FundingRound[
       )}
       <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
         <p className="text-[9px] text-gray-300 font-mono text-center mb-1 md:hidden">← scroll chart →</p>
-        <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 420 }} preserveAspectRatio="xMidYMid meet" role="img" aria-label="Company valuation history chart">
+        <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: w }} preserveAspectRatio="xMidYMid meet" role="img" aria-label="Company valuation history chart">
+          <defs>
+            <linearGradient id={`val-area-${accent.replace("#", "")}`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={accent} stopOpacity="0.14" />
+              <stop offset="100%" stopColor={accent} stopOpacity="0.01" />
+            </linearGradient>
+          </defs>
+
           {gridVals.map((gv, i) => {
             const y = getY(gv);
             return (
@@ -936,84 +924,68 @@ function ValuationPanel({ rounds, accent, isMarketCap }: { rounds: FundingRound[
 
           <line x1={pad.left} y1={pad.top + chartH} x2={w - pad.right} y2={pad.top + chartH} stroke="#e0e0e0" strokeWidth="1" />
 
-          <defs>
-            <linearGradient id={`val-area-${accent.replace("#", "")}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={accent} stopOpacity="0.14" />
-              <stop offset="100%" stopColor={accent} stopOpacity="0.01" />
-            </linearGradient>
-          </defs>
-          {points.length > 1 && (
-            <path
-              d={`${pathD} L ${points[points.length - 1].x} ${pad.top + chartH} L ${points[0].x} ${pad.top + chartH} Z`}
-              fill={`url(#val-area-${accent.replace("#", "")})`}
-            />
-          )}
+          <path d={areaD} fill={`url(#val-area-${accent.replace("#", "")})`} />
 
-          <path d={pathD} fill="none" stroke={accent} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+          {points.length > 1 && (
+            <path d={pathD} fill="none" stroke={accent} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+          )}
 
           {points.map((p, i) => {
             const isDown = i > 0 && p.displayVal < points[i - 1].displayVal;
+            const isActive = activeIdx === i;
+            // X-axis: rotated 45° label — anchor at "end" so text sweeps left from the tick
+            const labelBaseY = pad.top + chartH + 10;
+            const abbreviatedLabel = p.label
+              .replace("Google Strategic", "Google Strat.")
+              .replace("SK Telecom", "SK Tel.")
+              .replace("Strategic", "Strat.")
+              .replace("Investment", "Invest.")
+              .replace("Amazon T", "Amzn T")
+              .replace("Google Conv.", "Goog Conv.")
+              .replace("Google Add'l", "Goog Add.");
             return (
               <g key={i} className="cursor-pointer" onClick={() => setActiveIdx(activeIdx === i ? null : i)} data-testid={`valuation-dot-${i}`}>
                 <circle cx={p.x} cy={p.y} r="14" fill="transparent" />
-                <circle cx={p.x} cy={p.y} r={activeIdx === i ? 6 : 4}
-                  fill={activeIdx === i ? accent : (isDown ? "#e05555" : "white")}
+                <circle cx={p.x} cy={p.y} r={isActive ? 6 : 4}
+                  fill={isActive ? accent : (isDown ? "#e05555" : "white")}
                   stroke={isDown ? "#e05555" : accent}
                   strokeWidth="2"
                   style={{ transition: "r 0.15s, fill 0.15s" }} />
 
-                {activeIdx === i && (() => {
-                  const tw = 90; const th = 40;
+                {isActive && (() => {
+                  const tw = 100; const th = 44;
                   const tx = Math.min(Math.max(p.x - tw / 2, padLeft), w - padRight - tw);
+                  const tyRaw = p.y - th - 10;
+                  const ty = tyRaw < pad.top ? p.y + 10 : tyRaw;
                   return (
                     <g>
-                      <rect x={tx} y={p.y - th - 8} width={tw} height={th} rx="4" fill={accent} opacity="0.95" />
-                      <text x={tx + tw / 2} y={p.y - th + 2} textAnchor="middle" fill="white" fontSize="7.5" fontWeight="bold" fontFamily="monospace">
+                      <rect x={tx} y={ty} width={tw} height={th} rx="4" fill="white" stroke={accent} strokeWidth="1.5" opacity="0.97" />
+                      <rect x={tx} y={ty} width="3" height={th} rx="2" fill={accent} opacity="0.9" />
+                      <text x={tx + 10} y={ty + 12} fill="#1f2937" fontSize="8" fontWeight="bold" fontFamily="monospace">
                         {p.label}
                       </text>
-                      <text x={tx + tw / 2} y={p.y - th + 14} textAnchor="middle" fill="white" fontSize="6.5" fontFamily="monospace" opacity="0.85">
+                      <text x={tx + 10} y={ty + 22} fill="#9ca3af" fontSize="6.5" fontFamily="monospace">
                         {p.date}
                       </text>
-                      <text x={tx + tw / 2} y={p.y - th + 27} textAnchor="middle" fill="white" fontSize="9" fontWeight="bold" fontFamily="monospace">
+                      <text x={tx + 10} y={ty + 36} fill={accent} fontSize="10" fontWeight="bold" fontFamily="monospace">
                         {fmtVal(p.displayVal)}
                       </text>
                     </g>
                   );
                 })()}
 
-                {dense ? (() => {
-                  const labelY = pad.top + chartH + 16 + staggeredOffsets[i];
-                  const abbreviatedLabel = p.label
-                    .replace("Google Strategic", "Google Strat.")
-                    .replace("SK Telecom", "SK Telec.")
-                    .replace("Strategic", "Strat.")
-                    .replace("Investment", "Invest.")
-                    .replace("Amazon T", "Amzn T")
-                    .replace("Google Conv.", "Goog Conv.")
-                    .replace("Google Add'l", "Goog Add.")
-                    .replace("MSFT/NVDA", "MSFT/NVDA");
-                  return (
-                    <g>
-                      {staggeredOffsets[i] > 0 && (
-                        <line x1={p.x} y1={pad.top + chartH + 4} x2={p.x} y2={labelY - 2}
-                          stroke="#d0d0d0" strokeWidth="0.5" strokeDasharray="2 2" />
-                      )}
-                      <text x={p.x} y={labelY} textAnchor="end" fill={activeIdx === i ? accent : "#888"} fontSize="7.5" fontFamily="monospace"
-                        transform={`rotate(-38, ${p.x}, ${labelY})`}>
-                        {abbreviatedLabel}
-                      </text>
-                    </g>
-                  );
-                })() : (
-                  <g>
-                    <text x={p.x} y={pad.top + chartH + 14} textAnchor="middle" fill="#6b7280" fontSize="8" fontFamily="monospace">
-                      {p.label}
-                    </text>
-                    <text x={p.x} y={pad.top + chartH + 24} textAnchor="middle" fill="#b0b0b0" fontSize="7" fontFamily="monospace">
-                      {p.date}
-                    </text>
-                  </g>
-                )}
+                <line x1={p.x} y1={pad.top + chartH + 2} x2={p.x} y2={labelBaseY - 1} stroke="#d0d0d0" strokeWidth="0.5" />
+                <text
+                  x={p.x}
+                  y={labelBaseY}
+                  textAnchor="end"
+                  fill={isActive ? accent : "#888"}
+                  fontSize="7.5"
+                  fontFamily="monospace"
+                  transform={`rotate(-45, ${p.x}, ${labelBaseY})`}
+                >
+                  {abbreviatedLabel}
+                </text>
               </g>
             );
           })}
@@ -1021,38 +993,46 @@ function ValuationPanel({ rounds, accent, isMarketCap }: { rounds: FundingRound[
       </div>
 
       {activeIdx !== null ? (
-        <div className="bg-white rounded-lg p-4 border border-gray-200 animate-in fade-in slide-in-from-bottom-2 duration-200">
-          <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
-            <div>
-              <div className="flex items-center gap-2">
-                <p className="text-lg font-bold text-aubergine-900">{vals[activeIdx].label}</p>
-                {activeIdx > 0 && vals[activeIdx].displayVal < vals[activeIdx - 1].displayVal && (
-                  <span className="font-mono text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ backgroundColor: "#e0555515", color: "#e05555" }}>DOWN ROUND</span>
-                )}
-              </div>
-              <p className="font-mono text-[10px] text-gray-500">{vals[activeIdx].date}</p>
-            </div>
-            <div className="text-left sm:text-right">
-              <p className="text-xl font-bold" style={{ color: accent }}>{fmtVal(vals[activeIdx].displayVal)}</p>
-              <p className="font-mono text-[10px] text-gray-500">
-                {vals[activeIdx].post ? "post-money" : "pre-money (estimated)"}
-              </p>
-            </div>
-          </div>
-          {activeIdx > 0 && (
-            <div className="mt-2 pt-2 border-t border-gray-200 flex gap-4">
+        <div className="bg-white rounded-lg border-l-4 border border-gray-100 animate-in fade-in slide-in-from-bottom-2 duration-200" style={{ borderLeftColor: accent }}>
+          <div className="p-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start gap-2 mb-3">
               <div>
-                <p className="font-mono text-[10px] text-gray-500">CHANGE</p>
-                <p className="font-mono text-sm font-bold" style={{ color: vals[activeIdx].displayVal >= vals[activeIdx - 1].displayVal ? "#44c488" : "#e05555" }}>
-                  {vals[activeIdx].displayVal >= vals[activeIdx - 1].displayVal ? "+" : ""}{(((vals[activeIdx].displayVal - vals[activeIdx - 1].displayVal) / vals[activeIdx - 1].displayVal) * 100).toFixed(0)}%
+                <div className="flex items-center gap-2 flex-wrap">
+                  <p className="text-base font-bold text-aubergine-900">{vals[activeIdx].label}</p>
+                  {activeIdx > 0 && vals[activeIdx].displayVal < vals[activeIdx - 1].displayVal && (
+                    <span className="font-mono text-[9px] font-bold px-1.5 py-0.5 rounded" style={{ backgroundColor: "#e0555515", color: "#e05555" }}>DOWN ROUND</span>
+                  )}
+                </div>
+                <p className="font-mono text-[10px] text-gray-400 mt-0.5">{vals[activeIdx].date}</p>
+              </div>
+              <div className="text-left sm:text-right">
+                <p className="font-mono text-xl font-bold" style={{ color: accent }}>{fmtVal(vals[activeIdx].displayVal)}</p>
+                <p className="font-mono text-[10px] text-gray-400">
+                  {vals[activeIdx].post ? "post-money" : "pre-money (est.)"}
                 </p>
               </div>
-              <div>
-                <p className="font-mono text-[10px] text-gray-500">FROM PREVIOUS</p>
-                <p className="font-mono text-sm text-gray-700">{fmtVal(vals[activeIdx - 1].displayVal)} → {fmtVal(vals[activeIdx].displayVal)}</p>
-              </div>
             </div>
-          )}
+            {activeIdx > 0 && (
+              <div className="flex gap-4 pt-3 border-t border-gray-100">
+                <div>
+                  <p className="font-mono text-[9px] tracking-wider text-gray-400">CHANGE</p>
+                  <p className="font-mono text-sm font-bold" style={{ color: vals[activeIdx].displayVal >= vals[activeIdx - 1].displayVal ? "#44c488" : "#e05555" }}>
+                    {vals[activeIdx].displayVal >= vals[activeIdx - 1].displayVal ? "+" : ""}{(((vals[activeIdx].displayVal - vals[activeIdx - 1].displayVal) / vals[activeIdx - 1].displayVal) * 100).toFixed(0)}%
+                  </p>
+                </div>
+                <div>
+                  <p className="font-mono text-[9px] tracking-wider text-gray-400">FROM PREVIOUS</p>
+                  <p className="font-mono text-sm text-gray-600">{fmtVal(vals[activeIdx - 1].displayVal)} → {fmtVal(vals[activeIdx].displayVal)}</p>
+                </div>
+              </div>
+            )}
+            {vals[activeIdx].notes && (
+              <div className="pt-3 border-t border-gray-100">
+                <p className="font-mono text-[9px] tracking-wider text-gray-400 mb-1">NOTES</p>
+                <p className="text-[11px] text-gray-500 leading-relaxed">{vals[activeIdx].notes}</p>
+              </div>
+            )}
+          </div>
         </div>
       ) : (
         <p className="text-center text-xs text-gray-400 font-mono" data-testid="valuation-hint">Click a data point to see details</p>
