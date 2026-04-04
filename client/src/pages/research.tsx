@@ -1205,7 +1205,7 @@ function CompanyView({ company, tabId, setTabId, onPersonClick, onBack }: {
       {tabId === "supply" && company.supplyChain && <SupplyChainPanel entities={company.supplyChain} />}
       {tabId === "funding" && <FundingPanel rounds={company.fundingRounds} accent={accent} />}
       {tabId === "investors" && <InvestorPanel company={company} />}
-      {tabId === "valuation" && <ValuationPanel rounds={company.fundingRounds} accent={accent} isMarketCap={["google-deepmind", "meta-ai"].includes(company.meta.id)} />}
+      {tabId === "valuation" && <ValuationPanel rounds={company.fundingRounds} accent={accent} isMarketCap={["google-deepmind", "meta-ai", "qwen"].includes(company.meta.id)} />}
       {tabId === "timeline" && company.timeline && <TimelinePanel events={company.timeline} accent={accent} />}
       {tabId === "safety" && company.safetyIssues && <TimelinePanel events={company.safetyIssues} accent={C.red} title="SAFETY & ETHICS ISSUES" />}
       {tabId === "restructuring" && company.restructuring && <RestructuringPanel phases={company.restructuring} financials={company.financials} accent={accent} />}
