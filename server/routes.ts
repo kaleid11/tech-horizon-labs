@@ -220,6 +220,14 @@ export async function registerRoutes(
   });
   app.get("/tools/", (_req, res) => res.redirect(301, "/tools"));
 
+  // /scorecard — 28-question AI Readiness Scorecard
+  app.get("/scorecard", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "scorecard.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+  app.get("/scorecard/", (_req, res) => res.redirect(301, "/scorecard"));
+
   // ===== API Endpoints =====
 
   app.post("/api/contact", async (req, res) => {
