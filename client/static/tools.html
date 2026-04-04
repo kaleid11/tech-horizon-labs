@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tool Cheat Sheet — What We Actually Use | Tech Horizon Labs</title>
+  <meta name="description" content="Huxley Peckham's opinionated AI tool stack for Australian SMBs. 10 tools we build with, train on, and recommend to every client. No affiliate deals. No vendor relationships. Just what works.">
+  <link rel="canonical" href="https://techhorizonlabs.com/tools">
+  <meta property="og:title" content="AI Tool Cheat Sheet — What We Actually Use | Tech Horizon Labs">
+  <meta property="og:description" content="Huxley's opinionated AI tool stack. 10 tools we build with, train on, and recommend to every client. No affiliate deals. Just what works.">
+  <meta property="og:url" content="https://techhorizonlabs.com/tools">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="AI Tool Cheat Sheet — What We Actually Use | Tech Horizon Labs">
+  <meta name="twitter:description" content="Huxley's opinionated AI tool stack for Australian SMBs. 10 tools, no affiliate deals, just what works.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://techhorizonlabs.com/tools#article",
+        "headline": "Huxley's AI Tool Stack — What We Actually Use",
+        "description": "10 AI tools Tech Horizon Labs builds with, trains on, and recommends to every client. No affiliate deals. No vendor relationships. Just what works.",
+        "url": "https://techhorizonlabs.com/tools",
+        "datePublished": "2026-04-04",
+        "dateModified": "2026-04-04",
+        "author": {
+          "@type": "Person",
+          "name": "Huxley Peckham",
+          "url": "https://techhorizonlabs.com/about"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://techhorizonlabs.com/#organization",
+          "name": "Tech Horizon Labs",
+          "url": "https://techhorizonlabs.com"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "AI tools for small business Australia"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://techhorizonlabs.com/tools#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What are the best AI tools for small business in Australia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tools we recommend to Australian SMBs are: Claude for writing and strategy, Claude Code and Replit for building software, ChatGPT for backend coding and broad reasoning, Opus.pro for video content, NotebookLM for research, Gemini for quick image work, Acronis for security, MacWhisper for transcription, LM Studio for local private AI, and Keeper Security for password management."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What AI tools does Huxley Peckham recommend for Australian SMBs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Huxley Peckham's top AI tool recommendations are Claude (primary writing and reasoning tool), Claude Code with Replit (for building software), ChatGPT for backend work, Opus.pro for video, NotebookLM for research synthesis, and Acronis for security. These are tools Tech Horizon Labs uses daily in client work."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Claude or ChatGPT better for business use in Australia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We use both. Claude is our primary tool for writing, strategy, long-form thinking, and front-end development. ChatGPT Codex works better for backend and API tasks. They complement each other. The answer depends on your specific use case — there is no single winner."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What AI tools are free for Australian small businesses?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Several capable AI tools are free: NotebookLM (by Google, free with Google account), Gemini 2.0 Flash (free via Google), Google Whisk (free for visual ideation), and LM Studio (free for running local AI models on your own hardware). Claude and ChatGPT also have free tiers."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+          { "@type": "ListItem", "position": 2, "name": "AI Tool Cheat Sheet" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ===== Tools page styles ===== */
+    .tools-hero {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 0 2.5rem;
+    }
+    .tools-hero .eyebrow {
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .tools-hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      max-width: 680px;
+    }
+    .tools-hero .subline {
+      color: var(--text-secondary);
+      max-width: 600px;
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .tools-hero .datestamp {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 1.5rem 0;
+    }
+    .filter-btn {
+      padding: 0.375rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--text-secondary);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      font-family: var(--font-body);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Tool cards grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.25rem;
+      padding: 1.5rem 0 3rem;
+    }
+    .tool-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: box-shadow 0.2s, transform 0.15s;
+      position: relative;
+    }
+    .tool-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+    .tool-card.hidden { display: none; }
+
+    .tool-number {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .tool-name {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    .tool-category {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-dark, #5b3e99);
+      background: var(--accent-bg, #f3eeff);
+      border-radius: 4px;
+      padding: 0.125rem 0.5rem;
+      margin-bottom: 0.875rem;
+    }
+    .tool-use-for {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 0.875rem;
+    }
+    .tool-pricing {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    .tool-pricing::before {
+      content: "💰";
+      font-size: 0.875rem;
+    }
+    .tool-note {
+      background: #f9f9f7;
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      line-height: 1.55;
+    }
+    .tool-note::before {
+      content: "THL: ";
+      font-weight: 700;
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    /* Honourable mentions */
+    .mentions-section {
+      background: #f9f9f7;
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+    .mentions-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .mentions-toggle h2 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+    .mentions-toggle .toggle-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: white;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .mentions-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease;
+    }
+    .mentions-body.open { max-height: 600px; }
+    .mentions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.875rem;
+      padding-top: 1.5rem;
+    }
+    .mention-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.125rem;
+    }
+    .mention-name {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 0.9375rem;
+      margin-bottom: 0.375rem;
+    }
+    .mention-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Footer CTA */
+    .tools-cta {
+      padding: 3rem 0;
+      text-align: center;
+    }
+    .tools-cta h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 0.75rem;
+    }
+    .tools-cta p {
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 1.75rem;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+    }
+    .btn-primary-tools {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 9999px;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.9375rem;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-primary-tools:hover { opacity: 0.9; transform: scale(1.02); }
+
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.25rem;
+      border-radius: 9999px;
+      background: white;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.875rem;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+      font-family: var(--font-body);
+    }
+    .print-btn:hover { background: var(--bg); }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      .site-nav, #dot-grid, .filter-bar, .print-btn,
+      .mentions-toggle .toggle-icon, .tools-cta .btn-primary-tools,
+      footer.site-footer { display: none !important; }
+
+      body { font-size: 9pt; background: white !important; }
+      .tools-hero { padding: 0.5cm 0 0.4cm; border-bottom: 1px solid #ccc; }
+      .tools-hero h1 { font-size: 18pt; }
+      .tools-hero .subline { font-size: 9pt; }
+
+      .tools-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4cm;
+        padding: 0.4cm 0;
+      }
+      .tool-card {
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 0.4cm;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        transform: none !important;
+        box-shadow: none !important;
+      }
+      .tool-card:hover { transform: none; box-shadow: none; }
+      .tool-name { font-size: 10pt; }
+      .tool-category { font-size: 7pt; }
+      .tool-use-for, .tool-pricing { font-size: 8pt; }
+      .tool-note { font-size: 7.5pt; padding: 0.2cm 0.3cm; }
+      .tool-number { display: none; }
+
+      .mentions-section { padding: 0.3cm 0; }
+      .mentions-body { max-height: none !important; overflow: visible !important; }
+      .mentions-grid { grid-template-columns: repeat(3, 1fr); gap: 0.3cm; }
+      .mention-card { padding: 0.3cm; }
+      .mention-name { font-size: 8pt; }
+      .mention-desc { font-size: 7pt; }
+
+      .tools-cta { padding: 0.4cm 0 0; }
+      .tools-cta h2 { font-size: 11pt; }
+      .tools-cta p { font-size: 8pt; }
+
+      .container { padding: 0 0.5cm !important; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <div class="tools-hero">
+      <div class="container">
+        <p class="eyebrow">AI Tool Stack — Updated April 2026</p>
+        <h1>Huxley's AI Tool Stack —<br>What We Actually Use</h1>
+        <p class="subline">These are the tools we build with, train on, and recommend to every client. No affiliate deals. No vendor relationships. Just what works.</p>
+        <p class="datestamp">Updated April 2026 &mdash; <button class="print-btn" onclick="window.print()">&#128438; Save as PDF</button></p>
+      </div>
+    </div>
+
+    <nav class="breadcrumb container" aria-label="Breadcrumb" style="padding-top:1.25rem;font-size:0.875rem;color:var(--text-muted);">
+      <a href="/">Home</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <span>AI Tool Cheat Sheet</span>
+    </nav>
+
+    <div class="container">
+      <div class="filter-bar" role="group" aria-label="Filter tools by category">
+        <button class="filter-btn active" data-filter="all">All Tools</button>
+        <button class="filter-btn" data-filter="writing">Writing &amp; Strategy</button>
+        <button class="filter-btn" data-filter="coding">Coding</button>
+        <button class="filter-btn" data-filter="video">Video</button>
+        <button class="filter-btn" data-filter="research">Research</button>
+        <button class="filter-btn" data-filter="security">Security</button>
+        <button class="filter-btn" data-filter="transcription">Transcription</button>
+        <button class="filter-btn" data-filter="local">Local AI</button>
+      </div>
+
+      <div class="tools-grid" id="tools-grid">
+
+        <div class="tool-card" data-category="writing">
+          <span class="tool-number">1</span>
+          <div class="tool-name">Claude <span style="font-weight:400;font-size:0.875rem;color:var(--text-muted);">by Anthropic</span></div>
+          <span class="tool-category">Writing, Strategy, Deep Reasoning</span>
+          <p class="tool-use-for">All professional writing, research synthesis, strategy documents, complex prompting, Projects and Skills for persistent context. Claude is the workhorse for anything that requires nuance, tone, or long-form thinking.</p>
+          <p class="tool-pricing">Free tier available. Pro at $20/month.</p>
+          <div class="tool-note">"Our primary tool for almost everything. Set up Projects with your brand voice, SOPs, and company context — then every conversation starts informed."</div>
+        </div>
+
+        <div class="tool-card" data-category="coding">
+          <span class="tool-number">2</span>
+          <div class="tool-name">Claude Code / Replit</div>
+          <span class="tool-category">Coding, Front-End Design, Website Building</span>
+          <p class="tool-use-for">Building web apps, automations, internal tools. Claude Code runs in the terminal and writes, edits, and debugs code with full file access. Replit pairs it with a live hosting environment.</p>
+          <p class="tool-pricing">Claude Max ($100/month) includes Claude Code. Replit from $25/month.</p>
+          <div class="tool-note">"We built PaddockMap — a government-equivalent $3.5M system — in a weekend with Claude Code and Replit. The bar for non-technical founders to build real software has dropped dramatically."</div>
+        </div>
+
+        <div class="tool-card" data-category="coding">
+          <span class="tool-number">3</span>
+          <div class="tool-name">ChatGPT / Codex <span style="font-weight:400;font-size:0.875rem;color:var(--text-muted);">by OpenAI</span></div>
+          <span class="tool-category">Backend Coding, General Reasoning</span>
+          <p class="tool-use-for">Codex for backend/API work. ChatGPT o3 for tasks requiring broad knowledge or when a second opinion on Claude's output is valuable. Good for structured data tasks, JSON handling, and Python scripts.</p>
+          <p class="tool-pricing">ChatGPT Plus at $20/month.</p>
+          <div class="tool-note">"We use Claude for front-end and ChatGPT Codex for backend. They complement each other well. Don't pick one — use both strategically."</div>
+        </div>
+
+        <div class="tool-card" data-category="video">
+          <span class="tool-number">4</span>
+          <div class="tool-name">Opus.pro + Opus Agent</div>
+          <span class="tool-category">Video Editing, Content Repurposing, UGC</span>
+          <p class="tool-use-for">Opus.pro automatically clips long-form video into viral short-form content for TikTok, Reels, and Shorts. Opus Agent creates UGC-style ads and landscape videos with AI. Replaces hours of manual video editing.</p>
+          <p class="tool-pricing">From $9/month.</p>
+          <div class="tool-note">"If you create any video content, this pays for itself in the first week. Opus Agent's UGC capability is genuinely impressive for product marketing."</div>
+        </div>
+
+        <div class="tool-card" data-category="research">
+          <span class="tool-number">5</span>
+          <div class="tool-name">NotebookLM <span style="font-weight:400;font-size:0.875rem;color:var(--text-muted);">by Google</span></div>
+          <span class="tool-category">Research, Brainstorming, Knowledge Management</span>
+          <p class="tool-use-for">Upload YouTube videos, PDFs, articles, and audio — NotebookLM builds a knowledge base you can query, podcast, and get summaries from. Excellent for synthesising long-form research and creating explainer podcasts from documents.</p>
+          <p class="tool-pricing">Free (Google account required).</p>
+          <div class="tool-note">"We combine NotebookLM with Claude: NotebookLM to absorb and summarise, Claude to structure and write. For brainstorming sessions, the auto-generated podcast format is surprisingly useful."</div>
+        </div>
+
+        <div class="tool-card" data-category="research">
+          <span class="tool-number">6</span>
+          <div class="tool-name">Gemini <span style="font-weight:400;font-size:0.875rem;color:var(--text-muted);">by Google</span></div>
+          <span class="tool-category">Casual Image Generation, Multimodal Tasks</span>
+          <p class="tool-use-for">Quick image concepts, visual idea generation, Google Workspace integration. Gemini 2.0 Flash is fast and free. Good for quick visual mood-boarding before committing to a design direction.</p>
+          <p class="tool-pricing">Free via Google account.</p>
+          <div class="tool-note">"Not our primary image tool, but useful for fast iteration. Google Whisk (also free) is great for visualising ideas before you spend money on Midjourney or Firefly."</div>
+        </div>
+
+        <div class="tool-card" data-category="security">
+          <span class="tool-number">7</span>
+          <div class="tool-name">Acronis</div>
+          <span class="tool-category">Security, Backup, Compliance</span>
+          <p class="tool-use-for">Comprehensive backup and security for business devices and servers. Essential baseline for any business using AI with sensitive data. Ensures you have a clean, recoverable state before deploying any new AI workflow.</p>
+          <p class="tool-pricing">From ~$50/year per device.</p>
+          <div class="tool-note">"Security is infrastructure. Before you automate anything, make sure your data is backed up and your endpoints are protected. Acronis is our recommended baseline for SMBs."</div>
+        </div>
+
+        <div class="tool-card" data-category="transcription">
+          <span class="tool-number">8</span>
+          <div class="tool-name">MacWhisper + Voice Memos</div>
+          <span class="tool-category">Transcription, Dictation</span>
+          <p class="tool-use-for">Voice Memos on your phone for rapid idea capture — dictate while walking, driving, or between meetings. MacWhisper transcribes audio to clean text locally (on-device, private). Feed transcripts into Claude for summaries, emails, or SOPs.</p>
+          <p class="tool-pricing">MacWhisper from $29 one-time.</p>
+          <div class="tool-note">"Voice memos are underused. Speaking is 3x faster than typing. Combined with MacWhisper and Claude, you can turn a 10-minute voice memo into a polished strategy document in minutes."</div>
+        </div>
+
+        <div class="tool-card" data-category="local">
+          <span class="tool-number">9</span>
+          <div class="tool-name">LM Studio</div>
+          <span class="tool-category">Local LLMs, Private AI, RAG</span>
+          <p class="tool-use-for">Running open-source models locally (Llama 3, Mistral, Phi) on your own hardware. Zero data leaves your machine. Essential for businesses with compliance requirements or sensitive IP. Also great for building RAG (retrieval-augmented generation) systems against private documents.</p>
+          <p class="tool-pricing">Free.</p>
+          <div class="tool-note">"If your business handles sensitive data and you can't send it to a cloud API, LM Studio lets you run capable models locally. The gap with cloud models is closing fast."</div>
+        </div>
+
+        <div class="tool-card" data-category="security">
+          <span class="tool-number">10</span>
+          <div class="tool-name">Keeper Security</div>
+          <span class="tool-category">Password Management, Access Control</span>
+          <p class="tool-use-for">Business password management and secrets management. As you integrate more AI tools, the number of API keys and logins multiplies. Keeper keeps them organised, shared securely with team members, and auditable.</p>
+          <p class="tool-pricing">From $4.50/user/month.</p>
+          <div class="tool-note">"Basic hygiene. Every API key, every login, every AI tool account — managed in one place, shared securely, and auditable. Non-negotiable for any team with more than one person."</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mentions-section">
+      <div class="container">
+        <div class="mentions-toggle" id="mentions-toggle" role="button" aria-expanded="false" aria-controls="mentions-body" tabindex="0">
+          <div class="toggle-icon" id="mentions-icon">+</div>
+          <h2>Honourable Mentions</h2>
+          <span style="font-size:0.875rem;color:var(--text-muted);margin-left:0.5rem;">— worth knowing, didn't make the top 10</span>
+        </div>
+        <div class="mentions-body" id="mentions-body" role="region" aria-labelledby="mentions-toggle">
+          <div class="mentions-grid">
+            <div class="mention-card">
+              <div class="mention-name">Kimi <span style="font-weight:400;color:var(--text-muted);font-size:0.8125rem;">by Moonshot AI</span></div>
+              <p class="mention-desc">Chinese-developed, strong at long-context tasks and slides. Good for research. Use only for non-sensitive workflows — data sovereignty questions apply.</p>
+            </div>
+            <div class="mention-card">
+              <div class="mention-name">Replit <span style="font-weight:400;color:var(--text-muted);font-size:0.8125rem;">(standalone)</span></div>
+              <p class="mention-desc">Web-based coding environment. Combined with Claude Code, it's how we build and host client tools rapidly. Free tier available.</p>
+            </div>
+            <div class="mention-card">
+              <div class="mention-name">Google Whisk</div>
+              <p class="mention-desc">Free visual ideation tool. Combine reference images to generate new concepts. Great for brand and design exploration before committing to paid tools.</p>
+            </div>
+            <div class="mention-card">
+              <div class="mention-name">Miro / Cove.ai</div>
+              <p class="mention-desc">Whiteboarding and visual collaboration. Miro is the established standard. Cove.ai is newer with better AI integration for real-time brainstorming.</p>
+            </div>
+            <div class="mention-card">
+              <div class="mention-name">Pometry <span style="font-weight:400;color:var(--text-muted);font-size:0.8125rem;">by Google</span></div>
+              <p class="mention-desc">Free AI-assisted branding and ad creation. Good for small businesses without a design budget who need polished visual assets quickly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <div class="tools-cta container">
+      <h2>Want Help Building Your AI Stack?</h2>
+      <p>We can map the right tools to your specific business workflows, train your team, and build the automations that actually save time.</p>
+      <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" class="btn-primary-tools" rel="noopener noreferrer">Book a Free 30-Minute Discovery Call &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand">Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-right">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+  <script>
+    // Category filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const toolCards = document.querySelectorAll('.tool-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        toolCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Honourable mentions toggle
+    const toggle = document.getElementById('mentions-toggle');
+    const body = document.getElementById('mentions-body');
+    const icon = document.getElementById('mentions-icon');
+
+    function toggleMentions() {
+      const isOpen = body.classList.contains('open');
+      body.classList.toggle('open');
+      icon.textContent = isOpen ? '+' : '−';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    }
+
+    toggle.addEventListener('click', toggleMentions);
+    toggle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMentions(); }
+    });
+  </script>
+</body>
+</html>

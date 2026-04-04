@@ -154,6 +154,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- AI Tool Cheat Sheet -->
+  <url>
+    <loc>https://techhorizonlabs.com/tools</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- OpenClaw page -->
   <url>
     <loc>https://techhorizonlabs.com/openclaw</loc>

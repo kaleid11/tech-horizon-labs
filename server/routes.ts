@@ -212,6 +212,14 @@ export async function registerRoutes(
   app.get("/index.html", (_req, res) => res.redirect(301, "/"));
   app.get("/index.php", (_req, res) => res.redirect(301, "/"));
 
+  // /tools — AI Tool Cheat Sheet
+  app.get("/tools", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "client", "static", "tools.html");
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(filePath);
+  });
+  app.get("/tools/", (_req, res) => res.redirect(301, "/tools"));
+
   // ===== API Endpoints =====
 
   app.post("/api/contact", async (req, res) => {

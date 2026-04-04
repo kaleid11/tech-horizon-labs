@@ -261,6 +261,16 @@ export async function sendNewsletterWelcome(email: string, source?: string, name
               </a>
             </div>
 
+            <!-- Tool cheat sheet cross-link -->
+            <div style="padding:24px 32px;border-bottom:1px solid #e8e5e0;">
+              <p style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1c1215;margin:0 0 8px;">Also in your bundle</p>
+              <p style="font-size:14px;color:#4b5563;line-height:1.65;margin:0 0 16px;">The <strong style="color:#1c1215;">AI Tool Cheat Sheet</strong> — Huxley's opinionated list of the 10 tools we actually use with clients. No affiliate deals. No vendor relationships. Printable and shareable.</p>
+              <a href="https://techhorizonlabs.com/tools"
+                 style="display:inline-block;background:transparent;color:#B5654A;border:1.5px solid #B5654A;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;">
+                View the AI Tool Cheat Sheet &rarr;
+              </a>
+            </div>
+
             <!-- Assessment cross-sell -->
             <div style="padding:24px 32px;border-bottom:1px solid #e8e5e0;">
               <p style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1c1215;margin:0 0 8px;">Next step</p>
