@@ -59,6 +59,16 @@
       letter-spacing: 0.02em;
       margin-bottom: 0.5rem;
     }
+    .insight-meta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .insight-read-time {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
     .insight-card h3 {
       font-family: var(--font-heading);
       font-size: 1.375rem;
@@ -83,6 +93,32 @@
       padding: 0.25rem 0.625rem;
       border-radius: 2px;
       white-space: nowrap;
+    }
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: var(--space-sm);
+    }
+    .filter-btn {
+      padding: 0.375rem 0.875rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      background: white;
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .filter-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
     }
     @media (max-width: 600px) {
       .insight-card {
@@ -110,7 +146,6 @@
 
   <main id="main-content">
 
-    <!-- HEADER -->
     <section class="hero container" style="padding-bottom: var(--space-sm);">
       <p class="eyebrow" style="font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 1rem; font-weight: 500;">Insights</p>
       <h1>Research &amp; Analysis</h1>
@@ -119,13 +154,76 @@
 
     <div class="accent-rule container"></div>
 
-    <!-- ARTICLES LIST -->
     <section class="section container fade-in">
-      <div class="insights-list">
 
-        <article class="insight-card">
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ai-adoption">AI Adoption</button>
+        <button class="filter-btn" data-filter="industry-data">Industry Data</button>
+        <button class="filter-btn" data-filter="implementation">Implementation</button>
+        <button class="filter-btn" data-filter="tool-comparison">Tool Comparison</button>
+        <button class="filter-btn" data-filter="strategy">Strategy</button>
+      </div>
+
+      <div class="insights-list" id="insights-list">
+
+        <article class="insight-card" data-category="implementation">
           <div>
-            <div class="insight-date">2 April 2026</div>
+            <div class="insight-meta">
+              <span class="insight-date">4 April 2026</span>
+              <span class="insight-read-time">7 min read</span>
+            </div>
+            <a href="/insights/ai-implementation-cost-australia">
+              <h3>How Much Does AI Implementation Cost for Australian SMBs?</h3>
+            </a>
+            <p>Transparent pricing framework: DIY vs freelance vs consultant. Real cost ranges, what drives the price, and the ROI you should expect. No vague "contact us for a quote."</p>
+            <p style="margin-top: 0.75rem;"><a href="/insights/ai-implementation-cost-australia" class="link-arrow">Read article &rarr;</a></p>
+          </div>
+          <div>
+            <span class="insight-tag">Implementation</span>
+          </div>
+        </article>
+
+        <article class="insight-card" data-category="implementation">
+          <div>
+            <div class="insight-meta">
+              <span class="insight-date">4 April 2026</span>
+              <span class="insight-read-time">6 min read</span>
+            </div>
+            <a href="/insights/ai-mistakes-australian-businesses">
+              <h3>The 5 AI Mistakes Australian Small Businesses Keep Making</h3>
+            </a>
+            <p>Starting with the wrong tool, skipping the workflow audit, ignoring compliance, not training staff, and trying to automate everything at once. Each mistake maps to a fix.</p>
+            <p style="margin-top: 0.75rem;"><a href="/insights/ai-mistakes-australian-businesses" class="link-arrow">Read article &rarr;</a></p>
+          </div>
+          <div>
+            <span class="insight-tag">Implementation</span>
+          </div>
+        </article>
+
+        <article class="insight-card" data-category="strategy">
+          <div>
+            <div class="insight-meta">
+              <span class="insight-date">4 April 2026</span>
+              <span class="insight-read-time">6 min read</span>
+            </div>
+            <a href="/insights/ai-readiness-stages-australia">
+              <h3>What is AI Readiness? The 4 Stages Australian Businesses Move Through</h3>
+            </a>
+            <p>Discovery, ChatGPT Plateau, Systematically Enabled, Fully AI-Native. 46% of Australian SMBs are stuck at Stage 2. Based on our 2026 research with 54 businesses.</p>
+            <p style="margin-top: 0.75rem;"><a href="/insights/ai-readiness-stages-australia" class="link-arrow">Read article &rarr;</a></p>
+          </div>
+          <div>
+            <span class="insight-tag">Strategy</span>
+          </div>
+        </article>
+
+        <article class="insight-card" data-category="ai-adoption">
+          <div>
+            <div class="insight-meta">
+              <span class="insight-date">2 April 2026</span>
+              <span class="insight-read-time">8 min read</span>
+            </div>
             <a href="/insights/how-australia-uses-ai-2026">
               <h3>How Australia Uses AI in 2026</h3>
             </a>
@@ -137,9 +235,12 @@
           </div>
         </article>
 
-        <article class="insight-card">
+        <article class="insight-card" data-category="industry-data">
           <div>
-            <div class="insight-date">15 March 2026</div>
+            <div class="insight-meta">
+              <span class="insight-date">15 March 2026</span>
+              <span class="insight-read-time">10 min read</span>
+            </div>
             <a href="/insights/ai-impact-by-industry">
               <h3>AI Impact by Industry: The Capability vs Adoption Gap</h3>
             </a>
@@ -151,9 +252,12 @@
           </div>
         </article>
 
-        <article class="insight-card">
+        <article class="insight-card" data-category="tool-comparison">
           <div>
-            <div class="insight-date">3 March 2026</div>
+            <div class="insight-meta">
+              <span class="insight-date">3 March 2026</span>
+              <span class="insight-read-time">8 min read</span>
+            </div>
             <a href="/insights/claude-vs-chatgpt-2026">
               <h3>Claude vs ChatGPT 2026: The Honest Comparison</h3>
             </a>
@@ -170,7 +274,6 @@
 
     <div class="accent-rule container"></div>
 
-    <!-- RELATED -->
     <section class="section container fade-in">
       <h2>Related resources</h2>
       <div class="two-paths" style="margin-top: var(--space-sm);">
@@ -205,5 +308,29 @@
   </footer>
 
   <script src="/main.js" defer></script>
+  <script>
+    (function() {
+      var filterBar = document.getElementById('filter-bar');
+      var cards = document.querySelectorAll('.insight-card');
+      if (!filterBar) return;
+
+      filterBar.addEventListener('click', function(e) {
+        var btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+
+        filterBar.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        var filter = btn.getAttribute('data-filter');
+        cards.forEach(function(card) {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

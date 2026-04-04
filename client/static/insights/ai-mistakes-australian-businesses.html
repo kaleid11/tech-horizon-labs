@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 5 AI Mistakes Australian Small Businesses Keep Making — Tech Horizon Labs</title>
+  <meta name="description" content="The 5 most common AI implementation mistakes Australian SMBs make: wrong tool, skipping the workflow audit, ignoring compliance, not training staff, and starting too big. How to avoid each one.">
+  <link rel="canonical" href="https://techhorizonlabs.com/insights/ai-mistakes-australian-businesses">
+  <meta property="og:title" content="The 5 AI Mistakes Australian Small Businesses Keep Making — Tech Horizon Labs">
+  <meta property="og:description" content="Five AI implementation mistakes we see repeatedly in Australian SMBs. Each one is avoidable. Here is how.">
+  <meta property="og:url" content="https://techhorizonlabs.com/insights/ai-mistakes-australian-businesses">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="The 5 AI Mistakes Australian Small Businesses Keep Making">
+  <meta name="twitter:description" content="Five AI implementation mistakes we see repeatedly in Australian SMBs. Each one is avoidable.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The 5 AI Mistakes Australian Small Businesses Keep Making",
+    "description": "The 5 most common AI implementation mistakes Australian SMBs make and how to avoid each one. Written by a Queensland AI consultant who has seen them all.",
+    "datePublished": "2026-04-04",
+    "dateModified": "2026-04-04",
+    "author": {
+      "@type": "Person",
+      "name": "Huxley Peckham",
+      "jobTitle": "Founder, Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com",
+      "logo": { "@type": "ImageObject", "url": "https://techhorizonlabs.com/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://techhorizonlabs.com/insights/ai-mistakes-australian-businesses" },
+    "image": "https://techhorizonlabs.com/opengraph.jpg",
+    "keywords": ["AI mistakes small business", "AI implementation errors", "AI for Australian business", "AI pitfalls SMB", "Queensland AI consultant"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the most common AI mistake small businesses make?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most common mistake is starting with a tool instead of a problem. Businesses sign up for ChatGPT or another AI tool and then look for things to do with it, instead of identifying their biggest workflow bottleneck first and then choosing the right tool for that specific problem."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to train my staff on AI tools?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. AI tools without staff training have an adoption rate below 20% after 90 days. The most successful AI implementations include structured training sessions, written documentation, and follow-up support. Training is not optional — it is the difference between a tool that gets used and one that gets abandoned."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it safe to use AI with sensitive business data in Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It can be, but only with proper infrastructure. Generic free-tier AI tools often send data to overseas servers with unclear retention policies. For sensitive data (financial, legal, health), you need enterprise-tier access with Australian data residency, or privately hosted models. The Privacy Act 1988 and industry-specific regulations (APRA, AMA) require you to know where your data goes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I start with a small AI project or go big?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with one workflow. The businesses that try to automate everything at once almost always fail. Pick your single biggest time bottleneck, build a working AI solution for that, prove the ROI, train the team, and then expand. A $5,000 project that works is worth more than a $50,000 project that stalls."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://techhorizonlabs.com/insights" },
+      { "@type": "ListItem", "position": 3, "name": "5 AI Mistakes Australian Businesses" }
+    ]
+  }
+  </script>
+
+  <style>
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-sm);
+      align-items: center;
+    }
+    .article-body h2 { margin-top: var(--space-sm); margin-bottom: 1rem; }
+    .article-body h3 { margin-top: 1.75rem; margin-bottom: 0.75rem; font-size: 1.125rem; }
+    .article-body p { color: var(--text-secondary); margin-bottom: 1.125rem; }
+    .article-body strong { color: var(--text); }
+    .callout-box {
+      background: #fdf6f0;
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .callout-box p { color: #5c3d2e; margin: 0; font-size: 0.9375rem; line-height: 1.65; }
+    .mistake-card {
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: white;
+      margin-bottom: 1.25rem;
+    }
+    .mistake-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #fee2e2;
+      color: #dc2626;
+      font-weight: 700;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .mistake-card h3 { margin: 0 0 0.75rem; font-size: 1.125rem; }
+    .mistake-card p { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+    .mistake-fix {
+      background: #f0fdf4;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 0.75rem;
+    }
+    .mistake-fix p { font-size: 0.875rem; color: #166534; margin: 0; }
+    .mistake-fix strong { color: #15803d; }
+    .source-note { font-size: 0.8125rem; color: var(--text-muted); border-top: 1px solid var(--border-light); padding-top: 1.25rem; margin-top: var(--space-md); }
+    .blockquote {
+      border-left: 4px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: #fdf6f0;
+      border-radius: 0 8px 8px 0;
+    }
+    .blockquote p { font-size: 1.0625rem; font-style: italic; color: #5c3d2e; margin-bottom: 0.5rem; }
+    .blockquote cite { font-size: 0.875rem; color: var(--text-muted); font-style: normal; }
+    .author-bio {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      background: #f9f9f7;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      margin-top: var(--space-sm);
+    }
+    .author-bio-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .author-bio h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+    .author-bio p { font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.5rem; }
+    .author-bio a { font-size: 0.875rem; }
+    @media (max-width: 480px) {
+      .author-bio { flex-direction: column; align-items: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <nav class="breadcrumb container" aria-label="Breadcrumb" style="padding-top:2rem;font-size:0.875rem;color:var(--text-muted);">
+      <a href="/">Home</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <a href="/insights">Insights</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <span>5 AI Mistakes Australian Businesses</span>
+    </nav>
+
+    <section class="hero container" style="padding-bottom:var(--space-sm);">
+      <p class="eyebrow" style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-bottom:1rem;font-weight:500;">Insights &mdash; April 2026</p>
+      <h1 style="font-size:2.75rem;">The 5 AI Mistakes Australian<br><span style="color:var(--accent);">Small Businesses Keep Making</span></h1>
+      <p class="subline">We have worked with dozens of Australian SMBs on AI implementation. These are the five mistakes we see over and over &mdash; and the fix for each one.</p>
+      <div class="article-meta" style="margin-top:1.5rem;">
+        <span>&#128100; Huxley Peckham, Tech Horizon Labs</span>
+        <span>&#128197; April 2026</span>
+        <span>&#9200; 6 min read</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <article class="section container article-body" style="max-width:760px;">
+
+      <div class="callout-box">
+        <p><strong>The pattern</strong><br>Every failed AI project we have seen shares at least one of these five mistakes. Most share two or three. The good news: each one is entirely avoidable if you know what to look for before you start.</p>
+      </div>
+
+      <p>AI adoption among Australian small businesses is accelerating. Our 2026 research found that 74% of Australian SMBs have tried at least one AI tool. But "tried" and "got value from" are very different things. Only 28% report a meaningful return on their AI investment.</p>
+
+      <p>The gap is not a technology problem. The tools work. The gap is an implementation problem. Here are the five mistakes that cause it.</p>
+
+      <div class="mistake-card">
+        <div class="mistake-number">1</div>
+        <h3>Starting With a Tool Instead of a Problem</h3>
+        <p>The most common pattern: a business owner hears about ChatGPT, signs up, plays with it for a week, and then tries to find things to use it for. This is backwards. You end up automating tasks that do not matter &mdash; drafting social media posts nobody reads, summarising documents nobody asked for.</p>
+        <p>The result is a $20/month subscription and a vague sense that "AI did not work for us." It did not work because it was never pointed at the right problem.</p>
+        <div class="mistake-fix">
+          <p><strong>The fix:</strong> Start with a workflow audit. Identify the single task that wastes the most time in your business. Map the inputs, the steps, and the outputs. Then choose the tool that fits that specific workflow. <a href="/services/audit">Our workflow audit &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-number">2</div>
+        <h3>Skipping the Workflow Audit</h3>
+        <p>Related to mistake #1, but distinct. Even businesses that identify a real problem often skip the step of mapping the actual workflow before building anything. They jump straight from "we need to automate invoice processing" to purchasing a tool &mdash; without documenting how invoices currently flow through the business.</p>
+        <p>The result: the AI tool does not fit the actual workflow. Data comes in a format it cannot handle. Approvals happen in a sequence it was not designed for. The team reverts to the manual process within a month.</p>
+        <div class="mistake-fix">
+          <p><strong>The fix:</strong> Map the workflow before you build. Document every step, every handoff, every decision point. A 2&ndash;3 hour workflow mapping session saves weeks of rework. <a href="/insights/ai-implementation-cost-australia">See our implementation cost guide &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-number">3</div>
+        <h3>Ignoring Data Compliance</h3>
+        <p>This one is specific to Australian businesses and especially dangerous. Free-tier AI tools typically send your data to US-based servers with unclear retention policies. For businesses handling client financial data, health records, legal documents, or personally identifiable information, this is a compliance risk under the Privacy Act 1988.</p>
+        <p>We have seen accounting firms paste client tax data into free ChatGPT. Law firms draft privilege-sensitive documents using tools that train on inputs. Healthcare providers use consumer AI for patient notes. Each of these is a compliance incident waiting to happen.</p>
+        <div class="mistake-fix">
+          <p><strong>The fix:</strong> Use enterprise-tier AI with clear data handling policies, or deploy on private infrastructure. Claude (Anthropic) does not train on your inputs by default. For highly regulated industries, AU-hosted private models remove the data sovereignty question entirely. <a href="/insights/claude-vs-chatgpt-2026">Claude vs ChatGPT comparison &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-number">4</div>
+        <h3>Not Training the Team</h3>
+        <p>The most expensive AI system in the world is worthless if your team does not use it. We consistently see businesses invest $10,000&ndash;$20,000 in an AI implementation and then allocate zero budget for training. The tool launches, two people try it, the rest ignore it, and six months later the subscription is cancelled.</p>
+        <p>AI tools without staff training have an adoption rate below 20% after 90 days. With structured training, that number jumps to 70%+.</p>
+        <div class="mistake-fix">
+          <p><strong>The fix:</strong> Budget for training from day one. Include live sessions, written documentation, and 30-day follow-up support. Make adoption a KPI. Consider enrolling key team members in structured AI training. <a href="/academy">AI Academy &mdash; training for operators &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-number">5</div>
+        <h3>Trying to Automate Everything at Once</h3>
+        <p>Ambition kills AI projects. A business identifies 10 workflows to automate, builds a business case for all 10, gets approval for a $50,000 project, and then spends 6 months trying to deliver everything simultaneously. Nothing ships. The board loses confidence. The project gets shelved.</p>
+        <p>The businesses that succeed with AI start small, prove ROI on one workflow, and then expand. A $5,000 project that delivers a working system in 3 weeks builds more organisational confidence than a $50,000 project plan that takes 6 months.</p>
+        <div class="mistake-fix">
+          <p><strong>The fix:</strong> Pick one workflow. Build it. Ship it. Measure the ROI. Train the team. Then pick the next one. Sequential wins compound faster than parallel ambition. <a href="/assessment">Find your starting point with the free assessment &rarr;</a></p>
+        </div>
+      </div>
+
+      <h2>The Common Thread</h2>
+
+      <p>All five mistakes share a root cause: <strong>treating AI as a technology purchase rather than a workflow redesign project.</strong> The tool is 20% of the work. The other 80% is understanding the problem, mapping the workflow, training the team, and handling compliance.</p>
+
+      <p>The businesses that get this right &mdash; the ones in the 28% who report meaningful ROI &mdash; almost always started with a clear problem, a mapped workflow, and a realistic scope. They did not buy the fanciest tool. They bought the right one.</p>
+
+      <div class="blockquote">
+        <p>"Every failed AI project I have seen started with a tool. Every successful one started with a workflow map and a single bottleneck."</p>
+        <cite>&mdash; Huxley Peckham, Founder, Tech Horizon Labs</cite>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>What is the most common AI mistake small businesses make?</h3>
+      <p>Starting with a tool instead of a problem. Businesses sign up for ChatGPT or another AI tool and then look for things to do with it, instead of identifying their biggest workflow bottleneck first and choosing the right tool for that specific problem.</p>
+
+      <h3>Do I need to train my staff on AI tools?</h3>
+      <p>Yes. AI tools without staff training have an adoption rate below 20% after 90 days. Structured training &mdash; live sessions, documentation, follow-up support &mdash; is the difference between a tool that gets used and one that gets abandoned.</p>
+
+      <h3>Is it safe to use AI with sensitive business data in Australia?</h3>
+      <p>It can be, with proper infrastructure. Generic free-tier AI tools often send data to overseas servers. For sensitive data, you need enterprise-tier access with Australian data residency or privately hosted models. The Privacy Act 1988 requires you to know where your data goes.</p>
+
+      <h3>Should I start with a small AI project or go big?</h3>
+      <p>Start with one workflow. Pick your single biggest time bottleneck, build a working solution, prove the ROI, train the team, and then expand. A $5,000 project that works is worth more than a $50,000 project that stalls.</p>
+
+      <div class="author-bio">
+        <div class="author-bio-avatar">HP</div>
+        <div>
+          <h4>Huxley Peckham</h4>
+          <p>Founder of Tech Horizon Labs. Based in Noosa Heads, Queensland. Huxley has deployed AI systems across dozens of Australian businesses spanning legal, construction, accounting, healthcare, and professional services. He runs the AI Academy (300+ operators) and publishes original research on AI adoption in the Australian market.</p>
+          <a href="/about" class="link-arrow">More about Huxley &rarr;</a>
+        </div>
+      </div>
+
+    </article>
+
+    <div class="accent-rule container"></div>
+
+    <section class="section container fade-in" style="max-width:760px;">
+      <h2>Not Sure If You Are Making These Mistakes?</h2>
+      <p style="color:var(--text-secondary);max-width:520px;">30-minute call. We will review your current AI setup and tell you honestly what is working, what is not, and what to do next. No sales pitch.</p>
+      <p style="margin-top:var(--space-xs);"><a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" class="link-arrow" rel="noopener noreferrer">Book free discovery call &rarr;</a></p>
+
+      <div style="margin-top:var(--space-sm);padding-top:var(--space-sm);border-top:1px solid var(--border-light);">
+        <h3 style="margin-bottom:1rem;font-size:1rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Related articles</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+          <a href="/insights/ai-implementation-cost-australia" class="link-arrow">AI implementation cost guide</a>
+          <a href="/insights/ai-readiness-stages-australia" class="link-arrow">The 4 AI readiness stages</a>
+          <a href="/insights/how-australia-uses-ai-2026" class="link-arrow">How Australia uses AI in 2026</a>
+          <a href="/insights/ai-impact-by-industry" class="link-arrow">AI impact by industry</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand">Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-right">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .nl-scroll-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #2d1f3f;
+      color: #fff;
+      padding: 0.875rem 1.5rem;
+      z-index: 900;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+      box-shadow: 0 -2px 16px rgba(0,0,0,0.12);
+    }
+    .nl-scroll-bar.visible { transform: translateY(0); }
+    .nl-scroll-bar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .nl-scroll-bar p {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .nl-scroll-bar .nl-sub {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      opacity: 0.7;
+    }
+    .nl-scroll-bar form {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nl-scroll-bar input[type="email"] {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      outline: none;
+      min-width: 200px;
+    }
+    .nl-scroll-bar input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
+    .nl-scroll-bar input[type="email"]:focus { border-color: var(--accent); }
+    .nl-scroll-bar button[type="submit"] {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nl-scroll-bar .nl-dismiss {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      font-size: 1.25rem;
+      padding: 0.25rem;
+      line-height: 1;
+      margin-left: 0.5rem;
+    }
+    .nl-scroll-bar .nl-dismiss:hover { color: #fff; }
+    .nl-scroll-bar .nl-msg {
+      font-size: 0.8125rem;
+      margin: 0;
+      margin-top: 0.25rem;
+    }
+    .nl-scroll-bar .nl-msg.error { color: #f87171; }
+    .nl-scroll-bar .nl-msg.success { color: #86efac; }
+    @media (max-width: 600px) {
+      .nl-scroll-bar-inner { flex-direction: column; text-align: center; }
+      .nl-scroll-bar form { width: 100%; justify-content: center; }
+    }
+  </style>
+
+  <div class="nl-scroll-bar" id="nl-scroll-bar" data-testid="insights-newsletter-bar">
+    <div class="nl-scroll-bar-inner">
+      <div>
+        <p>Get weekly AI implementation tips. <span class="nl-sub">No fluff.</span></p>
+      </div>
+      <form id="nl-scroll-form" novalidate>
+        <input type="email" id="nl-scroll-email" placeholder="Your email" autocomplete="email" required data-testid="input-insights-newsletter-email">
+        <button type="submit" data-testid="button-insights-newsletter-submit">Subscribe</button>
+        <button type="button" class="nl-dismiss" id="nl-dismiss" aria-label="Dismiss newsletter bar" data-testid="button-dismiss-newsletter">&times;</button>
+      </form>
+    </div>
+    <div class="nl-scroll-bar-inner">
+      <p class="nl-msg" id="nl-scroll-msg" style="display:none;"></p>
+    </div>
+  </div>
+
+  <script src="/main.js" defer></script>
+  <script>
+    (function() {
+      var bar = document.getElementById('nl-scroll-bar');
+      var form = document.getElementById('nl-scroll-form');
+      var dismissBtn = document.getElementById('nl-dismiss');
+      var msgEl = document.getElementById('nl-scroll-msg');
+      var STORAGE_KEY = 'thl_nl_dismissed';
+
+      if (!bar || localStorage.getItem(STORAGE_KEY)) return;
+
+      var shown = false;
+      function checkScroll() {
+        if (shown) return;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        if (docH > 0 && (window.scrollY / docH) >= 0.6) {
+          bar.classList.add('visible');
+          shown = true;
+          window.removeEventListener('scroll', checkScroll);
+        }
+      }
+      window.addEventListener('scroll', checkScroll, { passive: true });
+
+      dismissBtn.addEventListener('click', function() {
+        bar.classList.remove('visible');
+        localStorage.setItem(STORAGE_KEY, '1');
+      });
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var emailEl = document.getElementById('nl-scroll-email');
+        var email = emailEl.value.trim();
+        var btn = form.querySelector('button[type="submit"]');
+
+        msgEl.style.display = 'none';
+        msgEl.className = 'nl-msg';
+
+        if (!email || !email.includes('@')) {
+          msgEl.textContent = 'Please enter a valid email.';
+          msgEl.className = 'nl-msg error';
+          msgEl.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Subscribing\u2026';
+
+        fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: 'insights-scroll' })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.success) {
+            form.style.display = 'none';
+            msgEl.textContent = "You're in. Check your inbox.";
+            msgEl.className = 'nl-msg success';
+            msgEl.style.display = 'block';
+            localStorage.setItem(STORAGE_KEY, '1');
+            setTimeout(function() { bar.classList.remove('visible'); }, 3000);
+          } else {
+            throw new Error(data.error || 'Something went wrong.');
+          }
+        })
+        .catch(function(err) {
+          msgEl.textContent = err.message || 'Something went wrong.';
+          msgEl.className = 'nl-msg error';
+          msgEl.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Subscribe';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

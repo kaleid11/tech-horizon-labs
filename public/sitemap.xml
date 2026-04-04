@@ -203,6 +203,24 @@
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
+  <url>
+    <loc>https://techhorizonlabs.com/insights/ai-implementation-cost-australia</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/insights/ai-mistakes-australian-businesses</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/insights/ai-readiness-stages-australia</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
 
   <!-- Utility pages -->
   <url>
