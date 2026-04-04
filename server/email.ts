@@ -162,21 +162,32 @@ export async function sendAuditNotification(data: {
   business: string;
   score: number;
   tier: string;
+  wantsResultsEmail?: boolean;
+  wantsContact?: boolean;
+  wantsNewsletter?: boolean;
 }) {
   try {
     const { client, fromEmail } = await getUncachableResendClient();
 
+    const checkboxSummary = [
+      data.wantsResultsEmail ? '✅ Send results by email' : '☐ Send results by email',
+      data.wantsContact ? '✅ Reach out about results' : '☐ Reach out about results',
+      data.wantsNewsletter ? '✅ Newsletter sign-up' : '☐ Newsletter sign-up',
+    ].join('<br>');
+
     await client.emails.send({
       from: fromEmail,
-      to: fromEmail,
-      subject: `New Audit Submission: ${data.name} (${data.score}/100 → ${data.tier})`,
+      to: 'hello@techhorizonlabs.com',
+      subject: `New Audit — ${data.name} requested contact (${data.score}/100 → ${data.tier})`,
       html: `
-        <h2>New AI Readiness Audit Submission</h2>
+        <h2>New AI Readiness Audit — Contact Requested</h2>
         <p><strong>Name:</strong> ${data.name}</p>
         <p><strong>Email:</strong> ${data.email}</p>
         ${data.business ? `<p><strong>Business:</strong> ${data.business}</p>` : ''}
         <p><strong>Score:</strong> ${data.score}/100</p>
-        <p><strong>Suggested Tier:</strong> ${data.tier}</p>
+        <p><strong>Stage:</strong> ${data.tier}</p>
+        <p><strong>Opt-ins:</strong><br>${checkboxSummary}</p>
+        <p><a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery">Book a call link</a></p>
       `
     });
   } catch (error) {

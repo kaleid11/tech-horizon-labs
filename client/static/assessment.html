@@ -266,109 +266,6 @@
       cursor: not-allowed;
     }
 
-    /* Contact gate */
-    .gate-card {
-      max-width: 600px;
-      margin: 0 auto;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2.25rem 2rem;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-    }
-
-    .gate-card h2 {
-      font-size: 1.375rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .gate-card .gate-sub {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.55;
-    }
-
-    .gate-score-preview {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background: var(--accent-light);
-      border-radius: 10px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .gate-score-ring {
-      width: 3rem;
-      height: 3rem;
-      flex-shrink: 0;
-    }
-
-    .gate-score-text {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .gate-score-text strong {
-      font-size: 1.0625rem;
-      color: var(--accent);
-    }
-
-    .gate-form input {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: var(--font-body);
-      font-size: 0.9375rem;
-      background: var(--bg);
-      color: var(--text);
-      margin-bottom: 0.75rem;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-
-    .gate-form input:focus {
-      border-color: var(--accent);
-    }
-
-    .gate-form input::placeholder {
-      color: var(--text-muted);
-    }
-
-    .btn-reveal {
-      width: 100%;
-      padding: 0.9rem 1.5rem;
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-family: var(--font-body);
-      font-size: 0.9375rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.15s;
-      margin-top: 0.25rem;
-    }
-
-    .btn-reveal:hover {
-      background: var(--accent-hover);
-    }
-
-    .btn-reveal:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .gate-form-error {
-      font-size: 0.8125rem;
-      color: #c0392b;
-      margin-top: 0.375rem;
-      display: none;
-    }
-
     /* Results */
     .results-card {
       max-width: 640px;
@@ -503,6 +400,7 @@
       border-radius: 16px;
       padding: 2rem;
       text-align: center;
+      margin-bottom: 1.5rem;
     }
 
     .results-cta h3 {
@@ -534,20 +432,258 @@
       background: var(--accent-hover);
     }
 
+    /* Optional contact card */
+    .contact-opt-in-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-opt-in-card h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.375rem;
+    }
+
+    .contact-opt-in-card .opt-in-sub {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .opt-in-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      cursor: pointer;
+      border: 1.5px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      background: transparent;
+      font-family: var(--font-body);
+      transition: background 0.15s, color 0.15s;
+      margin-bottom: 1.25rem;
+    }
+
+    .opt-in-toggle:hover {
+      background: var(--accent-light);
+    }
+
+    .opt-in-checkboxes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      line-height: 1.45;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 1.125rem;
+      height: 1.125rem;
+      flex-shrink: 0;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .opt-in-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      margin-bottom: 1rem;
+    }
+
+    .opt-in-fields input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      background: var(--bg);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s;
+      box-sizing: border-box;
+    }
+
+    .opt-in-fields input:focus {
+      border-color: var(--accent);
+    }
+
+    .opt-in-fields input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .opt-in-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-opt-in-submit {
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-opt-in-submit:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-opt-in-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-opt-in-book {
+      display: inline-block;
+      padding: 0.75rem 1.25rem;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-opt-in-book:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
+
+    .opt-in-error {
+      font-size: 0.8125rem;
+      color: #c0392b;
+      margin-bottom: 0.5rem;
+      display: none;
+    }
+
+    .opt-in-success {
+      font-size: 0.875rem;
+      color: #2e8b57;
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      background: #f0faf4;
+      border-radius: 8px;
+      border: 1px solid #c3e6cb;
+      display: none;
+    }
+
+    /* Scorecard CTA card */
+    .scorecard-cta-card {
+      background: var(--accent-light);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .scorecard-cta-card .scorecard-cta-text p:first-child {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .scorecard-cta-card .scorecard-cta-text p:nth-child(2) {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.375rem;
+    }
+
+    .scorecard-cta-card .scorecard-cta-text p:last-child {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .btn-scorecard {
+      flex-shrink: 0;
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.375rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .btn-scorecard:hover {
+      background: var(--accent-hover);
+    }
+
     /* Section visibility */
     .section-hidden {
       display: none !important;
     }
 
     @media (max-width: 600px) {
-      .question-card,
-      .gate-card {
+      .question-card {
         padding: 1.5rem 1.25rem;
       }
       .results-score-row {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
+      }
+      .contact-opt-in-card,
+      .results-recs {
+        padding: 1.5rem 1.25rem;
+      }
+      .opt-in-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-opt-in-book {
+        text-align: center;
+      }
+      .scorecard-cta-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-scorecard {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
@@ -603,40 +739,8 @@
           </div>
         </div>
 
-        <!-- Contact gate section -->
-        <div id="section-gate" class="section-hidden">
-          <div class="gate-card">
-            <h2>Almost there.</h2>
-            <p class="gate-sub">Enter your details below to see your personalised results and recommendations.</p>
-
-            <div class="gate-score-preview">
-              <svg class="gate-score-ring" width="48" height="48" viewBox="0 0 48 48">
-                <circle cx="24" cy="24" r="20" fill="none" stroke="#eceae6" stroke-width="4"/>
-                <circle id="gate-ring-arc" cx="24" cy="24" r="20" fill="none" stroke="#B5654A" stroke-width="4"
-                  stroke-dasharray="125.66" stroke-dashoffset="125.66" stroke-linecap="round"
-                  style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 0.5s ease"/>
-              </svg>
-              <div class="gate-score-text">
-                You scored <strong id="gate-score-display">—</strong> out of 100.<br>
-                See your full readiness profile and next steps.
-              </div>
-            </div>
-
-            <form class="gate-form" id="gate-form" novalidate>
-              <input type="text" id="g-name" name="name" placeholder="Your name" autocomplete="name" required data-testid="input-gate-name">
-              <input type="email" id="g-email" name="email" placeholder="Work email" autocomplete="email" required data-testid="input-gate-email">
-              <input type="text" id="g-business" name="business" placeholder="Business name (optional)" autocomplete="organization" data-testid="input-gate-business">
-              <p class="gate-form-error" id="gate-error"></p>
-              <button type="submit" class="btn-reveal" id="btn-reveal" data-testid="button-reveal-results">Show my results</button>
-            </form>
-          </div>
-        </div>
-
-        <!-- Results section -->
+        <!-- Results section (shown immediately after last question) -->
         <div id="section-results" class="section-hidden">
-          <div id="api-error-notice" style="display:none;margin-bottom:1rem;background:#fff8f5;border:1px solid #f0d9cf;border-radius:10px;padding:0.875rem 1.125rem;font-size:0.8125rem;color:#7a5a50;line-height:1.55;" data-testid="notice-api-error">
-            Your results are ready. We couldn't reach our server to send your results email — if you'd like a copy, <a class="notice-email-link" href="mailto:hello@techhorizonlabs.com" style="color:var(--accent);font-weight:600;">email us</a> and we'll send it manually.
-          </div>
           <div class="results-card">
             <div class="results-score-row">
               <div class="score-ring-wrap">
@@ -647,14 +751,14 @@
                     style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 0.6s ease 0.2s"/>
                 </svg>
                 <div class="score-ring-label">
-                  <span class="score-number" id="result-score">—</span>
+                  <span class="score-number" id="result-score" data-testid="text-result-score">—</span>
                   <span class="score-denom">/ 100</span>
                 </div>
               </div>
               <div class="results-stage-info">
-                <p class="results-stage-label" id="result-stage-num">Stage —</p>
-                <h2 class="results-stage-name" id="result-stage-name"></h2>
-                <p class="results-stage-desc" id="result-stage-desc"></p>
+                <p class="results-stage-label" id="result-stage-num" data-testid="text-stage-num">Stage —</p>
+                <h2 class="results-stage-name" id="result-stage-name" data-testid="text-stage-name"></h2>
+                <p class="results-stage-desc" id="result-stage-desc" data-testid="text-stage-desc"></p>
               </div>
             </div>
 
@@ -673,33 +777,10 @@
                  data-testid="link-book-call">
                 Book a free 15-min call
               </a>
-              <p style="font-size:0.75rem;color:#6b7280;margin-top:0.5rem;">Opens in a new tab.</p>
+              <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:0.5rem;margin-bottom:0;">Opens in a new tab.</p>
             </div>
 
-            <div style="margin-top:1rem;background:var(--bg-warm);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;" data-testid="assessment-newsletter-cta">
-              <p style="font-size:0.875rem;font-weight:600;color:var(--text);margin-bottom:0.25rem;">Not ready to book yet?</p>
-              <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:1rem;line-height:1.55;">Get weekly AI tips for Australian business owners. No fluff, just practical implementation advice.</p>
-              <form id="assessment-newsletter-form" novalidate style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:flex-start;">
-                <input
-                  type="email"
-                  id="assessment-nl-email"
-                  placeholder="Your email"
-                  autocomplete="email"
-                  required
-                  style="flex:1;min-width:200px;padding:0.625rem 0.875rem;border:1px solid var(--border);border-radius:6px;font-family:var(--font-body);font-size:0.875rem;background:var(--white);color:var(--text);outline:none;transition:border-color 0.15s;"
-                  data-testid="input-assessment-newsletter-email"
-                >
-                <button
-                  type="submit"
-                  style="padding:0.625rem 1.125rem;background:var(--accent);color:#fff;border:none;border-radius:6px;font-family:var(--font-body);font-size:0.875rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:background 0.15s;"
-                  data-testid="button-assessment-newsletter-submit"
-                >Subscribe</button>
-              </form>
-              <p id="assessment-nl-error" style="font-size:0.8125rem;color:#c0392b;margin-top:0.5rem;display:none;"></p>
-              <p id="assessment-nl-success" style="font-size:0.8125rem;color:#388e3c;margin-top:0.5rem;display:none;">You're in. Check your inbox for a welcome email.</p>
-            </div>
-
-            <div style="margin-top:1rem;background:var(--accent-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;">
+            <div style="margin-top:0;background:var(--accent-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;margin-bottom:1.5rem;">
               <div>
                 <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.25rem;">Free Report</p>
                 <p style="font-size:0.9375rem;font-weight:600;color:var(--text);margin-bottom:0.25rem;">State of AI Readiness: Australian SMB 2026</p>
@@ -708,13 +789,67 @@
               <a href="/report" style="flex-shrink:0;display:inline-block;background:var(--accent);color:#ffffff;padding:0.6875rem 1.25rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.875rem;white-space:nowrap;" data-testid="link-report-download">Download free report</a>
             </div>
 
-            <div style="margin-top:1rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;">
-              <div>
-                <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.25rem;">Go deeper</p>
-                <p style="font-size:0.9375rem;font-weight:600;color:var(--text);margin-bottom:0.25rem;">28-Question AI Readiness Scorecard</p>
-                <p style="font-size:0.875rem;color:var(--text-secondary);margin:0;line-height:1.5;">Want a deeper analysis? The full Scorecard breaks your AI readiness down across 6 business dimensions — usage, data, integration, team capability, strategy, and measurable impact.</p>
+            <!-- Optional contact card -->
+            <div class="contact-opt-in-card" id="contact-opt-in-card">
+              <h3>Want to take the next step?</h3>
+              <p class="opt-in-sub">Choose what's useful for you — no obligation.</p>
+
+              <div id="opt-in-collapsed">
+                <button class="opt-in-toggle" id="btn-opt-in-expand" onclick="expandOptIn()" data-testid="button-expand-optin">
+                  Stay in touch? →
+                </button>
               </div>
-              <a href="/scorecard" style="flex-shrink:0;display:inline-block;background:transparent;color:var(--accent);border:1.5px solid var(--accent);padding:0.6875rem 1.25rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.875rem;white-space:nowrap;" data-testid="link-scorecard-cta">Take the Scorecard</a>
+
+              <div id="opt-in-expanded" class="section-hidden">
+                <div class="opt-in-checkboxes">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="chk-results-email" data-testid="checkbox-results-email">
+                    Send me my results by email
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="chk-contact" data-testid="checkbox-contact">
+                    I'd like someone from THL to reach out about my results
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="chk-newsletter" data-testid="checkbox-newsletter">
+                    Sign me up for the weekly newsletter
+                  </label>
+                </div>
+
+                <div class="opt-in-fields" id="opt-in-fields">
+                  <input type="text" id="oi-name" name="name" placeholder="Your name" autocomplete="name" data-testid="input-optin-name">
+                  <input type="email" id="oi-email" name="email" placeholder="Work email" autocomplete="email" data-testid="input-optin-email">
+                  <input type="text" id="oi-business" name="business" placeholder="Business name (optional)" autocomplete="organization" data-testid="input-optin-business">
+                </div>
+
+                <p class="opt-in-error" id="opt-in-error"></p>
+                <div class="opt-in-success" id="opt-in-success">
+                  Done — we'll be in touch. Check your inbox for your results email.
+                </div>
+
+                <div class="opt-in-actions">
+                  <button class="btn-opt-in-submit" id="btn-opt-in-submit" onclick="submitOptIn()" data-testid="button-optin-submit">Submit</button>
+                  <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     class="btn-opt-in-book"
+                     data-testid="link-book-call-optin">
+                    Book a Free Discovery Call →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scorecard CTA card -->
+            <div class="scorecard-cta-card">
+              <div class="scorecard-cta-text">
+                <p>Want a deeper analysis?</p>
+                <p>Full AI Readiness Scorecard</p>
+                <p>The 28-question Scorecard breaks your AI readiness down across 6 business dimensions — so you know exactly where your biggest gaps are.</p>
+              </div>
+              <a href="/scorecard" class="btn-scorecard" data-testid="link-scorecard-cta">
+                Take the Full Scorecard →
+              </a>
             </div>
           </div>
         </div>
@@ -923,9 +1058,10 @@
     // State
     // ==============================
     var currentQ = 0;
-    var answers = new Array(QUESTIONS.length).fill(null); // selected option index per question
+    var answers = new Array(QUESTIONS.length).fill(null);
     var totalScore = 0;
     var finalStage = null;
+    var completionSubmitted = false;
 
     // ==============================
     // Render question
@@ -974,7 +1110,7 @@
       nextBtn.disabled = answers[currentQ] === null;
 
       if (currentQ === QUESTIONS.length - 1) {
-        nextBtn.textContent = 'See my score →';
+        nextBtn.textContent = 'See my results →';
       } else {
         nextBtn.textContent = 'Next →';
       }
@@ -987,7 +1123,7 @@
         currentQ++;
         renderQuestion();
       } else {
-        showGate();
+        showResults();
       }
     }
 
@@ -1018,41 +1154,94 @@
     }
 
     // ==============================
-    // Gate section
+    // Results section (shown immediately)
     // ==============================
-    function showGate() {
+    function showResults() {
       totalScore = computeScore();
       finalStage = getStage(totalScore);
 
       document.getElementById('section-question').classList.add('section-hidden');
       document.getElementById('progress-wrap').classList.add('section-hidden');
-      document.getElementById('section-gate').classList.remove('section-hidden');
+      document.getElementById('section-results').classList.remove('section-hidden');
 
-      document.getElementById('gate-score-display').textContent = totalScore;
+      document.getElementById('result-score').textContent = totalScore;
+      document.getElementById('result-score').style.color = finalStage.color;
+      document.getElementById('result-stage-num').textContent = finalStage.stageNum;
+      document.getElementById('result-stage-name').textContent = finalStage.name;
+      document.getElementById('result-stage-desc').textContent = finalStage.desc;
 
-      // Animate gate ring
-      var circumference = 125.66;
+      var circumference = 238.76;
       var offset = circumference - (totalScore / 100) * circumference;
       setTimeout(function() {
-        var arc = document.getElementById('gate-ring-arc');
+        var arc = document.getElementById('result-ring-arc');
         arc.style.stroke = finalStage.color;
         arc.style.strokeDashoffset = offset;
-      }, 100);
+      }, 150);
+
+      var recList = document.getElementById('rec-list');
+      recList.innerHTML = '';
+      finalStage.recs.forEach(function(rec, i) {
+        var li = document.createElement('li');
+        li.className = 'rec-item';
+        li.setAttribute('data-testid', 'rec-item-' + i);
+        li.innerHTML = '<span class="rec-num">' + (i + 1) + '</span><span>' + rec + '</span>';
+        recList.appendChild(li);
+      });
+
+      document.getElementById('section-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Fire anonymous completion to track score (no email required)
+      submitAnonymousCompletion();
     }
 
-    var apiCallSucceeded = false;
+    // Submit score to DB without requiring email
+    async function submitAnonymousCompletion() {
+      if (completionSubmitted) return;
+      completionSubmitted = true;
+      try {
+        await fetch('/api/audit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            answers: JSON.stringify(answers),
+            wantsResultsEmail: false,
+            wantsContact: false,
+            wantsNewsletter: false
+          })
+        });
+      } catch (err) {
+        console.warn('Anonymous completion tracking failed:', err);
+      }
+    }
 
-    // Gate form submit
-    document.getElementById('gate-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
+    // ==============================
+    // Optional contact opt-in
+    // ==============================
+    function expandOptIn() {
+      document.getElementById('opt-in-collapsed').classList.add('section-hidden');
+      document.getElementById('opt-in-expanded').classList.remove('section-hidden');
+    }
 
-      var name = document.getElementById('g-name').value.trim();
-      var email = document.getElementById('g-email').value.trim();
-      var business = document.getElementById('g-business').value.trim();
-      var errEl = document.getElementById('gate-error');
-      var btn = document.getElementById('btn-reveal');
+    async function submitOptIn() {
+      var chkResultsEmail = document.getElementById('chk-results-email').checked;
+      var chkContact = document.getElementById('chk-contact').checked;
+      var chkNewsletter = document.getElementById('chk-newsletter').checked;
+      var name = document.getElementById('oi-name').value.trim();
+      var email = document.getElementById('oi-email').value.trim();
+      var business = document.getElementById('oi-business').value.trim();
+      var errEl = document.getElementById('opt-in-error');
+      var successEl = document.getElementById('opt-in-success');
+      var btn = document.getElementById('btn-opt-in-submit');
 
       errEl.style.display = 'none';
+      successEl.style.display = 'none';
+
+      var anyChecked = chkResultsEmail || chkContact || chkNewsletter;
+      if (!anyChecked) {
+        errEl.textContent = 'Please select at least one option above.';
+        errEl.style.display = 'block';
+        return;
+      }
 
       if (!name) {
         errEl.textContent = 'Please enter your name.';
@@ -1066,82 +1255,40 @@
       }
 
       btn.disabled = true;
-      btn.textContent = 'Loading…';
+      btn.textContent = 'Submitting…';
 
-      // Build payload — send structured answer indices so server can score independently
-      var payload = {
-        name: name,
-        email: email,
-        business: business || null,
-        answers: JSON.stringify(answers)  // array of 10 option indices (0-3)
-      };
-
-      apiCallSucceeded = false;
       try {
         var res = await fetch('/api/audit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            business: business || null,
+            answers: JSON.stringify(answers),
+            wantsResultsEmail: chkResultsEmail,
+            wantsContact: chkContact,
+            wantsNewsletter: chkNewsletter
+          })
         });
         var data = await res.json();
-        if (res.ok && data.success === true) {
-          apiCallSucceeded = true;
+        if (res.ok && data.success) {
+          successEl.textContent = chkResultsEmail
+            ? 'Done — check your inbox for your results email.'
+            : 'Done — we\'ll be in touch soon.';
+          successEl.style.display = 'block';
+          btn.style.display = 'none';
+          document.getElementById('opt-in-error').style.display = 'none';
+        } else {
+          throw new Error(data.error || 'Submission failed');
         }
       } catch (err) {
-        // Don't block results on API failure — show them anyway
-        console.error('Audit API error:', err);
+        console.error('Opt-in submit error:', err);
+        errEl.textContent = 'Something went wrong. Please try again or email us at hello@techhorizonlabs.com';
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Submit';
       }
-
-      showResults(name, email);
-    });
-
-    // ==============================
-    // Results section
-    // ==============================
-    function showResults(name, email) {
-      document.getElementById('section-gate').classList.add('section-hidden');
-      document.getElementById('section-results').classList.remove('section-hidden');
-
-      document.getElementById('result-score').textContent = totalScore;
-      document.getElementById('result-score').style.color = finalStage.color;
-      document.getElementById('result-stage-num').textContent = finalStage.stageNum;
-      document.getElementById('result-stage-name').textContent = finalStage.name;
-      document.getElementById('result-stage-desc').textContent = finalStage.desc;
-
-      // Animate result ring
-      var circumference = 238.76;
-      var offset = circumference - (totalScore / 100) * circumference;
-      setTimeout(function() {
-        var arc = document.getElementById('result-ring-arc');
-        arc.style.stroke = finalStage.color;
-        arc.style.strokeDashoffset = offset;
-      }, 150);
-
-      // Render recommendations
-      var recList = document.getElementById('rec-list');
-      recList.innerHTML = '';
-      finalStage.recs.forEach(function(rec, i) {
-        var li = document.createElement('li');
-        li.className = 'rec-item';
-        li.setAttribute('data-testid', 'rec-item-' + i);
-        li.innerHTML = '<span class="rec-num">' + (i + 1) + '</span><span>' + rec + '</span>';
-        recList.appendChild(li);
-      });
-
-      // Show subtle notice if API call failed (email not sent)
-      var noticeEl = document.getElementById('api-error-notice');
-      if (noticeEl) {
-        if (!apiCallSucceeded) {
-          noticeEl.style.display = 'block';
-          var emailLink = noticeEl.querySelector('.notice-email-link');
-          if (emailLink && email) emailLink.href = 'mailto:hello@techhorizonlabs.com?subject=AI Readiness Results&body=Hi, my email is ' + encodeURIComponent(email) + '. Could you send me my results?';
-        } else {
-          noticeEl.style.display = 'none';
-        }
-      }
-
-      // Scroll to top of results
-      document.getElementById('section-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     // ==============================

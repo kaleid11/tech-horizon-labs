@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp, integer } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, timestamp, integer, boolean } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -43,6 +43,8 @@ export const auditSubmissions = pgTable("audit_submissions", {
   answers: text("answers").notNull(),
   results: text("results").notNull(),
   suggestedTier: text("suggested_tier").notNull(),
+  contactRequested: boolean("contact_requested").notNull().default(false),
+  wantsNewsletter: boolean("wants_newsletter").notNull().default(false),
   submittedAt: timestamp("submitted_at").notNull().defaultNow(),
 });
 

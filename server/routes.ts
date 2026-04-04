@@ -422,14 +422,26 @@ export async function registerRoutes(
 
   app.post("/api/audit", async (req, res) => {
     try {
-      // Parse and validate request (answers only — score/tier/results computed server-side)
+      // Parse and validate request
+      // name/email are optional — only required when user opts in to contact/email
       const auditRequestSchema = z.object({
-        name: z.string().min(1).max(100),
-        email: z.string().email(),
+        name: z.string().min(1).max(100).optional(),
+        email: z.string().email().optional(),
         business: z.string().max(200).nullable().optional(),
         answers: z.string().min(1),  // JSON array of 10 option indices (0-3)
+        wantsResultsEmail: z.boolean().optional().default(false),
+        wantsContact: z.boolean().optional().default(false),
+        wantsNewsletter: z.boolean().optional().default(false),
       });
       const input = auditRequestSchema.parse(req.body);
+
+      // If any opt-in is checked, name and email are required
+      const anyOptIn = input.wantsResultsEmail || input.wantsContact || input.wantsNewsletter;
+      if (anyOptIn) {
+        if (!input.name || !input.email) {
+          return res.status(400).json({ success: false, error: "Name and email are required when opting in." });
+        }
+      }
 
       // Deserialise and validate answer indices
       let answerIndices: number[];
@@ -453,48 +465,67 @@ export async function registerRoutes(
       const suggestedTier = `${stage.num} — ${stage.name}`;
       const recommendations = stage.recs;
 
-      // Store to DB
+      // Store to DB — use placeholders if no contact info provided
+      const submitterName = input.name ?? "anonymous";
+      const submitterEmail = input.email ?? "no-email@anonymous.local";
+
       const submission = await storage.createAuditSubmission({
-        name: input.name,
-        email: input.email,
+        name: submitterName,
+        email: submitterEmail,
         business: input.business ?? null,
         score,
         answers: input.answers,
         results: JSON.stringify(recommendations),
         suggestedTier,
+        contactRequested: input.wantsContact ?? false,
+        wantsNewsletter: input.wantsNewsletter ?? false,
       });
 
-      sendAuditResults({
-        email: input.email,
-        name: input.name,
-        score,
-        tier: suggestedTier,
-        recommendations,
-      }).catch((err) => console.error("Audit results email failed:", err));
+      // Send results email only if requested
+      if (input.wantsResultsEmail && input.email && input.name) {
+        sendAuditResults({
+          email: input.email,
+          name: input.name,
+          score,
+          tier: suggestedTier,
+          recommendations,
+        }).catch((err) => console.error("Audit results email failed:", err));
+      }
 
-      sendAuditNotification({
-        name: input.name,
-        email: input.email,
-        business: input.business || "",
-        score,
-        tier: suggestedTier,
-      }).catch((err) => console.error("Audit notification failed:", err));
+      // Send internal notification only if user wants contact
+      if (input.wantsContact && input.email && input.name) {
+        sendAuditNotification({
+          name: input.name,
+          email: input.email,
+          business: input.business || "",
+          score,
+          tier: suggestedTier,
+          wantsResultsEmail: input.wantsResultsEmail ?? false,
+          wantsContact: true,
+          wantsNewsletter: input.wantsNewsletter ?? false,
+        }).catch((err) => console.error("Audit notification failed:", err));
+      }
 
-      pushToKlipy({
-        name: input.name,
-        email: input.email,
-        company: input.business || undefined,
-        source: "ai-readiness-assessment",
-      });
+      // CRM and Beehiiv sync only if user submitted contact info
+      if (input.email && input.name) {
+        pushToKlipy({
+          name: input.name,
+          email: input.email,
+          company: input.business || undefined,
+          source: "ai-readiness-assessment",
+        });
 
-      const beehiivApiKey = process.env.BEEHIIV_API_KEY;
-      const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
-      if (beehiivApiKey && beehiivPubId) {
-        fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Authorization: `Bearer ${beehiivApiKey}` },
-          body: JSON.stringify({ email: input.email, reactivate_existing: true, send_welcome_email: false, tags: ["ai-readiness-assessment"] }),
-        }).catch((err) => console.error("Beehiiv audit sync failed:", err));
+        if (input.wantsNewsletter) {
+          const beehiivApiKey = process.env.BEEHIIV_API_KEY;
+          const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
+          if (beehiivApiKey && beehiivPubId) {
+            fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json", Authorization: `Bearer ${beehiivApiKey}` },
+              body: JSON.stringify({ email: input.email, reactivate_existing: true, send_welcome_email: false, tags: ["ai-readiness-assessment"] }),
+            }).catch((err) => console.error("Beehiiv audit sync failed:", err));
+          }
+        }
       }
 
       res.json({ success: true, id: submission.id });
