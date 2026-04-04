@@ -442,6 +442,186 @@
     </div>
   </footer>
 
+  <style>
+    .nl-scroll-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #2d1f3f;
+      color: #fff;
+      padding: 0.875rem 1.5rem;
+      z-index: 900;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+      box-shadow: 0 -2px 16px rgba(0,0,0,0.12);
+    }
+    .nl-scroll-bar.visible { transform: translateY(0); }
+    .nl-scroll-bar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .nl-scroll-bar p {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .nl-scroll-bar .nl-sub {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      opacity: 0.7;
+    }
+    .nl-scroll-bar form {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nl-scroll-bar input[type="email"] {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      outline: none;
+      min-width: 200px;
+    }
+    .nl-scroll-bar input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
+    .nl-scroll-bar input[type="email"]:focus { border-color: var(--accent); }
+    .nl-scroll-bar button[type="submit"] {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nl-scroll-bar .nl-dismiss {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      font-size: 1.25rem;
+      padding: 0.25rem;
+      line-height: 1;
+      margin-left: 0.5rem;
+    }
+    .nl-scroll-bar .nl-dismiss:hover { color: #fff; }
+    .nl-scroll-bar .nl-msg {
+      font-size: 0.8125rem;
+      margin: 0;
+      margin-top: 0.25rem;
+    }
+    .nl-scroll-bar .nl-msg.error { color: #f87171; }
+    .nl-scroll-bar .nl-msg.success { color: #86efac; }
+    @media (max-width: 600px) {
+      .nl-scroll-bar-inner { flex-direction: column; text-align: center; }
+      .nl-scroll-bar form { width: 100%; justify-content: center; }
+    }
+  </style>
+
+  <div class="nl-scroll-bar" id="nl-scroll-bar" data-testid="insights-newsletter-bar">
+    <div class="nl-scroll-bar-inner">
+      <div>
+        <p>Get weekly AI implementation tips. <span class="nl-sub">No fluff.</span></p>
+      </div>
+      <form id="nl-scroll-form" novalidate>
+        <input type="email" id="nl-scroll-email" placeholder="Your email" autocomplete="email" required data-testid="input-insights-newsletter-email">
+        <button type="submit" data-testid="button-insights-newsletter-submit">Subscribe</button>
+        <button type="button" class="nl-dismiss" id="nl-dismiss" aria-label="Dismiss newsletter bar" data-testid="button-dismiss-newsletter">&times;</button>
+      </form>
+    </div>
+    <div class="nl-scroll-bar-inner">
+      <p class="nl-msg" id="nl-scroll-msg" style="display:none;"></p>
+    </div>
+  </div>
+
   <script src="/main.js" defer></script>
+  <script>
+    (function() {
+      var bar = document.getElementById('nl-scroll-bar');
+      var form = document.getElementById('nl-scroll-form');
+      var dismissBtn = document.getElementById('nl-dismiss');
+      var msgEl = document.getElementById('nl-scroll-msg');
+      var STORAGE_KEY = 'thl_nl_dismissed';
+
+      if (!bar || localStorage.getItem(STORAGE_KEY)) return;
+
+      var shown = false;
+      function checkScroll() {
+        if (shown) return;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        if (docH > 0 && (window.scrollY / docH) >= 0.6) {
+          bar.classList.add('visible');
+          shown = true;
+          window.removeEventListener('scroll', checkScroll);
+        }
+      }
+      window.addEventListener('scroll', checkScroll, { passive: true });
+
+      dismissBtn.addEventListener('click', function() {
+        bar.classList.remove('visible');
+        localStorage.setItem(STORAGE_KEY, '1');
+      });
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var emailEl = document.getElementById('nl-scroll-email');
+        var email = emailEl.value.trim();
+        var btn = form.querySelector('button[type="submit"]');
+
+        msgEl.style.display = 'none';
+        msgEl.className = 'nl-msg';
+
+        if (!email || !email.includes('@')) {
+          msgEl.textContent = 'Please enter a valid email.';
+          msgEl.className = 'nl-msg error';
+          msgEl.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Subscribing\u2026';
+
+        fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: 'insights-scroll' })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.success) {
+            form.style.display = 'none';
+            msgEl.textContent = "You're in. Check your inbox.";
+            msgEl.className = 'nl-msg success';
+            msgEl.style.display = 'block';
+            localStorage.setItem(STORAGE_KEY, '1');
+            setTimeout(function() { bar.classList.remove('visible'); }, 3000);
+          } else {
+            throw new Error(data.error || 'Something went wrong.');
+          }
+        })
+        .catch(function(err) {
+          msgEl.textContent = err.message || 'Something went wrong.';
+          msgEl.className = 'nl-msg error';
+          msgEl.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Subscribe';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

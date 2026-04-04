@@ -102,38 +102,46 @@
       <p><small>Noosa Heads, QLD</small></p>
     </section>
 
+    <section class="container fade-in" data-testid="section-assessment-cta" style="margin-bottom:var(--space-sm);">
+      <div style="background:var(--bg-warm);border:1px solid var(--border);border-radius:16px;padding:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
+        <div>
+          <span style="display:inline-block;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Before you call</span>
+          <h2 style="font-size:1.375rem;margin-bottom:0.5rem;">Find out where you stand</h2>
+          <p style="color:var(--text-secondary);font-size:0.9375rem;line-height:1.6;margin:0;max-width:420px;">Take the free AI Readiness Assessment first. 10 questions, instant results. Know your AI maturity stage before the call so we can skip the basics and get straight to your highest-value opportunity.</p>
+          <a href="/assessment" style="display:inline-block;margin-top:1.25rem;background:var(--accent);color:#ffffff;padding:0.875rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9375rem;" data-testid="link-assessment-prominent">Start assessment &rarr;</a>
+        </div>
+        <div style="flex-shrink:0;" aria-hidden="true">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="44" stroke="#e0ddd8" stroke-width="6"/>
+            <circle cx="50" cy="50" r="44" stroke="#B5654A" stroke-width="6" stroke-linecap="round" stroke-dasharray="276.46" stroke-dashoffset="69.12" transform="rotate(-90 50 50)"/>
+            <text x="50" y="46" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="20" font-weight="600" fill="#1a1a1a">75</text>
+            <text x="50" y="62" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="9" fill="#7a7a7a">/100</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
     <section class="container fade-in">
       <form id="contact-form" novalidate>
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" required autocomplete="name">
+          <input type="text" id="name" name="name" required autocomplete="name" data-testid="input-contact-name">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required autocomplete="email">
+          <input type="email" id="email" name="email" required autocomplete="email" data-testid="input-contact-email">
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
+          <textarea id="message" name="message" required data-testid="input-contact-message"></textarea>
         </div>
-        <button type="submit" class="btn-submit">Send message</button>
-        <div id="form-message"></div>
+        <button type="submit" class="btn-submit" data-testid="button-contact-submit">Send message</button>
+        <div id="form-message" data-testid="text-contact-status"></div>
       </form>
     </section>
 
     <section class="section container fade-in">
-      <p><small>If you'd prefer to talk, <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" target="_blank" rel="noopener noreferrer" class="link-arrow">book a 15-minute call</a>.</small></p>
-    </section>
-
-    <section class="section container fade-in">
-      <div style="background:var(--bg-warm);border:1px solid var(--border);border-radius:12px;padding:2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
-        <div>
-          <span style="display:inline-block;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.375rem;">Not sure where to start?</span>
-          <h2 style="font-size:1.125rem;margin-bottom:0.25rem;">Take the free AI Readiness Assessment</h2>
-          <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.55;margin:0;">10 questions, instant results. Find out which AI Maturity Stage your business is in and what to prioritise first.</p>
-        </div>
-        <a href="/assessment" style="flex-shrink:0;display:inline-block;background:var(--accent);color:#ffffff;padding:0.75rem 1.375rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.9rem;white-space:nowrap;">Start assessment &rarr;</a>
-      </div>
+      <p><small>If you'd prefer to talk, <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" target="_blank" rel="noopener noreferrer" class="link-arrow" data-testid="link-book-call">book a 15-minute call</a>.</small></p>
     </section>
   </main>
 
@@ -154,5 +162,16 @@
   </footer>
 
   <script src="/main.js" defer></script>
+  <style>
+    @media (max-width: 600px) {
+      [data-testid="section-assessment-cta"] > div {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+      }
+      [data-testid="section-assessment-cta"] > div > div:last-child {
+        display: none !important;
+      }
+    }
+  </style>
 </body>
 </html>

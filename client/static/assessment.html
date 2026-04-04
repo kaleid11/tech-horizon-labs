@@ -620,6 +620,29 @@
               <p style="font-size:0.75rem;color:#6b7280;margin-top:0.5rem;">Opens in a new tab.</p>
             </div>
 
+            <div style="margin-top:1rem;background:var(--bg-warm);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;" data-testid="assessment-newsletter-cta">
+              <p style="font-size:0.875rem;font-weight:600;color:var(--text);margin-bottom:0.25rem;">Not ready to book yet?</p>
+              <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:1rem;line-height:1.55;">Get weekly AI tips for Australian business owners. No fluff, just practical implementation advice.</p>
+              <form id="assessment-newsletter-form" novalidate style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:flex-start;">
+                <input
+                  type="email"
+                  id="assessment-nl-email"
+                  placeholder="Your email"
+                  autocomplete="email"
+                  required
+                  style="flex:1;min-width:200px;padding:0.625rem 0.875rem;border:1px solid var(--border);border-radius:6px;font-family:var(--font-body);font-size:0.875rem;background:var(--white);color:var(--text);outline:none;transition:border-color 0.15s;"
+                  data-testid="input-assessment-newsletter-email"
+                >
+                <button
+                  type="submit"
+                  style="padding:0.625rem 1.125rem;background:var(--accent);color:#fff;border:none;border-radius:6px;font-family:var(--font-body);font-size:0.875rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:background 0.15s;"
+                  data-testid="button-assessment-newsletter-submit"
+                >Subscribe</button>
+              </form>
+              <p id="assessment-nl-error" style="font-size:0.8125rem;color:#c0392b;margin-top:0.5rem;display:none;"></p>
+              <p id="assessment-nl-success" style="font-size:0.8125rem;color:#388e3c;margin-top:0.5rem;display:none;">You're in. Check your inbox for a welcome email.</p>
+            </div>
+
             <div style="margin-top:1rem;background:var(--accent-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;">
               <div>
                 <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.25rem;">Free Report</p>
@@ -1031,6 +1054,58 @@
 
       // Scroll to top of results
       document.getElementById('section-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ==============================
+    // Assessment Newsletter Form
+    // ==============================
+    var nlForm = document.getElementById('assessment-newsletter-form');
+    if (nlForm) {
+      nlForm.addEventListener('submit', function(ev) {
+        ev.preventDefault();
+        var emailInput = document.getElementById('assessment-nl-email');
+        var errEl = document.getElementById('assessment-nl-error');
+        var successEl = document.getElementById('assessment-nl-success');
+        var btn = nlForm.querySelector('button[type="submit"]');
+        var emailVal = emailInput.value.trim();
+
+        errEl.style.display = 'none';
+        errEl.textContent = '';
+        successEl.style.display = 'none';
+
+        if (!emailVal || !emailVal.includes('@')) {
+          errEl.textContent = 'Please enter a valid email address.';
+          errEl.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Subscribing\u2026';
+
+        fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: emailVal, source: 'assessment-newsletter' })
+        })
+        .then(function(res) {
+          if (!res.ok && res.status !== 400) throw new Error('Something went wrong. Please try again.');
+          return res.json();
+        })
+        .then(function(data) {
+          if (data.success) {
+            nlForm.style.display = 'none';
+            successEl.style.display = 'block';
+          } else {
+            throw new Error(data.error || 'Something went wrong.');
+          }
+        })
+        .catch(function(err) {
+          errEl.textContent = err.message || 'Something went wrong. Please try again.';
+          errEl.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Subscribe';
+        });
+      });
     }
 
     // ==============================

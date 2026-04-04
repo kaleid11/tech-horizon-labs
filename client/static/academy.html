@@ -81,6 +81,131 @@
     ]
   }
   </script>
+  <style>
+    .academy-whats-inside {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin: 2rem 0 3rem;
+    }
+    .workshop-topic {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+    }
+    .workshop-topic h3 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      margin-bottom: 0.375rem;
+      color: var(--text);
+    }
+    .workshop-topic p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .workshop-topic .topic-tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.625rem;
+    }
+    .testimonial-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin: 2rem 0 3rem;
+    }
+    .testimonial-card {
+      background: var(--bg-warm);
+      border-radius: 10px;
+      padding: 1.5rem;
+      position: relative;
+    }
+    .testimonial-card .quote-mark {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--accent);
+      line-height: 1;
+      opacity: 0.4;
+      position: absolute;
+      top: 0.75rem;
+      left: 1rem;
+    }
+    .testimonial-card blockquote {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-style: italic;
+      margin: 0;
+      padding-top: 1.25rem;
+    }
+    .testimonial-card cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      font-style: normal;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .faq-section {
+      margin: 2rem 0 3rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border-light);
+    }
+    .faq-item:first-child {
+      border-top: 1px solid var(--border-light);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.125rem 0;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .faq-question:hover {
+      color: var(--accent);
+    }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      transition: transform 0.2s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+    .faq-answer p {
+      padding: 0 0 1.25rem;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
   <canvas id="dot-grid" aria-hidden="true"></canvas>
@@ -132,9 +257,118 @@
       </div>
     </section>
 
+    <section class="section container fade-in" data-testid="section-whats-inside">
+      <h2>What's Inside</h2>
+      <p style="color:var(--text-secondary);max-width:560px;margin-bottom:0.5rem;">Weekly workshops covering practical AI implementation. Each session is recorded and added to the library within 24 hours.</p>
+      <div class="academy-whats-inside">
+        <div class="workshop-topic" data-testid="topic-prompt-engineering">
+          <span class="topic-tag">Foundation</span>
+          <h3>Prompt Engineering for Business</h3>
+          <p>Move beyond basic prompts. Learn structured prompt frameworks that produce consistent, reliable outputs for proposals, reports, and client communications.</p>
+        </div>
+        <div class="workshop-topic" data-testid="topic-workflow-automation">
+          <span class="topic-tag">Automation</span>
+          <h3>Workflow Automation with AI</h3>
+          <p>Connect AI to your existing tools. Build automations using Make, Zapier, and native API integrations that save 5&ndash;15 hours per week.</p>
+        </div>
+        <div class="workshop-topic" data-testid="topic-ai-writing">
+          <span class="topic-tag">Content</span>
+          <h3>AI-Assisted Writing &amp; Content</h3>
+          <p>Create SOPs, blog posts, proposals, and marketing copy with AI assistance. Maintain your brand voice while cutting production time by 60&ndash;80%.</p>
+        </div>
+        <div class="workshop-topic" data-testid="topic-data-analysis">
+          <span class="topic-tag">Data</span>
+          <h3>Data Analysis &amp; Reporting</h3>
+          <p>Use Claude and ChatGPT to analyse spreadsheets, generate insights from financial data, and build automated reporting dashboards.</p>
+        </div>
+        <div class="workshop-topic" data-testid="topic-ai-tools">
+          <span class="topic-tag">Tools</span>
+          <h3>AI Tool Selection &amp; Stack Design</h3>
+          <p>Navigate the 500+ AI tools available in 2026. We test them so you don't have to. Learn which tools actually work for Australian businesses.</p>
+        </div>
+        <div class="workshop-topic" data-testid="topic-compliance">
+          <span class="topic-tag">Compliance</span>
+          <h3>Australian Privacy &amp; AI Governance</h3>
+          <p>Deploy AI without breaking the Privacy Act. Data sovereignty, client confidentiality, and practical governance frameworks for small teams.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container fade-in" data-testid="section-testimonials">
+      <h2>What Members Say</h2>
+      <div class="testimonial-row">
+        <div class="testimonial-card" data-testid="testimonial-1">
+          <span class="quote-mark">&ldquo;</span>
+          <blockquote>The workshops paid for themselves in the first week. I automated our client onboarding process and saved 8 hours a week. The Slack community is worth the membership alone.</blockquote>
+          <cite>&mdash; Sarah M., Financial Services</cite>
+        </div>
+        <div class="testimonial-card" data-testid="testimonial-2">
+          <span class="quote-mark">&ldquo;</span>
+          <blockquote>I was sceptical about AI for legal work. Huxley showed us how to use Claude for contract review without compromising privilege. We now draft first-pass contracts in 20 minutes instead of 3 hours.</blockquote>
+          <cite>&mdash; James L., Legal</cite>
+        </div>
+        <div class="testimonial-card" data-testid="testimonial-3">
+          <span class="quote-mark">&ldquo;</span>
+          <blockquote>Finally, AI training that's actually relevant to Australian businesses. No US-centric examples, no theory-only sessions. Every workshop gives you something you can implement the same day.</blockquote>
+          <cite>&mdash; Priya K., Professional Services</cite>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container fade-in" data-testid="section-faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-section">
+        <div class="faq-item" data-testid="faq-time-commitment">
+          <button class="faq-question" aria-expanded="false" data-testid="button-faq-time-commitment">
+            What's the time commitment?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Live workshops run for 60 minutes each week. Most members spend an additional 30&ndash;60 minutes implementing what they learned. All sessions are recorded, so you can watch on your own schedule if you can't make the live session.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-testid="faq-cancel">
+          <button class="faq-question" aria-expanded="false" data-testid="button-faq-cancel">
+            Can I cancel any time?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. All paid plans are month-to-month with no lock-in contracts. Cancel from your account dashboard at any time. You'll retain access until the end of your billing period.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-testid="faq-beginners">
+          <button class="faq-question" aria-expanded="false" data-testid="button-faq-beginners">
+            Is it for complete beginners?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. We design every workshop to be accessible regardless of your starting point. If you can use email and a web browser, you can follow along. We also have advanced sessions for members who are further along.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-testid="faq-technical-skills">
+          <button class="faq-question" aria-expanded="false" data-testid="button-faq-technical-skills">
+            Do I need technical skills?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>No coding or technical background required. Our members are business owners, practice managers, and team leaders &mdash; not developers. Everything is taught through practical, click-by-click demonstrations.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-testid="faq-tools-covered">
+          <button class="faq-question" aria-expanded="false" data-testid="button-faq-tools-covered">
+            What AI tools do you cover?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>We cover Claude, ChatGPT, Gemini, Perplexity, Make, Zapier, Midjourney, and dozens of specialised business tools. We're tool-agnostic &mdash; we recommend whatever works best for your specific use case and compliance requirements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section container fade-in">
       <blockquote style="border-left:3px solid var(--accent);padding-left:1.25rem;margin:0 0 1.5rem;font-style:italic;color:var(--text-secondary);line-height:1.65;">"You're not just showing one avenue &mdash; you're combining them all." &mdash; Workshop participant, Sunshine Coast</blockquote>
-      <p><a href="https://academy.techhorizon.academy" class="link-arrow" target="_blank" rel="noopener noreferrer">Go to the Academy &rarr;</a></p>
+      <p><a href="https://academy.techhorizon.academy" class="link-arrow" target="_blank" rel="noopener noreferrer" data-testid="link-academy-cta">Go to the Academy &rarr;</a></p>
     </section>
   </main>
 
@@ -154,5 +388,21 @@
   </footer>
 
   <script src="/main.js" defer></script>
+  <script>
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
