@@ -7,7 +7,7 @@ const popularPages = [
   { title: "Portfolio & Case Studies", desc: "Real business results", href: "/portfolio", icon: Briefcase },
   { title: "Resources & Guides", desc: "Articles, guides & tools", href: "/resources", icon: FileText },
   { title: "Academy", desc: "1,300+ templates & workshops", href: "/academy", icon: GraduationCap },
-  { title: "AI Readiness Quiz", desc: "Free 2-min self-assessment", href: "/audit-tool", icon: ClipboardCheck },
+  { title: "AI Readiness Quiz", desc: "Free 2-min self-assessment", href: "/assessment", icon: ClipboardCheck },
   { title: "Contact Us", desc: "Book a call or send a message", href: "/contact", icon: Mail },
 ];
 

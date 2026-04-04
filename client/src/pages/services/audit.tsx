@@ -206,7 +206,7 @@ export default function AuditService() {
                 <div className="flex flex-wrap gap-4">
                   <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
                   <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
-                  <a href="/audit-tool" className="text-salmon-600 hover:text-salmon-700 underline">Self-Assessment Tool</a>
+                  <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">Self-Assessment Tool</a>
                 </div>
               </div>
             </div>

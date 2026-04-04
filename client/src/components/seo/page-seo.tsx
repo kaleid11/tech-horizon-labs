@@ -225,7 +225,7 @@ export const SEO_CONFIGS = {
   auditTool: {
     title: 'AI Readiness Self-Assessment Tool',
     description: 'Free 2-minute AI readiness assessment. 10 questions, instant results with a personalised radar chart showing your strengths and gaps.',
-    canonical: `${BASE_URL}/audit-tool`,
+    canonical: `${BASE_URL}/assessment`,
   },
   aiEthics: {
     title: 'Our AI Ethics & Transparency Principles',

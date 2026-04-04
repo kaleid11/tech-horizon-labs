@@ -37,7 +37,6 @@ const HealthcareIndustry = lazy(() => import("@/pages/industries/healthcare"));
 const RetailIndustry = lazy(() => import("@/pages/industries/retail"));
 const ClaudeVsChatGPT2026 = lazy(() => import("@/pages/insights/claude-vs-chatgpt-2026"));
 const AIImpactByIndustry = lazy(() => import("@/pages/insights/ai-impact-by-industry"));
-const AuditTool = lazy(() => import("@/pages/audit-tool"));
 const AIEthics = lazy(() => import("@/pages/ai-ethics"));
 const OpenClaw = lazy(() => import("@/pages/openclaw"));
 const Events = lazy(() => import("@/pages/events"));
@@ -85,7 +84,6 @@ function Router() {
         <Route path="/industries/retail" component={RetailIndustry} />
         <Route path="/insights/claude-vs-chatgpt-2026" component={ClaudeVsChatGPT2026} />
         <Route path="/insights/ai-impact-by-industry" component={AIImpactByIndustry} />
-        <Route path="/audit-tool" component={AuditTool} />
         <Route path="/ai-ethics" component={AIEthics} />
         <Route path="/openclaw" component={OpenClaw} />
         <Route path="/events" component={Events} />

@@ -56,7 +56,7 @@ export function Navbar() {
 
   const workItems = [
     { name: "Portfolio & Case Studies", href: "/portfolio", icon: Briefcase, desc: "Real business results" },
-    { name: "AI Readiness Quiz", href: "/audit-tool", icon: ClipboardCheck, desc: "Free 2-min self-assessment" },
+    { name: "AI Readiness Quiz", href: "/assessment", icon: ClipboardCheck, desc: "Free 2-min self-assessment" },
   ];
 
   const learnItems = [

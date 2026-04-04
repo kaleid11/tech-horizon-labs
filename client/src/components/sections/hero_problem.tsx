@@ -47,7 +47,7 @@ export function Hero() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 font-medium text-lg px-8 h-14 rounded-full backdrop-blur-sm" asChild>
-                <a href="/audit-tool" data-testid="link-hero-approach">
+                <a href="/assessment" data-testid="link-hero-approach">
                   Take the Free AI Quiz
                 </a>
               </Button>
