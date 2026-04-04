@@ -379,7 +379,7 @@ export async function registerRoutes(
   const AUDIT_OPTION_SCORES = [0, 3, 7, 10]; // scores for options 0–3 (applies to all 10 questions)
   const AUDIT_STAGES = [
     {
-      range: [0, 25], num: "Stage 1", name: "Discovery",
+      range: [0, 25], num: "Stage 1", name: "Unaware",
       recs: [
         "Run a data audit: list every system where your business information currently lives.",
         "Identify 2–3 high-volume, repetitive tasks that could realistically be automated first.",
@@ -395,7 +395,7 @@ export async function registerRoutes(
       ],
     },
     {
-      range: [51, 75], num: "Stage 3", name: "Systematically Enabled",
+      range: [51, 75], num: "Stage 3", name: "Enabled",
       recs: [
         "Audit which current AI tools are genuinely integrated into documented workflows.",
         "Build a data layer that feeds your AI systems clean, real-time information.",
@@ -403,7 +403,7 @@ export async function registerRoutes(
       ],
     },
     {
-      range: [76, 100], num: "Stage 4", name: "Fully AI-Native",
+      range: [76, 100], num: "Stage 4", name: "AI-Native",
       recs: [
         "Shift from tool-level thinking to system-level AI architecture.",
         "Invest in custom model fine-tuning or RAG systems for domain-specific knowledge.",

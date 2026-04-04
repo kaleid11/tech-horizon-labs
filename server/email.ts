@@ -79,10 +79,10 @@ export async function sendAuditResults(data: {
     const { client, fromEmail } = await getUncachableResendClient();
 
     const stageMap: Record<string, { label: string; desc: string; color: string }> = {
-      'Stage 1': { label: 'Stage 1 — Discovery', desc: 'You\'re at the start of your AI journey. The businesses that move now will hold a real advantage in 12–18 months.', color: '#c0392b' },
+      'Stage 1': { label: 'Stage 1 — Unaware', desc: 'You haven\'t started with AI or only experimented casually. The capability overhang is widest here — frontier AI can do far more than you realise. The businesses that move now will hold a real advantage in 12–18 months.', color: '#c0392b' },
       'Stage 2': { label: 'Stage 2 — ChatGPT Plateau', desc: 'You\'re experimenting, but AI hasn\'t yet made it into your core operations. The gap between pilot and production is where most businesses stall.', color: '#d4712a' },
-      'Stage 3': { label: 'Stage 3 — Systematically Enabled', desc: 'AI is working in parts of your business. The challenge now is connecting the pieces into systems that scale.', color: '#b5943a' },
-      'Stage 4': { label: 'Stage 4 — Fully AI-Native', desc: 'You\'re operating at the frontier of business AI adoption. The focus now is compounding your advantages and systematically measuring ROI.', color: '#2e8b57' },
+      'Stage 3': { label: 'Stage 3 — Enabled', desc: 'AI is embedded in some processes. You\'re ahead of 83% of SMBs. The shift now is from efficiency AI (saving time) to opportunity AI (doing things you couldn\'t before).', color: '#b5943a' },
+      'Stage 4': { label: 'Stage 4 — AI-Native', desc: 'You\'re operating at the frontier of business AI adoption. The focus now is compounding your advantages and systematically measuring ROI.', color: '#2e8b57' },
     };
 
     const stageKey = Object.keys(stageMap).find(k => data.tier.startsWith(k));
