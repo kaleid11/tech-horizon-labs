@@ -32,6 +32,57 @@ export default function AuditService() {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Is the AI Opportunity Audit really free?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The AI Opportunity Audit is a genuine 15-minute discovery call with no cost and no obligation. We use it to understand if there's a good fit before proposing any paid work."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What if AI isn't right for my business?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We'll tell you. Honestly. If AI doesn't make sense for your situation, we'd rather say that upfront than waste your time and ours. We might suggest alternatives or recommend you revisit in 6-12 months."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens after the audit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "If we identify a good opportunity and you want to proceed, the next step is our Automation Accelerator — a 4-week sprint to build and deploy your first AI system. But there's no pressure to continue."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I prepare for the audit call?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No preparation needed. Just think about where your team spends the most time on repetitive tasks, what frustrates you about current processes, and what you'd do with 10 extra hours per week. We'll guide the conversation from there."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I take the online self-assessment instead?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Our free AI Readiness Self-Assessment at techhorizonlabs.com/assessment takes 3 minutes and gives you an instant score. The live audit call goes deeper — we map your specific workflows and identify your single highest-impact opportunity."
+                }
+              }
+            ]
+          })
+        }}
+      />
       <SkipLink />
       <Navbar />
 
@@ -206,7 +257,8 @@ export default function AuditService() {
                 <div className="flex flex-wrap gap-4">
                   <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
                   <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
-                  <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">Self-Assessment Tool</a>
+                  <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">AI Readiness Assessment</a>
+                  <a href="/report" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Report</a>
                 </div>
               </div>
             </div>
@@ -233,7 +285,21 @@ export default function AuditService() {
               <div className="border-b border-gray-200 pb-6">
                 <h3 className="font-bold text-aubergine-900 mb-2">What happens after the audit?</h3>
                 <p className="text-gray-600">
-                  If we identify a good opportunity and you want to proceed, the next step is our Automation Accelerator—a 4-week sprint to build and deploy your first AI system. But there's no pressure to continue.
+                  If we identify a good opportunity and you want to proceed, the next step is our <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Automation Accelerator</a> — a 4-week sprint to build and deploy your first AI system. But there's no pressure to continue.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">How do I prepare for the audit call?</h3>
+                <p className="text-gray-600">
+                  No preparation needed. Just think about where your team spends the most time on repetitive tasks, what frustrates you about current processes, and what you'd do with 10 extra hours per week. We'll guide the conversation from there.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">Can I take the online self-assessment instead?</h3>
+                <p className="text-gray-600">
+                  Yes. Our free <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">AI Readiness Self-Assessment</a> takes 3 minutes and gives you an instant score and maturity stage. The live audit call goes deeper — we map your specific workflows and identify your single highest-impact opportunity. You can also <a href="/report" className="text-salmon-600 hover:text-salmon-700 underline">download our free SMB AI Readiness Report</a> to benchmark against 54 Australian businesses.
                 </p>
               </div>
             </div>

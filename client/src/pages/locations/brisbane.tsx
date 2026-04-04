@@ -50,6 +50,17 @@ export default function BrisbaneLocation() {
         location="Brisbane"
         description="AI consulting and AI solutions for Brisbane businesses. Private AI infrastructure, Privacy Act compliant, serving Brisbane CBD, South Bank, Fortitude Valley and all SEQ. 4-week implementation sprints."
         faqs={brisbaneFaqs}
+        serviceAreas={[
+          { "@type": "City", "name": "Brisbane CBD", "postalCode": ["4000"] },
+          { "@type": "City", "name": "South Brisbane", "postalCode": ["4101"] },
+          { "@type": "City", "name": "Fortitude Valley", "postalCode": ["4006"] },
+          { "@type": "City", "name": "Newstead", "postalCode": ["4006"] },
+          { "@type": "City", "name": "West End", "postalCode": ["4101"] },
+          { "@type": "City", "name": "Ipswich", "postalCode": ["4305"] },
+          { "@type": "City", "name": "Logan", "postalCode": ["4114"] },
+          { "@type": "City", "name": "Redlands", "postalCode": ["4163"] },
+          { "@type": "City", "name": "Moreton Bay", "postalCode": ["4500", "4502", "4503"] }
+        ]}
       />
       <SkipLink />
       <Navbar />
@@ -557,9 +568,13 @@ export default function BrisbaneLocation() {
               <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Explore More</h3>
               <div className="flex flex-wrap gap-4">
                 <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
-                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Assessment</a>
+                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Audit</a>
+                <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">AI Readiness Assessment</a>
+                <a href="/report" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Report</a>
                 <a href="/contact" className="text-salmon-600 hover:text-salmon-700 underline">Contact Us</a>
                 <a href="/locations/queensland" className="text-salmon-600 hover:text-salmon-700 underline">All Queensland</a>
+                <a href="/locations/sunshine-coast" className="text-salmon-600 hover:text-salmon-700 underline">Sunshine Coast</a>
+                <a href="/locations/gold-coast" className="text-salmon-600 hover:text-salmon-700 underline">Gold Coast</a>
               </div>
             </div>
           </div>

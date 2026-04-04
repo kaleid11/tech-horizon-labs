@@ -30,6 +30,16 @@ export default function SunshineCoastLocation() {
         location="Sunshine Coast"
         description="Sunshine Coast-based AI consulting. Local expertise, enterprise-grade AI infrastructure for Sunshine Coast businesses."
         faqs={sunshineCoastFaqs}
+        serviceAreas={[
+          { "@type": "City", "name": "Noosa Heads", "postalCode": ["4567"] },
+          { "@type": "City", "name": "Noosa", "postalCode": ["4567", "4566", "4565"] },
+          { "@type": "City", "name": "Maroochydore", "postalCode": ["4558"] },
+          { "@type": "City", "name": "Caloundra", "postalCode": ["4551"] },
+          { "@type": "City", "name": "Buderim", "postalCode": ["4556"] },
+          { "@type": "City", "name": "Mooloolaba", "postalCode": ["4557"] },
+          { "@type": "City", "name": "Coolum Beach", "postalCode": ["4573"] },
+          { "@type": "City", "name": "Nambour", "postalCode": ["4560"] }
+        ]}
       />
       <SkipLink />
       <Navbar />
@@ -251,10 +261,14 @@ export default function SunshineCoastLocation() {
               <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Explore More</h3>
               <div className="flex flex-wrap gap-4">
                 <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
-                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Assessment</a>
+                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Audit</a>
+                <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">AI Readiness Assessment</a>
+                <a href="/report" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Report</a>
                 <a href="/events" className="text-salmon-600 hover:text-salmon-700 underline">AI on the Coast Meetup</a>
                 <a href="https://luma.com/5mtx4dxx" target="_blank" rel="noopener noreferrer" className="text-salmon-600 hover:text-salmon-700 underline inline-flex items-center gap-1" data-testid="link-sc-luma-event">Register Apr 2nd on Luma ↗</a>
                 <a href="/locations/queensland" className="text-salmon-600 hover:text-salmon-700 underline">All Queensland</a>
+                <a href="/locations/brisbane" className="text-salmon-600 hover:text-salmon-700 underline">Brisbane</a>
+                <a href="/locations/gold-coast" className="text-salmon-600 hover:text-salmon-700 underline">Gold Coast</a>
               </div>
             </div>
           </div>

@@ -30,6 +30,17 @@ export default function QueenslandLocation() {
         location="Queensland"
         description="Enterprise AI consulting across Queensland. Private infrastructure, compliant by design, serving Brisbane, Gold Coast, Sunshine Coast and regional QLD."
         faqs={queenslandFaqs}
+        serviceAreas={[
+          { "@type": "State", "name": "Queensland" },
+          { "@type": "City", "name": "Brisbane", "postalCode": ["4000"] },
+          { "@type": "City", "name": "Gold Coast", "postalCode": ["4217", "4218"] },
+          { "@type": "City", "name": "Sunshine Coast", "postalCode": ["4556", "4558", "4567"] },
+          { "@type": "City", "name": "Toowoomba", "postalCode": ["4350"] },
+          { "@type": "City", "name": "Cairns", "postalCode": ["4870"] },
+          { "@type": "City", "name": "Townsville", "postalCode": ["4810"] },
+          { "@type": "City", "name": "Rockhampton", "postalCode": ["4700"] },
+          { "@type": "City", "name": "Mackay", "postalCode": ["4740"] }
+        ]}
       />
       <SkipLink />
       <Navbar />
@@ -297,6 +308,19 @@ export default function QueenslandLocation() {
                 <p className="text-gray-600">
                   All our AI systems are designed with Australian compliance built in. We use Australian-hosted infrastructure, implement Privacy Act 1988 requirements, and map industry-specific regulations (healthcare, financial services, etc.) into every solution. Your data never leaves Australian soil.
                 </p>
+              </div>
+            </div>
+
+            <div className="max-w-3xl mx-auto mt-12 pt-8 border-t border-gray-200">
+              <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Explore More</h3>
+              <div className="flex flex-wrap gap-4">
+                <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
+                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Audit</a>
+                <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">AI Readiness Assessment</a>
+                <a href="/report" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Report</a>
+                <a href="/locations/brisbane" className="text-salmon-600 hover:text-salmon-700 underline">Brisbane</a>
+                <a href="/locations/gold-coast" className="text-salmon-600 hover:text-salmon-700 underline">Gold Coast</a>
+                <a href="/locations/sunshine-coast" className="text-salmon-600 hover:text-salmon-700 underline">Sunshine Coast</a>
               </div>
             </div>
           </div>

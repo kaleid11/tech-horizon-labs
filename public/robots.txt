@@ -33,6 +33,21 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
+User-agent: Applebot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
 # Sitemap location
 Sitemap: https://techhorizonlabs.com/sitemap.xml
 

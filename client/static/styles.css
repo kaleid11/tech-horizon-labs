@@ -1226,6 +1226,68 @@ blockquote cite {
   margin-bottom: 0;
 }
 
+.faq-accordion .faq-item {
+  border-bottom: 1px solid var(--border-light);
+  padding: 0;
+}
+
+.faq-accordion .faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-accordion .faq-question {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+  padding: 1.125rem 2rem 1.125rem 0;
+  cursor: pointer;
+  position: relative;
+  list-style: none;
+  line-height: 1.4;
+}
+
+.faq-accordion .faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-accordion .faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  color: var(--accent);
+  font-weight: 400;
+  transition: transform 0.2s ease;
+}
+
+.faq-accordion details[open] .faq-question::after {
+  content: "\2212";
+}
+
+.faq-accordion .faq-answer {
+  padding: 0 0 1.25rem 0;
+}
+
+.faq-accordion .faq-answer p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.faq-accordion .faq-answer a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.faq-accordion .faq-answer a:hover {
+  color: var(--accent-hover);
+}
+
 /* --- About Page --- */
 .about-intro {
   display: grid;

@@ -327,8 +327,11 @@ export default function About() {
               <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Explore More</h3>
               <div className="flex flex-wrap gap-4">
                 <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
-                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free Assessment</a>
+                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Audit</a>
+                <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">AI Readiness Assessment</a>
+                <a href="/report" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Report</a>
                 <a href="/academy" className="text-salmon-600 hover:text-salmon-700 underline">AI Academy</a>
+                <a href="/research" className="text-salmon-600 hover:text-salmon-700 underline">Research Hub</a>
               </div>
             </div>
           </div>

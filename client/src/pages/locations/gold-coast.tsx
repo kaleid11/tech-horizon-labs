@@ -9,6 +9,10 @@ import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const goldCoastFaqs = [
   {
+    question: "Do you work with Gold Coast businesses?",
+    answer: "Yes. While we're headquartered on the Sunshine Coast, the Gold Coast is a major service area. We work with Gold Coast businesses through a mix of remote collaboration and on-site visits. We regularly meet clients in Surfers Paradise, Broadbeach, Burleigh, Coolangatta, and Southport."
+  },
+  {
     question: "Do you work with seasonal businesses on the Gold Coast?",
     answer: "Absolutely. Many Gold Coast hospitality and tourism businesses have seasonal peaks. Our AI systems scale with your demand—handling high-volume periods efficiently while keeping costs reasonable during quieter times."
   },
@@ -19,6 +23,10 @@ const goldCoastFaqs = [
   {
     question: "Can AI integrate with our existing booking system?",
     answer: "Yes. We integrate with major hospitality platforms including property management systems, channel managers, and booking engines. The goal is to enhance your existing workflow, not replace it entirely."
+  },
+  {
+    question: "How much does AI consulting cost on the Gold Coast?",
+    answer: "Our AI Opportunity Audit is free — a 15-minute call to identify your highest-impact automation opportunity. Implementation projects typically start at $5,000 for a focused 4-week sprint. We provide fixed quotes after discovery so there are no surprises."
   }
 ];
 
@@ -30,6 +38,16 @@ export default function GoldCoastLocation() {
         location="Gold Coast"
         description="AI consulting services on the Gold Coast. Private infrastructure, compliant systems for Gold Coast enterprises."
         faqs={goldCoastFaqs}
+        serviceAreas={[
+          { "@type": "City", "name": "Surfers Paradise", "postalCode": ["4217"] },
+          { "@type": "City", "name": "Broadbeach", "postalCode": ["4218"] },
+          { "@type": "City", "name": "Burleigh Heads", "postalCode": ["4220"] },
+          { "@type": "City", "name": "Coolangatta", "postalCode": ["4225"] },
+          { "@type": "City", "name": "Southport", "postalCode": ["4215"] },
+          { "@type": "City", "name": "Robina", "postalCode": ["4226"] },
+          { "@type": "City", "name": "Nerang", "postalCode": ["4211"] },
+          { "@type": "City", "name": "Palm Beach", "postalCode": ["4221"] }
+        ]}
       />
       <SkipLink />
       <Navbar />
@@ -230,16 +248,23 @@ export default function GoldCoastLocation() {
             
             <div className="max-w-3xl mx-auto space-y-6">
               <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">Do you work with Gold Coast businesses?</h3>
+                <p className="text-gray-600">
+                  Yes. While we're headquartered on the Sunshine Coast, the Gold Coast is a major service area. We work with Gold Coast businesses through remote collaboration and on-site visits across Surfers Paradise, Broadbeach, Burleigh, Coolangatta, and Southport.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
                 <h3 className="font-bold text-aubergine-900 mb-2">Do you work with seasonal businesses on the Gold Coast?</h3>
                 <p className="text-gray-600">
-                  Absolutely. Many Gold Coast hospitality and tourism businesses have seasonal peaks. Our AI systems scale with your demand—handling high-volume periods efficiently while keeping costs reasonable during quieter times.
+                  Absolutely. Many Gold Coast hospitality and tourism businesses have seasonal peaks. Our AI systems scale with your demand — handling high-volume periods efficiently while keeping costs reasonable during quieter times.
                 </p>
               </div>
               
               <div className="border-b border-gray-200 pb-6">
                 <h3 className="font-bold text-aubergine-900 mb-2">How do you handle multi-language requirements?</h3>
                 <p className="text-gray-600">
-                  Our AI systems support multiple languages out of the box. For Gold Coast tourism businesses serving international visitors, we configure guest communication in Mandarin, Japanese, Korean, German, French, and more—all while keeping data private and secure.
+                  Our AI systems support multiple languages out of the box. For Gold Coast tourism businesses serving international visitors, we configure guest communication in Mandarin, Japanese, Korean, German, French, and more — all while keeping data private and secure.
                 </p>
               </div>
               
@@ -247,6 +272,13 @@ export default function GoldCoastLocation() {
                 <h3 className="font-bold text-aubergine-900 mb-2">Can AI integrate with our existing booking system?</h3>
                 <p className="text-gray-600">
                   Yes. We integrate with major hospitality platforms including property management systems, channel managers, and booking engines. The goal is to enhance your existing workflow, not replace it entirely.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">How much does AI consulting cost on the Gold Coast?</h3>
+                <p className="text-gray-600">
+                  Our <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">AI Opportunity Audit</a> is free — a 15-minute call to identify your highest-impact automation opportunity. Implementation projects start at $5,000 for a focused 4-week sprint. You can also <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">take our free self-assessment</a> first.
                 </p>
               </div>
             </div>
@@ -259,9 +291,13 @@ export default function GoldCoastLocation() {
               <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Explore More</h3>
               <div className="flex flex-wrap gap-4">
                 <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
-                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Assessment</a>
+                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Audit</a>
+                <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">AI Readiness Assessment</a>
+                <a href="/report" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Report</a>
                 <a href="/contact" className="text-salmon-600 hover:text-salmon-700 underline">Contact Us</a>
                 <a href="/locations/queensland" className="text-salmon-600 hover:text-salmon-700 underline">All Queensland</a>
+                <a href="/locations/brisbane" className="text-salmon-600 hover:text-salmon-700 underline">Brisbane</a>
+                <a href="/locations/sunshine-coast" className="text-salmon-600 hover:text-salmon-700 underline">Sunshine Coast</a>
               </div>
             </div>
           </div>

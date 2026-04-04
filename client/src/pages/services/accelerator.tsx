@@ -33,6 +33,57 @@ export default function AcceleratorService() {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does the 4-week Automation Accelerator include?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Accelerator includes workflow mapping and ROI calculation (Week 1), custom AI system build and integration (Weeks 2-3), and testing, team training, and production deployment (Week 4). You also get private AI infrastructure, compliance mapping, complete documentation, and 30 days of post-deployment support."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much does the Automation Accelerator cost?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Implementation projects start at $5,000 for a focused 4-week sprint. The exact quote depends on the complexity of the workflow being automated and the integrations required. We provide a fixed quote after your free AI Opportunity Audit so there are no surprises."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What kind of results can I expect from the Accelerator?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Real outcomes from Queensland businesses: 40% admin reduction (accounting firm), 60% faster quotes (builder), 30% less downtime (manufacturer), and 80% faster onboarding (real estate agency). Most clients see 3-5x ROI within 12 months."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need to do the free audit first?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The free 15-minute AI Opportunity Audit is always the first step. It ensures we identify the right workflow to automate and that AI is genuinely the best solution for your situation. No audit, no Accelerator — we don't take on projects without understanding the problem first."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Will my data stay private during the Accelerator?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "100%. We build on private infrastructure — either on-premises or Australian-hosted servers. Your data never leaves the country. All systems are built with Privacy Act 1988 compliance from day one. This is non-negotiable for us."
+                }
+              }
+            ]
+          })
+        }}
+      />
       <SkipLink />
       <Navbar />
 
@@ -215,13 +266,55 @@ export default function AcceleratorService() {
 
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+            <h2 className="text-2xl font-bold text-aubergine-900 mb-8 text-center">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-6">
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">What does the 4-week Accelerator include?</h3>
+                <p className="text-gray-600">
+                  Workflow mapping and ROI calculation (Week 1), custom AI system build and integration (Weeks 2-3), and testing, team training, and production deployment (Week 4). You also get private AI infrastructure, compliance mapping, complete documentation, and 30 days of post-deployment support.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">How much does the Automation Accelerator cost?</h3>
+                <p className="text-gray-600">
+                  Implementation starts at $5,000. The exact quote depends on the complexity of the workflow and integrations required. We provide a fixed quote after your free <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">AI Opportunity Audit</a> so there are no surprises.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">Do I need to do the free audit first?</h3>
+                <p className="text-gray-600">
+                  Yes. The free 15-minute <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">AI Opportunity Audit</a> is always the first step. It ensures we identify the right workflow to automate and that AI is genuinely the best solution. You can also <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">take our free self-assessment</a> to benchmark your AI readiness first.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">Will my data stay private?</h3>
+                <p className="text-gray-600">
+                  100%. We build on private infrastructure — either on-premises or Australian-hosted servers. Your data never leaves the country. All systems are Privacy Act 1988 compliant from day one.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">What results can I expect?</h3>
+                <p className="text-gray-600">
+                  Real outcomes from Queensland businesses: 40% admin reduction (accounting firm), 60% faster quotes (builder), 30% less downtime (manufacturer), 80% faster onboarding (real estate). Most clients see 3-5x ROI within 12 months. See our <a href="/report" className="text-salmon-600 hover:text-salmon-700 underline">SMB AI Readiness Report</a> for more data.
+                </p>
+              </div>
+            </div>
+
             <div className="mt-12 pt-8 border-t border-gray-200">
               <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Explore More</h3>
               <div className="flex flex-wrap gap-4">
                 <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
                 <a href="/services/partner" className="text-salmon-600 hover:text-salmon-700 underline">Ongoing Evolution</a>
                 <a href="/academy" className="text-salmon-600 hover:text-salmon-700 underline">AI Academy</a>
-                <a href="/resources" className="text-salmon-600 hover:text-salmon-700 underline">Free Resources</a>
+                <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">AI Readiness Assessment</a>
+                <a href="/report" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Report</a>
               </div>
             </div>
           </div>

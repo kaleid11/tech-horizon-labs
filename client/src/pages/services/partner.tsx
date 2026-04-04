@@ -26,6 +26,57 @@ export default function PartnerService() {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the Transformation Partner program?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The Transformation Partner is a fractional AI ops lead on retainer. You get weekly strategy sessions, monthly flexible work credits, full Academy access for your team, priority async support, and phased project delivery. It's the outcomes of a full-time AI department without the $200K salary."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need to complete an Accelerator first?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The Partnership is available to businesses who've worked with us on at least one implementation project (typically the Automation Accelerator). This ensures we understand your systems, workflows, and team before taking on an ongoing role."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How is this different from hiring a full-time AI specialist?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A full-time AI specialist costs $150K-$200K per year plus benefits. Our Partnership gives you a fractional AI ops lead who already knows your systems — at a fraction of that cost. You get weekly strategy calls, flexible work credits, and proactive recommendations as AI tools evolve."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What does the weekly strategy session cover?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Each 30-minute weekly session covers current system performance, new bottleneck identification, AI tool updates relevant to your workflows, and upcoming project priorities. Quarterly deep-dive sessions review the full roadmap and set strategic goals for the next quarter."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I cancel the partnership at any time?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The Partnership runs month-to-month after the initial commitment period. We earn your continued business by delivering measurable results, not by locking you into long contracts. Most partners save 20+ hours per week across their team."
+                }
+              }
+            ]
+          })
+        }}
+      />
       <SkipLink />
       <Navbar />
 
@@ -218,11 +269,54 @@ export default function PartnerService() {
 
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+            <h2 className="text-2xl font-bold text-aubergine-900 mb-8 text-center">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-6">
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">What is the Transformation Partner program?</h3>
+                <p className="text-gray-600">
+                  A fractional AI ops lead on retainer. You get weekly strategy sessions, monthly flexible work credits, full Academy access for your team, priority async support, and phased project delivery. It's the outcomes of a full-time AI department without the $200K salary.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">Do I need to complete an Accelerator first?</h3>
+                <p className="text-gray-600">
+                  Yes. The Partnership is available to businesses who've worked with us on at least one implementation project (typically the <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Automation Accelerator</a>). This ensures we understand your systems before taking on an ongoing role.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">How is this different from hiring a full-time AI specialist?</h3>
+                <p className="text-gray-600">
+                  A full-time AI specialist costs $150K-$200K per year plus benefits. Our Partnership gives you a fractional AI ops lead who already knows your systems — at a fraction of that cost.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">What does the weekly strategy session cover?</h3>
+                <p className="text-gray-600">
+                  Each 30-minute session covers current system performance, new bottleneck identification, AI tool updates relevant to your workflows, and upcoming priorities. Quarterly deep-dive sessions review the full roadmap.
+                </p>
+              </div>
+
+              <div className="border-b border-gray-200 pb-6">
+                <h3 className="font-bold text-aubergine-900 mb-2">Can I cancel the partnership at any time?</h3>
+                <p className="text-gray-600">
+                  Yes. The Partnership runs month-to-month after the initial commitment period. We earn your continued business by delivering measurable results, not by locking you into long contracts.
+                </p>
+              </div>
+            </div>
+
             <div className="mt-12 pt-8 border-t border-gray-200">
               <h3 className="text-lg font-semibold text-aubergine-900 mb-4">Explore More</h3>
               <div className="flex flex-wrap gap-4">
                 <a href="/services/accelerator" className="text-salmon-600 hover:text-salmon-700 underline">Foundation Sprint</a>
+                <a href="/services/audit" className="text-salmon-600 hover:text-salmon-700 underline">Free AI Audit</a>
                 <a href="/portfolio" className="text-salmon-600 hover:text-salmon-700 underline">Case Studies</a>
+                <a href="/assessment" className="text-salmon-600 hover:text-salmon-700 underline">AI Readiness Assessment</a>
                 <a href="/academy" className="text-salmon-600 hover:text-salmon-700 underline">AI Academy</a>
               </div>
             </div>
