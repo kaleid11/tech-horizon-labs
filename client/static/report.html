@@ -384,6 +384,14 @@
 
             <form class="report-form" id="report-form" novalidate>
               <input
+                type="text"
+                id="rf-name"
+                name="name"
+                placeholder="Your name (optional)"
+                autocomplete="given-name"
+                data-testid="input-report-name"
+              >
+              <input
                 type="email"
                 id="rf-email"
                 name="email"
@@ -446,6 +454,7 @@
       e.preventDefault();
 
       const email = document.getElementById('rf-email').value.trim();
+      const nameVal = document.getElementById('rf-name').value.trim();
 
       formError.style.display = 'none';
       formError.textContent = '';
@@ -459,11 +468,14 @@
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending…';
 
+      const payload = { email, source: 'report-download' };
+      if (nameVal) payload.name = nameVal;
+
       try {
         const res = await fetch('/api/newsletter', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, source: 'report-download' }),
+          body: JSON.stringify(payload),
         });
 
         const data = await res.json();

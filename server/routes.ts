@@ -289,18 +289,19 @@ export async function registerRoutes(
 
   app.post("/api/newsletter", async (req, res) => {
     try {
-      const { source: rawSource, ...rest } = req.body;
+      const { source: rawSource, name: rawName, ...rest } = req.body;
       const source = typeof rawSource === "string" && rawSource.length < 80 ? rawSource : undefined;
+      const name = typeof rawName === "string" && rawName.trim().length > 0 && rawName.length < 200 ? rawName.trim() : undefined;
       const validatedData = insertNewsletterSignupSchema.parse(rest);
 
       const existing = await storage.getNewsletterSignupByEmail(validatedData.email);
       if (existing) {
         if (source === "report-download") {
-          sendNewsletterWelcome(validatedData.email, source).catch((err) =>
+          sendNewsletterWelcome(validatedData.email, source, name).catch((err) =>
             console.error("Report re-download email failed:", err)
           );
           pushToKlipy({
-            name: validatedData.email.split("@")[0],
+            name: name ?? validatedData.email.split("@")[0],
             email: validatedData.email,
             source: "report-download",
           });
@@ -320,12 +321,12 @@ export async function registerRoutes(
 
       const signup = await storage.createNewsletterSignup(validatedData);
 
-      sendNewsletterWelcome(validatedData.email, source).catch((err) =>
+      sendNewsletterWelcome(validatedData.email, source, name).catch((err) =>
         console.error("Newsletter welcome email failed:", err)
       );
 
       pushToKlipy({
-        name: validatedData.email.split("@")[0],
+        name: name ?? validatedData.email.split("@")[0],
         email: validatedData.email,
         source: source ?? "website-newsletter",
       });

@@ -836,8 +836,8 @@ function ValuationPanel({ rounds, accent, isMarketCap }: { rounds: FundingRound[
   // Checks ALL previous points (not just adjacent) so 3+ clustered points are handled correctly
   const staggeredOffsets = (() => {
     const offsets: number[] = new Array(vals.length).fill(0);
-    const minGap = 72;
-    const step = 28;
+    const minGap = 80;
+    const step = 40;
     for (let i = 1; i < vals.length; i++) {
       const used = new Set<number>();
       for (let j = 0; j < i; j++) {
@@ -852,11 +852,11 @@ function ValuationPanel({ rounds, accent, isMarketCap }: { rounds: FundingRound[
     return offsets;
   })();
 
-  // Adaptive bottom padding: label area = 16px gap + max offset + 24px text clearance
+  // Adaptive bottom padding: label area = 20px gap + max offset + 48px for rotated text extent
   const maxOffset = dense ? Math.max(0, ...staggeredOffsets) : 0;
-  const padBottom = dense ? Math.max(90, 16 + maxOffset + 24) : 50;
+  const padBottom = dense ? Math.max(110, 20 + maxOffset + 48) : 50;
   const pad = { top: padTop, right: padRight, bottom: padBottom, left: padLeft };
-  const h = dense ? Math.max(300, padTop + 180 + padBottom) : 300;
+  const h = dense ? Math.max(320, padTop + 180 + padBottom) : 300;
   const chartH = h - pad.top - pad.bottom;
 
   const getY = (v: number) => pad.top + chartH - (v / maxV) * chartH;

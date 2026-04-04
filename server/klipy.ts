@@ -6,7 +6,7 @@ interface KlipyContact {
   name: string;
   email: string;
   company?: string;
-  source: "website-contact" | "website-newsletter" | "website-audit";
+  source: "website-contact" | "website-newsletter" | "website-audit" | "report-download" | "ai-readiness-assessment";
   metadata?: Record<string, string | number>;
 }
 

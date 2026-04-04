@@ -578,6 +578,9 @@
 
         <!-- Results section -->
         <div id="section-results" class="section-hidden">
+          <div id="api-error-notice" style="display:none;margin-bottom:1rem;background:#fff8f5;border:1px solid #f0d9cf;border-radius:10px;padding:0.875rem 1.125rem;font-size:0.8125rem;color:#7a5a50;line-height:1.55;" data-testid="notice-api-error">
+            Your results are ready. We couldn't reach our server to send your results email — if you'd like a copy, <a class="notice-email-link" href="mailto:hello@techhorizonlabs.com" style="color:var(--accent);font-weight:600;">email us</a> and we'll send it manually.
+          </div>
           <div class="results-card">
             <div class="results-score-row">
               <div class="score-ring-wrap">
@@ -916,6 +919,8 @@
       }, 100);
     }
 
+    var apiCallSucceeded = false;
+
     // Gate form submit
     document.getElementById('gate-form').addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -950,6 +955,7 @@
         answers: JSON.stringify(answers)  // array of 10 option indices (0-3)
       };
 
+      apiCallSucceeded = false;
       try {
         var res = await fetch('/api/audit', {
           method: 'POST',
@@ -957,21 +963,21 @@
           body: JSON.stringify(payload)
         });
         var data = await res.json();
-        if (!data.success && res.status !== 200) {
-          throw new Error(data.error || 'Something went wrong.');
+        if (data.success || res.status === 200) {
+          apiCallSucceeded = true;
         }
       } catch (err) {
         // Don't block results on API failure — show them anyway
         console.error('Audit API error:', err);
       }
 
-      showResults(name);
+      showResults(name, email);
     });
 
     // ==============================
     // Results section
     // ==============================
-    function showResults(name) {
+    function showResults(name, email) {
       document.getElementById('section-gate').classList.add('section-hidden');
       document.getElementById('section-results').classList.remove('section-hidden');
 
@@ -1000,6 +1006,18 @@
         li.innerHTML = '<span class="rec-num">' + (i + 1) + '</span><span>' + rec + '</span>';
         recList.appendChild(li);
       });
+
+      // Show subtle notice if API call failed (email not sent)
+      var noticeEl = document.getElementById('api-error-notice');
+      if (noticeEl) {
+        if (!apiCallSucceeded) {
+          noticeEl.style.display = 'block';
+          var emailLink = noticeEl.querySelector('.notice-email-link');
+          if (emailLink && email) emailLink.href = 'mailto:hello@techhorizonlabs.com?subject=AI Readiness Results&body=Hi, my email is ' + encodeURIComponent(email) + '. Could you send me my results?';
+        } else {
+          noticeEl.style.display = 'none';
+        }
+      }
 
       // Scroll to top of results
       document.getElementById('section-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
