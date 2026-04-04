@@ -16,6 +16,7 @@ app.use(helmet({
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "'unsafe-inline'", "https://www.googletagmanager.com"],
+      scriptSrcAttr: ["'unsafe-inline'"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       imgSrc: ["'self'", "data:", "https:", "blob:"],
@@ -32,6 +33,15 @@ app.use(helmet({
   },
 }));
 const httpServer = createServer(app);
+
+// Strip trailing slashes globally (except root "/") to prevent redirect loops
+app.use((req, res, next) => {
+  if (req.path !== "/" && req.path.endsWith("/")) {
+    const query = req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
+    return res.redirect(301, req.path.slice(0, -1) + query);
+  }
+  next();
+});
 
 declare module "http" {
   interface IncomingMessage {
@@ -63,7 +73,7 @@ export function log(message: string, source = "express") {
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
+  let capturedJsonResponse: Record<string, unknown> | undefined = undefined;
 
   const originalResJson = res.json;
   res.json = function (bodyJson, ...args) {

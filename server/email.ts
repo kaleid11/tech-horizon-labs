@@ -1,6 +1,11 @@
 import { Resend } from 'resend';
 
-let connectionSettings: any;
+function escapeHtml(str: string): string {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- external API response
+let connectionSettings: any = null;
 
 async function getCredentials() {
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
@@ -22,7 +27,7 @@ async function getCredentials() {
         'X_REPLIT_TOKEN': xReplitToken
       }
     }
-  ).then(res => res.json()).then(data => data.items?.[0]);
+  ).then(res => res.json()).then((data: any) => data.items?.[0]);
 
   if (!connectionSettings || (!connectionSettings.settings.api_key)) {
     throw new Error('Resend not connected');
@@ -33,7 +38,7 @@ async function getCredentials() {
   };
 }
 
-export async function getUncachableResendClient() {
+async function getUncachableResendClient() {
   const { apiKey, fromEmail } = await getCredentials();
   return {
     client: new Resend(apiKey),
@@ -53,14 +58,14 @@ export async function sendContactNotification(data: {
     await client.emails.send({
       from: fromEmail,
       to: fromEmail,
-      subject: `New Contact Form Submission from ${data.name}`,
+      subject: `New Contact Form Submission from ${escapeHtml(data.name)}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Email:</strong> ${data.email}</p>
-        ${data.company ? `<p><strong>Company:</strong> ${data.company}</p>` : ''}
+        <p><strong>Name:</strong> ${escapeHtml(data.name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(data.email)}</p>
+        ${data.company ? `<p><strong>Company:</strong> ${escapeHtml(data.company)}</p>` : ''}
         <p><strong>Message:</strong></p>
-        <p>${data.message.replace(/\n/g, '<br>')}</p>
+        <p>${escapeHtml(data.message).replace(/\n/g, '<br>')}</p>
       `
     });
   } catch (error) {
@@ -107,7 +112,7 @@ export async function sendAuditResults(data: {
 
           <!-- Score band -->
           <div style="background:#f5e8e2;padding:28px 32px;text-align:center;border-bottom:1px solid #e8e5e0;">
-            <p style="font-size:13px;color:#7a5a50;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin:0 0 8px;">Hi ${data.name}, your score is</p>
+            <p style="font-size:13px;color:#7a5a50;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin:0 0 8px;">Hi ${escapeHtml(data.name)}, your score is</p>
             <p style="font-size:64px;font-weight:700;color:#B5654A;line-height:1;margin:0 0 4px;">${data.score}</p>
             <p style="font-size:14px;color:#7a5a50;margin:0 0 16px;">out of 100</p>
             <div style="display:inline-block;background:white;border:1px solid #e8e5e0;border-radius:8px;padding:8px 20px;">
@@ -181,11 +186,11 @@ export async function sendAuditNotification(data: {
       subject: `New Audit — ${data.name} requested contact (${data.score}/100 → ${data.tier})`,
       html: `
         <h2>New AI Readiness Audit — Contact Requested</h2>
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Email:</strong> ${data.email}</p>
-        ${data.business ? `<p><strong>Business:</strong> ${data.business}</p>` : ''}
+        <p><strong>Name:</strong> ${escapeHtml(data.name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(data.email)}</p>
+        ${data.business ? `<p><strong>Business:</strong> ${escapeHtml(data.business)}</p>` : ''}
         <p><strong>Score:</strong> ${data.score}/100</p>
-        <p><strong>Stage:</strong> ${data.tier}</p>
+        <p><strong>Stage:</strong> ${escapeHtml(data.tier)}</p>
         <p><strong>Opt-ins:</strong><br>${checkboxSummary}</p>
         <p><a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery">Book a call link</a></p>
       `
@@ -205,7 +210,7 @@ export async function sendContactAutoReply(data: {
     await client.emails.send({
       from: fromEmail,
       to: data.email,
-      reply_to: fromEmail,
+      replyTo: fromEmail,
       subject: `Got your message — Tech Horizon Labs`,
       html: `
         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:600px;margin:0 auto;background:#FAFAF8;border-radius:16px;overflow:hidden;border:1px solid #e8e5e0;">
@@ -214,7 +219,7 @@ export async function sendContactAutoReply(data: {
             <p style="color:white;font-size:18px;font-weight:600;margin:0;">Message received.</p>
           </div>
           <div style="padding:28px 32px;border-bottom:1px solid #e8e5e0;">
-            <p style="font-size:15px;color:#1c1215;margin:0 0 12px;">Hi ${data.name},</p>
+            <p style="font-size:15px;color:#1c1215;margin:0 0 12px;">Hi ${escapeHtml(data.name)},</p>
             <p style="font-size:14px;color:#4b5563;line-height:1.65;margin:0 0 12px;">Got your message. Huxley will review it and be in touch within one business day.</p>
             <p style="font-size:14px;color:#4b5563;line-height:1.65;margin:0;">If you'd rather lock in a time now, you can book a free 15-minute pre-discovery call directly:</p>
           </div>
@@ -238,13 +243,13 @@ export async function sendContactAutoReply(data: {
 export async function sendNewsletterWelcome(email: string, source?: string, name?: string) {
   try {
     const { client, fromEmail } = await getUncachableResendClient();
-    const greeting = name ? `Hi ${name},` : 'Hi there,';
+    const greeting = name ? `Hi ${escapeHtml(name)},` : 'Hi there,';
 
     if (source === 'report-download') {
       await client.emails.send({
         from: fromEmail,
         to: email,
-        reply_to: fromEmail,
+        replyTo: fromEmail,
         subject: 'Your copy: State of AI Readiness — Australian SMB 2026',
         html: `
           <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:600px;margin:0 auto;background:#FAFAF8;border-radius:16px;overflow:hidden;border:1px solid #e8e5e0;">
@@ -313,7 +318,7 @@ export async function sendNewsletterWelcome(email: string, source?: string, name
       await client.emails.send({
         from: fromEmail,
         to: email,
-        reply_to: fromEmail,
+        replyTo: fromEmail,
         subject: 'Welcome to Tech Horizon Labs',
         html: `
           <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:600px;margin:0 auto;background:#FAFAF8;border-radius:16px;overflow:hidden;border:1px solid #e8e5e0;">

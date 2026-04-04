@@ -47,7 +47,7 @@
         "name": "What does the AI readiness score mean?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Your score out of 100 maps to one of four AI maturity stages: Discovery (0-25), ChatGPT Plateau (26-50), Systematically Enabled (51-75), and Fully AI-Native (76-100). Only 5% of Australian SMBs reach Stage 4. The score tells you where you are relative to other Australian businesses and what to prioritise next."
+          "text": "Your score out of 100 maps to one of four AI maturity stages: Unaware (0-25), ChatGPT Plateau (26-50), Enabled (51-75), and AI-Native (76-100). Only 5% of Australian SMBs reach Stage 4. The score tells you where you are relative to other Australian businesses and what to prioritise next."
         }
       },
       {
@@ -395,43 +395,6 @@
       margin-top: 0.125em;
     }
 
-    .results-cta {
-      background: #1c1215;
-      border-radius: 16px;
-      padding: 2rem;
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .results-cta h3 {
-      color: white;
-      font-size: 1.125rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .results-cta p {
-      color: rgba(255,255,255,0.65);
-      font-size: 0.9rem;
-      margin-bottom: 1.25rem;
-      line-height: 1.55;
-    }
-
-    .btn-cta-book {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 0.875rem 2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9375rem;
-      transition: background 0.15s;
-    }
-
-    .btn-cta-book:hover {
-      background: var(--accent-hover);
-    }
-
     /* Optional contact card */
     .contact-opt-in-card {
       background: var(--white);
@@ -597,59 +560,85 @@
       display: none;
     }
 
-    /* Scorecard CTA card */
-    .scorecard-cta-card {
-      background: var(--accent-light);
-      border: 1.5px solid var(--border);
+    /* Dimension breakdown */
+    .assess-breakdown {
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: 16px;
       padding: 1.75rem 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
       margin-bottom: 1.5rem;
+    }
+
+    .assess-breakdown h3 {
+      font-size: 1.125rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .assess-dim-row {
       display: flex;
       align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .assess-dim-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .assess-dim-icon {
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .assess-dim-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .assess-dim-label-row {
+      display: flex;
       justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .scorecard-cta-card .scorecard-cta-text p:first-child {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.25rem;
-    }
-
-    .scorecard-cta-card .scorecard-cta-text p:nth-child(2) {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
+      align-items: center;
       margin-bottom: 0.375rem;
     }
 
-    .scorecard-cta-card .scorecard-cta-text p:last-child {
+    .assess-dim-name {
       font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      margin: 0;
-    }
-
-    .btn-scorecard {
-      flex-shrink: 0;
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 0.75rem 1.375rem;
-      border-radius: 8px;
-      text-decoration: none;
       font-weight: 600;
-      font-size: 0.9rem;
-      white-space: nowrap;
-      transition: background 0.15s;
+      color: var(--text);
     }
 
-    .btn-scorecard:hover {
-      background: var(--accent-hover);
+    .assess-dim-status {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.175rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .assess-dim-status.strong { background: #e8f5e9; color: #2e7d32; }
+    .assess-dim-status.developing { background: #fff8e1; color: #f57f17; }
+    .assess-dim-status.needs-work { background: #fbe9e7; color: #c62828; }
+
+    .assess-dim-track {
+      height: 6px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .assess-dim-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.6s ease 0.2s;
     }
 
     /* Section visibility */
@@ -675,14 +664,6 @@
         align-items: stretch;
       }
       .btn-opt-in-book {
-        text-align: center;
-      }
-      .scorecard-cta-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .btn-scorecard {
-        width: 100%;
         text-align: center;
       }
     }
@@ -762,47 +743,56 @@
               </div>
             </div>
 
+            <div class="assess-breakdown" id="assess-breakdown">
+              <h3>Your scores by area</h3>
+              <div id="assess-dim-bars"></div>
+            </div>
+
             <div class="results-recs">
               <h3>Your recommended next steps</h3>
               <ul class="rec-list" id="rec-list"></ul>
             </div>
 
-            <div style="background:var(--bg-warm);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1rem;">
-              <p style="font-size:0.9375rem;font-weight:600;color:var(--text);margin-bottom:0.5rem;">Learn more about the 4 AI readiness stages</p>
-              <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:0.75rem;line-height:1.55;">Understand what each maturity stage means, what businesses at each stage should prioritise, and how to break through the ChatGPT Plateau.</p>
-              <a href="/insights/ai-readiness-stages-australia" class="link-arrow">Read the full article &rarr;</a>
-            </div>
-
-            <div class="results-cta">
-              <h3>Want to compress your timeline?</h3>
-              <p>Book a free 15-minute pre-discovery call. We'll map your highest-value AI starting point and give you a clear plan.</p>
-              <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="btn-cta-book"
-                 data-testid="link-book-call">
-                Book a free 15-min call
-              </a>
-              <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:0.5rem;margin-bottom:0;">Opens in a new tab.</p>
-            </div>
-
-            <div style="margin-top:0;background:var(--accent-light);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;margin-bottom:1.5rem;">
-              <div>
-                <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.25rem;">Free Report</p>
-                <p style="font-size:0.9375rem;font-weight:600;color:var(--text);margin-bottom:0.25rem;">State of AI Readiness: Australian SMB 2026</p>
-                <p style="font-size:0.875rem;color:var(--text-secondary);margin:0;line-height:1.5;">Benchmark your results against 54 surveyed Australian businesses.</p>
+            <!-- What to do next — single consolidated card -->
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;box-shadow:0 4px 24px rgba(0,0,0,0.06);margin-bottom:1.5rem;">
+              <h3 style="font-size:1.125rem;margin-bottom:1.25rem;">What to do next</h3>
+              <div style="display:flex;flex-direction:column;gap:1.25rem;">
+                <a href="/scorecard" style="display:flex;align-items:flex-start;gap:0.875rem;text-decoration:none;color:inherit;padding:1rem 1.25rem;background:var(--accent-light);border:1.5px solid var(--border);border-radius:12px;transition:border-color 0.15s;" data-testid="link-scorecard-cta"
+                  onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+                  <span style="flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8125rem;font-weight:700;">1</span>
+                  <div>
+                    <p style="font-size:0.9375rem;font-weight:600;color:var(--text);margin-bottom:0.25rem;">Take the full Scorecard</p>
+                    <p style="font-size:0.8125rem;color:var(--text-muted);margin:0;line-height:1.5;">28 questions across 6 dimensions. See exactly where your gaps are.</p>
+                  </div>
+                </a>
+                <a href="/report" style="display:flex;align-items:flex-start;gap:0.875rem;text-decoration:none;color:inherit;padding:1rem 1.25rem;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;transition:border-color 0.15s;" data-testid="link-report-download"
+                  onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+                  <span style="flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8125rem;font-weight:700;">2</span>
+                  <div>
+                    <p style="font-size:0.9375rem;font-weight:600;color:var(--text);margin-bottom:0.25rem;">Download the free report</p>
+                    <p style="font-size:0.8125rem;color:var(--text-muted);margin:0;line-height:1.5;">Benchmark your results against 54 surveyed Australian businesses.</p>
+                  </div>
+                </a>
+                <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:flex-start;gap:0.875rem;text-decoration:none;color:inherit;padding:1rem 1.25rem;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;transition:border-color 0.15s;" data-testid="link-book-call"
+                  onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+                  <span style="flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8125rem;font-weight:700;">3</span>
+                  <div>
+                    <p style="font-size:0.9375rem;font-weight:600;color:var(--text);margin-bottom:0.25rem;">Book a free 15-min call</p>
+                    <p style="font-size:0.8125rem;color:var(--text-muted);margin:0;line-height:1.5;">We'll map your highest-value AI starting point and give you a clear plan.</p>
+                  </div>
+                </a>
               </div>
-              <a href="/report" style="flex-shrink:0;display:inline-block;background:var(--accent);color:#ffffff;padding:0.6875rem 1.25rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.875rem;white-space:nowrap;" data-testid="link-report-download">Download free report</a>
             </div>
 
-            <!-- Optional contact card -->
+            <!-- Optional contact / stay in touch -->
             <div class="contact-opt-in-card" id="contact-opt-in-card">
-              <h3>Want to take the next step?</h3>
-              <p class="opt-in-sub">Choose what's useful for you — no obligation.</p>
-
-              <div id="opt-in-collapsed">
-                <button class="opt-in-toggle" id="btn-opt-in-expand" onclick="expandOptIn()" data-testid="button-expand-optin">
-                  Stay in touch? →
+              <div id="opt-in-collapsed" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;">
+                <div>
+                  <p style="font-size:0.9375rem;font-weight:600;color:var(--text);margin-bottom:0.125rem;">Want a copy of your results?</p>
+                  <p style="font-size:0.8125rem;color:var(--text-muted);margin:0;">Get your score emailed, or sign up for our fortnightly newsletter.</p>
+                </div>
+                <button class="opt-in-toggle" id="btn-opt-in-expand" onclick="expandOptIn()" data-testid="button-expand-optin" style="margin-bottom:0;">
+                  Yes &rarr;
                 </button>
               </div>
 
@@ -818,7 +808,7 @@
                   </label>
                   <label class="checkbox-label">
                     <input type="checkbox" id="chk-newsletter" data-testid="checkbox-newsletter">
-                    Sign me up for the weekly newsletter
+                    Sign me up for the fortnightly newsletter
                   </label>
                 </div>
 
@@ -835,27 +825,8 @@
 
                 <div class="opt-in-actions">
                   <button class="btn-opt-in-submit" id="btn-opt-in-submit" onclick="submitOptIn()" data-testid="button-optin-submit">Submit</button>
-                  <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     class="btn-opt-in-book"
-                     data-testid="link-book-call-optin">
-                    Book a Free Discovery Call →
-                  </a>
                 </div>
               </div>
-            </div>
-
-            <!-- Scorecard CTA card -->
-            <div class="scorecard-cta-card">
-              <div class="scorecard-cta-text">
-                <p>Want a deeper analysis?</p>
-                <p>Full AI Readiness Scorecard</p>
-                <p>The 28-question Scorecard breaks your AI readiness down across 6 business dimensions — so you know exactly where your biggest gaps are.</p>
-              </div>
-              <a href="/scorecard" class="btn-scorecard" data-testid="link-scorecard-cta">
-                Take the Full Scorecard →
-              </a>
             </div>
           </div>
         </div>
@@ -870,7 +841,7 @@
       <div class="faq-accordion" data-testid="faq-assessment">
         <details class="faq-item" data-testid="faq-item-score-meaning">
           <summary class="faq-question">What does the AI readiness score mean?</summary>
-          <div class="faq-answer"><p>Your score out of 100 maps to one of four AI maturity stages: Discovery (0&ndash;25), ChatGPT Plateau (26&ndash;50), Systematically Enabled (51&ndash;75), and Fully AI-Native (76&ndash;100). Only 5% of Australian SMBs reach Stage 4. The score tells you where you are relative to other Australian businesses and what to prioritise next.</p></div>
+          <div class="faq-answer"><p>Your score out of 100 maps to one of four AI maturity stages: Unaware (0&ndash;25), ChatGPT Plateau (26&ndash;50), Enabled (51&ndash;75), and AI-Native (76&ndash;100). Only 5% of Australian SMBs reach Stage 4. The score tells you where you are relative to other Australian businesses and what to prioritise next.</p></div>
         </details>
         <details class="faq-item" data-testid="faq-item-who-for">
           <summary class="faq-question">Who is this assessment for?</summary>
@@ -886,11 +857,11 @@
         </details>
         <details class="faq-item" data-testid="faq-item-after-assessment">
           <summary class="faq-question">What happens after I complete the assessment?</summary>
-          <div class="faq-answer"><p>You get instant results showing your AI maturity stage and three prioritised recommendations. You can then <a href="/report">download our free report</a> to benchmark against 54 other Australian businesses, or <a href="/services/audit">book a free 15-minute discovery call</a> to discuss your specific opportunities.</p></div>
+          <div class="faq-answer"><p>You get instant results showing your AI maturity stage and three prioritised recommendations. You can then <a href="/report">download our free report</a> to benchmark against 54 other Australian businesses, or <a href="/contact">book a free 15-minute discovery call</a> to discuss your specific opportunities.</p></div>
         </details>
         <details class="faq-item" data-testid="faq-item-vs-call">
           <summary class="faq-question">How does this compare to the free discovery call?</summary>
-          <div class="faq-answer"><p>The self-assessment gives you a data-driven benchmark of where your business sits. The free 15-minute <a href="/services/audit">discovery call</a> is a live conversation where we map your specific workflows and identify your highest-impact automation opportunity. The assessment gives you a score; the call gives you a plan.</p></div>
+          <div class="faq-answer"><p>The self-assessment gives you a data-driven benchmark of where your business sits. The free 15-minute <a href="/contact">discovery call</a> is a live conversation where we map your specific workflows and identify your highest-impact automation opportunity. The assessment gives you a score; the call gives you a plan.</p></div>
         </details>
       </div>
     </div>
@@ -1061,6 +1032,16 @@
     ];
 
     // ==============================
+    // Dimension groupings for visual breakdown
+    // ==============================
+    var DIMENSIONS = [
+      { name: "Strategy & Leadership", icon: "🧭", questions: [0, 5, 6], max: 30 },
+      { name: "Data & Documentation", icon: "📊", questions: [1, 4, 7], max: 30 },
+      { name: "Team & Skills", icon: "👥", questions: [2, 3], max: 20 },
+      { name: "Technology & Integration", icon: "⚙️", questions: [8, 9], max: 20 }
+    ];
+
+    // ==============================
     // State
     // ==============================
     var currentQ = 0;
@@ -1183,6 +1164,40 @@
         arc.style.stroke = finalStage.color;
         arc.style.strokeDashoffset = offset;
       }, 150);
+
+      // Dimension breakdown
+      var dimBarsHTML = DIMENSIONS.map(function(dim, di) {
+        var dimScore = dim.questions.reduce(function(sum, qi) {
+          return sum + (answers[qi] !== null ? QUESTIONS[qi].opts[answers[qi]].score : 0);
+        }, 0);
+        var pct = Math.round((dimScore / dim.max) * 100);
+        var statusClass, statusLabel, barColor;
+        if (pct >= 70) { statusClass = 'strong'; statusLabel = 'Strong'; barColor = '#2e7d32'; }
+        else if (pct >= 40) { statusClass = 'developing'; statusLabel = 'Developing'; barColor = '#f57f17'; }
+        else { statusClass = 'needs-work'; statusLabel = 'Needs work'; barColor = '#c62828'; }
+
+        return '<div class="assess-dim-row" data-testid="assess-dim-' + di + '">'
+          + '<div class="assess-dim-icon" style="background:' + (pct >= 70 ? '#e8f5e9' : pct >= 40 ? '#fff8e1' : '#fbe9e7') + '">' + dim.icon + '</div>'
+          + '<div class="assess-dim-info">'
+          + '<div class="assess-dim-label-row">'
+          + '<span class="assess-dim-name">' + dim.name + '</span>'
+          + '<span class="assess-dim-status ' + statusClass + '">' + statusLabel + '</span>'
+          + '</div>'
+          + '<div class="assess-dim-track">'
+          + '<div class="assess-dim-fill" style="width:0%;background:' + barColor + '" data-pct="' + pct + '"></div>'
+          + '</div>'
+          + '</div>'
+          + '</div>';
+      }).join('');
+      document.getElementById('assess-dim-bars').innerHTML = dimBarsHTML;
+
+      // Animate dimension bars
+      setTimeout(function() {
+        document.querySelectorAll('.assess-dim-fill').forEach(function(el) {
+          el.style.transition = 'width 0.6s ease';
+          el.style.width = el.getAttribute('data-pct') + '%';
+        });
+      }, 400);
 
       var recList = document.getElementById('rec-list');
       recList.innerHTML = '';

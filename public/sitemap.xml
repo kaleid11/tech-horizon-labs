@@ -3,7 +3,7 @@
   <!-- Core static pages -->
   <url>
     <loc>https://techhorizonlabs.com/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -26,12 +26,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://techhorizonlabs.com/security</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://techhorizonlabs.com/contact</loc>
     <lastmod>2026-04-02</lastmod>
     <changefreq>yearly</changefreq>
@@ -44,6 +38,46 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Conversion tools -->
+  <url>
+    <loc>https://techhorizonlabs.com/assessment</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/report</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/scorecard</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Special pages -->
+  <url>
+    <loc>https://techhorizonlabs.com/security</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/tools</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://techhorizonlabs.com/openclaw</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
   <!-- Industry pages -->
   <url>
     <loc>https://techhorizonlabs.com/industries/legal</loc>
@@ -52,28 +86,22 @@
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://techhorizonlabs.com/industries/accounting</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://techhorizonlabs.com/industries/construction</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://techhorizonlabs.com/industries/healthcare</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://techhorizonlabs.com/industries/retail</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
+    <priority>0.75</priority>
   </url>
 
   <!-- Location pages -->
@@ -102,86 +130,10 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Portfolio / case studies -->
-  <url>
-    <loc>https://techhorizonlabs.com/portfolio/accounting-firm</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/portfolio/construction-builder</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/portfolio/real-estate-agency</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/portfolio/manufacturing</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/portfolio/healthcare-clinic</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-
-  <!-- Services -->
-  <url>
-    <loc>https://techhorizonlabs.com/services/audit</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/services/accelerator</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/services/partner</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- AI Tool Cheat Sheet -->
-  <url>
-    <loc>https://techhorizonlabs.com/tools</loc>
-    <lastmod>2026-04-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- AI Readiness Scorecard -->
-  <url>
-    <loc>https://techhorizonlabs.com/scorecard</loc>
-    <lastmod>2026-04-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- OpenClaw page -->
-  <url>
-    <loc>https://techhorizonlabs.com/openclaw</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
   <!-- Insights articles -->
   <url>
     <loc>https://techhorizonlabs.com/insights</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -192,14 +144,14 @@
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://techhorizonlabs.com/insights/ai-impact-by-industry</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://techhorizonlabs.com/insights/claude-vs-chatgpt-2026</loc>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://techhorizonlabs.com/insights/claude-vs-chatgpt-2026</loc>
-    <lastmod>2026-03-03</lastmod>
+    <loc>https://techhorizonlabs.com/insights/ai-impact-by-industry</loc>
+    <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -234,11 +186,5 @@
     <lastmod>2026-04-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://techhorizonlabs.com/events</loc>
-    <lastmod>2026-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
   </url>
 </urlset>

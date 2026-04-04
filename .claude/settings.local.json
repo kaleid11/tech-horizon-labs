@@ -46,7 +46,18 @@
       "Bash(echo \"Security items present \\($\\(curl -s http://localhost:5000/)",
       "Bash(echo \"styles.css: $\\(curl -s http://localhost:5000/styles.css)",
       "Bash(echo \"Report preview: $\\(curl -s http://localhost:5000/)",
-      "Bash(echo \"main.js: $\\(curl -s http://localhost:5000/main.js)"
+      "Bash(echo \"main.js: $\\(curl -s http://localhost:5000/main.js)",
+      "Bash(xargs basename:*)",
+      "Bash(PORT=5000 npx tsx server/index.ts)",
+      "Bash(PORT=5001 npx tsx server/index.ts)",
+      "Bash(npm run:*)",
+      "Bash(npm ls:*)",
+      "Bash(xargs -I {} basename {})",
+      "Bash(npm uninstall:*)",
+      "Bash(git log:*)",
+      "Bash(kill %1)",
+      "Bash(PORT=5002 npx tsx server/index.ts)",
+      "Bash(PORT=5003 npx tsx server/index.ts)"
     ]
   }
 }

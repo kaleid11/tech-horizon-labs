@@ -1,16 +1,26 @@
 import type { Express, Request, Response, NextFunction } from "express";
-import { createServer, type Server } from "http";
+import { createServer } from "http";
+import type { Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
-import { insertContactSubmissionSchema, insertNewsletterSignupSchema, insertAuditSubmissionSchema } from "@shared/schema";
+import rateLimit from "express-rate-limit";
+import { insertContactSubmissionSchema, insertNewsletterSignupSchema } from "@shared/schema";
 import { sendContactNotification, sendContactAutoReply, sendNewsletterWelcome, sendAuditResults, sendAuditNotification } from "./email";
 import { pushToKlipy } from "./klipy";
-import path from "path";
-import fs from "fs";
+import { pushToBeehiiv } from "./beehiiv";
+
+// Rate limiters for API endpoints
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // 10 requests per window per IP
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, error: "Too many requests. Please try again later." },
+});
 
 // Simple admin authentication middleware
 const adminAuth = (req: Request, res: Response, next: NextFunction) => {
-  const adminKey = req.headers['x-admin-key'] || req.query.adminKey;
+  const adminKey = req.headers['x-admin-key'];
   const expectedKey = process.env.ADMIN_API_KEY;
 
   if (!expectedKey) {
@@ -32,28 +42,6 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // Serve sitemap.xml with correct content type
-  app.get("/sitemap.xml", (_req, res) => {
-    const sitemapPath = path.resolve(process.cwd(), "public", "sitemap.xml");
-    if (fs.existsSync(sitemapPath)) {
-      res.setHeader("Content-Type", "application/xml");
-      res.sendFile(sitemapPath);
-    } else {
-      res.status(404).send("Sitemap not found");
-    }
-  });
-
-  // Serve robots.txt
-  app.get("/robots.txt", (_req, res) => {
-    const robotsPath = path.resolve(process.cwd(), "public", "robots.txt");
-    if (fs.existsSync(robotsPath)) {
-      res.setHeader("Content-Type", "text/plain");
-      res.sendFile(robotsPath);
-    } else {
-      res.status(404).send("Robots.txt not found");
-    }
-  });
-
   // ===== 301 Redirects — old React SPA routes to new static pages =====
 
   // Portfolio → Work
@@ -68,107 +56,18 @@ export async function registerRoutes(
   app.get("/services/:slug", (_req, res) => res.redirect(301, "/"));
   app.get("/services/:slug/", (_req, res) => res.redirect(301, "/"));
 
-  // Static location pages — must come BEFORE the wildcard redirect below
-  app.get("/locations/sunshine-coast", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "locations", "sunshine-coast.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/locations/sunshine-coast/", (_req, res) => res.redirect(301, "/locations/sunshine-coast"));
-
-  app.get("/locations/brisbane", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "locations", "brisbane.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/locations/brisbane/", (_req, res) => res.redirect(301, "/locations/brisbane"));
-
-  app.get("/locations/gold-coast", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "locations", "gold-coast.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/locations/gold-coast/", (_req, res) => res.redirect(301, "/locations/gold-coast"));
-
-  app.get("/locations/queensland", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "locations", "queensland.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/locations/queensland/", (_req, res) => res.redirect(301, "/locations/queensland"));
-
-  // Locations → Homepage (wildcard — catches anything not specifically listed above)
-  app.get("/locations/:slug", (_req, res) => res.redirect(301, "/"));
-  app.get("/locations/:slug/", (_req, res) => res.redirect(301, "/"));
-
-  // Static industry pages — must come BEFORE the wildcard redirect below
-  app.get("/industries/legal", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "industries", "legal.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-
-  // Industries → Homepage (wildcard — catches anything not specifically listed above)
-  app.get("/industries/:slug", (_req, res) => res.redirect(301, "/"));
-
-  // Insights index — must come BEFORE the wildcard redirect below; canonical first, slash-redirect second
-  app.get("/insights", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "insights", "index.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/insights/", (_req, res) => res.redirect(301, "/insights"));
-
-  // Insights articles — must come BEFORE the wildcard redirect below
-  app.get("/insights/how-australia-uses-ai-2026", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "insights", "how-australia-uses-ai-2026.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/insights/claude-vs-chatgpt-2026", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "insights", "claude-vs-chatgpt-2026.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/insights/claude-vs-chatgpt-2026/", (_req, res) => res.redirect(301, "/insights/claude-vs-chatgpt-2026"));
-  app.get("/insights/ai-impact-by-industry", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "insights", "ai-impact-by-industry.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/insights/ai-impact-by-industry/", (_req, res) => res.redirect(301, "/insights/ai-impact-by-industry"));
-
-  // Insights → Homepage (wildcard — catches anything not specifically listed above)
-  app.get("/insights/:slug", (_req, res) => res.redirect(301, "/"));
+  // NOTE: Wildcard redirects for /locations/:slug, /industries/:slug, /insights/:slug
+  // are registered in static.ts AFTER the specific page routes, to avoid catching them.
 
   // Guides → Academy
   app.get("/guides/:slug", (_req, res) => res.redirect(301, "/academy"));
   app.get("/guides/:slug/", (_req, res) => res.redirect(301, "/academy"));
 
-  // Static pages served directly — canonical route FIRST, trailing-slash redirect SECOND
-  app.get("/security", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "security.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/security/", (_req, res) => res.redirect(301, "/security"));
-
   // Individual removed pages
-  // /research is now a live page — no redirect
-  app.get("/report/", (_req, res) => res.redirect(301, "/report"));
-
-  app.get("/assessment/", (_req, res) => res.redirect(301, "/assessment"));
-
   app.get("/audit-tool", (_req, res) => res.redirect(301, "/assessment"));
   app.get("/audit-tool/", (_req, res) => res.redirect(301, "/assessment"));
   app.get("/ai-ethics", (_req, res) => res.redirect(301, "/about"));
-  app.get("/openclaw", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "openclaw.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/openclaw/", (_req, res) => res.redirect(301, "/openclaw"));
-  // /events is a live React SPA page — no redirect
+  app.get("/events", (_req, res) => res.redirect(301, "/"));
   app.get("/resources", (_req, res) => res.redirect(301, "/academy"));
   app.get("/resources/", (_req, res) => res.redirect(301, "/academy"));
 
@@ -212,25 +111,9 @@ export async function registerRoutes(
   app.get("/index.html", (_req, res) => res.redirect(301, "/"));
   app.get("/index.php", (_req, res) => res.redirect(301, "/"));
 
-  // /tools — AI Tool Cheat Sheet
-  app.get("/tools", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "tools.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/tools/", (_req, res) => res.redirect(301, "/tools"));
-
-  // /scorecard — 28-question AI Readiness Scorecard
-  app.get("/scorecard", (_req, res) => {
-    const filePath = path.resolve(process.cwd(), "client", "static", "scorecard.html");
-    res.setHeader("Content-Type", "text/html");
-    res.sendFile(filePath);
-  });
-  app.get("/scorecard/", (_req, res) => res.redirect(301, "/scorecard"));
-
   // ===== API Endpoints =====
 
-  app.post("/api/contact", async (req, res) => {
+  app.post("/api/contact", apiLimiter, async (req, res) => {
     try {
       const validatedData = insertContactSubmissionSchema.parse(req.body);
       const submission = await storage.createContactSubmission(validatedData);
@@ -256,31 +139,7 @@ export async function registerRoutes(
         source: "website-contact",
       });
 
-      // Fire-and-forget Beehiiv subscription (tagged contact-form)
-      const beehiivApiKey = process.env.BEEHIIV_API_KEY;
-      const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
-      if (beehiivApiKey && beehiivPubId) {
-        fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${beehiivApiKey}`,
-          },
-          body: JSON.stringify({
-            email: validatedData.email,
-            reactivate_existing: true,
-            send_welcome_email: false,
-            tags: ["contact-form"],
-          }),
-        })
-          .then(async (response) => {
-            if (!response.ok) {
-              const body = await response.text().catch(() => "");
-              console.error(`Beehiiv contact sync returned ${response.status}: ${body}`);
-            }
-          })
-          .catch((err) => console.error("Beehiiv contact sync failed:", err));
-      }
+      pushToBeehiiv(validatedData.email, { tags: ["contact-form"] });
 
       res.json({ success: true, id: submission.id });
     } catch (error) {
@@ -299,11 +158,11 @@ export async function registerRoutes(
       res.json(submissions);
     } catch (error) {
       console.error("Error fetching submissions:", error);
-      res.status(500).json({ error: "Failed to fetch submissions" });
+      res.status(500).json({ success: false, error: "Failed to fetch submissions" });
     }
   });
 
-  app.post("/api/newsletter", async (req, res) => {
+  app.post("/api/newsletter", apiLimiter, async (req, res) => {
     try {
       const { source: rawSource, name: rawName, ...rest } = req.body;
       const source = typeof rawSource === "string" && rawSource.length < 80 ? rawSource : undefined;
@@ -321,18 +180,10 @@ export async function registerRoutes(
             email: validatedData.email,
             source: "report-download",
           });
-          const _bApiKey = process.env.BEEHIIV_API_KEY;
-          const _bPubId = process.env.BEEHIIV_PUBLICATION_ID;
-          if (_bApiKey && _bPubId) {
-            fetch(`https://api.beehiiv.com/v2/publications/${_bPubId}/subscriptions`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json", Authorization: `Bearer ${_bApiKey}` },
-              body: JSON.stringify({ email: validatedData.email, reactivate_existing: true, send_welcome_email: false, tags: ["report-download"] }),
-            }).catch((err) => console.error("Beehiiv re-tag failed:", err));
-          }
+          pushToBeehiiv(validatedData.email, { tags: ["report-download"] });
           return res.json({ success: true, id: existing.id });
         }
-        return res.status(400).json({ error: "This email is already subscribed." });
+        return res.status(400).json({ success: false, error: "This email is already subscribed." });
       }
 
       const signup = await storage.createNewsletterSignup(validatedData);
@@ -344,33 +195,13 @@ export async function registerRoutes(
       pushToKlipy({
         name: name ?? validatedData.email.split("@")[0],
         email: validatedData.email,
-        source: source ?? "website-newsletter",
+        source: (source ?? "website-newsletter") as "website-newsletter" | "report-download",
       });
 
-      const beehiivApiKey = process.env.BEEHIIV_API_KEY;
-      const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
-      if (beehiivApiKey && beehiivPubId) {
-        fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${beehiivApiKey}`,
-          },
-          body: JSON.stringify({
-            email: validatedData.email,
-            reactivate_existing: false,
-            send_welcome_email: false,
-            ...(source ? { tags: [source] } : {}),
-          }),
-        })
-          .then(async (response) => {
-            if (!response.ok) {
-              const body = await response.text().catch(() => "");
-              console.error(`Beehiiv sync returned ${response.status}: ${body}`);
-            }
-          })
-          .catch((err) => console.error("Beehiiv sync failed:", err));
-      }
+      pushToBeehiiv(validatedData.email, {
+        reactivate: false,
+        ...(source ? { tags: [source] } : {}),
+      });
 
       res.json({ success: true, id: signup.id });
     } catch (error) {
@@ -420,7 +251,7 @@ export async function registerRoutes(
     },
   ];
 
-  app.post("/api/audit", async (req, res) => {
+  app.post("/api/audit", apiLimiter, async (req, res) => {
     try {
       // Parse and validate request
       // name/email are optional — only required when user opts in to contact/email
@@ -516,15 +347,7 @@ export async function registerRoutes(
         });
 
         if (input.wantsNewsletter) {
-          const beehiivApiKey = process.env.BEEHIIV_API_KEY;
-          const beehiivPubId = process.env.BEEHIIV_PUBLICATION_ID;
-          if (beehiivApiKey && beehiivPubId) {
-            fetch(`https://api.beehiiv.com/v2/publications/${beehiivPubId}/subscriptions`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json", Authorization: `Bearer ${beehiivApiKey}` },
-              body: JSON.stringify({ email: input.email, reactivate_existing: true, send_welcome_email: false, tags: ["ai-readiness-assessment"] }),
-            }).catch((err) => console.error("Beehiiv audit sync failed:", err));
-          }
+          pushToBeehiiv(input.email, { tags: ["ai-readiness-assessment"] });
         }
       }
 

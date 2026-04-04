@@ -1,33 +1,17 @@
 import { build as esbuild } from "esbuild";
-import { build as viteBuild } from "vite";
 import { rm, readFile, cp } from "fs/promises";
 
-// server deps to bundle to reduce openat(2) syscalls
-// which helps cold start times
+// Server deps to bundle (reduces cold start openat syscalls)
 const allowlist = [
-  "@google/generative-ai",
-  "axios",
-  "connect-pg-simple",
-  "cors",
-  "date-fns",
   "drizzle-orm",
   "drizzle-zod",
   "express",
   "express-rate-limit",
-  "express-session",
-  "jsonwebtoken",
-  "memorystore",
-  "multer",
+  "helmet",
+  "compression",
   "nanoid",
-  "nodemailer",
-  "openai",
-  "passport",
-  "passport-local",
   "pg",
-  "stripe",
-  "uuid",
-  "ws",
-  "xlsx",
+  "resend",
   "zod",
   "zod-validation-error",
 ];

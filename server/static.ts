@@ -6,7 +6,7 @@ const BASE_URL = "https://techhorizonlabs.com";
 const SITE_NAME = "Tech Horizon Labs";
 
 /**
- * Route-to-file and meta mapping for the static site.
+ * Core pages with server-side meta injection.
  */
 const PAGES: Record<string, { file: string; title: string; description: string; fullTitle?: string }> = {
   "/": {
@@ -54,23 +54,48 @@ const PAGES: Record<string, { file: string; title: string; description: string; 
     file: "assessment.html",
     fullTitle: "Free AI Readiness Assessment — Where Does Your Business Stand? | Tech Horizon Labs",
     title: "AI Readiness Self-Assessment",
-    description: "Free AI readiness self-assessment for Australian businesses. 10 questions, instant results. Find out which of the 4 AI Maturity Stages your business is in — Discovery, ChatGPT Plateau, Systematically Enabled, or Fully AI-Native.",
-  },
-  "/privacy": {
-    file: "privacy.html",
-    title: "Privacy Policy",
-    description: "Tech Horizon Labs privacy policy. How we collect, use, and protect your personal information under the Australian Privacy Act 1988.",
-  },
-  "/terms": {
-    file: "terms.html",
-    title: "Terms of Service",
-    description: "Tech Horizon Labs terms of service for our AI implementation services and website.",
+    description: "Free AI readiness self-assessment for Australian businesses. 10 questions, instant results. Find out which of the 4 AI Maturity Stages your business is in — Unaware, ChatGPT Plateau, Enabled, or AI-Native.",
   },
 };
 
 /**
- * Inject correct meta tags into HTML based on the requested URL path.
+ * Static HTML pages served directly (already have their own meta tags).
+ * Maps URL path → file path relative to the static directory.
  */
+const STATIC_FILES: Record<string, string> = {
+  // Legal pages
+  "/privacy": "privacy.html",
+  "/terms": "terms.html",
+  // Special pages
+  "/security": "security.html",
+  "/openclaw": "openclaw.html",
+  "/tools": "tools.html",
+  "/scorecard": "scorecard.html",
+  // Location pages
+  "/locations/sunshine-coast": "locations/sunshine-coast.html",
+  "/locations/brisbane": "locations/brisbane.html",
+  "/locations/gold-coast": "locations/gold-coast.html",
+  "/locations/queensland": "locations/queensland.html",
+  // Industry pages
+  "/industries/legal": "industries/legal.html",
+  "/industries/construction": "industries/construction.html",
+  "/industries/healthcare": "industries/healthcare.html",
+  "/industries/retail": "industries/retail.html",
+  // Insights
+  "/insights": "insights/index.html",
+  "/insights/how-australia-uses-ai-2026": "insights/how-australia-uses-ai-2026.html",
+  "/insights/claude-vs-chatgpt-2026": "insights/claude-vs-chatgpt-2026.html",
+  "/insights/ai-impact-by-industry": "insights/ai-impact-by-industry.html",
+  "/insights/ai-implementation-cost-australia": "insights/ai-implementation-cost-australia.html",
+  "/insights/ai-mistakes-australian-businesses": "insights/ai-mistakes-australian-businesses.html",
+  "/insights/ai-readiness-stages-australia": "insights/ai-readiness-stages-australia.html",
+};
+
+/**
+ * In-memory HTML cache — populated on first request, avoids disk reads per request.
+ */
+const htmlCache = new Map<string, string>();
+
 function injectMeta(html: string, urlPath: string): string {
   const page = PAGES[urlPath];
   if (!page) return html;
@@ -105,15 +130,25 @@ function injectMeta(html: string, urlPath: string): string {
   return html;
 }
 
-function servePage(servingDir: string, urlPath: string): string | null {
-  const page = PAGES[urlPath];
-  if (!page) return null;
+function getHtml(servingDir: string, filePath: string, urlPath?: string): string | null {
+  const cacheKey = urlPath ?? filePath;
+  const cached = htmlCache.get(cacheKey);
+  if (cached) return cached;
 
-  const filePath = path.resolve(servingDir, page.file);
-  if (!fs.existsSync(filePath)) return null;
+  const fullPath = path.resolve(servingDir, filePath);
+  if (!fs.existsSync(fullPath)) return null;
 
-  const html = fs.readFileSync(filePath, "utf-8");
-  return injectMeta(html, urlPath);
+  let html = fs.readFileSync(fullPath, "utf-8");
+  if (urlPath && PAGES[urlPath]) {
+    html = injectMeta(html, urlPath);
+  }
+
+  // Only cache in production
+  if (process.env.NODE_ENV === "production") {
+    htmlCache.set(cacheKey, html);
+  }
+
+  return html;
 }
 
 export function serveStatic(app: Express) {
@@ -126,10 +161,31 @@ export function serveStatic(app: Express) {
     throw new Error(`Could not find the static directory: ${servingDir}`);
   }
 
-  // Register explicit GET routes for each known page FIRST
-  for (const [route, _config] of Object.entries(PAGES)) {
+  // Serve sitemap.xml and robots.txt with correct content types
+  const publicDir = path.resolve(projectRoot, "public");
+  app.get("/sitemap.xml", (_req, res) => {
+    const filePath = path.resolve(publicDir, "sitemap.xml");
+    if (fs.existsSync(filePath)) {
+      res.setHeader("Content-Type", "application/xml");
+      res.sendFile(filePath);
+    } else {
+      res.status(404).send("Sitemap not found");
+    }
+  });
+  app.get("/robots.txt", (_req, res) => {
+    const filePath = path.resolve(publicDir, "robots.txt");
+    if (fs.existsSync(filePath)) {
+      res.setHeader("Content-Type", "text/plain");
+      res.sendFile(filePath);
+    } else {
+      res.status(404).send("Robots.txt not found");
+    }
+  });
+
+  // Register core pages (with meta injection)
+  for (const [route, config] of Object.entries(PAGES)) {
     app.get(route, (_req, res) => {
-      const html = servePage(servingDir, route);
+      const html = getHtml(servingDir, config.file, route);
       if (html) {
         res.setHeader("Content-Type", "text/html");
         res.send(html);
@@ -139,18 +195,45 @@ export function serveStatic(app: Express) {
     });
   }
 
+  // Register static file pages (already have their own meta tags)
+  for (const [route, file] of Object.entries(STATIC_FILES)) {
+    app.get(route, (_req, res) => {
+      const html = getHtml(servingDir, file);
+      if (html) {
+        res.setHeader("Content-Type", "text/html");
+        res.send(html);
+      } else {
+        res.status(404).send("Page not found");
+      }
+    });
+  }
+
+  // Trailing-slash redirects for specific nested routes
+  for (const route of Object.keys(STATIC_FILES)) {
+    if (route.includes("/") && route !== "/") {
+      app.get(route + "/", (_req, res) => res.redirect(301, route));
+    }
+  }
+
+  // Wildcard redirects — catch any nested slugs NOT handled above
+  app.get("/locations/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/locations/:slug/", (_req, res) => res.redirect(301, "/"));
+  app.get("/industries/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/industries/:slug/", (_req, res) => res.redirect(301, "/"));
+  app.get("/insights/:slug", (_req, res) => res.redirect(301, "/"));
+  app.get("/insights/:slug/", (_req, res) => res.redirect(301, "/"));
+
   // Serve CSS, JS, favicon, and other static assets
   app.use(express.static(servingDir));
 
-  // Serve public dir for sitemap, robots, og-image
-  const publicDir = path.resolve(projectRoot, "public");
+  // Serve public dir for og-image and other public assets
   if (fs.existsSync(publicDir)) {
     app.use(express.static(publicDir));
   }
 
   // Catch-all 404
   app.use((_req, res) => {
-    const html = servePage(servingDir, "/");
+    const html = getHtml(servingDir, "index.html", "/");
     res.status(404).setHeader("Content-Type", "text/html");
     res.send(html || "Not found");
   });

@@ -37,6 +37,46 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the AI Readiness Scorecard?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The AI Readiness Scorecard is a 28-question diagnostic tool that evaluates your business across 6 dimensions: Current AI Usage, Data and Knowledge Readiness, Tool Integration and Automation, Team AI Capability, Strategy and Governance, and Measurable Impact. It produces a score out of 140 that maps to one of four AI maturity stages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the scorecard different from the quick assessment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The quick assessment at /assessment is 10 questions and gives a broad overview of your AI maturity stage. The scorecard is 28 questions across 6 specific business dimensions, giving you a detailed breakdown of exactly where your strengths and gaps are. Many businesses start with the quick assessment and then take the full scorecard for deeper analysis."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the 4 AI maturity stages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Stage 1 Unaware (28-48 points): The business is not yet using AI tools consistently. Stage 2 ChatGPT Plateau (49-75): AI is used personally but not integrated into business workflows. Stage 3 Enabled (76-105): AI is integrated into key processes with measurable results. Stage 4 AI-Native (106-140): AI is embedded across the business with clear competitive advantage. Only 5% of Australian SMBs reach Stage 4."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to give my email to see my results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can see your total score, stage, and section breakdown without providing an email. Entering your email is optional and unlocks dimension-specific recommendations and the option to have your results emailed to you or to request a follow-up from our team."
+        }
+      }
+    ]
+  }
+  </script>
   <style>
     .sc-wrap {
       min-height: 80vh;
@@ -235,6 +275,19 @@
       font-size: 0.6875rem;
       color: var(--text-muted);
       margin-top: 0.25rem;
+    }
+
+    .sc-rating-labels span {
+      flex: 1;
+      text-align: center;
+    }
+
+    .sc-rating-labels span:first-child {
+      text-align: left;
+    }
+
+    .sc-rating-labels span:last-child {
+      text-align: right;
     }
 
     .sc-progress-wrap {
@@ -579,6 +632,111 @@
       margin: 0;
     }
 
+    /* Dimension detail cards */
+    .sc-dim-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sc-dim-detail-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .sc-dim-detail-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .sc-dim-detail-letter {
+      flex-shrink: 0;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sc-dim-detail-title {
+      flex: 1;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: var(--text);
+    }
+
+    .sc-dim-status-badge {
+      flex-shrink: 0;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.625rem;
+      border-radius: 999px;
+    }
+
+    .sc-dim-status-badge.strong {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .sc-dim-status-badge.developing {
+      background: #fff8e1;
+      color: #f57f17;
+    }
+
+    .sc-dim-status-badge.needs-work {
+      background: #fbe9e7;
+      color: #c62828;
+    }
+
+    .sc-dim-detail-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .sc-dim-detail-track {
+      flex: 1;
+      height: 6px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .sc-dim-detail-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.6s ease;
+    }
+
+    .sc-dim-detail-score {
+      flex-shrink: 0;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .sc-dim-detail-rec {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin: 0;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border-light);
+    }
+
     .sc-cta-card {
       background: #1c1215;
       border-radius: 16px;
@@ -690,7 +848,7 @@
 
       .sc-result-score-row,
       .sc-breakdown-card,
-      .sc-priority-card {
+      .sc-dim-detail-card {
         box-shadow: none;
         break-inside: avoid;
       }
@@ -833,10 +991,9 @@
               </div>
             </div>
 
-            <!-- Priority recommendation -->
-            <div class="sc-priority-card" id="sc-priority-card">
-              <h3 id="sc-priority-heading">Your priority area</h3>
-              <p id="sc-priority-rec"></p>
+            <!-- Dimension-by-dimension recommendations -->
+            <div class="sc-dim-details" id="sc-dim-details">
+              <!-- Populated by JS -->
             </div>
 
             <!-- Stage-appropriate CTA -->
@@ -1072,7 +1229,7 @@
             + '>' + r + '</button>';
         }
         ratingHTML += '</div>';
-        ratingHTML += '<div class="sc-rating-labels"><span>Not at all</span><span>Completely</span></div>';
+        ratingHTML += '<div class="sc-rating-labels"><span>Strongly disagree</span><span>Disagree</span><span>Neutral</span><span>Agree</span><span>Strongly agree</span></div>';
 
         return '<div class="sc-question-row">'
           + '<div class="sc-question-text">' + escHtml(q) + '</div>'
@@ -1242,16 +1399,45 @@
         });
       }, 200);
 
-      // Priority recommendation — lowest-scoring dimension
-      var lowestIdx = 0;
-      var lowestPct = 999;
-      SECTIONS.forEach(function(sec, i) {
-        var pct = getSectionScore(i) / sec.max;
-        if (pct < lowestPct) { lowestPct = pct; lowestIdx = i; }
-      });
-      var lowestSec = SECTIONS[lowestIdx];
-      document.getElementById('sc-priority-heading').textContent = 'Your lowest dimension: ' + lowestSec.letter + '. ' + lowestSec.shortName;
-      document.getElementById('sc-priority-rec').textContent = lowestSec.priority;
+      // Dimension-by-dimension recommendations (sorted: weakest first)
+      var dimOrder = SECTIONS.map(function(sec, i) {
+        return { idx: i, pct: getSectionScore(i) / sec.max };
+      }).sort(function(a, b) { return a.pct - b.pct; });
+
+      var dimDetailsHTML = dimOrder.map(function(d) {
+        var sec = SECTIONS[d.idx];
+        var secScore = getSectionScore(d.idx);
+        var pct = Math.round(d.pct * 100);
+        var statusClass, statusLabel;
+        if (pct >= 70) { statusClass = 'strong'; statusLabel = 'Strong'; }
+        else if (pct >= 40) { statusClass = 'developing'; statusLabel = 'Developing'; }
+        else { statusClass = 'needs-work'; statusLabel = 'Needs work'; }
+        var barColor = pct >= 70 ? '#2e7d32' : pct >= 40 ? '#f57f17' : '#c62828';
+
+        return '<div class="sc-dim-detail-card" data-testid="dim-detail-' + d.idx + '">'
+          + '<div class="sc-dim-detail-header">'
+          + '<div class="sc-dim-detail-letter">' + sec.letter + '</div>'
+          + '<div class="sc-dim-detail-title">' + sec.shortName + '</div>'
+          + '<span class="sc-dim-status-badge ' + statusClass + '">' + statusLabel + '</span>'
+          + '</div>'
+          + '<div class="sc-dim-detail-bar-wrap">'
+          + '<div class="sc-dim-detail-track">'
+          + '<div class="sc-dim-detail-fill" style="width:0%;background:' + barColor + '" data-pct="' + pct + '"></div>'
+          + '</div>'
+          + '<div class="sc-dim-detail-score">' + secScore + ' / ' + sec.max + '</div>'
+          + '</div>'
+          + '<p class="sc-dim-detail-rec">' + escHtml(sec.priority) + '</p>'
+          + '</div>';
+      }).join('');
+      document.getElementById('sc-dim-details').innerHTML = dimDetailsHTML;
+
+      // Animate dimension detail bars
+      setTimeout(function() {
+        document.querySelectorAll('.sc-dim-detail-fill').forEach(function(el) {
+          el.style.transition = 'width 0.6s ease';
+          el.style.width = el.getAttribute('data-pct') + '%';
+        });
+      }, 300);
 
       // Stage CTA
       document.getElementById('sc-cta-heading').textContent = stage.ctaHeading;

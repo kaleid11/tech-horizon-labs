@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research — Tech Horizon Labs</title>
-  <meta name="description" content="AI landscape research. Company valuations, funding analysis, and model comparisons. Data we track to pick the right tools for our clients.">
+  <title>AI Company Research Hub — Tech Horizon Labs</title>
+  <meta name="description" content="Free AI industry research covering governance, funding, and competitive analysis for Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen, Perplexity, Kimi, and Mistral. Updated April 2026.">
   <link rel="canonical" href="https://techhorizonlabs.com/research">
-  <meta property="og:title" content="Research — Tech Horizon Labs">
-  <meta property="og:description" content="AI landscape research. Company valuations, funding, model comparisons.">
+  <meta property="og:title" content="AI Company Research Hub — Tech Horizon Labs">
+  <meta property="og:description" content="Free deep research on 10 AI companies. Valuations, funding, governance, and model comparisons. Updated April 2026.">
   <meta property="og:url" content="https://techhorizonlabs.com/research">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_AU">
@@ -15,11 +15,11 @@
   <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Research — Tech Horizon Labs">
+  <meta property="og:image:alt" content="AI Company Research Hub — Tech Horizon Labs">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@techhorizonlabs">
   <meta name="twitter:title" content="AI Company Research Hub — Power, Money & Control in AI | Tech Horizon Labs">
-  <meta name="twitter:description" content="Free deep research on AI company governance, funding, and valuations. Anthropic, OpenAI, DeepSeek, Qwen, and 6 more — with comparison dashboards and down-round indicators.">
+  <meta name="twitter:description" content="Free deep research on AI company governance, funding, and valuations. Anthropic, OpenAI, DeepSeek, Qwen, and 6 more — with comparison dashboards.">
   <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
   <meta name="theme-color" content="#FAFAF8">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -34,6 +34,46 @@
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com" },
       { "@type": "ListItem", "position": 2, "name": "Research", "item": "https://techhorizonlabs.com/research" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which AI company has the highest valuation in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OpenAI leads private AI companies at $852B (March 2026). Among parent companies, Alphabet (Google DeepMind) has the highest market cap at $3.6T, followed by Meta at $1.5T."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which AI companies are open source?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Meta AI (LLaMA, open-weight), DeepSeek (MIT license), Qwen/Alibaba (Apache 2.0), and Mistral AI (Apache 2.0) all release open-weight models. xAI has partially open-sourced Grok."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much funding has Anthropic raised?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Anthropic has raised approximately $67.3B across 17 funding rounds, with a $380B post-money valuation as of its February 2026 Series G. Major investors include Amazon ($8B+), Google ($2B+), GIC, and Coatue."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is DeepSeek funded by venture capital?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. DeepSeek is self-funded through profits from High-Flyer, a Chinese quantitative hedge fund founded by DeepSeek CEO Liang Wenfeng. It has taken no external venture capital."
+        }
+      }
     ]
   }
   </script>
@@ -57,158 +97,156 @@
   <main id="main-content">
     <section class="hero container">
       <h1>Research</h1>
-      <p class="subline">We track the AI landscape so we can pick the right tools for each job. This is the data we work from. Updated March 2026.</p>
+      <p class="subline">We track the AI landscape so we can pick the right tools for each job. This is the data we work from. Updated April 2026.</p>
     </section>
 
     <div class="accent-rule container"></div>
 
-    <!-- Valuation Race -->
     <section class="section container-wide fade-in">
       <h2>Valuation comparison</h2>
-      <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-sm);">Latest reported valuations in USD. Google DeepMind and Meta AI shown at parent company market cap.</p>
+      <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-sm);">Latest reported valuations in USD. Google DeepMind and Meta AI shown at parent company market cap. DeepSeek is self-funded (no external valuation).</p>
 
       <div class="bar-chart" id="valuation-chart">
         <div class="bar-row">
           <span class="bar-label">Google DeepMind</span>
-          <div class="bar-track"><div class="bar-fill" data-width="100%" style="background: #4285F4;"><span class="bar-value">$2.3T</span></div></div>
+          <div class="bar-track"><div class="bar-fill" data-width="100%" style="background: #4285F4;"><span class="bar-value">$3.6T</span></div></div>
         </div>
         <div class="bar-row">
           <span class="bar-label">Meta AI</span>
-          <div class="bar-track"><div class="bar-fill" data-width="70%" style="background: #0668E1;"><span class="bar-value">$1.6T</span></div></div>
+          <div class="bar-track"><div class="bar-fill" data-width="42%" style="background: #0668E1;"><span class="bar-value">$1.5T</span></div></div>
         </div>
         <div class="bar-row">
           <span class="bar-label">OpenAI</span>
-          <div class="bar-track"><div class="bar-fill" data-width="32%" style="background: #10A37F;"><span class="bar-value">$730B</span></div></div>
+          <div class="bar-track"><div class="bar-fill" data-width="24%" style="background: #10A37F;"><span class="bar-value">$852B</span></div></div>
         </div>
         <div class="bar-row">
           <span class="bar-label">Anthropic</span>
-          <div class="bar-track"><div class="bar-fill" data-width="15%" style="background: #d4a843;"><span class="bar-value">$350B</span></div></div>
+          <div class="bar-track"><div class="bar-fill" data-width="11%" style="background: #d4a843;"><span class="bar-value">$380B</span></div></div>
         </div>
         <div class="bar-row">
-          <span class="bar-label">xAI</span>
-          <div class="bar-track"><div class="bar-fill" data-width="3.5%" style="background: #1DA1F2;"><span class="bar-value">$80B</span></div></div>
+          <span class="bar-label">xAI / SpaceX</span>
+          <div class="bar-track"><div class="bar-fill" data-width="7%" style="background: #1DA1F2;"><span class="bar-value">$250B</span></div></div>
         </div>
         <div class="bar-row">
           <span class="bar-label">Perplexity</span>
-          <div class="bar-track"><div class="bar-fill" data-width="0.9%" style="background: #20B8CD; min-width: 60px;"><span class="bar-value">$20B</span></div></div>
-        </div>
-        <div class="bar-row">
-          <span class="bar-label">Mistral AI</span>
-          <div class="bar-track"><div class="bar-fill" data-width="0.65%" style="background: #FF7000; min-width: 60px;"><span class="bar-value">$15B</span></div></div>
+          <div class="bar-track"><div class="bar-fill" data-width="0.6%" style="background: #20B8CD; min-width: 60px;"><span class="bar-value">$21B</span></div></div>
         </div>
         <div class="bar-row">
           <span class="bar-label">Kimi</span>
-          <div class="bar-track"><div class="bar-fill" data-width="0.45%" style="background: #6366F1; min-width: 60px;"><span class="bar-value">$10B</span></div></div>
+          <div class="bar-track"><div class="bar-fill" data-width="0.5%" style="background: #6366F1; min-width: 60px;"><span class="bar-value">$18B</span></div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Mistral AI</span>
+          <div class="bar-track"><div class="bar-fill" data-width="0.4%" style="background: #FF7000; min-width: 60px;"><span class="bar-value">$14B</span></div></div>
         </div>
       </div>
     </section>
 
     <div class="accent-rule container"></div>
 
-    <!-- Company Cards -->
     <section class="section container-wide fade-in">
       <h2>Company profiles</h2>
       <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-sm);">Click any card to expand. Ten companies we track closely.</p>
 
       <div class="company-grid">
 
-        <div class="company-card fade-in">
+        <div class="company-card fade-in" data-testid="card-company-anthropic">
           <div class="company-name">Anthropic</div>
           <div class="company-stat">Key model: <strong>Claude Sonnet 4.6</strong></div>
-          <div class="company-stat">Funding: <strong>$74.8B</strong> across 15 rounds</div>
+          <div class="company-stat">Funding: <strong>$67.3B</strong> across 17 rounds</div>
           <div class="company-stat">Open source: No</div>
           <div class="company-detail">
-            <p>Safety-focused AI lab. $350B valuation. Founded by former OpenAI VP of Research Dario Amodei and President Daniela Amodei. Unique governance: Long-Term Benefit Trust with escalating board control. Amazon ($8B) and Google ($2B+) are investors with zero voting rights.</p>
+            <p>Safety-focused AI lab. $380B valuation (Feb 2026 Series G, $30B round). Founded by former OpenAI VP of Research Dario Amodei and President Daniela Amodei. Unique governance: Long-Term Benefit Trust with escalating board control. Amazon ($8B+) and Google ($2B+) are investors with zero voting rights. Annualised revenue ~$14B, with Claude Code alone at ~$2.5B ARR.</p>
           </div>
         </div>
 
-        <div class="company-card fade-in">
+        <div class="company-card fade-in" data-testid="card-company-openai">
           <div class="company-name">OpenAI</div>
           <div class="company-stat">Key model: <strong>GPT-5.2 / o4</strong></div>
-          <div class="company-stat">Funding: <strong>$167.7B</strong> across 6 rounds</div>
+          <div class="company-stat">Funding: <strong>$122B</strong> (Mar 2026 round)</div>
           <div class="company-stat">Open source: No</div>
           <div class="company-detail">
-            <p>Pivoted from nonprofit to public benefit corporation. $730B pre-money valuation. Microsoft holds ~27%. Board reshaped after the Nov 2023 crisis that saw CEO Sam Altman briefly fired and reinstated within 5 days. Musk trial ongoing Mar 2026.</p>
+            <p>Pivoted from nonprofit to public benefit corporation. $852B post-money valuation (Mar 2026). Amazon ($50B), Nvidia ($30B), and SoftBank ($30B) led the latest round. Microsoft holds ~27%. Board reshaped after the Nov 2023 crisis. Most valuable startup in history.</p>
           </div>
         </div>
 
-        <div class="company-card fade-in">
+        <div class="company-card fade-in" data-testid="card-company-google-deepmind">
           <div class="company-name">Google DeepMind</div>
           <div class="company-stat">Key model: <strong>Gemini 3.1 Pro</strong></div>
-          <div class="company-stat">Internal investment: <strong>$157.5B</strong></div>
+          <div class="company-stat">Parent market cap: <strong>$3.6T</strong></div>
           <div class="company-stat">Open source: No</div>
           <div class="company-detail">
-            <p>World's largest AI lab. Merged Google Brain + DeepMind in 2023. Parent Alphabet is a $2.3T public company. Massive compute infrastructure advantage. Gemini models integrated across Google products.</p>
+            <p>World's largest AI lab. Merged Google Brain + DeepMind in 2023. Parent Alphabet is the 3rd most valuable public company globally. Massive compute infrastructure advantage. Gemini models integrated across Google products. Revenue (TTM) ~$403B, net income ~$132B.</p>
           </div>
         </div>
 
-        <div class="company-card fade-in">
+        <div class="company-card fade-in" data-testid="card-company-meta-ai">
           <div class="company-name">Meta AI</div>
           <div class="company-stat">Key model: <strong>LLaMA 4</strong></div>
-          <div class="company-stat">Internal investment: <strong>$115B</strong></div>
+          <div class="company-stat">Parent market cap: <strong>$1.5T</strong></div>
           <div class="company-stat">Open source: Yes (LLaMA)</div>
           <div class="company-detail">
-            <p>Open-source AI leader. LLaMA models are the most widely used open-weight foundation models. Yann LeCun departed Nov 2025. Meta's $1.6T market cap funds massive AI infrastructure buildout. The open-source strategy creates ecosystem lock-in without licensing revenue.</p>
+            <p>Open-source AI leader. LLaMA models are the most widely used open-weight foundation models. Yann LeCun departed Nov 2025 to found AMI Labs after strategic disagreements with Zuckerberg over LLM direction. Meta Superintelligence Labs now led by Alexandr Wang (Scale AI CEO). The open-source strategy creates ecosystem lock-in without licensing revenue.</p>
           </div>
         </div>
 
-        <div class="company-card fade-in">
+        <div class="company-card fade-in" data-testid="card-company-xai">
           <div class="company-name">xAI</div>
           <div class="company-stat">Key model: <strong>Grok 4</strong></div>
-          <div class="company-stat">Funding: <strong>$30.5B</strong> across 4 rounds</div>
+          <div class="company-stat">Valuation: <strong>$250B</strong> (SpaceX acquisition)</div>
           <div class="company-stat">Open source: Partial</div>
           <div class="company-detail">
-            <p>Elon Musk's AI lab. Founded 2023. "Any lawful use" military stance contrasts with Anthropic's safety focus. Built the Memphis Supercluster (100K H100 GPUs). Grok integrated into X (Twitter) platform. $80B valuation.</p>
+            <p>Elon Musk's AI lab. Founded 2023. Acquired by SpaceX in Feb 2026 at $250B valuation after raising $20B Series E in Jan 2026. Built the Memphis Supercluster (100K H100 GPUs). Grok integrated into X (Twitter) platform. "Any lawful use" military stance contrasts with Anthropic's safety focus.</p>
           </div>
         </div>
 
-        <div class="company-card fade-in">
+        <div class="company-card fade-in" data-testid="card-company-deepseek">
           <div class="company-name">DeepSeek</div>
           <div class="company-stat">Key model: <strong>DeepSeek V3</strong></div>
           <div class="company-stat">Funding: <strong>Self-funded</strong></div>
           <div class="company-stat">Open source: Yes (MIT)</div>
           <div class="company-detail">
-            <p>Self-funded open-source lab from China. Backed by quant fund High-Flyer. R1 rivaled GPT-4o at a fraction of the cost, shocking the industry. MIT-licensed models. No external venture funding. Operates under Chinese AI regulations.</p>
+            <p>Self-funded open-source lab from China. Backed by quant fund High-Flyer, founded by Liang Wenfeng. R1 rivaled GPT-4o at a fraction of the cost, shocking the industry. MIT-licensed models. No external venture funding. Operates under Chinese AI regulations and US export controls on advanced chips.</p>
           </div>
         </div>
 
-        <div class="company-card fade-in">
+        <div class="company-card fade-in" data-testid="card-company-qwen">
           <div class="company-name">Qwen (Alibaba)</div>
           <div class="company-stat">Key model: <strong>Qwen 3.5</strong></div>
           <div class="company-stat">Internal investment: <strong>$63B</strong></div>
-          <div class="company-stat">Open source: Yes (Apache)</div>
+          <div class="company-stat">Open source: Yes (Apache 2.0)</div>
           <div class="company-detail">
-            <p>Alibaba Cloud's AI division. Apache 2.0 licensed models. Strong multilingual capabilities. Part of Alibaba's cloud infrastructure play. Qwen2.5 models competitive with Western alternatives at significantly lower cost.</p>
+            <p>Alibaba Cloud's AI division. Apache 2.0 licensed models with strong multilingual capabilities. Part of Alibaba's cloud infrastructure play. Qwen2.5 models competitive with Western alternatives at significantly lower cost. Free API tier available.</p>
           </div>
         </div>
 
-        <div class="company-card fade-in">
+        <div class="company-card fade-in" data-testid="card-company-perplexity">
           <div class="company-name">Perplexity</div>
           <div class="company-stat">Key model: <strong>pplx-api</strong></div>
-          <div class="company-stat">Funding: <strong>$1.6B</strong> across 7 rounds</div>
+          <div class="company-stat">Funding: <strong>$1.7B</strong> across 11 rounds</div>
           <div class="company-stat">Open source: No</div>
           <div class="company-detail">
-            <p>AI-native search engine. $20B valuation. Founded by former Google/DeepMind researchers. Ongoing copyright disputes with publishers over content scraping. Growth-stage with 100M+ monthly queries.</p>
+            <p>AI-native search engine. $21B valuation (early 2026). Founded by former Google/DeepMind researchers. ~$200M ARR, targeting $656M in 2026. 780M+ monthly queries. Ongoing copyright disputes with publishers over content usage.</p>
           </div>
         </div>
 
-        <div class="company-card fade-in">
+        <div class="company-card fade-in" data-testid="card-company-kimi">
           <div class="company-name">Kimi (Moonshot AI)</div>
           <div class="company-stat">Key model: <strong>Kimi 2.5</strong></div>
-          <div class="company-stat">Funding: <strong>$2.6B</strong> across 5 rounds</div>
+          <div class="company-stat">Funding: <strong>$2.6B+</strong> across 5+ rounds</div>
           <div class="company-stat">Open source: No</div>
           <div class="company-detail">
-            <p>Beijing-based lab. ~80 employees, $240M revenue. Known for long-context capabilities. Accused of training on Claude outputs. $10B valuation. Backed by Alibaba, Tencent, and other Chinese investors.</p>
+            <p>Beijing-based lab. Known for long-context capabilities. Seeking $1B raise at $18B valuation (Mar 2026), up from $10B just months earlier. Backed by Alibaba, Tencent, and 5Y Capital. Accused of training on Claude outputs. The fastest valuation growth among Chinese AI startups.</p>
           </div>
         </div>
 
-        <div class="company-card fade-in">
+        <div class="company-card fade-in" data-testid="card-company-mistral">
           <div class="company-name">Mistral AI</div>
           <div class="company-stat">Key model: <strong>Mistral Large</strong></div>
-          <div class="company-stat">Funding: <strong>$3.2B</strong> across 4 rounds</div>
+          <div class="company-stat">Funding: <strong>$3.1B</strong> across 8 rounds</div>
           <div class="company-stat">Open source: Yes (Apache)</div>
           <div class="company-detail">
-            <p>Europe's AI champion. French sovereignty angle. Founded by former DeepMind and Meta researchers. Open-weight model strategy. $15B valuation. EU AI Act compliance built in. Strong enterprise adoption in Europe.</p>
+            <p>Europe's AI champion. French sovereignty angle. ~862 employees. $14B valuation (Sep 2025). Secured &euro;722M ($830M) debt financing in Mar 2026 for its first large-scale data centre near Paris with 13,800 Nvidia GB300 GPUs. EU AI Act compliance built in. Strong enterprise adoption in Europe.</p>
           </div>
         </div>
 
@@ -217,7 +255,6 @@
 
     <div class="accent-rule container"></div>
 
-    <!-- Quick comparison -->
     <div class="warm-band">
       <section class="section container-wide fade-in">
         <h2>At a glance</h2>
@@ -231,21 +268,23 @@
                 <th style="padding: 0.75rem 1rem; font-weight: 600;">Key Model</th>
                 <th style="padding: 0.75rem 1rem; font-weight: 600;">Open Source</th>
                 <th style="padding: 0.75rem 1rem; font-weight: 600;">Valuation</th>
+                <th style="padding: 0.75rem 1rem; font-weight: 600;">Total Raised</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Anthropic</td><td style="padding: 0.75rem 1rem;">Claude Sonnet 4.6</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$350B</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">OpenAI</td><td style="padding: 0.75rem 1rem;">GPT-5.2 / o4</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$730B</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Google DeepMind</td><td style="padding: 0.75rem 1rem;">Gemini 3.1 Pro</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$2.3T</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Meta AI</td><td style="padding: 0.75rem 1rem;">LLaMA 4</td><td style="padding: 0.75rem 1rem;">Yes</td><td style="padding: 0.75rem 1rem;">$1.6T</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">xAI</td><td style="padding: 0.75rem 1rem;">Grok 4</td><td style="padding: 0.75rem 1rem;">Partial</td><td style="padding: 0.75rem 1rem;">$80B</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">DeepSeek</td><td style="padding: 0.75rem 1rem;">DeepSeek V3</td><td style="padding: 0.75rem 1rem;">Yes (MIT)</td><td style="padding: 0.75rem 1rem;">Self-funded</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Qwen</td><td style="padding: 0.75rem 1rem;">Qwen 3.5</td><td style="padding: 0.75rem 1rem;">Yes (Apache)</td><td style="padding: 0.75rem 1rem;">&mdash;</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Perplexity</td><td style="padding: 0.75rem 1rem;">pplx-api</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$20B</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Kimi</td><td style="padding: 0.75rem 1rem;">Kimi 2.5</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$10B</td></tr>
-              <tr><td style="padding: 0.75rem 1rem 0.75rem 0;">Mistral</td><td style="padding: 0.75rem 1rem;">Mistral Large</td><td style="padding: 0.75rem 1rem;">Yes (Apache)</td><td style="padding: 0.75rem 1rem;">$15B</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Anthropic</td><td style="padding: 0.75rem 1rem;">Claude Sonnet 4.6</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$380B</td><td style="padding: 0.75rem 1rem;">$67.3B</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">OpenAI</td><td style="padding: 0.75rem 1rem;">GPT-5.2 / o4</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$852B</td><td style="padding: 0.75rem 1rem;">$122B</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Google DeepMind</td><td style="padding: 0.75rem 1rem;">Gemini 3.1 Pro</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$3.6T *</td><td style="padding: 0.75rem 1rem;">&mdash;</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Meta AI</td><td style="padding: 0.75rem 1rem;">LLaMA 4</td><td style="padding: 0.75rem 1rem;">Yes</td><td style="padding: 0.75rem 1rem;">$1.5T *</td><td style="padding: 0.75rem 1rem;">&mdash;</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">xAI</td><td style="padding: 0.75rem 1rem;">Grok 4</td><td style="padding: 0.75rem 1rem;">Partial</td><td style="padding: 0.75rem 1rem;">$250B</td><td style="padding: 0.75rem 1rem;">$20B</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">DeepSeek</td><td style="padding: 0.75rem 1rem;">DeepSeek V3</td><td style="padding: 0.75rem 1rem;">Yes (MIT)</td><td style="padding: 0.75rem 1rem;">Self-funded</td><td style="padding: 0.75rem 1rem;">$0</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Qwen</td><td style="padding: 0.75rem 1rem;">Qwen 3.5</td><td style="padding: 0.75rem 1rem;">Yes (Apache)</td><td style="padding: 0.75rem 1rem;">&mdash; *</td><td style="padding: 0.75rem 1rem;">&mdash;</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Perplexity</td><td style="padding: 0.75rem 1rem;">pplx-api</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$21B</td><td style="padding: 0.75rem 1rem;">$1.7B</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Kimi</td><td style="padding: 0.75rem 1rem;">Kimi 2.5</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$18B</td><td style="padding: 0.75rem 1rem;">$2.6B+</td></tr>
+              <tr><td style="padding: 0.75rem 1rem 0.75rem 0;">Mistral</td><td style="padding: 0.75rem 1rem;">Mistral Large</td><td style="padding: 0.75rem 1rem;">Yes (Apache)</td><td style="padding: 0.75rem 1rem;">$14B</td><td style="padding: 0.75rem 1rem;">$3.1B</td></tr>
             </tbody>
           </table>
+          <p style="color: var(--text-muted); font-size: 0.8125rem; margin-top: 0.5rem;">* Parent company market cap, not standalone AI division valuation.</p>
         </div>
       </section>
     </div>
