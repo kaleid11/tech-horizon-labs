@@ -32,7 +32,7 @@ function ComparisonDashboard({ onSelectCompany }: { onSelectCompany: (id: string
     return companyOrder.map(id => {
       const co = companies[id];
       const valRounds = co.fundingRounds.filter(r => r.val);
-      const points = valRounds.map(r => ({ date: parseDate(r.date), val: r.val!, label: r.date }));
+      const points = valRounds.map(r => ({ date: parseDate(r.date), val: r.val!, label: r.label, dateStr: r.date }));
       const latestVal = points.length > 0 ? points[points.length - 1].val : null;
       const totalRaised = co.fundingRounds.reduce((s, r) => s + r.total, 0);
       const externalRaised = co.fundingRounds.filter(r => r.external !== false).reduce((s, r) => s + r.total, 0);
@@ -107,7 +107,7 @@ function deconflictYs(ys: number[], minGap: number, maxBound?: number): number[]
   return result;
 }
 
-function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: string; color: string; points: { date: number; val: number; label: string }[]; latestVal: number | null; totalRaised: number }[]; onSelect: (id: string) => void }) {
+function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: string; color: string; points: { date: number; val: number; label: string; dateStr?: string }[]; latestVal: number | null; totalRaised: number }[]; onSelect: (id: string) => void }) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const publicIds = new Set(["google-deepmind", "meta-ai"]);
   const withVals = data.filter(d => d.points.length > 0 && !publicIds.has(d.id));
@@ -151,6 +151,14 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-3 overflow-x-auto">
       <svg viewBox={`0 0 ${w} ${h}`} className="w-full" style={{ minWidth: 500 }} preserveAspectRatio="xMidYMid meet" role="img" aria-label="Valuation race chart comparing AI companies over time">
+        <defs>
+          {multiPt.map(co => (
+            <linearGradient key={co.id} id={`race-area-${co.id}`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={co.color} stopOpacity="0.13" />
+              <stop offset="100%" stopColor={co.color} stopOpacity="0.01" />
+            </linearGradient>
+          ))}
+        </defs>
         {gridVals.map((gv, i) => {
           const y = getY(gv);
           return (
@@ -172,6 +180,8 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
 
         {multiPt.map((co) => {
           const d = co.pts.map((p, i) => `${i === 0 ? "M" : "L"} ${getX(p.date)} ${getY(p.val)}`).join(" ");
+          const baseline = pad.top + chartH;
+          const areaD = `${d} L ${getX(co.pts[co.pts.length - 1].date)} ${baseline} L ${getX(co.pts[0].date)} ${baseline} Z`;
           const lastPt = co.pts[co.pts.length - 1];
           const labelY = labelYMap[co.id];
           const isHovered = hoveredId === co.id;
@@ -182,6 +192,9 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
               onMouseEnter={() => setHoveredId(co.id)}
               onMouseLeave={() => setHoveredId(null)}
               data-testid={`race-line-${co.id}`}>
+              <path d={areaD} fill={`url(#race-area-${co.id})`}
+                opacity={isDimmed ? 0.1 : isHovered ? 1 : 0.7}
+                style={{ transition: "opacity 0.15s" }} />
               <path d={d} fill="none" stroke={co.color}
                 strokeWidth={isHovered ? 3 : 2}
                 strokeLinejoin="round" strokeLinecap="round"
@@ -202,20 +215,30 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
                 opacity={isDimmed ? 0.3 : 1}>
                 {fmtVal(lastPt.val)}
               </text>
-              {isHovered && (
-                <g>
-                  <rect x={getX(lastPt.date) - 38} y={getY(lastPt.val) - 26} width={76} height={22} rx="3" ry="3"
-                    fill={co.color} opacity="0.92" />
-                  <text x={getX(lastPt.date)} y={getY(lastPt.val) - 16} textAnchor="middle"
-                    fill="white" fontSize="7.5" fontWeight="bold" fontFamily="monospace">
-                    {co.name.split("(")[0].trim()}
-                  </text>
-                  <text x={getX(lastPt.date)} y={getY(lastPt.val) - 8} textAnchor="middle"
-                    fill="white" fontSize="6.5" fontFamily="monospace" opacity="0.9">
-                    {fmtVal(lastPt.val)}
-                  </text>
-                </g>
-              )}
+              {isHovered && (() => {
+                const tx = getX(lastPt.date);
+                const ty = getY(lastPt.val);
+                const rw = 82; const rh = 34;
+                const rx = Math.min(Math.max(tx - rw / 2, pad.left), w - pad.right - rw);
+                return (
+                  <g>
+                    <rect x={rx} y={ty - rh - 6} width={rw} height={rh} rx="4" ry="4"
+                      fill={co.color} opacity="0.93" />
+                    <text x={rx + rw / 2} y={ty - rh + 4} textAnchor="middle"
+                      fill="white" fontSize="8" fontWeight="bold" fontFamily="monospace">
+                      {co.name.split("(")[0].trim()}
+                    </text>
+                    <text x={rx + rw / 2} y={ty - rh + 15} textAnchor="middle"
+                      fill="white" fontSize="6.5" fontFamily="monospace" opacity="0.85">
+                      {lastPt.label}{lastPt.dateStr ? ` · ${lastPt.dateStr}` : ""}
+                    </text>
+                    <text x={rx + rw / 2} y={ty - rh + 25} textAnchor="middle"
+                      fill="white" fontSize="7.5" fontWeight="bold" fontFamily="monospace">
+                      {fmtVal(lastPt.val)}
+                    </text>
+                  </g>
+                );
+              })()}
             </g>
           );
         })}
@@ -239,20 +262,30 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
                 opacity={isDimmed ? 0.25 : 1}>
                 {co.name.split("(")[0].trim().split(" ")[0]}
               </text>
-              {isHovered && (
-                <g>
-                  <rect x={getX(pt.date) - 38} y={getY(pt.val) - 26} width={76} height={22} rx="3" ry="3"
-                    fill={co.color} opacity="0.92" />
-                  <text x={getX(pt.date)} y={getY(pt.val) - 16} textAnchor="middle"
-                    fill="white" fontSize="7.5" fontWeight="bold" fontFamily="monospace">
-                    {co.name.split("(")[0].trim()}
-                  </text>
-                  <text x={getX(pt.date)} y={getY(pt.val) - 8} textAnchor="middle"
-                    fill="white" fontSize="6.5" fontFamily="monospace" opacity="0.9">
-                    {fmtVal(pt.val)}
-                  </text>
-                </g>
-              )}
+              {isHovered && (() => {
+                const tx = getX(pt.date);
+                const ty = getY(pt.val);
+                const rw = 82; const rh = 34;
+                const rx = Math.min(Math.max(tx - rw / 2, pad.left), w - pad.right - rw);
+                return (
+                  <g>
+                    <rect x={rx} y={ty - rh - 6} width={rw} height={rh} rx="4" ry="4"
+                      fill={co.color} opacity="0.93" />
+                    <text x={rx + rw / 2} y={ty - rh + 4} textAnchor="middle"
+                      fill="white" fontSize="8" fontWeight="bold" fontFamily="monospace">
+                      {co.name.split("(")[0].trim()}
+                    </text>
+                    <text x={rx + rw / 2} y={ty - rh + 15} textAnchor="middle"
+                      fill="white" fontSize="6.5" fontFamily="monospace" opacity="0.85">
+                      {pt.label}{pt.dateStr ? ` · ${pt.dateStr}` : ""}
+                    </text>
+                    <text x={rx + rw / 2} y={ty - rh + 25} textAnchor="middle"
+                      fill="white" fontSize="7.5" fontWeight="bold" fontFamily="monospace">
+                      {fmtVal(pt.val)}
+                    </text>
+                  </g>
+                );
+              })()}
             </g>
           );
         })}
@@ -918,14 +951,24 @@ function ValuationPanel({ rounds, accent, isMarketCap }: { rounds: FundingRound[
                   strokeWidth="2"
                   style={{ transition: "r 0.15s, fill 0.15s" }} />
 
-                {activeIdx === i && (
-                  <g>
-                    <rect x={p.x - 32} y={p.y - 28} width="64" height="18" rx="4" fill={accent} opacity="0.95" />
-                    <text x={p.x} y={p.y - 16} textAnchor="middle" fill="white" fontSize="9" fontWeight="bold" fontFamily="monospace">
-                      {fmtVal(p.displayVal)}
-                    </text>
-                  </g>
-                )}
+                {activeIdx === i && (() => {
+                  const tw = 90; const th = 40;
+                  const tx = Math.min(Math.max(p.x - tw / 2, padLeft), w - padRight - tw);
+                  return (
+                    <g>
+                      <rect x={tx} y={p.y - th - 8} width={tw} height={th} rx="4" fill={accent} opacity="0.95" />
+                      <text x={tx + tw / 2} y={p.y - th + 2} textAnchor="middle" fill="white" fontSize="7.5" fontWeight="bold" fontFamily="monospace">
+                        {p.label}
+                      </text>
+                      <text x={tx + tw / 2} y={p.y - th + 14} textAnchor="middle" fill="white" fontSize="6.5" fontFamily="monospace" opacity="0.85">
+                        {p.date}
+                      </text>
+                      <text x={tx + tw / 2} y={p.y - th + 27} textAnchor="middle" fill="white" fontSize="9" fontWeight="bold" fontFamily="monospace">
+                        {fmtVal(p.displayVal)}
+                      </text>
+                    </g>
+                  );
+                })()}
 
                 {dense ? (() => {
                   const labelY = pad.top + chartH + 16 + staggeredOffsets[i];
