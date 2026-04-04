@@ -169,12 +169,21 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
           );
         })}
 
-        {Array.from(years).map(yr => {
-          const x = getX(new Date(yr, 0, 1).getTime());
-          return x >= pad.left && x <= w - pad.right ? (
-            <text key={yr} x={x} y={h - 4} textAnchor="middle" fill="#c0c0c0" fontSize="8" fontFamily="monospace">{yr}</text>
-          ) : null;
-        })}
+        {(() => {
+          // Explicit year-label collision handling: only render a year tick if it
+          // (a) falls within the chart x-bounds and (b) is at least 50px from the
+          // previously rendered year tick — prevents overlap on short time ranges.
+          const sortedYears = Array.from(years).sort((a, b) => a - b);
+          let lastRenderedX = -Infinity;
+          return sortedYears.map(yr => {
+            const x = getX(new Date(yr, 0, 1).getTime());
+            if (x < pad.left || x > w - pad.right || x - lastRenderedX < 50) return null;
+            lastRenderedX = x;
+            return (
+              <text key={yr} x={x} y={h - 4} textAnchor="middle" fill="#c0c0c0" fontSize="8" fontFamily="monospace">{yr}</text>
+            );
+          });
+        })()}
 
         <line x1={pad.left} y1={pad.top + chartH} x2={w - pad.right} y2={pad.top + chartH} stroke="#e5e7eb" strokeWidth="1" />
 
