@@ -963,7 +963,7 @@
           body: JSON.stringify(payload)
         });
         var data = await res.json();
-        if (data.success || res.status === 200) {
+        if (res.ok && data.success === true) {
           apiCallSucceeded = true;
         }
       } catch (err) {
