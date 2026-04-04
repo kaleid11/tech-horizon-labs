@@ -171,13 +171,15 @@ function ValuationRaceChart({ data, onSelect }: { data: { id: string; name: stri
 
         {(() => {
           // Explicit year-label collision handling: only render a year tick if it
-          // (a) falls within the chart x-bounds and (b) is at least 50px from the
-          // previously rendered year tick — prevents overlap on short time ranges.
+          // (a) falls within the chart x-bounds and (b) is at least MIN_YEAR_LABEL_GAP
+          // pixels from the previously rendered year tick — prevents overlap on short
+          // time ranges or narrow containers.
+          const MIN_YEAR_LABEL_GAP = 50; // px — wide enough for a 4-digit year at fontSize 8
           const sortedYears = Array.from(years).sort((a, b) => a - b);
           let lastRenderedX = -Infinity;
           return sortedYears.map(yr => {
             const x = getX(new Date(yr, 0, 1).getTime());
-            if (x < pad.left || x > w - pad.right || x - lastRenderedX < 50) return null;
+            if (x < pad.left || x > w - pad.right || x - lastRenderedX < MIN_YEAR_LABEL_GAP) return null;
             lastRenderedX = x;
             return (
               <text key={yr} x={x} y={h - 4} textAnchor="middle" fill="#c0c0c0" fontSize="8" fontFamily="monospace">{yr}</text>
