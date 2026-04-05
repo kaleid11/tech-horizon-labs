@@ -472,5 +472,371 @@
     e.forEach((x) => { if (x.isIntersecting) { x.target.querySelectorAll('.bar-fill').forEach((f, i) => { setTimeout(() => { f.style.width = f.dataset.width || '0%'; }, i * 120); }); barObs.unobserve(x.target); } });
   }, { threshold: 0.2 });
   document.querySelectorAll('.bar-chart').forEach((c) => barObs.observe(c));
-  document.querySelectorAll('.company-card').forEach((c) => c.addEventListener('click', () => c.classList.toggle('expanded')));
+
+  document.querySelectorAll('.company-card').forEach((card) => {
+    var hdr = card.querySelector('.company-header');
+    if (hdr) hdr.addEventListener('click', () => card.classList.toggle('expanded'));
+
+    card.querySelectorAll('.card-tab').forEach((tab) => {
+      tab.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const target = tab.dataset.tab;
+        card.querySelectorAll('.card-tab').forEach((t) => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        card.querySelectorAll('.card-panel').forEach((p) => p.classList.remove('active'));
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const panel = card.querySelector('[data-panel="' + target + '"]');
+        if (panel) panel.classList.add('active');
+      });
+    });
+  });
+
+  // ─────────────────────────────────────────────
+  // DASHBOARD TABS
+  // ─────────────────────────────────────────────
+  document.querySelectorAll('.dash-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var target = tab.dataset.dash;
+      document.querySelectorAll('.dash-tab').forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      document.querySelectorAll('.dash-panel').forEach(function(p) { p.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      var panel = document.querySelector('[data-dash-panel="' + target + '"]');
+      if (panel) {
+        panel.classList.add('active');
+        panel.querySelectorAll('.bar-chart').forEach(function(c) { barObs.observe(c); });
+      }
+    });
+  });
+
+  // ─────────────────────────────────────────────
+  // SVG CHART BUILDER (shared between charts)
+  // ─────────────────────────────────────────────
+  var svgNS = 'http://www.w3.org/2000/svg';
+  function svgCreate(tag, attrs) {
+    var el = document.createElementNS(svgNS, tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+  function parseDate(d) { var p = d.split('-'); return new Date(parseInt(p[0]), parseInt(p[1]) - 1); }
+
+  function buildLineChart(config) {
+    var svgEl = document.getElementById(config.svgId);
+    if (!svgEl) return;
+
+    var companies = config.companies;
+    var pad = config.pad || { top: 30, right: 30, bottom: 50, left: 80 };
+    var vb = svgEl.viewBox.baseVal;
+    var W = vb.width, H = vb.height;
+    var cw = W - pad.left - pad.right;
+    var ch = H - pad.top - pad.bottom;
+
+    var allDates = [], maxVal = 0;
+    companies.forEach(function(co) {
+      co.points.forEach(function(p) {
+        allDates.push(parseDate(p.date));
+        if (p.val > maxVal) maxVal = p.val;
+      });
+    });
+    var minTime = Math.min.apply(null, allDates.map(function(d) { return d.getTime(); }));
+    var maxTime = Math.max.apply(null, allDates.map(function(d) { return d.getTime(); }));
+    var timeRange = maxTime - minTime || 1;
+
+    var niceMax = maxVal;
+    if (maxVal > 100) niceMax = Math.ceil(maxVal / 100) * 100;
+    else if (maxVal > 10) niceMax = Math.ceil(maxVal / 10) * 10;
+    else niceMax = Math.ceil(maxVal);
+
+    function xPos(dateStr) { return pad.left + ((parseDate(dateStr).getTime() - minTime) / timeRange) * cw; }
+    function yPos(v) { return pad.top + ch - (v / niceMax) * ch; }
+
+    var gridG = svgCreate('g', {});
+    var yTicks = 5;
+    for (var i = 0; i <= yTicks; i++) {
+      var v = (niceMax / yTicks) * i;
+      var y = yPos(v);
+      gridG.appendChild(svgCreate('line', { x1: pad.left, y1: y, x2: W - pad.right, y2: y, stroke: '#e5e5e5', 'stroke-width': '1' }));
+      var lbl = svgCreate('text', { x: pad.left - 10, y: y + 4, fill: '#999', 'font-size': '11', 'text-anchor': 'end', 'font-family': 'Instrument Sans, sans-serif' });
+      lbl.textContent = config.formatY ? config.formatY(v) : (v >= 1 ? '$' + Math.round(v) + 'B' : '$' + (v * 1000).toFixed(0) + 'M');
+      gridG.appendChild(lbl);
+    }
+
+    (config.xLabels || []).forEach(function(d) {
+      var x = xPos(d);
+      if (x >= pad.left && x <= W - pad.right) {
+        gridG.appendChild(svgCreate('line', { x1: x, y1: pad.top, x2: x, y2: H - pad.bottom, stroke: '#f0f0f0', 'stroke-width': '1' }));
+        var t = svgCreate('text', { x: x, y: H - pad.bottom + 20, fill: '#999', 'font-size': '11', 'text-anchor': 'middle', 'font-family': 'Instrument Sans, sans-serif' });
+        t.textContent = d.substring(0, 4);
+        gridG.appendChild(t);
+      }
+    });
+    svgEl.appendChild(gridG);
+
+    svgEl.appendChild(svgCreate('line', { x1: pad.left, y1: H - pad.bottom, x2: W - pad.right, y2: H - pad.bottom, stroke: '#ccc', 'stroke-width': '1' }));
+    svgEl.appendChild(svgCreate('line', { x1: pad.left, y1: pad.top, x2: pad.left, y2: H - pad.bottom, stroke: '#ccc', 'stroke-width': '1' }));
+
+    var highlighted = null;
+    var lineGroups = [];
+
+    companies.forEach(function(co, ci) {
+      var g = svgCreate('g', { 'data-company': ci, style: 'transition: opacity 0.3s;' });
+      var areaPath = 'M', linePath = 'M';
+      co.points.forEach(function(p, pi) {
+        var x = xPos(p.date), y = yPos(p.val);
+        linePath += (pi === 0 ? '' : 'L') + x.toFixed(1) + ',' + y.toFixed(1);
+        areaPath += (pi === 0 ? '' : 'L') + x.toFixed(1) + ',' + y.toFixed(1);
+      });
+      var lastP = co.points[co.points.length - 1], firstP = co.points[0];
+      areaPath += 'L' + xPos(lastP.date).toFixed(1) + ',' + yPos(0) + 'L' + xPos(firstP.date).toFixed(1) + ',' + yPos(0) + 'Z';
+
+      g.appendChild(svgCreate('path', { d: areaPath, fill: co.color, opacity: '0.06' }));
+      g.appendChild(svgCreate('path', { d: linePath, fill: 'none', stroke: co.color, 'stroke-width': '2.5', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+
+      co.points.forEach(function(p) {
+        var cx = xPos(p.date), cy = yPos(p.val);
+        var dot = svgCreate('circle', { cx: cx, cy: cy, r: '4', fill: co.color, stroke: '#fff', 'stroke-width': '2', style: 'cursor:pointer;' });
+        dot.addEventListener('mouseenter', function(ev) { showTip(ev, co.name, p); });
+        dot.addEventListener('mouseleave', hideTip);
+        dot.addEventListener('click', function(ev) { ev.stopPropagation(); showTip(ev, co.name, p); });
+        g.appendChild(dot);
+      });
+
+      svgEl.appendChild(g);
+      lineGroups.push({ g: g, co: co, idx: ci });
+    });
+
+    var tooltip = document.getElementById(config.tooltipId);
+    function showTip(ev, name, p) {
+      if (!tooltip) return;
+      var valStr = p.val >= 1 ? '$' + p.val.toFixed(1) + 'B' : '$' + (p.val * 1000).toFixed(0) + 'M';
+      if (p.val >= 1000) valStr = '$' + (p.val / 1000).toFixed(2) + 'T';
+      var extra = p.label ? (' (' + p.label + ')') : '';
+      tooltip.innerHTML = '<strong>' + name + '</strong><br>' + p.date + extra + ' &mdash; ' + valStr;
+      tooltip.classList.add('visible');
+      var wrap = document.getElementById(config.wrapId);
+      var wRect = wrap.getBoundingClientRect();
+      tooltip.style.left = (ev.clientX - wRect.left + 12) + 'px';
+      tooltip.style.top = (ev.clientY - wRect.top - 30) + 'px';
+    }
+    function hideTip() { if (tooltip) tooltip.classList.remove('visible'); }
+
+    var legendEl = document.getElementById(config.legendId);
+    if (legendEl) {
+      companies.forEach(function(co, ci) {
+        var item = document.createElement('div');
+        item.className = 'legend-item';
+        item.dataset.idx = ci;
+        item.innerHTML = '<span class="legend-dot" style="background:' + co.color + ';"></span>' + co.name;
+        item.addEventListener('click', function() { toggle(ci); });
+        legendEl.appendChild(item);
+      });
+    }
+
+    function toggle(idx) {
+      if (highlighted === idx) {
+        highlighted = null;
+        lineGroups.forEach(function(lg) { lg.g.style.opacity = '1'; });
+        legendEl.querySelectorAll('.legend-item').forEach(function(li) { li.classList.remove('dimmed'); });
+      } else {
+        highlighted = idx;
+        lineGroups.forEach(function(lg) { lg.g.style.opacity = lg.idx === idx ? '1' : '0.12'; });
+        legendEl.querySelectorAll('.legend-item').forEach(function(li) { li.classList.toggle('dimmed', parseInt(li.dataset.idx) !== idx); });
+      }
+    }
+
+    svgEl.addEventListener('click', function() {
+      if (highlighted !== null) {
+        highlighted = null;
+        lineGroups.forEach(function(lg) { lg.g.style.opacity = '1'; });
+        legendEl.querySelectorAll('.legend-item').forEach(function(li) { li.classList.remove('dimmed'); });
+      }
+    });
+  }
+
+  // ─────────────────────────────────────────────
+  // VALUATION RACE CHART
+  // ─────────────────────────────────────────────
+  buildLineChart({
+    svgId: 'valuation-race-chart',
+    tooltipId: 'valuation-tooltip',
+    wrapId: 'valuation-race-wrap',
+    legendId: 'valuation-legend',
+    xLabels: ['2014-01', '2019-01', '2021-01', '2023-01', '2024-01', '2025-01', '2026-01', '2026-04'],
+    formatY: function(v) {
+      if (v >= 1000) return '$' + (v / 1000).toFixed(1) + 'T';
+      if (v >= 1) return '$' + Math.round(v) + 'B';
+      return '$' + (v * 1000).toFixed(0) + 'M';
+    },
+    companies: [
+      {
+        name: 'OpenAI', color: '#10A37F',
+        points: [
+          { date: '2023-01', val: 29, label: 'MSFT $10B' },
+          { date: '2024-10', val: 157, label: 'Series A PBC' },
+          { date: '2025-03', val: 300, label: 'SoftBank $40B' },
+          { date: '2026-02', val: 840, label: 'Series B' },
+          { date: '2026-03', val: 852, label: 'Series B ext.' }
+        ]
+      },
+      {
+        name: 'Anthropic', color: '#d4a843',
+        points: [
+          { date: '2022-04', val: 4.1, label: 'Series B' },
+          { date: '2023-02', val: 5, label: 'Google strategic' },
+          { date: '2023-05', val: 4.1, label: 'Series C (VC)' },
+          { date: '2023-08', val: 5, label: 'SK Telecom strategic' },
+          { date: '2023-12', val: 18.4, label: 'Series D' },
+          { date: '2024-06', val: 18.4, label: 'Series E' },
+          { date: '2025-01', val: 60, label: 'Series D ext.' },
+          { date: '2025-03', val: 61.5, label: 'Series E' },
+          { date: '2025-09', val: 183, label: 'Series F' },
+          { date: '2026-02', val: 380, label: 'Series G' }
+        ]
+      },
+      {
+        name: 'Google DeepMind', color: '#4285F4',
+        points: [
+          { date: '2014-01', val: 0.5, label: 'Acquired' },
+          { date: '2024-01', val: 1800, label: 'Alphabet cap' },
+          { date: '2025-01', val: 2400, label: 'Alphabet cap' },
+          { date: '2026-03', val: 3600, label: 'Alphabet cap' }
+        ]
+      },
+      {
+        name: 'Meta AI', color: '#0668E1',
+        points: [
+          { date: '2024-01', val: 900, label: 'Meta cap' },
+          { date: '2025-01', val: 1400, label: 'Meta cap' },
+          { date: '2026-03', val: 1500, label: 'Meta cap' }
+        ]
+      },
+      {
+        name: 'xAI', color: '#1DA1F2',
+        points: [
+          { date: '2023-12', val: 1, label: 'Initial' },
+          { date: '2024-05', val: 18, label: 'Series B' },
+          { date: '2025-03', val: 113, label: 'X acq.' },
+          { date: '2025-09', val: 200, label: 'Series D' },
+          { date: '2026-01', val: 230, label: 'Series E' },
+          { date: '2026-02', val: 250, label: 'SpaceX acq.' }
+        ]
+      },
+      {
+        name: 'Perplexity', color: '#20B8CD',
+        points: [
+          { date: '2023-06', val: 0.15, label: 'Seed' },
+          { date: '2024-01', val: 0.52, label: 'Series B' },
+          { date: '2024-04', val: 1, label: 'B+' },
+          { date: '2024-06', val: 3, label: 'Series C' },
+          { date: '2024-12', val: 9, label: 'Series D' },
+          { date: '2025-06', val: 14, label: 'Series E' },
+          { date: '2025-09', val: 20, label: 'E-2' },
+          { date: '2026-01', val: 21.2, label: 'E-6' }
+        ]
+      },
+      {
+        name: 'Kimi', color: '#6366F1',
+        points: [
+          { date: '2023-06', val: 0.3, label: 'Angel' },
+          { date: '2024-02', val: 2.5, label: 'Series A' },
+          { date: '2025-10', val: 4.3, label: 'Series C' },
+          { date: '2026-02', val: 10, label: 'Series D' },
+          { date: '2026-03', val: 18, label: 'Seeking $1B' }
+        ]
+      },
+      {
+        name: 'Mistral', color: '#FF7000',
+        points: [
+          { date: '2023-12', val: 2, label: 'Series A' },
+          { date: '2024-06', val: 6, label: 'Series B' },
+          { date: '2025-09', val: 13.7, label: 'Series C' },
+          { date: '2026-03', val: 14, label: 'Current' }
+        ]
+      }
+    ]
+  });
+
+  // ─────────────────────────────────────────────
+  // CUMULATIVE FUNDING SVG CHART
+  // ─────────────────────────────────────────────
+  buildLineChart({
+    svgId: 'funding-chart',
+    tooltipId: 'funding-tooltip',
+    wrapId: 'funding-chart-wrap',
+    legendId: 'funding-legend',
+    xLabels: ['2019-07', '2021-01', '2022-01', '2023-01', '2024-01', '2025-01', '2026-01', '2026-04'],
+    companies: [
+      {
+        name: 'OpenAI', color: '#10A37F',
+        points: [
+          { date: '2019-07', val: 1 },
+          { date: '2023-01', val: 11 },
+          { date: '2024-10', val: 17.6 },
+          { date: '2025-03', val: 57.6 },
+          { date: '2026-02', val: 167.6 },
+          { date: '2026-03', val: 189.6 }
+        ]
+      },
+      {
+        name: 'Anthropic', color: '#d4a843',
+        points: [
+          { date: '2021-05', val: 0.124 },
+          { date: '2022-04', val: 0.704 },
+          { date: '2023-02', val: 1.004 },
+          { date: '2023-05', val: 1.454 },
+          { date: '2023-09', val: 2.704 },
+          { date: '2023-12', val: 3.454 },
+          { date: '2024-03', val: 6.204 },
+          { date: '2024-06', val: 8.204 },
+          { date: '2024-11', val: 12.204 },
+          { date: '2025-01', val: 14.204 },
+          { date: '2025-03', val: 17.704 },
+          { date: '2025-07', val: 18.704 },
+          { date: '2025-09', val: 31.704 },
+          { date: '2025-11', val: 37.204 },
+          { date: '2026-02', val: 67.3 }
+        ]
+      },
+      {
+        name: 'xAI', color: '#1DA1F2',
+        points: [
+          { date: '2023-12', val: 0.134 },
+          { date: '2024-05', val: 6.134 },
+          { date: '2025-09', val: 16.134 },
+          { date: '2026-01', val: 36.134 }
+        ]
+      },
+      {
+        name: 'Mistral', color: '#FF7000',
+        points: [
+          { date: '2023-06', val: 0.115 },
+          { date: '2023-12', val: 0.53 },
+          { date: '2024-06', val: 1.19 },
+          { date: '2025-09', val: 2.27 },
+          { date: '2026-03', val: 3.1 }
+        ]
+      },
+      {
+        name: 'Perplexity', color: '#20B8CD',
+        points: [
+          { date: '2023-06', val: 0.026 },
+          { date: '2024-01', val: 0.099 },
+          { date: '2024-04', val: 0.264 },
+          { date: '2024-06', val: 0.514 },
+          { date: '2024-12', val: 1.014 },
+          { date: '2025-06', val: 1.514 },
+          { date: '2025-09', val: 1.714 }
+        ]
+      },
+      {
+        name: 'Kimi', color: '#6366F1',
+        points: [
+          { date: '2023-06', val: 0.05 },
+          { date: '2024-02', val: 1.05 },
+          { date: '2025-10', val: 1.55 },
+          { date: '2026-02', val: 2.6 }
+        ]
+      }
+    ]
+  });
 })();

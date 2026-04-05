@@ -44,7 +44,7 @@ Preferred communication style: Simple, everyday language.
 Main navigation includes Services (dropdown), Portfolio, Research, Locations, and Academy. All booking CTAs link to: `https://app.klipycrm.com/book/pre-discovery/free-pre-discovery`
 
 #### AI Research Hub (`/research`)
-Deep analysis of 10 AI companies — Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen (Alibaba), Perplexity, Kimi, and Mistral — with valuation bar chart, expandable company profile cards, and at-a-glance comparison table. All data embedded in `client/static/research.html`. FAQPage JSON-LD schema included.
+Deep analysis of 10 AI companies — Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen (Alibaba), Perplexity, Kimi, and Mistral. Features a three-view comparison dashboard (Valuation Race multi-line SVG chart, Total Funding horizontal bar chart, Quick Stats grid), cumulative funding raised line chart, expandable company profile cards with tabbed UI (Overview/Funding/Investors), and at-a-glance comparison table. All data embedded in `client/static/research.html`. FAQPage JSON-LD schema included. Company colors: Anthropic #d4a843, OpenAI #10A37F, Google DeepMind #4285F4, Meta AI #0668E1, xAI #1DA1F2, DeepSeek #E53935, Qwen #FF6A00, Perplexity #20B8CD, Kimi #6366F1, Mistral #FF7000.
 
 #### AI Readiness Assessment (`/assessment`)
 10-question multi-step assessment scoring 0-100. Results are completely ungated — shown immediately after completing all questions. Results map to 4 stages:
