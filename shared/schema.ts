@@ -23,6 +23,7 @@ export type ContactSubmission = typeof contactSubmissions.$inferSelect;
 export const newsletterSignups = pgTable("newsletter_signups", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   email: text("email").notNull().unique(),
+  source: text("source"),
   subscribedAt: timestamp("subscribed_at").notNull().defaultNow(),
 });
 

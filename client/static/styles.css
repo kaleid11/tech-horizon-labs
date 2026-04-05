@@ -223,6 +223,22 @@ a:hover {
   color: var(--text);
   text-decoration: none;
   letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-logo {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.footer-logo {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 0.25rem;
 }
 
 .site-nav .brand:hover {

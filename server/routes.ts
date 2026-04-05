@@ -167,7 +167,7 @@ export async function registerRoutes(
       const { source: rawSource, name: rawName, ...rest } = req.body;
       const source = typeof rawSource === "string" && rawSource.length < 80 ? rawSource : undefined;
       const name = typeof rawName === "string" && rawName.trim().length > 0 && rawName.length < 200 ? rawName.trim() : undefined;
-      const validatedData = insertNewsletterSignupSchema.parse(rest);
+      const validatedData = insertNewsletterSignupSchema.parse({ ...rest, source });
 
       const existing = await storage.getNewsletterSignupByEmail(validatedData.email);
       if (existing) {

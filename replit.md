@@ -29,7 +29,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Data Storage
 - **Database**: PostgreSQL, configured via `DATABASE_URL`.
-- **Schema**: Defined in `shared/schema.ts`, including tables for `contact_submissions`, `newsletter_signups`, and `audit_submissions`.
+- **Schema**: Defined in `shared/schema.ts`, including tables for `contact_submissions`, `newsletter_signups` (with `source` column for tracking signup origin), and `audit_submissions`.
 - **Migrations**: Managed via Drizzle Kit (`npm run db:push`).
 
 ### Key Design Patterns
@@ -85,6 +85,17 @@ Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Co
 - `sendAuditResults`: assessment results email with stage, recommendations, booking CTA
 - `sendAuditNotification`: internal notification to hello@techhorizonlabs.com
 - All via Resend. Fire-and-forget for CRM (Klipy) and newsletter (Beehiiv) syncing.
+
+#### Analytics
+- **Plausible Analytics**: Installed across all 31 HTML pages via `pa-dRBvledtC13XyS9b9WRTT.js` script in `<head>`. Pageview tracking only (no custom events configured yet).
+
+#### Branding Assets
+- **Logo**: Orange interlocking rings logo. Source: `attached_assets/T_(1)_1775353639173.png` (1000x1000).
+  - `client/static/logo.png` — 200x200, nav/footer use, transparent background
+  - `client/static/favicon-32.png` — 32x32, browser tab favicon
+  - `client/static/apple-touch-icon.png` — 180x180, iOS/Safari
+- Logo appears in nav `.brand` element and footer `.footer-brand` across all 31 pages.
+- JSON-LD Organization logo references use `/logo.png`.
 
 #### SEO/AEO/GEO
 - robots.txt with explicit Allow for 14 AI crawlers
