@@ -87,9 +87,9 @@ body > *:not(#dot-grid) {
   z-index: 1;
 }
 
-/* Nav must sit above sibling sections so mobile dropdown isn't obscured */
-body > nav,
-body > header {
+/* Nav must sit above sibling sections so mobile dropdown isn't obscured.
+   Matches specificity of body > *:not(#dot-grid) which has ID-level weight. */
+body > nav:not(#dot-grid) {
   z-index: 10;
 }
 
