@@ -193,3 +193,15 @@ Crawled all 31 page routes and extracted internal links (`href="/..."`) from eac
 | Internal links (zero broken) | ✅ PASS |
 
 **No issues requiring fixes were found.**
+
+---
+
+## Audit Methodology
+
+All checks were performed using `curl` against the running Express server at `localhost:5000`. The reproducible audit script is available at `scripts/site-audit.sh`. Run with:
+
+```bash
+bash scripts/site-audit.sh
+```
+
+The script checks: HTTP status codes for all routes, redirect behavior, API endpoint health, meta tag duplicates/missing, internal link integrity, and sitemap completeness.
