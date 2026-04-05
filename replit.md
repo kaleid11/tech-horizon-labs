@@ -89,7 +89,7 @@ Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Co
 #### SEO/AEO/GEO
 - robots.txt with explicit Allow for 14 AI crawlers
 - Sitemap with 31 URLs
-- FAQPage JSON-LD on all key pages (homepage, assessment, scorecard, tools, location pages, all articles)
+- FAQPage JSON-LD on key pages (homepage, assessment, scorecard, tools, location pages, and 5 of 8 articles — the 3 oldest articles lack FAQ content sections)
 - LocalBusiness + Organization schema on homepage
 - Article schema on all insights articles and tools page
 - BreadcrumbList on all pages
