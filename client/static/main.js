@@ -252,8 +252,8 @@
     }
 
     function init() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
+      w = canvas.width = document.documentElement.clientWidth;
+      h = canvas.height = document.documentElement.clientHeight;
       particles.length = 0;
       packets.length = 0;
       for (let i = 0; i < COUNT; i++) particles.push(new Particle(i));
