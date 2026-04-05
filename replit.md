@@ -65,7 +65,7 @@ Gated landing page for "State of AI Readiness: Australian SMB 2026" PDF. Collect
 Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Code/Replit, ChatGPT/Codex, Opus.pro, NotebookLM, Gemini, Acronis, MacWhisper, LM Studio, Keeper Security) plus honourable mentions. Category filter, print CSS, Article + FAQPage JSON-LD.
 
 #### Insights (`/insights`)
-5 articles: AI Implementation Cost, 5 AI Mistakes, AI Readiness Stages, Claude vs ChatGPT 2026, How Australia Uses AI 2026. Plus AI Impact by Industry. Each has Article + FAQPage + BreadcrumbList JSON-LD, author bio, CTAs, related articles, and scroll-triggered newsletter bar.
+8 articles: AI Implementation Cost, 5 AI Mistakes, AI Readiness Stages, Claude vs ChatGPT 2026, How Australia Uses AI 2026, AI Impact by Industry, The AI Training Gap (Frontier Orchestrator framework), ACCC & Microsoft Copilot (AI bundling). Each has Article + FAQPage + BreadcrumbList JSON-LD, author bio, CTAs, related articles, and scroll-triggered newsletter bar.
 
 #### Location Pages (`/locations/*`)
 4 pages: Sunshine Coast, Brisbane, Gold Coast, Queensland. FAQPage + ServiceArea JSON-LD. Cross-linked to sibling locations.
@@ -88,7 +88,7 @@ Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Co
 
 #### SEO/AEO/GEO
 - robots.txt with explicit Allow for 14 AI crawlers
-- Sitemap with 29 URLs
+- Sitemap with 31 URLs
 - FAQPage JSON-LD on all key pages (homepage, assessment, scorecard, tools, location pages, all articles)
 - LocalBusiness + Organization schema on homepage
 - Article schema on all insights articles and tools page

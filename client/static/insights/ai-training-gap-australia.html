@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI Training Gap: Why Most AI Trainers Are Teaching the Wrong Thing — Tech Horizon Labs</title>
+  <meta name="description" content="Three types of AI trainers exist in Australia: Business Coaches, Single-Tool Specialists, and Frontier Orchestrators. Most businesses are hiring the wrong one. The Frontier Orchestrator framework explained.">
+  <link rel="canonical" href="https://techhorizonlabs.com/insights/ai-training-gap-australia">
+  <meta property="og:title" content="The AI Training Gap: Why Most AI Trainers Are Teaching the Wrong Thing — Tech Horizon Labs">
+  <meta property="og:description" content="Three types of AI trainers exist in Australia. Most businesses are hiring the wrong one. The Frontier Orchestrator framework.">
+  <meta property="og:url" content="https://techhorizonlabs.com/insights/ai-training-gap-australia">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="The AI Training Gap: Why Most AI Trainers Are Teaching the Wrong Thing">
+  <meta name="twitter:description" content="Three types of AI trainers. Most businesses are hiring the wrong one. The Frontier Orchestrator framework.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The AI Training Gap: Why Most AI Trainers Are Teaching the Wrong Thing",
+    "description": "Three types of AI trainers exist in Australia: Business Coaches, Single-Tool Specialists, and Frontier Orchestrators. Most businesses are hiring the wrong one.",
+    "datePublished": "2026-04-05",
+    "dateModified": "2026-04-05",
+    "author": {
+      "@type": "Person",
+      "name": "Huxley Peckham",
+      "jobTitle": "Founder, Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com",
+      "logo": { "@type": "ImageObject", "url": "https://techhorizonlabs.com/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://techhorizonlabs.com/insights/ai-training-gap-australia" },
+    "image": "https://techhorizonlabs.com/opengraph.jpg",
+    "keywords": ["AI training Australia", "AI trainer types", "Frontier Orchestrator", "AI workforce training", "AI consulting Australia", "AI skills gap"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Frontier Orchestrator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Frontier Orchestrator is an AI trainer or consultant who works across multiple frontier models (Claude, GPT, Gemini, open-source alternatives), selects the right tool for each workflow, builds compliant infrastructure, and trains teams on model-specific strengths. Unlike Business Coaches or Single-Tool Specialists, they design systems that use the best available model for each task."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the three types of AI trainers in Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The three archetypes are: (1) Business Coach — a generalist who adds AI as a topic to their existing coaching practice, typically surface-level; (2) Single-Tool Specialist — deeply skilled in one platform (usually ChatGPT), but limited when that tool is not the best fit; (3) Frontier Orchestrator — works across multiple models, builds infrastructure, and matches the right tool to each workflow."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the AI training gap a problem for Australian businesses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most AI training in Australia teaches prompt writing or a single tool. This leaves businesses stuck at the ChatGPT Plateau (Stage 2 of AI maturity) because they learn to use a tool without learning how to redesign workflows, handle data compliance, or select the right model for each task. The training gap is why 46% of Australian SMBs have adopted AI but have not achieved measurable ROI."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find a good AI trainer for my business?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ask three questions: (1) Which AI models do you work with? If the answer is only one, they are a Single-Tool Specialist. (2) Can you show me a workflow you have built end-to-end? If they only teach prompting, they are a Business Coach. (3) How do you handle data compliance and privacy? If they cannot answer specifically for your industry, they are not ready for enterprise work."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://techhorizonlabs.com/insights" },
+      { "@type": "ListItem", "position": 3, "name": "The AI Training Gap" }
+    ]
+  }
+  </script>
+
+  <style>
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-sm);
+      align-items: center;
+    }
+    .article-body h2 { margin-top: var(--space-sm); margin-bottom: 1rem; }
+    .article-body h3 { margin-top: 1.75rem; margin-bottom: 0.75rem; font-size: 1.125rem; }
+    .article-body p { color: var(--text-secondary); margin-bottom: 1.125rem; }
+    .article-body strong { color: var(--text); }
+    .callout-box {
+      background: #fdf6f0;
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .callout-box p { color: #5c3d2e; margin: 0; font-size: 0.9375rem; line-height: 1.65; }
+    .archetype-card {
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+    .archetype-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+    }
+    .archetype-card h3 { margin: 0 0 0.75rem; font-size: 1.25rem; }
+    .archetype-card p { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+    .archetype-card ul { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 0.75rem; padding-left: 1.25rem; }
+    .archetype-card li { margin-bottom: 0.35rem; }
+    .archetype-verdict {
+      background: #f0fdf4;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 0.75rem;
+    }
+    .archetype-verdict p { font-size: 0.875rem; color: #166534; margin: 0; }
+    .archetype-verdict strong { color: #15803d; }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .comparison-table thead { background: #2d1f3f; color: white; }
+    .comparison-table th { padding: 0.75rem 0.875rem; text-align: left; font-weight: 600; font-size: 0.8125rem; }
+    .comparison-table td { padding: 0.625rem 0.875rem; border-bottom: 1px solid #f3f4f6; vertical-align: top; font-size: 0.8125rem; }
+    .comparison-table tr:nth-child(odd) td { background: white; }
+    .comparison-table tr:nth-child(even) td { background: #f9f9f7; }
+    .source-note { font-size: 0.8125rem; color: var(--text-muted); border-top: 1px solid var(--border-light); padding-top: 1.25rem; margin-top: var(--space-md); }
+    .blockquote {
+      border-left: 4px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: #fdf6f0;
+      border-radius: 0 8px 8px 0;
+    }
+    .blockquote p { font-size: 1.0625rem; font-style: italic; color: #5c3d2e; margin-bottom: 0.5rem; }
+    .blockquote cite { font-size: 0.875rem; color: var(--text-muted); font-style: normal; }
+    .author-bio {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      background: #f9f9f7;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      margin-top: var(--space-sm);
+    }
+    .author-bio-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .author-bio h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+    .author-bio p { font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.5rem; }
+    .author-bio a { font-size: 0.875rem; }
+    @media (max-width: 480px) {
+      .author-bio { flex-direction: column; align-items: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <nav class="breadcrumb container" aria-label="Breadcrumb" style="padding-top:2rem;font-size:0.875rem;color:var(--text-muted);">
+      <a href="/">Home</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <a href="/insights">Insights</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <span>The AI Training Gap</span>
+    </nav>
+
+    <section class="hero container" style="padding-bottom:var(--space-sm);">
+      <p class="eyebrow" style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-bottom:1rem;font-weight:500;">Insights &mdash; April 2026</p>
+      <h1 style="font-size:2.75rem;">The AI Training Gap<br><span style="color:var(--accent);">Why Most AI Trainers Are Teaching the Wrong Thing</span></h1>
+      <p class="subline">Three types of AI trainers exist in Australia. Most businesses are hiring the wrong one. The Frontier Orchestrator framework explains why.</p>
+      <div class="article-meta" style="margin-top:1.5rem;">
+        <span>&#128100; Huxley Peckham, Tech Horizon Labs</span>
+        <span>&#128197; April 2026</span>
+        <span>&#9200; 7 min read</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <article class="section container article-body" style="max-width:760px;">
+
+      <div class="callout-box">
+        <p><strong>Why this matters</strong><br>The AI training market in Australia has exploded. LinkedIn shows 4,200+ profiles listing "AI trainer" or "AI coach" in Australia as of Q1 2026. But the quality gap is enormous. Most training teaches prompting. Very little teaches workflow design, model selection, or compliance. This article introduces a framework for evaluating what kind of AI training your business actually needs.</p>
+      </div>
+
+      <h2>The Problem</h2>
+
+      <p>Australian businesses are spending money on AI training that does not move them forward. Our 2026 research found that <strong>46% of Australian SMBs are stuck at the ChatGPT Plateau</strong> &mdash; they have adopted AI tools but have not achieved measurable workflow integration or ROI.</p>
+
+      <p>The training gap is a big reason why. Most AI training in Australia teaches one of two things: how to write better prompts, or how to use a specific tool. Neither of those gets a business from Stage 2 (ChatGPT Plateau) to Stage 3 (Enabled).</p>
+
+      <p>To understand why, you need to understand the three types of AI trainers operating in the Australian market right now.</p>
+
+      <h2>The Three Archetypes</h2>
+
+      <div class="archetype-card" style="border-left:4px solid #94a3b8;">
+        <div class="archetype-badge" style="background:#f1f5f9;color:#475569;">Archetype 1</div>
+        <h3>The Business Coach</h3>
+        <p>A generalist business coach, consultant, or speaker who has added "AI" to their offering. They run workshops on "AI for business," typically covering high-level concepts, prompt writing basics, and motivational content about the future of work.</p>
+        <ul>
+          <li>Broad, introductory content</li>
+          <li>Often one-day workshops or keynote presentations</li>
+          <li>Focuses on awareness and inspiration rather than implementation</li>
+          <li>May not have deployed AI in a real business workflow</li>
+          <li>Typical price: $500&ndash;$3,000 per session</li>
+        </ul>
+        <div class="archetype-verdict">
+          <p><strong>Best for:</strong> Stage 1 (Unaware) businesses that need orientation and buy-in from leadership. Not sufficient for businesses that want to actually implement AI.</p>
+        </div>
+      </div>
+
+      <div class="archetype-card" style="border-left:4px solid #f59e0b;">
+        <div class="archetype-badge" style="background:#fef3c7;color:#92400e;">Archetype 2</div>
+        <h3>The Single-Tool Specialist</h3>
+        <p>Deeply skilled in one platform &mdash; usually ChatGPT, sometimes Microsoft Copilot. They know the tool inside out: custom GPTs, API integrations, advanced prompting techniques, plugins. Their training is practical and hands-on.</p>
+        <ul>
+          <li>Deep expertise in one specific platform</li>
+          <li>Practical, hands-on training with real tool features</li>
+          <li>Can build custom GPTs, automations, and integrations within that ecosystem</li>
+          <li>Limited when the chosen tool is not the best fit for a given workflow</li>
+          <li>May not address data compliance or model selection trade-offs</li>
+        </ul>
+        <div class="archetype-verdict">
+          <p><strong>Best for:</strong> Stage 2 businesses that have already decided on a specific platform and want to get more out of it. Risky if the platform is not the right choice for the business's actual needs.</p>
+        </div>
+      </div>
+
+      <div class="archetype-card" style="border-left:4px solid #22c55e;">
+        <div class="archetype-badge" style="background:#dcfce7;color:#166534;">Archetype 3</div>
+        <h3>The Frontier Orchestrator</h3>
+        <p>Works across multiple frontier models &mdash; Claude, GPT, Gemini, open-source alternatives like LLaMA and Mistral &mdash; and selects the right tool for each workflow. Builds compliant infrastructure, designs end-to-end workflows, and trains teams on model-specific strengths and limitations.</p>
+        <ul>
+          <li>Multi-model expertise: knows which model excels at what</li>
+          <li>Designs workflows first, then selects tools to fit</li>
+          <li>Builds infrastructure (data pipelines, compliance controls, API integrations)</li>
+          <li>Trains teams on ongoing model evaluation, not just current features</li>
+          <li>Addresses data sovereignty, privacy, and Australian regulatory requirements</li>
+          <li>Can demonstrate measurable ROI from deployed systems</li>
+        </ul>
+        <div class="archetype-verdict">
+          <p><strong>Best for:</strong> Stage 2 businesses ready to break through to Stage 3 (Enabled). The only archetype that reliably moves businesses from ad-hoc AI use to integrated, measurable AI workflows.</p>
+        </div>
+      </div>
+
+      <h2>Comparison Table</h2>
+
+      <div style="overflow-x:auto;margin:1.5rem 0;">
+        <table class="comparison-table" aria-label="AI trainer archetype comparison">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Business Coach</th>
+              <th>Single-Tool Specialist</th>
+              <th>Frontier Orchestrator</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Models covered</strong></td>
+              <td>General concepts</td>
+              <td>1 platform (e.g. ChatGPT)</td>
+              <td>3+ frontier models</td>
+            </tr>
+            <tr>
+              <td><strong>Workflow design</strong></td>
+              <td>No</td>
+              <td>Within one tool</td>
+              <td>End-to-end, multi-tool</td>
+            </tr>
+            <tr>
+              <td><strong>Infrastructure</strong></td>
+              <td>Not addressed</td>
+              <td>Platform-native only</td>
+              <td>Custom builds (APIs, pipelines)</td>
+            </tr>
+            <tr>
+              <td><strong>Data compliance</strong></td>
+              <td>Mentioned broadly</td>
+              <td>Platform defaults</td>
+              <td>Australian-specific controls</td>
+            </tr>
+            <tr>
+              <td><strong>Measurable ROI</strong></td>
+              <td>Anecdotal</td>
+              <td>Tool-level metrics</td>
+              <td>Workflow-level, documented</td>
+            </tr>
+            <tr>
+              <td><strong>Best for stage</strong></td>
+              <td>Stage 1 (Unaware)</td>
+              <td>Stage 2 (within one tool)</td>
+              <td>Stage 2 &rarr; Stage 3 transition</td>
+            </tr>
+            <tr>
+              <td><strong>Typical engagement</strong></td>
+              <td>1-day workshop</td>
+              <td>Multi-week course</td>
+              <td>Ongoing advisory + build</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Why the Gap Matters</h2>
+
+      <p>The AI training gap is not just an inconvenience. It is actively holding Australian businesses back. When a Stage 2 business hires a Business Coach, they get inspiration but no implementation path. When they hire a Single-Tool Specialist, they get deeper into one platform but miss the workflow redesign that actually creates value.</p>
+
+      <div class="blockquote">
+        <p>"The transition from Stage 2 to Stage 3 is not a tool problem. It is a design problem. You need someone who can look at your business, identify the highest-ROI workflows, select the right models, build the infrastructure, and train your team to maintain it. That is orchestration, not coaching."</p>
+        <cite>&mdash; Huxley Peckham, Founder, Tech Horizon Labs</cite>
+      </div>
+
+      <p>The numbers support this. Among the 54 Australian SMBs in our 2026 research, businesses that worked with a Frontier Orchestrator-type advisor were <strong>3.2x more likely</strong> to reach Stage 3 (Enabled) within 6 months compared to those using self-directed learning or single-tool training.</p>
+
+      <h2>How to Evaluate an AI Trainer</h2>
+
+      <p>Before hiring any AI trainer or consultant, ask these three questions:</p>
+
+      <p><strong>1. Which AI models do you work with?</strong><br>If the answer is only one, they are a Single-Tool Specialist. That is fine if you have already decided on that platform. If you have not, you need broader expertise.</p>
+
+      <p><strong>2. Can you show me a workflow you have built end-to-end?</strong><br>Not a prompt template. Not a demo. A real workflow deployed in a real business. If they can only show prompting examples, they are a Business Coach.</p>
+
+      <p><strong>3. How do you handle data compliance and privacy for my industry?</strong><br>If they cannot answer specifically for your industry (legal, healthcare, finance, construction), they are not ready for enterprise work. Australian businesses have specific obligations under the Privacy Act 1988 and upcoming AI regulation.</p>
+
+      <h2>Where Tech Horizon Labs Fits</h2>
+
+      <p>We built this framework because we needed to explain what we do differently. Tech Horizon Labs operates as a Frontier Orchestrator. We work across Claude, GPT, Gemini, LLaMA, and open-source models. We design workflows first, select tools second. We build infrastructure. And we train teams to maintain systems independently.</p>
+
+      <p>If you are at Stage 1 (Unaware), start with the <a href="/assessment">free AI Readiness Assessment</a> to understand where you stand.</p>
+
+      <p>If you are at Stage 2 (ChatGPT Plateau) and ready to break through, <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery">book a free discovery call</a> and we will tell you honestly whether we are the right fit.</p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>What is a Frontier Orchestrator?</h3>
+      <p>A Frontier Orchestrator is an AI trainer or consultant who works across multiple frontier models (Claude, GPT, Gemini, open-source alternatives), selects the right tool for each workflow, builds compliant infrastructure, and trains teams on model-specific strengths. Unlike Business Coaches or Single-Tool Specialists, they design systems that use the best available model for each task.</p>
+
+      <h3>What are the three types of AI trainers in Australia?</h3>
+      <p>The three archetypes are: (1) Business Coach &mdash; a generalist who adds AI to their coaching practice; (2) Single-Tool Specialist &mdash; deeply skilled in one platform but limited beyond it; (3) Frontier Orchestrator &mdash; works across multiple models, builds infrastructure, and matches the right tool to each workflow.</p>
+
+      <h3>Why is the AI training gap a problem for Australian businesses?</h3>
+      <p>Most AI training teaches prompt writing or a single tool. This leaves businesses stuck at the ChatGPT Plateau because they learn to use a tool without learning how to redesign workflows, handle data compliance, or select the right model. The training gap is why 46% of Australian SMBs have adopted AI but have not achieved measurable ROI.</p>
+
+      <h3>How do I find a good AI trainer for my business?</h3>
+      <p>Ask three questions: (1) Which AI models do you work with? (2) Can you show me a workflow you have built end-to-end? (3) How do you handle data compliance for my industry? The answers reveal whether they are a Coach, Specialist, or Orchestrator.</p>
+
+      <div class="source-note">
+        <strong>Sources:</strong> Trainer archetype framework developed by Tech Horizon Labs based on engagement data from 54 Australian SMBs (Q1 2026). Stage definitions from the <a href="/insights/ai-readiness-stages-australia">AI Readiness Stages</a> framework. LinkedIn profile data from Q1 2026 search results. Privacy Act 1988 and upcoming AI regulatory framework referenced from the Australian Government's interim response to the Safe and Responsible AI discussion paper (2024).
+      </div>
+
+      <div class="author-bio">
+        <div class="author-bio-avatar">HP</div>
+        <div>
+          <h4>Huxley Peckham</h4>
+          <p>Founder of Tech Horizon Labs. Based in Noosa Heads, Queensland. Huxley has deployed AI systems across dozens of Australian businesses spanning legal, construction, accounting, healthcare, and professional services. He runs the AI Academy (300+ operators) and publishes original research on AI adoption in the Australian market.</p>
+          <a href="/about" class="link-arrow">More about Huxley &rarr;</a>
+        </div>
+      </div>
+
+    </article>
+
+    <div class="accent-rule container"></div>
+
+    <section class="section container fade-in" style="max-width:760px;">
+      <h2>Find the Right Training for Your Stage</h2>
+      <p style="color:var(--text-secondary);max-width:520px;">Take the free assessment to find out where you stand, or explore the AI Academy for ongoing training.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:var(--space-xs);">
+        <a href="/assessment" class="link-arrow">Take the free assessment &rarr;</a>
+        <a href="/academy" class="link-arrow">Explore AI Academy &rarr;</a>
+        <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" class="link-arrow" rel="noopener noreferrer">Book free discovery call &rarr;</a>
+      </div>
+
+      <div style="margin-top:var(--space-sm);padding-top:var(--space-sm);border-top:1px solid var(--border-light);">
+        <h3 style="margin-bottom:1rem;font-size:1rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Related articles</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+          <a href="/insights/ai-readiness-stages-australia" class="link-arrow">The 4 AI readiness stages</a>
+          <a href="/insights/ai-mistakes-australian-businesses" class="link-arrow">5 AI mistakes to avoid</a>
+          <a href="/insights/ai-implementation-cost-australia" class="link-arrow">AI implementation cost guide</a>
+          <a href="/insights/accc-microsoft-copilot-australia" class="link-arrow">ACCC vs Microsoft Copilot</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand">Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-right">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .nl-scroll-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #2d1f3f;
+      color: #fff;
+      padding: 0.875rem 1.5rem;
+      z-index: 900;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+      box-shadow: 0 -2px 16px rgba(0,0,0,0.12);
+    }
+    .nl-scroll-bar.visible { transform: translateY(0); }
+    .nl-scroll-bar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .nl-scroll-bar p {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .nl-scroll-bar .nl-sub {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      opacity: 0.7;
+    }
+    .nl-scroll-bar form {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nl-scroll-bar input[type="email"] {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      outline: none;
+      min-width: 200px;
+    }
+    .nl-scroll-bar input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
+    .nl-scroll-bar input[type="email"]:focus { border-color: var(--accent); }
+    .nl-scroll-bar button[type="submit"] {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nl-scroll-bar .nl-dismiss {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      font-size: 1.25rem;
+      padding: 0.25rem;
+      line-height: 1;
+      margin-left: 0.5rem;
+    }
+    .nl-scroll-bar .nl-dismiss:hover { color: #fff; }
+    .nl-scroll-bar .nl-msg {
+      font-size: 0.8125rem;
+      margin: 0;
+      margin-top: 0.25rem;
+    }
+    .nl-scroll-bar .nl-msg.error { color: #f87171; }
+    .nl-scroll-bar .nl-msg.success { color: #86efac; }
+    @media (max-width: 600px) {
+      .nl-scroll-bar-inner { flex-direction: column; text-align: center; }
+      .nl-scroll-bar form { width: 100%; justify-content: center; }
+    }
+  </style>
+
+  <div class="nl-scroll-bar" id="nl-scroll-bar" data-testid="insights-newsletter-bar">
+    <div class="nl-scroll-bar-inner">
+      <div>
+        <p>Get fortnightly AI implementation tips. <span class="nl-sub">No fluff.</span></p>
+      </div>
+      <form id="nl-scroll-form" novalidate>
+        <input type="email" id="nl-scroll-email" placeholder="Your email" autocomplete="email" required data-testid="input-insights-newsletter-email">
+        <button type="submit" data-testid="button-insights-newsletter-submit">Subscribe</button>
+        <button type="button" class="nl-dismiss" id="nl-dismiss" aria-label="Dismiss newsletter bar" data-testid="button-dismiss-newsletter">&times;</button>
+      </form>
+    </div>
+    <div class="nl-scroll-bar-inner">
+      <p class="nl-msg" id="nl-scroll-msg" style="display:none;"></p>
+    </div>
+  </div>
+
+  <script src="/main.js" defer></script>
+  <script>
+    (function() {
+      var bar = document.getElementById('nl-scroll-bar');
+      var form = document.getElementById('nl-scroll-form');
+      var dismissBtn = document.getElementById('nl-dismiss');
+      var msgEl = document.getElementById('nl-scroll-msg');
+      var STORAGE_KEY = 'thl_nl_dismissed';
+
+      if (!bar || localStorage.getItem(STORAGE_KEY)) return;
+
+      var shown = false;
+      function checkScroll() {
+        if (shown) return;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        if (docH > 0 && (window.scrollY / docH) >= 0.6) {
+          bar.classList.add('visible');
+          shown = true;
+          window.removeEventListener('scroll', checkScroll);
+        }
+      }
+      window.addEventListener('scroll', checkScroll, { passive: true });
+
+      dismissBtn.addEventListener('click', function() {
+        bar.classList.remove('visible');
+        localStorage.setItem(STORAGE_KEY, '1');
+      });
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var emailEl = document.getElementById('nl-scroll-email');
+        var email = emailEl.value.trim();
+        var btn = form.querySelector('button[type="submit"]');
+
+        msgEl.style.display = 'none';
+        msgEl.className = 'nl-msg';
+
+        if (!email || !email.includes('@')) {
+          msgEl.textContent = 'Please enter a valid email.';
+          msgEl.className = 'nl-msg error';
+          msgEl.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Subscribing\u2026';
+
+        fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: 'insights-scroll' })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.success) {
+            form.style.display = 'none';
+            msgEl.textContent = "You're in. Check your inbox.";
+            msgEl.className = 'nl-msg success';
+            msgEl.style.display = 'block';
+            localStorage.setItem(STORAGE_KEY, '1');
+            setTimeout(function() { bar.classList.remove('visible'); }, 3000);
+          } else {
+            throw new Error(data.error || 'Something went wrong.');
+          }
+        })
+        .catch(function(err) {
+          msgEl.textContent = err.message || 'Something went wrong.';
+          msgEl.className = 'nl-msg error';
+          msgEl.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Subscribe';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

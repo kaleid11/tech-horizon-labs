@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACCC, Microsoft Copilot, and What Australian Businesses Should Know About AI Bundling — Tech Horizon Labs</title>
+  <meta name="description" content="The ACCC is scrutinising Microsoft's AI bundling practices in Australia. What this means for businesses choosing AI tools, vendor lock-in risks, and how to make procurement decisions that protect your interests.">
+  <link rel="canonical" href="https://techhorizonlabs.com/insights/accc-microsoft-copilot-australia">
+  <meta property="og:title" content="ACCC, Microsoft Copilot, and What Australian Businesses Should Know About AI Bundling — Tech Horizon Labs">
+  <meta property="og:description" content="The ACCC is scrutinising Microsoft's AI bundling practices. What this means for Australian businesses choosing AI tools.">
+  <meta property="og:url" content="https://techhorizonlabs.com/insights/accc-microsoft-copilot-australia">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="ACCC, Microsoft Copilot, and What Australian Businesses Should Know About AI Bundling">
+  <meta name="twitter:description" content="The ACCC is scrutinising Microsoft's AI bundling. What it means for Australian businesses choosing AI tools.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ACCC, Microsoft Copilot, and What Australian Businesses Should Know About AI Bundling",
+    "description": "The ACCC is scrutinising Microsoft's AI bundling practices in Australia. What this means for businesses choosing AI tools, vendor lock-in risks, and procurement decisions.",
+    "datePublished": "2026-04-05",
+    "dateModified": "2026-04-05",
+    "author": {
+      "@type": "Person",
+      "name": "Huxley Peckham",
+      "jobTitle": "Founder, Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com",
+      "logo": { "@type": "ImageObject", "url": "https://techhorizonlabs.com/favicon.svg" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://techhorizonlabs.com/insights/accc-microsoft-copilot-australia" },
+    "image": "https://techhorizonlabs.com/opengraph.jpg",
+    "keywords": ["ACCC AI regulation", "Microsoft Copilot Australia", "AI bundling", "AI procurement", "vendor lock-in AI", "Australian AI regulation"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the ACCC doing about Microsoft Copilot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Australian Competition and Consumer Commission (ACCC) is examining Microsoft's practice of bundling AI features like Copilot into existing Microsoft 365 subscriptions. The concern is that bundling AI tools with dominant productivity software may reduce competition by making it harder for standalone AI providers to compete, and may push businesses toward AI tools that are not necessarily the best fit for their needs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is AI bundling and why does it matter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI bundling is when a software vendor includes AI features as part of an existing subscription or product suite, rather than selling them separately. It matters because businesses may adopt bundled AI tools by default rather than evaluating whether they are the best option. This can lead to vendor lock-in, reduced competition, and businesses using suboptimal AI tools for their specific workflows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should Australian businesses use Microsoft Copilot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Microsoft Copilot is a capable tool for tasks within the Microsoft ecosystem (Word, Excel, Outlook, Teams). However, businesses should evaluate it against alternatives like Claude, ChatGPT, and Gemini for their specific workflows before committing. The best AI tool depends on the task: Copilot excels at Microsoft-native workflows, but may not be the best choice for document analysis, creative writing, code generation, or workflows outside the Microsoft stack."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can Australian businesses avoid AI vendor lock-in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Four strategies: (1) Evaluate AI tools independently of your existing software stack. (2) Build workflows that are model-agnostic where possible, using APIs rather than platform-native integrations. (3) Maintain expertise across multiple AI models so you can switch if needed. (4) Document your AI workflows so they can be replicated with different tools. The goal is to choose the best tool for each task, not the most convenient bundle."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://techhorizonlabs.com/insights" },
+      { "@type": "ListItem", "position": 3, "name": "ACCC & Microsoft Copilot" }
+    ]
+  }
+  </script>
+
+  <style>
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-sm);
+      align-items: center;
+    }
+    .article-body h2 { margin-top: var(--space-sm); margin-bottom: 1rem; }
+    .article-body h3 { margin-top: 1.75rem; margin-bottom: 0.75rem; font-size: 1.125rem; }
+    .article-body p { color: var(--text-secondary); margin-bottom: 1.125rem; }
+    .article-body strong { color: var(--text); }
+    .callout-box {
+      background: #fdf6f0;
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .callout-box p { color: #5c3d2e; margin: 0; font-size: 0.9375rem; line-height: 1.65; }
+    .risk-card {
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+    .risk-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+    }
+    .risk-card h3 { margin: 0 0 0.75rem; font-size: 1.25rem; }
+    .risk-card p { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+    .risk-card ul { font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 0.75rem; padding-left: 1.25rem; }
+    .risk-card li { margin-bottom: 0.35rem; }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .comparison-table thead { background: #2d1f3f; color: white; }
+    .comparison-table th { padding: 0.75rem 0.875rem; text-align: left; font-weight: 600; font-size: 0.8125rem; }
+    .comparison-table td { padding: 0.625rem 0.875rem; border-bottom: 1px solid #f3f4f6; vertical-align: top; font-size: 0.8125rem; }
+    .comparison-table tr:nth-child(odd) td { background: white; }
+    .comparison-table tr:nth-child(even) td { background: #f9f9f7; }
+    .source-note { font-size: 0.8125rem; color: var(--text-muted); border-top: 1px solid var(--border-light); padding-top: 1.25rem; margin-top: var(--space-md); }
+    .blockquote {
+      border-left: 4px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: #fdf6f0;
+      border-radius: 0 8px 8px 0;
+    }
+    .blockquote p { font-size: 1.0625rem; font-style: italic; color: #5c3d2e; margin-bottom: 0.5rem; }
+    .blockquote cite { font-size: 0.875rem; color: var(--text-muted); font-style: normal; }
+    .author-bio {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      background: #f9f9f7;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      margin-top: var(--space-sm);
+    }
+    .author-bio-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .author-bio h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+    .author-bio p { font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.5rem; }
+    .author-bio a { font-size: 0.875rem; }
+    @media (max-width: 480px) {
+      .author-bio { flex-direction: column; align-items: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <nav class="breadcrumb container" aria-label="Breadcrumb" style="padding-top:2rem;font-size:0.875rem;color:var(--text-muted);">
+      <a href="/">Home</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <a href="/insights">Insights</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <span>ACCC &amp; Microsoft Copilot</span>
+    </nav>
+
+    <section class="hero container" style="padding-bottom:var(--space-sm);">
+      <p class="eyebrow" style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-bottom:1rem;font-weight:500;">Insights &mdash; April 2026</p>
+      <h1 style="font-size:2.75rem;">ACCC, Microsoft Copilot, and AI Bundling<br><span style="color:var(--accent);">What Australian Businesses Should Know</span></h1>
+      <p class="subline">Australia's competition regulator is asking hard questions about how Microsoft bundles AI into its products. Here is what it means for your AI procurement decisions.</p>
+      <div class="article-meta" style="margin-top:1.5rem;">
+        <span>&#128100; Huxley Peckham, Tech Horizon Labs</span>
+        <span>&#128197; April 2026</span>
+        <span>&#9200; 8 min read</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <article class="section container article-body" style="max-width:760px;">
+
+      <div class="callout-box">
+        <p><strong>Context</strong><br>The ACCC (Australian Competition and Consumer Commission) has been examining the competitive dynamics of AI markets since 2024, with particular attention to how dominant software vendors integrate AI features into existing products. This article focuses on the practical implications for Australian businesses making AI procurement decisions.</p>
+      </div>
+
+      <h2>What Is Happening</h2>
+
+      <p>Microsoft has been embedding AI features into its productivity suite at an accelerating pace. Copilot is now integrated into Microsoft 365, Windows, Edge, Bing, Teams, and GitHub. For the estimated 2.3 million Australian businesses using Microsoft 365, AI is no longer something you go out and buy. It is something that shows up in the software you already pay for.</p>
+
+      <p>The ACCC's concern is straightforward: when the dominant productivity software vendor bundles AI into its existing products, does that reduce competition? Does it push businesses toward AI tools that may not be the best fit, simply because they are the most convenient?</p>
+
+      <p>This is not hypothetical. Microsoft holds approximately 85% market share in office productivity software in Australia. When Copilot appears in Word, Excel, and Outlook by default, it becomes the path of least resistance for millions of users. The question is whether that path leads to the best outcomes for those businesses.</p>
+
+      <h2>Why This Matters for Your Business</h2>
+
+      <p>If you are running a small or mid-sized business in Australia, the ACCC's regulatory posture might feel abstract. But the underlying issue is very practical: <strong>are you choosing your AI tools, or are they being chosen for you?</strong></p>
+
+      <p>There are three specific risks to understand:</p>
+
+      <div class="risk-card" style="border-left:4px solid #f59e0b;">
+        <div class="risk-badge" style="background:#fef3c7;color:#92400e;">Risk 1</div>
+        <h3>Default Adoption</h3>
+        <p>When AI is bundled into software you already use, the default behaviour is to use it without evaluating alternatives. This is how most Stage 2 (ChatGPT Plateau) businesses got stuck in the first place &mdash; they adopted the most convenient tool rather than the most effective one.</p>
+        <ul>
+          <li>Copilot may not be the best tool for your specific workflows</li>
+          <li>Default adoption skips the workflow audit that determines which AI tool fits where</li>
+          <li>You may end up paying for Copilot Pro ($30/user/month) for features better served by a $20/month Claude or ChatGPT subscription</li>
+        </ul>
+      </div>
+
+      <div class="risk-card" style="border-left:4px solid #ef4444;">
+        <div class="risk-badge" style="background:#fef2f2;color:#991b1b;">Risk 2</div>
+        <h3>Vendor Lock-In</h3>
+        <p>The deeper you integrate Copilot into your workflows, the harder it becomes to switch. This is by design. Microsoft's AI strategy ties Copilot to Microsoft Graph (your emails, files, calendar, Teams data), making the AI more useful the more Microsoft products you use &mdash; and more costly to leave.</p>
+        <ul>
+          <li>Workflows built on Copilot are not portable to other AI tools</li>
+          <li>Training data (your organisational context) becomes an asset locked inside Microsoft's ecosystem</li>
+          <li>Switching costs increase over time as more workflows depend on Copilot</li>
+        </ul>
+      </div>
+
+      <div class="risk-card" style="border-left:4px solid #7c3aed;">
+        <div class="risk-badge" style="background:#ede9fe;color:#5b21b6;">Risk 3</div>
+        <h3>Reduced Market Pressure</h3>
+        <p>When businesses adopt AI by default rather than by choice, there is less pressure on all AI vendors (including Microsoft) to compete on quality, price, and features. The entire market moves slower when the dominant player can grow through bundling rather than through building better AI.</p>
+        <ul>
+          <li>Standalone AI companies (Anthropic, OpenAI, Perplexity) face an uneven playing field</li>
+          <li>Less competition means less innovation pressure for everyone</li>
+          <li>Australian businesses end up with fewer viable choices over time</li>
+        </ul>
+      </div>
+
+      <h2>What Copilot Does Well (and Where It Falls Short)</h2>
+
+      <p>This is not an anti-Microsoft article. Copilot is a capable tool for specific use cases. The problem is when it is adopted as the only AI tool across all workflows without evaluating alternatives.</p>
+
+      <div style="overflow-x:auto;margin:1.5rem 0;">
+        <table class="comparison-table" aria-label="AI tool comparison for common business tasks">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Microsoft Copilot</th>
+              <th>Better Alternative</th>
+              <th>Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Email drafting in Outlook</strong></td>
+              <td>Excellent</td>
+              <td>&mdash;</td>
+              <td>Native integration, context-aware</td>
+            </tr>
+            <tr>
+              <td><strong>Excel formula generation</strong></td>
+              <td>Excellent</td>
+              <td>&mdash;</td>
+              <td>Direct cell access, native functions</td>
+            </tr>
+            <tr>
+              <td><strong>Long document analysis</strong></td>
+              <td>Good</td>
+              <td>Claude</td>
+              <td>Claude handles 200K+ token contexts with higher accuracy</td>
+            </tr>
+            <tr>
+              <td><strong>Creative writing</strong></td>
+              <td>Adequate</td>
+              <td>Claude or ChatGPT</td>
+              <td>More natural voice, better at matching brand tone</td>
+            </tr>
+            <tr>
+              <td><strong>Code generation</strong></td>
+              <td>Good (via GitHub Copilot)</td>
+              <td>Claude Code, Cursor</td>
+              <td>Better reasoning for complex codebases</td>
+            </tr>
+            <tr>
+              <td><strong>Research and citation</strong></td>
+              <td>Adequate</td>
+              <td>Perplexity</td>
+              <td>Purpose-built for search with source verification</td>
+            </tr>
+            <tr>
+              <td><strong>Data privacy control</strong></td>
+              <td>Good (E5 tier)</td>
+              <td>Self-hosted models</td>
+              <td>Full data sovereignty with local inference</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The pattern is clear: Copilot is strongest inside the Microsoft ecosystem. For everything else, purpose-built tools often perform better. The <a href="/insights/claude-vs-chatgpt-2026">Claude vs ChatGPT comparison</a> covers two of those alternatives in detail.</p>
+
+      <div class="blockquote">
+        <p>"The best AI strategy is not picking one vendor and going all-in. It is matching the right model to each workflow. Sometimes that is Copilot. Sometimes it is Claude. Sometimes it is an open-source model running on your own infrastructure. The answer should come from a workflow audit, not from a software bundle."</p>
+        <cite>&mdash; Huxley Peckham, Founder, Tech Horizon Labs</cite>
+      </div>
+
+      <h2>The ACCC's Position</h2>
+
+      <p>The ACCC has been studying AI market dynamics through its Digital Platform Services Inquiry (DPSI), which has been running since 2020. In its 2025 interim reports, the Commission flagged several concerns relevant to AI bundling:</p>
+
+      <p><strong>Market concentration.</strong> The ACCC noted that the AI market is dominated by a small number of companies that also control the cloud infrastructure AI runs on. Microsoft (Azure), Google (GCP), and Amazon (AWS) collectively host the majority of AI workloads in Australia. When these companies also sell AI products, they have structural advantages that standalone AI companies cannot match.</p>
+
+      <p><strong>Self-preferencing.</strong> The Commission has been examining whether dominant platforms preference their own AI products over competitors. When Microsoft integrates Copilot into Windows and Office at the operating system level, that is a form of self-preferencing that is difficult for competitors to replicate.</p>
+
+      <p><strong>Switching costs.</strong> The ACCC has highlighted that AI tools trained on a company's data create switching costs that increase over time. The more you use Copilot with your Microsoft 365 data, the more valuable it becomes and the more costly it is to switch to an alternative.</p>
+
+      <p>No enforcement action has been taken specifically against Microsoft's AI bundling as of April 2026. But the regulatory direction is clear: the ACCC is watching, and businesses should factor this into their planning.</p>
+
+      <h2>What You Should Do</h2>
+
+      <p>Regardless of what the ACCC decides, the practical advice for Australian businesses is the same:</p>
+
+      <p><strong>1. Evaluate AI tools independently of your existing stack.</strong> Do not adopt Copilot (or any AI tool) simply because it comes with software you already use. Run a proper evaluation against alternatives for each workflow you want to automate.</p>
+
+      <p><strong>2. Build model-agnostic workflows where possible.</strong> Use APIs and middleware rather than platform-native integrations. This lets you swap out the underlying AI model without rebuilding the workflow.</p>
+
+      <p><strong>3. Maintain multi-model expertise.</strong> Train your team on at least two AI platforms. If all your knowledge is in one tool, you are locked in regardless of whether better alternatives exist.</p>
+
+      <p><strong>4. Document your AI workflows.</strong> Written process documentation makes it possible to replicate a workflow with a different tool if needed. This is also good practice for compliance, team training, and scaling.</p>
+
+      <p><strong>5. Watch the pricing.</strong> Microsoft Copilot Pro costs $30/user/month on top of your existing Microsoft 365 subscription. For a 20-person team, that is $7,200/year. Compare that to team subscriptions for Claude ($25/user/month) or ChatGPT ($25/user/month) and evaluate based on which tool actually delivers more value for your workflows.</p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>What is the ACCC doing about Microsoft Copilot?</h3>
+      <p>The ACCC is examining Microsoft's practice of bundling AI features like Copilot into existing Microsoft 365 subscriptions through its Digital Platform Services Inquiry. The concern is that bundling AI with dominant productivity software may reduce competition and push businesses toward tools that are not necessarily the best fit.</p>
+
+      <h3>What is AI bundling and why does it matter?</h3>
+      <p>AI bundling is when a software vendor includes AI features as part of an existing subscription rather than selling them separately. It matters because businesses may adopt bundled AI by default rather than evaluating alternatives, leading to vendor lock-in and suboptimal tool choices.</p>
+
+      <h3>Should Australian businesses use Microsoft Copilot?</h3>
+      <p>Copilot is capable for tasks within the Microsoft ecosystem (Word, Excel, Outlook, Teams). But businesses should evaluate it against Claude, ChatGPT, Gemini, and Perplexity for their specific workflows before committing. The best AI tool depends on the task.</p>
+
+      <h3>How can Australian businesses avoid AI vendor lock-in?</h3>
+      <p>Four strategies: (1) Evaluate tools independently of your existing stack. (2) Build model-agnostic workflows using APIs. (3) Train your team on multiple AI platforms. (4) Document workflows so they can be replicated with different tools.</p>
+
+      <div class="source-note">
+        <strong>Sources:</strong> ACCC Digital Platform Services Inquiry interim reports (2024&ndash;2025). Microsoft 365 market share data from Gartner and IDC (2025). Microsoft Copilot pricing from Microsoft Australia (April 2026). Claude and ChatGPT pricing from Anthropic and OpenAI (April 2026). Australian Privacy Act 1988 and AI regulatory framework references from the Department of Industry, Science and Resources.
+      </div>
+
+      <div class="author-bio">
+        <div class="author-bio-avatar">HP</div>
+        <div>
+          <h4>Huxley Peckham</h4>
+          <p>Founder of Tech Horizon Labs. Based in Noosa Heads, Queensland. Huxley has deployed AI systems across dozens of Australian businesses spanning legal, construction, accounting, healthcare, and professional services. He runs the AI Academy (300+ operators) and publishes original research on AI adoption in the Australian market.</p>
+          <a href="/about" class="link-arrow">More about Huxley &rarr;</a>
+        </div>
+      </div>
+
+    </article>
+
+    <div class="accent-rule container"></div>
+
+    <section class="section container fade-in" style="max-width:760px;">
+      <h2>Make Better AI Procurement Decisions</h2>
+      <p style="color:var(--text-secondary);max-width:520px;">Find out where your business stands with AI readiness, or book a call to discuss your specific AI tool evaluation.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:var(--space-xs);">
+        <a href="/assessment" class="link-arrow">Take the free assessment &rarr;</a>
+        <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" class="link-arrow" rel="noopener noreferrer">Book free discovery call &rarr;</a>
+      </div>
+
+      <div style="margin-top:var(--space-sm);padding-top:var(--space-sm);border-top:1px solid var(--border-light);">
+        <h3 style="margin-bottom:1rem;font-size:1rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Related articles</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+          <a href="/insights/claude-vs-chatgpt-2026" class="link-arrow">Claude vs ChatGPT 2026</a>
+          <a href="/insights/ai-training-gap-australia" class="link-arrow">The AI training gap</a>
+          <a href="/insights/ai-mistakes-australian-businesses" class="link-arrow">5 AI mistakes to avoid</a>
+          <a href="/insights/ai-readiness-stages-australia" class="link-arrow">The 4 AI readiness stages</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand">Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-right">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .nl-scroll-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #2d1f3f;
+      color: #fff;
+      padding: 0.875rem 1.5rem;
+      z-index: 900;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+      box-shadow: 0 -2px 16px rgba(0,0,0,0.12);
+    }
+    .nl-scroll-bar.visible { transform: translateY(0); }
+    .nl-scroll-bar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .nl-scroll-bar p {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .nl-scroll-bar .nl-sub {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      opacity: 0.7;
+    }
+    .nl-scroll-bar form {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nl-scroll-bar input[type="email"] {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      outline: none;
+      min-width: 200px;
+    }
+    .nl-scroll-bar input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
+    .nl-scroll-bar input[type="email"]:focus { border-color: var(--accent); }
+    .nl-scroll-bar button[type="submit"] {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nl-scroll-bar .nl-dismiss {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      font-size: 1.25rem;
+      padding: 0.25rem;
+      line-height: 1;
+      margin-left: 0.5rem;
+    }
+    .nl-scroll-bar .nl-dismiss:hover { color: #fff; }
+    .nl-scroll-bar .nl-msg {
+      font-size: 0.8125rem;
+      margin: 0;
+      margin-top: 0.25rem;
+    }
+    .nl-scroll-bar .nl-msg.error { color: #f87171; }
+    .nl-scroll-bar .nl-msg.success { color: #86efac; }
+    @media (max-width: 600px) {
+      .nl-scroll-bar-inner { flex-direction: column; text-align: center; }
+      .nl-scroll-bar form { width: 100%; justify-content: center; }
+    }
+  </style>
+
+  <div class="nl-scroll-bar" id="nl-scroll-bar" data-testid="insights-newsletter-bar">
+    <div class="nl-scroll-bar-inner">
+      <div>
+        <p>Get fortnightly AI implementation tips. <span class="nl-sub">No fluff.</span></p>
+      </div>
+      <form id="nl-scroll-form" novalidate>
+        <input type="email" id="nl-scroll-email" placeholder="Your email" autocomplete="email" required data-testid="input-insights-newsletter-email">
+        <button type="submit" data-testid="button-insights-newsletter-submit">Subscribe</button>
+        <button type="button" class="nl-dismiss" id="nl-dismiss" aria-label="Dismiss newsletter bar" data-testid="button-dismiss-newsletter">&times;</button>
+      </form>
+    </div>
+    <div class="nl-scroll-bar-inner">
+      <p class="nl-msg" id="nl-scroll-msg" style="display:none;"></p>
+    </div>
+  </div>
+
+  <script src="/main.js" defer></script>
+  <script>
+    (function() {
+      var bar = document.getElementById('nl-scroll-bar');
+      var form = document.getElementById('nl-scroll-form');
+      var dismissBtn = document.getElementById('nl-dismiss');
+      var msgEl = document.getElementById('nl-scroll-msg');
+      var STORAGE_KEY = 'thl_nl_dismissed';
+
+      if (!bar || localStorage.getItem(STORAGE_KEY)) return;
+
+      var shown = false;
+      function checkScroll() {
+        if (shown) return;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        if (docH > 0 && (window.scrollY / docH) >= 0.6) {
+          bar.classList.add('visible');
+          shown = true;
+          window.removeEventListener('scroll', checkScroll);
+        }
+      }
+      window.addEventListener('scroll', checkScroll, { passive: true });
+
+      dismissBtn.addEventListener('click', function() {
+        bar.classList.remove('visible');
+        localStorage.setItem(STORAGE_KEY, '1');
+      });
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var emailEl = document.getElementById('nl-scroll-email');
+        var email = emailEl.value.trim();
+        var btn = form.querySelector('button[type="submit"]');
+
+        msgEl.style.display = 'none';
+        msgEl.className = 'nl-msg';
+
+        if (!email || !email.includes('@')) {
+          msgEl.textContent = 'Please enter a valid email.';
+          msgEl.className = 'nl-msg error';
+          msgEl.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Subscribing\u2026';
+
+        fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: 'insights-scroll' })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.success) {
+            form.style.display = 'none';
+            msgEl.textContent = "You're in. Check your inbox.";
+            msgEl.className = 'nl-msg success';
+            msgEl.style.display = 'block';
+            localStorage.setItem(STORAGE_KEY, '1');
+            setTimeout(function() { bar.classList.remove('visible'); }, 3000);
+          } else {
+            throw new Error(data.error || 'Something went wrong.');
+          }
+        })
+        .catch(function(err) {
+          msgEl.textContent = err.message || 'Something went wrong.';
+          msgEl.className = 'nl-msg error';
+          msgEl.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Subscribe';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
