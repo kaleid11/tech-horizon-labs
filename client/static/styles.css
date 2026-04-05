@@ -1932,10 +1932,6 @@ blockquote cite {
     padding: var(--space-sm) 0;
   }
 
-  /* Hide dot grid on mobile for performance */
-  #dot-grid {
-    display: none;
-  }
 
   .tool-grid {
     grid-template-columns: 1fr;

@@ -17,7 +17,7 @@
   // NARRATIVE PARTICLE SYSTEM
   // ─────────────────────────────────────────────
   const canvas = document.getElementById('dot-grid');
-  if (canvas && canvas.getContext && window.innerWidth > 640 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (canvas && canvas.getContext && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const ctx = canvas.getContext('2d');
     let w, h, animFrame;
     let mouseX = -9999, mouseY = -9999, mouseDown = false;
@@ -25,9 +25,10 @@
     let scrollProgress = 0; // 0 = top, 1 = bottom
 
     const A = { r: 181, g: 101, b: 74 }; // terracotta accent
-    const COUNT = Math.min(100, Math.floor(window.innerWidth / 12));
-    const CONNECT_DIST = 180;
-    const MOUSE_RADIUS = 300;
+    const isMobile = window.innerWidth <= 768;
+    const COUNT = isMobile ? Math.min(50, Math.max(30, Math.floor(window.innerWidth / 10))) : Math.min(100, Math.floor(window.innerWidth / 12));
+    const CONNECT_DIST = isMobile ? 120 : 180;
+    const MOUSE_RADIUS = isMobile ? 200 : 300;
 
     // Scroll section detection
     const sections = { hero: 0, method: 0.2, work: 0.45, tools: 0.6, security: 0.72, principles: 0.82, contact: 0.92 };
@@ -338,10 +339,13 @@
     window.addEventListener('mousedown', () => { mouseDown = true; });
     window.addEventListener('mouseup', () => { mouseDown = false; });
     window.addEventListener('mouseleave', () => { mouseX = -9999; mouseY = -9999; mouseDown = false; });
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches[0]) { mouseX = e.touches[0].clientX; mouseY = e.touches[0].clientY; mouseDown = true; }
+    }, { passive: true });
     window.addEventListener('touchmove', (e) => {
       if (e.touches[0]) { mouseX = e.touches[0].clientX; mouseY = e.touches[0].clientY; }
     }, { passive: true });
-    window.addEventListener('touchend', () => { mouseX = -9999; mouseY = -9999; });
+    window.addEventListener('touchend', () => { mouseX = -9999; mouseY = -9999; mouseDown = false; });
     window.addEventListener('resize', () => { cancelAnimationFrame(animFrame); init(); animFrame = requestAnimationFrame(animate); });
 
     init();
