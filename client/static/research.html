@@ -56,7 +56,15 @@
         "name": "Which AI companies are open source?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Meta AI (LLaMA, open-weight), DeepSeek (MIT license), Qwen/Alibaba (Apache 2.0), and Mistral AI (Apache 2.0) all release open-weight models. xAI has partially open-sourced Grok."
+          "text": "Meta AI (LLaMA, open-weight), DeepSeek (MIT license), Qwen/Alibaba (Apache 2.0), and Mistral AI (Apache 2.0) all release open-weight models. xAI has partially open-sourced Grok. Note: these are technically 'open weights' rather than true open source — the model weights are downloadable, but training data and code are not shared."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between open source and open weights in AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open weights means the trained model parameters are publicly downloadable and usable, often under permissive licenses like MIT or Apache 2.0. True open source would also share the full training data, preprocessing code, and training infrastructure — which no major AI lab currently does. The distinction matters for businesses because open-weight models can be self-hosted and fine-tuned, but you cannot fully audit how they were trained, what data biases they carry, or reproduce the training process independently."
         }
       },
       {
@@ -163,71 +171,82 @@
             <div class="qs-row"><span class="qs-label">Valuation</span><span class="qs-value">$852B</span></div>
             <div class="qs-row"><span class="qs-label">Total Raised</span><span class="qs-value">$189.6B</span></div>
             <div class="qs-row"><span class="qs-label">Key Model</span><span class="qs-value">GPT-5.2 / o4</span></div>
-            <div class="qs-row"><span class="qs-label">Open Source</span><span class="qs-value">No</span></div>
+            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Closed</span></div>
+            <div class="qs-row"><span class="qs-label">Est. Revenue</span><span class="qs-value">~$12.7B ARR</span></div>
           </div>
           <div class="qs-card" style="border-left: 3px solid #d4a843;">
             <div class="qs-name">Anthropic</div>
             <div class="qs-row"><span class="qs-label">Valuation</span><span class="qs-value">$380B</span></div>
             <div class="qs-row"><span class="qs-label">Total Raised</span><span class="qs-value">$67.3B</span></div>
             <div class="qs-row"><span class="qs-label">Key Model</span><span class="qs-value">Claude Sonnet 4.6</span></div>
-            <div class="qs-row"><span class="qs-label">Open Source</span><span class="qs-value">No</span></div>
+            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Closed</span></div>
+            <div class="qs-row"><span class="qs-label">Est. Revenue</span><span class="qs-value">~$14B ARR</span></div>
           </div>
           <div class="qs-card" style="border-left: 3px solid #4285F4;">
             <div class="qs-name">Google DeepMind</div>
             <div class="qs-row"><span class="qs-label">Parent Cap</span><span class="qs-value">$3.6T</span></div>
             <div class="qs-row"><span class="qs-label">AI CapEx</span><span class="qs-value">$75B+ (2025)</span></div>
             <div class="qs-row"><span class="qs-label">Key Model</span><span class="qs-value">Gemini 3.1 Pro</span></div>
-            <div class="qs-row"><span class="qs-label">Open Source</span><span class="qs-value">No</span></div>
+            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Closed</span></div>
+            <div class="qs-row"><span class="qs-label">Cloud AI Rev.</span><span class="qs-value">~$44B ARR</span></div>
           </div>
           <div class="qs-card" style="border-left: 3px solid #0668E1;">
             <div class="qs-name">Meta AI</div>
             <div class="qs-row"><span class="qs-label">Parent Cap</span><span class="qs-value">$1.5T</span></div>
             <div class="qs-row"><span class="qs-label">AI CapEx</span><span class="qs-value">$60B+ (2025)</span></div>
             <div class="qs-row"><span class="qs-label">Key Model</span><span class="qs-value">LLaMA 4</span></div>
-            <div class="qs-row"><span class="qs-label">Open Source</span><span class="qs-value">Yes (LLaMA)</span></div>
+            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Open Weights</span></div>
+            <div class="qs-row"><span class="qs-label">AI Ad Rev.</span><span class="qs-value">Embedded in $164B</span></div>
           </div>
           <div class="qs-card" style="border-left: 3px solid #1DA1F2;">
             <div class="qs-name">xAI</div>
             <div class="qs-row"><span class="qs-label">Valuation</span><span class="qs-value">$250B</span></div>
             <div class="qs-row"><span class="qs-label">Total Raised</span><span class="qs-value">$36.1B</span></div>
             <div class="qs-row"><span class="qs-label">Key Model</span><span class="qs-value">Grok 4</span></div>
-            <div class="qs-row"><span class="qs-label">Open Source</span><span class="qs-value">Partial</span></div>
+            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Partial</span></div>
+            <div class="qs-row"><span class="qs-label">Est. Revenue</span><span class="qs-value">Pre-revenue</span></div>
           </div>
           <div class="qs-card" style="border-left: 3px solid #E53935;">
             <div class="qs-name">DeepSeek</div>
             <div class="qs-row"><span class="qs-label">Valuation</span><span class="qs-value">Self-funded</span></div>
             <div class="qs-row"><span class="qs-label">Total Raised</span><span class="qs-value">$0 VC</span></div>
             <div class="qs-row"><span class="qs-label">Key Model</span><span class="qs-value">DeepSeek V3</span></div>
-            <div class="qs-row"><span class="qs-label">Open Source</span><span class="qs-value">Yes (MIT)</span></div>
+            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Open Weights (MIT)</span></div>
+            <div class="qs-row"><span class="qs-label">Compute Spend</span><span class="qs-value">~$1B+/yr est.</span></div>
           </div>
           <div class="qs-card" style="border-left: 3px solid #FF6A00;">
             <div class="qs-name">Qwen (Alibaba)</div>
             <div class="qs-row"><span class="qs-label">Parent</span><span class="qs-value">Alibaba Cloud</span></div>
             <div class="qs-row"><span class="qs-label">AI CapEx</span><span class="qs-value">$63B (2025)</span></div>
             <div class="qs-row"><span class="qs-label">Key Model</span><span class="qs-value">Qwen 3.5</span></div>
-            <div class="qs-row"><span class="qs-label">Open Source</span><span class="qs-value">Yes (Apache)</span></div>
+            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Open Weights (Apache 2.0)</span></div>
+            <div class="qs-row"><span class="qs-label">Cloud Rev.</span><span class="qs-value">~$16B ARR</span></div>
           </div>
           <div class="qs-card" style="border-left: 3px solid #20B8CD;">
             <div class="qs-name">Perplexity</div>
             <div class="qs-row"><span class="qs-label">Valuation</span><span class="qs-value">$21B</span></div>
             <div class="qs-row"><span class="qs-label">Total Raised</span><span class="qs-value">$1.7B</span></div>
             <div class="qs-row"><span class="qs-label">Key Model</span><span class="qs-value">pplx-api</span></div>
-            <div class="qs-row"><span class="qs-label">Open Source</span><span class="qs-value">No</span></div>
+            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Closed</span></div>
+            <div class="qs-row"><span class="qs-label">Est. Revenue</span><span class="qs-value">~$200M ARR</span></div>
           </div>
           <div class="qs-card" style="border-left: 3px solid #6366F1;">
             <div class="qs-name">Kimi (Moonshot AI)</div>
             <div class="qs-row"><span class="qs-label">Valuation</span><span class="qs-value">$18B</span></div>
             <div class="qs-row"><span class="qs-label">Total Raised</span><span class="qs-value">$2.6B+</span></div>
             <div class="qs-row"><span class="qs-label">Key Model</span><span class="qs-value">Kimi 2.5</span></div>
-            <div class="qs-row"><span class="qs-label">Open Source</span><span class="qs-value">No</span></div>
+            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Closed</span></div>
+            <div class="qs-row"><span class="qs-label">Est. Revenue</span><span class="qs-value">Early stage</span></div>
           </div>
           <div class="qs-card" style="border-left: 3px solid #FF7000;">
             <div class="qs-name">Mistral AI</div>
             <div class="qs-row"><span class="qs-label">Valuation</span><span class="qs-value">$14B</span></div>
             <div class="qs-row"><span class="qs-label">Total Raised</span><span class="qs-value">$3.1B</span></div>
             <div class="qs-row"><span class="qs-label">Key Model</span><span class="qs-value">Mistral Large</span></div>
-            <div class="qs-row"><span class="qs-label">Open Source</span><span class="qs-value">Yes (Apache)</span></div>
+            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Open Weights (Apache 2.0)</span></div>
+            <div class="qs-row"><span class="qs-label">Est. Revenue</span><span class="qs-value">~$100M ARR</span></div>
           </div>
+          <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.75rem;">Open Weights = model weights downloadable for use, but training data and code are not shared. Different from true open source.</p>
         </div>
       </div>
     </section>
@@ -261,7 +280,7 @@
             <div class="company-name">Anthropic</div>
             <div class="company-stat">Key model: <strong>Claude Sonnet 4.6</strong></div>
             <div class="company-stat">Funding: <strong>$67.3B</strong> across 17 rounds</div>
-            <div class="company-stat">Open source: No</div>
+            <div class="company-stat">Model access: Closed</div>
           </div>
           <div class="company-detail">
             <div class="card-tabs" role="tablist">
@@ -295,8 +314,8 @@
             <div class="card-panel" data-panel="investors">
               <div class="investor-group">
                 <h4>Lead Investors</h4>
-                <span class="inv-tag">Amazon ($8B+)</span>
-                <span class="inv-tag">Google ($2B+)</span>
+                <span class="inv-tag">Amazon ($8B+ — largest external investor)</span>
+                <span class="inv-tag">Google ($2B+ — ~10% est. stake)</span>
                 <span class="inv-tag">GIC</span>
                 <span class="inv-tag">Coatue</span>
                 <span class="inv-tag">D. E. Shaw</span>
@@ -305,7 +324,7 @@
               <div class="investor-group">
                 <h4>Strategic</h4>
                 <span class="inv-tag">SK Telecom</span>
-                <span class="inv-tag">Microsoft</span>
+                <span class="inv-tag">Microsoft (minority stake)</span>
                 <span class="inv-tag">Nvidia</span>
                 <span class="inv-tag">Salesforce</span>
               </div>
@@ -321,6 +340,7 @@
                 <span class="inv-tag">Bessemer</span>
                 <span class="inv-tag">Insight Partners</span>
               </div>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">Amazon is the largest external investor at $8B+. Google's $2B+ investment gives it roughly a 10% stake. No single investor holds a controlling interest.</p>
             </div>
           </div>
         </div>
@@ -331,7 +351,7 @@
             <div class="company-name">OpenAI</div>
             <div class="company-stat">Key model: <strong>GPT-5.2 / o4</strong></div>
             <div class="company-stat">Funding: <strong>$122B</strong> (Mar 2026 round)</div>
-            <div class="company-stat">Open source: No</div>
+            <div class="company-stat">Model access: Closed</div>
           </div>
           <div class="company-detail">
             <div class="card-tabs" role="tablist">
@@ -340,7 +360,7 @@
               <button class="card-tab" data-tab="investors" role="tab" aria-selected="false">Investors</button>
             </div>
             <div class="card-panel active" data-panel="overview">
-              <p>Pivoted from nonprofit to public benefit corporation. $852B post-money valuation (Mar 2026). Amazon ($50B), Nvidia ($30B), and SoftBank ($30B) led the latest round. Microsoft holds ~27%. Board reshaped after the Nov 2023 crisis. Most valuable startup in history.</p>
+              <p>Pivoted from nonprofit to public benefit corporation. $852B post-money valuation (Mar 2026). Amazon ($50B), Nvidia ($30B), and SoftBank ($30B) led the latest round. Microsoft holds ~27%. Board reshaped after the Nov 2023 crisis. Most valuable startup in history. Estimated ~$12.7B ARR (2025), projecting $29B for 2026, though still operating at a significant loss against massive compute spend.</p>
             </div>
             <div class="card-panel" data-panel="funding">
               <div class="funding-timeline">
@@ -358,7 +378,7 @@
                 <span class="inv-tag">Amazon ($50B)</span>
                 <span class="inv-tag">Nvidia ($30B)</span>
                 <span class="inv-tag">SoftBank ($30B+)</span>
-                <span class="inv-tag">Microsoft ($10B+)</span>
+                <span class="inv-tag">Microsoft ($10B+ — ~27% equity pre-restructure)</span>
               </div>
               <div class="investor-group">
                 <h4>Other</h4>
@@ -381,7 +401,7 @@
             <div class="company-name">Google DeepMind</div>
             <div class="company-stat">Key model: <strong>Gemini 3.1 Pro</strong></div>
             <div class="company-stat">Parent market cap: <strong>$3.6T</strong></div>
-            <div class="company-stat">Open source: No</div>
+            <div class="company-stat">Model access: Closed</div>
           </div>
           <div class="company-detail">
             <div class="card-tabs" role="tablist">
@@ -390,7 +410,7 @@
               <button class="card-tab" data-tab="investors" role="tab" aria-selected="false">Investors</button>
             </div>
             <div class="card-panel active" data-panel="overview">
-              <p>World's largest AI lab. Merged Google Brain + DeepMind in 2023. Parent Alphabet is the 3rd most valuable public company globally. Massive compute infrastructure advantage. Gemini models integrated across Google products. Revenue (TTM) ~$403B, net income ~$132B.</p>
+              <p>World's largest AI lab. Merged Google Brain + DeepMind in 2023. Parent Alphabet is the 3rd most valuable public company globally. Massive compute infrastructure advantage. Gemini models integrated across Google products. Revenue (TTM) ~$403B, net income ~$132B. Google Cloud (including AI/ML services) reached ~$44B ARR, the fastest-growing segment.</p>
             </div>
             <div class="card-panel" data-panel="funding">
               <div class="funding-timeline">
@@ -404,7 +424,7 @@
             <div class="card-panel" data-panel="investors">
               <div class="investor-group">
                 <h4>Parent Company</h4>
-                <span class="inv-tag">Alphabet Inc. (GOOGL)</span>
+                <span class="inv-tag">Alphabet Inc. (GOOGL) — 100% ownership</span>
               </div>
               <div class="investor-group">
                 <h4>Pre-Acquisition Investors</h4>
@@ -412,7 +432,7 @@
                 <span class="inv-tag">Horizons Ventures</span>
                 <span class="inv-tag">Elon Musk (angel)</span>
               </div>
-              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">Fully owned by Alphabet. No external investors since the $500M acquisition in 2014.</p>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">Fully owned subsidiary of Alphabet since the $500M acquisition in 2014. No external investors. All AI investment ($75B+ CapEx in 2025) comes from Alphabet's balance sheet.</p>
             </div>
           </div>
         </div>
@@ -423,7 +443,7 @@
             <div class="company-name">Meta AI</div>
             <div class="company-stat">Key model: <strong>LLaMA 4</strong></div>
             <div class="company-stat">Parent market cap: <strong>$1.5T</strong></div>
-            <div class="company-stat">Open source: Yes (LLaMA)</div>
+            <div class="company-stat">Model access: Open Weights</div>
           </div>
           <div class="company-detail">
             <div class="card-tabs" role="tablist">
@@ -432,7 +452,7 @@
               <button class="card-tab" data-tab="investors" role="tab" aria-selected="false">Investors</button>
             </div>
             <div class="card-panel active" data-panel="overview">
-              <p>Open-source AI leader. LLaMA models are the most widely used open-weight foundation models. Yann LeCun departed Nov 2025 to found AMI Labs after strategic disagreements with Zuckerberg over LLM direction. Meta Superintelligence Labs now led by Alexandr Wang (Scale AI CEO). The open-source strategy creates ecosystem lock-in without licensing revenue.</p>
+              <p>Open-weights AI leader. LLaMA models are the most widely used open-weight foundation models. Yann LeCun departed Nov 2025 to found AMI Labs after strategic disagreements with Zuckerberg over LLM direction. Meta Superintelligence Labs now led by Alexandr Wang (Scale AI CEO). The open-weights strategy creates ecosystem lock-in without licensing revenue. Meta's total revenue ~$164B (TTM), with AI embedded across its ad targeting and recommendation systems. AI CapEx budget of $60B+ in 2025.</p>
             </div>
             <div class="card-panel" data-panel="funding">
               <div class="funding-timeline">
@@ -446,13 +466,13 @@
             <div class="card-panel" data-panel="investors">
               <div class="investor-group">
                 <h4>Parent Company</h4>
-                <span class="inv-tag">Meta Platforms Inc. (META)</span>
+                <span class="inv-tag">Meta Platforms Inc. (META) — 100% ownership</span>
               </div>
               <div class="investor-group">
                 <h4>AI Acquisitions</h4>
                 <span class="inv-tag">Scale AI ($14.3B, Jun 2025)</span>
               </div>
-              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">Meta AI is an internal division of Meta Platforms. All funding is via corporate R&amp;D budget and CapEx. No external VC investors.</p>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">Meta AI is a wholly owned division of Meta Platforms. All funding is via corporate R&amp;D budget and CapEx ($60B+ in 2025). No external VC investors.</p>
             </div>
           </div>
         </div>
@@ -463,7 +483,7 @@
             <div class="company-name">xAI</div>
             <div class="company-stat">Key model: <strong>Grok 4</strong></div>
             <div class="company-stat">Valuation: <strong>$250B</strong> (SpaceX acquisition)</div>
-            <div class="company-stat">Open source: Partial</div>
+            <div class="company-stat">Model access: Partial</div>
           </div>
           <div class="company-detail">
             <div class="card-tabs" role="tablist">
@@ -472,7 +492,7 @@
               <button class="card-tab" data-tab="investors" role="tab" aria-selected="false">Investors</button>
             </div>
             <div class="card-panel active" data-panel="overview">
-              <p>Elon Musk's AI lab. Founded 2023. Acquired by SpaceX in Feb 2026 at $250B valuation after raising $20B Series E in Jan 2026. Built the Memphis Supercluster (100K H100 GPUs). Grok integrated into X (Twitter) platform. "Any lawful use" military stance contrasts with Anthropic's safety focus.</p>
+              <p>Elon Musk's AI lab. Founded 2023. Acquired by SpaceX in Feb 2026 at $250B valuation after raising $20B Series E in Jan 2026. Built the Memphis Supercluster (100K H100 GPUs). Grok integrated into X (Twitter) platform. "Any lawful use" military stance contrasts with Anthropic's safety focus. Pre-revenue as a standalone entity. Grok-1 was open-sourced, but later models are closed.</p>
             </div>
             <div class="card-panel" data-panel="funding">
               <div class="funding-timeline">
@@ -493,7 +513,7 @@
               </div>
               <div class="investor-group">
                 <h4>Strategic</h4>
-                <span class="inv-tag">SpaceX (acquirer)</span>
+                <span class="inv-tag">SpaceX (acquirer — now 100% owner)</span>
                 <span class="inv-tag">Tesla (~$2B)</span>
                 <span class="inv-tag">Cisco</span>
               </div>
@@ -505,6 +525,7 @@
                 <span class="inv-tag">Stepstone</span>
                 <span class="inv-tag">Baron Capital</span>
               </div>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">SpaceX acquired xAI in Feb 2026 at $250B valuation, making it a wholly owned subsidiary. Previous VC investors were bought out or converted to SpaceX equity. Elon Musk maintains control through SpaceX.</p>
             </div>
           </div>
         </div>
@@ -515,7 +536,7 @@
             <div class="company-name">DeepSeek</div>
             <div class="company-stat">Key model: <strong>DeepSeek V3</strong></div>
             <div class="company-stat">Funding: <strong>Self-funded</strong></div>
-            <div class="company-stat">Open source: Yes (MIT)</div>
+            <div class="company-stat">Model access: Open Weights (MIT)</div>
           </div>
           <div class="company-detail">
             <div class="card-tabs" role="tablist">
@@ -524,7 +545,7 @@
               <button class="card-tab" data-tab="investors" role="tab" aria-selected="false">Investors</button>
             </div>
             <div class="card-panel active" data-panel="overview">
-              <p>Self-funded open-source lab from China. Backed by quant fund High-Flyer, founded by Liang Wenfeng. R1 rivaled GPT-4o at a fraction of the cost, shocking the industry. MIT-licensed models. No external venture funding. Operates under Chinese AI regulations and US export controls on advanced chips.</p>
+              <p>Self-funded open-weights lab from China. Backed by quant fund High-Flyer, founded by Liang Wenfeng. R1 rivaled GPT-4o at a fraction of the cost, shocking the industry. MIT-licensed models. No external venture funding. Operates under Chinese AI regulations and US export controls on advanced chips. Estimated $1B+ annual compute spend funded entirely from High-Flyer's trading profits. Minimal direct revenue — the API is priced far below competitors.</p>
             </div>
             <div class="card-panel" data-panel="funding">
               <div class="funding-timeline">
@@ -538,13 +559,13 @@
             <div class="card-panel" data-panel="investors">
               <div class="investor-group">
                 <h4>Sole Backer</h4>
-                <span class="inv-tag">High-Flyer (幻方量化)</span>
+                <span class="inv-tag">High-Flyer (幻方量化) — 100% ownership</span>
               </div>
               <div class="investor-group">
                 <h4>Founder</h4>
-                <span class="inv-tag">Liang Wenfeng (CEO)</span>
+                <span class="inv-tag">Liang Wenfeng (CEO &amp; sole controller)</span>
               </div>
-              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">No external VC, PE, or strategic investors. DeepSeek is entirely self-funded through High-Flyer's quant trading profits. Estimated $1B+ annual compute spend.</p>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">No external VC, PE, or strategic investors. DeepSeek is entirely self-funded through High-Flyer's quant trading profits. Estimated $1B+ annual compute spend funded from trading revenue.</p>
             </div>
           </div>
         </div>
@@ -555,7 +576,7 @@
             <div class="company-name">Qwen (Alibaba)</div>
             <div class="company-stat">Key model: <strong>Qwen 3.5</strong></div>
             <div class="company-stat">Internal investment: <strong>$63B</strong></div>
-            <div class="company-stat">Open source: Yes (Apache 2.0)</div>
+            <div class="company-stat">Model access: Open Weights (Apache 2.0)</div>
           </div>
           <div class="company-detail">
             <div class="card-tabs" role="tablist">
@@ -564,7 +585,7 @@
               <button class="card-tab" data-tab="investors" role="tab" aria-selected="false">Investors</button>
             </div>
             <div class="card-panel active" data-panel="overview">
-              <p>Alibaba Cloud's AI division. Apache 2.0 licensed models with strong multilingual capabilities. Part of Alibaba's cloud infrastructure play. Qwen2.5 models competitive with Western alternatives at significantly lower cost. Free API tier available.</p>
+              <p>Alibaba Cloud's AI division. Apache 2.0 licensed models with strong multilingual capabilities. Part of Alibaba's cloud infrastructure play. Qwen2.5 models competitive with Western alternatives at significantly lower cost. Free API tier available. Alibaba Cloud revenue ~$16B ARR, with AI workloads driving growth. $63B CapEx commitment over 3 years for AI infrastructure.</p>
             </div>
             <div class="card-panel" data-panel="funding">
               <div class="funding-timeline">
@@ -577,13 +598,13 @@
             <div class="card-panel" data-panel="investors">
               <div class="investor-group">
                 <h4>Parent Company</h4>
-                <span class="inv-tag">Alibaba Group (BABA/9988.HK)</span>
+                <span class="inv-tag">Alibaba Group (BABA/9988.HK) — 100% ownership</span>
               </div>
               <div class="investor-group">
                 <h4>Division</h4>
                 <span class="inv-tag">Alibaba Cloud Intelligence</span>
               </div>
-              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">Qwen is fully funded by Alibaba's corporate R&amp;D budget. Alibaba Cloud is committing $63B over 3 years to AI infrastructure. No external VC investors.</p>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">Qwen is a wholly owned division of Alibaba Cloud. Alibaba is committing $63B over 3 years to AI infrastructure. No external VC investors.</p>
             </div>
           </div>
         </div>
@@ -594,7 +615,7 @@
             <div class="company-name">Perplexity</div>
             <div class="company-stat">Key model: <strong>pplx-api</strong></div>
             <div class="company-stat">Funding: <strong>$1.7B</strong> across 11 rounds</div>
-            <div class="company-stat">Open source: No</div>
+            <div class="company-stat">Model access: Closed</div>
           </div>
           <div class="company-detail">
             <div class="card-tabs" role="tablist">
@@ -627,7 +648,7 @@
               <div class="investor-group">
                 <h4>Strategic</h4>
                 <span class="inv-tag">Nvidia</span>
-                <span class="inv-tag">Jeff Bezos</span>
+                <span class="inv-tag">Jeff Bezos (personal investment)</span>
               </div>
               <div class="investor-group">
                 <h4>Other</h4>
@@ -637,6 +658,7 @@
                 <span class="inv-tag">Elad Gil</span>
                 <span class="inv-tag">Kindred Ventures</span>
               </div>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">VC-backed with no single controlling investor. $1.7B raised across 11 rounds. Founders Aravind Srinivas and Denis Yarats retain significant equity. SoftBank and IVP are the largest institutional investors.</p>
             </div>
           </div>
         </div>
@@ -647,7 +669,7 @@
             <div class="company-name">Kimi (Moonshot AI)</div>
             <div class="company-stat">Key model: <strong>Kimi 2.5</strong></div>
             <div class="company-stat">Funding: <strong>$2.6B+</strong> across 5+ rounds</div>
-            <div class="company-stat">Open source: No</div>
+            <div class="company-stat">Model access: Closed</div>
           </div>
           <div class="company-detail">
             <div class="card-tabs" role="tablist">
@@ -656,7 +678,7 @@
               <button class="card-tab" data-tab="investors" role="tab" aria-selected="false">Investors</button>
             </div>
             <div class="card-panel active" data-panel="overview">
-              <p>Beijing-based lab. Known for long-context capabilities. Seeking $1B raise at $18B valuation (Mar 2026), up from $10B just months earlier. Backed by Alibaba, Tencent, and 5Y Capital. Accused of training on Claude outputs. The fastest valuation growth among Chinese AI startups.</p>
+              <p>Beijing-based lab. Known for long-context capabilities. Seeking $1B raise at $18B valuation (Mar 2026), up from $10B just months earlier. Backed by Alibaba, Tencent, and 5Y Capital. Accused of training on Claude outputs. The fastest valuation growth among Chinese AI startups. Early-stage revenue, primarily from consumer app usage in China.</p>
             </div>
             <div class="card-panel" data-panel="funding">
               <div class="funding-timeline">
@@ -670,7 +692,7 @@
             <div class="card-panel" data-panel="investors">
               <div class="investor-group">
                 <h4>Lead Investors</h4>
-                <span class="inv-tag">Alibaba</span>
+                <span class="inv-tag">Alibaba (led Series A — largest investor)</span>
                 <span class="inv-tag">Tencent</span>
                 <span class="inv-tag">5Y Capital</span>
                 <span class="inv-tag">IDG Capital</span>
@@ -681,6 +703,7 @@
                 <span class="inv-tag">Andon HK</span>
                 <span class="inv-tag">HongShan</span>
               </div>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">Alibaba led the $1B Series A and is the largest institutional investor. Yang Zhilin (founder) retains significant equity. Unusually broad Chinese tech backing with both Alibaba and Tencent as investors.</p>
             </div>
           </div>
         </div>
@@ -691,7 +714,7 @@
             <div class="company-name">Mistral AI</div>
             <div class="company-stat">Key model: <strong>Mistral Large</strong></div>
             <div class="company-stat">Funding: <strong>$3.1B</strong> across 8 rounds</div>
-            <div class="company-stat">Open source: Yes (Apache)</div>
+            <div class="company-stat">Model access: Open Weights (Apache 2.0)</div>
           </div>
           <div class="company-detail">
             <div class="card-tabs" role="tablist">
@@ -700,7 +723,7 @@
               <button class="card-tab" data-tab="investors" role="tab" aria-selected="false">Investors</button>
             </div>
             <div class="card-panel active" data-panel="overview">
-              <p>Europe's AI champion. French sovereignty angle. ~862 employees. $14B valuation (Sep 2025). Secured &euro;722M ($830M) debt financing in Mar 2026 for its first large-scale data centre near Paris with 13,800 Nvidia GB300 GPUs. EU AI Act compliance built in. Strong enterprise adoption in Europe.</p>
+              <p>Europe's AI champion. French sovereignty angle. ~862 employees. $14B valuation (Sep 2025). Secured &euro;722M ($830M) debt financing in Mar 2026 for its first large-scale data centre near Paris with 13,800 Nvidia GB300 GPUs. EU AI Act compliance built in. Strong enterprise adoption in Europe. Estimated ~$100M ARR from its Le Platforme API and enterprise contracts.</p>
             </div>
             <div class="card-panel" data-panel="funding">
               <div class="funding-timeline">
@@ -714,14 +737,14 @@
             <div class="card-panel" data-panel="investors">
               <div class="investor-group">
                 <h4>Lead Investors</h4>
-                <span class="inv-tag">Bpifrance</span>
+                <span class="inv-tag">Bpifrance (French sovereign fund)</span>
                 <span class="inv-tag">a16z</span>
                 <span class="inv-tag">General Catalyst</span>
                 <span class="inv-tag">Lightspeed</span>
               </div>
               <div class="investor-group">
                 <h4>Strategic</h4>
-                <span class="inv-tag">Microsoft</span>
+                <span class="inv-tag">Microsoft (minority stake)</span>
                 <span class="inv-tag">Nvidia</span>
                 <span class="inv-tag">Samsung</span>
                 <span class="inv-tag">Salesforce</span>
@@ -733,6 +756,7 @@
                 <span class="inv-tag">HSBC</span>
                 <span class="inv-tag">Natixis</span>
               </div>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">Co-founders Arthur Mensch, Timoth&eacute;e Lacroix, and Guillaume Lample retain significant equity. Bpifrance (French state investment bank) is a key backer supporting European AI sovereignty. Microsoft took a minority stake. $3.1B raised across 8 rounds plus &euro;722M in debt financing.</p>
             </div>
           </div>
         </div>
@@ -753,25 +777,26 @@
               <tr style="border-bottom: 2px solid var(--accent); text-align: left;">
                 <th style="padding: 0.75rem 1rem 0.75rem 0; font-weight: 600;">Company</th>
                 <th style="padding: 0.75rem 1rem; font-weight: 600;">Key Model</th>
-                <th style="padding: 0.75rem 1rem; font-weight: 600;">Open Source</th>
+                <th style="padding: 0.75rem 1rem; font-weight: 600;">Model Access</th>
                 <th style="padding: 0.75rem 1rem; font-weight: 600;">Valuation</th>
                 <th style="padding: 0.75rem 1rem; font-weight: 600;">Total Raised</th>
+                <th style="padding: 0.75rem 1rem; font-weight: 600;">Est. Revenue</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Anthropic</td><td style="padding: 0.75rem 1rem;">Claude Sonnet 4.6</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$380B</td><td style="padding: 0.75rem 1rem;">$67.3B</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">OpenAI</td><td style="padding: 0.75rem 1rem;">GPT-5.2 / o4</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$852B</td><td style="padding: 0.75rem 1rem;">$122B</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Google DeepMind</td><td style="padding: 0.75rem 1rem;">Gemini 3.1 Pro</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$3.6T *</td><td style="padding: 0.75rem 1rem;">&mdash;</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Meta AI</td><td style="padding: 0.75rem 1rem;">LLaMA 4</td><td style="padding: 0.75rem 1rem;">Yes</td><td style="padding: 0.75rem 1rem;">$1.5T *</td><td style="padding: 0.75rem 1rem;">&mdash;</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">xAI</td><td style="padding: 0.75rem 1rem;">Grok 4</td><td style="padding: 0.75rem 1rem;">Partial</td><td style="padding: 0.75rem 1rem;">$250B</td><td style="padding: 0.75rem 1rem;">$20B</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">DeepSeek</td><td style="padding: 0.75rem 1rem;">DeepSeek V3</td><td style="padding: 0.75rem 1rem;">Yes (MIT)</td><td style="padding: 0.75rem 1rem;">Self-funded</td><td style="padding: 0.75rem 1rem;">$0</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Qwen</td><td style="padding: 0.75rem 1rem;">Qwen 3.5</td><td style="padding: 0.75rem 1rem;">Yes (Apache)</td><td style="padding: 0.75rem 1rem;">&mdash; *</td><td style="padding: 0.75rem 1rem;">&mdash;</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Perplexity</td><td style="padding: 0.75rem 1rem;">pplx-api</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$21B</td><td style="padding: 0.75rem 1rem;">$1.7B</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Kimi</td><td style="padding: 0.75rem 1rem;">Kimi 2.5</td><td style="padding: 0.75rem 1rem;">No</td><td style="padding: 0.75rem 1rem;">$18B</td><td style="padding: 0.75rem 1rem;">$2.6B+</td></tr>
-              <tr><td style="padding: 0.75rem 1rem 0.75rem 0;">Mistral</td><td style="padding: 0.75rem 1rem;">Mistral Large</td><td style="padding: 0.75rem 1rem;">Yes (Apache)</td><td style="padding: 0.75rem 1rem;">$14B</td><td style="padding: 0.75rem 1rem;">$3.1B</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Anthropic</td><td style="padding: 0.75rem 1rem;">Claude Sonnet 4.6</td><td style="padding: 0.75rem 1rem;">Closed</td><td style="padding: 0.75rem 1rem;">$380B</td><td style="padding: 0.75rem 1rem;">$67.3B</td><td style="padding: 0.75rem 1rem;">~$14B ARR</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">OpenAI</td><td style="padding: 0.75rem 1rem;">GPT-5.2 / o4</td><td style="padding: 0.75rem 1rem;">Closed</td><td style="padding: 0.75rem 1rem;">$852B</td><td style="padding: 0.75rem 1rem;">$189.6B</td><td style="padding: 0.75rem 1rem;">~$12.7B ARR</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Google DeepMind</td><td style="padding: 0.75rem 1rem;">Gemini 3.1 Pro</td><td style="padding: 0.75rem 1rem;">Closed</td><td style="padding: 0.75rem 1rem;">$3.6T *</td><td style="padding: 0.75rem 1rem;">&mdash;</td><td style="padding: 0.75rem 1rem;">~$44B Cloud</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Meta AI</td><td style="padding: 0.75rem 1rem;">LLaMA 4</td><td style="padding: 0.75rem 1rem;">Open Weights</td><td style="padding: 0.75rem 1rem;">$1.5T *</td><td style="padding: 0.75rem 1rem;">&mdash;</td><td style="padding: 0.75rem 1rem;">In $164B rev.</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">xAI</td><td style="padding: 0.75rem 1rem;">Grok 4</td><td style="padding: 0.75rem 1rem;">Partial</td><td style="padding: 0.75rem 1rem;">$250B</td><td style="padding: 0.75rem 1rem;">$36.1B</td><td style="padding: 0.75rem 1rem;">Pre-revenue</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">DeepSeek</td><td style="padding: 0.75rem 1rem;">DeepSeek V3</td><td style="padding: 0.75rem 1rem;">Open Weights (MIT)</td><td style="padding: 0.75rem 1rem;">Self-funded</td><td style="padding: 0.75rem 1rem;">$0</td><td style="padding: 0.75rem 1rem;">Minimal</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Qwen</td><td style="padding: 0.75rem 1rem;">Qwen 3.5</td><td style="padding: 0.75rem 1rem;">Open Weights (Apache 2.0)</td><td style="padding: 0.75rem 1rem;">&mdash; *</td><td style="padding: 0.75rem 1rem;">&mdash;</td><td style="padding: 0.75rem 1rem;">~$16B Cloud</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Perplexity</td><td style="padding: 0.75rem 1rem;">pplx-api</td><td style="padding: 0.75rem 1rem;">Closed</td><td style="padding: 0.75rem 1rem;">$21B</td><td style="padding: 0.75rem 1rem;">$1.7B</td><td style="padding: 0.75rem 1rem;">~$200M ARR</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Kimi</td><td style="padding: 0.75rem 1rem;">Kimi 2.5</td><td style="padding: 0.75rem 1rem;">Closed</td><td style="padding: 0.75rem 1rem;">$18B</td><td style="padding: 0.75rem 1rem;">$2.6B+</td><td style="padding: 0.75rem 1rem;">Early stage</td></tr>
+              <tr><td style="padding: 0.75rem 1rem 0.75rem 0;">Mistral</td><td style="padding: 0.75rem 1rem;">Mistral Large</td><td style="padding: 0.75rem 1rem;">Open Weights (Apache 2.0)</td><td style="padding: 0.75rem 1rem;">$14B</td><td style="padding: 0.75rem 1rem;">$3.1B</td><td style="padding: 0.75rem 1rem;">~$100M ARR</td></tr>
             </tbody>
           </table>
-          <p style="color: var(--text-muted); font-size: 0.8125rem; margin-top: 0.5rem;">* Parent company market cap, not standalone AI division valuation.</p>
+          <p style="color: var(--text-muted); font-size: 0.8125rem; margin-top: 0.5rem;">* Parent company market cap, not standalone AI division valuation. Open Weights = model weights downloadable, but training data and code not shared.</p>
         </div>
       </section>
     </div>
