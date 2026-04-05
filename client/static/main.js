@@ -475,7 +475,22 @@
 
   document.querySelectorAll('.company-card').forEach((card) => {
     var hdr = card.querySelector('.company-header');
-    if (hdr) hdr.addEventListener('click', () => card.classList.toggle('expanded'));
+    if (hdr) {
+      hdr.setAttribute('role', 'button');
+      hdr.setAttribute('tabindex', '0');
+      hdr.setAttribute('aria-expanded', 'false');
+      hdr.addEventListener('click', () => {
+        card.classList.toggle('expanded');
+        hdr.setAttribute('aria-expanded', card.classList.contains('expanded'));
+      });
+      hdr.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.classList.toggle('expanded');
+          hdr.setAttribute('aria-expanded', card.classList.contains('expanded'));
+        }
+      });
+    }
 
     card.querySelectorAll('.card-tab').forEach((tab) => {
       tab.addEventListener('click', (ev) => {

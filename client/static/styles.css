@@ -1072,6 +1072,28 @@ blockquote cite {
   display: block;
 }
 
+.company-header {
+  cursor: pointer;
+}
+
+.company-header::after {
+  content: '+';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.company-card.expanded .company-header::after {
+  content: '−';
+}
+
+.company-card {
+  position: relative;
+}
+
 .company-card.expanded {
   grid-column: 1 / -1;
 }
