@@ -26,7 +26,7 @@
 
     const A = { r: 181, g: 101, b: 74 }; // terracotta accent
     const isMobile = window.innerWidth <= 768;
-    const COUNT = isMobile ? Math.min(50, Math.max(30, Math.floor(window.innerWidth / 10))) : Math.min(100, Math.floor(window.innerWidth / 12));
+    const COUNT = isMobile ? Math.min(50, Math.max(38, Math.floor(window.innerWidth / 9))) : Math.min(100, Math.floor(window.innerWidth / 12));
     const CONNECT_DIST = isMobile ? 120 : 180;
     const MOUSE_RADIUS = isMobile ? 200 : 300;
 
