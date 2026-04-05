@@ -132,11 +132,11 @@ All pages checked have correct canonical URLs pointing to `https://techhorizonla
 ## 8. Sitemap Completeness
 
 - **Sitemap URLs:** 31
-- **PAGES routes (server/static.ts):** 8 core pages
-- **STATIC_FILES routes (server/static.ts):** 22 static pages (including insights index)
-- **Total registered routes:** 30 pages + sitemap.xml + robots.txt = 32 serveable URLs
+- **PAGES routes (server/static.ts):** 8 core pages (with meta injection)
+- **STATIC_FILES routes (server/static.ts):** 23 static pages (including insights index)
+- **Total registered page routes:** 31
 
-All page routes are represented in the sitemap. The sitemap does not include `/sitemap.xml`, `/robots.txt`, or static assets (correct behavior).
+All 31 page routes are represented in the sitemap (31 URLs). The sitemap does not include `/sitemap.xml`, `/robots.txt`, or static assets (correct behavior).
 
 **Result: PASS**
 
@@ -170,7 +170,7 @@ No duplicates or missing tags were found on any page.
 
 ## 11. Internal Link Check
 
-Crawled all 23 page routes and extracted internal links (`href="/..."`) from each page. Every internal link resolves to HTTP 200 or 301 (trailing-slash redirect).
+Crawled all 31 page routes and extracted internal links (`href="/..."`) from each page. Every internal link resolves to HTTP 200 or 301 (trailing-slash redirect).
 
 **Result: PASS** — Zero broken internal links found.
 
