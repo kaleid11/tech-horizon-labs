@@ -576,12 +576,18 @@
       gridG.appendChild(lbl);
     }
 
+    var usedYears = {};
+    var lastLabelX = -Infinity;
     (config.xLabels || []).forEach(function(d) {
       var x = xPos(d);
       if (x >= pad.left && x <= W - pad.right) {
+        var year = d.substring(0, 4);
+        if (usedYears[year] || (x - lastLabelX) < 35) return;
+        usedYears[year] = true;
+        lastLabelX = x;
         gridG.appendChild(svgCreate('line', { x1: x, y1: pad.top, x2: x, y2: H - pad.bottom, stroke: '#f0f0f0', 'stroke-width': '1' }));
         var t = svgCreate('text', { x: x, y: H - pad.bottom + 20, fill: '#999', 'font-size': '11', 'text-anchor': 'middle', 'font-family': 'Instrument Sans, sans-serif' });
-        t.textContent = d.substring(0, 4);
+        t.textContent = year;
         gridG.appendChild(t);
       }
     });
@@ -698,7 +704,7 @@
         points: [
           { date: '2022-04', val: 4.1, label: 'Series B' },
           { date: '2023-02', val: 5, label: 'Google strategic' },
-          { date: '2023-05', val: 4.1, label: 'Series C (VC)' },
+          { date: '2023-05', val: 5, label: 'Series C' },
           { date: '2023-08', val: 5, label: 'SK Telecom strategic' },
           { date: '2023-12', val: 18.4, label: 'Series D' },
           { date: '2024-06', val: 18.4, label: 'Series E' },
