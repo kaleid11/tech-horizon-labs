@@ -56,7 +56,7 @@
         "name": "Which AI companies are open source?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Meta AI (LLaMA, open-weight), DeepSeek (MIT license), Qwen/Alibaba (Apache 2.0), and Mistral AI (Apache 2.0) all release open-weight models. xAI has partially open-sourced Grok. Note: these are technically 'open weights' rather than true open source — the model weights are downloadable, but training data and code are not shared."
+          "text": "Meta AI (LLaMA, open-weight), DeepSeek (MIT license), Qwen/Alibaba (Apache 2.0), Kimi/Moonshot AI (open weights for K2 and later models), and Mistral AI (Apache 2.0) all release open-weight models. xAI has partially open-sourced Grok. Note: these are technically 'open weights' rather than true open source — the model weights are downloadable, but training data and code are not shared."
         }
       },
       {
@@ -90,7 +90,6 @@
   <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
 </head>
 <body>
-  <canvas id="dot-grid" aria-hidden="true"></canvas>
   <nav class="site-nav" aria-label="Main navigation">
     <a href="/" class="brand"><img src="/logo.png" alt="Tech Horizon Labs logo" class="brand-logo" width="28" height="28">Tech Horizon Labs</a>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -113,7 +112,7 @@
 
     <div class="accent-rule container"></div>
 
-    <section class="section container-wide fade-in">
+    <section class="section container-wide">
       <h2>Comparison dashboard</h2>
       <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-sm);">Three views of the AI landscape. Toggle between valuation trajectories, total funding, and a quick-stats overview.</p>
 
@@ -240,7 +239,7 @@
             <div class="qs-row"><span class="qs-label">Valuation</span><span class="qs-value">$18B</span></div>
             <div class="qs-row"><span class="qs-label">Total Raised</span><span class="qs-value">$2.6B+</span></div>
             <div class="qs-row"><span class="qs-label">Key Model</span><span class="qs-value">Kimi 2.5</span></div>
-            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Closed</span></div>
+            <div class="qs-row"><span class="qs-label">Model Access</span><span class="qs-value">Open Weights</span></div>
             <div class="qs-row"><span class="qs-label">Revenue</span><span class="qs-value">Early stage</span></div>
             <div class="qs-row"><span class="qs-label">Compute Spend</span><span class="qs-value">Not disclosed</span></div>
           </div>
@@ -260,7 +259,7 @@
 
     <div class="accent-rule container"></div>
 
-    <section class="section container-wide fade-in">
+    <section class="section container-wide">
       <h2>Cumulative funding raised</h2>
       <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-sm);">Total external capital raised over time for VC-funded companies. Click any line or legend label to highlight. Google DeepMind, Meta AI, DeepSeek, and Qwen excluded (internal/self-funded).</p>
 
@@ -275,14 +274,14 @@
 
     <div class="accent-rule container"></div>
 
-    <section class="section container-wide fade-in">
+    <section class="section container-wide">
       <h2>Company profiles</h2>
       <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-sm);">Click any card to expand. Use tabs to explore funding timelines and investor details.</p>
 
       <div class="company-grid">
 
         <!-- ANTHROPIC -->
-        <div class="company-card fade-in" data-testid="card-company-anthropic">
+        <div class="company-card" data-testid="card-company-anthropic">
           <div class="company-header">
             <div class="company-name">Anthropic</div>
             <div class="company-stat">Key model: <strong>Claude Sonnet 4.6</strong></div>
@@ -353,7 +352,7 @@
         </div>
 
         <!-- OPENAI -->
-        <div class="company-card fade-in" data-testid="card-company-openai">
+        <div class="company-card" data-testid="card-company-openai">
           <div class="company-header">
             <div class="company-name">OpenAI</div>
             <div class="company-stat">Key model: <strong>GPT-5.2 / o4</strong></div>
@@ -403,7 +402,7 @@
         </div>
 
         <!-- GOOGLE DEEPMIND -->
-        <div class="company-card fade-in" data-testid="card-company-google-deepmind">
+        <div class="company-card" data-testid="card-company-google-deepmind">
           <div class="company-header">
             <div class="company-name">Google DeepMind</div>
             <div class="company-stat">Key model: <strong>Gemini 3.1 Pro</strong></div>
@@ -445,7 +444,7 @@
         </div>
 
         <!-- META AI -->
-        <div class="company-card fade-in" data-testid="card-company-meta-ai">
+        <div class="company-card" data-testid="card-company-meta-ai">
           <div class="company-header">
             <div class="company-name">Meta AI</div>
             <div class="company-stat">Key model: <strong>LLaMA 4</strong></div>
@@ -485,7 +484,7 @@
         </div>
 
         <!-- xAI -->
-        <div class="company-card fade-in" data-testid="card-company-xai">
+        <div class="company-card" data-testid="card-company-xai">
           <div class="company-header">
             <div class="company-name">xAI</div>
             <div class="company-stat">Key model: <strong>Grok 4</strong></div>
@@ -538,7 +537,7 @@
         </div>
 
         <!-- DEEPSEEK -->
-        <div class="company-card fade-in" data-testid="card-company-deepseek">
+        <div class="company-card" data-testid="card-company-deepseek">
           <div class="company-header">
             <div class="company-name">DeepSeek</div>
             <div class="company-stat">Key model: <strong>DeepSeek V3</strong></div>
@@ -580,7 +579,7 @@
         </div>
 
         <!-- QWEN -->
-        <div class="company-card fade-in" data-testid="card-company-qwen">
+        <div class="company-card" data-testid="card-company-qwen">
           <div class="company-header">
             <div class="company-name">Qwen (Alibaba)</div>
             <div class="company-stat">Key model: <strong>Qwen 3.5</strong></div>
@@ -622,7 +621,7 @@
         </div>
 
         <!-- PERPLEXITY -->
-        <div class="company-card fade-in" data-testid="card-company-perplexity">
+        <div class="company-card" data-testid="card-company-perplexity">
           <div class="company-header">
             <div class="company-name">Perplexity</div>
             <div class="company-stat">Key model: <strong>pplx-api</strong></div>
@@ -676,12 +675,12 @@
         </div>
 
         <!-- KIMI -->
-        <div class="company-card fade-in" data-testid="card-company-kimi">
+        <div class="company-card" data-testid="card-company-kimi">
           <div class="company-header">
             <div class="company-name">Kimi (Moonshot AI)</div>
             <div class="company-stat">Key model: <strong>Kimi 2.5</strong></div>
             <div class="company-stat">Funding: <strong>$2.6B+</strong> across 5+ rounds</div>
-            <div class="company-stat">Model access: Closed</div>
+            <div class="company-stat">Model access: Open Weights</div>
           </div>
           <div class="company-detail">
             <div class="card-tabs" role="tablist">
@@ -721,7 +720,7 @@
         </div>
 
         <!-- MISTRAL -->
-        <div class="company-card fade-in" data-testid="card-company-mistral">
+        <div class="company-card" data-testid="card-company-mistral">
           <div class="company-header">
             <div class="company-name">Mistral AI</div>
             <div class="company-stat">Key model: <strong>Mistral Large</strong></div>
@@ -779,7 +778,7 @@
     <div class="accent-rule container"></div>
 
     <div class="warm-band">
-      <section class="section container-wide fade-in">
+      <section class="section container-wide">
         <h2>At a glance</h2>
         <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-sm);">This is the landscape we navigate when picking tools for each project. No single model wins everything.</p>
 
@@ -805,7 +804,7 @@
               <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">DeepSeek</td><td style="padding: 0.75rem 1rem;">DeepSeek V3</td><td style="padding: 0.75rem 1rem;">Open Weights (MIT)</td><td style="padding: 0.75rem 1rem;">Self-funded</td><td style="padding: 0.75rem 1rem;">$0</td><td style="padding: 0.75rem 1rem;">Minimal</td><td style="padding: 0.75rem 1rem;">~$1B+/yr</td></tr>
               <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Qwen</td><td style="padding: 0.75rem 1rem;">Qwen 3.5</td><td style="padding: 0.75rem 1rem;">Open Weights (Apache 2.0)</td><td style="padding: 0.75rem 1rem;">&mdash; *</td><td style="padding: 0.75rem 1rem;">&mdash;</td><td style="padding: 0.75rem 1rem;">~$16B Cloud</td><td style="padding: 0.75rem 1rem;">~$21B/yr</td></tr>
               <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Perplexity</td><td style="padding: 0.75rem 1rem;">pplx-api</td><td style="padding: 0.75rem 1rem;">Closed</td><td style="padding: 0.75rem 1rem;">$21B</td><td style="padding: 0.75rem 1rem;">$1.7B</td><td style="padding: 0.75rem 1rem;">~$200M ARR</td><td style="padding: 0.75rem 1rem;">Not disclosed</td></tr>
-              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Kimi</td><td style="padding: 0.75rem 1rem;">Kimi 2.5</td><td style="padding: 0.75rem 1rem;">Closed</td><td style="padding: 0.75rem 1rem;">$18B</td><td style="padding: 0.75rem 1rem;">$2.6B+</td><td style="padding: 0.75rem 1rem;">Early stage</td><td style="padding: 0.75rem 1rem;">Not disclosed</td></tr>
+              <tr style="border-bottom: 1px solid var(--border-light);"><td style="padding: 0.75rem 1rem 0.75rem 0;">Kimi</td><td style="padding: 0.75rem 1rem;">Kimi 2.5</td><td style="padding: 0.75rem 1rem;">Open Weights</td><td style="padding: 0.75rem 1rem;">$18B</td><td style="padding: 0.75rem 1rem;">$2.6B+</td><td style="padding: 0.75rem 1rem;">Early stage</td><td style="padding: 0.75rem 1rem;">Not disclosed</td></tr>
               <tr><td style="padding: 0.75rem 1rem 0.75rem 0;">Mistral</td><td style="padding: 0.75rem 1rem;">Mistral Large</td><td style="padding: 0.75rem 1rem;">Open Weights (Apache 2.0)</td><td style="padding: 0.75rem 1rem;">$14B</td><td style="padding: 0.75rem 1rem;">$3.1B</td><td style="padding: 0.75rem 1rem;">~$100M ARR</td><td style="padding: 0.75rem 1rem;">~&euro;240M/yr</td></tr>
             </tbody>
           </table>
