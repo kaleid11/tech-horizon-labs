@@ -87,6 +87,12 @@ body > *:not(#dot-grid) {
   z-index: 1;
 }
 
+/* Nav must sit above sibling sections so mobile dropdown isn't obscured */
+body > nav,
+body > header {
+  z-index: 10;
+}
+
 /* --- Typography --- */
 h1, h2, h3 {
   font-family: var(--font-heading);
