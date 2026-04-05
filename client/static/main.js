@@ -600,6 +600,17 @@
     svgEl.appendChild(svgCreate('line', { x1: pad.left, y1: H - pad.bottom, x2: W - pad.right, y2: H - pad.bottom, stroke: '#ccc', 'stroke-width': '1' }));
     svgEl.appendChild(svgCreate('line', { x1: pad.left, y1: pad.top, x2: pad.left, y2: H - pad.bottom, stroke: '#ccc', 'stroke-width': '1' }));
 
+    var defs = svgCreate('defs', {});
+    companies.forEach(function(co, ci) {
+      var grad = svgCreate('linearGradient', { id: config.svgId + '-grad-' + ci, x1: '0', y1: '0', x2: '0', y2: '1' });
+      var stop1 = svgCreate('stop', { offset: '0%', 'stop-color': co.color, 'stop-opacity': '0.18' });
+      var stop2 = svgCreate('stop', { offset: '100%', 'stop-color': co.color, 'stop-opacity': '0.01' });
+      grad.appendChild(stop1);
+      grad.appendChild(stop2);
+      defs.appendChild(grad);
+    });
+    svgEl.appendChild(defs);
+
     var highlighted = null;
     var lineGroups = [];
 
@@ -614,7 +625,7 @@
       var lastP = co.points[co.points.length - 1], firstP = co.points[0];
       areaPath += 'L' + xPos(lastP.date).toFixed(1) + ',' + yPos(0) + 'L' + xPos(firstP.date).toFixed(1) + ',' + yPos(0) + 'Z';
 
-      g.appendChild(svgCreate('path', { d: areaPath, fill: co.color, opacity: '0.06' }));
+      g.appendChild(svgCreate('path', { d: areaPath, fill: 'url(#' + config.svgId + '-grad-' + ci + ')' }));
       g.appendChild(svgCreate('path', { d: linePath, fill: 'none', stroke: co.color, 'stroke-width': '2.5', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
 
       co.points.forEach(function(p) {
@@ -635,13 +646,23 @@
       if (!tooltip) return;
       var valStr = p.val >= 1 ? '$' + p.val.toFixed(1) + 'B' : '$' + (p.val * 1000).toFixed(0) + 'M';
       if (p.val >= 1000) valStr = '$' + (p.val / 1000).toFixed(2) + 'T';
-      var extra = p.label ? (' (' + p.label + ')') : '';
-      tooltip.innerHTML = '<strong>' + name + '</strong><br>' + p.date + extra + ' &mdash; ' + valStr;
+      var dateStr = p.date.replace('-', '/');
+      var roundStr = p.label ? '<br><span style="color:var(--text-muted);font-size:0.75rem;">' + p.label + '</span>' : '';
+      tooltip.innerHTML = '<strong>' + name + '</strong> ' + valStr + '<br>' + dateStr + roundStr;
+      tooltip.style.left = '0px';
+      tooltip.style.top = '0px';
       tooltip.classList.add('visible');
       var wrap = document.getElementById(config.wrapId);
       var wRect = wrap.getBoundingClientRect();
-      tooltip.style.left = (ev.clientX - wRect.left + 12) + 'px';
-      tooltip.style.top = (ev.clientY - wRect.top - 30) + 'px';
+      var tipW = tooltip.offsetWidth;
+      var tipH = tooltip.offsetHeight;
+      var tipLeft = ev.clientX - wRect.left + 14;
+      var tipTop = ev.clientY - wRect.top - tipH - 8;
+      if (tipLeft + tipW > wRect.width) tipLeft = Math.max(0, ev.clientX - wRect.left - tipW - 14);
+      if (tipTop < 0) tipTop = ev.clientY - wRect.top + 14;
+      if (tipLeft < 0) tipLeft = 4;
+      tooltip.style.left = tipLeft + 'px';
+      tooltip.style.top = tipTop + 'px';
     }
     function hideTip() { if (tooltip) tooltip.classList.remove('visible'); }
 
@@ -706,10 +727,10 @@
       {
         name: 'Anthropic', color: '#d4a843',
         points: [
-          { date: '2022-04', val: 4.1, label: 'Series B' },
-          { date: '2023-02', val: 5, label: 'Google strategic' },
-          { date: '2023-05', val: 5, label: 'Series C' },
-          { date: '2023-08', val: 5, label: 'SK Telecom strategic' },
+          { date: '2022-04', val: 4, label: 'Series B' },
+          { date: '2023-02', val: 4.6, label: 'Google strategic' },
+          { date: '2023-05', val: 4.1, label: 'Series C' },
+          { date: '2023-08', val: 4.1, label: 'SK Telecom strategic' },
           { date: '2023-12', val: 18.4, label: 'Series D' },
           { date: '2024-06', val: 18.4, label: 'Series E' },
           { date: '2025-01', val: 60, label: 'Series D ext.' },
