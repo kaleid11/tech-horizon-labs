@@ -1413,6 +1413,7 @@ blockquote cite {
 .captable-table-wrap {
   flex: 1;
   min-width: 0;
+  max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -2025,6 +2026,23 @@ blockquote cite {
     flex-wrap: wrap;
     gap: 0.5rem 1rem;
     justify-content: center;
+  }
+
+  #captable-full {
+    overflow-x: hidden;
+  }
+
+  .captable-table-wrap {
+    width: calc(100% + 2 * var(--side-padding));
+    margin-left: calc(-1 * var(--side-padding));
+    margin-right: calc(-1 * var(--side-padding));
+    padding: 0 var(--side-padding);
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
+
+  .captable-table {
+    min-width: 580px;
   }
 
   .tool-grid {
