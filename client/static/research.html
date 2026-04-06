@@ -364,6 +364,7 @@
               <button class="card-tab active" data-tab="overview" role="tab" aria-selected="true">Overview</button>
               <button class="card-tab" data-tab="funding" role="tab" aria-selected="false">Funding</button>
               <button class="card-tab" data-tab="investors" role="tab" aria-selected="false">Investors</button>
+              <button class="card-tab" data-tab="captable" role="tab" aria-selected="false">Cap Table</button>
             </div>
             <div class="card-panel active" data-panel="overview">
               <p>Pivoted from nonprofit to public benefit corporation. $852B post-money valuation (Mar 2026). Amazon ($50B), Nvidia ($30B), and SoftBank ($30B) led the latest round. Microsoft holds ~27%. Board reshaped after the Nov 2023 crisis. Most valuable startup in history. Estimated ~$12.7B ARR (2025), projecting $29B for 2026, though still operating at a significant loss against an estimated ~$7B+ annual compute spend.</p>
@@ -397,6 +398,30 @@
                 <span class="inv-tag">Tiger Global</span>
                 <span class="inv-tag">Khosla Ventures</span>
               </div>
+            </div>
+            <div class="card-panel" data-panel="captable">
+              <div class="captable-mini" data-testid="openai-captable-mini">
+                <div class="captable-mini-chart">
+                  <svg viewBox="0 0 200 200" width="160" height="160" role="img" aria-label="OpenAI ownership breakdown donut chart">
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#6B8EC2" stroke-width="28" stroke-dasharray="113.47 326.35" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#B5654A" stroke-width="28" stroke-dasharray="204.87 234.95" stroke-dashoffset="-113.47" transform="rotate(-90 100 100)"/>
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#7B9E6B" stroke-width="28" stroke-dasharray="85.11 354.71" stroke-dashoffset="-318.34" transform="rotate(-90 100 100)"/>
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#9B7CB8" stroke-width="28" stroke-dasharray="34.44 405.38" stroke-dashoffset="-403.45" transform="rotate(-90 100 100)"/>
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#C4B5A0" stroke-width="28" stroke-dasharray="1.94 437.88" stroke-dashoffset="-437.89" transform="rotate(-90 100 100)"/>
+                    <circle cx="100" cy="100" r="56" fill="var(--white)"/>
+                    <text x="100" y="96" text-anchor="middle" font-family="var(--font-heading)" font-size="16" font-weight="600" fill="var(--text)">$852B</text>
+                    <text x="100" y="114" text-anchor="middle" font-family="var(--font-body)" font-size="9" fill="var(--text-muted)">Post-money</text>
+                  </svg>
+                </div>
+                <div class="captable-mini-legend">
+                  <div class="captable-legend-item"><span class="captable-dot" style="background:#B5654A;"></span><strong>Strategic Corporates</strong><span class="captable-legend-val">46.58% &mdash; $396.9B</span></div>
+                  <div class="captable-legend-item"><span class="captable-dot" style="background:#6B8EC2;"></span><strong>Nonprofit Foundation</strong><span class="captable-legend-val">25.80% &mdash; $219.8B</span></div>
+                  <div class="captable-legend-item"><span class="captable-dot" style="background:#7B9E6B;"></span><strong>Employees &amp; Founders</strong><span class="captable-legend-val">19.35% &mdash; $164.9B</span></div>
+                  <div class="captable-legend-item"><span class="captable-dot" style="background:#9B7CB8;"></span><strong>VC &amp; Institutional</strong><span class="captable-legend-val">7.83% &mdash; $63.4B</span></div>
+                  <div class="captable-legend-item"><span class="captable-dot" style="background:#C4B5A0;"></span><strong>Individual / Retail</strong><span class="captable-legend-val">0.44% &mdash; $3.4B</span></div>
+                </div>
+              </div>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.75rem;">Estimated / Reconstructed. Not an official disclosure. <a href="#captable-full" class="link-arrow" style="font-size:0.8125rem;">See full cap table &darr;</a></p>
             </div>
           </div>
         </div>
@@ -773,6 +798,122 @@
         </div>
 
       </div>
+    </section>
+
+    <section class="section container" id="captable-full" data-testid="openai-captable-full">
+      <h2>OpenAI cap table &mdash; who owns the $852B</h2>
+      <p style="color: var(--text-muted); font-size: 0.9375rem; margin-bottom: var(--space-md);">A reconstructed ownership breakdown of the most valuable startup in history, based on publicly reported funding rounds, investor disclosures, and secondary-market data as of March 2026.</p>
+
+      <div class="captable-layout">
+        <div class="captable-chart-wrap">
+          <svg viewBox="0 0 280 280" class="captable-donut" role="img" aria-label="OpenAI ownership by category at $852B valuation">
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#6B8EC2" stroke-width="36" stroke-dasharray="162.10 466.04" stroke-dashoffset="0" transform="rotate(-90 140 140)"/>
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#B5654A" stroke-width="36" stroke-dasharray="292.67 335.47" stroke-dashoffset="-162.10" transform="rotate(-90 140 140)"/>
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#7B9E6B" stroke-width="36" stroke-dasharray="121.57 506.57" stroke-dashoffset="-454.77" transform="rotate(-90 140 140)"/>
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#9B7CB8" stroke-width="36" stroke-dasharray="49.20 578.94" stroke-dashoffset="-576.34" transform="rotate(-90 140 140)"/>
+            <circle cx="140" cy="140" r="100" fill="none" stroke="#C4B5A0" stroke-width="36" stroke-dasharray="2.77 625.37" stroke-dashoffset="-625.54" transform="rotate(-90 140 140)"/>
+            <circle cx="140" cy="140" r="82" fill="var(--white)"/>
+            <text x="140" y="132" text-anchor="middle" font-family="var(--font-heading)" font-size="22" font-weight="600" fill="var(--text)">$852B</text>
+            <text x="140" y="152" text-anchor="middle" font-family="var(--font-body)" font-size="11" fill="var(--text-muted)">Post-money valuation</text>
+          </svg>
+          <div class="captable-chart-legend">
+            <div class="captable-legend-item"><span class="captable-dot" style="background:#B5654A;"></span><strong>Strategic Corporates</strong><span class="captable-legend-val">46.58%</span></div>
+            <div class="captable-legend-item"><span class="captable-dot" style="background:#6B8EC2;"></span><strong>Nonprofit Foundation</strong><span class="captable-legend-val">25.80%</span></div>
+            <div class="captable-legend-item"><span class="captable-dot" style="background:#7B9E6B;"></span><strong>Employees &amp; Founders</strong><span class="captable-legend-val">19.35%</span></div>
+            <div class="captable-legend-item"><span class="captable-dot" style="background:#9B7CB8;"></span><strong>VC &amp; Institutional</strong><span class="captable-legend-val">7.83%</span></div>
+            <div class="captable-legend-item"><span class="captable-dot" style="background:#C4B5A0;"></span><strong>Individual / Retail</strong><span class="captable-legend-val">0.44%</span></div>
+          </div>
+        </div>
+
+        <div class="captable-table-wrap">
+          <table class="captable-table" data-testid="captable-data-table">
+            <thead>
+              <tr>
+                <th>Shareholder</th>
+                <th>% Ownership</th>
+                <th>Value at $852B</th>
+                <th>Est. Cost Basis</th>
+                <th>Unrealized Gain</th>
+                <th>Return Multiple</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="captable-category-row" style="--cat-color:#6B8EC2;">
+                <td colspan="6"><span class="captable-cat-dot" style="background:#6B8EC2;"></span>Nonprofit Foundation &amp; Governance &mdash; 25.80% ($219.8B)</td>
+              </tr>
+              <tr class="captable-category-desc">
+                <td colspan="6">The OpenAI Foundation retains a controlling governance stake to ensure the company remains aligned with its public-benefit mission. This block does not represent a cash investment.</td>
+              </tr>
+              <tr><td>OpenAI Foundation</td><td>25.80%</td><td>$219.8B</td><td>$0.0</td><td>$219.8B</td><td>&mdash;</td></tr>
+
+              <tr class="captable-category-row" style="--cat-color:#B5654A;">
+                <td colspan="6"><span class="captable-cat-dot" style="background:#B5654A;"></span>Strategic Corporate Investors &mdash; 46.58% ($396.9B)</td>
+              </tr>
+              <tr class="captable-category-desc">
+                <td colspan="6">Large technology companies that invested for both financial returns and strategic access to OpenAI&rsquo;s models and infrastructure. Microsoft is by far the largest, having backed OpenAI since 2019.</td>
+              </tr>
+              <tr><td>Microsoft</td><td>26.79%</td><td>$228.3B</td><td>$13.0B</td><td>$215.3B</td><td>17.6x</td></tr>
+              <tr><td>SoftBank Group</td><td>11.66%</td><td>$99.3B</td><td>$69.3B</td><td>$34.7B</td><td>1.5x</td></tr>
+              <tr><td>Amazon.com, Inc</td><td>4.66%</td><td>$39.7B</td><td>$15.0B</td><td>$24.7B</td><td>2.6x</td></tr>
+              <tr><td>NVIDIA Corporation</td><td>3.47%</td><td>$29.6B</td><td>$30.1B</td><td>-$0.5B</td><td>1.0x</td></tr>
+
+              <tr class="captable-category-row" style="--cat-color:#7B9E6B;">
+                <td colspan="6"><span class="captable-cat-dot" style="background:#7B9E6B;"></span>Employees, Founders &amp; Management &mdash; 19.35% ($164.9B)</td>
+              </tr>
+              <tr class="captable-category-desc">
+                <td colspan="6">Equity held by current and former staff through stock grants, options, and secondary sales. CEO Sam Altman&rsquo;s stake was disclosed as pending restructuring terms.</td>
+              </tr>
+              <tr><td>Current Employees (Pool)</td><td>15.88%</td><td>$135.3B</td><td>~$0</td><td>~$135B</td><td>&mdash;</td></tr>
+              <tr><td>Former Employees / Alumni</td><td>3.47%</td><td>$29.6B</td><td>~$0</td><td>~$30B</td><td>&mdash;</td></tr>
+              <tr><td>Sam Altman &mdash; CEO</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td></tr>
+
+              <tr class="captable-category-row" style="--cat-color:#9B7CB8;">
+                <td colspan="6"><span class="captable-cat-dot" style="background:#9B7CB8;"></span>Venture Capital &amp; Institutional Investors &mdash; 7.83% ($63.4B)</td>
+              </tr>
+              <tr class="captable-category-desc">
+                <td colspan="6">Professional venture capital, growth equity, and institutional funds. Many entered at earlier (lower) valuations, producing outsized returns. Thrive Capital led the October 2024 PBC round. Khosla Ventures and Sound Ventures were among the earliest backers.</td>
+              </tr>
+              <tr><td>Thrive Capital</td><td>1.98%</td><td>$16.9B</td><td>$3.5B</td><td>$13.4B</td><td>4.8x</td></tr>
+              <tr><td>Andreessen Horowitz (a16z)</td><td>0.79%</td><td>$6.8B</td><td>$2.5B</td><td>$4.3B</td><td>2.7x</td></tr>
+              <tr><td>MGX (Mubadala)</td><td>0.69%</td><td>$5.9B</td><td>$1.5B</td><td>$4.4B</td><td>3.9x</td></tr>
+              <tr><td>D.E. Shaw Ventures</td><td>0.50%</td><td>$4.2B</td><td>$2.0B</td><td>$2.2B</td><td>2.1x</td></tr>
+              <tr><td>TPG Inc.</td><td>0.45%</td><td>$3.8B</td><td>$1.5B</td><td>$2.3B</td><td>2.5x</td></tr>
+              <tr><td>T. Rowe Price Associates</td><td>0.40%</td><td>$3.4B</td><td>$1.0B</td><td>$2.4B</td><td>3.4x</td></tr>
+              <tr><td>Sequoia Capital</td><td>0.35%</td><td>$3.0B</td><td>$1.0B</td><td>$2.0B</td><td>3.0x</td></tr>
+              <tr><td>Blackstone / BlackRock</td><td>0.35%</td><td>$3.0B</td><td>$1.0B</td><td>$2.0B</td><td>3.0x</td></tr>
+              <tr><td>Coatue Management</td><td>0.30%</td><td>$2.5B</td><td>$0.8B</td><td>$1.7B</td><td>3.1x</td></tr>
+              <tr><td>Dragoneer Investment Group</td><td>0.25%</td><td>$2.1B</td><td>$2.8B</td><td>-$0.7B</td><td>0.75x</td></tr>
+              <tr><td>Altimeter Capital</td><td>0.20%</td><td>$1.7B</td><td>$0.6B</td><td>$1.1B</td><td>2.8x</td></tr>
+              <tr><td>Temasek Holdings</td><td>0.20%</td><td>$1.7B</td><td>$1.7B</td><td>$0.0</td><td>1.0x</td></tr>
+              <tr><td>Khosla Ventures</td><td>0.18%</td><td>$1.5B</td><td>$0.05B</td><td>$1.5B</td><td>30x</td></tr>
+              <tr><td>Sound Ventures</td><td>0.15%</td><td>$1.3B</td><td>$0.03B</td><td>&mdash;</td><td>~43x</td></tr>
+              <tr><td>Insight Partners</td><td>0.15%</td><td>$1.3B</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr><td>UC Investments (Univ. of California)</td><td>0.12%</td><td>$1.0B</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr><td>Fidelity Mgmt. &amp; Research Co.</td><td>0.12%</td><td>$1.0B</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr><td>D1/Apolus/Sands/Whale/Goanna/Paragon</td><td>0.48%</td><td>$4.1B</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr><td>Early Angels &mdash; Hamid Diboud</td><td>0.17%</td><td>$1.4B</td><td>$0.01B</td><td>$1.4B</td><td>~140x</td></tr>
+
+              <tr class="captable-category-row" style="--cat-color:#C4B5A0;">
+                <td colspan="6"><span class="captable-cat-dot" style="background:#C4B5A0;"></span>Individual Investors, Retail &amp; Secondary Market &mdash; 0.44% ($3.4B)</td>
+              </tr>
+              <tr class="captable-category-desc">
+                <td colspan="6">Smaller allocations available through bank-brokered channels during Series G, plus publicly traded ETF exposure via ARK Invest funds.</td>
+              </tr>
+              <tr><td>Individual Investors (Bank Channel &mdash; Series G)</td><td>0.35%</td><td>$3.0B</td><td>$3.0B</td><td>&mdash;</td><td>1.0x</td></tr>
+              <tr><td>ARK Invest ETFs (ARKK/ARKQ/ARK)</td><td>0.09%</td><td>$0.4B</td><td>$0.4B</td><td>$0.0</td><td>1.0x</td></tr>
+
+              <tr class="captable-total-row">
+                <td><strong>Grand Total</strong></td>
+                <td><strong>100.0%</strong></td>
+                <td><strong>$852.0B</strong></td>
+                <td colspan="3"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="captable-disclaimer">Estimated / Reconstructed. Not an official disclosure. Cost basis figures are best estimates from public sources. Percentages are approximate and may not sum to exactly 100% due to rounding. Data compiled from SEC filings, press releases, and credible financial reporting as of March 2026.</p>
     </section>
 
     <div class="accent-rule container"></div>
