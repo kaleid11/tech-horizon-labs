@@ -22,6 +22,14 @@ async function buildAll() {
   console.log("copying static site...");
   await cp("client/static", "dist/static", { recursive: true });
 
+  console.log("minifying client JS...");
+  await esbuild({
+    entryPoints: ["client/static/main.js"],
+    minify: true,
+    outfile: "dist/static/main.min.js",
+    logLevel: "info",
+  });
+
   console.log("building server...");
   const pkg = JSON.parse(await readFile("package.json", "utf-8"));
   const allDeps = [
