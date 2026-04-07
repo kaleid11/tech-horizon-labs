@@ -46,7 +46,7 @@
   --bg-warm: hsl(25 35% 95%);
   --text: #1a1a1a;
   --text-secondary: #4a4a4a;
-  --text-muted: #7a7a7a;
+  --text-muted: #6b6b6b;
   --accent: #B5654A;
   --accent-hover: #9E5740;
   --accent-light: hsl(18 45% 92%);
@@ -464,7 +464,7 @@ a:hover {
 
 .method-duration {
   font-size: 0.8125rem;
-  color: var(--accent);
+  color: #8B4D38;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-bottom: 0.75rem;
