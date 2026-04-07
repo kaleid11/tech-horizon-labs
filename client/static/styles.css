@@ -438,20 +438,18 @@ a:hover {
   font-size: 5.5rem;
   font-weight: 700;
   line-height: 1;
-  color: var(--accent);
-  opacity: 0.06;
+  color: #A58070;
   position: absolute;
   top: -1rem;
   left: -0.25rem;
   pointer-events: none;
   user-select: none;
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: color 0.8s ease, transform 0.8s ease;
   will-change: transform;
 }
 
-/* Activated state — numbers become more visible */
 .flow-active .method-number {
-  opacity: 0.12;
+  color: #987060;
 }
 
 .method-title {
