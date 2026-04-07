@@ -30,6 +30,16 @@ async function buildAll() {
     logLevel: "info",
   });
 
+  console.log("minifying client CSS...");
+  await esbuild({
+    entryPoints: ["client/static/styles.css"],
+    minify: true,
+    loader: { ".css": "css" },
+    outfile: "dist/static/styles.css",
+    allowOverwrite: true,
+    logLevel: "info",
+  });
+
   console.log("building server...");
   const pkg = JSON.parse(await readFile("package.json", "utf-8"));
   const allDeps = [

@@ -26,7 +26,7 @@
 
     const A = { r: 181, g: 101, b: 74 }; // terracotta accent
     const isMobile = window.innerWidth <= 768;
-    const COUNT = isMobile ? Math.min(50, Math.max(38, Math.floor(window.innerWidth / 9))) : Math.min(100, Math.floor(window.innerWidth / 12));
+    const COUNT = isMobile ? Math.min(40, Math.max(28, Math.floor(window.innerWidth / 11))) : Math.min(100, Math.floor(window.innerWidth / 12));
     const CONNECT_DIST = isMobile ? 120 : 180;
     const MOUSE_RADIUS = isMobile ? 200 : 300;
 
@@ -267,9 +267,10 @@
                       mode === 'chaos' ? CONNECT_DIST * 0.5 :
                       CONNECT_DIST;
       const packetChance = mode === 'network' ? 0.003 : mode === 'flow' ? 0.002 : 0.0005;
+      const jStep = isMobile ? 2 : 1;
 
       for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
+        for (let j = i + 1; j < particles.length; j += jStep) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
@@ -305,7 +306,16 @@
       }
     }
 
-    function animate() {
+    let lastFrameTime = 0;
+    const MOBILE_FRAME_INTERVAL = 1000 / 30; // 30fps cap on mobile only
+
+    function animate(now) {
+      if (isMobile && now - lastFrameTime < MOBILE_FRAME_INTERVAL) {
+        animFrame = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrameTime = now || 0;
+
       time += 0.016;
       ctx.clearRect(0, 0, w, h);
 
@@ -348,9 +358,25 @@
     window.addEventListener('touchend', () => { mouseX = -9999; mouseY = -9999; mouseDown = false; });
     window.addEventListener('resize', () => { cancelAnimationFrame(animFrame); init(); animFrame = requestAnimationFrame(animate); });
 
-    init();
-    updateScroll();
-    animFrame = requestAnimationFrame(animate);
+    function start() {
+      init();
+      updateScroll();
+      animFrame = requestAnimationFrame(animate);
+    }
+
+    function deferredStart() {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(start, { timeout: 1500 });
+      } else {
+        setTimeout(start, 800);
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      deferredStart();
+    } else {
+      window.addEventListener('load', deferredStart, { once: true });
+    }
   }
 
   // ─────────────────────────────────────────────
@@ -399,22 +425,33 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach((el) => fadeObs.observe(el));
 
-  // Parallax
+  // Parallax — cache nodes once, batch reads before writes to avoid forced reflows
+  const heroTagline = document.querySelector('.hero .tagline');
+  const methodNumbers = Array.from(document.querySelectorAll('.method-number'));
   let scrollTick = false;
   window.addEventListener('scroll', () => {
-    if (!scrollTick) {
-      requestAnimationFrame(() => {
-        const sy = window.scrollY;
-        const tag = document.querySelector('.hero .tagline');
-        if (tag) { tag.style.transform = `translateY(${sy * 0.12}px)`; tag.style.opacity = Math.max(0, 1 - sy / 400); }
-        document.querySelectorAll('.method-number').forEach((n) => {
-          const r = n.parentElement.getBoundingClientRect();
-          n.style.transform = `translateY(${(r.top - window.innerHeight / 2) * 0.06}px)`;
-        });
-        scrollTick = false;
-      });
-      scrollTick = true;
-    }
+    if (scrollTick) return;
+    scrollTick = true;
+    requestAnimationFrame(() => {
+      const sy = window.scrollY;
+      const vh = window.innerHeight;
+
+      // READ pass — gather all geometry first
+      const reads = new Array(methodNumbers.length);
+      for (let i = 0; i < methodNumbers.length; i++) {
+        reads[i] = methodNumbers[i].parentElement.getBoundingClientRect().top;
+      }
+
+      // WRITE pass — apply all style changes
+      if (heroTagline) {
+        heroTagline.style.transform = `translateY(${sy * 0.12}px)`;
+        heroTagline.style.opacity = Math.max(0, 1 - sy / 400);
+      }
+      for (let i = 0; i < methodNumbers.length; i++) {
+        methodNumbers[i].style.transform = `translateY(${(reads[i] - vh / 2) * 0.06}px)`;
+      }
+      scrollTick = false;
+    });
   }, { passive: true });
 
   // Method flow activation
