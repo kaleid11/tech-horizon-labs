@@ -5,6 +5,30 @@ import path from "path";
 const BASE_URL = "https://techhorizonlabs.com";
 const SITE_NAME = "Tech Horizon Labs";
 
+let _criticalCSS: string | null = null;
+function getCriticalCSS(servingDir: string): string {
+  if (_criticalCSS !== null) return _criticalCSS;
+  const critPath = path.resolve(servingDir, "critical.css");
+  if (fs.existsSync(critPath)) {
+    _criticalCSS = fs.readFileSync(critPath, "utf-8").trim();
+  } else {
+    _criticalCSS = "";
+  }
+  return _criticalCSS;
+}
+
+function injectCriticalCSS(html: string, servingDir: string): string {
+  const css = getCriticalCSS(servingDir);
+  if (!css) return html;
+  const styleBlock = `<style>${css}</style>`;
+  const asyncLink = `<link rel="stylesheet" href="/styles.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/styles.css"></noscript>`;
+  const replaced = html.replace(
+    /<link[^>]*href=["']\/styles\.css["'][^>]*>/i,
+    `${styleBlock}\n  ${asyncLink}`
+  );
+  return replaced;
+}
+
 /**
  * Core pages with server-side meta injection.
  */
@@ -144,8 +168,8 @@ function getHtml(servingDir: string, filePath: string, urlPath?: string): string
   if (urlPath && PAGES[urlPath]) {
     html = injectMeta(html, urlPath);
   }
+  html = injectCriticalCSS(html, servingDir);
 
-  // Only cache in production
   if (process.env.NODE_ENV === "production") {
     htmlCache.set(cacheKey, html);
   }

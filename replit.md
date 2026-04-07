@@ -24,7 +24,8 @@ Preferred communication style: Simple, everyday language.
 - **API Design**: RESTful endpoints under the `/api/*` prefix.
 - **Database ORM**: Drizzle ORM with PostgreSQL dialect.
 - **Schema Validation**: Zod with drizzle-zod for type-safe validation.
-- **Static Serving**: `server/static.ts` handles page routing with two maps: `PAGES` (with meta injection) and `STATIC_FILES` (serve-as-is). Wildcard redirects for unknown nested slugs come after specific routes.
+- **Static Serving**: `server/static.ts` handles page routing with two maps: `PAGES` (with meta injection) and `STATIC_FILES` (serve-as-is). Wildcard redirects for unknown nested slugs come after specific routes. All HTML responses get critical CSS inlined as a `<style>` block (from `critical.css`) and the main stylesheet loads asynchronously via `media="print" onload="this.media='all'"` pattern.
+- **Critical CSS**: `client/static/critical.css` contains above-the-fold styles (font-face, reset, variables, base, nav, hero, fade-in, skip-link, mobile breakpoints). Injected server-side by `server/static.ts` into every HTML response. Minified by `script/build.ts` for production.
 - **Post-Merge**: `scripts/post-merge.sh` runs `npm install` and `drizzle-kit push` after task merges.
 
 ### Data Storage
