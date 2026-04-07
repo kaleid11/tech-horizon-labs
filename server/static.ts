@@ -225,7 +225,11 @@ export function serveStatic(app: Express) {
   app.get("/insights/:slug", (_req, res) => res.redirect(301, "/"));
   app.get("/insights/:slug/", (_req, res) => res.redirect(301, "/"));
 
-  // Serve CSS, JS, favicon, and other static assets
+  app.use("/fonts", express.static(path.join(servingDir, "fonts"), {
+    maxAge: "365d",
+    immutable: true,
+  }));
+
   app.use(express.static(servingDir));
 
   // Serve public dir for og-image and other public assets
