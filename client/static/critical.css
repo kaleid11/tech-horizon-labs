@@ -1,3 +1,7 @@
+/* CRITICAL CSS — above-the-fold styles inlined by server/static.ts.
+   SYNC NOTE: When modifying styles.css rules for font-face, reset, :root
+   variables, body, nav, hero, trust-row, fade-in, skip-link, or mobile
+   breakpoints, update this file to match. Build minifies via script/build.ts. */
 @font-face {
   font-family: 'Fraunces';
   font-style: normal;

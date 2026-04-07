@@ -22,11 +22,12 @@ function injectCriticalCSS(html: string, servingDir: string): string {
   if (!css) return html;
   const styleBlock = `<style>${css}</style>`;
   const asyncLink = `<link rel="stylesheet" href="/styles.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/styles.css"></noscript>`;
-  const replaced = html.replace(
-    /<link[^>]*href=["']\/styles\.css["'][^>]*>/i,
-    `${styleBlock}\n  ${asyncLink}`
-  );
-  return replaced;
+  const pattern = /<link[^>]*href=["']\/styles\.css["'][^>]*>/i;
+  if (!pattern.test(html)) {
+    console.warn("[critical-css] No stylesheet link found to replace — page will use default loading");
+    return html;
+  }
+  return html.replace(pattern, `${styleBlock}\n  ${asyncLink}`);
 }
 
 /**
