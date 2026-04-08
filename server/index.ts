@@ -21,7 +21,7 @@ app.use(helmet({
       fontSrc: ["'self'"],
       imgSrc: ["'self'", "data:", "https:", "blob:"],
       connectSrc: ["'self'", "https://www.google-analytics.com", "https://www.googletagmanager.com", "https://plausible.io"],
-      frameSrc: ["'none'"],
+      frameSrc: ["'self'", "https://www.youtube.com"],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
     },
