@@ -70,7 +70,7 @@ outputType = "webview"
 [agent]
 stack = "MOCKUP_JS"
 mockupState = "FULLSTACK"
-integrations = ["resend:1.0.0"]
+integrations = ["resend:1.0.0", "github:1.0.0"]
 
 [postMerge]
 path = "scripts/post-merge.sh"
