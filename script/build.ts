@@ -1,5 +1,6 @@
 import { build as esbuild } from "esbuild";
-import { rm, readFile, cp } from "fs/promises";
+import { rm, readFile, cp, readdir } from "fs/promises";
+import { join } from "path";
 
 // Server deps to bundle (reduces cold start openat syscalls)
 const allowlist = [
@@ -73,7 +74,86 @@ async function buildAll() {
   });
 }
 
-buildAll().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+async function collectHtmlFiles(dir: string): Promise<string[]> {
+  const files: string[] = [];
+  const entries = await readdir(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...(await collectHtmlFiles(full)));
+    } else if (entry.name.endsWith(".html")) {
+      files.push(full);
+    }
+  }
+  return files;
+}
+
+async function verifyStylesheetLinks() {
+  console.log("verifying stylesheet links in HTML files...");
+  const htmlFiles = await collectHtmlFiles("dist/static");
+  const pattern = /<link[^>]*href=["']\/styles\.css["'][^>]*>/i;
+  const missing: string[] = [];
+
+  for (const file of htmlFiles) {
+    const content = await readFile(file, "utf-8");
+    if (!pattern.test(content)) {
+      missing.push(file.replace("dist/static/", ""));
+    }
+  }
+
+  if (missing.length > 0) {
+    console.error(
+      `\n❌ BUILD FAILED: ${missing.length} HTML file(s) missing <link href="/styles.css"> tag.\n` +
+      `   These pages will NOT receive critical CSS injection at runtime:\n` +
+      missing.map((f) => `     - ${f}`).join("\n") +
+      `\n   Add <link rel="stylesheet" href="/styles.css"> to each file's <head>.\n`
+    );
+    process.exit(1);
+  }
+
+  console.log(`  ✓ all ${htmlFiles.length} HTML files have stylesheet link`);
+}
+
+async function checkCriticalCssDrift() {
+  console.log("checking critical CSS drift...");
+  const styles = await readFile("client/static/styles.css", "utf-8");
+  const critical = await readFile("client/static/critical.css", "utf-8");
+
+  const checks: { label: string; pattern: RegExp }[] = [
+    { label: "@font-face 'Fraunces'", pattern: /@font-face\s*\{[^}]*font-family:\s*['"]Fraunces['"]/s },
+    { label: "@font-face 'Instrument Sans'", pattern: /@font-face\s*\{[^}]*font-family:\s*['"]Instrument Sans['"]/s },
+    { label: ":root variables", pattern: /:root\s*\{/ },
+    { label: ".site-nav", pattern: /\.site-nav\s*\{/ },
+    { label: ".hero", pattern: /\.hero\s*\{/ },
+    { label: ".hero h1", pattern: /\.hero\s+h1\s*\{/ },
+    { label: ".fade-in", pattern: /\.fade-in\s*\{/ },
+    { label: ".skip-link", pattern: /\.skip-link\s*\{/ },
+    { label: ".trust-row", pattern: /\.trust-row\s*\{/ },
+    { label: ".nav-links", pattern: /\.nav-links\s*\{/ },
+  ];
+
+  const warnings: string[] = [];
+  for (const check of checks) {
+    if (check.pattern.test(styles) && !check.pattern.test(critical)) {
+      warnings.push(check.label);
+    }
+  }
+
+  if (warnings.length > 0) {
+    console.warn(
+      `\n⚠️  Critical CSS drift detected — ${warnings.length} selector group(s) in styles.css but missing from critical.css:\n` +
+      warnings.map((w) => `     - ${w}`).join("\n") +
+      `\n   Update client/static/critical.css to include above-the-fold selectors.\n`
+    );
+  } else {
+    console.log(`  ✓ critical.css covers all ${checks.length} expected selector groups`);
+  }
+}
+
+buildAll()
+  .then(() => verifyStylesheetLinks())
+  .then(() => checkCriticalCssDrift())
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
