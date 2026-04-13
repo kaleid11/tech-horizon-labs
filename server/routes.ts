@@ -128,12 +128,10 @@ export async function registerRoutes(
   app.get("/for-home/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/author/huxleythzn-world", (_req, res) => res.redirect(301, "/about"));
   app.get("/author/huxleythzn-world/", (_req, res) => res.redirect(301, "/about"));
-  app.get("/event/tech-horizon-labs-ai-for-business-launch-event", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/event/tech-horizon-labs-ai-for-business-launch-event/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/event/ai-workshop-for-business-noosa", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/event/ai-workshop-for-business-noosa/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/event/ai-for-business-sunshine-coast", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/event/ai-for-business-sunshine-coast/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/event/:slug", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/event/:slug/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/events/:slug", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/events/:slug/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/courses", (_req, res) => res.redirect(301, "/academy"));
   app.get("/courses/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/courses/sample-course", (_req, res) => res.redirect(301, "/academy"));
