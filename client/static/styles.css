@@ -384,6 +384,17 @@ a:hover {
   border-radius: 6px;
 }
 
+.footer-badge-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.footer-badge-link img {
+  display: block;
+  width: 140px;
+  height: auto;
+}
+
 .cloudflare-badge-prominent {
   display: block;
   width: 220px;
@@ -391,6 +402,18 @@ a:hover {
   height: auto;
   margin-top: 1.5rem;
   border-radius: 8px;
+}
+
+.badge-prominent-link {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.badge-prominent-link img {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
 }
 
 .cloudflare-badge-text {
