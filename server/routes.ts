@@ -98,6 +98,12 @@ export async function registerRoutes(
   app.get("/wp-content/:slug", (_req, res) => res.redirect(301, "/"));
   app.get("/wp-admin", (_req, res) => res.redirect(301, "/"));
   app.get("/wp-login.php", (_req, res) => res.redirect(301, "/"));
+  app.get("/privacy-policy", (_req, res) => res.redirect(301, "/privacy"));
+  app.get("/privacy-policy/", (_req, res) => res.redirect(301, "/privacy"));
+  app.get("/terms-of-service", (_req, res) => res.redirect(301, "/terms"));
+  app.get("/terms-of-service/", (_req, res) => res.redirect(301, "/terms"));
+  app.get("/book-here", (_req, res) => res.redirect(301, "/contact"));
+  app.get("/book-here/", (_req, res) => res.redirect(301, "/contact"));
   app.get("/feed", (_req, res) => res.redirect(301, "/"));
   app.get("/feed/", (_req, res) => res.redirect(301, "/"));
   app.get("/workshop/:slug", (_req, res) => res.redirect(301, "/academy"));
