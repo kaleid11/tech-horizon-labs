@@ -376,6 +376,12 @@ a:hover {
   border-radius: 8px;
 }
 
+.cloudflare-badge-text {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
 /* --- Hero --- */
 .hero {
   padding-top: var(--space-xl);
