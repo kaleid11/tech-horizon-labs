@@ -79,10 +79,10 @@ export async function registerRoutes(
   app.get("/contact-us/", (_req, res) => res.redirect(301, "/contact"));
   app.get("/about-us", (_req, res) => res.redirect(301, "/about"));
   app.get("/about-us/", (_req, res) => res.redirect(301, "/about"));
-  app.get("/blog", (_req, res) => res.redirect(301, "/"));
-  app.get("/blog/", (_req, res) => res.redirect(301, "/"));
-  app.get("/blog/:slug", (_req, res) => res.redirect(301, "/"));
-  app.get("/blog/:slug/", (_req, res) => res.redirect(301, "/"));
+  app.get("/blog", (_req, res) => res.redirect(301, "/insights"));
+  app.get("/blog/", (_req, res) => res.redirect(301, "/insights"));
+  app.get("/blog/:slug", (_req, res) => res.redirect(301, "/insights"));
+  app.get("/blog/:slug/", (_req, res) => res.redirect(301, "/insights"));
   app.get("/membership", (_req, res) => res.redirect(301, "/academy"));
   app.get("/membership/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshops", (_req, res) => res.redirect(301, "/academy"));
@@ -116,6 +116,32 @@ export async function registerRoutes(
   app.get("/home/", (_req, res) => res.redirect(301, "/"));
   app.get("/index.html", (_req, res) => res.redirect(301, "/"));
   app.get("/index.php", (_req, res) => res.redirect(301, "/"));
+
+  // ===== Additional WordPress legacy redirects =====
+  app.get("/ai-business-training-sunshine-coast", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/ai-business-training-sunshine-coast/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/ai-consultant-sunshine-coast-business-transformation", (_req, res) => res.redirect(301, "/locations/sunshine-coast"));
+  app.get("/ai-consultant-sunshine-coast-business-transformation/", (_req, res) => res.redirect(301, "/locations/sunshine-coast"));
+  app.get("/unctad-2025-ai-report-australia-guide", (_req, res) => res.redirect(301, "/insights"));
+  app.get("/unctad-2025-ai-report-australia-guide/", (_req, res) => res.redirect(301, "/insights"));
+  app.get("/for-home", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/for-home/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/author/huxleythzn-world", (_req, res) => res.redirect(301, "/about"));
+  app.get("/author/huxleythzn-world/", (_req, res) => res.redirect(301, "/about"));
+  app.get("/event/tech-horizon-labs-ai-for-business-launch-event", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/event/tech-horizon-labs-ai-for-business-launch-event/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/event/ai-workshop-for-business-noosa", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/event/ai-workshop-for-business-noosa/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/event/ai-for-business-sunshine-coast", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/event/ai-for-business-sunshine-coast/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/courses", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/courses/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/courses/sample-course", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/courses/sample-course/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/product-category/support", (_req, res) => res.redirect(301, "/contact"));
+  app.get("/product-category/support/", (_req, res) => res.redirect(301, "/contact"));
+  app.get("/product/free-pre-discovery-call", (_req, res) => res.redirect(301, "/contact"));
+  app.get("/product/free-pre-discovery-call/", (_req, res) => res.redirect(301, "/contact"));
 
   // ===== API Endpoints =====
 
