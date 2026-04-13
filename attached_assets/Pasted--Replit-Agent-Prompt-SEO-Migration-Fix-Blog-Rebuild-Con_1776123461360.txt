@@ -1,0 +1,365 @@
+# Replit Agent Prompt: SEO Migration Fix & Blog Rebuild
+
+## Context
+
+techhorizonlabs.com was rebuilt from WordPress to Replit. The old WordPress site had blog posts and pages that Google still has indexed. During the rebuild, the old blog post URLs were not properly handled — they currently 301 redirect (trailing slash strip) to the same URL without a trailing slash, which returns a 404. This is destroying SEO rankings for pages that were ranking on page 1-2 of Google.
+
+The site also needs www → non-www redirect fixing, schema markup added, and several old blog posts recreated as new `/insights/` pages.
+
+---
+
+## TASK 1: Fix Broken Redirect Chains (HIGHEST PRIORITY)
+
+The following old URLs currently do `301 → 404` (trailing slash stripped, but no route exists). Each needs a proper 301 redirect to the correct destination page.
+
+### Redirect Map — Add These Routes
+
+```
+OLD URL (with or without trailing slash)          →  REDIRECT TO
+──────────────────────────────────────────────────────────────────
+/ai-business-training-sunshine-coast              →  /academy
+/ai-business-training-sunshine-coast/             →  /academy
+
+/ai-consultant-sunshine-coast-business-transformation     →  /locations/sunshine-coast
+/ai-consultant-sunshine-coast-business-transformation/    →  /locations/sunshine-coast
+
+/navigating-the-ai-hype-cycle-turning-ai-potential-into-business-reality     →  /insights
+/navigating-the-ai-hype-cycle-turning-ai-potential-into-business-reality/    →  /insights
+
+/why-your-sunshine-coast-business-needs-a-no-nonsense-ai-consultant-in-2025-breaking-down-the-latest-ai-revolution     →  /insights
+/why-your-sunshine-coast-business-needs-a-no-nonsense-ai-consultant-in-2025-breaking-down-the-latest-ai-revolution/    →  /insights
+
+/master-ai-brain-dumping-sunshine-coast-ai-consultants-2025-guide     →  /insights
+/master-ai-brain-dumping-sunshine-coast-ai-consultants-2025-guide/    →  /insights
+
+/ai-consultants-reveal-the-truth-about-privacy-in-the-age-of-artificial-intelligence     →  /insights
+/ai-consultants-reveal-the-truth-about-privacy-in-the-age-of-artificial-intelligence/    →  /insights
+
+/your-enterprise-ai-tools-are-probably-overkill-heres-what-queensland-businesses-actually-need     →  /insights
+/your-enterprise-ai-tools-are-probably-overkill-heres-what-queensland-businesses-actually-need/    →  /insights
+
+/unctad-2025-ai-report-australia-guide     →  /insights
+/unctad-2025-ai-report-australia-guide/    →  /insights
+
+/for-home                    →  /academy
+/for-home/                   →  /academy
+
+/author/huxleythzn-world     →  /about
+/author/huxleythzn-world/    →  /about
+
+/event/the-ultimate-ai-assistant-build-day     →  /academy
+/event/the-ultimate-ai-assistant-build-day/    →  /academy
+
+/event/ai-kickstarter-workshop-a-practical-introduction-to-choosing-using-ai-tools-effectively     →  /academy
+/event/ai-kickstarter-workshop-a-practical-introduction-to-choosing-using-ai-tools-effectively/    →  /academy
+
+/events/2025-05-02/          →  /academy
+
+/courses                     →  /academy
+/courses/                    →  /academy
+
+/courses/sample-course       →  /academy
+/courses/sample-course/      →  /academy
+
+/product-category/support    →  /contact
+/product-category/support/   →  /contact
+
+/product/free-pre-discovery-call     →  /contact
+/product/free-pre-discovery-call/    →  /contact
+```
+
+### Implementation Notes
+
+- All redirects must be **301 (permanent)**, not 302
+- Both trailing-slash and non-trailing-slash versions of each URL must be handled
+- The redirect should happen BEFORE any trailing-slash stripping middleware
+- If the app uses a catch-all route or trailing-slash middleware, the redirect map should be checked first
+
+### Suggested Implementation Pattern
+
+If using Express.js or similar:
+
+```javascript
+// Place this BEFORE any other route handlers or trailing-slash middleware
+
+const redirectMap = {
+  '/ai-business-training-sunshine-coast': '/academy',
+  '/ai-consultant-sunshine-coast-business-transformation': '/locations/sunshine-coast',
+  '/navigating-the-ai-hype-cycle-turning-ai-potential-into-business-reality': '/insights',
+  '/why-your-sunshine-coast-business-needs-a-no-nonsense-ai-consultant-in-2025-breaking-down-the-latest-ai-revolution': '/insights',
+  '/master-ai-brain-dumping-sunshine-coast-ai-consultants-2025-guide': '/insights',
+  '/ai-consultants-reveal-the-truth-about-privacy-in-the-age-of-artificial-intelligence': '/insights',
+  '/your-enterprise-ai-tools-are-probably-overkill-heres-what-queensland-businesses-actually-need': '/insights',
+  '/unctad-2025-ai-report-australia-guide': '/insights',
+  '/for-home': '/academy',
+  '/author/huxleythzn-world': '/about',
+  '/event/the-ultimate-ai-assistant-build-day': '/academy',
+  '/event/ai-kickstarter-workshop-a-practical-introduction-to-choosing-using-ai-tools-effectively': '/academy',
+  '/courses': '/academy',
+  '/courses/sample-course': '/academy',
+  '/product-category/support': '/contact',
+  '/product/free-pre-discovery-call': '/contact',
+};
+
+app.use((req, res, next) => {
+  // Strip trailing slash for lookup
+  const path = req.path.endsWith('/') && req.path !== '/' 
+    ? req.path.slice(0, -1) 
+    : req.path;
+  
+  if (redirectMap[path]) {
+    return res.redirect(301, redirectMap[path]);
+  }
+  next();
+});
+```
+
+If using a different framework, adapt accordingly — the key requirement is:
+1. Check the redirect map FIRST
+2. Return 301, not 302
+3. Handle both `/path` and `/path/` variants
+
+---
+
+## TASK 2: Fix www Redirect
+
+`https://www.techhorizonlabs.com` currently returns HTTP 503. It must 301 redirect to `https://techhorizonlabs.com` for all paths.
+
+If this is handled at DNS/hosting level (Replit custom domain config), ensure the www subdomain is configured as a redirect to the apex domain. If it needs to be handled in code, add:
+
+```javascript
+app.use((req, res, next) => {
+  if (req.hostname === 'www.techhorizonlabs.com') {
+    return res.redirect(301, `https://techhorizonlabs.com${req.originalUrl}`);
+  }
+  next();
+});
+```
+
+---
+
+## TASK 3: Add JSON-LD Schema Markup
+
+Add structured data (JSON-LD) to the following pages. Insert as `<script type="application/ld+json">` in the `<head>` of each page.
+
+### Homepage (/)
+
+Add Organization + LocalBusiness + FAQPage schema:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "LocalBusiness"],
+      "@id": "https://techhorizonlabs.com/#organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com",
+      "logo": "https://techhorizonlabs.com/logo.webp",
+      "description": "AI consulting firm based on the Sunshine Coast, Queensland. We build private, production-ready AI systems for Australian SMEs.",
+      "email": "hello@techhorizonlabs.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Noosa Heads",
+        "addressRegion": "Queensland",
+        "addressCountry": "AU"
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Brisbane"},
+        {"@type": "City", "name": "Gold Coast"},
+        {"@type": "City", "name": "Sunshine Coast"},
+        {"@type": "State", "name": "Queensland"}
+      ],
+      "sameAs": [],
+      "priceRange": "$$"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://techhorizonlabs.com/#website",
+      "url": "https://techhorizonlabs.com",
+      "name": "Tech Horizon Labs",
+      "publisher": {"@id": "https://techhorizonlabs.com/#organization"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does Tech Horizon Labs do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tech Horizon Labs is an AI consulting firm based on the Sunshine Coast, Queensland. We map business workflows, identify bottlenecks, build private AI systems to fix them, and train your team to run everything independently. We work with Australian SMEs across construction, accounting, legal, healthcare, manufacturing, and more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What AI tools do you implement for businesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We deploy Claude (Anthropic), ChatGPT (OpenAI), LLaMA and DeepSeek (open source, on-premises), n8n for workflow automation, Keeper Security for access management, and Acronis for backup and endpoint protection. The right tool depends on your use case, data sensitivity, and budget."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does AI implementation take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our Automation Accelerator delivers a working AI system in 4 weeks. The full Horizon Method runs 8 to 14 weeks from initial mapping to deployed systems. Ongoing retainer engagements continue month-to-month after that."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is AI right for my small business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If your team spends significant time on repetitive admin, data entry, document processing, or client communications, AI can likely help. Our free 15-minute AI Opportunity Audit identifies whether AI makes sense for your specific situation. Most Australian SMEs with 5-50 employees find at least one high-impact automation opportunity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does AI consulting cost in Australia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our AI Opportunity Audit is free. Implementation projects start at $5,000 for a focused 4-week sprint (Automation Accelerator). Full Horizon Method engagements and ongoing partnership retainers are scoped and priced after the initial mapping phase."
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Location Pages (/locations/brisbane, /locations/sunshine-coast, /locations/gold-coast)
+
+Add LocalBusiness schema with service area specific to each location. Example for Brisbane:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Tech Horizon Labs - AI Consultant Brisbane",
+  "url": "https://techhorizonlabs.com/locations/brisbane",
+  "description": "AI consulting for Brisbane SMEs. Private AI systems deployed in 4 weeks. Manufacturing, professional services, construction, healthcare.",
+  "email": "hello@techhorizonlabs.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Noosa Heads",
+    "addressRegion": "Queensland",
+    "addressCountry": "AU"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Brisbane",
+    "containedInPlace": {"@type": "State", "name": "Queensland"}
+  },
+  "priceRange": "$$"
+}
+```
+
+Add FAQPage schema to the Brisbane page using its existing FAQ content (the 5 questions already on the page).
+
+### Insights/Blog Posts (/insights/*)
+
+Add Article schema to every insights page:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "[Page title]",
+  "author": {
+    "@type": "Person",
+    "name": "Huxley Drescher",
+    "jobTitle": "Founder, Tech Horizon Labs",
+    "url": "https://techhorizonlabs.com/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tech Horizon Labs",
+    "logo": {"@type": "ImageObject", "url": "https://techhorizonlabs.com/logo.webp"}
+  },
+  "datePublished": "[publish date ISO]",
+  "dateModified": "[last updated date ISO]",
+  "url": "[page URL]",
+  "description": "[meta description]"
+}
+```
+
+---
+
+## TASK 4: Add Author Attribution to All Insights Pages
+
+Every page under `/insights/` should display an author byline. Add the following to the bottom of each insights article, above the footer:
+
+```
+---
+Written by Huxley Drescher
+Founder, Tech Horizon Labs | AI Systems Consultant | Sunshine Coast, QLD
+```
+
+This should link "Huxley Drescher" to /about. Include a small author photo if available.
+
+This is critical for E-E-A-T (Experience, Expertise, Authoritativeness, Trust) signals that Google uses for ranking.
+
+---
+
+## TASK 5: Add "Last Updated" Dates to All Insights Pages
+
+Every insights page should display a visible "Last updated: [date]" near the top of the article, below the title. Use the format "Last updated: April 2026" or similar.
+
+This is a Google freshness signal. Pages without visible dates are penalised in both traditional search and AI search.
+
+---
+
+## TASK 6: Create a Dedicated "AI Training Sunshine Coast" Page
+
+The query "ai business training sunshine coast" gets 234 Google impressions at position 8.6 — nearly page 1. Currently the old URL for this content 404s. Create a new page at:
+
+**URL:** `/training/sunshine-coast` or `/academy/sunshine-coast`
+
+**Target queries:**
+- ai business training sunshine coast
+- ai workshop sunshine coast
+- ai training sunshine coast
+- artificial intelligence workshop sunshine coast
+
+**Content requirements:**
+- H1: "AI Business Training — Sunshine Coast Workshops & Programs"
+- Opening paragraph must contain a direct, extractable answer: "Tech Horizon Labs runs AI business training workshops on the Sunshine Coast for Australian SMEs. Our programs range from free 2-hour introductions to multi-week implementation sprints, covering tools like Claude, ChatGPT, n8n, and private AI deployment."
+- Sections covering: workshop formats, who it's for, what you'll learn, upcoming dates, pricing, testimonials from workshop attendees (use the Tourism Noosa quotes already on the homepage)
+- FAQ section targeting related queries
+- FAQPage schema markup
+- Internal links to /academy, /locations/sunshine-coast, /contact
+
+**IMPORTANT:** Once this page is live, update the redirect map so:
+```
+/ai-business-training-sunshine-coast  →  /training/sunshine-coast (or wherever the new page lives)
+/ai-business-training-sunshine-coast/ →  /training/sunshine-coast
+/ai-workshop-business-sunshine-coast  →  /training/sunshine-coast
+/ai-workshop-business-sunshine-coast/ →  /training/sunshine-coast
+```
+
+---
+
+## Verification Checklist
+
+After implementing, verify each item:
+
+- [ ] Every URL in the redirect map returns 301 → valid 200 page (not 404)
+- [ ] Both `/path` and `/path/` versions redirect correctly
+- [ ] `https://www.techhorizonlabs.com/` returns 301 → `https://techhorizonlabs.com/`
+- [ ] Homepage has FAQPage + Organization JSON-LD (validate at https://search.google.com/test/rich-results)
+- [ ] Brisbane page has LocalBusiness + FAQPage JSON-LD
+- [ ] All insights pages have Article JSON-LD
+- [ ] All insights pages show author name and last-updated date
+- [ ] New Sunshine Coast training page returns 200 and contains target keywords
+- [ ] No existing pages broke during implementation
+
+Test redirects with:
+```bash
+curl -s -o /dev/null -w "%{http_code}" https://techhorizonlabs.com/ai-business-training-sunshine-coast/
+# Should return 301
+
+curl -s -o /dev/null -w "%{http_code}" -L https://techhorizonlabs.com/ai-business-training-sunshine-coast/
+# Should return 200
+```
