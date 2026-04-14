@@ -327,7 +327,8 @@
           <h3>AI Setup &amp; Configuration Guide</h3>
           <p>Projects, Thinking Mode, and Search: the Setup Triangle. Step-by-step Claude and ChatGPT configuration with compliance notes.</p>
           <div class="gated-resource-form" data-resource="/resources/ai-setup-configuration-guide.docx" data-source="academy-download-setup-guide">
-            <div class="gated-resource-input" style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <p class="gated-resource-trigger" style="margin-top:0.75rem;"><button type="button" class="link-arrow" style="background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:inherit;color:var(--accent);padding:0;font-weight:600;" data-testid="button-download-setup-guide">Download guide &rarr;</button></p>
+            <div class="gated-resource-input" style="margin-top:0.75rem;display:none;gap:0.5rem;flex-wrap:wrap;">
               <input type="email" placeholder="your@email.com" style="flex:1;min-width:180px;padding:0.5rem 0.75rem;border:1px solid var(--border);border-radius:6px;font-size:0.875rem;font-family:var(--font-body);" data-testid="input-email-setup-guide">
               <button type="button" style="padding:0.5rem 1rem;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:0.875rem;font-weight:600;cursor:pointer;white-space:nowrap;" data-testid="button-unlock-setup-guide">Unlock download</button>
             </div>
@@ -340,7 +341,8 @@
           <h3>Claude Cowork Setup Guide</h3>
           <p>Complete setup guide for Claude Projects, extended thinking, and search. Build your personal AI coworker step by step.</p>
           <div class="gated-resource-form" data-resource="/resources/claude-cowork-setup-guide.docx" data-source="academy-download-claude-cowork">
-            <div class="gated-resource-input" style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <p class="gated-resource-trigger" style="margin-top:0.75rem;"><button type="button" class="link-arrow" style="background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:inherit;color:var(--accent);padding:0;font-weight:600;" data-testid="button-download-claude-cowork">Download guide &rarr;</button></p>
+            <div class="gated-resource-input" style="margin-top:0.75rem;display:none;gap:0.5rem;flex-wrap:wrap;">
               <input type="email" placeholder="your@email.com" style="flex:1;min-width:180px;padding:0.5rem 0.75rem;border:1px solid var(--border);border-radius:6px;font-size:0.875rem;font-family:var(--font-body);" data-testid="input-email-claude-cowork">
               <button type="button" style="padding:0.5rem 1rem;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:0.875rem;font-weight:600;cursor:pointer;white-space:nowrap;" data-testid="button-unlock-claude-cowork">Unlock download</button>
             </div>
@@ -353,7 +355,8 @@
           <h3>ChatGPT to Claude Migration</h3>
           <p>Step-by-step migration guide for teams moving from ChatGPT to Claude. Feature mapping, workflow translation, and compliance notes.</p>
           <div class="gated-resource-form" data-resource="/resources/chatgpt-to-claude-migration.docx" data-source="academy-download-migration">
-            <div class="gated-resource-input" style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <p class="gated-resource-trigger" style="margin-top:0.75rem;"><button type="button" class="link-arrow" style="background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:inherit;color:var(--accent);padding:0;font-weight:600;" data-testid="button-download-migration">Download guide &rarr;</button></p>
+            <div class="gated-resource-input" style="margin-top:0.75rem;display:none;gap:0.5rem;flex-wrap:wrap;">
               <input type="email" placeholder="your@email.com" style="flex:1;min-width:180px;padding:0.5rem 0.75rem;border:1px solid var(--border);border-radius:6px;font-size:0.875rem;font-family:var(--font-body);" data-testid="input-email-migration">
               <button type="button" style="padding:0.5rem 1rem;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:0.875rem;font-weight:600;cursor:pointer;white-space:nowrap;" data-testid="button-unlock-migration">Unlock download</button>
             </div>
@@ -488,12 +491,19 @@
   <script src="/main.min.js" defer></script>
   <script>
     document.querySelectorAll('.gated-resource-form').forEach(function(form) {
-      var btn = form.querySelector('button');
+      var trigger = form.querySelector('.gated-resource-trigger');
+      var inputWrap = form.querySelector('.gated-resource-input');
+      var unlockBtn = inputWrap.querySelector('button');
       var input = form.querySelector('input[type="email"]');
       var msg = form.querySelector('.gated-resource-msg');
       var linkEl = form.querySelector('.gated-resource-link');
       var source = form.getAttribute('data-source');
-      btn.addEventListener('click', function() {
+      trigger.querySelector('button').addEventListener('click', function() {
+        trigger.style.display = 'none';
+        inputWrap.style.display = 'flex';
+        input.focus();
+      });
+      unlockBtn.addEventListener('click', function() {
         var email = input.value.trim();
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
           msg.textContent = 'Please enter a valid email address.';
@@ -501,30 +511,30 @@
           msg.style.color = 'var(--accent)';
           return;
         }
-        btn.disabled = true;
-        btn.textContent = 'Unlocking...';
+        unlockBtn.disabled = true;
+        unlockBtn.textContent = 'Unlocking...';
         fetch('/api/newsletter', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email, source: source })
         }).then(function(r) { return r.json(); }).then(function(data) {
           if (data.success || (data.error && data.error.indexOf('already') !== -1)) {
-            form.querySelector('.gated-resource-input').style.display = 'none';
+            inputWrap.style.display = 'none';
             msg.style.display = 'none';
             linkEl.style.display = 'block';
           } else {
             msg.textContent = data.error || 'Something went wrong. Please try again.';
             msg.style.display = 'block';
             msg.style.color = 'var(--accent)';
-            btn.disabled = false;
-            btn.textContent = 'Unlock download';
+            unlockBtn.disabled = false;
+            unlockBtn.textContent = 'Unlock download';
           }
         }).catch(function() {
           msg.textContent = 'Network error. Please try again.';
           msg.style.display = 'block';
           msg.style.color = 'var(--accent)';
-          btn.disabled = false;
-          btn.textContent = 'Unlock download';
+          unlockBtn.disabled = false;
+          unlockBtn.textContent = 'Unlock download';
         });
       });
     });
