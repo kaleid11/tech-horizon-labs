@@ -118,6 +118,11 @@ export async function registerRoutes(
   app.get("/index.php", (_req, res) => res.redirect(301, "/"));
 
   // ===== Additional WordPress legacy redirects =====
+  app.get("/navigating-the-ai-hype-cycle-turning-ai-potential-into-business-reality", (_req, res) => res.redirect(301, "/insights"));
+  app.get("/why-your-sunshine-coast-business-needs-a-no-nonsense-ai-consultant-in-2025-breaking-down-the-latest-ai-revolution", (_req, res) => res.redirect(301, "/insights"));
+  app.get("/master-ai-brain-dumping-sunshine-coast-ai-consultants-2025-guide", (_req, res) => res.redirect(301, "/insights"));
+  app.get("/ai-consultants-reveal-the-truth-about-privacy-in-the-age-of-artificial-intelligence", (_req, res) => res.redirect(301, "/insights"));
+  app.get("/your-enterprise-ai-tools-are-probably-overkill-heres-what-queensland-businesses-actually-need", (_req, res) => res.redirect(301, "/insights"));
   app.get("/ai-business-training-sunshine-coast", (_req, res) => res.redirect(301, "/academy"));
   app.get("/ai-business-training-sunshine-coast/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/ai-consultant-sunshine-coast-business-transformation", (_req, res) => res.redirect(301, "/locations/sunshine-coast"));
