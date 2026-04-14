@@ -87,8 +87,8 @@ export async function registerRoutes(
   app.get("/membership/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshops", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshops/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/ai-workshop-business-sunshine-coast", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/ai-workshop-business-sunshine-coast/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/ai-workshop-business-sunshine-coast", (_req, res) => res.redirect(301, "/training/sunshine-coast"));
+  app.get("/ai-workshop-business-sunshine-coast/", (_req, res) => res.redirect(301, "/training/sunshine-coast"));
   app.get("/category/:slug", (_req, res) => res.redirect(301, "/"));
   app.get("/category/:slug/", (_req, res) => res.redirect(301, "/"));
   app.get("/tag/:slug", (_req, res) => res.redirect(301, "/"));
@@ -123,8 +123,8 @@ export async function registerRoutes(
   app.get("/master-ai-brain-dumping-sunshine-coast-ai-consultants-2025-guide", (_req, res) => res.redirect(301, "/insights"));
   app.get("/ai-consultants-reveal-the-truth-about-privacy-in-the-age-of-artificial-intelligence", (_req, res) => res.redirect(301, "/insights"));
   app.get("/your-enterprise-ai-tools-are-probably-overkill-heres-what-queensland-businesses-actually-need", (_req, res) => res.redirect(301, "/insights"));
-  app.get("/ai-business-training-sunshine-coast", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/ai-business-training-sunshine-coast/", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/ai-business-training-sunshine-coast", (_req, res) => res.redirect(301, "/training/sunshine-coast"));
+  app.get("/ai-business-training-sunshine-coast/", (_req, res) => res.redirect(301, "/training/sunshine-coast"));
   app.get("/ai-consultant-sunshine-coast-business-transformation", (_req, res) => res.redirect(301, "/locations/sunshine-coast"));
   app.get("/ai-consultant-sunshine-coast-business-transformation/", (_req, res) => res.redirect(301, "/locations/sunshine-coast"));
   app.get("/unctad-2025-ai-report-australia-guide", (_req, res) => res.redirect(301, "/insights"));

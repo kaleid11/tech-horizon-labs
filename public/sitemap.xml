@@ -104,6 +104,14 @@
     <priority>0.75</priority>
   </url>
 
+  <!-- Training pages -->
+  <url>
+    <loc>https://techhorizonlabs.com/training/sunshine-coast</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
   <!-- Location pages -->
   <url>
     <loc>https://techhorizonlabs.com/locations/sunshine-coast</loc>

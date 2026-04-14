@@ -106,6 +106,8 @@ const STATIC_FILES: Record<string, string> = {
   "/industries/construction": "industries/construction.html",
   "/industries/healthcare": "industries/healthcare.html",
   "/industries/retail": "industries/retail.html",
+  // Training pages
+  "/training/sunshine-coast": "training/sunshine-coast.html",
   // Insights
   "/insights": "insights/index.html",
   "/insights/how-australia-uses-ai-2026": "insights/how-australia-uses-ai-2026.html",
@@ -249,6 +251,8 @@ export function serveStatic(app: Express) {
   app.get("/industries/:slug/", (_req, res) => res.redirect(301, "/"));
   app.get("/insights/:slug", (_req, res) => res.redirect(301, "/"));
   app.get("/insights/:slug/", (_req, res) => res.redirect(301, "/"));
+  app.get("/training/:slug", (_req, res) => res.redirect(301, "/academy"));
+  app.get("/training/:slug/", (_req, res) => res.redirect(301, "/academy"));
 
   app.use("/fonts", express.static(path.join(servingDir, "fonts"), {
     maxAge: "365d",

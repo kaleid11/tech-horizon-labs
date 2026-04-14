@@ -17,7 +17,7 @@ Preferred communication style: Simple, everyday language.
 - **Animations**: Dot-grid canvas background and CSS fade-in animations via `main.js`.
 - **Build Tool**: esbuild for server bundling.
 - **SEO**: Server-side meta injection via `server/static.ts` for core pages, plus per-page JSON-LD schemas (FAQPage, Article, BreadcrumbList, LocalBusiness, Organization).
-- **Static Site**: The `client/static/` directory hosts the main static pages. Core pages (index, work, about, academy, contact, research, report, assessment) get server-side meta injection. Static file pages (tools, scorecard, locations, industries, insights, privacy, terms, security, openclaw) serve their own embedded meta.
+- **Static Site**: The `client/static/` directory hosts the main static pages. Core pages (index, work, about, academy, contact, research, report, assessment) get server-side meta injection. Static file pages (tools, scorecard, locations, industries, insights, training, privacy, terms, security, openclaw) serve their own embedded meta.
 
 ### Backend Architecture
 - **Framework**: Express 5 on Node.js with strict routing enabled.
@@ -74,6 +74,12 @@ Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Co
 #### Industry Pages (`/industries/*`)
 4 pages: Legal, Construction, Healthcare, Retail. Industry-specific AI use cases and CTAs.
 
+#### Training Pages (`/training/*`)
+`/training/sunshine-coast` — In-person and remote AI training workshops for Sunshine Coast businesses. Course + FAQPage + BreadcrumbList JSON-LD. Cross-linked from academy, locations/sunshine-coast, and homepage. Legacy URLs `/ai-business-training-sunshine-coast` and `/ai-workshop-business-sunshine-coast` redirect here.
+
+#### Downloadable Resources (`/resources/*`)
+`client/static/resources/` hosts downloadable files. Free resources (direct download): ai-quick-start-playbook.pdf, ripe-framework-cheat-sheet.pdf, 5-ai-meeting-prompts.docx, sme-cyber-resilience-blueprint.png. Gated resources (email gate via `/api/newsletter`): ai-setup-configuration-guide.docx, claude-cowork-setup-guide.docx, chatgpt-to-claude-migration.docx. Resource cards with inline email gate are on the Academy page. Source tracking uses `academy-download-[slug]` format.
+
 #### Strategy Positioning (from internal frameworks)
 - **4 AI Maturity Stages**: Unaware, ChatGPT Plateau, Enabled, AI-Native
 - **3 Trainer Archetypes** (Frontier Orchestrator framework): Business Coach, Single-Tool Specialist, Frontier Orchestrator — detailed on about page
@@ -88,7 +94,7 @@ Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Co
 - All via Resend. Fire-and-forget for CRM (Klipy) and newsletter (Beehiiv) syncing.
 
 #### Analytics
-- **Plausible Analytics**: Installed across all 31 HTML pages via `pa-dRBvledtC13XyS9b9WRTT.js` script in `<head>`. Pageview tracking only (no custom events configured yet).
+- **Plausible Analytics**: Installed across all 32 HTML pages via `pa-dRBvledtC13XyS9b9WRTT.js` script in `<head>`. Pageview tracking only (no custom events configured yet).
 
 #### Branding Assets
 - **Logo**: Orange interlocking rings logo. Source: `attached_assets/T_(1)_1775353639173.png` (1000x1000).
@@ -100,7 +106,7 @@ Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Co
 
 #### SEO/AEO/GEO
 - robots.txt with explicit Allow for 14 AI crawlers
-- Sitemap with 31 URLs
+- Sitemap with 32 URLs
 - FAQPage JSON-LD on key pages (homepage, assessment, scorecard, tools, location pages, and 5 of 8 articles — the 3 oldest articles lack FAQ content sections)
 - LocalBusiness + Organization schema on homepage
 - Article schema on all insights articles and tools page
