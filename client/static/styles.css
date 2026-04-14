@@ -505,26 +505,28 @@ a.trust-stat:hover {
 
 .method-phase {
   position: relative;
-  padding-left: 1rem;
+  padding-left: 4.5rem;
+  min-height: 5rem;
 }
 
 .method-number {
   font-family: var(--font-heading);
-  font-size: 5.5rem;
+  font-size: 3.5rem;
   font-weight: 700;
   line-height: 1;
-  color: #A58070;
+  color: var(--accent);
+  opacity: 0.18;
   position: absolute;
-  top: -1rem;
-  left: -0.25rem;
+  top: -0.25rem;
+  left: 0;
   pointer-events: none;
   user-select: none;
-  transition: color 0.8s ease, transform 0.8s ease;
-  will-change: transform;
+  transition: opacity 0.8s ease;
+  will-change: opacity;
 }
 
 .flow-active .method-number {
-  color: #987060;
+  opacity: 0.25;
 }
 
 .method-title {
@@ -533,15 +535,16 @@ a.trust-stat:hover {
   font-weight: 600;
   margin-bottom: 0.25rem;
   position: relative;
+  color: var(--text);
 }
 
 .method-duration {
   font-size: 0.8125rem;
-  color: #8B4D38;
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-bottom: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .method-phase p {
@@ -553,7 +556,7 @@ a.trust-stat:hover {
 .method-phase::before {
   content: '';
   position: absolute;
-  left: -1.5rem;
+  left: 3.25rem;
   top: 0;
   width: 3px;
   height: 0;
@@ -1913,11 +1916,18 @@ blockquote cite {
 }
 
 /* --- Testimonials --- */
-.testimonial-grid {
+.testimonial-video-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: var(--space-sm);
+}
+
+.testimonial-quotes-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .testimonial-card {
@@ -1938,9 +1948,17 @@ blockquote cite {
   border-color: var(--accent);
 }
 
+.testimonial-card--quote,
 .testimonial-card--email {
   border-left: 3px solid var(--accent);
   padding-left: calc(2rem - 2px);
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: var(--space-sm);
 }
 
 .testimonial-type {
@@ -1960,11 +1978,6 @@ blockquote cite {
   background: var(--accent-light);
 }
 
-.testimonial-type--video {
-  color: var(--text-muted);
-  background: var(--bg-warm);
-}
-
 .testimonial-mark {
   font-family: var(--font-heading);
   font-size: 3.5rem;
@@ -1980,29 +1993,6 @@ blockquote cite {
 
 .testimonial-video-slot {
   margin-bottom: 1.25rem;
-}
-
-.testimonial-video-placeholder {
-  background: var(--bg-warm);
-  border: 1.5px dashed var(--border);
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.testimonial-video-placeholder svg {
-  flex-shrink: 0;
-  opacity: 0.35;
-  color: var(--text-muted);
-}
-
-.testimonial-video-placeholder p {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin: 0;
-  font-style: italic;
 }
 
 .testimonial-video-iframe {
@@ -2087,13 +2077,25 @@ blockquote cite {
     max-width: 200px;
   }
 
+  .testimonial-video-row {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-quotes-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .method-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 
+  .method-phase {
+    padding-left: 3.5rem;
+  }
+
   .method-number {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .metric {
@@ -2200,8 +2202,12 @@ blockquote cite {
   h2 { font-size: 1.375rem; }
   .hero h1 { font-size: 2rem; }
 
+  .method-phase {
+    padding-left: 3rem;
+  }
+
   .method-number {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
 
   .metric {
@@ -2267,7 +2273,11 @@ blockquote cite {
     font-size: 0.75rem;
   }
 
-  .testimonial-grid {
+  .testimonial-video-row {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-quotes-row {
     grid-template-columns: 1fr;
   }
 
