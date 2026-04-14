@@ -34,15 +34,6 @@ app.use(helmet({
 }));
 const httpServer = createServer(app);
 
-// Strip trailing slashes globally (except root "/") to prevent redirect loops
-app.use((req, res, next) => {
-  if (req.path !== "/" && req.path.endsWith("/")) {
-    const query = req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
-    return res.redirect(301, req.path.slice(0, -1) + query);
-  }
-  next();
-});
-
 declare module "http" {
   interface IncomingMessage {
     rawBody: unknown;
@@ -98,6 +89,15 @@ app.use((req, res, next) => {
 
 (async () => {
   await registerRoutes(httpServer, app);
+
+  // Strip trailing slashes globally (except root "/") — runs after redirect routes
+  app.use((req, res, next) => {
+    if (req.path !== "/" && req.path.endsWith("/")) {
+      const query = req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
+      return res.redirect(301, req.path.slice(0, -1) + query);
+    }
+    next();
+  });
 
   app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
