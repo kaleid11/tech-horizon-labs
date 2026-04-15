@@ -30,6 +30,7 @@ const KNOWN_GOOD_DOMAINS = new Set([
 
 const mxCache = new Map<string, { valid: boolean; expires: number }>();
 const MX_CACHE_TTL = 1000 * 60 * 30;
+const MX_CACHE_MAX_SIZE = 500;
 
 function extractDomain(email: string): string | null {
   const parts = email.split("@");
@@ -80,6 +81,18 @@ export async function verifyEmailDomain(email: string): Promise<{ valid: boolean
 
   try {
     const hasMx = await lookupMx(domain);
+
+    if (mxCache.size >= MX_CACHE_MAX_SIZE) {
+      const now = Date.now();
+      for (const [key, val] of mxCache) {
+        if (val.expires < now) mxCache.delete(key);
+      }
+      if (mxCache.size >= MX_CACHE_MAX_SIZE) {
+        const oldest = mxCache.keys().next().value;
+        if (oldest) mxCache.delete(oldest);
+      }
+    }
+
     mxCache.set(domain, { valid: hasMx, expires: Date.now() + MX_CACHE_TTL });
 
     if (!hasMx) {
