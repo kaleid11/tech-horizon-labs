@@ -8,6 +8,7 @@ import { insertContactSubmissionSchema, insertNewsletterSignupSchema } from "@sh
 import { sendContactNotification, sendContactAutoReply, sendNewsletterWelcome, sendAuditResults, sendAuditNotification } from "./email";
 import { pushToKlipy } from "./klipy";
 import { pushToBeehiiv } from "./beehiiv";
+import { verifyEmailDomain } from "./email-verify";
 
 // Rate limiters for API endpoints
 const apiLimiter = rateLimit({
@@ -151,6 +152,12 @@ export async function registerRoutes(
   app.post("/api/contact", apiLimiter, async (req, res) => {
     try {
       const validatedData = insertContactSubmissionSchema.parse(req.body);
+
+      const emailCheck = await verifyEmailDomain(validatedData.email);
+      if (!emailCheck.valid) {
+        return res.status(400).json({ success: false, error: emailCheck.reason });
+      }
+
       const submission = await storage.createContactSubmission(validatedData);
 
       await sendContactNotification({
@@ -203,6 +210,11 @@ export async function registerRoutes(
       const source = typeof rawSource === "string" && rawSource.length < 80 ? rawSource : undefined;
       const name = typeof rawName === "string" && rawName.trim().length > 0 && rawName.length < 200 ? rawName.trim() : undefined;
       const validatedData = insertNewsletterSignupSchema.parse({ ...rest, source });
+
+      const emailCheck = await verifyEmailDomain(validatedData.email);
+      if (!emailCheck.valid) {
+        return res.status(400).json({ success: false, error: emailCheck.reason });
+      }
 
       const existing = await storage.getNewsletterSignupByEmail(validatedData.email);
       if (existing) {
@@ -301,11 +313,14 @@ export async function registerRoutes(
       });
       const input = auditRequestSchema.parse(req.body);
 
-      // If any opt-in is checked, name and email are required
       const anyOptIn = input.wantsResultsEmail || input.wantsContact || input.wantsNewsletter;
       if (anyOptIn) {
         if (!input.name || !input.email) {
           return res.status(400).json({ success: false, error: "Name and email are required when opting in." });
+        }
+        const emailCheck = await verifyEmailDomain(input.email);
+        if (!emailCheck.valid) {
+          return res.status(400).json({ success: false, error: emailCheck.reason });
         }
       }
 
