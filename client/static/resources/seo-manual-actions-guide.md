@@ -12,11 +12,11 @@ This guide covers every manual SEO action that cannot be done in code. Work thro
 
 | When | What | Platform | Priority |
 |------|------|----------|----------|
-| **Week 1** | Submit sitemap to Google and Bing | GSC, Bing WMT | High |
+| **Week 1** | Submit sitemap to Google | GSC | High |
 | **Week 1** | Request indexing of all new/updated pages | GSC | High |
 | **Week 1** | Set up Google Business Profile | GBP | High |
 | **Week 1** | Remove cached old WordPress URLs | GSC | High |
-| **Week 2** | Submit sitemap to Bing | Bing WMT | Medium |
+| **Week 2** | Set up Bing Webmaster Tools and submit sitemap | Bing WMT | Medium |
 | **Week 2** | Check which URL ranks for training keywords | GSC | Medium |
 | **Week 2** | Set up Plausible conversion tracking | Plausible | Medium |
 | **Month 1** | Begin backlink outreach | Email/LinkedIn | Medium |
@@ -33,9 +33,7 @@ This guide covers every manual SEO action that cannot be done in code. Work thro
 1. Go to [search.google.com/search-console](https://search.google.com/search-console)
 2. Click "Add property"
 3. Choose "URL prefix" and enter `https://techhorizonlabs.com`
-4. Verify using one of these methods (DNS is recommended):
-   - **DNS verification** (recommended): Add the TXT record Google provides to your Cloudflare DNS settings
-   - **HTML file**: Download the verification file and place it in `client/static/` (then add a route in code)
+4. Verify using DNS verification: Add the TXT record Google provides to your Cloudflare DNS settings. This is the simplest method and does not require any code changes.
 5. Once verified, you will see the GSC dashboard
 
 ### 1.2 Submit the Sitemap
