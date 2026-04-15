@@ -66,7 +66,7 @@ Gated landing page for "State of AI Readiness: Australian SMB 2026" PDF. Collect
 Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Code/Replit, ChatGPT/Codex, Opus.pro, NotebookLM, Gemini, Acronis, MacWhisper, LM Studio, Keeper Security) plus honourable mentions. Category filter, print CSS, Article + FAQPage JSON-LD.
 
 #### Insights (`/insights`)
-8 articles: AI Implementation Cost, 5 AI Mistakes, AI Readiness Stages, Claude vs ChatGPT 2026, How Australia Uses AI 2026, AI Impact by Industry, The AI Training Gap (Frontier Orchestrator framework), ACCC & Microsoft Copilot (AI bundling). Each has Article + FAQPage + BreadcrumbList JSON-LD, author bio, CTAs, related articles, and scroll-triggered newsletter bar.
+9 articles: AI Implementation Cost, 5 AI Mistakes, AI Readiness Stages, Claude vs ChatGPT 2026, How Australia Uses AI 2026, AI Impact by Industry, The AI Training Gap (Frontier Orchestrator framework), ACCC & Microsoft Copilot (AI bundling), AI Governance for Australian Businesses (Privacy Act, data residency, access control, vendor independence, staff training, output verification). Each has Article + FAQPage + BreadcrumbList JSON-LD, author bio, CTAs, related articles, and scroll-triggered newsletter bar.
 
 #### Location Pages (`/locations/*`)
 4 pages: Sunshine Coast, Brisbane, Gold Coast, Queensland. FAQPage + ServiceArea JSON-LD. Cross-linked to sibling locations.
@@ -94,7 +94,7 @@ Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Co
 - All via Resend. Fire-and-forget for CRM (Klipy) and newsletter (Beehiiv) syncing.
 
 #### Analytics
-- **Plausible Analytics**: Installed across all 32 HTML pages via `pa-dRBvledtC13XyS9b9WRTT.js` script in `<head>`. Pageview tracking only (no custom events configured yet).
+- **Plausible Analytics**: Installed across all 33 HTML pages via `pa-dRBvledtC13XyS9b9WRTT.js` script in `<head>`. Pageview tracking only (no custom events configured yet).
 
 #### Branding Assets
 - **Logo**: Orange interlocking rings logo. Source: `attached_assets/T_(1)_1775353639173.png` (1000x1000).
@@ -106,8 +106,8 @@ Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Co
 
 #### SEO/AEO/GEO
 - robots.txt with explicit Allow for 14 AI crawlers
-- Sitemap with 32 URLs
-- FAQPage JSON-LD on key pages (homepage, assessment, scorecard, tools, location pages, and 5 of 8 articles — the 3 oldest articles lack FAQ content sections)
+- Sitemap with 33 URLs
+- FAQPage JSON-LD on key pages (homepage, assessment, scorecard, tools, location pages, and 6 of 9 articles — the 3 oldest articles lack FAQ content sections)
 - LocalBusiness + Organization schema on homepage
 - Article schema on all insights articles and tools page
 - BreadcrumbList on all pages

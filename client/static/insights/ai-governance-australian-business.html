@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Governance for Australian Businesses: A Practical Guide — Tech Horizon Labs</title>
+  <meta name="description" content="Practical AI governance for Australian SMBs. Covers Privacy Act 1988 obligations, data residency, access control, vendor independence, staff training as governance, and AI output verification. No philosophy — just what you need to deploy responsibly.">
+  <link rel="canonical" href="https://techhorizonlabs.com/insights/ai-governance-australian-business">
+  <meta property="og:title" content="AI Governance for Australian Businesses: A Practical Guide — Tech Horizon Labs">
+  <meta property="og:description" content="Practical AI governance for Australian SMBs. Privacy Act compliance, data residency, access control, vendor risk, and responsible deployment.">
+  <meta property="og:url" content="https://techhorizonlabs.com/insights/ai-governance-australian-business">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="AI Governance for Australian Businesses: A Practical Guide">
+  <meta name="twitter:description" content="Practical AI governance for Australian SMBs. Privacy Act compliance, data residency, access control, and responsible deployment.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon-32.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Governance for Australian Businesses: A Practical Guide",
+    "description": "Practical AI governance for Australian SMBs. Covers Privacy Act 1988 obligations, data residency, access control, vendor independence, staff training, and AI output verification.",
+    "datePublished": "2026-04-15",
+    "dateModified": "2026-04-15",
+    "author": {
+      "@type": "Person",
+      "name": "Huxley Peckham",
+      "jobTitle": "Founder, Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com",
+      "logo": { "@type": "ImageObject", "url": "https://techhorizonlabs.com/logo.png" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://techhorizonlabs.com/insights/ai-governance-australian-business" },
+    "image": "https://techhorizonlabs.com/opengraph.jpg",
+    "keywords": ["AI governance Australia", "Privacy Act AI", "AI compliance Australian business", "data residency AI", "responsible AI deployment", "AI access control", "AI vendor lock-in"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does the Australian Privacy Act apply to AI systems?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. If your AI system collects, stores, uses, or discloses personal information, it falls under the Privacy Act 1988 and the 13 Australian Privacy Principles (APPs). This includes AI that processes customer emails, generates summaries from client data, or automates intake forms. The obligation is on the business deploying the AI, not the AI vendor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do Australian businesses need to store AI data in Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Privacy Act does not mandate Australian data residency, but APP 8 requires that cross-border disclosures meet equivalent privacy protections. For regulated industries like healthcare and financial services, sector-specific rules may require Australian hosting. Many businesses choose Australian data residency as the simplest way to satisfy compliance obligations and client expectations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is AI governance for small businesses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI governance for small businesses means having clear, documented answers to five questions: what data does the AI touch, who can access it, where is it stored, how do you verify its outputs, and what happens if something goes wrong. It does not require a dedicated compliance team or expensive frameworks. It requires documentation, access controls, and a verification process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you prevent vendor lock-in with AI tools?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use open formats for data storage, avoid proprietary file formats, ensure you own your code and data, and document every external dependency. Build on infrastructure you can audit and exit. If your AI vendor disappeared tomorrow, you should be able to run the system without them. That is the test."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is staff training part of AI governance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Staff training is arguably the most important governance control. A well-trained team knows what data can and cannot go into an AI prompt, how to verify AI outputs before acting on them, and when to escalate to a human decision-maker. No access control or policy document replaces a team that understands the boundaries."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://techhorizonlabs.com/insights" },
+      { "@type": "ListItem", "position": 3, "name": "AI Governance for Australian Businesses" }
+    ]
+  }
+  </script>
+
+  <style>
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-sm);
+      align-items: center;
+    }
+    .article-body h2 { margin-top: var(--space-sm); margin-bottom: 1rem; }
+    .article-body h3 { margin-top: 1.75rem; margin-bottom: 0.75rem; font-size: 1.125rem; }
+    .article-body p { color: var(--text-secondary); margin-bottom: 1.125rem; }
+    .article-body strong { color: var(--text); }
+    .callout-box {
+      background: #fdf6f0;
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .callout-box p { color: #5c3d2e; margin: 0; font-size: 0.9375rem; line-height: 1.65; }
+    .checklist-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0;
+    }
+    .checklist-box h3 { color: #166534; margin: 0 0 1rem; font-size: 1.125rem; }
+    .checklist-box ul { list-style: none; padding: 0; margin: 0; }
+    .checklist-box li { padding: 0.4rem 0; font-size: 0.9375rem; color: #15803d; position: relative; padding-left: 1.75rem; }
+    .checklist-box li::before { content: "\2713"; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
+    .blockquote {
+      border-left: 4px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: #fdf6f0;
+      border-radius: 0 8px 8px 0;
+    }
+    .blockquote p { font-size: 1.0625rem; font-style: italic; color: #5c3d2e; margin-bottom: 0.5rem; }
+    .blockquote cite { font-size: 0.875rem; color: var(--text-muted); font-style: normal; }
+    .source-note { font-size: 0.8125rem; color: var(--text-muted); border-top: 1px solid var(--border-light); padding-top: 1.25rem; margin-top: var(--space-md); }
+    .author-bio {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      background: #f9f9f7;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      margin-top: var(--space-sm);
+    }
+    .author-bio-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .author-bio h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+    .author-bio p { font-size: 0.875rem; color: var(--text-secondary); margin: 0 0 0.5rem; }
+    .author-bio a { font-size: 0.875rem; }
+    @media (max-width: 480px) {
+      .author-bio { flex-direction: column; align-items: center; text-align: center; }
+    }
+  </style>
+  <script async src="https://plausible.io/js/pa-dRBvledtC13XyS9b9WRTT.js"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand"><img src="/logo.webp" alt="Tech Horizon Labs logo" class="brand-logo" width="28" height="28">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <nav class="breadcrumb container" aria-label="Breadcrumb" style="padding-top:2rem;font-size:0.875rem;color:var(--text-muted);">
+      <a href="/">Home</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <a href="/insights">Insights</a>
+      <span aria-hidden="true" style="margin:0 0.5rem;color:var(--border);">/</span>
+      <span>AI Governance</span>
+    </nav>
+
+    <section class="hero container" style="padding-bottom:var(--space-sm);">
+      <p class="eyebrow" style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-bottom:1rem;font-weight:500;">Insights &mdash; April 2026</p>
+      <h1 style="font-size:2.75rem;">AI Governance for Australian Businesses<br><span style="color:var(--accent);">A Practical Guide</span></h1>
+      <p class="subline">What you actually need to do before, during, and after deploying AI in an Australian business. No philosophy. No hypothetical risk matrices. Just the controls that matter.</p>
+      <div class="article-meta" style="margin-top:1.5rem;">
+        <span>&#128100; Huxley Peckham, Tech Horizon Labs</span>
+        <span>&#128197; April 2026</span>
+        <span>&#9200; 8 min read</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <article class="section container article-body" style="max-width:760px;">
+
+      <div class="callout-box">
+        <p><strong>Why this matters</strong><br>AI governance sounds like something for enterprises with compliance departments. It is not. If your business uses AI to handle customer data, draft documents, or automate decisions, you already have governance obligations under Australian law. This guide covers what those obligations are and how to meet them without hiring a compliance team.</p>
+      </div>
+
+      <h2>AI Governance Is Not What You Think It Is</h2>
+
+      <p>Most governance content reads like it was written for a Fortune 500 board presentation. It talks about "ethical AI frameworks" and "responsible innovation" without telling you what to actually do on Monday morning.</p>
+
+      <p>For an Australian SMB, AI governance comes down to five practical questions:</p>
+
+      <p><strong>1. What data does the AI touch?</strong><br>
+      <strong>2. Who can access it?</strong><br>
+      <strong>3. Where is it stored?</strong><br>
+      <strong>4. How do you verify its outputs?</strong><br>
+      <strong>5. What happens if something goes wrong?</strong></p>
+
+      <p>If you can answer those five questions with documented evidence, you have AI governance. If you cannot, you have a risk you have not mapped yet.</p>
+
+      <h2>Privacy Act 1988: What It Means for Your AI</h2>
+
+      <p>The <strong>Privacy Act 1988</strong> and its 13 Australian Privacy Principles (APPs) apply to any business with annual turnover above $3 million that handles personal information. Many smaller businesses are also covered if they provide health services, are a government contractor, or trade in personal information.</p>
+
+      <p>When you deploy AI, the Privacy Act does not care that a machine is doing the processing. The obligations remain the same:</p>
+
+      <p><strong>APP 1 (Open and transparent management):</strong> You need to document how your AI collects and uses personal information. If an AI reads customer emails to generate summaries, that is collection and use. Your privacy policy needs to say so.</p>
+
+      <p><strong>APP 3 (Collection):</strong> You can only collect personal information that is reasonably necessary. An AI that scrapes everything in a shared drive to build a knowledge base may be collecting more than it needs.</p>
+
+      <p><strong>APP 6 (Use and disclosure):</strong> Personal information collected for one purpose cannot be used for another without consent. If you collected email addresses for invoicing, you cannot feed them into an AI marketing tool without telling people.</p>
+
+      <p><strong>APP 8 (Cross-border disclosure):</strong> If your AI sends data to servers outside Australia, you need to ensure the overseas recipient handles it in line with Australian privacy standards. This is where data residency becomes relevant.</p>
+
+      <p><strong>APP 11 (Security):</strong> You must take reasonable steps to protect personal information from misuse, interference, loss, and unauthorised access. An AI system with weak access controls is a breach of APP 11 waiting to happen.</p>
+
+      <div class="callout-box">
+        <p><strong>Notifiable Data Breaches scheme:</strong> If an AI system causes an eligible data breach (unauthorised access or disclosure likely to cause serious harm), you are required to notify the OAIC and affected individuals. The notification window is tight. You need a documented response procedure before an incident occurs, not after.</p>
+      </div>
+
+      <h2>Data Residency: Why It Matters More Than You Think</h2>
+
+      <p>The Privacy Act does not require Australian data residency. But APP 8 does require that cross-border disclosures meet equivalent protections. For many Australian SMBs, the simplest way to satisfy this is to keep data in Australia.</p>
+
+      <p>There are three practical reasons to care about data residency:</p>
+
+      <p><strong>1. Client expectations.</strong> Australian businesses increasingly ask where their data is stored. Legal firms, healthcare providers, and government contractors often require Australian hosting as a condition of engagement.</p>
+
+      <p><strong>2. Regulatory simplicity.</strong> If your data never leaves Australia, APP 8 cross-border disclosure rules do not apply. One less compliance obligation to manage.</p>
+
+      <p><strong>3. Vendor risk.</strong> When you send data to a US-based AI API, you are subject to US law enforcement access provisions (including the CLOUD Act). Your Australian clients may not know this. You should.</p>
+
+      <p>Our approach: deploy on infrastructure the client controls. That means Australian-hosted servers (IONOS, VentraIP), client-owned infrastructure, or local AI models via LM Studio that keep data on the client's own hardware. When cloud AI APIs are genuinely needed, we use enterprise tiers where data is not retained for model training, and we document exactly which prompts are sent externally.</p>
+
+      <h2>Access Control: The Governance Layer Most People Skip</h2>
+
+      <p>Access control is not glamorous. It is also the single most effective governance control you can deploy. Most AI incidents are not caused by the AI itself. They are caused by the wrong person having access to the wrong data at the wrong time.</p>
+
+      <p><strong>What good access control looks like:</strong></p>
+
+      <p>Every person who interacts with your AI system has a defined role. Roles determine what data they can see, what actions they can take, and what gets logged. When someone leaves the business, their access is revoked the same day. Not the same week. The same day.</p>
+
+      <p>We deploy <strong>Keeper Security</strong> and <strong>1Password</strong> for credential management and privileged access. Role-based vaults, MFA enforcement, and session logging. <strong>AvePoint</strong> for data access governance across Google Workspace and SharePoint. <strong>Acronis Cyber Protect</strong> for endpoint security and immutable backup.</p>
+
+      <p>This is what we mean by "infrastructure before automation." You do not connect an AI to your business data until you know who can see that data and what happens if someone who should not see it gets in.</p>
+
+      <div class="blockquote">
+        <p>"Every governance failure I have seen in an Australian SMB came down to access control. Not a rogue AI. Not a hallucination. Someone had access to data they should not have had, and no one noticed until the damage was done."</p>
+        <cite>&mdash; Huxley Peckham, Founder, Tech Horizon Labs</cite>
+      </div>
+
+      <h2>Vendor Independence: Do Not Build on Someone Else's Platform</h2>
+
+      <p>Vendor lock-in is a governance risk, not just a commercial one. If your entire AI workflow runs on a single vendor's proprietary platform, three things can go wrong:</p>
+
+      <p><strong>1. Pricing changes.</strong> The vendor raises prices. You have no alternative because your data and workflows are locked in their format.</p>
+
+      <p><strong>2. Policy changes.</strong> The vendor changes their data retention or training policy. Your data, which was previously not used for training, now is.</p>
+
+      <p><strong>3. Discontinuation.</strong> The vendor shuts down the product or changes it beyond recognition. Your workflows break.</p>
+
+      <p>The test: if your AI vendor disappeared tomorrow, could you run the systems without them? If the answer is no, you have a governance gap.</p>
+
+      <p>Our approach: open formats for data storage, code in the client's own repository, documentation in the client's own drive. No proprietary file formats. No licence keys we hold over you. No admin accounts we do not transfer. When you end the engagement, you keep everything.</p>
+
+      <h2>Staff Training as Governance</h2>
+
+      <p>Most governance frameworks treat training as a checkbox. We treat it as the primary control.</p>
+
+      <p>No access control policy, no data residency decision, and no vendor agreement replaces a team that understands the boundaries of what AI should and should not do. A well-trained team is your most effective governance control because they make decisions at the point of use, hundreds of times a day, in situations no policy document can anticipate.</p>
+
+      <p><strong>What staff need to know:</strong></p>
+
+      <p><strong>1. What data can go into an AI prompt.</strong> Customer names, financial figures, health records, legal documents. Your team needs clear guidance on what is acceptable to paste into an AI tool and what is not. This varies by tool. A local model running on your own hardware has different boundaries from a cloud API.</p>
+
+      <p><strong>2. How to verify AI outputs.</strong> AI generates confident-sounding text that may be wrong. Staff need a verification habit: check facts against source material, confirm numbers against original data, and never send AI-generated content to a client without review.</p>
+
+      <p><strong>3. When to escalate.</strong> There are decisions AI should not make. Hiring decisions, legal advice, clinical recommendations, financial commitments. Staff need to know where the line is and what to do when the AI crosses it.</p>
+
+      <p>We build training into every deployment through the <a href="/academy">AI Academy</a>. Not as an add-on. As a core governance control.</p>
+
+      <h2>AI Output Verification: Trust but Verify</h2>
+
+      <p>AI hallucinations are real. Every frontier model (Claude, ChatGPT, Gemini, LLaMA) can generate plausible-sounding content that is factually wrong. Governance means building verification into the workflow, not hoping the AI gets it right.</p>
+
+      <p><strong>Practical verification controls:</strong></p>
+
+      <p><strong>Human-in-the-loop checkpoints.</strong> Every AI output that goes to a client, a patient, a court, or a financial record passes through human review. No exceptions. The AI drafts. The human approves.</p>
+
+      <p><strong>Source attribution.</strong> Where possible, AI outputs reference the source material they drew from. This makes verification faster because the reviewer can check the source directly rather than searching for it.</p>
+
+      <p><strong>Confidence flagging.</strong> We build systems that flag when the AI is working outside its training data or when a query does not match the knowledge base well. Low-confidence outputs get routed to manual handling.</p>
+
+      <p><strong>Audit logging.</strong> Every AI-generated output is logged with the input prompt, the model used, and the timestamp. If something goes wrong six months later, there is a complete record of what the AI produced and what the human approved.</p>
+
+      <h2>Practical Governance Checklist</h2>
+
+      <div class="checklist-box">
+        <h3>Before You Deploy AI</h3>
+        <ul>
+          <li>Map every data flow: what personal information does the AI collect, store, use, or disclose?</li>
+          <li>Update your privacy policy to reflect AI processing</li>
+          <li>Deploy access controls (Keeper, 1Password, or equivalent) with role-based permissions and MFA</li>
+          <li>Choose your data residency: Australian hosting, client-owned infrastructure, or local models for sensitive data</li>
+          <li>Document every external dependency (APIs, cloud services, third-party models)</li>
+          <li>Write a breach response procedure that meets OAIC notification timelines</li>
+          <li>Train your team on what data can and cannot go into AI prompts</li>
+        </ul>
+      </div>
+
+      <div class="checklist-box">
+        <h3>After Deployment</h3>
+        <ul>
+          <li>Review AI outputs regularly for accuracy and bias</li>
+          <li>Maintain audit logs of AI-generated content and human approvals</li>
+          <li>Revoke access immediately when staff leave or change roles</li>
+          <li>Review vendor terms annually for changes to data retention or training policies</li>
+          <li>Update data flow documentation when workflows change</li>
+          <li>Run quarterly staff refresher training on AI boundaries and verification</li>
+        </ul>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>Does the Australian Privacy Act apply to AI systems?</h3>
+      <p>Yes. If your AI system collects, stores, uses, or discloses personal information, it falls under the Privacy Act 1988 and the 13 Australian Privacy Principles. The obligation is on the business deploying the AI, not the AI vendor.</p>
+
+      <h3>Do Australian businesses need to store AI data in Australia?</h3>
+      <p>The Privacy Act does not mandate Australian data residency, but APP 8 requires that cross-border disclosures meet equivalent privacy protections. For regulated industries, sector-specific rules may require Australian hosting. Many businesses choose local hosting as the simplest compliance path.</p>
+
+      <h3>What is AI governance for small businesses?</h3>
+      <p>AI governance for small businesses means having documented answers to five questions: what data does the AI touch, who can access it, where is it stored, how do you verify its outputs, and what happens if something goes wrong. It does not require a compliance team. It requires documentation, access controls, and a verification process.</p>
+
+      <h3>How do you prevent vendor lock-in with AI tools?</h3>
+      <p>Use open formats, own your code and data, document every external dependency, and build on infrastructure you can audit and exit. The test: if your vendor disappeared tomorrow, could you run the system without them?</p>
+
+      <h3>Is staff training part of AI governance?</h3>
+      <p>Yes. A well-trained team knows what data can go into AI prompts, how to verify outputs, and when to escalate to a human decision-maker. No policy document replaces a team that understands the boundaries.</p>
+
+      <div class="source-note">
+        <strong>Sources:</strong> Australian Privacy Act 1988 and Australian Privacy Principles (APPs) via the <a href="https://www.oaic.gov.au/privacy/australian-privacy-principles" target="_blank" rel="noopener noreferrer">OAIC</a>. Notifiable Data Breaches scheme via the <a href="https://www.oaic.gov.au/privacy/notifiable-data-breaches" target="_blank" rel="noopener noreferrer">OAIC</a>. CLOUD Act implications referenced from the U.S. Department of Justice. ISO 42001:2023 (Artificial intelligence management system) referenced from ISO. Data residency and access control recommendations based on Tech Horizon Labs engagement data with Australian SMBs (2025&ndash;2026). This article is general guidance and does not constitute legal advice.
+      </div>
+
+      <div class="author-bio">
+        <div class="author-bio-avatar">HP</div>
+        <div>
+          <h4>Huxley Peckham</h4>
+          <p>Founder of Tech Horizon Labs. Based in Noosa Heads, Queensland. Huxley has deployed AI systems across dozens of Australian businesses spanning legal, construction, accounting, healthcare, and professional services. He runs the AI Academy (300+ operators) and publishes original research on AI adoption in the Australian market.</p>
+          <a href="/about" class="link-arrow">More about Huxley &rarr;</a>
+        </div>
+      </div>
+
+    </article>
+
+    <div class="accent-rule container"></div>
+
+    <section class="section container fade-in" style="max-width:760px;">
+      <h2>Start With Your Own Assessment</h2>
+      <p style="color:var(--text-secondary);max-width:520px;">Find out where your business stands on AI readiness, or review how we handle data and compliance across every engagement.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:var(--space-xs);">
+        <a href="/assessment" class="link-arrow">Take the free AI assessment &rarr;</a>
+        <a href="/security" class="link-arrow">See our data and compliance practices &rarr;</a>
+        <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery" class="link-arrow" rel="noopener noreferrer">Book free discovery call &rarr;</a>
+      </div>
+
+      <div style="margin-top:var(--space-sm);padding-top:var(--space-sm);border-top:1px solid var(--border-light);">
+        <h3 style="margin-bottom:1rem;font-size:1rem;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;">Related articles</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+          <a href="/insights/ai-mistakes-australian-businesses" class="link-arrow">5 AI mistakes to avoid</a>
+          <a href="/insights/accc-microsoft-copilot-australia" class="link-arrow">ACCC vs Microsoft Copilot</a>
+          <a href="/insights/ai-readiness-stages-australia" class="link-arrow">The 4 AI readiness stages</a>
+          <a href="/insights/ai-training-gap-australia" class="link-arrow">The AI training gap</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand"><img src="/logo.webp" alt="Tech Horizon Labs" class="footer-logo" width="24" height="24"> Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+        <br><br>
+        <img src="/cloudflare-badge.png" alt="Protected by Cloudflare" class="footer-badge" width="140" height="49" loading="lazy">
+        <a href="https://www.goodfirms.co/company/tech-horizon-labs" target="_blank" rel="noopener" class="footer-badge-link"><img src="https://assets.goodfirms.co/badges/color-badge/artificial-intelligence.svg" alt="Top Artificial Intelligence Company on GoodFirms" width="140" height="50" loading="lazy"></a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Locations</strong>
+        <a href="/locations/brisbane">Brisbane</a>
+        <a href="/locations/sunshine-coast">Sunshine Coast</a>
+        <a href="/locations/gold-coast">Gold Coast</a>
+        <a href="/locations/queensland">Queensland</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Industries</strong>
+        <a href="/industries/legal">Legal</a>
+        <a href="/industries/construction">Construction</a>
+        <a href="/industries/healthcare">Healthcare</a>
+        <a href="/industries/retail">Retail</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Company</strong>
+        <a href="/about">About</a>
+        <a href="/work">Work</a>
+        <a href="/academy">Academy</a>
+        <a href="/research">Research</a>
+        <a href="/insights">Insights</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Legal</strong>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .nl-scroll-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #2d1f3f;
+      color: #fff;
+      padding: 0.875rem 1.5rem;
+      z-index: 900;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+      box-shadow: 0 -2px 16px rgba(0,0,0,0.12);
+    }
+    .nl-scroll-bar.visible { transform: translateY(0); }
+    .nl-scroll-bar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .nl-scroll-bar p {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .nl-scroll-bar .nl-sub {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      opacity: 0.7;
+    }
+    .nl-scroll-bar form {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nl-scroll-bar input[type="email"] {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      outline: none;
+      min-width: 200px;
+    }
+    .nl-scroll-bar input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
+    .nl-scroll-bar input[type="email"]:focus { border-color: var(--accent); }
+    .nl-scroll-bar button[type="submit"] {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nl-scroll-bar .nl-dismiss {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      font-size: 1.25rem;
+      padding: 0.25rem;
+      line-height: 1;
+      margin-left: 0.5rem;
+    }
+    .nl-scroll-bar .nl-dismiss:hover { color: #fff; }
+    .nl-scroll-bar .nl-msg {
+      font-size: 0.8125rem;
+      margin: 0;
+      margin-top: 0.25rem;
+    }
+    .nl-scroll-bar .nl-msg.error { color: #f87171; }
+    .nl-scroll-bar .nl-msg.success { color: #86efac; }
+    @media (max-width: 600px) {
+      .nl-scroll-bar-inner { flex-direction: column; text-align: center; }
+      .nl-scroll-bar form { width: 100%; justify-content: center; }
+    }
+  </style>
+
+  <div class="nl-scroll-bar" id="nl-scroll-bar" data-testid="insights-newsletter-bar">
+    <div class="nl-scroll-bar-inner">
+      <div>
+        <p>Get fortnightly AI implementation tips. <span class="nl-sub">No fluff.</span></p>
+      </div>
+      <form id="nl-scroll-form" novalidate>
+        <input type="email" id="nl-scroll-email" placeholder="Your email" autocomplete="email" required data-testid="input-insights-newsletter-email">
+        <button type="submit" data-testid="button-insights-newsletter-submit">Subscribe</button>
+        <button type="button" class="nl-dismiss" id="nl-dismiss" aria-label="Dismiss newsletter bar" data-testid="button-dismiss-newsletter">&times;</button>
+      </form>
+    </div>
+    <div class="nl-scroll-bar-inner">
+      <p class="nl-msg" id="nl-scroll-msg" style="display:none;"></p>
+    </div>
+  </div>
+
+  <script src="/main.min.js" defer></script>
+  <script>
+    (function() {
+      var bar = document.getElementById('nl-scroll-bar');
+      var form = document.getElementById('nl-scroll-form');
+      var dismissBtn = document.getElementById('nl-dismiss');
+      var msgEl = document.getElementById('nl-scroll-msg');
+      var STORAGE_KEY = 'thl_nl_dismissed';
+
+      if (!bar || localStorage.getItem(STORAGE_KEY)) return;
+
+      var shown = false;
+      function checkScroll() {
+        if (shown) return;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        if (docH > 0 && (window.scrollY / docH) >= 0.6) {
+          bar.classList.add('visible');
+          shown = true;
+          window.removeEventListener('scroll', checkScroll);
+        }
+      }
+      window.addEventListener('scroll', checkScroll, { passive: true });
+
+      dismissBtn.addEventListener('click', function() {
+        bar.classList.remove('visible');
+        localStorage.setItem(STORAGE_KEY, '1');
+      });
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var emailEl = document.getElementById('nl-scroll-email');
+        var email = emailEl.value.trim();
+        var btn = form.querySelector('button[type="submit"]');
+
+        msgEl.style.display = 'none';
+        msgEl.className = 'nl-msg';
+
+        if (!email || !email.includes('@')) {
+          msgEl.textContent = 'Please enter a valid email.';
+          msgEl.className = 'nl-msg error';
+          msgEl.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Subscribing\u2026';
+
+        fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: 'insights-scroll' })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.success) {
+            form.style.display = 'none';
+            msgEl.textContent = "You're in. Check your inbox.";
+            msgEl.className = 'nl-msg success';
+            msgEl.style.display = 'block';
+            localStorage.setItem(STORAGE_KEY, '1');
+            setTimeout(function() { bar.classList.remove('visible'); }, 3000);
+          } else {
+            throw new Error(data.error || 'Something went wrong.');
+          }
+        })
+        .catch(function(err) {
+          msgEl.textContent = err.message || 'Something went wrong.';
+          msgEl.className = 'nl-msg error';
+          msgEl.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Subscribe';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
