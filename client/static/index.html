@@ -106,7 +106,7 @@
         "name": "What AI tools do you implement for businesses?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We deploy Claude (Anthropic), ChatGPT (OpenAI), LLaMA and DeepSeek (open source, on-premises), n8n for workflow automation, Keeper Security for access management, and Acronis for backup and endpoint protection. The right tool depends on your use case, data sensitivity, and budget. We're vendor-neutral and recommend what actually fits."
+          "text": "We deploy 30+ tools across 10 categories. AI models include Claude, ChatGPT, Perplexity, DeepSeek, and LLaMA. For development we use Claude Code, Replit, and Google AI Studio. Automation runs on n8n (preferred over Zapier and Make). CRM is Attio (preferred over HubSpot for AI integratability), with Xero, Stripe, and Revolut for finance. Security starts with Keeper, 1Password, AvePoint, and Acronis Cyber Protect — deployed before AI touches your data. Content and media use Opus.pro, Higgsfield.ai, and Google Flow. Research agents run on Firecrawl, Tavily, and OpenClaw. We are vendor-neutral and rank every tool by how well it integrates into AI-powered workflows."
         }
       },
       {
@@ -485,52 +485,121 @@
 
     <div class="accent-rule container"></div>
 
-    <!-- TOOLS — flowing particle mode -->
+    <!-- TOOLS — grouped by purpose -->
     <div class="warm-band">
       <section class="section container-wide fade-in">
         <h2>Tools we deploy</h2>
-        <div class="tool-grid stagger">
-          <div class="tool-item fade-in">
-            <div class="tool-name">Claude</div>
-            <div class="tool-tag">Anthropic</div>
-            <p>Documents, writing, code. Our most-deployed model.</p>
+        <p class="subline" style="margin-bottom:var(--space-sm);">Vendor-neutral. Ranked by AI integratability. We recommend what actually fits your use case, data sensitivity, and budget.</p>
+
+        <div class="tool-category-grid stagger">
+
+          <div class="tool-category fade-in">
+            <h3 class="tool-category-label">AI Models &amp; Reasoning</h3>
+            <p class="tool-category-purpose">Writing, code, analysis, multimodal tasks</p>
+            <div class="tool-pill-list">
+              <span class="tool-pill">Claude</span>
+              <span class="tool-pill">ChatGPT</span>
+              <span class="tool-pill">Perplexity</span>
+              <span class="tool-pill">DeepSeek</span>
+              <span class="tool-pill">LLaMA</span>
+            </div>
           </div>
-          <div class="tool-item fade-in">
-            <div class="tool-name">ChatGPT</div>
-            <div class="tool-tag">OpenAI</div>
-            <p>Multimodal. Vision, voice, quick turnaround.</p>
+
+          <div class="tool-category fade-in">
+            <h3 class="tool-category-label">AI Development</h3>
+            <p class="tool-category-purpose">Building, prototyping, deploying AI systems</p>
+            <div class="tool-pill-list">
+              <span class="tool-pill">Claude Code</span>
+              <span class="tool-pill">Replit</span>
+              <span class="tool-pill">Google AI Studio</span>
+            </div>
           </div>
-          <div class="tool-item fade-in">
-            <div class="tool-name">LLaMA</div>
-            <div class="tool-tag">Open source</div>
-            <p>Runs on your hardware. Full privacy.</p>
+
+          <div class="tool-category fade-in">
+            <h3 class="tool-category-label">Content &amp; Media</h3>
+            <p class="tool-category-purpose">Video, image generation, creative production</p>
+            <div class="tool-pill-list">
+              <span class="tool-pill">Opus.pro</span>
+              <span class="tool-pill">Opus Agent</span>
+              <span class="tool-pill">Higgsfield.ai</span>
+              <span class="tool-pill">Google Flow</span>
+              <span class="tool-pill">Google Stitch</span>
+            </div>
           </div>
-          <div class="tool-item fade-in">
-            <div class="tool-name">DeepSeek</div>
-            <div class="tool-tag">Open source</div>
-            <p>Cost-effective reasoning at scale. MIT-licensed.</p>
+
+          <div class="tool-category fade-in">
+            <h3 class="tool-category-label">Data &amp; Research</h3>
+            <p class="tool-category-purpose">Web scraping, live data, agent-driven research</p>
+            <div class="tool-pill-list">
+              <span class="tool-pill">Firecrawl</span>
+              <span class="tool-pill">Tavily</span>
+              <span class="tool-pill">OpenClaw</span>
+            </div>
           </div>
-          <div class="tool-item fade-in">
-            <div class="tool-name">OpenClaw</div>
-            <div class="tool-tag">Agent framework</div>
-            <p>API-connected research agents. Live data from ABS, World Bank.</p>
+
+          <div class="tool-category fade-in">
+            <h3 class="tool-category-label">Automation &amp; Workflows</h3>
+            <p class="tool-category-purpose">Connecting tools to AI models without code</p>
+            <div class="tool-pill-list">
+              <span class="tool-pill tool-pill--primary">n8n</span>
+              <span class="tool-pill tool-pill--alt">over Zapier / Make</span>
+            </div>
           </div>
-          <div class="tool-item fade-in">
-            <div class="tool-name">n8n</div>
-            <div class="tool-tag">Automation</div>
-            <p>Connects your tools &mdash; Xero, Gmail, CRM &mdash; to AI models.</p>
+
+          <div class="tool-category fade-in">
+            <h3 class="tool-category-label">CRM &amp; Business</h3>
+            <p class="tool-category-purpose">Pipeline, invoicing, payments, banking</p>
+            <div class="tool-pill-list">
+              <span class="tool-pill tool-pill--primary">Attio</span>
+              <span class="tool-pill tool-pill--alt">over HubSpot</span>
+              <span class="tool-pill">Xero</span>
+              <span class="tool-pill">Stripe</span>
+              <span class="tool-pill">Revolut</span>
+            </div>
           </div>
-          <div class="tool-item fade-in">
-            <div class="tool-name">Keeper Security</div>
-            <div class="tool-tag">Access Management</div>
-            <p>Zero-trust vaults, team permissions, MFA enforcement. Deployed before AI touches your data.</p>
+
+          <div class="tool-category fade-in">
+            <h3 class="tool-category-label">Communication</h3>
+            <p class="tool-category-purpose">Team coordination and client channels</p>
+            <div class="tool-pill-list">
+              <span class="tool-pill">Telegram</span>
+              <span class="tool-pill">Slack</span>
+            </div>
           </div>
-          <div class="tool-item fade-in">
-            <div class="tool-name">Acronis Cyber Protect</div>
-            <div class="tool-tag">Backup &amp; Security</div>
-            <p>Local and cloud backup, anti-malware, endpoint protection, and disaster recovery.</p>
+
+          <div class="tool-category fade-in">
+            <h3 class="tool-category-label">Productivity</h3>
+            <p class="tool-category-purpose">Documents, email, collaboration</p>
+            <div class="tool-pill-list">
+              <span class="tool-pill tool-pill--primary">Google Workspace</span>
+              <span class="tool-pill tool-pill--alt">over Microsoft</span>
+            </div>
           </div>
+
+          <div class="tool-category fade-in">
+            <h3 class="tool-category-label">Security &amp; Access</h3>
+            <p class="tool-category-purpose">Deployed before AI touches your data</p>
+            <div class="tool-pill-list">
+              <span class="tool-pill">Keeper Security</span>
+              <span class="tool-pill">1Password</span>
+              <span class="tool-pill">AvePoint</span>
+              <span class="tool-pill">Acronis Cyber Protect</span>
+            </div>
+          </div>
+
+          <div class="tool-category fade-in">
+            <h3 class="tool-category-label">SEO &amp; Growth</h3>
+            <p class="tool-category-purpose">Search visibility, keyword research, AI citations</p>
+            <div class="tool-pill-list">
+              <span class="tool-pill">AnswerThePublic</span>
+              <span class="tool-pill">SemRush</span>
+              <span class="tool-pill">Ahrefs</span>
+            </div>
+          </div>
+
         </div>
+
+        <p style="margin-top:var(--space-sm);"><a href="/tools" class="link-arrow">See our full tool recommendations &rarr;</a></p>
       </section>
     </div>
 
@@ -681,7 +750,7 @@
         </details>
         <details class="faq-item" data-testid="faq-item-what-tools">
           <summary class="faq-question">What AI tools do you implement for businesses?</summary>
-          <div class="faq-answer"><p>We deploy Claude (Anthropic), ChatGPT (OpenAI), LLaMA and DeepSeek (open source, on-premises), n8n for workflow automation, Keeper Security for access management, and Acronis for backup and endpoint protection. The right tool depends on your use case, data sensitivity, and budget. We're vendor-neutral and recommend what actually fits.</p></div>
+          <div class="faq-answer"><p>We deploy 30+ tools across 10 categories, ranked by AI integratability. AI models include Claude, ChatGPT, Perplexity, DeepSeek, and LLaMA. Development uses Claude Code, Replit, and Google AI Studio. Automation runs on n8n (preferred over Zapier and Make). CRM is Attio (preferred over HubSpot), with Xero, Stripe, and Revolut for finance. Security starts with Keeper, 1Password, AvePoint, and Acronis &mdash; deployed before AI touches your data. Content and media use Opus.pro, Higgsfield.ai, and Google Flow. Research agents run on Firecrawl, Tavily, and OpenClaw. We are vendor-neutral and recommend what actually fits your use case, data sensitivity, and budget.</p></div>
         </details>
         <details class="faq-item" data-testid="faq-item-how-long">
           <summary class="faq-question">How long does AI implementation take?</summary>
