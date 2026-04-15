@@ -313,14 +313,17 @@ export async function registerRoutes(
       });
       const input = auditRequestSchema.parse(req.body);
 
+      if (input.email) {
+        const emailCheck = await verifyEmailDomain(input.email);
+        if (!emailCheck.valid) {
+          return res.status(400).json({ success: false, error: emailCheck.reason });
+        }
+      }
+
       const anyOptIn = input.wantsResultsEmail || input.wantsContact || input.wantsNewsletter;
       if (anyOptIn) {
         if (!input.name || !input.email) {
           return res.status(400).json({ success: false, error: "Name and email are required when opting in." });
-        }
-        const emailCheck = await verifyEmailDomain(input.email);
-        if (!emailCheck.valid) {
-          return res.status(400).json({ success: false, error: emailCheck.reason });
         }
       }
 

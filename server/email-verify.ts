@@ -43,9 +43,7 @@ function lookupMx(domain: string): Promise<boolean> {
   return new Promise((resolve) => {
     dns.resolveMx(domain, (err, addresses) => {
       if (err || !addresses || addresses.length === 0) {
-        dns.resolve4(domain, (err2, addresses2) => {
-          resolve(!err2 && !!addresses2 && addresses2.length > 0);
-        });
+        resolve(false);
         return;
       }
       resolve(true);
@@ -89,6 +87,6 @@ export async function verifyEmailDomain(email: string): Promise<{ valid: boolean
     }
     return { valid: true };
   } catch {
-    return { valid: true };
+    return { valid: false, reason: "Unable to verify this email address. Please try again." };
   }
 }
