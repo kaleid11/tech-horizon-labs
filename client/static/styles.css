@@ -1015,6 +1015,13 @@ blockquote cite {
   font-size: 0.75rem;
 }
 
+.tool-pill--note {
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px dashed var(--border);
+  font-size: 0.75rem;
+}
+
 /* --- Security Grid --- */
 .security-grid {
   display: grid;
