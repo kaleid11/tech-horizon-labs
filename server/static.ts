@@ -119,6 +119,7 @@ const STATIC_FILES: Record<string, string> = {
   "/insights/ai-training-gap-australia": "insights/ai-training-gap-australia.html",
   "/insights/accc-microsoft-copilot-australia": "insights/accc-microsoft-copilot-australia.html",
   "/insights/ai-governance-australian-business": "insights/ai-governance-australian-business.html",
+  "/insights/ai-for-law-firms-australia": "insights/ai-for-law-firms-australia.html",
 };
 
 /**
