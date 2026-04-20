@@ -152,66 +152,227 @@ Do this on the first Monday of each month:
 
 ## 2. Google Business Profile (GBP) — High Priority
 
-### 2.1 Create or Claim Your Profile
+The current GBP listing has stale copy and settings from an earlier version of the brand. Work through 2.1 to 2.9 in order. Total time is about 30 minutes. All edits are inside [business.google.com](https://business.google.com), nothing in this section requires code changes.
 
-1. Go to [business.google.com](https://business.google.com)
-2. Sign in with the Google account you want to manage the business from
-3. Click "Add your business to Google"
-4. Enter the business details:
-   - **Business name:** Tech Horizon Labs
-   - **Category:** "IT Consultant" (primary), then add: "Artificial Intelligence Consultant", "Business Management Consultant"
-   - **Service area:** Select "Queensland, Australia" (since you serve clients remotely across the state)
-   - Do NOT add a physical address unless you want the Noosa Heads address publicly listed. If you work from home, choose "service area business" instead.
-5. Complete the verification process (Google will send a postcard or offer phone/email verification)
+### 2.1 Fix the Description
 
-### 2.2 Complete Your Profile
+The current description mentions "Silicon Valley" and "smart assistants" and is no longer aligned with the website. Replace it with the copy below.
 
-Once verified, fill in every field:
+**Where to edit:** GBP dashboard > Edit profile > About > Business description.
 
-1. **Business description** (750 characters max):
-   > Tech Horizon Labs builds and deploys AI systems for growing Australian businesses. We map your workflows, find the bottleneck, build the fix, and train your team. Based in Noosa Heads, Queensland. Specialising in AI implementation, workflow automation, and AI training for SMBs across the Sunshine Coast, Brisbane, Gold Coast, and all of Queensland. ABN 80 976 285 425.
+**Paste this into the long description field (about 670 characters, well under the 750 limit):**
 
-2. **Phone:** +61 478 919 419
-3. **Website:** https://techhorizonlabs.com
-4. **Booking link:** https://app.klipycrm.com/book/pre-discovery/free-pre-discovery
-5. **Service areas:** Sunshine Coast, Brisbane, Gold Coast, Queensland
-6. **Business hours:** Set your actual working hours
-7. **Services offered:** Add each service:
-   - AI Implementation Consulting
-   - AI Readiness Assessment
-   - Workflow Automation
-   - AI Training and Workshops
-   - Data Infrastructure Setup
-   - AI Strategy Consulting
+> Tech Horizon Labs is a Queensland fractional AI ops consultancy based in Noosa Heads. We help small and mid-sized Australian businesses move past ChatGPT experiments and deploy AI systems that actually run inside their workflows. Our Horizon Method has four stages. We Map your real workflows, Blueprint the right system, Deploy it on private Australian infrastructure, and Retain the knowledge inside your team through training. We work on-site across the Sunshine Coast, Brisbane, and the Gold Coast, and remotely across Queensland. Privacy Act aligned, Australian-hosted, fixed-price builds. Book a free 30-minute discovery call at techhorizonlabs.com.
 
-8. **Photos:**
-   - Upload the logo (use the 1000x1000 source file from `attached_assets/`)
-   - Upload a professional headshot if available
-   - Upload any relevant photos of workshops, presentations, or office setup
+**Paste this into the "From the business" short description field (about 230 characters):**
 
-### 2.3 Create Your First GBP Posts
+> Queensland fractional AI ops consultancy. We help Australian SMBs deploy AI inside real workflows using the Horizon Method: Map, Blueprint, Deploy, Retain. Privacy Act aligned, Australian-hosted, fixed-price builds. Free 30-minute discovery call.
 
-Google Business Profile posts appear in local search results and help with visibility. Create one post per week for the first month.
+### 2.2 Fix the Categories
 
-**Post 1 — Introduction:**
-> Helping Queensland businesses deploy AI that actually works. Not chatbots. Not generic tools. Custom AI systems built on your own data and infrastructure. Book a free 30-minute pre-discovery call to find out where AI fits in your business.
+The current primary category "Computer support and services" is wrong. It tells Google we fix laptops, not deploy AI systems. Replace it with the list below.
 
-**Post 2 — Free Assessment:**
-> How ready is your business for AI? Take our free 10-question AI Readiness Assessment and find out which of the 4 maturity stages you are in. No email required. Instant results. techhorizonlabs.com/assessment
+**Where to edit:** GBP dashboard > Edit profile > About > Business category.
 
-**Post 3 — Training:**
-> AI training workshops for Sunshine Coast and Queensland businesses. Learn to use Claude, ChatGPT, and automation tools in your actual workflows. In-person and remote options. techhorizonlabs.com/academy
+| Slot | Category | Why |
+|------|----------|-----|
+| **Primary** | Business Management Consultant | Highest match for fractional ops consulting and the broadest discovery surface for SMB owners searching for help. |
+| Secondary 1 | Software Company | Captures custom AI system builds, internal tooling, and data infrastructure work. |
+| Secondary 2 | Educational Consultant | Captures the Academy, training workshops, and AI literacy programs. |
+| Secondary 3 | Marketing Consultant | Captures content automation, SEO automation, and customer-facing AI work. |
+| Secondary 4 | Computer Consultant | Keeps a small slice of generic IT-adjacent search traffic without making it primary. |
 
-**Post 4 — Industry focus:**
-> We build private, privilege-aware AI systems for Australian law firms. Precedent search, document drafting, and client intake automation — delivered in 4 weeks. techhorizonlabs.com/industries/legal
+Remove "Computer support and services" entirely. It pulls the wrong audience and dilutes the relevance signal.
 
-### 2.4 Quarterly GBP Maintenance
+### 2.3 Fix the Service Areas
 
-- Update business hours if they change
-- Add 1-2 new posts per month
-- Respond to any reviews within 24 hours
-- Update services if new offerings are added
-- Check the "Insights" tab for search query data
+The current setting "Sunshine Coast and nearby areas" is too narrow. The website has dedicated location pages for Brisbane, Gold Coast, and Queensland, and remote engagements happen state-wide. Match GBP to the website.
+
+**Where to edit:** GBP dashboard > Edit profile > Location > Service area.
+
+**Remove:** "Sunshine Coast and nearby areas".
+
+**Add each of the following as separate service area entries:**
+
+- Noosa Heads, QLD
+- Noosaville, QLD
+- Sunshine Coast, QLD
+- Maroochydore, QLD
+- Mooloolaba, QLD
+- Caloundra, QLD
+- Nambour, QLD
+- Gympie, QLD
+- Brisbane, QLD
+- Gold Coast, QLD
+- Queensland, Australia
+
+GBP allows up to 20 service areas. Adding the major suburbs explicitly helps the listing surface in suburb-level "near me" searches.
+
+### 2.4 Fix the Hours
+
+The current setting "Open 24 hours" looks wrong to Google for a consulting business and to humans browsing the listing. Google quietly down-weights small businesses that claim 24/7 availability when they are not a 24/7 service. Switch to standard business hours.
+
+**Where to edit:** GBP dashboard > Edit profile > Hours.
+
+**Set the regular weekly hours to:**
+
+- Monday: 8:30 am – 5:30 pm
+- Tuesday: 8:30 am – 5:30 pm
+- Wednesday: 8:30 am – 5:30 pm
+- Thursday: 8:30 am – 5:30 pm
+- Friday: 8:30 am – 5:30 pm
+- Saturday: Closed
+- Sunday: Closed
+
+**Add this line into the description of the GBP "More hours" or notes field if available:** "Off-hours discovery calls available by appointment via the booking link."
+
+Also set Christmas Day, Boxing Day, New Year's Day, Australia Day, Good Friday, Easter Monday, Anzac Day, Queen's Birthday (QLD), Labour Day (QLD), and Christmas Eve (half day) as special hours each year. GBP prompts for these automatically about a month in advance.
+
+### 2.5 Services Catalogue
+
+The Services section on GBP is a separate field from the description and shows up as a structured list inside Maps and Search. Add each of the items below.
+
+**Where to edit:** GBP dashboard > Edit profile > Services > Add service.
+
+For each service, fill the Name field with the bold heading, the Description field with the sentence after it, and leave Price as "Price on request" unless otherwise noted.
+
+1. **AI Readiness Assessment** — Free 30-minute pre-discovery call to map where AI fits in your business and which Horizon stage you are in. *Price: Free.*
+2. **Horizon Method Implementation** — End-to-end AI system build using our four-stage Map, Blueprint, Deploy, Retain process. Fixed-price 4 to 12 week sprint.
+3. **Workflow Automation Build** — Custom automation that connects your existing tools, removes manual handoffs, and runs on Australian infrastructure.
+4. **Private AI System Deployment** — Privacy Act aligned AI deployments using your own data, hosted on Australian or self-managed infrastructure.
+5. **AI Training Workshops** — Half-day, full-day, and multi-day workshops for staff and leadership. Sunshine Coast in-person and remote across Queensland.
+6. **AI Academy Membership** — Ongoing AI literacy and tools program with monthly office hours, prompt library, and workflow templates.
+7. **Fractional AI Operations** — Embedded part-time AI lead for SMBs that are not ready for a full-time hire. Monthly retainer.
+8. **AI Governance and Policy** — Internal AI usage policy, vendor review, Privacy Act review, and staff acceptable use guidance.
+
+### 2.6 GBP Posts (first two months)
+
+GBP posts surface inside the local pack, the knowledge panel, and Maps. Schedule one per week for the next eight weeks. Use the Posts tab in the GBP dashboard.
+
+**Post 1 — What's New (week 1):**
+- Title: Queensland AI ops, no Silicon Valley fluff
+- Body: We help Australian SMBs deploy AI that actually runs inside the workflows you already have. Not generic chatbots. Real systems on private infrastructure.
+- CTA: Book — free 30-minute discovery call.
+- Image: Logo on warm cream background.
+
+**Post 2 — Offer (week 2):**
+- Title: Free AI Readiness Assessment
+- Body: Ten questions, one minute, instant result. Find out which of the four AI maturity stages your business is in. No email required.
+- CTA: Sign up — start the assessment.
+- Image: Screenshot of the assessment results screen.
+
+**Post 3 — What's New (week 3):**
+- Title: The Horizon Method explained
+- Body: Map your workflows. Blueprint the right system. Deploy on Australian infrastructure. Retain the knowledge inside your team. Four stages, fixed price, no scope creep.
+- CTA: Learn more — the Horizon Method.
+- Image: Simple four-step diagram with the four stage names.
+
+**Post 4 — Event (week 4):**
+- Title: AI workshop, Sunshine Coast
+- Body: Half-day in-person AI workshop for local business owners. Hands-on with Claude and ChatGPT inside your real workflows. Limited seats.
+- CTA: Sign up — see workshop dates.
+- Image: Photo from a previous workshop, or a clean photo of the venue.
+
+**Post 5 — Offer (week 5):**
+- Title: Free 2026 AI Readiness Report
+- Body: Our State of AI Readiness report for Australian SMBs. Covers what is actually working, what is not, and where the money is going. PDF, no fluff.
+- CTA: Download — get the report.
+- Image: Cover image of the PDF report.
+
+**Post 6 — What's New (week 6):**
+- Title: AI for Australian law firms
+- Body: Privilege-aware AI for precedent search, document drafting, and client intake automation. Privacy Act aligned. Built in four to six weeks.
+- CTA: Learn more — AI for law firms.
+- Image: Clean header image with a legal-themed icon.
+
+**Post 7 — What's New (week 7):**
+- Title: Why Brisbane SMBs are calling us
+- Body: Manufacturing, professional services, legal, construction. Brisbane SMBs are deploying private AI systems in four-week fixed-price sprints. Here is how.
+- CTA: Learn more — Brisbane AI consulting.
+- Image: Brisbane skyline or a generic Queensland-themed photo.
+
+**Post 8 — Offer (week 8):**
+- Title: Book a free 30-minute discovery call
+- Body: No sales pitch. We map where AI fits in your business and tell you honestly whether it is worth doing now or later.
+- CTA: Book — pick a time.
+- Image: Photo of Huxley, or a clean call-themed graphic.
+
+After the first two months, post one to two updates per month. Mix offer, event, and what's-new posts.
+
+### 2.7 Q&A Seeding
+
+Seed the Questions and Answers section yourself before customers start asking. Post each question from a personal Google account, then answer it from the business account. This is fully within Google's guidelines and is the standard local SEO practice.
+
+**Where to edit:** Open the public GBP listing in Google Search > scroll to "Questions and answers" > Ask a question.
+
+1. **Q:** How much does AI implementation cost in Australia?
+   **A:** Most of our SMB engagements run between AUD 8,000 and AUD 50,000 depending on scope. We work fixed price, not hourly, so the number is locked in before we start. Free 30-minute discovery call to scope your specific project.
+
+2. **Q:** Where is Tech Horizon Labs based?
+   **A:** Noosa Heads on the Sunshine Coast. We work on-site across the Sunshine Coast, Brisbane, and Gold Coast, and remotely across all of Queensland.
+
+3. **Q:** What does an AI implementation actually include?
+   **A:** Workflow mapping, system design, build, deployment on private Australian infrastructure, integration with your existing tools, staff training, and a 30-day post-launch support window. Everything in one fixed price.
+
+4. **Q:** How long does an AI project take?
+   **A:** Most builds run four to twelve weeks from kickoff to go-live. The first week is workflow mapping. Build and deployment take two to ten weeks depending on scope. Training is the final week.
+
+5. **Q:** Who runs Tech Horizon Labs?
+   **A:** Huxley Peckham. Background in AI implementation for Australian SMBs. Based in Noosa Heads. Available for direct contact, no account managers in between.
+
+6. **Q:** Do you work with Brisbane businesses?
+   **A:** Yes. We have a dedicated Brisbane practice covering manufacturing, professional services, legal, construction, and healthcare. On-site discovery in Brisbane, remote build, and on-site training. See techhorizonlabs.com/locations/brisbane.
+
+7. **Q:** What industries do you specialise in?
+   **A:** Legal, construction, healthcare, retail, manufacturing, accounting, and professional services. We have published case studies and industry pages for each. Most of our work is with services businesses between 5 and 200 staff.
+
+8. **Q:** Do you offer AI training?
+   **A:** Yes. Half-day and full-day workshops on the Sunshine Coast, multi-day intensives, remote sessions across Queensland, and an ongoing AI Academy membership for businesses that want continual upskilling.
+
+9. **Q:** What makes you different from a generic AI agency?
+   **A:** We build infrastructure before automation. Most agencies sell chatbots and call it AI. We map your real workflows first, deploy private systems on Australian infrastructure, and train your team to keep running them after we leave. Fixed price, Privacy Act aligned, no lock-in.
+
+10. **Q:** How do I book a call?
+    **A:** Free 30-minute pre-discovery call at app.klipycrm.com/book/pre-discovery/free-pre-discovery, or visit techhorizonlabs.com and click "Book a call". No sales pitch on the first call.
+
+### 2.8 Photo Upload Checklist
+
+GBP listings with 10 or more recent photos rank measurably better in the local pack than listings with the logo only. Upload the following set in the first session, then add 2 to 3 fresh photos per quarter.
+
+**Where to edit:** GBP dashboard > Photos > Add photos.
+
+Required first batch:
+
+1. **Logo** — square 1080x1080 PNG, transparent background. Use `attached_assets/T_(1)_1775353639173.png` as the source.
+2. **Cover photo** — wide 16:9 photo, ideally a clean Sunshine Coast or Noosa landscape with a subtle brand colour overlay.
+3. **Headshot of Huxley** — clean professional photo, neutral background, looking at camera.
+4. **Second photo of Huxley** — working at a desk or presenting, mid-action, more candid.
+5. **Third photo of Huxley** — at a workshop or with a client, ideally with people in frame.
+6. **Workshop photo 1** — wide shot of a training session in progress.
+7. **Workshop photo 2** — close-up of attendees working with laptops or whiteboarding.
+8. **Co-working space exterior** — only if you have a regular workspace clients can visit. Otherwise skip.
+9. **Co-working space interior** — same caveat as above.
+10. **Dashboard screenshot 1** — anonymised screenshot of an AI dashboard or automation workflow you have built.
+11. **Dashboard screenshot 2** — different anonymised system, ideally from a different industry.
+12. **Before-and-after diagram** — simple workflow diagram showing manual process versus AI-augmented process.
+13. **Speaking engagement photo** — Huxley speaking at a Chamber of Commerce event or similar.
+14. **Team or partner photo** — even if it is just Huxley with a contractor or collaborator. Listings with a "team" feel rank better than solo-operator listings.
+15. **Award, certification, or media mention** — screenshot or photo of any third-party recognition.
+
+**Important:** Do not upload AI-generated or stock images. Google can detect both, and AI-generated images in particular are starting to trigger demotion in local results. Use real photography only. iPhone shots are fine.
+
+### 2.9 Quarterly Maintenance Checklist
+
+Block 30 minutes in the calendar every 90 days for the following.
+
+- Add 2 to 3 new photos. Rotate older photos to the back of the gallery.
+- Confirm the description still matches the latest website positioning. Update it if any major service or location changes.
+- Confirm hours are correct. Set special hours for upcoming Queensland public holidays.
+- Post 1 to 2 updates per month minimum. Posts older than 6 months stop appearing in search.
+- Review and respond to every review within 48 hours. Thank positive reviewers by name. Respond to negative reviews calmly with a path to resolution.
+- Open the Insights tab. Note the top 5 search queries that surfaced the listing this quarter. Use those queries to inform new posts and Q&A entries.
+- Review the Services list. Add any new offerings, remove anything no longer sold.
+- Confirm the booking link still works. GBP occasionally drops the link if the destination URL changes.
 
 ---
 
@@ -428,7 +589,7 @@ Check rankings for these terms monthly in GSC (Performance > Search results > Qu
 - Backlink check in GSC (section 5.3)
 
 ### Quarterly (1 hour)
-- Update GBP posts (section 2.4)
+- Update GBP posts and run the GBP quarterly maintenance checklist (section 2.9)
 - Review and refresh meta descriptions for underperforming pages
 - Check if any new pages need sitemap/indexing updates
 - Evaluate backlink outreach results and plan next round
