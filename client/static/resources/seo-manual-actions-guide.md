@@ -152,7 +152,7 @@ Do this on the first Monday of each month:
 
 ## 2. Google Business Profile (GBP) — High Priority
 
-The current GBP listing has stale copy and settings from an earlier version of the brand. Work through 2.1 to 2.9 in order. Total time is about 30 minutes. All edits are inside [business.google.com](https://business.google.com), nothing in this section requires code changes.
+The current GBP listing has stale copy and settings from an earlier version of the brand. Work through 2.1 to 2.10 in order. Total time is about 30 minutes (plus a one-off ~15 minute baseline ranking snapshot in 2.9). All edits are inside [business.google.com](https://business.google.com), nothing in this section requires code changes.
 
 ### 2.1 Fix the Description
 
@@ -361,7 +361,58 @@ Required first batch:
 
 **Important:** Do not upload AI-generated or stock images. Google can detect both, and AI-generated images in particular are starting to trigger demotion in local results. Use real photography only. iPhone shots are fine.
 
-### 2.9 Quarterly Maintenance Checklist
+### 2.9 Track Which GBP Changes Actually Moved Rankings
+
+After applying the GBP cleanup (sections 2.1 to 2.8), measure the impact so the next quarter is informed by data, not guesswork. Without a baseline, there is no way to know whether the category fix, the photos, or the posts did the work.
+
+**Setup (once, before applying any GBP changes):**
+
+1. Download the tracker template: `/resources/gbp-ranking-tracker.csv`.
+2. Open Google Sheets, then File > Import > Upload, and upload the CSV. Choose "Replace spreadsheet" and keep "Detect automatically" for the separator.
+3. The 12 priority local keywords are pre-filled. They are the subset of section 6.1 that has the strongest local-pack intent (queensland, sunshine coast, brisbane, noosa, gold coast plus the national commercial terms).
+4. Fill in the **Baseline (pre-cleanup)** and **Baseline date** columns BEFORE making any GBP edits. Use the snapshot capture method below.
+5. As each GBP change from sections 2.1 to 2.8 is applied, record the date in the **GBP Changes Log** rows of the sheet.
+
+**GBP Snapshot Capture Checklist (do this for the baseline, then every Friday for 12 weeks):**
+
+For each of the 12 keywords, capture the current local pack position using one of the two free methods below. Pick one method and stick with it for all 12 weeks so the data is comparable.
+
+*Option A — Local Falcon free tier (recommended, ~5 minutes per snapshot):*
+
+1. Sign up at [localfalcon.com](https://www.localfalcon.com) (free tier allows a limited number of scans per month, enough for a weekly snapshot of the 12 priority keywords).
+2. Add the GBP listing as a location.
+3. Run a scan for each keyword with a 3x3 grid centred on the Sunshine Coast (Maroochydore is a good central pin).
+4. Record the **average pack position** the scan reports for that keyword in the matching Wk column.
+5. If the listing does not appear in any of the 9 grid points, leave the cell blank (counts as "not in top 20").
+
+*Option B — Manual incognito searches (free, ~15 minutes per snapshot):*
+
+1. Open Chrome in an incognito window. Sign out of any Google account.
+2. Set the search location to the Sunshine Coast: search for anything, click "Tools" under the search bar, then change "Any location" to a Sunshine Coast suburb (or use a free VPN/location tool to set the Maroochydore postcode 4558).
+3. Search each of the 12 keywords one at a time.
+4. For each search, scroll until the listing appears in the local pack (the map block) or in the organic results. Record the position:
+   - 1, 2, or 3 if the listing is in the local pack (with "1" being the top map result)
+   - 4 to 10 if it appears only in organic page 1 below the pack
+   - 11 to 20 if it appears on page 2
+   - Leave blank if it does not appear in the top 20
+5. Always search from the same location and the same browser state. Mixing logged-in searches with incognito searches will pollute the data.
+
+**Weekly cadence:**
+
+- Capture every Friday at roughly the same time of day for 12 weeks.
+- Total time: ~5 to 15 minutes per week depending on the method chosen.
+- Add the date a GBP change is made to the **GBP Changes Log** as it happens — do not try to remember it later.
+
+**Reviewing the results at week 12:**
+
+1. Open the tracker. Fill in the **Delta (Wk12 - Baseline)** column. A negative number is good (e.g. baseline 14 → Wk12 6 = delta -8).
+2. Cross-reference the dates of any large jumps against the **GBP Changes Log**. If three keywords jumped between Wk3 and Wk4 and the only change in that window was the categories fix, the categories did the work.
+3. Fill in the **12-Week Review** rows at the bottom of the sheet. This becomes the input for the next quarter's plan.
+4. If a keyword has not moved at all after 12 weeks, the GBP cleanup is not the lever for that term — note it as needing a different intervention (more content targeting that query, a relevant backlink, or a dedicated landing page).
+
+---
+
+### 2.10 Quarterly Maintenance Checklist
 
 Block 30 minutes in the calendar every 90 days for the following.
 
@@ -581,6 +632,7 @@ Check rankings for these terms monthly in GSC (Performance > Search results > Qu
 ### Weekly (10 minutes)
 - Check GSC for any new crawl errors
 - Respond to any GBP reviews
+- During the 12-week post-cleanup window: capture the GBP ranking snapshot (section 2.9)
 
 ### Monthly (30 minutes)
 - GSC performance review (section 1.6)
@@ -589,7 +641,8 @@ Check rankings for these terms monthly in GSC (Performance > Search results > Qu
 - Backlink check in GSC (section 5.3)
 
 ### Quarterly (1 hour)
-- Update GBP posts and run the GBP quarterly maintenance checklist (section 2.9)
+- Update GBP posts and run the GBP quarterly maintenance checklist (section 2.10)
+- Capture the weekly GBP ranking snapshot (section 2.9) — also do this every Friday, not just quarterly
 - Review and refresh meta descriptions for underperforming pages
 - Check if any new pages need sitemap/indexing updates
 - Evaluate backlink outreach results and plan next round
