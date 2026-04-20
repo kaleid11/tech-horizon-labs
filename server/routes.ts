@@ -67,6 +67,15 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  // ===== Legacy WordPress query-string handler =====
+  // /?p=123 (and similar single-param ?p=) was the WP "ugly permalink" — 410 it.
+  app.get("/", (req, res, next) => {
+    if (typeof req.query.p === "string" && req.query.p.length > 0) {
+      return gone(req, res);
+    }
+    next();
+  });
+
   // ===== 301 Redirects — old React SPA routes to new static pages =====
 
   // Portfolio → Work
@@ -106,9 +115,22 @@ export async function registerRoutes(
   app.get("/about-us/", (_req, res) => res.redirect(301, "/about"));
   app.get("/blog", (_req, res) => res.redirect(301, "/insights"));
   app.get("/blog/", (_req, res) => res.redirect(301, "/insights"));
-  // Unknown blog slugs — return 410 Gone so Google drops them from the index
-  app.get("/blog/:slug", gone);
-  app.get("/blog/:slug/", gone);
+  // Known legacy blog slugs (5 named WordPress articles) → 301 to /insights
+  // Unknown blog slugs → 410 Gone so Google drops them from the index
+  const KNOWN_BLOG_SLUGS = new Set([
+    "navigating-the-ai-hype-cycle-turning-ai-potential-into-business-reality",
+    "why-your-sunshine-coast-business-needs-a-no-nonsense-ai-consultant-in-2025-breaking-down-the-latest-ai-revolution",
+    "master-ai-brain-dumping-sunshine-coast-ai-consultants-2025-guide",
+    "ai-consultants-reveal-the-truth-about-privacy-in-the-age-of-artificial-intelligence",
+    "your-enterprise-ai-tools-are-probably-overkill-heres-what-queensland-businesses-actually-need",
+  ]);
+  const blogSlugHandler = (req: Request, res: Response) => {
+    const slug = (req.params.slug || "").replace(/\/$/, "");
+    if (KNOWN_BLOG_SLUGS.has(slug)) return res.redirect(301, "/insights");
+    return gone(req, res);
+  };
+  app.get("/blog/:slug", blogSlugHandler);
+  app.get("/blog/:slug/", blogSlugHandler);
   app.get("/membership", (_req, res) => res.redirect(301, "/academy"));
   app.get("/membership/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshops", (_req, res) => res.redirect(301, "/academy"));
@@ -124,6 +146,7 @@ export async function registerRoutes(
   app.get("/page/:slug/", gone);
   app.get(/^\/wp-content\/.*/, gone);
   app.get(/^\/wp-includes\/.*/, gone);
+  app.get(/^\/wp-json(\/.*)?$/, gone);
   app.get("/wp-admin", gone);
   app.get(/^\/wp-admin\/.*/, gone);
   app.get("/wp-login.php", gone);
