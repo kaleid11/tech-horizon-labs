@@ -19,6 +19,30 @@ const apiLimiter = rateLimit({
   message: { success: false, error: "Too many requests. Please try again later." },
 });
 
+// 410 Gone helper for permanently removed WordPress-era URLs
+function gone(_req: Request, res: Response) {
+  res.status(410).type("html").send(`<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Removed — Tech Horizon Labs</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand"><img src="/logo.webp" alt="Tech Horizon Labs logo" class="brand-logo" width="28" height="28">Tech Horizon Labs</a>
+  </nav>
+  <main class="container" style="padding:4rem 1rem;text-align:center;">
+    <h1>This page has been permanently removed.</h1>
+    <p style="color:var(--text-secondary);max-width:520px;margin:1rem auto 2rem;">It was part of our old WordPress site and is no longer available. Try the homepage, our latest insights, or get in touch.</p>
+    <p><a href="/" class="link-arrow">Go to homepage</a> &middot; <a href="/insights" class="link-arrow">Read our insights</a> &middot; <a href="/contact" class="link-arrow">Contact us</a></p>
+  </main>
+</body>
+</html>`);
+}
+
 // Simple admin authentication middleware
 const adminAuth = (req: Request, res: Response, next: NextFunction) => {
   const adminKey = req.headers['x-admin-key'];
@@ -82,31 +106,41 @@ export async function registerRoutes(
   app.get("/about-us/", (_req, res) => res.redirect(301, "/about"));
   app.get("/blog", (_req, res) => res.redirect(301, "/insights"));
   app.get("/blog/", (_req, res) => res.redirect(301, "/insights"));
-  app.get("/blog/:slug", (_req, res) => res.redirect(301, "/insights"));
-  app.get("/blog/:slug/", (_req, res) => res.redirect(301, "/insights"));
+  // Unknown blog slugs — return 410 Gone so Google drops them from the index
+  app.get("/blog/:slug", gone);
+  app.get("/blog/:slug/", gone);
   app.get("/membership", (_req, res) => res.redirect(301, "/academy"));
   app.get("/membership/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshops", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshops/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/ai-workshop-business-sunshine-coast", (_req, res) => res.redirect(301, "/training/sunshine-coast"));
   app.get("/ai-workshop-business-sunshine-coast/", (_req, res) => res.redirect(301, "/training/sunshine-coast"));
-  app.get("/category/:slug", (_req, res) => res.redirect(301, "/"));
-  app.get("/category/:slug/", (_req, res) => res.redirect(301, "/"));
-  app.get("/tag/:slug", (_req, res) => res.redirect(301, "/"));
-  app.get("/tag/:slug/", (_req, res) => res.redirect(301, "/"));
-  app.get("/page/:slug", (_req, res) => res.redirect(301, "/"));
-  app.get("/page/:slug/", (_req, res) => res.redirect(301, "/"));
-  app.get("/wp-content/:slug", (_req, res) => res.redirect(301, "/"));
-  app.get("/wp-admin", (_req, res) => res.redirect(301, "/"));
-  app.get("/wp-login.php", (_req, res) => res.redirect(301, "/"));
+  // WordPress-era URL patterns — 410 Gone (no equivalent destination)
+  app.get("/category/:slug", gone);
+  app.get("/category/:slug/", gone);
+  app.get("/tag/:slug", gone);
+  app.get("/tag/:slug/", gone);
+  app.get("/page/:slug", gone);
+  app.get("/page/:slug/", gone);
+  app.get(/^\/wp-content\/.*/, gone);
+  app.get(/^\/wp-includes\/.*/, gone);
+  app.get("/wp-admin", gone);
+  app.get(/^\/wp-admin\/.*/, gone);
+  app.get("/wp-login.php", gone);
+  app.get("/xmlrpc.php", gone);
+  app.get("/comments/feed", gone);
+  app.get("/comments/feed/", gone);
+  app.get("/trackback", gone);
+  app.get("/trackback/", gone);
   app.get("/privacy-policy", (_req, res) => res.redirect(301, "/privacy"));
   app.get("/privacy-policy/", (_req, res) => res.redirect(301, "/privacy"));
   app.get("/terms-of-service", (_req, res) => res.redirect(301, "/terms"));
   app.get("/terms-of-service/", (_req, res) => res.redirect(301, "/terms"));
   app.get("/book-here", (_req, res) => res.redirect(301, "/contact"));
   app.get("/book-here/", (_req, res) => res.redirect(301, "/contact"));
-  app.get("/feed", (_req, res) => res.redirect(301, "/"));
-  app.get("/feed/", (_req, res) => res.redirect(301, "/"));
+  app.get("/feed", gone);
+  app.get("/feed/", gone);
+  app.get(/^\/feed\/.*/, gone);
   app.get("/workshop/:slug", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshop/:slug/", (_req, res) => res.redirect(301, "/academy"));
   app.get("/workshops/:slug", (_req, res) => res.redirect(301, "/academy"));

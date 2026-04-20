@@ -454,13 +454,6 @@
     });
   }, { passive: true });
 
-  // Method flow activation
-  const ms = document.querySelector('.method-grid');
-  if (ms) {
-    const fo = new IntersectionObserver((e) => { e.forEach((x) => { if (x.isIntersecting) { ms.classList.add('flow-active'); fo.unobserve(x.target); } }); }, { threshold: 0.15 });
-    fo.observe(ms);
-  }
-
   // ─────────────────────────────────────────────
   // REPORT PREVIEW — animated reveal
   // ─────────────────────────────────────────────

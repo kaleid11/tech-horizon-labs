@@ -41,9 +41,9 @@ const PAGES: Record<string, { file: string; title: string; description: string; 
   },
   "/work": {
     file: "work.html",
-    fullTitle: "AI Systems We've Built for Australian Businesses | Tech Horizon Labs",
-    title: "AI Systems Portfolio",
-    description: "AI systems built and deployed for real businesses across Queensland and Australia. Talent agencies, accounting firms, builders, construction, allied health, energy, and manufacturing.",
+    fullTitle: "AI Case Studies — Real Australian Builds, 40% Admin Cut, 60% Faster Quotes | Tech Horizon Labs",
+    title: "AI Case Studies",
+    description: "Eight real AI systems we've built and deployed for Australian businesses: 40% admin reduction (accounting), 60% faster quotes (construction), 80% faster onboarding (real estate), 50% fewer no-shows (allied health), $50K+ annual savings (manufacturing). Talent, energy and food & beverage too.",
   },
   "/about": {
     file: "about.html",
