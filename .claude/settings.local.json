@@ -58,7 +58,13 @@
       "Bash(kill %1)",
       "Bash(PORT=5002 npx tsx server/index.ts)",
       "Bash(PORT=5003 npx tsx server/index.ts)",
-      "WebFetch(domain:aidirectory.industry.gov.au)"
+      "WebFetch(domain:aidirectory.industry.gov.au)",
+      "Bash(awk '{print $NF}')",
+      "Bash(awk '{print $9, $5}')",
+      "Bash(awk '{print length, $0}')",
+      "WebFetch(domain:techhorizonlabs.com)",
+      "Bash(git *)",
+      "Bash(awk '{print $6, $7, $8, $9, $10}')"
     ]
   }
 }
