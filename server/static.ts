@@ -71,7 +71,7 @@ const PAGES: Record<string, { file: string; title: string; description: string; 
     file: "academy.html",
     fullTitle: "AI Workshop Academy — Training for Australian Business Operators | Tech Horizon Labs",
     title: "AI Workshop Academy",
-    description: "AI workshops, live sessions, and 1,300+ workflow templates for Australian business operators. Weekly live training, 300+ operators. Australian compliance pre-mapped. From $97/month.",
+    description: "AI workshops, live sessions, and 1,300+ workflow templates for Australian business operators. Weekly live training, 300+ operators. Australian compliance pre-mapped. From $197/month.",
   },
   "/contact": {
     file: "contact.html",

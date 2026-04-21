@@ -37,7 +37,7 @@ We publish primary-source research and practitioner notes on AI adoption in Aust
 ## Training
 
 - [Sunshine Coast AI Training](https://techhorizonlabs.com/training/sunshine-coast): In-person and hybrid AI workshops for Sunshine Coast businesses.
-- [AI Workshop Academy](https://techhorizonlabs.com/academy): Live weekly training, 1,300+ workflow templates, 300+ operators. Australian compliance pre-mapped. From $97/month.
+- [AI Workshop Academy](https://techhorizonlabs.com/academy): Live weekly training, 1,300+ workflow templates, 300+ operators. Australian compliance pre-mapped. From $197/month.
 
 ## Industries
 

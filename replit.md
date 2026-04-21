@@ -85,7 +85,7 @@ Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Co
 - **4 AI Maturity Stages**: Unaware, ChatGPT Plateau, Enabled, AI-Native
 - **3 Trainer Archetypes** (Frontier Orchestrator framework): Business Coach, Single-Tool Specialist, Frontier Orchestrator — detailed on about page
 - **Efficiency AI → Opportunity AI** framing on homepage
-- **Academy Tiers**: Community (Free), Base ($97/mo), Pro ($300/mo), Partner ($1,000/mo)
+- **Academy Tiers**: Community (Free), Base ($197/mo), Pro ($500/mo), Partner ($2,000/mo)
 
 #### Email System
 - `sendContactAutoReply`: confirmation to contact form submitters
