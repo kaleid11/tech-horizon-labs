@@ -13,16 +13,19 @@ const DEV_ORIGIN_PATTERNS: RegExp[] = [
   /^https:\/\/[a-z0-9-]+\.replit\.app$/,
 ];
 
-export function isAllowedOrigin(req: Request): boolean {
+function originOf(req: Request): string | null {
   const origin = (req.headers.origin || req.headers.referer || "").toString().trim();
-  if (!origin) return false;
-
-  let host: string;
+  if (!origin) return null;
   try {
-    host = new URL(origin).origin;
+    return new URL(origin).origin;
   } catch {
-    return false;
+    return null;
   }
+}
+
+export function isAllowedOrigin(req: Request): boolean {
+  const host = originOf(req);
+  if (!host) return false;
 
   if (ALLOWED_ORIGINS.has(host)) return true;
 
@@ -31,6 +34,17 @@ export function isAllowedOrigin(req: Request): boolean {
   }
 
   return false;
+}
+
+/**
+ * Returns true only when the request originates from the real production
+ * domain (techhorizonlabs.com). Use this to gate checks that can only
+ * succeed on the production host — notably Cloudflare Turnstile, whose
+ * sitekey is domain-bound and cannot validate from Replit preview URLs.
+ */
+export function isProductionOrigin(req: Request): boolean {
+  const host = originOf(req);
+  return host !== null && ALLOWED_ORIGINS.has(host);
 }
 
 /**

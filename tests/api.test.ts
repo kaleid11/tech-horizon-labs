@@ -167,16 +167,30 @@ describe("POST /api/contact", () => {
     expect(res.status).toBe(400);
   });
 
-  it("rejects Turnstile failures with 400", async () => {
+  it("rejects Turnstile failures with 400 on production origin", async () => {
     const turnstile = await import("../server/turnstile");
     vi.mocked(turnstile.verifyTurnstile).mockResolvedValueOnce({ success: false, reason: "bad token" });
 
     const res = await request(app)
       .post("/api/contact")
-      .set("Origin", DEV_ORIGIN)
+      .set("Origin", "https://techhorizonlabs.com")
       .send({ ...validPayload, turnstileToken: "fake" });
     expect(res.status).toBe(400);
     expect(mockStorage.createContactSubmission).not.toHaveBeenCalled();
+  });
+
+  it("skips Turnstile on allowed non-production origins (e.g. Replit preview)", async () => {
+    const turnstile = await import("../server/turnstile");
+    // If Turnstile were called, the default mock returns { success: true, skipped: true }.
+    // Prove it isn't called by mocking a failure that would otherwise 400 — and asserting 200.
+    vi.mocked(turnstile.verifyTurnstile).mockResolvedValueOnce({ success: false, reason: "bad token" });
+
+    const res = await request(app)
+      .post("/api/contact")
+      .set("Origin", DEV_ORIGIN)
+      .send(validPayload);
+    expect(res.status).toBe(200);
+    expect(vi.mocked(turnstile.verifyTurnstile)).not.toHaveBeenCalled();
   });
 });
 

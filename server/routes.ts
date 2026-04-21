@@ -9,7 +9,7 @@ import { sendContactNotification, sendContactAutoReply, sendNewsletterWelcome, s
 import { pushToKlipy } from "./klipy";
 import { pushToBeehiiv } from "./beehiiv";
 import { verifyEmailDomain } from "./email-verify";
-import { isAllowedOrigin, isHoneypotTripped, looksLikeGibberish } from "./anti-spam";
+import { isAllowedOrigin, isProductionOrigin, isHoneypotTripped, looksLikeGibberish } from "./anti-spam";
 import { verifyTurnstile } from "./turnstile";
 import { registerLegacyRedirects } from "./routes/redirects";
 
@@ -74,11 +74,16 @@ async function runAntiSpam(req: Request, scope: string): Promise<ShortCircuit> {
     return [403, { success: false, error: "Request origin not allowed." }];
   }
 
-  const token = typeof req.body?.turnstileToken === "string" ? req.body.turnstileToken : null;
-  const ts = await verifyTurnstile(token, req.ip);
-  if (!ts.success) {
-    console.warn(`[anti-spam] turnstile failed on ${scope} from ${req.ip}: ${ts.reason}`);
-    return [400, { success: false, error: "Could not verify this request. Please reload the page and try again." }];
+  // Turnstile sitekeys are domain-bound at Cloudflare; a preview domain
+  // (Replit) can never produce a valid token. Since the origin allowlist
+  // already vouches for those hosts, gate Turnstile on production origin.
+  if (isProductionOrigin(req)) {
+    const token = typeof req.body?.turnstileToken === "string" ? req.body.turnstileToken : null;
+    const ts = await verifyTurnstile(token, req.ip);
+    if (!ts.success) {
+      console.warn(`[anti-spam] turnstile failed on ${scope} from ${req.ip}: ${ts.reason}`);
+      return [400, { success: false, error: "Could not verify this request. Please reload the page and try again." }];
+    }
   }
 
   return null;
