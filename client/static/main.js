@@ -634,20 +634,65 @@
   // ─────────────────────────────────────────────
   const form = document.getElementById('contact-form');
   if (form) {
+    const fieldNames = ['name', 'email', 'message'];
+    const clearInvalid = () => fieldNames.forEach((n) => {
+      const el = form.querySelector('[name="' + n + '"]');
+      if (el) el.removeAttribute('aria-invalid');
+    });
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
       const msg = document.getElementById('form-message');
-      btn.disabled = true; btn.textContent = 'Sending\u2026';
-      if (msg) msg.textContent = '';
+      btn.disabled = true; btn.textContent = 'Sending…';
+      if (msg) {
+        msg.textContent = '';
+        msg.setAttribute('role', 'status');
+        msg.className = '';
+      }
+      clearInvalid();
+      const nameEl = form.querySelector('[name="name"]');
+      const emailEl = form.querySelector('[name="email"]');
+      const messageEl = form.querySelector('[name="message"]');
+      const name = nameEl.value.trim();
+      const email = emailEl.value.trim();
+      const message = messageEl.value.trim();
+      if (!name) nameEl.setAttribute('aria-invalid', 'true');
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) emailEl.setAttribute('aria-invalid', 'true');
+      if (!message) messageEl.setAttribute('aria-invalid', 'true');
+      if (form.querySelector('[aria-invalid="true"]')) {
+        if (msg) {
+          msg.setAttribute('role', 'alert');
+          msg.textContent = 'Please fill in every field with a valid email.';
+          msg.className = 'form-message error';
+        }
+        const firstBad = form.querySelector('[aria-invalid="true"]');
+        if (firstBad && typeof firstBad.focus === 'function') firstBad.focus();
+        btn.disabled = false; btn.textContent = 'Send message';
+        return;
+      }
       try {
-        const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: form.querySelector('[name="name"]').value.trim(), email: form.querySelector('[name="email"]').value.trim(), message: form.querySelector('[name="message"]').value.trim() }) });
+        const r = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, email: email, message: message }),
+        });
         if (!r.ok) throw new Error((await r.json()).error || 'Failed');
         form.reset();
-        if (msg) { msg.textContent = 'Sent. We\u2019ll be in touch.'; msg.className = 'form-message success'; }
-      } catch (err) { if (msg) { msg.textContent = err.message; msg.className = 'form-message error'; } }
-      finally { btn.disabled = false; btn.textContent = 'Send message'; }
+        clearInvalid();
+        if (msg) { msg.textContent = 'Sent. We’ll be in touch.'; msg.className = 'form-message success'; }
+      } catch (err) {
+        if (msg) {
+          msg.setAttribute('role', 'alert');
+          msg.textContent = err.message;
+          msg.className = 'form-message error';
+        }
+      } finally {
+        btn.disabled = false; btn.textContent = 'Send message';
+      }
+    });
+    fieldNames.forEach((n) => {
+      const el = form.querySelector('[name="' + n + '"]');
+      if (el) el.addEventListener('input', () => el.removeAttribute('aria-invalid'));
     });
   }
 

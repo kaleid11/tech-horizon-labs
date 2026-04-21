@@ -115,6 +115,55 @@ Printable one-pager with Huxley's top 10 recommended AI tools (Claude, Claude Co
 - Canonical tags on all pages
 - OG + Twitter Card meta on all pages
 
+## Environment Variables
+
+Every `process.env.*` the server reads, grouped by whether it's required in production.
+
+### Required in production
+- `DATABASE_URL` — PostgreSQL connection string. Server fails to boot without it.
+- `ADMIN_API_KEY` — required to hit `/api/contact-submissions`. When unset in prod the endpoint 503s; in dev it warns and allows through.
+- `TURNSTILE_SECRET` — Cloudflare Turnstile siteverify secret. When unset in prod, form POSTs fail closed (400). Skipped in dev.
+
+### Optional / has sensible default
+- `NODE_ENV` — `development` | `production` | `test`. Controls origin allowlist, log level, Sentry enabled flag, rate-limit skip.
+- `PORT` — listen port, defaults to `5000`.
+- `LOG_LEVEL` — pino level (`debug` / `info` / `warn` / `error`). Defaults to `info` in prod, `debug` elsewhere.
+- `TURNSTILE_SITEKEY` — public Turnstile key. Injected into HTML via `server/static.ts` as `<meta name="turnstile-sitekey">`. When unset, main.js skips Turnstile client-side and the server's `verifyTurnstile` skips too (dev-only safety).
+- `SENTRY_DSN` — Sentry project DSN. When unset, `@sentry/node` is disabled (no-op).
+- `SENTRY_TRACES_SAMPLE_RATE` — performance trace sample rate. Defaults to `0.05`.
+- `RELEASE_SHA` — release tag sent to Sentry. Defaults to undefined.
+
+### Third-party integrations
+- `RESEND_API_KEY` *(fetched via Replit Connectors, not direct env)* — email sending.
+- `KLIPY_API` — Klipy CRM write key. Fire-and-forget.
+- `BEEHIIV_API_KEY` + `BEEHIIV_PUBLICATION_ID` — newsletter sync. Fire-and-forget.
+- `REPLIT_CONNECTORS_HOSTNAME`, `REPL_IDENTITY`, `WEB_REPL_RENEWAL` — Replit's own connector-auth plumbing, read by `server/email.ts` to retrieve Resend credentials.
+
+## Database Schema Changes
+
+Two modes are supported:
+
+- **Quick iteration (`npm run db:push`)**: diffs `shared/schema.ts` against the live DB and applies directly. No migration files. Fine for solo dev; **do not use in a team setting or in production** — changes are unreviewable and easy to drop data with.
+- **Reviewable migrations (`npm run db:generate` → commit → `npm run db:migrate`)**: generates versioned SQL under `migrations/` from the schema diff. PR-reviewable, rollforward-safe. Preferred path once multiple people are touching the schema.
+
+### Bootstrap: switching an already-populated DB onto migrations
+
+`migrations/0000_baseline.sql` was generated from the current schema and represents the state of the live DB *as of the baseline commit*. Running `npm run db:migrate` against the live DB would re-run those `CREATE TABLE` statements and fail on "already exists". To mark the baseline as already applied:
+
+```sql
+-- run once, against the live DB, before the first db:migrate
+CREATE SCHEMA IF NOT EXISTS drizzle;
+CREATE TABLE IF NOT EXISTS drizzle.__drizzle_migrations (
+  id SERIAL PRIMARY KEY,
+  hash text NOT NULL,
+  created_at bigint
+);
+INSERT INTO drizzle.__drizzle_migrations (hash, created_at)
+VALUES ('<hash from migrations/meta/0000_snapshot.json>', extract(epoch from now())::bigint * 1000);
+```
+
+After that, every future `db:generate` produces a numbered `.sql` file you review; `db:migrate` applies only the new ones.
+
 ## External Dependencies
 
 ### Database
