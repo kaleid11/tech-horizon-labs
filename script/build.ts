@@ -1,5 +1,5 @@
 import { build as esbuild } from "esbuild";
-import { rm, readFile, cp, readdir } from "fs/promises";
+import { rm, readFile, writeFile, cp, readdir } from "fs/promises";
 import { join } from "path";
 
 // Server deps to bundle (reduces cold start openat syscalls)
@@ -150,9 +150,87 @@ async function checkCriticalCssDrift() {
   }
 }
 
+/**
+ * Generate public/llms-full.txt — a single plain-text corpus of every page,
+ * concatenated in URL order, for AI crawlers / retrieval use. Mirrors the
+ * set of URLs in public/sitemap.xml so llms-full.txt stays aligned with
+ * what we surface to Google.
+ */
+async function generateLlmsFullTxt() {
+  console.log("generating public/llms-full.txt...");
+  const htmlFiles = await collectHtmlFiles("dist/static");
+  const staticRoot = "dist/static";
+
+  const urlFor = (relPath: string) => {
+    const withoutRoot = relPath.replace(/^dist\/static\//, "").replace(/^dist[\\/]static[\\/]/, "");
+    let route = "/" + withoutRoot.replace(/index\.html$/, "").replace(/\.html$/, "");
+    if (route === "/") return "https://techhorizonlabs.com/";
+    route = route.replace(/\/$/, "");
+    return `https://techhorizonlabs.com${route}`;
+  };
+
+  const stripHtml = (html: string): string =>
+    html
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<noscript[\s\S]*?<\/noscript>/gi, " ")
+      .replace(/<nav[\s\S]*?<\/nav>/gi, " ")
+      .replace(/<footer[\s\S]*?<\/footer>/gi, " ")
+      .replace(/<svg[\s\S]*?<\/svg>/gi, " ")
+      .replace(/<!--([\s\S]*?)-->/g, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&nbsp;/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/[ \t]+/g, " ")
+      .replace(/\s*\n\s*/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+
+  const ordered = htmlFiles.slice().sort((a, b) => a.localeCompare(b));
+  const stamp = new Date().toISOString().slice(0, 10);
+
+  const chunks: string[] = [
+    "# Tech Horizon Labs — full site corpus",
+    "",
+    "> Plain-text concatenation of every indexed page on https://techhorizonlabs.com.",
+    "> Generated from client/static/*.html at build time. Navigation, footer, scripts, and styles are stripped.",
+    "> See https://techhorizonlabs.com/llms.txt for the curated map.",
+    "",
+    `Generated: ${stamp}`,
+    `Pages: ${ordered.length}`,
+    "",
+    "---",
+    "",
+  ];
+
+  for (const file of ordered) {
+    const rel = file.replace(/^.*dist[\\/]static[\\/]/, "dist/static/");
+    const url = urlFor(rel);
+    const html = await readFile(file, "utf-8");
+    const text = stripHtml(html);
+    if (!text) continue;
+    chunks.push(`## ${url}`);
+    chunks.push("");
+    chunks.push(text);
+    chunks.push("");
+    chunks.push("---");
+    chunks.push("");
+  }
+
+  const out = chunks.join("\n");
+  await writeFile("public/llms-full.txt", out, "utf-8");
+  const kb = (Buffer.byteLength(out) / 1024).toFixed(1);
+  console.log(`  ✓ public/llms-full.txt (${ordered.length} pages, ${kb} KB)`);
+}
+
 buildAll()
   .then(() => verifyStylesheetLinks())
   .then(() => checkCriticalCssDrift())
+  .then(() => generateLlmsFullTxt())
   .catch((err) => {
     console.error(err);
     process.exit(1);

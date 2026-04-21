@@ -230,6 +230,21 @@ export function serveStatic(app: Express) {
     }
   });
 
+  // llms.txt + llms-full.txt — AI-crawler content map and full-text corpus.
+  // llms.txt is hand-authored and committed; llms-full.txt is generated at
+  // build time into public/ (gitignored) — served as text/plain either way.
+  for (const name of ["llms.txt", "llms-full.txt"]) {
+    app.get("/" + name, (_req, res) => {
+      const filePath = path.resolve(publicDir, name);
+      if (fs.existsSync(filePath)) {
+        res.setHeader("Content-Type", "text/plain; charset=utf-8");
+        res.sendFile(filePath);
+      } else {
+        res.status(404).send(name + " not found");
+      }
+    });
+  }
+
   // Register core pages (with meta injection)
   for (const [route, config] of Object.entries(PAGES)) {
     app.get(route, (_req, res) => {

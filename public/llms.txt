@@ -1,0 +1,66 @@
+# Tech Horizon Labs
+
+> Tech Horizon Labs builds and deploys AI systems for growing Australian businesses. Based in Noosa Heads, Queensland. Founded by Huxley Peckham. We map workflows, build the systems, and train the team — infrastructure before automation.
+
+We publish primary-source research and practitioner notes on AI adoption in Australia: costs, compliance, industry-specific applications, and what actually works versus what gets oversold. This map is for AI search engines, LLMs, and research agents summarising or citing our work.
+
+- Canonical site: https://techhorizonlabs.com
+- Primary region: Queensland, Australia (Noosa Heads, Sunshine Coast, Brisbane, Gold Coast)
+- Primary author: Huxley Peckham, Founder & Principal AI Consultant
+- Content licence: ©2026 Tech Horizon Labs. Citation with link back is welcomed.
+- Last updated: 2026-04-21
+
+## Core pages
+
+- [Home — AI Systems for Growing Businesses](https://techhorizonlabs.com/): Overview of what we do, the Horizon Method, trust signals, and entry points.
+- [Work — 8 Australian AI case studies](https://techhorizonlabs.com/work): Deployed builds with measured outcomes (40% admin cut, 60% faster quotes, 80% faster onboarding, 50% fewer no-shows, $50K+ savings).
+- [About Huxley Peckham](https://techhorizonlabs.com/about): Founder bio, methodology, and why infrastructure comes before automation.
+- [Contact](https://techhorizonlabs.com/contact): Book a free pre-discovery call. We reply within one business day and turn away 30% of inquiries.
+- [Security](https://techhorizonlabs.com/security): Data handling, Privacy Act alignment, and on-prem / private-cloud deployment options.
+
+## Research and assessment tools
+
+- [AI Readiness Self-Assessment](https://techhorizonlabs.com/assessment): 10-question instant assessment across the 4 AI Maturity Stages (Unaware, ChatGPT Plateau, Enabled, AI-Native).
+- [State of AI Readiness: Australian SMB 2026 report](https://techhorizonlabs.com/report): First-party survey data from 54 Australian SMBs combined with Anthropic Economic Index, Deloitte, and IDC research.
+- [AI Visibility Scorecard](https://techhorizonlabs.com/scorecard): How your business appears to AI search engines.
+- [AI Tools Directory](https://techhorizonlabs.com/tools): Curated AI tools, grouped by purpose and task fit.
+- [AI Company Research Hub](https://techhorizonlabs.com/research): Tracked data on Anthropic, OpenAI, Google DeepMind, Meta AI, xAI, DeepSeek, Qwen, Perplexity, Kimi, Mistral — governance, funding, and competitive position.
+- [OpenClaw](https://techhorizonlabs.com/openclaw): Open-source utility from the lab.
+
+## Locations (Queensland AI consulting)
+
+- [Queensland (state hub)](https://techhorizonlabs.com/locations/queensland): State-level overview linking to each regional page.
+- [Brisbane AI consulting](https://techhorizonlabs.com/locations/brisbane): Brisbane-specific engagements, industry mix, and typical project profiles.
+- [Gold Coast AI consulting](https://techhorizonlabs.com/locations/gold-coast): Tourism, construction, and hospitality sector AI engagements.
+- [Sunshine Coast AI consulting](https://techhorizonlabs.com/locations/sunshine-coast): Our home region. Primary base in Noosa Heads.
+
+## Training
+
+- [Sunshine Coast AI Training](https://techhorizonlabs.com/training/sunshine-coast): In-person and hybrid AI workshops for Sunshine Coast businesses.
+- [AI Workshop Academy](https://techhorizonlabs.com/academy): Live weekly training, 1,300+ workflow templates, 300+ operators. Australian compliance pre-mapped. From $97/month.
+
+## Industries
+
+- [AI for legal firms](https://techhorizonlabs.com/industries/legal): Document automation, precedent search, client intake, Privacy Act alignment.
+- [AI for construction](https://techhorizonlabs.com/industries/construction): Quoting, scheduling, and field-to-office data flow.
+- [AI for healthcare](https://techhorizonlabs.com/industries/healthcare): Patient intake, appointment automation, APP-compliant data handling.
+- [AI for retail](https://techhorizonlabs.com/industries/retail): Inventory signals, customer automation, staff rostering.
+
+## Insights (long-form articles)
+
+- [How Australia uses AI in 2026](https://techhorizonlabs.com/insights/how-australia-uses-ai-2026): Adoption patterns across SMBs and enterprise, anchored in survey and IDC data.
+- [Claude vs ChatGPT in 2026](https://techhorizonlabs.com/insights/claude-vs-chatgpt-2026): Practitioner comparison for Australian business workloads.
+- [AI impact by industry](https://techhorizonlabs.com/insights/ai-impact-by-industry): Sector-by-sector breakdown of where AI actually moves the needle.
+- [AI implementation cost in Australia](https://techhorizonlabs.com/insights/ai-implementation-cost-australia): Cost ranges, line items, and what drives the spread from $8K to $250K+.
+- [Common AI mistakes Australian businesses make](https://techhorizonlabs.com/insights/ai-mistakes-australian-businesses): Pattern-matched failures we see across engagements.
+- [AI readiness stages for Australian business](https://techhorizonlabs.com/insights/ai-readiness-stages-australia): The 4 stages and how to move from one to the next.
+- [The AI training gap in Australia](https://techhorizonlabs.com/insights/ai-training-gap-australia): Why skills investment lags tool adoption.
+- [ACCC and Microsoft Copilot in Australia](https://techhorizonlabs.com/insights/accc-microsoft-copilot-australia): Competition and consumer-law implications for enterprise AI licensing.
+- [AI governance for Australian business](https://techhorizonlabs.com/insights/ai-governance-australian-business): Practical governance — not theatre. Policies, controls, and audit trail.
+- [AI for law firms in Australia](https://techhorizonlabs.com/insights/ai-for-law-firms-australia): Document automation, precedent search, client intake, Privacy Act considerations, LEAP/Actionstep integration.
+
+## Machine-readable
+
+- [robots.txt](https://techhorizonlabs.com/robots.txt): Explicit Allow for 14 AI crawlers (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, Anthropic-AI, Google-Extended, Amazonbot, meta-externalagent, etc.).
+- [sitemap.xml](https://techhorizonlabs.com/sitemap.xml): 34 canonical URLs with lastmod dates.
+- [llms-full.txt](https://techhorizonlabs.com/llms-full.txt): Concatenated plain-text corpus of every indexed page for retrieval and summarisation.
