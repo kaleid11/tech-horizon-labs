@@ -1,6 +1,11 @@
+// IMPORTANT: Sentry init must run before any module it wants to
+// auto-instrument (Express, pg, http). Keep this as the very first import.
+import "./instrument";
+
 import express, { type Request, Response, NextFunction } from "express";
 import helmet from "helmet";
 import compression from "compression";
+import * as Sentry from "@sentry/node";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
@@ -70,6 +75,10 @@ export function log(message: string, source = "express") {
     }
     next();
   });
+
+  // Sentry captures unhandled errors. Must be installed BEFORE our custom
+  // handler so the error makes it into Sentry before we send a response.
+  Sentry.setupExpressErrorHandler(app);
 
   app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     const status = err.status || err.statusCode || 500;

@@ -70,13 +70,24 @@ export function looksLikeGibberish(text: string | null | undefined): boolean {
   if (!letters || letters.length < 8) return false;
 
   const VOWEL = /[aeiouAEIOU]/;
+  const LETTER = /[a-zA-Z]/;
   let maxConsonantRun = 0;
   let currentRun = 0;
   let caseTransitions = 0;
+  let letterPairs = 0;
   let vowelCount = 0;
+  let prevLetter: string | null = null;
 
-  for (let i = 0; i < letters.length; i++) {
-    const ch = letters[i];
+  // Iterate the original string so separators (hyphens, apostrophes) reset
+  // the consonant-run and case-transition state — "Anne-Marie" is two words,
+  // not one weird-looking one.
+  for (let i = 0; i < trimmed.length; i++) {
+    const ch = trimmed[i];
+    if (!LETTER.test(ch)) {
+      currentRun = 0;
+      prevLetter = null;
+      continue;
+    }
     if (VOWEL.test(ch)) {
       vowelCount++;
       currentRun = 0;
@@ -84,21 +95,18 @@ export function looksLikeGibberish(text: string | null | undefined): boolean {
       currentRun++;
       if (currentRun > maxConsonantRun) maxConsonantRun = currentRun;
     }
-    if (i > 0) {
-      const prev = letters[i - 1];
-      const prevUpper = prev === prev.toUpperCase() && prev !== prev.toLowerCase();
+    if (prevLetter !== null) {
+      const prevUpper = prevLetter === prevLetter.toUpperCase() && prevLetter !== prevLetter.toLowerCase();
       const curUpper = ch === ch.toUpperCase() && ch !== ch.toLowerCase();
       if (prevUpper !== curUpper) caseTransitions++;
+      letterPairs++;
     }
+    prevLetter = ch;
   }
 
   if (maxConsonantRun >= 5) return true;
-
-  const caseJitterRatio = caseTransitions / (letters.length - 1);
-  if (caseJitterRatio >= 0.35) return true;
-
-  const vowelRatio = vowelCount / letters.length;
-  if (vowelRatio < 0.2) return true;
+  if (letterPairs > 0 && caseTransitions / letterPairs >= 0.35) return true;
+  if (vowelCount / letters.length < 0.2) return true;
 
   return false;
 }

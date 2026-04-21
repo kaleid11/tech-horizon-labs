@@ -21,6 +21,7 @@ const apiLimiter = rateLimit({
   max: 10, // 10 requests per window per IP
   standardHeaders: true,
   legacyHeaders: false,
+  skip: () => process.env.NODE_ENV === "test",
   message: { success: false, error: "Too many requests. Please try again later." },
 });
 
