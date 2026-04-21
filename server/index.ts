@@ -4,8 +4,13 @@ import compression from "compression";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import { logger, httpLogger } from "./logger";
 
 const app = express();
+
+// Structured request logging with request IDs (sets x-request-id header).
+// Installed first so every downstream middleware sees req.id.
+app.use(httpLogger);
 
 // Enable gzip/brotli compression for all responses
 app.use(compression());
@@ -15,13 +20,13 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "https://www.googletagmanager.com", "https://plausible.io"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://www.googletagmanager.com", "https://plausible.io", "https://challenges.cloudflare.com"],
       scriptSrcAttr: ["'unsafe-inline'"],
       styleSrc: ["'self'", "'unsafe-inline'"],
       fontSrc: ["'self'"],
       imgSrc: ["'self'", "data:", "https:", "blob:"],
-      connectSrc: ["'self'", "https://www.google-analytics.com", "https://www.googletagmanager.com", "https://plausible.io"],
-      frameSrc: ["'self'", "https://www.youtube.com"],
+      connectSrc: ["'self'", "https://www.google-analytics.com", "https://www.googletagmanager.com", "https://plausible.io", "https://challenges.cloudflare.com"],
+      frameSrc: ["'self'", "https://www.youtube.com", "https://challenges.cloudflare.com"],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
     },
@@ -51,41 +56,8 @@ app.use(
 app.use(express.urlencoded({ extended: false }));
 
 export function log(message: string, source = "express") {
-  const formattedTime = new Date().toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: true,
-  });
-
-  console.log(`${formattedTime} [${source}] ${message}`);
+  logger.info({ source }, message);
 }
-
-app.use((req, res, next) => {
-  const start = Date.now();
-  const path = req.path;
-  let capturedJsonResponse: Record<string, unknown> | undefined = undefined;
-
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
-  };
-
-  res.on("finish", () => {
-    const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
-
-      log(logLine);
-    }
-  });
-
-  next();
-});
 
 (async () => {
   await registerRoutes(httpServer, app);
@@ -99,17 +71,19 @@ app.use((req, res, next) => {
     next();
   });
 
-  app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
+  app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
+    const clientMessage = status >= 500
+      ? "Internal Server Error"
+      : (err.message || "Request failed");
 
-    console.error("Internal Server Error:", err);
+    logger.error({ err, req_id: (req as any).id, status }, "request failed");
 
     if (res.headersSent) {
       return next(err);
     }
 
-    return res.status(status).json({ message });
+    return res.status(status).json({ message: clientMessage });
   });
 
   // Serve static HTML files in both dev and production
@@ -131,6 +105,6 @@ app.use((req, res, next) => {
     },
   );
 })().catch((err) => {
-  console.error("Fatal startup error:", err);
+  logger.fatal({ err }, "fatal startup error");
   process.exit(1);
 });

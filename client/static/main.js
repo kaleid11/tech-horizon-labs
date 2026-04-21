@@ -14,6 +14,158 @@
   'use strict';
 
   // ─────────────────────────────────────────────
+  // ANTI-SPAM — global fetch interceptor
+  //
+  // Wraps window.fetch so every POST to /api/contact, /api/newsletter,
+  // and /api/audit automatically includes a Cloudflare Turnstile token
+  // plus a honeypot field value.
+  //
+  // Loads the Turnstile script lazily (only when the sitekey meta tag
+  // is present). In dev (no TURNSTILE_SITEKEY), falls through so local
+  // development isn't blocked; the server mirrors this behaviour.
+  // ─────────────────────────────────────────────
+  (function installAntiSpamFetch() {
+    const meta = document.querySelector('meta[name="turnstile-sitekey"]');
+    const sitekey = meta && meta.getAttribute('content');
+    const PROTECTED = ['/api/contact', '/api/newsletter', '/api/audit'];
+
+    function isProtected(url) {
+      if (typeof url !== 'string') return false;
+      return PROTECTED.some(function(p) { return url === p || url.indexOf(p + '?') === 0; });
+    }
+
+    function readHoneypot() {
+      const el = document.querySelector('input[name="company_website"]');
+      return el && typeof el.value === 'string' ? el.value : '';
+    }
+
+    let turnstileLoadPromise = null;
+    function loadTurnstile() {
+      if (turnstileLoadPromise) return turnstileLoadPromise;
+      turnstileLoadPromise = new Promise(function(resolve, reject) {
+        if (window.turnstile) { resolve(); return; }
+        const s = document.createElement('script');
+        s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        s.async = true;
+        s.defer = true;
+        s.onload = function() {
+          const start = Date.now();
+          (function poll() {
+            if (window.turnstile) { resolve(); return; }
+            if (Date.now() - start > 8000) { reject(new Error('Turnstile load timeout')); return; }
+            setTimeout(poll, 50);
+          })();
+        };
+        s.onerror = function() { reject(new Error('Turnstile script failed to load')); };
+        document.head.appendChild(s);
+      });
+      return turnstileLoadPromise;
+    }
+
+    let widgetReady = null;
+    let widgetId = null;
+    let widgetContainer = null;
+    let pending = null;
+
+    function ensureWidget() {
+      if (widgetReady) return widgetReady;
+      widgetReady = loadTurnstile().then(function() {
+        return new Promise(function(resolve) {
+          widgetContainer = document.createElement('div');
+          widgetContainer.style.position = 'absolute';
+          widgetContainer.style.left = '-9999px';
+          widgetContainer.style.top = '-9999px';
+          widgetContainer.setAttribute('aria-hidden', 'true');
+          document.body.appendChild(widgetContainer);
+          widgetId = window.turnstile.render(widgetContainer, {
+            sitekey: sitekey,
+            size: 'invisible',
+            retry: 'auto',
+            'refresh-expired': 'auto',
+            callback: function(token) {
+              if (pending) { pending.resolve(token); pending = null; }
+            },
+            'error-callback': function(err) {
+              if (pending) { pending.reject(new Error('Turnstile error: ' + err)); pending = null; }
+            },
+            'timeout-callback': function() {
+              if (pending) { pending.reject(new Error('Turnstile timed out')); pending = null; }
+            },
+          });
+          resolve();
+        });
+      });
+      return widgetReady;
+    }
+
+    function getTurnstileToken() {
+      return ensureWidget().then(function() {
+        return new Promise(function(resolve, reject) {
+          pending = { resolve: resolve, reject: reject };
+          try {
+            window.turnstile.reset(widgetId);
+            window.turnstile.execute(widgetId);
+          } catch (err) {
+            pending = null;
+            reject(err);
+          }
+          setTimeout(function() {
+            if (pending) {
+              const p = pending; pending = null;
+              p.reject(new Error('Turnstile execution timed out'));
+            }
+          }, 15000);
+        });
+      });
+    }
+
+    const origFetch = window.fetch.bind(window);
+    window.fetch = function patchedFetch(input, init) {
+      const url = typeof input === 'string' ? input : (input && input.url) || '';
+      const method = ((init && init.method) || (input && input.method) || 'GET').toUpperCase();
+
+      if (method !== 'POST' || !isProtected(url)) {
+        return origFetch(input, init);
+      }
+
+      return (function() {
+        const honeypotValue = readHoneypot();
+        const baseBodyPromise = (sitekey
+          ? getTurnstileToken().catch(function(err) {
+              console.warn('[anti-spam] turnstile token unavailable:', err && err.message);
+              return null;
+            })
+          : Promise.resolve(null)
+        );
+
+        return baseBodyPromise.then(function(token) {
+          let body = init && init.body;
+          if (typeof body === 'string') {
+            try {
+              const obj = JSON.parse(body);
+              if (token) obj.turnstileToken = token;
+              obj.company_website = honeypotValue;
+              body = JSON.stringify(obj);
+            } catch (_) {
+              // body is not JSON — leave alone
+            }
+          } else if (!body || typeof body === 'object') {
+            const obj = Object.assign({}, body || {});
+            if (token) obj.turnstileToken = token;
+            obj.company_website = honeypotValue;
+            body = JSON.stringify(obj);
+            init = Object.assign({}, init || {}, {
+              headers: Object.assign({ 'Content-Type': 'application/json' }, (init && init.headers) || {}),
+            });
+          }
+          const newInit = Object.assign({}, init || {}, { body: body });
+          return origFetch(input, newInit);
+        });
+      })();
+    };
+  })();
+
+  // ─────────────────────────────────────────────
   // NARRATIVE PARTICLE SYSTEM
   // ─────────────────────────────────────────────
   const canvas = document.getElementById('dot-grid');

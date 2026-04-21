@@ -31,6 +31,22 @@ function injectCriticalCSS(html: string, servingDir: string): string {
 }
 
 /**
+ * Inject a <meta name="turnstile-sitekey"> tag so main.js can read the
+ * public sitekey without it being hardcoded into HTML files.
+ * No-op when TURNSTILE_SITEKEY is unset (keeps forms working in dev).
+ */
+function injectTurnstileSitekey(html: string): string {
+  const sitekey = process.env.TURNSTILE_SITEKEY;
+  if (!sitekey) return html;
+  if (html.includes('name="turnstile-sitekey"')) return html;
+  const tag = `<meta name="turnstile-sitekey" content="${sitekey}">`;
+  if (html.includes("</head>")) {
+    return html.replace("</head>", `  ${tag}\n</head>`);
+  }
+  return html;
+}
+
+/**
  * Core pages with server-side meta injection.
  */
 const PAGES: Record<string, { file: string; title: string; description: string; fullTitle?: string }> = {
@@ -174,6 +190,7 @@ function getHtml(servingDir: string, filePath: string, urlPath?: string): string
     html = injectMeta(html, urlPath);
   }
   html = injectCriticalCSS(html, servingDir);
+  html = injectTurnstileSitekey(html);
 
   if (process.env.NODE_ENV === "production") {
     htmlCache.set(cacheKey, html);

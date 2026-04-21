@@ -1,6 +1,6 @@
 import type { Express, Request, Response, NextFunction } from "express";
-import { createServer } from "http";
 import type { Server } from "http";
+import { timingSafeEqual } from "crypto";
 import { storage } from "./storage";
 import { z } from "zod";
 import rateLimit from "express-rate-limit";
@@ -9,6 +9,11 @@ import { sendContactNotification, sendContactAutoReply, sendNewsletterWelcome, s
 import { pushToKlipy } from "./klipy";
 import { pushToBeehiiv } from "./beehiiv";
 import { verifyEmailDomain } from "./email-verify";
+import { isAllowedOrigin, isHoneypotTripped, looksLikeGibberish } from "./anti-spam";
+import { verifyTurnstile } from "./turnstile";
+import { registerLegacyRedirects } from "./routes/redirects";
+
+const SERVER_STARTED_AT = Date.now();
 
 // Rate limiters for API endpoints
 const apiLimiter = rateLimit({
@@ -19,31 +24,7 @@ const apiLimiter = rateLimit({
   message: { success: false, error: "Too many requests. Please try again later." },
 });
 
-// 410 Gone helper for permanently removed WordPress-era URLs
-function gone(_req: Request, res: Response) {
-  res.status(410).type("html").send(`<!DOCTYPE html>
-<html lang="en-AU">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Removed — Tech Horizon Labs</title>
-  <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-  <nav class="site-nav" aria-label="Main navigation">
-    <a href="/" class="brand"><img src="/logo.webp" alt="Tech Horizon Labs logo" class="brand-logo" width="28" height="28">Tech Horizon Labs</a>
-  </nav>
-  <main class="container" style="padding:4rem 1rem;text-align:center;">
-    <h1>This page has been permanently removed.</h1>
-    <p style="color:var(--text-secondary);max-width:520px;margin:1rem auto 2rem;">It was part of our old WordPress site and is no longer available. Try the homepage, our latest insights, or get in touch.</p>
-    <p><a href="/" class="link-arrow">Go to homepage</a> &middot; <a href="/insights" class="link-arrow">Read our insights</a> &middot; <a href="/contact" class="link-arrow">Contact us</a></p>
-  </main>
-</body>
-</html>`);
-}
-
-// Simple admin authentication middleware
+// Simple admin authentication middleware with constant-time comparison
 const adminAuth = (req: Request, res: Response, next: NextFunction) => {
   const adminKey = req.headers['x-admin-key'];
   const expectedKey = process.env.ADMIN_API_KEY;
@@ -56,159 +37,79 @@ const adminAuth = (req: Request, res: Response, next: NextFunction) => {
     return next();
   }
 
-  if (adminKey !== expectedKey) {
+  if (typeof adminKey !== 'string' || adminKey.length !== expectedKey.length) {
+    console.warn(`[admin] auth failed from ${req.ip} on ${req.method} ${req.path}`);
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  const a = Buffer.from(adminKey);
+  const b = Buffer.from(expectedKey);
+  if (!timingSafeEqual(a, b)) {
+    console.warn(`[admin] auth failed from ${req.ip} on ${req.method} ${req.path}`);
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
   next();
 };
 
+/**
+ * Pre-handler guard used by every public form POST.
+ * Returns null when the request passes all checks. Returns a tuple
+ * [status, body] when it should be short-circuited.
+ *
+ * - Honeypot filled → [200, { success: true, id: "ok" }]   (silent success)
+ * - Bad origin → [403, { error: "..." }]
+ * - Turnstile failure → [400, { error: "..." }]
+ */
+type ShortCircuit = [number, Record<string, unknown>] | null;
+
+async function runAntiSpam(req: Request, scope: string): Promise<ShortCircuit> {
+  if (isHoneypotTripped(req.body)) {
+    console.warn(`[anti-spam] honeypot tripped on ${scope} from ${req.ip}`);
+    return [200, { success: true, id: "ok" }];
+  }
+
+  if (!isAllowedOrigin(req)) {
+    console.warn(`[anti-spam] rejected origin "${req.headers.origin ?? "(none)"}" on ${scope} from ${req.ip}`);
+    return [403, { success: false, error: "Request origin not allowed." }];
+  }
+
+  const token = typeof req.body?.turnstileToken === "string" ? req.body.turnstileToken : null;
+  const ts = await verifyTurnstile(token, req.ip);
+  if (!ts.success) {
+    console.warn(`[anti-spam] turnstile failed on ${scope} from ${req.ip}: ${ts.reason}`);
+    return [400, { success: false, error: "Could not verify this request. Please reload the page and try again." }];
+  }
+
+  return null;
+}
+
 export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // ===== Legacy WordPress query-string handler =====
-  // /?p=123 (and similar single-param ?p=) was the WP "ugly permalink" — 410 it.
-  app.get("/", (req, res, next) => {
-    if (typeof req.query.p === "string" && req.query.p.length > 0) {
-      return gone(req, res);
-    }
-    next();
-  });
-
-  // ===== 301 Redirects — old React SPA routes to new static pages =====
-
-  // Portfolio → Work
-  app.get("/portfolio", (_req, res) => res.redirect(301, "/work"));
-  app.get("/portfolio/", (_req, res) => res.redirect(301, "/work"));
-  app.get("/portfolio/:slug", (_req, res) => res.redirect(301, "/work"));
-  app.get("/portfolio/:slug/", (_req, res) => res.redirect(301, "/work"));
-
-  // Services → Homepage
-  app.get("/services", (_req, res) => res.redirect(301, "/"));
-  app.get("/services/", (_req, res) => res.redirect(301, "/"));
-  app.get("/services/:slug", (_req, res) => res.redirect(301, "/"));
-  app.get("/services/:slug/", (_req, res) => res.redirect(301, "/"));
-
-  // NOTE: Wildcard redirects for /locations/:slug, /industries/:slug, /insights/:slug
-  // are registered in static.ts AFTER the specific page routes, to avoid catching them.
-
-  // Guides → Academy
-  app.get("/guides/:slug", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/guides/:slug/", (_req, res) => res.redirect(301, "/academy"));
-
-  // Individual removed pages
-  app.get("/audit-tool", (_req, res) => res.redirect(301, "/assessment"));
-  app.get("/audit-tool/", (_req, res) => res.redirect(301, "/assessment"));
-  app.get("/ai-ethics", (_req, res) => res.redirect(301, "/about"));
-  app.get("/events", (_req, res) => res.redirect(301, "/"));
-  app.get("/resources", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/resources/", (_req, res) => res.redirect(301, "/academy"));
-
-  // ===== Legacy redirects (WordPress era + old site) =====
-
-  app.get("/for-business", (_req, res) => res.redirect(301, "/"));
-  app.get("/for-business/", (_req, res) => res.redirect(301, "/"));
-  app.get("/contact-us", (_req, res) => res.redirect(301, "/contact"));
-  app.get("/contact-us/", (_req, res) => res.redirect(301, "/contact"));
-  app.get("/about-us", (_req, res) => res.redirect(301, "/about"));
-  app.get("/about-us/", (_req, res) => res.redirect(301, "/about"));
-  app.get("/blog", (_req, res) => res.redirect(301, "/insights"));
-  app.get("/blog/", (_req, res) => res.redirect(301, "/insights"));
-  // Known legacy blog slugs (5 named WordPress articles) → 301 to /insights
-  // Unknown blog slugs → 410 Gone so Google drops them from the index
-  const KNOWN_BLOG_SLUGS = new Set([
-    "navigating-the-ai-hype-cycle-turning-ai-potential-into-business-reality",
-    "why-your-sunshine-coast-business-needs-a-no-nonsense-ai-consultant-in-2025-breaking-down-the-latest-ai-revolution",
-    "master-ai-brain-dumping-sunshine-coast-ai-consultants-2025-guide",
-    "ai-consultants-reveal-the-truth-about-privacy-in-the-age-of-artificial-intelligence",
-    "your-enterprise-ai-tools-are-probably-overkill-heres-what-queensland-businesses-actually-need",
-  ]);
-  const blogSlugHandler = (req: Request, res: Response) => {
-    const slug = (req.params.slug || "").replace(/\/$/, "");
-    if (KNOWN_BLOG_SLUGS.has(slug)) return res.redirect(301, "/insights");
-    return gone(req, res);
-  };
-  app.get("/blog/:slug", blogSlugHandler);
-  app.get("/blog/:slug/", blogSlugHandler);
-  app.get("/membership", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/membership/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/workshops", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/workshops/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/ai-workshop-business-sunshine-coast", (_req, res) => res.redirect(301, "/training/sunshine-coast"));
-  app.get("/ai-workshop-business-sunshine-coast/", (_req, res) => res.redirect(301, "/training/sunshine-coast"));
-  // WordPress-era URL patterns — 410 Gone (no equivalent destination)
-  app.get("/category/:slug", gone);
-  app.get("/category/:slug/", gone);
-  app.get("/tag/:slug", gone);
-  app.get("/tag/:slug/", gone);
-  app.get("/page/:slug", gone);
-  app.get("/page/:slug/", gone);
-  app.get(/^\/wp-content\/.*/, gone);
-  app.get(/^\/wp-includes\/.*/, gone);
-  app.get(/^\/wp-json(\/.*)?$/, gone);
-  app.get("/wp-admin", gone);
-  app.get(/^\/wp-admin\/.*/, gone);
-  app.get("/wp-login.php", gone);
-  app.get("/xmlrpc.php", gone);
-  app.get("/comments/feed", gone);
-  app.get("/comments/feed/", gone);
-  app.get("/trackback", gone);
-  app.get("/trackback/", gone);
-  app.get("/privacy-policy", (_req, res) => res.redirect(301, "/privacy"));
-  app.get("/privacy-policy/", (_req, res) => res.redirect(301, "/privacy"));
-  app.get("/terms-of-service", (_req, res) => res.redirect(301, "/terms"));
-  app.get("/terms-of-service/", (_req, res) => res.redirect(301, "/terms"));
-  app.get("/book-here", (_req, res) => res.redirect(301, "/contact"));
-  app.get("/book-here/", (_req, res) => res.redirect(301, "/contact"));
-  app.get("/feed", gone);
-  app.get("/feed/", gone);
-  app.get(/^\/feed\/.*/, gone);
-  app.get("/workshop/:slug", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/workshop/:slug/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/workshops/:slug", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/workshops/:slug/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/course/:slug", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/course/:slug/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/home", (_req, res) => res.redirect(301, "/"));
-  app.get("/home/", (_req, res) => res.redirect(301, "/"));
-  app.get("/index.html", (_req, res) => res.redirect(301, "/"));
-  app.get("/index.php", (_req, res) => res.redirect(301, "/"));
-
-  // ===== Additional WordPress legacy redirects =====
-  app.get("/navigating-the-ai-hype-cycle-turning-ai-potential-into-business-reality", (_req, res) => res.redirect(301, "/insights"));
-  app.get("/why-your-sunshine-coast-business-needs-a-no-nonsense-ai-consultant-in-2025-breaking-down-the-latest-ai-revolution", (_req, res) => res.redirect(301, "/insights"));
-  app.get("/master-ai-brain-dumping-sunshine-coast-ai-consultants-2025-guide", (_req, res) => res.redirect(301, "/insights"));
-  app.get("/ai-consultants-reveal-the-truth-about-privacy-in-the-age-of-artificial-intelligence", (_req, res) => res.redirect(301, "/insights"));
-  app.get("/your-enterprise-ai-tools-are-probably-overkill-heres-what-queensland-businesses-actually-need", (_req, res) => res.redirect(301, "/insights"));
-  app.get("/ai-business-training-sunshine-coast", (_req, res) => res.redirect(301, "/training/sunshine-coast"));
-  app.get("/ai-business-training-sunshine-coast/", (_req, res) => res.redirect(301, "/training/sunshine-coast"));
-  app.get("/ai-consultant-sunshine-coast-business-transformation", (_req, res) => res.redirect(301, "/locations/sunshine-coast"));
-  app.get("/ai-consultant-sunshine-coast-business-transformation/", (_req, res) => res.redirect(301, "/locations/sunshine-coast"));
-  app.get("/unctad-2025-ai-report-australia-guide", (_req, res) => res.redirect(301, "/insights"));
-  app.get("/unctad-2025-ai-report-australia-guide/", (_req, res) => res.redirect(301, "/insights"));
-  app.get("/for-home", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/for-home/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/author/huxleythzn-world", (_req, res) => res.redirect(301, "/about"));
-  app.get("/author/huxleythzn-world/", (_req, res) => res.redirect(301, "/about"));
-  app.get("/event/:slug", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/event/:slug/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/events/:slug", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/events/:slug/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/courses", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/courses/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/courses/sample-course", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/courses/sample-course/", (_req, res) => res.redirect(301, "/academy"));
-  app.get("/product-category/support", (_req, res) => res.redirect(301, "/contact"));
-  app.get("/product-category/support/", (_req, res) => res.redirect(301, "/contact"));
-  app.get("/product/free-pre-discovery-call", (_req, res) => res.redirect(301, "/contact"));
-  app.get("/product/free-pre-discovery-call/", (_req, res) => res.redirect(301, "/contact"));
+  registerLegacyRedirects(app);
 
   // ===== API Endpoints =====
 
+  app.get("/api/health", (_req, res) => {
+    res.json({
+      ok: true,
+      uptime_s: Math.floor((Date.now() - SERVER_STARTED_AT) / 1000),
+      env: process.env.NODE_ENV ?? "development",
+    });
+  });
+
   app.post("/api/contact", apiLimiter, async (req, res) => {
     try {
+      const sc = await runAntiSpam(req, "/api/contact");
+      if (sc) return res.status(sc[0]).json(sc[1]);
+
       const validatedData = insertContactSubmissionSchema.parse(req.body);
+
+      if (looksLikeGibberish(validatedData.name) || looksLikeGibberish(validatedData.message)) {
+        console.warn(`[anti-spam] gibberish rejected on /api/contact from ${req.ip}: name="${validatedData.name}"`);
+        return res.status(400).json({ success: false, error: "Your message could not be submitted. Please try again." });
+      }
 
       const emailCheck = await verifyEmailDomain(validatedData.email);
       if (!emailCheck.valid) {
@@ -251,7 +152,7 @@ export async function registerRoutes(
   });
 
   // Protected admin endpoint
-  app.get("/api/contact-submissions", adminAuth, async (req, res) => {
+  app.get("/api/contact-submissions", apiLimiter, adminAuth, async (req, res) => {
     try {
       const submissions = await storage.getAllContactSubmissions();
       res.json(submissions);
@@ -263,9 +164,18 @@ export async function registerRoutes(
 
   app.post("/api/newsletter", apiLimiter, async (req, res) => {
     try {
-      const { source: rawSource, name: rawName, ...rest } = req.body;
+      const sc = await runAntiSpam(req, "/api/newsletter");
+      if (sc) return res.status(sc[0]).json(sc[1]);
+
+      const { source: rawSource, name: rawName, turnstileToken: _tt, company_website: _hp, ...rest } = req.body;
       const source = typeof rawSource === "string" && rawSource.length < 80 ? rawSource : undefined;
       const name = typeof rawName === "string" && rawName.trim().length > 0 && rawName.length < 200 ? rawName.trim() : undefined;
+
+      if (name && looksLikeGibberish(name)) {
+        console.warn(`[anti-spam] gibberish rejected on /api/newsletter from ${req.ip}: name="${name}"`);
+        return res.status(400).json({ success: false, error: "Your signup could not be submitted. Please try again." });
+      }
+
       const validatedData = insertNewsletterSignupSchema.parse({ ...rest, source });
 
       const emailCheck = await verifyEmailDomain(validatedData.email);
@@ -357,6 +267,9 @@ export async function registerRoutes(
 
   app.post("/api/audit", apiLimiter, async (req, res) => {
     try {
+      const sc = await runAntiSpam(req, "/api/audit");
+      if (sc) return res.status(sc[0]).json(sc[1]);
+
       // Parse and validate request
       // name/email are optional — only required when user opts in to contact/email
       const auditRequestSchema = z.object({
@@ -369,6 +282,11 @@ export async function registerRoutes(
         wantsNewsletter: z.boolean().optional().default(false),
       });
       const input = auditRequestSchema.parse(req.body);
+
+      if (input.name && looksLikeGibberish(input.name)) {
+        console.warn(`[anti-spam] gibberish rejected on /api/audit from ${req.ip}: name="${input.name}"`);
+        return res.status(400).json({ success: false, error: "Your submission could not be processed. Please try again." });
+      }
 
       if (input.email) {
         const emailCheck = await verifyEmailDomain(input.email);

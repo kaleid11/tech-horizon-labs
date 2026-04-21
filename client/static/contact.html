@@ -135,6 +135,10 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" required data-testid="input-contact-message"></textarea>
         </div>
+        <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+          <label for="company_website">Website (leave blank)</label>
+          <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+        </div>
         <button type="submit" class="btn-submit" data-testid="button-contact-submit">Send message</button>
         <div id="form-message" data-testid="text-contact-status"></div>
       </form>
