@@ -63,7 +63,31 @@
         "name": "How does this interact with our existing practice management system?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We build integrations with the systems your firm already uses — LEAP, Actionstep, InfoTrack, PEXA, and others. Information flows from intake through to matter opening without retyping. The AI tools sit alongside your existing practice management software rather than replacing it, reducing double-handling and manual data entry without forcing a platform migration."
+          "text": "We build integrations with the systems your firm already uses — LEAP, Actionstep, Silq, InfoTrack, PEXA, and others. Information flows from intake through to matter opening without retyping. The AI tools sit alongside your existing practice management software rather than replacing it, reducing double-handling and manual data entry without forcing a platform migration."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the Privacy Act 1988 apply to AI in a law firm?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Australian Privacy Act 1988 and the 13 Australian Privacy Principles apply to most law firms holding client personal information. The two clauses that bite hardest with AI are APP 8 (cross-border disclosure) and APP 11 (security of personal information). Sending matter data through a US-hosted AI vendor is a cross-border disclosure under APP 8 unless it is contractually equivalent to keeping the data in Australia. We design every legal AI deployment to keep data inside Australian jurisdiction by default — Azure OpenAI Sydney region, AU-hosted private cloud, or on-premise. APP 11 is handled through encryption in transit and at rest, role-based access, MFA, audit logs, and immutable backups."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you handle AI hallucination in legal work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hallucination is treated as a known failure mode, not an edge case. Three protections sit on top of every output. First, retrieval-augmented generation grounds responses in your firm's own documents and known legal sources rather than the model's training data. Second, every workflow has an explicit human-in-the-loop checkpoint — a solicitor reviews and signs off before any output goes to a client or court. Third, we train your team on the RIPE prompting framework so prompts ask for citations the lawyer can verify, not unsourced claims. AI handles the searching, sorting, and first drafting. Lawyers handle the judgement and the verification."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a legal AI deployment take and what does it cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A typical first deployment runs four to six weeks from kickoff to a working system your team owns. Phase 1 is a one-week strategic blueprint — diagrams, integration plan, costed run plan. Phases 2 and 3 are build, deploy, train, and hand over. Costs depend on integration depth and infrastructure choice. A ChatGPT or Claude Business rollout with prompt training and Microsoft 365 connectors typically lands in the four-figure SaaS-spend range per year. A custom build with voice intake, CRM integration, and an AU-hosted RAG knowledge base typically lands in the five-figure one-off range plus a small monthly run cost. We give you a fixed-price quote after the pre-discovery call — no hourly billing, no scope creep."
         }
       }
     ]
@@ -201,9 +225,22 @@
 
     <div class="accent-rule container"></div>
 
+    <!-- HOW WE WORK -->
+    <section class="section container fade-in">
+      <h2>How a legal AI engagement actually runs</h2>
+      <p>Two recent engagements, anonymised, show the shape of the work. The patterns repeat across most Australian firms.</p>
+      <h3 style="margin-top: var(--space-sm); font-size: 1.125rem;">Engagement A &mdash; small family-law firm rolling out ChatGPT Business</h3>
+      <p>A small Australian family-law firm with two to three solicitors needed safe, day-to-day AI for case outlines from affidavits, first-pass drafting of letters and emails, summarisation of long family reports, and research overviews. We rolled out ChatGPT Business with a workspace-level admin, MFA on every account, PII redaction enforced before any model improvement, and Custom Instructions per solicitor scoping the model to Australian law and family-law conventions. We then taught the team the RIPE prompting framework (Role, Instructions, Parameters, Examples) and gave them five reusable prompt patterns: Case Outline from Affidavits, Letter to Opposing Solicitor, Client Advice in Plain Language, Family Report Summary for Hearing Prep, and Hearing Preparation Checklist. Microsoft 365 stayed the system of record. SharePoint folders were exposed selectively to the model for templates and precedents. The firm&rsquo;s practice management system stayed in place, with documents flowing through SharePoint where the system had no public API.</p>
+      <h3 style="margin-top: var(--space-sm); font-size: 1.125rem;">Engagement B &mdash; multi-office practice handling 100+ calls a day</h3>
+      <p>A Queensland family-law practice was fielding more than 100 inbound and outbound calls a day across multiple offices. Two extra receptionists at roughly $140,000 a year combined had been costed and rejected as a non-scalable fix. We scoped a phased build on Microsoft Azure: a voice AI agent handling a meaningful share of inbound calls on the first touch-point, with upfront AI disclosure on every call, a Power Automate-driven CRM integration that creates and enriches leads from the moment a caller is on the line, and an AU-resident retrieval-augmented knowledge base sitting inside Azure OpenAI Sydney. A SharePoint testing environment with sanitised data ran for two weeks before anything touched production. Phase 1 was a one-week strategic blueprint with diagrams, integration plan, and consumption-cost model. Phases 2 and 3 covered build, deploy, and a User Acceptance Testing pass with the principal and an internal IT lead present. Total time from kickoff to working system: four to six weeks.</p>
+      <p style="margin-top: var(--space-xs);">Both engagements started small, kept Australian data inside Australian jurisdiction, and put the solicitor in the loop for every output that left the firm.</p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
     <!-- USE CASES -->
     <section class="section container-wide fade-in">
-      <h2>Three use cases with the clearest ROI</h2>
+      <h2>Five use cases with the clearest ROI</h2>
 
       <div class="tool-grid stagger" style="margin-top: var(--space-sm);">
         <div class="tool-item fade-in">
@@ -215,7 +252,7 @@
         <div class="tool-item fade-in">
           <div class="tool-name">Document Drafting</div>
           <div class="tool-tag">Productivity</div>
-          <p>AI-assisted first drafts using your firm&rsquo;s templates and precedents. Lawyers review and refine rather than starting from a blank page. Especially high-value for contracts, agreements, and correspondence that follow familiar structures.</p>
+          <p>AI-assisted first drafts using your firm&rsquo;s templates and precedents. Lawyers review and refine rather than starting from a blank page. Especially high-value for contracts, agreements, letters to opposing solicitors, and client advice that follow familiar structures.</p>
           <p style="margin-top: 0.75rem; font-weight: 600; color: var(--accent); font-size: 0.9375rem;">50% faster first drafts</p>
         </div>
         <div class="tool-item fade-in">
@@ -223,6 +260,18 @@
           <div class="tool-tag">Operations</div>
           <p>Automated intake forms, conflict checks, and matter opening. Information flows once and populates everywhere it needs to go &mdash; practice management, billing, file notes. Eliminates the data re-entry loop that consumes hours per week.</p>
           <p style="margin-top: 0.75rem; font-weight: 600; color: var(--accent); font-size: 0.9375rem;">60% less admin per matter</p>
+        </div>
+        <div class="tool-item fade-in">
+          <div class="tool-name">Affidavit &amp; Hearing Prep</div>
+          <div class="tool-tag">Litigation Support</div>
+          <p>Long affidavits, family reports, and bundles of evidence summarised into case outlines and hearing-prep checklists. The model reads the documents; the solicitor reads a one-page brief and a verifiable list of references. Especially useful in family law, where the evidence pile grows fast and time before hearing is short.</p>
+          <p style="margin-top: 0.75rem; font-weight: 600; color: var(--accent); font-size: 0.9375rem;">40&ndash;60% less prep time</p>
+        </div>
+        <div class="tool-item fade-in">
+          <div class="tool-name">Voice Intake &amp; Call Triage</div>
+          <div class="tool-tag">Front Office</div>
+          <p>An AI voice agent handles a portion of inbound calls 24/7 &mdash; FAQ answers, lead qualification, conflict-check intake, and handover to a solicitor on demand. AI use is disclosed upfront on the call. Captures dormant leads after hours instead of dropping them. The alternative &mdash; hiring two more receptionists at six-figure annual cost &mdash; rarely scales linearly.</p>
+          <p style="margin-top: 0.75rem; font-weight: 600; color: var(--accent); font-size: 0.9375rem;">70%+ of calls handled before solicitor</p>
         </div>
       </div>
     </section>
@@ -275,6 +324,24 @@
 
     <div class="accent-rule container"></div>
 
+    <!-- PRIVACY ACT 1988 -->
+    <section class="section container fade-in">
+      <h2>Australian Privacy Act 1988 in practice</h2>
+      <p>Most Australian law firms are bound by the Privacy Act 1988 and the 13 Australian Privacy Principles whether they hold a client list of 30 or 30,000. Two principles do most of the heavy lifting when AI enters the workflow, and both shape how we design every legal deployment.</p>
+      <h3 style="margin-top: var(--space-sm); font-size: 1.125rem;">APP 8 &mdash; cross-border disclosure</h3>
+      <p>Sending client matter data to a US-hosted AI vendor is a cross-border disclosure under APP 8 unless the receiving environment is contractually equivalent to keeping the data in Australia. The Office of the Australian Information Commissioner treats &ldquo;the cloud is overseas&rdquo; as the disclosing party&rsquo;s problem, not the vendor&rsquo;s. Our default architecture removes the issue: matter content stays inside Australian jurisdiction. Azure OpenAI Sydney region for hosted models, an AU-region private cloud or on-premise GPU appliance for self-hosted models, and SharePoint or a document store inside the firm&rsquo;s own Microsoft 365 tenancy for the source material. When a US-only tool genuinely is the right answer, we document the disclosure, scope it to non-privileged content, and put it through your compliance committee before it touches a real matter.</p>
+      <h3 style="margin-top: var(--space-sm); font-size: 1.125rem;">APP 11 &mdash; security of personal information</h3>
+      <p>APP 11 requires reasonable steps to protect personal information from misuse, interference, loss, and unauthorised access. In a legal AI deployment that means encryption in transit and at rest, role-based access at the document level (not just the system level), MFA enforced on every account, audit logs that survive staff churn, and immutable backups in a separate AU region. The Notifiable Data Breaches scheme runs on the back of APP 11; if a breach happens, the firm has the evidence trail to assess and notify quickly.</p>
+      <h3 style="margin-top: var(--space-sm); font-size: 1.125rem;">Legal professional privilege as an architectural constraint</h3>
+      <p>Privilege is not a setting you switch on. We treat it as the spine of the architecture. Privileged material never leaves the firm&rsquo;s tenancy in plaintext form. Retrieval-augmented generation pipelines tag privileged documents at ingestion and refuse to surface them outside an authenticated solicitor session. When a model is used in any form, prompts and responses involving privileged content stay inside the firm&rsquo;s own infrastructure and are excluded from any model-training or telemetry pipeline by default.</p>
+      <h3 style="margin-top: var(--space-sm); font-size: 1.125rem;">Practice management integration: LEAP, Actionstep, Silq, InfoTrack, PEXA</h3>
+      <p>Most Australian firms run on one or more of LEAP, Actionstep, Silq, InfoTrack, and PEXA. Integration depth varies: LEAP and Actionstep have public APIs that let us build bi-directional CRM-to-AI flows. Silq and several smaller systems require an API-availability check first &mdash; if there is no API, we fall back to scheduled SharePoint or document-export pipelines that still keep the matter file authoritative. InfoTrack and PEXA participate in the workflow at the conveyancing or property end, often as inputs to a precedent search rather than the destination of an AI write. The principle stays the same regardless of the system: the practice management software stays in place as the matter system of record, and AI sits alongside it.</p>
+      <h3 style="margin-top: var(--space-sm); font-size: 1.125rem;">AI disclosure on voice and intake</h3>
+      <p>Any AI voice agent we deploy discloses that an AI is in the call before any client information is taken &mdash; a practice we recommend ahead of any formal AU AI standard, and which the upcoming voluntary standards are tracking towards in any case. Disclosure builds trust at the front door of the firm rather than risking it at the regulator&rsquo;s door later.</p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
     <!-- FAQ -->
     <section class="section container fade-in">
       <h2>Common questions</h2>
@@ -312,12 +379,36 @@
           <p style="margin-top: 1rem; color: var(--text-secondary);">Any practice area with document-heavy workflows benefits. We have seen the biggest impact in property and conveyancing, family law, commercial, and estate planning &mdash; but the bottleneck audit will tell you exactly where your firm&rsquo;s biggest opportunity is. The underlying workflows (research, drafting, intake, matter management) are common across practice areas even if the documents differ.</p>
         </details>
 
-        <details class="faq-item" style="border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 1.5rem 0;">
+        <details class="faq-item" style="border-top: 1px solid var(--border-light); padding: 1.5rem 0;">
           <summary style="font-family: var(--font-heading); font-size: 1.125rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
             How does this work with our practice management system?
             <span aria-hidden="true" style="color: var(--accent); font-size: 1.25rem; flex-shrink: 0; margin-left: 1rem;">+</span>
           </summary>
-          <p style="margin-top: 1rem; color: var(--text-secondary);">We build integrations with the systems your firm already uses &mdash; LEAP, Actionstep, InfoTrack, PEXA, and others. Information flows from intake through to matter opening without retyping. The AI tools sit alongside your existing practice management software rather than replacing it, reducing double-handling and manual data entry without forcing a platform migration.</p>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">We build integrations with the systems your firm already uses &mdash; LEAP, Actionstep, Silq, InfoTrack, PEXA, and others. Information flows from intake through to matter opening without retyping. The AI tools sit alongside your existing practice management software rather than replacing it, reducing double-handling and manual data entry without forcing a platform migration. When a system has no public API, we fall back to scheduled SharePoint or document-export integrations so the firm still gets the lift without waiting on a vendor roadmap.</p>
+        </details>
+
+        <details class="faq-item" style="border-top: 1px solid var(--border-light); padding: 1.5rem 0;">
+          <summary style="font-family: var(--font-heading); font-size: 1.125rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            How does the Privacy Act 1988 apply to AI in our firm?
+            <span aria-hidden="true" style="color: var(--accent); font-size: 1.25rem; flex-shrink: 0; margin-left: 1rem;">+</span>
+          </summary>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">The Australian Privacy Act 1988 and the 13 Australian Privacy Principles apply to most law firms holding client personal information. The two clauses that bite hardest with AI are APP 8 (cross-border disclosure) and APP 11 (security of personal information). Sending matter data through a US-hosted AI vendor is a cross-border disclosure under APP 8 unless the receiving environment is contractually equivalent to keeping the data in Australia. We design every legal AI deployment to keep data inside Australian jurisdiction by default &mdash; Azure OpenAI Sydney region, AU-hosted private cloud, or on-premise. APP 11 is handled through encryption in transit and at rest, role-based access, MFA, audit logs, and immutable backups.</p>
+        </details>
+
+        <details class="faq-item" style="border-top: 1px solid var(--border-light); padding: 1.5rem 0;">
+          <summary style="font-family: var(--font-heading); font-size: 1.125rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            How do you handle AI hallucination in legal work?
+            <span aria-hidden="true" style="color: var(--accent); font-size: 1.25rem; flex-shrink: 0; margin-left: 1rem;">+</span>
+          </summary>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">Hallucination is treated as a known failure mode, not an edge case. Three protections sit on top of every output. First, retrieval-augmented generation grounds responses in your firm&rsquo;s own documents and known legal sources rather than the model&rsquo;s training data. Second, every workflow has an explicit human-in-the-loop checkpoint &mdash; a solicitor reviews and signs off before any output goes to a client or court. Third, we train your team on the RIPE prompting framework (Role, Instructions, Parameters, Examples) so prompts ask for citations the lawyer can verify, not unsourced claims. AI handles the searching, sorting, and first drafting. Lawyers handle the judgement and the verification.</p>
+        </details>
+
+        <details class="faq-item" style="border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 1.5rem 0;">
+          <summary style="font-family: var(--font-heading); font-size: 1.125rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            How long does a deployment take and what does it cost?
+            <span aria-hidden="true" style="color: var(--accent); font-size: 1.25rem; flex-shrink: 0; margin-left: 1rem;">+</span>
+          </summary>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">A typical first deployment runs four to six weeks from kickoff to a working system your team owns. Phase 1 is a one-week strategic blueprint &mdash; diagrams, integration plan, costed run plan. Phases 2 and 3 are build, deploy, train, and hand over. Costs depend on integration depth and infrastructure choice. A ChatGPT or Claude Business rollout with prompt training and Microsoft 365 connectors typically lands in the four-figure SaaS-spend range per year. A custom build with voice intake, CRM integration, and an AU-hosted RAG knowledge base typically lands in the five-figure one-off range plus a small monthly run cost. We give you a fixed-price quote after the pre-discovery call &mdash; no hourly billing, no scope creep.</p>
         </details>
       </div>
     </section>
