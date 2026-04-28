@@ -63,7 +63,7 @@ const PAGES: Record<string, { file: string; title: string; description: string; 
   },
   "/about": {
     file: "about.html",
-    fullTitle: "About Huxley Peckham — Queensland AI Consultant | Tech Horizon Labs",
+    fullTitle: "Huxley Peckham — Queensland AI Systems Architect",
     title: "About Huxley Peckham",
     description: "Huxley Peckham runs Tech Horizon Labs from Noosa Heads, Queensland. AI systems and workflow automation for growing Australian businesses. Infrastructure before automation.",
   },
