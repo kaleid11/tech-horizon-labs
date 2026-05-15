@@ -53,7 +53,7 @@ const PAGES: Record<string, { file: string; title: string; description: string; 
   "/": {
     file: "index.html",
     title: "AI Systems for Growing Businesses",
-    description: "Tech Horizon Labs builds and deploys AI systems for growing businesses across the Sunshine Coast and Australia. We map workflows, build the systems, and train your team.",
+    description: "Tech Horizon Labs builds AI systems for VCs, SaaS scale-ups, wealth managers, talent agencies, and growing Australian businesses. Australian-built. Global clients. We map workflows, build the systems, train your team.",
   },
   "/work": {
     file: "work.html",

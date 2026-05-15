@@ -1113,3 +1113,87 @@
     ]
   });
 })();
+
+/* =====================================================
+   ICP ROTATOR — Hero H1 stable-claimable rotating span
+   Cycles through 9 ICPs. Stable static H1 default
+   ("growing businesses") is SSR'd for AEO/GEO.
+   ===================================================== */
+(function () {
+  'use strict';
+  const el = document.querySelector('.icp-rotator');
+  if (!el) return;
+
+  const ICPS = [
+    'growing businesses',
+    'VCs and private equity',
+    'wealth managers and financial advisors',
+    'SaaS scale-ups',
+    'talent agencies',
+    'legal firms',
+    'construction and trades',
+    'healthcare and allied health',
+    'manufacturing'
+  ];
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return; // honour reduced motion — stay on default
+  }
+
+  // Measure widest ICP so the span min-width prevents layout shift
+  try {
+    const probe = document.createElement('span');
+    const cs = window.getComputedStyle(el);
+    probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;';
+    probe.style.font = cs.font;
+    probe.style.fontFamily = cs.fontFamily;
+    probe.style.fontSize = cs.fontSize;
+    probe.style.fontWeight = cs.fontWeight;
+    probe.style.letterSpacing = cs.letterSpacing;
+    document.body.appendChild(probe);
+    let widest = 0;
+    for (let i = 0; i < ICPS.length; i++) {
+      probe.textContent = ICPS[i];
+      if (probe.offsetWidth > widest) widest = probe.offsetWidth;
+    }
+    document.body.removeChild(probe);
+    if (widest > 0) el.style.minWidth = Math.ceil(widest) + 'px';
+  } catch (_) { /* noop */ }
+
+  let idx = 0;
+  let timer = null;
+  let inView = true;
+  const HOLD_MS = 2000;
+  const FADE_MS = 300;
+
+  function tick() {
+    if (!inView) return;
+    el.classList.add('is-fading');
+    setTimeout(function () {
+      idx = (idx + 1) % ICPS.length;
+      el.textContent = ICPS[idx];
+      el.classList.remove('is-fading');
+      timer = setTimeout(tick, HOLD_MS);
+    }, FADE_MS);
+  }
+
+  function start() {
+    if (timer) return;
+    timer = setTimeout(tick, HOLD_MS);
+  }
+  function stop() {
+    if (timer) { clearTimeout(timer); timer = null; }
+  }
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        inView = e.isIntersecting;
+        if (inView) start(); else stop();
+      });
+    }, { threshold: 0 });
+    io.observe(el);
+  } else {
+    start();
+  }
+})();
