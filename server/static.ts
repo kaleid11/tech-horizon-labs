@@ -122,6 +122,9 @@ const STATIC_FILES: Record<string, string> = {
   "/industries/construction": "industries/construction.html",
   "/industries/healthcare": "industries/healthcare.html",
   "/industries/retail": "industries/retail.html",
+  // ICP landing pages
+  "/for/vcs-and-pe": "for/vcs-and-pe.html",
+  "/for/wealth-management": "for/wealth-management.html",
   // Training pages
   "/training/sunshine-coast": "training/sunshine-coast.html",
   // Insights

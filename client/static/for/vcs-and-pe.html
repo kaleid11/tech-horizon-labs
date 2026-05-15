@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for VCs and Private Equity — Deal Flow, Diligence, Portfolio Playbooks | Tech Horizon Labs</title>
+  <meta name="description" content="AI for VCs and private equity firms. We build deal-flow systems, automate diligence prep, and deploy portfolio-company AI playbooks. The implementation layer between thesis and workflow.">
+  <link rel="canonical" href="https://techhorizonlabs.com/for/vcs-and-pe">
+  <link rel="alternate" hreflang="en-AU" href="https://techhorizonlabs.com/for/vcs-and-pe">
+  <link rel="alternate" hreflang="x-default" href="https://techhorizonlabs.com/for/vcs-and-pe">
+  <meta property="og:title" content="AI for VCs and Private Equity | Tech Horizon Labs">
+  <meta property="og:description" content="Deal-flow systems, diligence automation, portfolio-company AI playbooks. The implementation layer between thesis and workflow.">
+  <meta property="og:url" content="https://techhorizonlabs.com/for/vcs-and-pe">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Tech Horizon Labs — AI for VCs and Private Equity">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="AI for VCs and Private Equity | Tech Horizon Labs">
+  <meta name="twitter:description" content="Deal-flow systems, diligence automation, portfolio-company AI playbooks.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon-32.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI implementation for VCs and private equity firms",
+    "serviceType": "AI consulting and implementation",
+    "provider": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com"
+    },
+    "areaServed": [
+      "AU",
+      { "@type": "Place", "name": "Worldwide" }
+    ],
+    "description": "AI systems for VC and PE firms: deal-flow automation, diligence prep, portfolio-company AI playbooks, and fractional AI ops across portfolios.",
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "Venture capital and private equity firms"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "For", "item": "https://techhorizonlabs.com/for/vcs-and-pe" },
+      { "@type": "ListItem", "position": 3, "name": "VCs and Private Equity", "item": "https://techhorizonlabs.com/for/vcs-and-pe" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does AI implementation look like for a VC or PE firm?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Two layers. Layer one is the firm itself — deal-flow capture, diligence prep, IC memo drafting, LP reporting. Layer two is the portfolio — a shared AI playbook so every portfolio company gets the same foundation (Claude or ChatGPT Teams, an Attio or HubSpot CRM hooked into n8n, AU-region storage and access control). We build both layers and stay on as your fractional AI ops lead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you sign NDAs and work inside our tenant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes to both. Every engagement runs under a mutual NDA before we see a single deck. We build inside your Google Workspace, your Notion, your HubSpot, your Slack — not in a separate tenant we control. When a portfolio engagement starts, we mirror that pattern: their data stays inside their stack, not ours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from hiring an internal AI lead?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An internal AI lead costs $200K–$350K loaded and takes 4–6 months to hire. We are operational in week one, work across every portfolio company without re-onboarding, and rotate out the moment you have an internal hire who can take over. Most of our VC clients keep us at 0.4–0.6 FTE equivalent, billed flat-fee."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will you work with our portfolio companies directly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — and that is usually where the leverage is. We deploy the same playbook across multiple portfolio companies so each one gets a 4-week AI sprint at a portfolio-discount rate. The fund usually subsidises the first engagement; portfolio companies cover ongoing retainers from their own opex."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What data residency rules do you follow?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AU-region storage by default (Acronis, Google Workspace AU, AWS Sydney). For PE firms with US LPs, we mirror to a US region. We never train external models on portfolio data. Every system is built so a vendor swap is a config change, not a rebuild — your architecture survives a model provider going dark."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand"><img src="/logo.webp" alt="Tech Horizon Labs logo" class="brand-logo" width="28" height="28">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <section class="hero container">
+      <p style="font-family:var(--font-body);font-size:0.8125rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;"><a href="/" style="color:inherit;text-decoration:none;">Home</a> &rsaquo; For &rsaquo; VCs &amp; PE</p>
+      <h1 data-testid="text-h1-vcs-pe">AI for VCs and private equity firms.</h1>
+      <p class="subline">Build deal-flow systems, automate diligence prep, and deploy portfolio-company AI playbooks. We are the implementation layer between your thesis and the workflow.</p>
+      <p>
+        <a href="https://app.klipycrm.com/p/tech-horizon-labs/book" target="_blank" rel="noopener" class="link-arrow" data-testid="link-book-vcs">Book a 30-min call &rarr;</a>
+        &nbsp;&nbsp;
+        <a href="/assessment" class="link-arrow" data-testid="link-assessment-vcs">Or take the AI readiness assessment &rarr;</a>
+      </p>
+      <div class="trust-row" aria-label="Quick facts">
+        <span class="trust-stat">AU-region by default</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">Mutual NDA in 24h</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">Portfolio playbook included</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- DEFINITION BLOCK (AEO) -->
+    <section class="section container fade-in">
+      <h2>What does AI implementation look like for a VC or PE firm?</h2>
+      <p style="font-size:1.0625rem;line-height:1.7;max-width:740px;">
+        Two layers. <strong>Layer one</strong> is the firm itself: deal-flow capture, diligence prep, IC memos, LP reporting. <strong>Layer two</strong> is the portfolio: a shared AI playbook so every company gets the same foundation. We build both layers, then stay on as your fractional AI ops lead across the fund.
+      </p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- STAT CITATIONS -->
+    <section class="section container-wide fade-in">
+      <h2>The numbers that move the conversation</h2>
+      <div class="results-grid stagger">
+        <div class="result-card fade-in">
+          <div class="metric">78%</div>
+          <div class="metric-label">of VC partners use generative AI weekly</div>
+          <p>According to the <a href="https://www.svb.com/" target="_blank" rel="noopener">SVB 2025 State of VC report</a>. Adoption is no longer the question — orchestration is.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">$150K</div>
+          <div class="metric-label">avg. annual cost of an internal AI lead</div>
+          <p>Per <a href="https://www.glassdoor.com.au/" target="_blank" rel="noopener">Glassdoor AU 2026</a>, loaded cost lands closer to $250K. A fractional model gets you operational in week one for a fraction of that.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">40%</div>
+          <div class="metric-label">faster diligence prep with structured AI</div>
+          <p>Bain &amp; Co. private-equity AI survey 2025: top-quartile funds cut first-pass diligence from 3 weeks to under 2 with a structured playbook.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- COMPARISON TABLE (AEO) -->
+    <div class="warm-band">
+      <section class="section container-wide fade-in">
+        <h2>AI consultant vs in-house AI hire vs doing nothing</h2>
+        <p class="subline" style="margin-bottom:var(--space-sm);">The three real options. We are direct because the comparison matters.</p>
+        <div class="report-window" data-testid="table-comparison-vcs">
+          <div class="report-body">
+            <div class="report-table">
+              <div class="report-row report-row-header">
+                <span>Dimension</span><span>AI consultant (THL)</span><span>In-house AI hire</span><span>Nothing</span>
+              </div>
+              <div class="report-row"><span>Year-one cost</span><span>$60K–$180K flat-fee</span><span>$250K+ loaded</span><span>$0 (apparent)</span></div>
+              <div class="report-row"><span>Speed to first deploy</span><span>Week 1</span><span>Month 4–6</span><span>Never</span></div>
+              <div class="report-row"><span>Ongoing risk</span><span>We rotate out cleanly</span><span>Single point of failure</span><span>Falling behind every quarter</span></div>
+              <div class="report-row"><span>Knowledge retention</span><span>Documented playbook stays</span><span>Walks out the door</span><span>None to retain</span></div>
+              <div class="report-row"><span>Vendor lock-in</span><span>Architecture survives swaps</span><span>Often vendor-shaped</span><span>N/A</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- STEP-BY-STEP (AEO) -->
+    <section class="section container-wide fade-in">
+      <h2>How a VC or PE engagement runs</h2>
+      <div class="method-grid stagger">
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">01</div>
+          <div class="method-title">Discovery</div>
+          <div class="method-duration">Week 1</div>
+          <p>NDA signed. We map deal-flow, diligence, IC and LP-reporting workflows. Audit your stack (CRM, doc room, comms).</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">02</div>
+          <div class="method-title">Firm-layer build</div>
+          <div class="method-duration">Weeks 2&ndash;4</div>
+          <p>Deal-flow capture into Attio or HubSpot. Diligence assistant trained on your thesis. IC memo drafter with your house style.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">03</div>
+          <div class="method-title">Portfolio playbook</div>
+          <div class="method-duration">Weeks 4&ndash;6</div>
+          <p>One shared AI playbook deployed to each portfolio company. Same foundation, configured per business.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">04</div>
+          <div class="method-title">Fractional ops</div>
+          <div class="method-duration">Ongoing</div>
+          <p>We stay on as fractional AI ops across the fund. Quarterly playbook updates as models evolve.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- WORKED EXAMPLE -->
+    <div class="warm-band">
+      <section class="section container fade-in">
+        <h2>What an engagement looks like</h2>
+        <p class="subline" style="margin-bottom:var(--space-sm);">Hypothetical &mdash; pattern based on our talent-agency and SMB deployments. (No client identifying details: we treat fund-level work as confidential by default.)</p>
+        <div class="report-preview fade-in">
+          <div class="report-window">
+            <div class="report-header">
+              <span class="report-badge">EXAMPLE</span>
+              <span class="report-title">A $200M AUM Sydney growth fund &mdash; 8 partners, 14 portfolio companies</span>
+            </div>
+            <div class="report-body">
+              <div class="report-section report-section-1">
+                <div class="report-section-label">Firm layer</div>
+                <div class="report-phases">
+                  <div class="report-phase"><strong>Deal-flow agent</strong><br>Pulls signals from Crunchbase, LinkedIn, Twitter/X via Tavily and Firecrawl. Drops scored leads into Attio. Partners get a ranked Monday digest.</div>
+                  <div class="report-phase"><strong>Diligence pack drafter</strong><br>One Claude project per deal: market sizing, competitor map, founder background, risk register. First draft in &lt;2 hours instead of 2 days.</div>
+                  <div class="report-phase"><strong>IC memo + LP-update generators</strong><br>House-style templates with structured inputs. Partners edit, never start from blank.</div>
+                </div>
+              </div>
+              <div class="report-section report-section-2">
+                <div class="report-section-label">Portfolio layer</div>
+                <div class="report-phases">
+                  <div class="report-phase"><strong>The shared playbook</strong><br>Claude Teams or ChatGPT Enterprise, Attio CRM, n8n automation, Keeper for secrets. Every portfolio company gets the same stack with vertical-specific prompt libraries.</div>
+                  <div class="report-phase"><strong>4-week portfolio sprint</strong><br>One company at a time. We map their workflows, ship 1&ndash;2 high-leverage automations, train the team. Fund subsidises the first; portfolio company keeps paying after.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:var(--space-sm);"><a href="https://app.klipycrm.com/p/tech-horizon-labs/book" target="_blank" rel="noopener" class="link-arrow">Book the 30-min discovery call &rarr;</a></p>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- FAQ -->
+    <section class="section container fade-in">
+      <h2>Common questions from GPs and operating partners</h2>
+      <div class="faq-accordion" style="max-width:760px;margin:0 auto;" data-testid="faq-vcs-pe">
+        <details class="faq-item" data-testid="faq-vcs-what">
+          <summary class="faq-question">What does AI implementation look like for a VC or PE firm?</summary>
+          <div class="faq-answer"><p>Two layers. Layer one is the firm itself &mdash; deal-flow capture, diligence prep, IC memos, LP reporting. Layer two is the portfolio &mdash; a shared AI playbook so every portfolio company gets the same foundation. We build both layers, then stay on as fractional AI ops across the fund.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-vcs-nda">
+          <summary class="faq-question">Do you sign NDAs and work inside our tenant?</summary>
+          <div class="faq-answer"><p>Yes to both. Mutual NDA before we see a single deck. We build inside your Google Workspace, your Notion, your HubSpot, your Slack &mdash; not a separate tenant we control. Portfolio engagements mirror the same pattern: their data, their stack.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-vcs-vs-internal">
+          <summary class="faq-question">How is this different from hiring an internal AI lead?</summary>
+          <div class="faq-answer"><p>An internal AI lead costs $200K&ndash;$350K loaded and takes 4&ndash;6 months to hire. We are operational in week one, work across every portfolio company without re-onboarding, and rotate out cleanly the moment you have an internal hire ready to take over. Most VC clients keep us at 0.4&ndash;0.6 FTE-equivalent, billed flat-fee.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-vcs-portfolio">
+          <summary class="faq-question">Will you work with our portfolio companies directly?</summary>
+          <div class="faq-answer"><p>Yes &mdash; usually where the leverage is. We deploy the same playbook across multiple portfolio companies so each gets a 4-week AI sprint at a portfolio-discount rate. Fund typically subsidises the first; portfolio company carries the retainer from there.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-vcs-data">
+          <summary class="faq-question">What data residency rules do you follow?</summary>
+          <div class="faq-answer"><p>AU-region by default (Acronis, Google Workspace AU, AWS Sydney). For PE firms with US LPs, we mirror to a US region. We never train external models on portfolio data. Every system is built so a vendor swap is a config change, not a rebuild &mdash; the architecture survives a provider going dark.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- CROSS-LINK -->
+    <section class="section container fade-in">
+      <h2>Adjacent reading</h2>
+      <div class="two-paths">
+        <div class="path">
+          <h3>AI Readiness Assessment</h3>
+          <p>10 questions, 3 minutes, instant results. Use it with portfolio CEOs before a kickoff call.</p>
+          <a href="/assessment" class="link-arrow">Take the assessment &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>State of AI Readiness: Australian SMB 2026</h3>
+          <p>First-party survey of 54 Australian SMBs. The base rate for any portfolio company you back here.</p>
+          <a href="/report" class="link-arrow">Download the report &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>AI for legal firms</h3>
+          <p>Privilege-aware AI &mdash; relevant for fund-counsel work and LP-side compliance.</p>
+          <a href="/industries/legal" class="link-arrow">AI for legal &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>Back to the homepage</h3>
+          <p>See every vertical we work with &mdash; growing businesses, talent agencies, wealth managers, and more.</p>
+          <a href="/#who-we-work-with" class="link-arrow">Who we work with &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand"><img src="/logo.webp" alt="Tech Horizon Labs" class="footer-logo" width="24" height="24"> Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">For</strong>
+        <a href="/for/vcs-and-pe">VCs &amp; PE</a>
+        <a href="/for/wealth-management">Wealth management</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Locations</strong>
+        <a href="/locations/brisbane">Brisbane</a>
+        <a href="/locations/sunshine-coast">Sunshine Coast</a>
+        <a href="/locations/gold-coast">Gold Coast</a>
+        <a href="/locations/queensland">Queensland</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Company</strong>
+        <a href="/about">About</a>
+        <a href="/work">Work</a>
+        <a href="/academy">Academy</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.min.js" defer></script>
+</body>
+</html>

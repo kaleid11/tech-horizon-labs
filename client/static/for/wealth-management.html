@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Wealth Management &amp; Financial Advisory Firms — Privacy-Act Compliant | Tech Horizon Labs</title>
+  <meta name="description" content="Australian-Privacy-Act-compliant AI for wealth management firms. Client onboarding, statement-of-advice drafting, meeting summarisation. Built inside your stack, on your data.">
+  <link rel="canonical" href="https://techhorizonlabs.com/for/wealth-management">
+  <link rel="alternate" hreflang="en-AU" href="https://techhorizonlabs.com/for/wealth-management">
+  <link rel="alternate" hreflang="x-default" href="https://techhorizonlabs.com/for/wealth-management">
+  <meta property="og:title" content="AI for Wealth Management &amp; Financial Advisory | Tech Horizon Labs">
+  <meta property="og:description" content="Privacy-Act-compliant AI for client onboarding, SoA drafting, and meeting summarisation. Built inside your stack, on your data.">
+  <meta property="og:url" content="https://techhorizonlabs.com/for/wealth-management">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Tech Horizon Labs — AI for Wealth Management">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="AI for Wealth Management &amp; Financial Advisory | Tech Horizon Labs">
+  <meta name="twitter:description" content="Privacy-Act-compliant AI for client onboarding, SoA drafting, and meeting summarisation.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon-32.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI implementation for wealth management and financial advisory firms",
+    "serviceType": "AI consulting and implementation",
+    "provider": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com"
+    },
+    "areaServed": [
+      "AU",
+      { "@type": "Place", "name": "Worldwide" }
+    ],
+    "description": "Australian-Privacy-Act-compliant AI for wealth management firms — onboarding, statement-of-advice drafting, meeting summaries, and review-ready file notes.",
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "Wealth management and financial advisory firms"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "For", "item": "https://techhorizonlabs.com/for/wealth-management" },
+      { "@type": "ListItem", "position": 3, "name": "Wealth Management", "item": "https://techhorizonlabs.com/for/wealth-management" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does AI implementation look like for a wealth management firm?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Three workflows where AI earns its keep: client onboarding (fact-find capture and risk profiling), statement-of-advice drafting from your house templates, and meeting summarisation that produces a review-ready file note. We build inside your existing stack — Xplan, AdviserLogic, Iress, or Microsoft 365 — and never send client data to consumer AI products."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this compliant with the Australian Privacy Act and FASEA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We deploy AU-region infrastructure (Acronis, Microsoft Australia, AWS Sydney) and build private models where APP 11 sensitivity requires it. Every output flows through human-in-the-loop review by an authorised representative before it reaches a client. We document the data-flow for your AFCA and ASIC reporting up-front."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will AI write the advice itself?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. AI drafts the structured sections of a Statement of Advice — fact-find summary, scope of advice, comparison tables, risk disclosures — using your house templates and your previous SoAs as the training corpus. The advisor writes the actual recommendation and signs off. The goal is to give every adviser 6–10 more advice hours per week, not to replace professional judgement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What about consent and disclosure when AI is in the room?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We build a standard consent script into your meeting workflow and update your engagement letter so clients are notified before any AI tool processes their data. Recording, transcription, and AI summarisation only happen after explicit verbal consent. The consent is logged in your CRM against the client record."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with smaller advisory firms or only large licensees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both. Our smallest wealth client is a two-adviser practice on the Sunshine Coast; our largest works with multi-state licensees. The 4-week Automation Accelerator is designed for firms with 2–15 advisers. Larger licensees usually run the full Horizon Method across multiple practices."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand"><img src="/logo.webp" alt="Tech Horizon Labs logo" class="brand-logo" width="28" height="28">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <section class="hero container">
+      <p style="font-family:var(--font-body);font-size:0.8125rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;"><a href="/" style="color:inherit;text-decoration:none;">Home</a> &rsaquo; For &rsaquo; Wealth management</p>
+      <h1 data-testid="text-h1-wealth-management">AI for wealth management and financial advisory firms.</h1>
+      <p class="subline">Australian-Privacy-Act-compliant AI for client onboarding, statement-of-advice drafting, and meeting summarisation. We build inside your stack, on your data.</p>
+      <p>
+        <a href="https://app.klipycrm.com/p/tech-horizon-labs/book" target="_blank" rel="noopener" class="link-arrow" data-testid="link-book-wealth">Book a 30-min call &rarr;</a>
+        &nbsp;&nbsp;
+        <a href="/assessment" class="link-arrow" data-testid="link-assessment-wealth">Or take the AI readiness assessment &rarr;</a>
+      </p>
+      <div class="trust-row" aria-label="Quick facts">
+        <span class="trust-stat">Privacy Act 1988 mapped</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">AU-region data residency</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">Human-in-the-loop by default</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- DEFINITION BLOCK (AEO) -->
+    <section class="section container fade-in">
+      <h2>What does AI implementation look like for a wealth management firm?</h2>
+      <p style="font-size:1.0625rem;line-height:1.7;max-width:740px;">
+        Three workflows where AI earns its keep: <strong>client onboarding</strong> (fact-find and risk profiling), <strong>statement-of-advice drafting</strong> from your house templates, and <strong>meeting summarisation</strong> that produces a review-ready file note. Built inside Xplan, AdviserLogic, Iress, or Microsoft 365 &mdash; not in some consumer AI tool we host.
+      </p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- STAT CITATIONS -->
+    <section class="section container-wide fade-in">
+      <h2>The base rate, in numbers</h2>
+      <div class="results-grid stagger">
+        <div class="result-card fade-in">
+          <div class="metric">73%</div>
+          <div class="metric-label">of Australian advice firms have piloted AI</div>
+          <p>According to the <a href="https://fsc.org.au/" target="_blank" rel="noopener">FSC State of the Industry Report 2025</a>. Most pilots stall at ChatGPT-in-a-tab; few make it into the SoA workflow.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">6&ndash;10h</div>
+          <div class="metric-label">advice hours unlocked per adviser per week</div>
+          <p>Vanguard 2025 Adviser Productivity Index: top-decile AI users reclaim a full advice-day per adviser each week. That is one extra client meeting, every week, per head.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">$300K</div>
+          <div class="metric-label">avg. revenue per adviser, AU 2026</div>
+          <p>Per <a href="https://www.adviserratings.com.au/" target="_blank" rel="noopener">Adviser Ratings Musical Chairs 2026</a>. The hours we give back compound directly into capacity for new clients.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- COMPARISON TABLE (AEO) -->
+    <div class="warm-band">
+      <section class="section container-wide fade-in">
+        <h2>AI consultant vs in-house AI hire vs doing nothing</h2>
+        <p class="subline" style="margin-bottom:var(--space-sm);">The three real options for a wealth firm. We are direct because the comparison matters.</p>
+        <div class="report-window" data-testid="table-comparison-wealth">
+          <div class="report-body">
+            <div class="report-table">
+              <div class="report-row report-row-header">
+                <span>Dimension</span><span>AI consultant (THL)</span><span>In-house AI hire</span><span>Nothing</span>
+              </div>
+              <div class="report-row"><span>Year-one cost</span><span>$45K–$140K flat-fee</span><span>$200K+ loaded</span><span>$0 (apparent)</span></div>
+              <div class="report-row"><span>Speed to first deploy</span><span>Week 1</span><span>Month 4–6</span><span>Never</span></div>
+              <div class="report-row"><span>Compliance risk</span><span>Privacy Act mapped pre-deploy</span><span>Owned by your hire</span><span>Shadow AI on personal accounts</span></div>
+              <div class="report-row"><span>Knowledge retention</span><span>Documented playbook stays</span><span>Walks out with the hire</span><span>None to retain</span></div>
+              <div class="report-row"><span>Vendor lock-in</span><span>Architecture survives swaps</span><span>Vendor-shaped by default</span><span>N/A</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- STEP-BY-STEP (AEO) -->
+    <section class="section container-wide fade-in">
+      <h2>How a wealth-management engagement runs</h2>
+      <div class="method-grid stagger">
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">01</div>
+          <div class="method-title">Compliance map</div>
+          <div class="method-duration">Week 1</div>
+          <p>Privacy Act 1988 obligations mapped. APP 11 sensitivity classification. Consent script drafted. Engagement-letter updates prepared for your AFSL.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">02</div>
+          <div class="method-title">Workflow build</div>
+          <div class="method-duration">Weeks 2&ndash;3</div>
+          <p>Onboarding assistant connected to your CRM. SoA template drafter trained on your last 30 SoAs. Meeting recorder + file-note generator deployed.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">03</div>
+          <div class="method-title">Adviser training</div>
+          <div class="method-duration">Week 4</div>
+          <p>Every adviser and paraplanner trained, with live SoA walkthroughs. Compliance team gets a separate review of the data flow.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">04</div>
+          <div class="method-title">Retainer</div>
+          <div class="method-duration">Ongoing</div>
+          <p>Monthly tune-up. Template library refreshed quarterly. New legislative requirements wired into the prompts as they land.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- WORKED EXAMPLE -->
+    <div class="warm-band">
+      <section class="section container fade-in">
+        <h2>What an engagement looks like</h2>
+        <p class="subline" style="margin-bottom:var(--space-sm);">Hypothetical &mdash; pattern based on real Australian SMB and legal deployments. (We treat adviser firm work as confidential by default.)</p>
+        <div class="report-preview fade-in">
+          <div class="report-window">
+            <div class="report-header">
+              <span class="report-badge">EXAMPLE</span>
+              <span class="report-title">A $300M AUM Sydney advisory firm &mdash; 6 advisers, 2 paraplanners</span>
+            </div>
+            <div class="report-body">
+              <div class="report-section report-section-1">
+                <div class="report-section-label">What gets built</div>
+                <div class="report-phases">
+                  <div class="report-phase"><strong>Onboarding assistant</strong><br>Fact-find captured by a structured Claude project inside the adviser's M365 tenant. Risk profile draft populated automatically. Adviser approves before it lands in Xplan.</div>
+                  <div class="report-phase"><strong>SoA drafter</strong><br>Trained on the last 30 signed SoAs. Generates structured sections (scope, current position, recommendations skeleton, fees, risks). Paraplanner edits and adviser signs.</div>
+                  <div class="report-phase"><strong>Meeting file-note generator</strong><br>Consent-gated recording in Teams or Otter. Output: a review-ready file note in the firm's template, dropped into the client's record automatically.</div>
+                </div>
+              </div>
+              <div class="report-section report-section-2">
+                <div class="report-section-label">What it unlocks</div>
+                <div class="report-phases">
+                  <div class="report-phase"><strong>+8 advice hours / adviser / week</strong><br>Equivalent to one extra new-client meeting per adviser, per week. 6 advisers &times; ~$1,500 per advice meeting &asymp; $9K weekly capacity unlocked.</div>
+                  <div class="report-phase"><strong>Compliance posture upgraded</strong><br>Shadow ChatGPT use eliminated. AFSL-side audit trail in place from day one.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:var(--space-sm);"><a href="https://app.klipycrm.com/p/tech-horizon-labs/book" target="_blank" rel="noopener" class="link-arrow">Book the 30-min discovery call &rarr;</a></p>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- FAQ -->
+    <section class="section container fade-in">
+      <h2>Common questions from principals and compliance leads</h2>
+      <div class="faq-accordion" style="max-width:760px;margin:0 auto;" data-testid="faq-wealth">
+        <details class="faq-item" data-testid="faq-wealth-what">
+          <summary class="faq-question">What does AI implementation look like for a wealth management firm?</summary>
+          <div class="faq-answer"><p>Three workflows where AI earns its keep: client onboarding, statement-of-advice drafting, and meeting summarisation that produces a review-ready file note. Built inside Xplan, AdviserLogic, Iress, or Microsoft 365 &mdash; never in a consumer AI tool we host on the side.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-wealth-compliance">
+          <summary class="faq-question">Is this compliant with the Australian Privacy Act and FASEA?</summary>
+          <div class="faq-answer"><p>Yes. AU-region infrastructure (Acronis, Microsoft Australia, AWS Sydney). Private models where APP 11 sensitivity requires it. Every output flows through human-in-the-loop review by an authorised representative before it reaches a client. We document the data-flow for AFCA and ASIC reporting up-front. <a href="/security">See how we handle compliance &rarr;</a></p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-wealth-soa">
+          <summary class="faq-question">Will AI write the advice itself?</summary>
+          <div class="faq-answer"><p>No. AI drafts the structured sections of an SoA &mdash; fact-find summary, scope, comparison tables, risk disclosures &mdash; using your house templates and previous SoAs as the corpus. The adviser writes the actual recommendation and signs off. The goal is 6&ndash;10 more advice hours per adviser per week, not replacing professional judgement.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-wealth-consent">
+          <summary class="faq-question">What about consent and disclosure when AI is in the room?</summary>
+          <div class="faq-answer"><p>We build a standard consent script into your meeting workflow and update your engagement letter so clients are notified before any AI tool processes their data. Recording, transcription, and AI summarisation only happen after explicit verbal consent. Consent is logged in your CRM against the client record.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-wealth-size">
+          <summary class="faq-question">Do you work with smaller advisory firms or only large licensees?</summary>
+          <div class="faq-answer"><p>Both. Our smallest wealth client is a two-adviser practice; our largest works with multi-state licensees. The 4-week Automation Accelerator suits firms with 2&ndash;15 advisers. Larger licensees usually run the full Horizon Method across multiple practices.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- CROSS-LINK -->
+    <section class="section container fade-in">
+      <h2>Adjacent reading</h2>
+      <div class="two-paths">
+        <div class="path">
+          <h3>AI Readiness Assessment</h3>
+          <p>10 questions, 3 minutes, instant results. Most practice principals do this before our first call.</p>
+          <a href="/assessment" class="link-arrow">Take the assessment &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>State of AI Readiness: Australian SMB 2026</h3>
+          <p>First-party survey of 54 Australian SMBs. The same patterns hold for advice firms.</p>
+          <a href="/report" class="link-arrow">Download the report &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>AI for law firms</h3>
+          <p>Same compliance posture, different vertical. Privilege-aware AI for Australian legal practices.</p>
+          <a href="/industries/legal" class="link-arrow">AI for legal &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>Back to the homepage</h3>
+          <p>See every vertical we work with &mdash; VCs and PE, talent agencies, healthcare and more.</p>
+          <a href="/#who-we-work-with" class="link-arrow">Who we work with &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand"><img src="/logo.webp" alt="Tech Horizon Labs" class="footer-logo" width="24" height="24"> Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">For</strong>
+        <a href="/for/vcs-and-pe">VCs &amp; PE</a>
+        <a href="/for/wealth-management">Wealth management</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Locations</strong>
+        <a href="/locations/brisbane">Brisbane</a>
+        <a href="/locations/sunshine-coast">Sunshine Coast</a>
+        <a href="/locations/gold-coast">Gold Coast</a>
+        <a href="/locations/queensland">Queensland</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Company</strong>
+        <a href="/about">About</a>
+        <a href="/work">Work</a>
+        <a href="/academy">Academy</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.min.js" defer></script>
+</body>
+</html>
