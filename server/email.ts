@@ -240,10 +240,164 @@ export async function sendContactAutoReply(data: {
   }
 }
 
+function renderEmailHeader(title: string): string {
+  return `
+          <!-- Header -->
+          <div style="background:#1c1215;padding:28px 32px;">
+            <p style="color:rgba(255,255,255,0.55);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 4px;">Tech Horizon Labs</p>
+            <p style="color:white;font-size:18px;font-weight:600;margin:0;">${title}</p>
+          </div>`;
+}
+
+function renderEmailFooter(): string {
+  return `
+          <!-- Footer -->
+          <div style="padding:16px 32px;text-align:center;">
+            <p style="color:#9ca3af;font-size:11px;margin:0;">Tech Horizon Labs · Noosa Heads, QLD · <a href="https://techhorizonlabs.com" style="color:#9ca3af;">techhorizonlabs.com</a></p>
+          </div>`;
+}
+
+function renderBookCta(intro: string): string {
+  return `
+          <!-- Book CTA -->
+          <div style="background:#1c1215;padding:24px 32px;text-align:center;">
+            <p style="color:rgba(255,255,255,0.7);font-size:14px;margin:0 0 16px;line-height:1.5;">${intro}</p>
+            <a href="https://app.klipycrm.com/book/pre-discovery/free-pre-discovery"
+               style="display:inline-block;background:#B5654A;color:#ffffff;padding:11px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;">
+              Book a free 15-min call
+            </a>
+          </div>`;
+}
+
+function renderDownloadCard(opts: { eyebrow: string; title: string; href: string; ctaLabel: string }): string {
+  return `
+          <!-- Download CTA -->
+          <div style="background:#f5e8e2;padding:28px 32px;text-align:center;border-bottom:1px solid #e8e5e0;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#7a5a50;margin:0 0 8px;">${opts.eyebrow}</p>
+            <p style="font-size:16px;font-weight:600;color:#1c1215;margin:0 0 20px;">${opts.title}</p>
+            <a href="${opts.href}"
+               style="display:inline-block;background:#B5654A;color:#ffffff;padding:13px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;">
+              ${opts.ctaLabel}
+            </a>
+          </div>`;
+}
+
+function renderCrossSell(opts: { eyebrow: string; body: string; href: string; ctaLabel: string }): string {
+  return `
+          <div style="padding:24px 32px;border-bottom:1px solid #e8e5e0;">
+            <p style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1c1215;margin:0 0 8px;">${opts.eyebrow}</p>
+            <p style="font-size:14px;color:#4b5563;line-height:1.65;margin:0 0 16px;">${opts.body}</p>
+            <a href="${opts.href}"
+               style="display:inline-block;background:transparent;color:#B5654A;border:1.5px solid #B5654A;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;">
+              ${opts.ctaLabel} &rarr;
+            </a>
+          </div>`;
+}
+
+function renderShell(inner: string): string {
+  return `
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:600px;margin:0 auto;background:#FAFAF8;border-radius:16px;overflow:hidden;border:1px solid #e8e5e0;">${inner}
+        </div>
+      `;
+}
+
+interface DownloadEmailSpec {
+  subject: string;
+  headerTitle: string;
+  intro: string;
+  download: { eyebrow: string; title: string; href: string; ctaLabel: string };
+  secondaryCrossSell: { eyebrow: string; body: string; href: string; ctaLabel: string };
+}
+
+const ACADEMY_DOWNLOAD_SPECS: Record<string, (greeting: string) => DownloadEmailSpec> = {
+  'academy-download-setup-guide': (_greeting) => ({
+    subject: 'Your AI Setup & Configuration Guide',
+    headerTitle: 'Your AI Setup & Configuration Guide',
+    intro: 'Your copy of the <strong style="color:#1c1215;">AI Setup &amp; Configuration Guide</strong> is ready. It walks through the Setup Triangle — Projects, Thinking Mode, and Search — with step-by-step Claude and ChatGPT configuration plus Australian Privacy Act compliance notes.',
+    download: {
+      eyebrow: 'Free DOCX Guide',
+      title: 'AI Setup & Configuration Guide',
+      href: 'https://techhorizonlabs.com/resources/ai-setup-configuration-guide.docx',
+      ctaLabel: 'Download the guide (DOCX)',
+    },
+    secondaryCrossSell: {
+      eyebrow: 'More from the Academy',
+      body: 'Once your setup is dialled in, the <strong style="color:#1c1215;">Claude Cowork Setup Guide</strong> shows you how to turn Claude into a true daily coworker — Projects, extended thinking, and search wired into your real workflows.',
+      href: 'https://techhorizonlabs.com/academy',
+      ctaLabel: 'Browse free Academy resources',
+    },
+  }),
+  'academy-download-claude-cowork': (_greeting) => ({
+    subject: 'Your Claude Cowork Setup Guide',
+    headerTitle: 'Your Claude Cowork Setup Guide',
+    intro: 'Your copy of the <strong style="color:#1c1215;">Claude Cowork Setup Guide</strong> is ready. It walks through Claude Projects, extended thinking, and search — the full setup for turning Claude into a daily AI coworker, not a one-off chatbot.',
+    download: {
+      eyebrow: 'Free DOCX Guide',
+      title: 'Claude Cowork Setup Guide',
+      href: 'https://techhorizonlabs.com/resources/claude-cowork-setup-guide.docx',
+      ctaLabel: 'Download the guide (DOCX)',
+    },
+    secondaryCrossSell: {
+      eyebrow: 'More from the Academy',
+      body: 'Already using ChatGPT and thinking about Claude? The <strong style="color:#1c1215;">ChatGPT-to-Claude Migration Guide</strong> covers the workflow differences, what transfers cleanly, and what needs rebuilding.',
+      href: 'https://techhorizonlabs.com/academy',
+      ctaLabel: 'Browse free Academy resources',
+    },
+  }),
+  'academy-download-migration': (_greeting) => ({
+    subject: 'Your ChatGPT-to-Claude Migration Guide',
+    headerTitle: 'Your ChatGPT-to-Claude Migration Guide',
+    intro: 'Your copy of the <strong style="color:#1c1215;">ChatGPT-to-Claude Migration Guide</strong> is ready. It covers what transfers cleanly, what needs rebuilding, and the workflow differences that actually matter when you switch.',
+    download: {
+      eyebrow: 'Free DOCX Guide',
+      title: 'ChatGPT-to-Claude Migration Guide',
+      href: 'https://techhorizonlabs.com/resources/chatgpt-to-claude-migration.docx',
+      ctaLabel: 'Download the guide (DOCX)',
+    },
+    secondaryCrossSell: {
+      eyebrow: 'More from the Academy',
+      body: 'Once you have landed in Claude, the <strong style="color:#1c1215;">AI Setup &amp; Configuration Guide</strong> shows you the Setup Triangle — Projects, Thinking Mode, and Search — for both Claude and ChatGPT so your team can run either one cleanly.',
+      href: 'https://techhorizonlabs.com/academy',
+      ctaLabel: 'Browse free Academy resources',
+    },
+  }),
+};
+
+function renderAcademyDownloadHtml(spec: DownloadEmailSpec, greeting: string): string {
+  return renderShell(
+    `${renderEmailHeader(spec.headerTitle)}
+          <!-- Greeting & context -->
+          <div style="padding:28px 32px;border-bottom:1px solid #e8e5e0;">
+            <p style="font-size:15px;color:#1c1215;font-weight:600;margin:0 0 12px;">${greeting}</p>
+            <p style="font-size:14px;color:#4b5563;line-height:1.65;margin:0;">${spec.intro}</p>
+          </div>${renderDownloadCard(spec.download)}${renderCrossSell({
+            eyebrow: 'Find your starting point',
+            body: 'Not sure where AI should fit first? The free <strong style="color:#1c1215;">AI Readiness Assessment</strong> is a 10-question quiz that maps your business to one of the four AI maturity stages and gives you a personalised next-step plan.',
+            href: 'https://techhorizonlabs.com/assessment',
+            ctaLabel: 'Take the free assessment',
+          })}${renderCrossSell(spec.secondaryCrossSell)}${renderBookCta(
+            "If you would like to talk through how to embed this inside your business workflows, book a free 15-minute pre-discovery call."
+          )}${renderEmailFooter()}`
+  );
+}
+
 export async function sendNewsletterWelcome(email: string, source?: string, name?: string) {
   try {
     const { client, fromEmail } = await getUncachableResendClient();
     const greeting = name ? `Hi ${escapeHtml(name)},` : 'Hi there,';
+
+    const academySpecBuilder = source ? ACADEMY_DOWNLOAD_SPECS[source] : undefined;
+    if (academySpecBuilder) {
+      const spec = academySpecBuilder(greeting);
+      await client.emails.send({
+        from: fromEmail,
+        to: email,
+        replyTo: fromEmail,
+        subject: spec.subject,
+        html: renderAcademyDownloadHtml(spec, greeting),
+      });
+      return;
+    }
 
     if (source === 'report-download') {
       await client.emails.send({

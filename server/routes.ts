@@ -200,7 +200,7 @@ export async function registerRoutes(
             email: validatedData.email,
             source: "report-download",
           });
-          pushToBeehiiv(validatedData.email, { tags: ["report-download"] });
+          pushToBeehiiv(validatedData.email, { source: "report-download" });
           return res.json({ success: true, id: existing.id });
         }
         return res.status(400).json({ success: false, error: "This email is already subscribed." });
@@ -220,7 +220,7 @@ export async function registerRoutes(
 
       pushToBeehiiv(validatedData.email, {
         reactivate: false,
-        ...(source ? { tags: [source] } : {}),
+        ...(source ? { source } : {}),
       });
 
       res.json({ success: true, id: signup.id });
