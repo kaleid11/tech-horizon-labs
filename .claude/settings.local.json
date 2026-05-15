@@ -64,7 +64,17 @@
       "Bash(awk '{print length, $0}')",
       "WebFetch(domain:techhorizonlabs.com)",
       "Bash(git *)",
-      "Bash(awk '{print $6, $7, $8, $9, $10}')"
+      "Bash(awk '{print $6, $7, $8, $9, $10}')",
+      "Bash(awk -F'<title>|</title>' '/<title>/ {print length\\($2\\), \"chars:\", $2; exit}' client/static/about.html)",
+      "mcp__claude_ai_Google_Drive__search_files",
+      "mcp__claude_ai_Google_Drive__read_file_content",
+      "Bash(python3 *)",
+      "Bash(npm test *)",
+      "Bash(npm run *)",
+      "Bash(echo \"Server PID: $!\")",
+      "Bash(PORT=5001 NODE_ENV=production node dist/index.cjs)",
+      "Bash(echo \"Started PID $!\")",
+      "Bash(pkill -f \"node dist/index.cjs\")"
     ]
   }
 }
