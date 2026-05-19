@@ -125,6 +125,7 @@ const STATIC_FILES: Record<string, string> = {
   // ICP landing pages
   "/for/vcs-and-pe": "for/vcs-and-pe.html",
   "/for/wealth-management": "for/wealth-management.html",
+  "/for/talent-agencies": "for/talent-agencies.html",
   // Training pages
   "/training/sunshine-coast": "training/sunshine-coast.html",
   // Insights

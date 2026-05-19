@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Talent Agencies — Deal Discovery, Matching, Lifecycle Automation | Tech Horizon Labs</title>
+  <meta name="description" content="AI for talent agencies and management firms. Deal discovery, talent matching, brand intel, and deal lifecycle automation — built on Claude, Clay, Tavily and HubSpot. Live engagement: 18K+ deals, 14 staff trained.">
+  <link rel="canonical" href="https://techhorizonlabs.com/for/talent-agencies">
+  <link rel="alternate" hreflang="en-AU" href="https://techhorizonlabs.com/for/talent-agencies">
+  <link rel="alternate" hreflang="x-default" href="https://techhorizonlabs.com/for/talent-agencies">
+  <meta property="og:title" content="AI for Talent Agencies | Tech Horizon Labs">
+  <meta property="og:description" content="Deal discovery, matching, intel, and deal lifecycle automation for talent agencies. The implementation layer between your roster and your pipeline.">
+  <meta property="og:url" content="https://techhorizonlabs.com/for/talent-agencies">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Tech Horizon Labs — AI for Talent Agencies">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="AI for Talent Agencies | Tech Horizon Labs">
+  <meta name="twitter:description" content="Deal discovery, matching, intel, and deal lifecycle automation for talent agencies.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon-32.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI implementation for talent agencies",
+    "serviceType": "AI consulting and implementation",
+    "provider": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com"
+    },
+    "areaServed": [
+      "AU",
+      { "@type": "Place", "name": "Worldwide" }
+    ],
+    "description": "AI systems for talent agencies and management firms: deal discovery, talent-to-brand matching, brand intel, outreach drafting, and deal lifecycle automation across HubSpot, Clay, Tavily and Claude.",
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "Talent agencies and management firms"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "For", "item": "https://techhorizonlabs.com/for/talent-agencies" },
+      { "@type": "ListItem", "position": 3, "name": "Talent Agencies", "item": "https://techhorizonlabs.com/for/talent-agencies" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does AI implementation look like for a talent agency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Two layers. Layer one is deal flow: discovery agents that surface brand opportunities, enrichment pipelines that pull brand context from Clay and Tavily, and matching logic that ranks talent against briefs. Layer two is deal lifecycle: outreach drafters with talent voice profiles, agreement checkers, rate engines pulled live from your CRM, and reporting agents for managers and talent. We build both layers in HubSpot, Slack and Claude — your existing stack."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you sign NDAs and protect talent and brand data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Mutual NDA before we touch a single roster or brief. We build inside your HubSpot, your Slack, your Google Workspace — not a separate tenant we control. Talent data and brand briefs never leave your stack, and we never train external models on agency data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from hiring an internal ops or AI lead?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An internal AI lead costs $150K–$280K loaded and takes 3–6 months to hire. We are operational in week one, ship working agents inside the first four weeks, and rotate out cleanly once your team owns it. Most talent-agency clients keep us on at 0.3–0.5 FTE-equivalent on a flat-fee retainer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will you train our talent managers and ops team on the systems you build?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every engagement includes hands-on training. Our current live build has 14 staff trained across four regions — every team member can run agents, write skills, and extend the prompt library. We do not leave systems behind that only the founder can operate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does the data live?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AU-region by default (Google Workspace AU, HubSpot AU instance, AWS Sydney for any custom storage). Talent rosters, brand briefs, contracts and deal economics stay inside your existing tools. Every system is built so a vendor swap is a config change, not a rebuild — the architecture survives a model provider going dark."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand"><img src="/logo.webp" alt="Tech Horizon Labs logo" class="brand-logo" width="28" height="28">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <section class="hero container">
+      <p style="font-family:var(--font-body);font-size:0.8125rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;"><a href="/" style="color:inherit;text-decoration:none;">Home</a> &rsaquo; For &rsaquo; Talent Agencies</p>
+      <h1 data-testid="text-h1-talent-agencies">AI for talent agencies.</h1>
+      <p class="subline">Deal discovery, talent-to-brand matching, intel, and deal lifecycle automation. We are the implementation layer between your roster and your pipeline &mdash; built on Claude, Clay, Tavily and HubSpot.</p>
+      <p>
+        <a href="https://app.klipycrm.com/p/tech-horizon-labs/book" target="_blank" rel="noopener" class="link-arrow" data-testid="link-book-talent">Book a 30-min call &rarr;</a>
+        &nbsp;&nbsp;
+        <a href="/#case-study" class="link-arrow" data-testid="link-case-study-talent">See the live engagement &rarr;</a>
+      </p>
+      <div class="trust-row" aria-label="Quick facts">
+        <span class="trust-stat">18K+ deals processed</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">14 staff trained, 4 regions</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">Mutual NDA in 24h</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- DEFINITION BLOCK (AEO) -->
+    <section class="section container fade-in">
+      <h2>What does AI implementation look like for a talent agency?</h2>
+      <p style="font-size:1.0625rem;line-height:1.7;max-width:740px;">
+        Two layers. <strong>Layer one</strong> is deal flow: discovery agents that surface brand opportunities, enrichment from Clay and Tavily, and matching logic that ranks talent against briefs. <strong>Layer two</strong> is the deal lifecycle: outreach drafters with talent voice profiles, agreement checkers, rate engines pulled live from your CRM, and reporting for both managers and talent. We build both layers inside your existing HubSpot, Slack and Claude &mdash; then train the team to own them.
+      </p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- STAT CITATIONS -->
+    <section class="section container-wide fade-in">
+      <h2>The numbers that move the conversation</h2>
+      <div class="results-grid stagger">
+        <div class="result-card fade-in">
+          <div class="metric">18K+</div>
+          <div class="metric-label">deals processed in our live talent build</div>
+          <p>Brisbane talent agency, 5 pipelines, 14 staff. Full deal economics, CPM tracking and revenue attribution running through one Claude + HubSpot stack.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">6</div>
+          <div class="metric-label">production Claude agents in deployment</div>
+          <p>Discovery, matching, intel, outreach, deal lifecycle, reporting. Each agent plugs into Clay, Tavily, HubSpot and the YouTube API.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">$150K</div>
+          <div class="metric-label">avg. annual cost of an internal AI lead</div>
+          <p>Per <a href="https://www.glassdoor.com.au/" target="_blank" rel="noopener">Glassdoor AU 2026</a>, loaded cost lands closer to $250K. A fractional model gets you operational in week one for a fraction of that.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- COMPARISON TABLE (AEO) -->
+    <div class="warm-band">
+      <section class="section container-wide fade-in">
+        <h2>AI consultant vs in-house AI hire vs doing nothing</h2>
+        <p class="subline" style="margin-bottom:var(--space-sm);">The three real options for an agency principal. We are direct because the comparison matters.</p>
+        <div class="report-window" data-testid="table-comparison-talent">
+          <div class="report-body">
+            <div class="report-table">
+              <div class="report-row report-row-header">
+                <span>Dimension</span><span>AI consultant (THL)</span><span>In-house AI hire</span><span>Nothing</span>
+              </div>
+              <div class="report-row"><span>Year-one cost</span><span>$60K&ndash;$160K flat-fee</span><span>$250K+ loaded</span><span>$0 (apparent)</span></div>
+              <div class="report-row"><span>Speed to first agent live</span><span>Week 2&ndash;3</span><span>Month 4&ndash;6</span><span>Never</span></div>
+              <div class="report-row"><span>Ongoing risk</span><span>We rotate out cleanly</span><span>Single point of failure</span><span>Losing briefs to faster agencies</span></div>
+              <div class="report-row"><span>Knowledge retention</span><span>Documented playbook stays</span><span>Walks out the door</span><span>None to retain</span></div>
+              <div class="report-row"><span>Talent &amp; brand data</span><span>Stays inside your HubSpot</span><span>Often vendor-shaped</span><span>Sitting in spreadsheets</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- STEP-BY-STEP (AEO) -->
+    <section class="section container-wide fade-in">
+      <h2>How a talent-agency engagement runs</h2>
+      <div class="method-grid stagger">
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">01</div>
+          <div class="method-title">Discovery</div>
+          <div class="method-duration">Week 1</div>
+          <p>NDA signed. We map every pipeline &mdash; discovery, matching, outreach, deal lifecycle, reporting. Audit your stack (HubSpot, Slack, doc storage, contracts).</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">02</div>
+          <div class="method-title">Foundation</div>
+          <div class="method-duration">Weeks 2&ndash;4</div>
+          <p>Claude Workspace stood up. Prompt library and skills deployed. Email drafter with talent voice profiles. Agreement checker. Rate engine wired to your CRM.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">03</div>
+          <div class="method-title">Agentic stack</div>
+          <div class="method-duration">Weeks 4&ndash;8</div>
+          <p>Six Claude agents plugged into Clay, Tavily, HubSpot and YouTube API. Discovery, matching, intel, outreach, deal lifecycle and reporting &mdash; all automated.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">04</div>
+          <div class="method-title">Train &amp; retain</div>
+          <div class="method-duration">Ongoing</div>
+          <p>Every team member trained to build agents and write skills. We stay on as fractional AI ops &mdash; quarterly playbook updates as the platforms evolve.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- WORKED EXAMPLE -->
+    <div class="warm-band">
+      <section class="section container fade-in">
+        <h2>What an engagement looks like</h2>
+        <p class="subline" style="margin-bottom:var(--space-sm);">Drawn from our live Brisbane talent-agency engagement. The full case study sits on the homepage.</p>
+        <div class="report-preview fade-in">
+          <div class="report-window">
+            <div class="report-header">
+              <span class="report-badge">DEPLOYED</span>
+              <span class="report-title">Talent agency, Brisbane &mdash; 18K+ deals, 5 pipelines, 14 staff trained</span>
+            </div>
+            <div class="report-body">
+              <div class="report-section report-section-1">
+                <div class="report-section-label">What we built</div>
+                <div class="report-phases">
+                  <div class="report-phase"><strong>Claude Workspace</strong><br>Cowork, Dispatch, Channels. Slack integrations. Every team member trained to build agents and set up skills.</div>
+                  <div class="report-phase"><strong>Prompt Library</strong><br>Custom skills deployed into Cowork/Code. Email drafter with talent voice profiles. Agreement checker. Rate engine pulling live from CRM.</div>
+                  <div class="report-phase"><strong>Agentic Stack</strong><br>Six Claude agents plugged into Clay, Tavily, HubSpot, YouTube API. Discovery, matching, intel &mdash; all automated.</div>
+                </div>
+              </div>
+              <div class="report-section report-section-2">
+                <div class="report-section-label">Stack deployed</div>
+                <div class="report-phases">
+                  <div class="report-phase"><strong>Claude</strong><br>Cowork + Code. Skills, agents, prompt library. The team's daily driver.</div>
+                  <div class="report-phase"><strong>Clay + Tavily</strong><br>Brand enrichment, competitive intel, audience research. All piped into HubSpot.</div>
+                  <div class="report-phase"><strong>Slack + HubSpot</strong><br>Deal notifications, agent outputs, team coordination. Single source of truth.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:var(--space-sm);"><a href="/#case-study" class="link-arrow" data-testid="link-full-case-study">See the full 32-section case study &rarr;</a></p>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- FAQ -->
+    <section class="section container fade-in">
+      <h2>Common questions from agency principals and ops leads</h2>
+      <div class="faq-accordion" style="max-width:760px;margin:0 auto;" data-testid="faq-talent">
+        <details class="faq-item" data-testid="faq-talent-what">
+          <summary class="faq-question">What does AI implementation look like for a talent agency?</summary>
+          <div class="faq-answer"><p>Two layers. Layer one is deal flow &mdash; discovery, enrichment and matching. Layer two is the deal lifecycle &mdash; outreach drafting, agreement checks, rate logic and reporting. We build both inside your HubSpot, Slack and Claude, then train your team to own them.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-talent-nda">
+          <summary class="faq-question">Do you sign NDAs and protect talent and brand data?</summary>
+          <div class="faq-answer"><p>Yes. Mutual NDA before we touch a roster or brief. We build inside your stack &mdash; HubSpot, Slack, Google Workspace &mdash; not a separate tenant we control. We never train external models on agency data.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-talent-vs-internal">
+          <summary class="faq-question">How is this different from hiring an internal ops or AI lead?</summary>
+          <div class="faq-answer"><p>An internal AI lead costs $150K&ndash;$280K loaded and takes 3&ndash;6 months to hire. We are operational in week one, ship working agents inside the first four weeks, and rotate out cleanly the moment your team is ready to own it. Most talent-agency clients keep us on at 0.3&ndash;0.5 FTE-equivalent on a flat-fee retainer.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-talent-training">
+          <summary class="faq-question">Will you train our talent managers and ops team on the systems you build?</summary>
+          <div class="faq-answer"><p>Every engagement includes hands-on training. Our current live build has 14 staff trained across four regions &mdash; every team member can run agents, write skills, and extend the prompt library. We do not leave systems behind that only the founder can operate.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-talent-data">
+          <summary class="faq-question">Where does the data live?</summary>
+          <div class="faq-answer"><p>AU-region by default (Google Workspace AU, HubSpot AU instance, AWS Sydney for custom storage). Talent rosters, briefs, contracts and deal economics stay inside your existing tools. Every system is built so a vendor swap is a config change, not a rebuild.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- CROSS-LINK -->
+    <section class="section container fade-in">
+      <h2>Adjacent reading</h2>
+      <div class="two-paths">
+        <div class="path">
+          <h3>The live talent-agency engagement</h3>
+          <p>Full 32-section case study &mdash; 18K+ deals, 5 pipelines, 6 production agents, 14 staff trained across four regions.</p>
+          <a href="/#case-study" class="link-arrow">See the engagement &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>AI Readiness Assessment</h3>
+          <p>10 questions, 3 minutes, instant results. Use it with your ops lead before a kickoff call.</p>
+          <a href="/assessment" class="link-arrow">Take the assessment &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>State of AI Readiness: Australian SMB 2026</h3>
+          <p>First-party survey of 54 Australian SMBs. The base rate for where most agencies actually sit.</p>
+          <a href="/report" class="link-arrow">Download the report &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>Back to the homepage</h3>
+          <p>See every vertical we work with &mdash; VCs and PE, wealth managers, SaaS scale-ups, talent agencies, and more.</p>
+          <a href="/#who-we-work-with" class="link-arrow">Who we work with &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand"><img src="/logo.webp" alt="Tech Horizon Labs" class="footer-logo" width="24" height="24"> Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">For</strong>
+        <a href="/for/vcs-and-pe">VCs &amp; PE</a>
+        <a href="/for/wealth-management">Wealth management</a>
+        <a href="/for/talent-agencies">Talent agencies</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Locations</strong>
+        <a href="/locations/brisbane">Brisbane</a>
+        <a href="/locations/sunshine-coast">Sunshine Coast</a>
+        <a href="/locations/gold-coast">Gold Coast</a>
+        <a href="/locations/queensland">Queensland</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Company</strong>
+        <a href="/about">About</a>
+        <a href="/work">Work</a>
+        <a href="/academy">Academy</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.min.js" defer></script>
+</body>
+</html>
