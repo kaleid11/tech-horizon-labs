@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Manufacturing — Predictive Maintenance, Quoting, Shop-Floor Ops | Tech Horizon Labs</title>
+  <meta name="description" content="AI for Australian manufacturers. Predictive maintenance from sensor data, faster quoting, fewer paperwork bottlenecks, and on-prem options that respect IP. The implementation layer between the shop floor and the front office.">
+  <link rel="canonical" href="https://techhorizonlabs.com/for/manufacturing">
+  <link rel="alternate" hreflang="en-AU" href="https://techhorizonlabs.com/for/manufacturing">
+  <link rel="alternate" hreflang="x-default" href="https://techhorizonlabs.com/for/manufacturing">
+  <meta property="og:title" content="AI for Manufacturing | Tech Horizon Labs">
+  <meta property="og:description" content="Predictive maintenance, quoting acceleration, shop-floor workflow automation. AI that respects IP and runs even when the internet does not.">
+  <meta property="og:url" content="https://techhorizonlabs.com/for/manufacturing">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Tech Horizon Labs — AI for Manufacturing">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="AI for Manufacturing | Tech Horizon Labs">
+  <meta name="twitter:description" content="Predictive maintenance, quoting, and shop-floor automation for Australian manufacturers.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon-32.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI implementation for manufacturers",
+    "serviceType": "AI consulting and implementation",
+    "provider": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com"
+    },
+    "areaServed": [
+      "AU",
+      { "@type": "Place", "name": "Worldwide" }
+    ],
+    "description": "AI systems for manufacturers: predictive maintenance from sensor data, quoting and BOM automation, shop-floor doc workflows, and on-prem options that protect IP.",
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "Manufacturing businesses"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "For", "item": "https://techhorizonlabs.com/for/manufacturing" },
+      { "@type": "ListItem", "position": 3, "name": "Manufacturing", "item": "https://techhorizonlabs.com/for/manufacturing" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does AI implementation look like for a manufacturer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Three layers. The shop floor — sensor data into a predictive-maintenance model so a bearing failure becomes a planned swap, not a Friday-night call-out. The middle office — quoting, BOMs, drawing markups, RFQ responses, ISO documentation. The front office — sales follow-up, CRM hygiene, and supplier comms. We build all three and stay on as your fractional AI ops lead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the AI run if the internet drops or the cloud goes down?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The predictive-maintenance and shop-floor layers run on-prem or hybrid by default — a small edge box on the factory network plus local models (Llama or Mistral via Ollama) for sensitive workflows. Quoting and CRM use cloud LLMs but cache critical reference docs locally. If your line is in regional Queensland and the link drops at 3am, the model still scores the next vibration reading."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you protect drawings, BOMs, and customer IP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Three guardrails. Local-model option for any workflow touching customer drawings or proprietary processes. Zero-retention API endpoints (Anthropic and OpenAI both support this) for cloud workflows. Tenant-bound storage in AWS Sydney or Acronis AU. We never train external models on your data, and every system is documented so a vendor swap is a config change, not a rebuild."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from hiring an internal AI lead or a systems integrator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An internal AI lead costs $200K–$350K loaded and takes 4–6 months to hire. A traditional SI quotes a six-month MES upgrade. We are operational in week one, ship the first automation by week four, and rotate out the moment your team can run it. Most manufacturing clients keep us at 0.3–0.5 FTE equivalent, billed flat-fee."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with ISO 9001 or ISO 14001 environments?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Every workflow we ship is documented for your QMS — inputs, outputs, version, owner, review cadence. AI-generated content is flagged as such in the document chain. Auditors get a clean trail. We have done this pattern for legal and healthcare clients; manufacturing QMS is a closer fit, not a harder one."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand"><img src="/logo.webp" alt="Tech Horizon Labs logo" class="brand-logo" width="28" height="28">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <section class="hero container">
+      <p style="font-family:var(--font-body);font-size:0.8125rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;"><a href="/" style="color:inherit;text-decoration:none;">Home</a> &rsaquo; For &rsaquo; Manufacturing</p>
+      <h1 data-testid="text-h1-manufacturing">AI for Australian manufacturers.</h1>
+      <p class="subline">Predictive maintenance from sensor data. Faster quoting and BOM work. Shop-floor paperwork that writes itself. On-prem options that respect IP and keep running when the internet doesn't.</p>
+      <p>
+        <a href="https://app.klipycrm.com/p/tech-horizon-labs/book" target="_blank" rel="noopener" class="link-arrow" data-testid="link-book-manufacturing">Book a 30-min call &rarr;</a>
+        &nbsp;&nbsp;
+        <a href="/assessment" class="link-arrow" data-testid="link-assessment-manufacturing">Or take the AI readiness assessment &rarr;</a>
+      </p>
+      <div class="trust-row" aria-label="Quick facts">
+        <span class="trust-stat">On-prem / hybrid by default</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">ISO-friendly documentation</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">First automation in week four</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- DEFINITION BLOCK (AEO) -->
+    <section class="section container fade-in">
+      <h2>What does AI implementation look like for a manufacturer?</h2>
+      <p style="font-size:1.0625rem;line-height:1.7;max-width:740px;">
+        Three layers. <strong>Shop floor</strong>: sensor data into predictive maintenance so a bearing failure becomes a planned swap. <strong>Middle office</strong>: quoting, BOMs, drawing markups, RFQ responses, ISO docs. <strong>Front office</strong>: sales follow-up, CRM hygiene, supplier comms. We build all three, document them for your QMS, and stay on as your fractional AI ops lead.
+      </p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- STAT CITATIONS -->
+    <section class="section container-wide fade-in">
+      <h2>The numbers that move the conversation</h2>
+      <div class="results-grid stagger">
+        <div class="result-card fade-in">
+          <div class="metric">30%</div>
+          <div class="metric-label">reduction in unplanned downtime with predictive maintenance</div>
+          <p>Per the <a href="https://www.mckinsey.com/" target="_blank" rel="noopener">McKinsey Global Institute 2024 industrial AI report</a>. Top-quartile manufacturers also cut maintenance labour 10&ndash;20%.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">$390B</div>
+          <div class="metric-label">Australian manufacturing output (2025)</div>
+          <p><a href="https://www.industry.gov.au/" target="_blank" rel="noopener">Dept. of Industry, Science and Resources</a>. Of the ~47,000 manufacturers, the ABS estimates fewer than 9% have deployed any production-grade AI workflow.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">60%</div>
+          <div class="metric-label">faster quoting on custom and low-volume work</div>
+          <p>Pattern we see across fabrication and contract-manufacturing clients: AI-assisted RFQ parsing and BOM lookup compress a 3-day quote into half a day.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- COMPARISON TABLE (AEO) -->
+    <div class="warm-band">
+      <section class="section container-wide fade-in">
+        <h2>AI consultant vs in-house AI hire vs doing nothing</h2>
+        <p class="subline" style="margin-bottom:var(--space-sm);">The three real options. We are direct because the comparison matters.</p>
+        <div class="report-window" data-testid="table-comparison-manufacturing">
+          <div class="report-body">
+            <div class="report-table">
+              <div class="report-row report-row-header">
+                <span>Dimension</span><span>AI consultant (THL)</span><span>In-house AI hire</span><span>Nothing</span>
+              </div>
+              <div class="report-row"><span>Year-one cost</span><span>$60K&ndash;$180K flat-fee</span><span>$250K+ loaded</span><span>$0 (apparent)</span></div>
+              <div class="report-row"><span>Speed to first deploy</span><span>Week 1&ndash;4</span><span>Month 4&ndash;6</span><span>Never</span></div>
+              <div class="report-row"><span>IP exposure</span><span>On-prem / hybrid by default</span><span>Depends on the hire</span><span>Drawings still in email</span></div>
+              <div class="report-row"><span>ISO documentation</span><span>Built in from day one</span><span>Usually retrofitted</span><span>Manual, fragile</span></div>
+              <div class="report-row"><span>Vendor lock-in</span><span>Architecture survives swaps</span><span>Often vendor-shaped</span><span>N/A</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- STEP-BY-STEP (AEO) -->
+    <section class="section container-wide fade-in">
+      <h2>How a manufacturing engagement runs</h2>
+      <div class="method-grid stagger">
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">01</div>
+          <div class="method-title">Discovery</div>
+          <div class="method-duration">Week 1</div>
+          <p>NDA signed. Walk the floor. Map shop-floor, quoting, and front-office workflows. Audit existing systems (ERP, MES, CAD, CRM, comms).</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">02</div>
+          <div class="method-title">Shop-floor layer</div>
+          <div class="method-duration">Weeks 2&ndash;4</div>
+          <p>Edge box on the factory network. Sensor data into a predictive-maintenance model. First alerts piped to maintenance lead in week four.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">03</div>
+          <div class="method-title">Quoting + BOM build</div>
+          <div class="method-duration">Weeks 4&ndash;6</div>
+          <p>RFQ parser. BOM lookup against your part library. Quote draft in your house format. Estimator reviews, never starts from blank.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">04</div>
+          <div class="method-title">Fractional ops</div>
+          <div class="method-duration">Ongoing</div>
+          <p>We stay on as fractional AI ops. Quarterly model refreshes. QMS documentation maintained so the next audit is a non-event.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- WORKED EXAMPLE -->
+    <div class="warm-band">
+      <section class="section container fade-in">
+        <h2>What an engagement looks like</h2>
+        <p class="subline" style="margin-bottom:var(--space-sm);">Hypothetical &mdash; pattern based on our construction, trades, and SMB deployments. (No client identifying details: we treat shop-floor work as confidential by default.)</p>
+        <div class="report-preview fade-in">
+          <div class="report-window">
+            <div class="report-header">
+              <span class="report-badge">EXAMPLE</span>
+              <span class="report-title">A 40-staff metal fabricator in regional Queensland &mdash; $14M revenue, ISO 9001</span>
+            </div>
+            <div class="report-body">
+              <div class="report-section report-section-1">
+                <div class="report-section-label">Shop-floor layer</div>
+                <div class="report-phases">
+                  <div class="report-phase"><strong>Predictive maintenance</strong><br>Vibration and temperature sensors on the three press brakes and the plasma cutter. Edge box runs a local model that scores readings every minute. Maintenance lead gets a Tuesday and Friday briefing.</div>
+                  <div class="report-phase"><strong>Drawing markup assistant</strong><br>Local Llama model reads incoming PDFs and DXFs. Flags ambiguous dimensions, missing tolerances, and weld-symbol clashes before they hit the floor.</div>
+                </div>
+              </div>
+              <div class="report-section report-section-2">
+                <div class="report-section-label">Office layer</div>
+                <div class="report-phases">
+                  <div class="report-phase"><strong>RFQ &rarr; quote drafter</strong><br>Parses inbound RFQ emails, matches to BOM library, drafts a quote in the house template. Estimator finalises in 20 minutes instead of half a day.</div>
+                  <div class="report-phase"><strong>QMS &amp; supplier comms</strong><br>ISO 9001 doc updates auto-drafted from change logs. Supplier follow-ups handled by an n8n flow with a Claude review step before send.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:var(--space-sm);"><a href="https://app.klipycrm.com/p/tech-horizon-labs/book" target="_blank" rel="noopener" class="link-arrow">Book the 30-min discovery call &rarr;</a></p>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- FAQ -->
+    <section class="section container fade-in">
+      <h2>Common questions from operations and plant managers</h2>
+      <div class="faq-accordion" style="max-width:760px;margin:0 auto;" data-testid="faq-manufacturing">
+        <details class="faq-item" data-testid="faq-manufacturing-what">
+          <summary class="faq-question">What does AI implementation look like for a manufacturer?</summary>
+          <div class="faq-answer"><p>Three layers. Shop floor &mdash; predictive maintenance from sensor data. Middle office &mdash; quoting, BOMs, drawing markups, ISO docs. Front office &mdash; sales follow-up, CRM, supplier comms. We build all three and stay on as your fractional AI ops lead.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-manufacturing-offline">
+          <summary class="faq-question">Does the AI run if the internet drops or the cloud goes down?</summary>
+          <div class="faq-answer"><p>Shop-floor and predictive-maintenance layers run on-prem or hybrid by default &mdash; a small edge box plus local models (Llama or Mistral via Ollama). Quoting and CRM use cloud LLMs but cache reference docs locally. If the line is in regional Queensland and the link drops at 3am, the model still scores the next vibration reading.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-manufacturing-ip">
+          <summary class="faq-question">How do you protect drawings, BOMs, and customer IP?</summary>
+          <div class="faq-answer"><p>Three guardrails. Local-model option for anything touching customer drawings or proprietary processes. Zero-retention API endpoints for cloud workflows. Tenant-bound storage in AWS Sydney or Acronis AU. We never train external models on your data, and every system is documented so a vendor swap is a config change, not a rebuild.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-manufacturing-vs-internal">
+          <summary class="faq-question">How is this different from hiring an internal AI lead or a systems integrator?</summary>
+          <div class="faq-answer"><p>An internal AI lead costs $200K&ndash;$350K loaded and takes 4&ndash;6 months to hire. A traditional SI quotes a six-month MES upgrade. We are operational in week one, ship the first automation by week four, and rotate out the moment your team can run it. Most manufacturing clients keep us at 0.3&ndash;0.5 FTE-equivalent, billed flat-fee.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-manufacturing-iso">
+          <summary class="faq-question">Do you work with ISO 9001 or ISO 14001 environments?</summary>
+          <div class="faq-answer"><p>Yes. Every workflow we ship is documented for your QMS &mdash; inputs, outputs, version, owner, review cadence. AI-generated content is flagged in the document chain. Auditors get a clean trail. We have done this pattern for legal and healthcare clients; manufacturing QMS is a closer fit, not a harder one.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- CROSS-LINK -->
+    <section class="section container fade-in">
+      <h2>Adjacent reading</h2>
+      <div class="two-paths">
+        <div class="path">
+          <h3>AI Readiness Assessment</h3>
+          <p>10 questions, 3 minutes, instant results. A good first step for an ops lead or plant manager.</p>
+          <a href="/assessment" class="link-arrow">Take the assessment &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>State of AI Readiness: Australian SMB 2026</h3>
+          <p>First-party survey of 54 Australian SMBs. The honest base rate for manufacturers in this country.</p>
+          <a href="/report" class="link-arrow">Download the report &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>AI for construction &amp; trades</h3>
+          <p>Sibling vertical &mdash; offline quoting, doc processing, site-to-office workflow automation.</p>
+          <a href="/industries/construction" class="link-arrow">AI for construction &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>Back to the homepage</h3>
+          <p>See every vertical we work with &mdash; growing businesses, VCs, wealth managers, and more.</p>
+          <a href="/#who-we-work-with" class="link-arrow">Who we work with &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand"><img src="/logo.webp" alt="Tech Horizon Labs" class="footer-logo" width="24" height="24"> Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">For</strong>
+        <a href="/for/vcs-and-pe">VCs &amp; PE</a>
+        <a href="/for/wealth-management">Wealth management</a>
+        <a href="/for/manufacturing">Manufacturing</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Locations</strong>
+        <a href="/locations/brisbane">Brisbane</a>
+        <a href="/locations/sunshine-coast">Sunshine Coast</a>
+        <a href="/locations/gold-coast">Gold Coast</a>
+        <a href="/locations/queensland">Queensland</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Company</strong>
+        <a href="/about">About</a>
+        <a href="/work">Work</a>
+        <a href="/academy">Academy</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.min.js" defer></script>
+</body>
+</html>
