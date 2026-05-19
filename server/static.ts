@@ -127,6 +127,7 @@ const STATIC_FILES: Record<string, string> = {
   "/for/wealth-management": "for/wealth-management.html",
   "/for/talent-agencies": "for/talent-agencies.html",
   "/for/manufacturing": "for/manufacturing.html",
+  "/for/saas-scale-ups": "for/saas-scale-ups.html",
   // Training pages
   "/training/sunshine-coast": "training/sunshine-coast.html",
   // Insights

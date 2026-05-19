@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for SaaS Scale-ups — Internal Ops, GTM Enablement, Support Deflection | Tech Horizon Labs</title>
+  <meta name="description" content="AI for SaaS scale-ups. Internal AI ops, GTM enablement, and support deflection — without burning your dev team. The implementation layer between your product roadmap and your back-office.">
+  <link rel="canonical" href="https://techhorizonlabs.com/for/saas-scale-ups">
+  <link rel="alternate" hreflang="en-AU" href="https://techhorizonlabs.com/for/saas-scale-ups">
+  <link rel="alternate" hreflang="x-default" href="https://techhorizonlabs.com/for/saas-scale-ups">
+  <meta property="og:title" content="AI for SaaS Scale-ups | Tech Horizon Labs">
+  <meta property="og:description" content="Internal AI ops, GTM enablement, support deflection. The implementation layer for Series A–C SaaS that does not pull engineers off the roadmap.">
+  <meta property="og:url" content="https://techhorizonlabs.com/for/saas-scale-ups">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Tech Horizon Labs — AI for SaaS Scale-ups">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="AI for SaaS Scale-ups | Tech Horizon Labs">
+  <meta name="twitter:description" content="Internal AI ops, GTM enablement, support deflection — without burning your dev team.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon-32.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI implementation for SaaS scale-ups",
+    "serviceType": "AI consulting and implementation",
+    "provider": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com"
+    },
+    "areaServed": [
+      "AU",
+      { "@type": "Place", "name": "Worldwide" }
+    ],
+    "description": "AI systems for Series A–C SaaS companies: internal AI ops, GTM enablement, support deflection, and fractional AI ops without pulling engineers off the product roadmap.",
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "SaaS scale-ups (Series A–C)"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "For", "item": "https://techhorizonlabs.com/for/saas-scale-ups" },
+      { "@type": "ListItem", "position": 3, "name": "SaaS Scale-ups", "item": "https://techhorizonlabs.com/for/saas-scale-ups" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does AI implementation look like for a SaaS scale-up?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Three layers, all internal-facing. Layer one is GTM enablement — outbound research, lead enrichment, account briefs, and call summarisation. Layer two is support deflection — tier-one resolution via a RAG agent grounded in your docs and ticket history. Layer three is internal ops — onboarding, finance ops, people ops. We build and run all three without touching your product surface or pulling engineers off the roadmap."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will you build AI features into our product?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. That is your engineering team's job and we are explicit about that boundary. Product AI requires deep model context, eval pipelines, and ownership of customer outcomes — that is roadmap work, not consulting work. We handle the internal-facing AI: the systems that make every revenue, support, and ops dollar go further while your engineers stay focused on shipping the product."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from hiring an internal AI lead?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An internal AI lead lands at $200K–$350K loaded and takes 4–6 months to hire. We are operational in week one, deliver across GTM, support and ops in parallel, and rotate out the moment you have an internal hire who can take over. Most Series A–C clients keep us at 0.4–0.6 FTE-equivalent, billed flat-fee, no equity ask."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with our existing stack or replace it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We work inside your stack. HubSpot or Attio for CRM, Intercom or Zendesk for support, Linear or Jira for engineering, Notion or Confluence for docs. We add an orchestration layer (n8n, Claude or ChatGPT Teams, a vector store) — we do not migrate you off the tools your team already runs on."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does this cost for a Series A or B company?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Discovery and the first build sprint runs $30K–$60K flat-fee depending on scope. Ongoing fractional AI ops runs $8K–$15K/month and is cancellable monthly. No equity, no platform fees, no per-seat lock-in. The architecture stays yours — vendor swaps are config changes, not rebuilds."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand"><img src="/logo.webp" alt="Tech Horizon Labs logo" class="brand-logo" width="28" height="28">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <section class="hero container">
+      <p style="font-family:var(--font-body);font-size:0.8125rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;"><a href="/" style="color:inherit;text-decoration:none;">Home</a> &rsaquo; For &rsaquo; SaaS scale-ups</p>
+      <h1 data-testid="text-h1-saas-scale-ups">AI for SaaS scale-ups.</h1>
+      <p class="subline">Internal AI ops, GTM enablement, and support deflection &mdash; without burning your dev team. We are the implementation layer between your product roadmap and your back-office.</p>
+      <p>
+        <a href="https://app.klipycrm.com/p/tech-horizon-labs/book" target="_blank" rel="noopener" class="link-arrow" data-testid="link-book-saas">Book a 30-min call &rarr;</a>
+        &nbsp;&nbsp;
+        <a href="/assessment" class="link-arrow" data-testid="link-assessment-saas">Or take the AI readiness assessment &rarr;</a>
+      </p>
+      <div class="trust-row" aria-label="Quick facts">
+        <span class="trust-stat">Zero engineering hours required</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">Mutual NDA in 24h</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">Cancellable monthly</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- DEFINITION BLOCK (AEO) -->
+    <section class="section container fade-in">
+      <h2>What does AI implementation look like for a SaaS scale-up?</h2>
+      <p style="font-size:1.0625rem;line-height:1.7;max-width:740px;">
+        Three layers, all internal-facing. <strong>GTM enablement</strong> &mdash; outbound research, lead enrichment, account briefs, call summarisation. <strong>Support deflection</strong> &mdash; tier-one resolution via a RAG agent grounded in your docs and ticket history. <strong>Internal ops</strong> &mdash; onboarding, finance ops, people ops. We build and run all three. Your engineers stay on the roadmap.
+      </p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- STAT CITATIONS -->
+    <section class="section container-wide fade-in">
+      <h2>The numbers that move the conversation</h2>
+      <div class="results-grid stagger">
+        <div class="result-card fade-in">
+          <div class="metric">37%</div>
+          <div class="metric-label">of SaaS support tickets are tier-one repeatable</div>
+          <p>Per <a href="https://www.intercom.com/customer-service-trends-report" target="_blank" rel="noopener">Intercom's 2025 Customer Service Trends report</a>: well over a third of inbound tickets can be deflected by a grounded RAG agent without degrading CSAT.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">23%</div>
+          <div class="metric-label">avg. SDR productivity lift with AI enrichment</div>
+          <p>According to <a href="https://www.gartner.com/" target="_blank" rel="noopener">Gartner's 2026 B2B sales benchmark</a>, structured AI account research lifts qualified-meeting rates by 18&ndash;28% depending on motion and ICP fit.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">4&ndash;6 mo</div>
+          <div class="metric-label">to hire one senior AI lead in 2026</div>
+          <p>Per <a href="https://www.glassdoor.com.au/" target="_blank" rel="noopener">Glassdoor AU 2026</a> and our own search-firm conversations. Fractional ops gets you operational in week one for a fraction of the loaded cost.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- COMPARISON TABLE (AEO) -->
+    <div class="warm-band">
+      <section class="section container-wide fade-in">
+        <h2>AI consultant vs in-house AI hire vs pulling engineers off the roadmap</h2>
+        <p class="subline" style="margin-bottom:var(--space-sm);">The three real options for a scaling SaaS. We are direct because the comparison matters.</p>
+        <div class="report-window" data-testid="table-comparison-saas">
+          <div class="report-body">
+            <div class="report-table">
+              <div class="report-row report-row-header">
+                <span>Dimension</span><span>AI consultant (THL)</span><span>In-house AI hire</span><span>Pull engineers off roadmap</span>
+              </div>
+              <div class="report-row"><span>Year-one cost</span><span>$60K&ndash;$180K flat-fee</span><span>$250K+ loaded</span><span>Opportunity cost of slipped roadmap</span></div>
+              <div class="report-row"><span>Speed to first deploy</span><span>Week 1</span><span>Month 4&ndash;6</span><span>Whenever the sprint ends</span></div>
+              <div class="report-row"><span>Roadmap impact</span><span>Zero</span><span>Zero</span><span>Direct &mdash; features slip</span></div>
+              <div class="report-row"><span>Ongoing risk</span><span>We rotate out cleanly</span><span>Single point of failure</span><span>Internal AI becomes a side project nobody owns</span></div>
+              <div class="report-row"><span>Vendor lock-in</span><span>Architecture survives swaps</span><span>Often vendor-shaped</span><span>Usually tightly coupled</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- STEP-BY-STEP (AEO) -->
+    <section class="section container-wide fade-in">
+      <h2>How a SaaS scale-up engagement runs</h2>
+      <div class="method-grid stagger">
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">01</div>
+          <div class="method-title">Discovery</div>
+          <div class="method-duration">Week 1</div>
+          <p>NDA signed. We map GTM, support and internal-ops workflows. Audit your stack (CRM, helpdesk, docs, comms) and find the three highest-leverage builds.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">02</div>
+          <div class="method-title">GTM layer</div>
+          <div class="method-duration">Weeks 2&ndash;3</div>
+          <p>Account research agent, lead enrichment into HubSpot or Attio, call-summarisation into CRM. SDRs and AEs walk into every meeting prepped.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">03</div>
+          <div class="method-title">Support layer</div>
+          <div class="method-duration">Weeks 3&ndash;5</div>
+          <p>RAG agent grounded in your docs and ticket history. Deployed inside Intercom or Zendesk. Handles tier-one, escalates the rest with full context.</p>
+        </div>
+        <div class="method-phase fade-in">
+          <div class="method-number" aria-hidden="true">04</div>
+          <div class="method-title">Ops + fractional</div>
+          <div class="method-duration">Ongoing</div>
+          <p>Onboarding, finance ops, people ops automations. We stay on as fractional AI ops &mdash; quarterly playbook updates as models evolve.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- WORKED EXAMPLE -->
+    <div class="warm-band">
+      <section class="section container fade-in">
+        <h2>What an engagement looks like</h2>
+        <p class="subline" style="margin-bottom:var(--space-sm);">Hypothetical &mdash; pattern based on our SMB and growth-fund deployments. (No client identifying details: we treat scale-up engagements as confidential by default.)</p>
+        <div class="report-preview fade-in">
+          <div class="report-window">
+            <div class="report-header">
+              <span class="report-badge">EXAMPLE</span>
+              <span class="report-title">A Series B vertical SaaS &mdash; $14M ARR, 60 staff, 6 engineers, no AI lead</span>
+            </div>
+            <div class="report-body">
+              <div class="report-section report-section-1">
+                <div class="report-section-label">GTM layer</div>
+                <div class="report-phases">
+                  <div class="report-phase"><strong>Account research agent</strong><br>Pulls signals from LinkedIn, Crunchbase, Apollo and the customer's own product analytics. Drops a one-page account brief into HubSpot before every discovery call.</div>
+                  <div class="report-phase"><strong>Call summarisation</strong><br>Gong or Fireflies transcript &rarr; structured CRM notes, next-step suggestions, and a draft follow-up email. AE edits, never starts from blank.</div>
+                </div>
+              </div>
+              <div class="report-section report-section-2">
+                <div class="report-section-label">Support layer</div>
+                <div class="report-phases">
+                  <div class="report-phase"><strong>Grounded RAG agent</strong><br>Trained on the help-centre and 18 months of resolved tickets. Sits inside Intercom. Handles tier-one (password resets, billing, integrations) &mdash; deflects ~35% of volume after week 4.</div>
+                  <div class="report-phase"><strong>Escalation with context</strong><br>When it can't answer, it hands off to a human with the full conversation, customer plan and tagged knowledge-base articles already attached.</div>
+                </div>
+              </div>
+              <div class="report-section report-section-3">
+                <div class="report-section-label">Ops layer</div>
+                <div class="report-phases">
+                  <div class="report-phase"><strong>Onboarding + finance + people ops</strong><br>New-hire setup, invoice processing, contractor management, weekly metrics digest. n8n + Claude with HRIS and accounting integrations &mdash; zero engineering time required.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:var(--space-sm);"><a href="https://app.klipycrm.com/p/tech-horizon-labs/book" target="_blank" rel="noopener" class="link-arrow">Book the 30-min discovery call &rarr;</a></p>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- FAQ -->
+    <section class="section container fade-in">
+      <h2>Common questions from SaaS founders and ops leads</h2>
+      <div class="faq-accordion" style="max-width:760px;margin:0 auto;" data-testid="faq-saas">
+        <details class="faq-item" data-testid="faq-saas-what">
+          <summary class="faq-question">What does AI implementation look like for a SaaS scale-up?</summary>
+          <div class="faq-answer"><p>Three layers, all internal-facing. GTM enablement (outbound research, lead enrichment, account briefs, call summarisation). Support deflection (a RAG agent grounded in your docs and ticket history). Internal ops (onboarding, finance, people). We build and run all three without touching your product surface.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-saas-product">
+          <summary class="faq-question">Will you build AI features into our product?</summary>
+          <div class="faq-answer"><p>No &mdash; that is your engineering team's job and we are explicit about that boundary. Product AI requires deep model context, eval pipelines, and ownership of customer outcomes. That is roadmap work, not consulting work. We handle the internal-facing AI so every revenue, support and ops dollar goes further while your engineers stay focused.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-saas-vs-internal">
+          <summary class="faq-question">How is this different from hiring an internal AI lead?</summary>
+          <div class="faq-answer"><p>An internal AI lead lands at $200K&ndash;$350K loaded and takes 4&ndash;6 months to hire. We are operational in week one, deliver across GTM, support and ops in parallel, and rotate out cleanly the moment you have an internal hire ready. Most Series A&ndash;C clients keep us at 0.4&ndash;0.6 FTE-equivalent, flat-fee, no equity.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-saas-stack">
+          <summary class="faq-question">Do you work with our existing stack or replace it?</summary>
+          <div class="faq-answer"><p>We work inside your stack. HubSpot or Attio for CRM, Intercom or Zendesk for support, Linear or Jira for engineering, Notion or Confluence for docs. We add an orchestration layer (n8n, Claude or ChatGPT Teams, a vector store) &mdash; we do not migrate you off tools your team already runs on.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-saas-cost">
+          <summary class="faq-question">What does this cost for a Series A or B company?</summary>
+          <div class="faq-answer"><p>Discovery and the first build sprint runs $30K&ndash;$60K flat-fee depending on scope. Ongoing fractional AI ops runs $8K&ndash;$15K/month, cancellable monthly. No equity, no platform fees, no per-seat lock-in. The architecture stays yours &mdash; vendor swaps are config changes, not rebuilds.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- CROSS-LINK -->
+    <section class="section container fade-in">
+      <h2>Adjacent reading</h2>
+      <div class="two-paths">
+        <div class="path">
+          <h3>AI Readiness Assessment</h3>
+          <p>10 questions, 3 minutes, instant results. Use it with your leadership team before a kickoff call.</p>
+          <a href="/assessment" class="link-arrow">Take the assessment &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>State of AI Readiness: Australian SMB 2026</h3>
+          <p>First-party survey of 54 Australian SMBs. The base rate for any scale-up benchmarking itself.</p>
+          <a href="/report" class="link-arrow">Download the report &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>AI for VCs and PE</h3>
+          <p>If your board members back other SaaS, the portfolio playbook is the fast path to shared AI infrastructure.</p>
+          <a href="/for/vcs-and-pe" class="link-arrow">AI for VCs &amp; PE &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>Back to the homepage</h3>
+          <p>See every vertical we work with &mdash; growing businesses, wealth managers, talent agencies and more.</p>
+          <a href="/#who-we-work-with" class="link-arrow">Who we work with &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand"><img src="/logo.webp" alt="Tech Horizon Labs" class="footer-logo" width="24" height="24"> Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">For</strong>
+        <a href="/for/vcs-and-pe">VCs &amp; PE</a>
+        <a href="/for/wealth-management">Wealth management</a>
+        <a href="/for/saas-scale-ups">SaaS scale-ups</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Locations</strong>
+        <a href="/locations/brisbane">Brisbane</a>
+        <a href="/locations/sunshine-coast">Sunshine Coast</a>
+        <a href="/locations/gold-coast">Gold Coast</a>
+        <a href="/locations/queensland">Queensland</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Company</strong>
+        <a href="/about">About</a>
+        <a href="/work">Work</a>
+        <a href="/academy">Academy</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.min.js" defer></script>
+</body>
+</html>
