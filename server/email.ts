@@ -1,4 +1,20 @@
 import { Resend } from 'resend';
+import * as Sentry from '@sentry/node';
+
+// Internal inbox that receives contact/audit notifications. Centralised so the
+// contact and audit notifications can never drift apart again. Override with the
+// NOTIFY_EMAIL env var; falls back to the business inbox.
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'hello@techhorizonlabs.com';
+
+// Surface a failed transactional send to Sentry (in addition to the console)
+// so silent delivery failures become visible instead of disappearing.
+function reportEmailFailure(emailType: string, recipient: string, error: unknown): void {
+  console.error(`Failed to send ${emailType} to ${recipient}:`, error);
+  Sentry.captureException(error, {
+    tags: { area: 'email', email_type: emailType },
+    extra: { recipient },
+  });
+}
 
 function escapeHtml(str: string): string {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -57,7 +73,8 @@ export async function sendContactNotification(data: {
     
     await client.emails.send({
       from: fromEmail,
-      to: fromEmail,
+      to: NOTIFY_EMAIL,
+      replyTo: data.email,
       subject: `New Contact Form Submission from ${escapeHtml(data.name)}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -69,7 +86,7 @@ export async function sendContactNotification(data: {
       `
     });
   } catch (error) {
-    console.error('Failed to send contact notification:', error);
+    reportEmailFailure('contact notification', NOTIFY_EMAIL, error);
   }
 }
 
@@ -157,7 +174,7 @@ export async function sendAuditResults(data: {
       `
     });
   } catch (error) {
-    console.error('Failed to send audit results email:', error);
+    reportEmailFailure('audit results', data.email, error);
   }
 }
 
@@ -182,7 +199,8 @@ export async function sendAuditNotification(data: {
 
     await client.emails.send({
       from: fromEmail,
-      to: 'hello@techhorizonlabs.com',
+      to: NOTIFY_EMAIL,
+      replyTo: data.email,
       subject: `New Audit — ${data.name} requested contact (${data.score}/100 → ${data.tier})`,
       html: `
         <h2>New AI Readiness Audit — Contact Requested</h2>
@@ -196,7 +214,7 @@ export async function sendAuditNotification(data: {
       `
     });
   } catch (error) {
-    console.error('Failed to send audit notification:', error);
+    reportEmailFailure('audit notification', NOTIFY_EMAIL, error);
   }
 }
 
@@ -236,7 +254,7 @@ export async function sendContactAutoReply(data: {
       `
     });
   } catch (error) {
-    console.error('Failed to send contact auto-reply:', error);
+    reportEmailFailure('contact auto-reply', data.email, error);
   }
 }
 
@@ -520,6 +538,6 @@ export async function sendNewsletterWelcome(email: string, source?: string, name
       });
     }
   } catch (error) {
-    console.error('Failed to send newsletter welcome:', error);
+    reportEmailFailure('newsletter welcome', email, error);
   }
 }
