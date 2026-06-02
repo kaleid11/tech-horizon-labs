@@ -1,10 +1,12 @@
 import { Resend } from 'resend';
 import * as Sentry from '@sentry/node';
+import { logger } from './logger';
 
 // Internal inbox that receives contact/audit notifications. Centralised so the
 // contact and audit notifications can never drift apart again. Override with the
 // NOTIFY_EMAIL env var; falls back to the business inbox.
-const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'hello@techhorizonlabs.com';
+const NOTIFY_EMAIL_FALLBACK = 'hello@techhorizonlabs.com';
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || NOTIFY_EMAIL_FALLBACK;
 
 // Surface a failed transactional send to Sentry (in addition to the console)
 // so silent delivery failures become visible instead of disappearing.
@@ -539,5 +541,32 @@ export async function sendNewsletterWelcome(email: string, source?: string, name
     }
   } catch (error) {
     reportEmailFailure('newsletter welcome', email, error);
+  }
+}
+
+// Run at startup to surface email misconfiguration before any real submission
+// is lost. Logs clear warnings (also captured by Sentry) when NOTIFY_EMAIL is
+// unset or when the Resend connector can't be reached. Never throws — a
+// misconfigured email service must not crash the server.
+export async function verifyEmailConfiguration(): Promise<void> {
+  if (!process.env.NOTIFY_EMAIL) {
+    const message = `NOTIFY_EMAIL is not set — internal contact/audit notifications will fall back to ${NOTIFY_EMAIL_FALLBACK}. Set NOTIFY_EMAIL to control where alerts are delivered.`;
+    logger.warn({ area: 'email' }, message);
+    Sentry.captureMessage(message, {
+      level: 'warning',
+      tags: { area: 'email', check: 'notify_email_unset' },
+    });
+  }
+
+  try {
+    await getCredentials();
+    logger.info({ area: 'email' }, 'Resend credentials reachable — email service is configured.');
+  } catch (error) {
+    const message = 'Resend is not connected — all transactional email (contact notifications, auto-replies, audit results, newsletter welcomes) will silently fail. Bind the Resend connector to this deployment.';
+    logger.warn({ area: 'email', err: error }, message);
+    Sentry.captureException(error, {
+      level: 'warning',
+      tags: { area: 'email', check: 'resend_not_connected' },
+    });
   }
 }

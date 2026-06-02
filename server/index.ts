@@ -10,6 +10,7 @@ import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
 import { logger, httpLogger } from "./logger";
+import { verifyEmailConfiguration } from "./email";
 
 const app = express();
 
@@ -111,6 +112,8 @@ export function log(message: string, source = "express") {
     },
     () => {
       log(`serving on port ${port}`);
+      // Surface email misconfiguration in logs/Sentry without blocking startup.
+      void verifyEmailConfiguration();
     },
   );
 })().catch((err) => {
