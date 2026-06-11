@@ -1,1 +1,2 @@
 - [Email delivery (Resend)](email-delivery.md) — "Resend not connected" = connector not bound to this Repl (status not_added); all email silently fails until addIntegration+proposeIntegration. Notifications go to NOTIFY_EMAIL, not the from-address.
+- [WebMCP API](webmcp.md) — provideContext() removed March 2026; use registerTool()/unregisterTool(). THL site scoring logic lives inline per-page (window globals), not in main.js.

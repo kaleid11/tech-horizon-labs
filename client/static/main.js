@@ -1197,3 +1197,260 @@
     start();
   }
 })();
+
+/* =====================================================
+   WEBMCP — expose interactive tools to in-browser AI agents
+
+   Registers WebMCP tools on navigator.modelContext so AI
+   agents running in the browser can use the site's
+   interactive features directly: score the AI Readiness
+   Assessment, score the 28-question Scorecard, and fetch
+   THL's recommended AI tool stack.
+
+   Feature-detected and fully no-op in browsers without
+   WebMCP support — no errors, normal behaviour unchanged.
+   Logic reuses the in-page data/scoring rules rather than
+   duplicating them. All tools are read-only (no network,
+   no UI mutation) so they never touch the CSP or backend.
+   ===================================================== */
+(function () {
+  'use strict';
+
+  if (typeof navigator === 'undefined') return;
+  var mc = navigator.modelContext;
+  if (!mc) return;
+
+  // Register helper — prefers the current registerTool() surface and
+  // falls back to the earlier provideContext() bulk API. No-op if
+  // neither is present, so unsupported browsers are unaffected.
+  function registerTools(tools) {
+    if (!tools || !tools.length) return;
+    if (typeof mc.registerTool === 'function') {
+      tools.forEach(function (t) {
+        try { mc.registerTool(t); }
+        catch (err) { /* already registered or invalid — ignore */ }
+      });
+    } else if (typeof mc.provideContext === 'function') {
+      try { mc.provideContext({ tools: tools }); }
+      catch (err) { /* ignore */ }
+    }
+  }
+
+  function textResult(text) {
+    return { content: [{ type: 'text', text: text }] };
+  }
+
+  function statusFor(pct) {
+    if (pct >= 70) return 'Strong';
+    if (pct >= 40) return 'Developing';
+    return 'Needs work';
+  }
+
+  // ── AI Readiness Assessment (/assessment) ──
+  function buildAssessmentTools() {
+    if (!Array.isArray(window.QUESTIONS) || !Array.isArray(window.STAGES) ||
+        !Array.isArray(window.DIMENSIONS) || typeof window.getStage !== 'function') {
+      return [];
+    }
+    var QUESTIONS = window.QUESTIONS, DIMENSIONS = window.DIMENSIONS;
+    var topics = QUESTIONS.map(function (q, i) { return (i + 1) + '. ' + q.q; }).join(' ');
+
+    return [{
+      name: 'score_ai_readiness_assessment',
+      description: 'Score the Tech Horizon Labs AI Readiness Assessment (10 questions, result 0–100 mapping to 4 maturity stages: Unaware, ChatGPT Plateau, Enabled, AI-Native). Provide one answer per question as an option index 0–3, where 0 is the least mature option and 3 is the most mature. Returns the score, maturity stage, a per-dimension breakdown, and prioritised recommendations. Questions: ' + topics,
+      annotations: { readOnlyHint: true },
+      inputSchema: {
+        type: 'object',
+        properties: {
+          answers: {
+            type: 'array',
+            description: 'Exactly ' + QUESTIONS.length + ' option indices (integers 0–3), one per question in order. 0 = least mature, 3 = most mature.',
+            items: { type: 'integer', minimum: 0, maximum: 3 },
+            minItems: QUESTIONS.length,
+            maxItems: QUESTIONS.length
+          }
+        },
+        required: ['answers']
+      },
+      execute: function (args) {
+        var answers = args && args.answers;
+        if (!Array.isArray(answers) || answers.length !== QUESTIONS.length) {
+          return textResult('Error: "answers" must be an array of exactly ' + QUESTIONS.length + ' option indices (0–3).');
+        }
+        var score = 0;
+        for (var i = 0; i < QUESTIONS.length; i++) {
+          var idx = answers[i];
+          if (typeof idx !== 'number' || idx < 0 || idx > 3 || !QUESTIONS[i].opts[idx]) {
+            return textResult('Error: answer ' + (i + 1) + ' must be an integer 0–3.');
+          }
+          score += QUESTIONS[i].opts[idx].score;
+        }
+        var stage = window.getStage(score);
+        var dims = DIMENSIONS.map(function (dim) {
+          var ds = dim.questions.reduce(function (sum, qi) {
+            return sum + QUESTIONS[qi].opts[answers[qi]].score;
+          }, 0);
+          var pct = Math.round((ds / dim.max) * 100);
+          return { name: dim.name, score: ds, max: dim.max, percent: pct, status: statusFor(pct) };
+        });
+        var lines = [];
+        lines.push('AI Readiness Assessment — Score: ' + score + '/100');
+        lines.push('Maturity stage: ' + stage.stageNum + ' — ' + stage.name);
+        lines.push(stage.desc);
+        lines.push('');
+        lines.push('Dimension breakdown:');
+        dims.forEach(function (d) {
+          lines.push('• ' + d.name + ': ' + d.score + '/' + d.max + ' (' + d.percent + '% — ' + d.status + ')');
+        });
+        lines.push('');
+        lines.push('Recommended next steps:');
+        stage.recs.forEach(function (r, n) { lines.push((n + 1) + '. ' + r); });
+        return textResult(lines.join('\n'));
+      }
+    }];
+  }
+
+  // ── AI Readiness Scorecard (/scorecard) ──
+  function buildScorecardTools() {
+    if (!Array.isArray(window.SECTIONS) || !Array.isArray(window.STAGES) ||
+        typeof window.getStage !== 'function') {
+      return [];
+    }
+    var SECTIONS = window.SECTIONS;
+    var totalQuestions = SECTIONS.reduce(function (sum, s) { return sum + s.questions.length; }, 0);
+    var maxScore = SECTIONS.reduce(function (sum, s) { return sum + s.max; }, 0);
+    var layout = SECTIONS.map(function (s) {
+      return s.letter + ' (' + s.shortName + ', ' + s.questions.length + ' questions)';
+    }).join(', ');
+
+    return [{
+      name: 'score_ai_readiness_scorecard',
+      description: 'Score the Tech Horizon Labs 28-question AI Readiness Scorecard across 6 dimensions: ' + layout + '. Provide ' + totalQuestions + ' ratings (integers 1–5, where 1 = strongly disagree and 5 = strongly agree) in section order. Returns the total out of ' + maxScore + ', the maturity stage, a per-dimension breakdown, and dimension-specific recommendations sorted weakest-first.',
+      annotations: { readOnlyHint: true },
+      inputSchema: {
+        type: 'object',
+        properties: {
+          ratings: {
+            type: 'array',
+            description: 'Exactly ' + totalQuestions + ' ratings (integers 1–5) in section order: ' + layout + '.',
+            items: { type: 'integer', minimum: 1, maximum: 5 },
+            minItems: totalQuestions,
+            maxItems: totalQuestions
+          }
+        },
+        required: ['ratings']
+      },
+      execute: function (args) {
+        var ratings = args && args.ratings;
+        if (!Array.isArray(ratings) || ratings.length !== totalQuestions) {
+          return textResult('Error: "ratings" must be an array of exactly ' + totalQuestions + ' integers (1–5).');
+        }
+        for (var i = 0; i < ratings.length; i++) {
+          if (typeof ratings[i] !== 'number' || ratings[i] < 1 || ratings[i] > 5) {
+            return textResult('Error: rating ' + (i + 1) + ' must be an integer 1–5.');
+          }
+        }
+        var cursor = 0, total = 0;
+        var dims = SECTIONS.map(function (sec) {
+          var secScore = 0;
+          for (var q = 0; q < sec.questions.length; q++) { secScore += ratings[cursor++]; }
+          total += secScore;
+          var pct = Math.round((secScore / sec.max) * 100);
+          return { letter: sec.letter, name: sec.shortName, score: secScore, max: sec.max, percent: pct, status: statusFor(pct), priority: sec.priority };
+        });
+        var stage = window.getStage(total);
+        var sorted = dims.slice().sort(function (a, b) { return (a.score / a.max) - (b.score / b.max); });
+        var lines = [];
+        lines.push('AI Readiness Scorecard — Score: ' + total + '/' + maxScore);
+        lines.push('Maturity stage: ' + stage.stageNum + ' — ' + stage.name);
+        lines.push(stage.desc);
+        lines.push('');
+        lines.push('Dimension breakdown:');
+        dims.forEach(function (d) {
+          lines.push('• ' + d.letter + ' ' + d.name + ': ' + d.score + '/' + d.max + ' (' + d.percent + '% — ' + d.status + ')');
+        });
+        lines.push('');
+        lines.push('Priorities (weakest first):');
+        sorted.forEach(function (d, n) {
+          lines.push((n + 1) + '. ' + d.name + ' (' + d.percent + '%): ' + d.priority);
+        });
+        return textResult(lines.join('\n'));
+      }
+    }];
+  }
+
+  // ── AI Tool Cheat Sheet (/tools) ──
+  function buildToolsTools() {
+    var grid = document.querySelector('.tools-grid');
+    var cards = document.querySelectorAll('.tool-card');
+    if (!grid || !cards.length) return [];
+
+    var cats = [];
+    document.querySelectorAll('.filter-btn').forEach(function (b) {
+      var f = b.getAttribute('data-filter');
+      if (f && cats.indexOf(f) === -1) cats.push(f);
+    });
+    if (cats.indexOf('all') === -1) cats.unshift('all');
+
+    function txt(el, sel) {
+      var n = el.querySelector(sel);
+      return n ? n.textContent.replace(/\s+/g, ' ').trim() : '';
+    }
+
+    return [{
+      name: 'recommend_ai_tools',
+      description: "Return Tech Horizon Labs' recommended AI tool stack for small and medium businesses. Optionally filter by category. Each result includes the tool name, category, what it is used for, pricing, and THL's note. Available categories: " + cats.join(', ') + '.',
+      annotations: { readOnlyHint: true },
+      inputSchema: {
+        type: 'object',
+        properties: {
+          category: {
+            type: 'string',
+            description: 'Category to filter by. Use "all" or omit for every tool.',
+            enum: cats
+          }
+        }
+      },
+      execute: function (args) {
+        var category = (args && args.category) || 'all';
+        if (cats.indexOf(category) === -1) {
+          return textResult('Error: unknown category "' + category + '". Available: ' + cats.join(', ') + '.');
+        }
+        var results = [];
+        cards.forEach(function (card) {
+          if (category !== 'all' && card.getAttribute('data-category') !== category) return;
+          results.push({
+            name: txt(card, '.tool-name'),
+            category: txt(card, '.tool-category'),
+            useFor: txt(card, '.tool-use-for'),
+            pricing: txt(card, '.tool-pricing'),
+            note: txt(card, '.tool-note')
+          });
+        });
+        if (!results.length) return textResult('No tools found for category "' + category + '".');
+        var lines = ['Recommended AI tools' + (category !== 'all' ? ' (' + category + ')' : '') + ':', ''];
+        results.forEach(function (t, n) {
+          lines.push((n + 1) + '. ' + t.name + ' — ' + t.category);
+          if (t.useFor) lines.push('   Use for: ' + t.useFor);
+          if (t.pricing) lines.push('   Pricing: ' + t.pricing);
+          if (t.note) lines.push('   THL note: ' + t.note);
+        });
+        return textResult(lines.join('\n'));
+      }
+    }];
+  }
+
+  function boot() {
+    var tools = []
+      .concat(buildAssessmentTools())
+      .concat(buildScorecardTools())
+      .concat(buildToolsTools());
+    registerTools(tools);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  } else {
+    boot();
+  }
+})();
