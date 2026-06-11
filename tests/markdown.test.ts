@@ -149,4 +149,72 @@ describe("htmlToMarkdown", () => {
     expect(md).not.toMatch(/<[^>]+>/);
     expect(md).toContain("Bold text here");
   });
+
+  it("converts a table into a markdown table with header and separator rows", () => {
+    const html = `
+      <main>
+        <table>
+          <thead>
+            <tr><th>Company</th><th>Funding</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>OpenAI</td><td>$13B</td></tr>
+            <tr><td>Anthropic</td><td>$7B</td></tr>
+          </tbody>
+        </table>
+      </main>`;
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("| Company | Funding |");
+    expect(md).toContain("| --- | --- |");
+    expect(md).toContain("| OpenAI | $13B |");
+    expect(md).toContain("| Anthropic | $7B |");
+  });
+
+  it("pads short rows so every table row has the same column count", () => {
+    const html = `
+      <main>
+        <table>
+          <tr><th>A</th><th>B</th><th>C</th></tr>
+          <tr><td>1</td><td>2</td></tr>
+        </table>
+      </main>`;
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("| A | B | C |");
+    expect(md).toContain("| --- | --- | --- |");
+    expect(md).toContain("| 1 | 2 | |");
+  });
+
+  it("escapes pipe characters inside table cells", () => {
+    const html = "<main><table><tr><th>Key</th></tr><tr><td>a|b</td></tr></table></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("| a\\|b |");
+  });
+
+  it("strips inline tags and decodes entities inside table cells", () => {
+    const html =
+      '<main><table><tr><th>Name</th></tr><tr><td>Tech &amp; <strong>Co</strong></td></tr></table></main>';
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("| Tech & Co |");
+  });
+
+  it("converts a blockquote into > prefixed lines", () => {
+    const html = "<main><blockquote><p>Infrastructure before automation.</p></blockquote></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("> Infrastructure before automation.");
+  });
+
+  it("prefixes each line of a multi-paragraph blockquote", () => {
+    const html =
+      "<main><blockquote><p>First line.</p><p>Second line.</p></blockquote></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("> First line.");
+    expect(md).toContain("> Second line.");
+  });
+
+  it("treats <br> inside a blockquote as a new quoted line", () => {
+    const html = "<main><blockquote>One<br>Two</blockquote></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("> One");
+    expect(md).toContain("> Two");
+  });
 });

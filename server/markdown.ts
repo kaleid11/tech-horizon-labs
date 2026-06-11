@@ -57,6 +57,59 @@ function stripInline(input: string): string {
     .trim();
 }
 
+/**
+ * Convert a single `<table>` fragment into a GitHub-flavoured markdown table.
+ * The first row becomes the header (with a `---` separator row beneath it);
+ * remaining rows form the body. Returns "" when no rows can be parsed.
+ */
+function tableToMarkdown(tableHtml: string): string {
+  const rowMatches = tableHtml.match(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi);
+  if (!rowMatches) return "";
+
+  const rows: string[][] = [];
+  for (const row of rowMatches) {
+    const cellMatches = row.match(/<(t[hd])\b[^>]*>([\s\S]*?)<\/\1>/gi);
+    if (!cellMatches) continue;
+    const cells = cellMatches.map((cell) =>
+      stripInline(cell.replace(/^<t[hd]\b[^>]*>/i, "").replace(/<\/t[hd]>$/i, ""))
+        .replace(/\|/g, "\\|"),
+    );
+    rows.push(cells);
+  }
+  if (rows.length === 0) return "";
+
+  const colCount = Math.max(...rows.map((r) => r.length));
+  const pad = (r: string[]) => {
+    const copy = r.slice();
+    while (copy.length < colCount) copy.push("");
+    return copy;
+  };
+
+  const header = pad(rows[0]);
+  const lines: string[] = [];
+  lines.push(`| ${header.join(" | ")} |`);
+  lines.push(`| ${header.map(() => "---").join(" | ")} |`);
+  for (const row of rows.slice(1)) {
+    lines.push(`| ${pad(row).join(" | ")} |`);
+  }
+  return `\n\n${lines.join("\n")}\n\n`;
+}
+
+/**
+ * Convert a single `<blockquote>` fragment into markdown, prefixing each line
+ * with `> `. Inner `<p>` and `<br>` boundaries become separate quoted lines.
+ */
+function blockquoteToMarkdown(inner: string): string {
+  const withBreaks = inner.replace(/<br\s*\/?>/gi, "\n").replace(/<\/p>/gi, "\n");
+  const lines = withBreaks
+    .replace(/<[^>]+>/g, " ")
+    .split("\n")
+    .map((l) => l.replace(/\s+/g, " ").trim())
+    .filter((l) => l.length > 0);
+  if (lines.length === 0) return "";
+  return `\n\n${lines.map((l) => `> ${l}`).join("\n")}\n\n`;
+}
+
 /** Best-effort page title from <title>, falling back to the first <h1>. */
 export function extractTitle(html: string): string | undefined {
   const title = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
@@ -107,6 +160,15 @@ export function htmlToMarkdown(html: string, title?: string): string {
       const t = stripInline(text);
       return t ? `[${t}](${href})` : "";
     },
+  );
+
+  // Tables → markdown tables (before generic block conversion flattens them).
+  s = s.replace(/<table\b[^>]*>[\s\S]*?<\/table>/gi, (m) => tableToMarkdown(m));
+
+  // Blockquotes → `> ` prefixed lines.
+  s = s.replace(
+    /<blockquote\b[^>]*>([\s\S]*?)<\/blockquote>/gi,
+    (_m, inner) => blockquoteToMarkdown(inner),
   );
 
   // Headings.
