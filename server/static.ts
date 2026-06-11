@@ -1,6 +1,8 @@
-import express, { type Express } from "express";
+import express, { type Express, type Request, type Response } from "express";
 import fs from "fs";
 import path from "path";
+import crypto from "crypto";
+import { htmlToMarkdown, extractTitle } from "./markdown";
 
 const BASE_URL = "https://techhorizonlabs.com";
 const SITE_NAME = "Tech Horizon Labs";
@@ -205,6 +207,180 @@ function getHtml(servingDir: string, filePath: string, urlPath?: string): string
   return html;
 }
 
+/**
+ * In-memory markdown cache — mirrors htmlCache. Keyed by route (or file).
+ */
+const mdCache = new Map<string, string>();
+
+/**
+ * Resolve the markdown view of a page. Prefers a pre-generated `.md` sibling
+ * (written at build time next to each `.html`); falls back to converting the
+ * HTML on the fly so the dev server works without a build. Returns null when
+ * the source HTML is missing.
+ */
+function getMarkdown(
+  servingDir: string,
+  file: string,
+  title?: string,
+  cacheKey?: string,
+): string | null {
+  const key = cacheKey ?? file;
+  const cached = mdCache.get(key);
+  if (cached) return cached;
+
+  const mdPath = path.resolve(servingDir, file.replace(/\.html$/, ".md"));
+  let md: string | null = null;
+  if (fs.existsSync(mdPath)) {
+    md = fs.readFileSync(mdPath, "utf-8");
+  } else {
+    const htmlPath = path.resolve(servingDir, file);
+    if (!fs.existsSync(htmlPath)) return null;
+    const html = fs.readFileSync(htmlPath, "utf-8");
+    md = htmlToMarkdown(html, title ?? extractTitle(html));
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    mdCache.set(key, md);
+  }
+  return md;
+}
+
+/**
+ * True only when the client explicitly prefers markdown. Browsers and search
+ * crawlers send `text/html` (or a wildcard accept), which resolves to HTML —
+ * keeping the negotiation strictly additive.
+ */
+function prefersMarkdown(req: Request): boolean {
+  return req.accepts(["text/html", "text/markdown"]) === "text/markdown";
+}
+
+/** Absolute URL of the markdown sibling for a given HTML file path. */
+function mdUrlFor(file: string): string {
+  return `${BASE_URL}/${file.replace(/\.html$/, ".md")}`;
+}
+
+/**
+ * Attach RFC 8288 `Link` headers advertising agent-discoverable resources:
+ * sitemap, llms.txt, the API catalog, the agent-skills index, and (where
+ * available) the markdown alternate of the current page.
+ */
+function setDiscoveryLinks(res: Response, mdUrl?: string): void {
+  const links = [
+    `<${BASE_URL}/sitemap.xml>; rel="sitemap"; type="application/xml"`,
+    `<${BASE_URL}/llms.txt>; rel="describedby"; type="text/plain"`,
+    `<${BASE_URL}/.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"`,
+    `<${BASE_URL}/.well-known/agent-skills/index.json>; rel="service-desc"; type="application/json"`,
+  ];
+  if (mdUrl) {
+    links.push(`<${mdUrl}>; rel="alternate"; type="text/markdown"`);
+  }
+  res.setHeader("Link", links.join(", "));
+}
+
+/**
+ * RFC 9727 / RFC 9264 linkset describing the public JSON API. Each endpoint is
+ * an anchored context with documentation (llms.txt) and status (/api/health)
+ * relations.
+ */
+function buildApiCatalog(): unknown {
+  const serviceDoc = [
+    { href: `${BASE_URL}/llms.txt`, type: "text/plain", title: "Tech Horizon Labs LLM map" },
+  ];
+  const status = [
+    { href: `${BASE_URL}/api/health`, type: "application/json", title: "Health check" },
+  ];
+  const endpoint = (anchorPath: string) => ({
+    anchor: `${BASE_URL}${anchorPath}`,
+    "service-doc": serviceDoc,
+    status,
+  });
+  return {
+    linkset: [
+      endpoint("/api/health"),
+      endpoint("/api/contact"),
+      endpoint("/api/newsletter"),
+      endpoint("/api/audit"),
+    ],
+  };
+}
+
+function sha256OfFile(filePath: string): string | null {
+  if (!fs.existsSync(filePath)) return null;
+  const buf = fs.readFileSync(filePath);
+  return "sha256:" + crypto.createHash("sha256").update(buf).digest("hex");
+}
+
+function sha256OfString(value: string): string {
+  return "sha256:" + crypto.createHash("sha256").update(value, "utf-8").digest("hex");
+}
+
+/**
+ * Agent Skills Discovery index (v0.2.0): a `schema` field plus a `skills` array
+ * where each entry carries name, type, description, url, and a sha256 digest of
+ * the referenced resource.
+ */
+function buildSkillsIndex(publicDir: string): unknown {
+  const skills: Array<{
+    name: string;
+    type: string;
+    description: string;
+    url: string;
+    digest: string;
+  }> = [];
+
+  const add = (
+    name: string,
+    type: string,
+    description: string,
+    urlPath: string,
+    digest: string | null,
+  ) => {
+    if (!digest) return;
+    skills.push({ name, type, description, url: `${BASE_URL}${urlPath}`, digest });
+  };
+
+  add(
+    "llms.txt",
+    "documentation",
+    "Curated map of Tech Horizon Labs pages for LLMs and research agents.",
+    "/llms.txt",
+    sha256OfFile(path.resolve(publicDir, "llms.txt")),
+  );
+  add(
+    "llms-full.txt",
+    "documentation",
+    "Concatenated plain-text corpus of every indexed page.",
+    "/llms-full.txt",
+    sha256OfFile(path.resolve(publicDir, "llms-full.txt")),
+  );
+  add(
+    "sitemap.xml",
+    "sitemap",
+    "XML sitemap of all canonical URLs with lastmod dates.",
+    "/sitemap.xml",
+    sha256OfFile(path.resolve(publicDir, "sitemap.xml")),
+  );
+  add(
+    "robots.txt",
+    "policy",
+    "Crawler allow-list and Content-Signal content-usage preferences.",
+    "/robots.txt",
+    sha256OfFile(path.resolve(publicDir, "robots.txt")),
+  );
+  add(
+    "api-catalog",
+    "api",
+    "Linkset catalog of the public JSON API endpoints.",
+    "/.well-known/api-catalog",
+    sha256OfString(JSON.stringify(buildApiCatalog(), null, 2)),
+  );
+
+  return {
+    schema: "https://agentskills.org/schemas/agent-skills-discovery/v0.2.0",
+    skills,
+  };
+}
+
 export function serveStatic(app: Express) {
   const projectRoot = process.cwd();
   const staticDir = path.resolve(projectRoot, "client", "static");
@@ -251,9 +427,33 @@ export function serveStatic(app: Express) {
     });
   }
 
+  // ===== Agent discovery endpoints =====
+  // Registered before the catch-all 404 and the static middleware so they are
+  // never shadowed.
+
+  // RFC 9727 API catalog (RFC 9264 linkset) of the public JSON API.
+  app.get("/.well-known/api-catalog", (_req, res) => {
+    res.setHeader("Content-Type", "application/linkset+json");
+    res.send(JSON.stringify(buildApiCatalog(), null, 2));
+  });
+
+  // Agent Skills Discovery index — agent-readable resources with sha256 digests.
+  app.get("/.well-known/agent-skills/index.json", (_req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    res.send(JSON.stringify(buildSkillsIndex(publicDir), null, 2));
+  });
+
   // Register core pages (with meta injection)
   for (const [route, config] of Object.entries(PAGES)) {
-    app.get(route, (_req, res) => {
+    app.get(route, (req, res) => {
+      setDiscoveryLinks(res, mdUrlFor(config.file));
+      if (prefersMarkdown(req)) {
+        const md = getMarkdown(servingDir, config.file, config.fullTitle ?? config.title, route);
+        if (md) {
+          res.setHeader("Content-Type", "text/markdown; charset=utf-8");
+          return res.send(md);
+        }
+      }
       const html = getHtml(servingDir, config.file, route);
       if (html) {
         res.setHeader("Content-Type", "text/html");
@@ -266,7 +466,15 @@ export function serveStatic(app: Express) {
 
   // Register static file pages (already have their own meta tags)
   for (const [route, file] of Object.entries(STATIC_FILES)) {
-    app.get(route, (_req, res) => {
+    app.get(route, (req, res) => {
+      setDiscoveryLinks(res, mdUrlFor(file));
+      if (prefersMarkdown(req)) {
+        const md = getMarkdown(servingDir, file, undefined, route);
+        if (md) {
+          res.setHeader("Content-Type", "text/markdown; charset=utf-8");
+          return res.send(md);
+        }
+      }
       const html = getHtml(servingDir, file);
       if (html) {
         res.setHeader("Content-Type", "text/html");

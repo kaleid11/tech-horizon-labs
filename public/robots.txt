@@ -1,8 +1,16 @@
 # Tech Horizon Labs - AI Consulting Queensland
 # https://techhorizonlabs.com
 
+# Content usage preferences (Content Signals).
+# "yes" = this content may be used for that purpose. Our stance is Open:
+#   search    — building a search index and linking back
+#   ai-input  — using content as input to AI answers / RAG (e.g. AI search)
+#   ai-train  — training / fine-tuning AI/ML models
+# These signals are an expression of preference, not an access-control mechanism.
+
 # Allow all search engine crawlers
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 # Allow AI crawlers for AEO/GEO optimization

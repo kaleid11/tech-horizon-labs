@@ -1,6 +1,7 @@
 import { build as esbuild } from "esbuild";
 import { rm, readFile, writeFile, cp, readdir } from "fs/promises";
 import { join } from "path";
+import { htmlToMarkdown, extractTitle } from "../server/markdown";
 
 // Server deps to bundle (reduces cold start openat syscalls)
 const allowlist = [
@@ -227,10 +228,31 @@ async function generateLlmsFullTxt() {
   console.log(`  ✓ public/llms-full.txt (${ordered.length} pages, ${kb} KB)`);
 }
 
+/**
+ * Pre-generate a markdown view of every page as a `.md` sibling next to its
+ * `.html` in dist/static. Served at runtime via content negotiation
+ * (Accept: text/markdown) and directly at the `.md` URL. Reuses the same
+ * page-collection approach as llms-full.txt.
+ */
+async function generateAgentMarkdown() {
+  console.log("generating agent markdown (.md siblings)...");
+  const htmlFiles = await collectHtmlFiles("dist/static");
+  let count = 0;
+  for (const file of htmlFiles) {
+    const html = await readFile(file, "utf-8");
+    const md = htmlToMarkdown(html, extractTitle(html));
+    if (!md.trim()) continue;
+    await writeFile(file.replace(/\.html$/, ".md"), md, "utf-8");
+    count++;
+  }
+  console.log(`  ✓ ${count} markdown files written`);
+}
+
 buildAll()
   .then(() => verifyStylesheetLinks())
   .then(() => checkCriticalCssDrift())
   .then(() => generateLlmsFullTxt())
+  .then(() => generateAgentMarkdown())
   .catch((err) => {
     console.error(err);
     process.exit(1);

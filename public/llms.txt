@@ -61,6 +61,9 @@ We publish primary-source research and practitioner notes on AI adoption in Aust
 
 ## Machine-readable
 
-- [robots.txt](https://techhorizonlabs.com/robots.txt): Explicit Allow for 14 AI crawlers (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, Anthropic-AI, Google-Extended, Amazonbot, meta-externalagent, etc.).
+- [robots.txt](https://techhorizonlabs.com/robots.txt): Explicit Allow for 14 AI crawlers (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, Anthropic-AI, Google-Extended, Amazonbot, meta-externalagent, etc.) plus Open Content-Signal preferences (search, ai-input, ai-train all allowed).
 - [sitemap.xml](https://techhorizonlabs.com/sitemap.xml): 34 canonical URLs with lastmod dates.
 - [llms-full.txt](https://techhorizonlabs.com/llms-full.txt): Concatenated plain-text corpus of every indexed page for retrieval and summarisation.
+- [api-catalog](https://techhorizonlabs.com/.well-known/api-catalog): RFC 9727 linkset of the public JSON API endpoints (health, contact, newsletter, assessment/audit).
+- [agent-skills index](https://techhorizonlabs.com/.well-known/agent-skills/index.json): Agent Skills Discovery index of machine-readable resources with sha256 digests.
+- Markdown for agents: request any core page with `Accept: text/markdown` (or append `.md`) for a clean markdown rendering.
