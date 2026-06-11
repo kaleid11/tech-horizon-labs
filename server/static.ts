@@ -447,6 +447,8 @@ export function serveStatic(app: Express) {
   for (const [route, config] of Object.entries(PAGES)) {
     app.get(route, (req, res) => {
       setDiscoveryLinks(res, mdUrlFor(config.file));
+      // Response body varies by Accept (HTML vs Markdown), so caches must key on it.
+      res.setHeader("Vary", "Accept");
       if (prefersMarkdown(req)) {
         const md = getMarkdown(servingDir, config.file, config.fullTitle ?? config.title, route);
         if (md) {
@@ -468,6 +470,8 @@ export function serveStatic(app: Express) {
   for (const [route, file] of Object.entries(STATIC_FILES)) {
     app.get(route, (req, res) => {
       setDiscoveryLinks(res, mdUrlFor(file));
+      // Response body varies by Accept (HTML vs Markdown), so caches must key on it.
+      res.setHeader("Vary", "Accept");
       if (prefersMarkdown(req)) {
         const md = getMarkdown(servingDir, file, undefined, route);
         if (md) {
@@ -507,7 +511,19 @@ export function serveStatic(app: Express) {
     immutable: true,
   }));
 
-  app.use(express.static(servingDir));
+  app.use(
+    express.static(servingDir, {
+      setHeaders: (res, filePath) => {
+        // The pre-generated `.md` siblings are agent-readable duplicates of
+        // their HTML pages (advertised via the rel="alternate" Link header).
+        // Keep them fetchable by AI crawlers but out of the search index so
+        // Google never treats them as duplicate content of the HTML version.
+        if (filePath.endsWith(".md")) {
+          res.setHeader("X-Robots-Tag", "noindex");
+        }
+      },
+    }),
+  );
 
   // Serve public dir for og-image and other public assets
   if (fs.existsSync(publicDir)) {

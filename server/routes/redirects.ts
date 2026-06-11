@@ -59,7 +59,11 @@ export function registerLegacyRedirects(app: Express) {
   // NOTE: Wildcard redirects for /locations/:slug, /industries/:slug, /insights/:slug
   // are registered in static.ts AFTER the specific page routes, to avoid catching them.
 
-  // Guides → Academy
+  // Guides → Academy (with a topical exception below)
+  // The legacy /guides/chatgpt-to-claude URL still ranks on page 1; send it to
+  // the matching comparison insight rather than the generic Academy page.
+  app.get("/guides/chatgpt-to-claude", (_req, res) => res.redirect(301, "/insights/claude-vs-chatgpt-2026"));
+  app.get("/guides/chatgpt-to-claude/", (_req, res) => res.redirect(301, "/insights/claude-vs-chatgpt-2026"));
   app.get("/guides/:slug", (_req, res) => res.redirect(301, "/academy"));
   app.get("/guides/:slug/", (_req, res) => res.redirect(301, "/academy"));
 
