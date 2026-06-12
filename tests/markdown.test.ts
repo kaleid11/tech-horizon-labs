@@ -143,6 +143,53 @@ describe("htmlToMarkdown", () => {
     expect(md).toContain("2. D");
   });
 
+  it("starts numbering at the ol start attribute", () => {
+    const html =
+      '<main><ol start="5"><li>Step five</li><li>Step six</li><li>Step seven</li></ol></main>';
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("5. Step five");
+    expect(md).toContain("6. Step six");
+    expect(md).toContain("7. Step seven");
+    expect(md).not.toContain("1. Step five");
+  });
+
+  it("honours a single-quoted start attribute", () => {
+    const html = "<main><ol start='3'><li>Three</li><li>Four</li></ol></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("3. Three");
+    expect(md).toContain("4. Four");
+  });
+
+  it("overrides the running counter from a li value attribute onward", () => {
+    const html =
+      '<main><ol><li>One</li><li value="10">Ten</li><li>Eleven</li></ol></main>';
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("1. One");
+    expect(md).toContain("10. Ten");
+    expect(md).toContain("11. Eleven");
+    expect(md).not.toContain("2. Eleven");
+  });
+
+  it("combines a start attribute with a later value override", () => {
+    const html =
+      '<main><ol start="5"><li>Five</li><li>Six</li><li value="20">Twenty</li><li>Twenty-one</li></ol></main>';
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("5. Five");
+    expect(md).toContain("6. Six");
+    expect(md).toContain("20. Twenty");
+    expect(md).toContain("21. Twenty-one");
+  });
+
+  it("ignores start and value attributes on unordered lists", () => {
+    const html =
+      '<main><ul start="5"><li value="9">Alpha</li><li>Beta</li></ul></main>';
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("- Alpha");
+    expect(md).toContain("- Beta");
+    expect(md).not.toContain("5.");
+    expect(md).not.toContain("9.");
+  });
+
   it("preserves links inside ordered list items", () => {
     const html =
       '<main><ol><li>See <a href="https://example.com">the docs</a></li></ol></main>';

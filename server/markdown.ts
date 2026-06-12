@@ -114,8 +114,12 @@ function blockquoteToMarkdown(inner: string): string {
  * Convert a single `<ul>`/`<ol>` fragment into markdown list lines.
  *
  * Ordered lists number their items (`1.`, `2.`, …); unordered lists use `-`.
- * Already-rendered nested lists arrive inside an item as sentinel-prefixed
- * lines (see {@link convertLists}); they are pushed one indent level deeper.
+ * Ordered lists honour the HTML `start` attribute on the `<ol>` (numbering
+ * begins at that value) and the `value` attribute on individual `<li>`s (which
+ * resets the running counter from that item onward), so sequences that continue
+ * across sections keep their real step numbers. Already-rendered nested lists
+ * arrive inside an item as sentinel-prefixed lines (see {@link convertLists});
+ * they are pushed one indent level deeper.
  *
  * Two control characters guard the output through the later whitespace-
  * collapsing passes: `\x00` marks the start of every list line (so leading
@@ -123,15 +127,23 @@ function blockquoteToMarkdown(inner: string): string {
  * is not collapsed by the multi-space → single-space cleanup). Both are
  * resolved to real spaces at the very end of {@link htmlToMarkdown}.
  */
-function listToMarkdown(tag: string, inner: string): string {
+function listToMarkdown(tag: string, attrs: string, inner: string): string {
   const ordered = tag.toLowerCase() === "ol";
   const items: string[] = [];
-  const liRe = /<li\b[^>]*>([\s\S]*?)<\/li>/gi;
+  const liRe = /<li\b([^>]*)>([\s\S]*?)<\/li>/gi;
   let m: RegExpExecArray | null;
-  let index = 0;
+  let counter = 1;
+  if (ordered) {
+    const startMatch = attrs.match(/\bstart\s*=\s*["']?(-?\d+)/i);
+    if (startMatch) counter = parseInt(startMatch[1], 10);
+  }
   while ((m = liRe.exec(inner)) !== null) {
-    index += 1;
-    const content = m[1];
+    const liAttrs = m[1];
+    const content = m[2];
+    if (ordered) {
+      const valueMatch = liAttrs.match(/\bvalue\s*=\s*["']?(-?\d+)/i);
+      if (valueMatch) counter = parseInt(valueMatch[1], 10);
+    }
     const sentinelIdx = content.indexOf("\x00");
     let own: string;
     let rest: string;
@@ -143,8 +155,9 @@ function listToMarkdown(tag: string, inner: string): string {
       // Indent every nested line one level deeper.
       rest = content.slice(sentinelIdx).replace(/\x00/g, "\x00\x01");
     }
-    const marker = ordered ? `${index}.` : "-";
+    const marker = ordered ? `${counter}.` : "-";
     items.push(`\n\x00${marker} ${own}${rest}`);
+    if (ordered) counter += 1;
   }
   return `\n${items.join("")}\n`;
 }
@@ -157,14 +170,15 @@ function listToMarkdown(tag: string, inner: string): string {
  * terminates. Malformed (unclosed) lists are left for the generic tag stripper.
  */
 function convertLists(s: string): string {
-  const innermost = /<(ul|ol)\b[^>]*>((?:(?!<(?:ul|ol)\b)[\s\S])*?)<\/\1>/i;
+  const innermost = /<(ul|ol)\b([^>]*)>((?:(?!<(?:ul|ol)\b)[\s\S])*?)<\/\1>/i;
   let match: RegExpMatchArray | null;
   while ((match = s.match(innermost)) !== null) {
     const full = match[0];
     const tag = match[1];
-    const body = match[2];
+    const attrs = match[2];
+    const body = match[3];
     const at = match.index ?? 0;
-    s = s.slice(0, at) + listToMarkdown(tag, body) + s.slice(at + full.length);
+    s = s.slice(0, at) + listToMarkdown(tag, attrs, body) + s.slice(at + full.length);
   }
   return s;
 }
