@@ -110,6 +110,65 @@ function blockquoteToMarkdown(inner: string): string {
   return `\n\n${lines.map((l) => `> ${l}`).join("\n")}\n\n`;
 }
 
+/**
+ * Convert a single `<ul>`/`<ol>` fragment into markdown list lines.
+ *
+ * Ordered lists number their items (`1.`, `2.`, …); unordered lists use `-`.
+ * Already-rendered nested lists arrive inside an item as sentinel-prefixed
+ * lines (see {@link convertLists}); they are pushed one indent level deeper.
+ *
+ * Two control characters guard the output through the later whitespace-
+ * collapsing passes: `\x00` marks the start of every list line (so leading
+ * indentation is not eaten), and `\x01` encodes a single indent level (so it
+ * is not collapsed by the multi-space → single-space cleanup). Both are
+ * resolved to real spaces at the very end of {@link htmlToMarkdown}.
+ */
+function listToMarkdown(tag: string, inner: string): string {
+  const ordered = tag.toLowerCase() === "ol";
+  const items: string[] = [];
+  const liRe = /<li\b[^>]*>([\s\S]*?)<\/li>/gi;
+  let m: RegExpExecArray | null;
+  let index = 0;
+  while ((m = liRe.exec(inner)) !== null) {
+    index += 1;
+    const content = m[1];
+    const sentinelIdx = content.indexOf("\x00");
+    let own: string;
+    let rest: string;
+    if (sentinelIdx === -1) {
+      own = stripInline(content);
+      rest = "";
+    } else {
+      own = stripInline(content.slice(0, sentinelIdx));
+      // Indent every nested line one level deeper.
+      rest = content.slice(sentinelIdx).replace(/\x00/g, "\x00\x01");
+    }
+    const marker = ordered ? `${index}.` : "-";
+    items.push(`\n\x00${marker} ${own}${rest}`);
+  }
+  return `\n${items.join("")}\n`;
+}
+
+/**
+ * Convert all `<ul>`/`<ol>` blocks into markdown, innermost first so nested
+ * lists are rendered before their parents consume them. The regex only matches
+ * lists that contain no further list openings, guaranteeing the innermost is
+ * picked each pass; every successful replacement removes one list, so the loop
+ * terminates. Malformed (unclosed) lists are left for the generic tag stripper.
+ */
+function convertLists(s: string): string {
+  const innermost = /<(ul|ol)\b[^>]*>((?:(?!<(?:ul|ol)\b)[\s\S])*?)<\/\1>/i;
+  let match: RegExpMatchArray | null;
+  while ((match = s.match(innermost)) !== null) {
+    const full = match[0];
+    const tag = match[1];
+    const body = match[2];
+    const at = match.index ?? 0;
+    s = s.slice(0, at) + listToMarkdown(tag, body) + s.slice(at + full.length);
+  }
+  return s;
+}
+
 /** Best-effort page title from <title>, falling back to the first <h1>. */
 export function extractTitle(html: string): string | undefined {
   const title = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
@@ -201,8 +260,8 @@ export function htmlToMarkdown(html: string, title?: string): string {
     s = s.replace(re, (_m, inner) => `\n\n${"#".repeat(i)} ${stripInline(inner)}\n\n`);
   }
 
-  // List items.
-  s = s.replace(/<li\b[^>]*>([\s\S]*?)<\/li>/gi, (_m, inner) => `\n- ${stripInline(inner)}`);
+  // Lists: ordered (1. 2. …) and unordered (- ), with nested indentation.
+  s = convertLists(s);
 
   // Line breaks and block boundaries.
   s = s.replace(/<br\s*\/?>/gi, "\n");
@@ -218,6 +277,10 @@ export function htmlToMarkdown(html: string, title?: string): string {
     .replace(/ *\n */g, "\n")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
+
+  // Resolve list sentinels: each \x01 is one indent level, \x00 marked the
+  // start of a list line (its guard role is now done).
+  s = s.replace(/\x01/g, "  ").replace(/\x00/g, "");
 
   if (title && !s.startsWith("# ")) {
     s = `# ${title}\n\n${s}`;

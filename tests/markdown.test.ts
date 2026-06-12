@@ -94,6 +94,62 @@ describe("htmlToMarkdown", () => {
     expect(md).toContain("- Second");
   });
 
+  it("numbers items inside an ordered list", () => {
+    const html = "<main><ol><li>Step one</li><li>Step two</li><li>Step three</li></ol></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("1. Step one");
+    expect(md).toContain("2. Step two");
+    expect(md).toContain("3. Step three");
+    expect(md).not.toContain("- Step one");
+  });
+
+  it("keeps unordered items as bullets even alongside an ordered list", () => {
+    const html =
+      "<main><ul><li>Alpha</li><li>Beta</li></ul><ol><li>One</li><li>Two</li></ol></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("- Alpha");
+    expect(md).toContain("- Beta");
+    expect(md).toContain("1. One");
+    expect(md).toContain("2. Two");
+  });
+
+  it("indents a nested unordered list under its parent item", () => {
+    const html =
+      "<main><ul><li>Parent<ul><li>Child A</li><li>Child B</li></ul></li><li>Sibling</li></ul></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("- Parent");
+    expect(md).toContain("  - Child A");
+    expect(md).toContain("  - Child B");
+    expect(md).toContain("- Sibling");
+  });
+
+  it("indents and renumbers a nested ordered list under its parent item", () => {
+    const html =
+      "<main><ol><li>First<ol><li>Sub one</li><li>Sub two</li></ol></li><li>Second</li></ol></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("1. First");
+    expect(md).toContain("  1. Sub one");
+    expect(md).toContain("  2. Sub two");
+    expect(md).toContain("2. Second");
+  });
+
+  it("restarts numbering for each separate ordered list", () => {
+    const html =
+      "<main><ol><li>A</li><li>B</li></ol><p>Break</p><ol><li>C</li><li>D</li></ol></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("1. A");
+    expect(md).toContain("2. B");
+    expect(md).toContain("1. C");
+    expect(md).toContain("2. D");
+  });
+
+  it("preserves links inside ordered list items", () => {
+    const html =
+      '<main><ol><li>See <a href="https://example.com">the docs</a></li></ol></main>';
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("1. See [the docs](https://example.com)");
+  });
+
   it("decodes HTML entities in body content", () => {
     const html = "<main><p>Tech &amp; Co &mdash; &copy;2026 &#39;quoted&#39;</p></main>";
     const md = htmlToMarkdown(html);
