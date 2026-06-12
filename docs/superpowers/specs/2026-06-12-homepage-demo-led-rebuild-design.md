@@ -71,6 +71,7 @@ All 10 scripts are static HTML (one visible, nine hidden via `hidden`/CSS state)
 
 | Leaving homepage | New home | Notes |
 |---|---|---|
+| "Inside an engagement" case study | already on `/work` | cut outright; /work's "Current engagements" covers it |
 | FAQ section ("People also ask") | `/contact` | **FAQPage JSON-LD moves with it** — schema must match visible content |
 | Blog teasers | gone | nav + footer already link /insights |
 | Tools pill wall | gone | security section + footer link /tools |
