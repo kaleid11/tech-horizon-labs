@@ -77,22 +77,25 @@ All 10 scripts are static HTML (one visible, nine hidden via `hidden`/CSS state)
 | "Two ways to work with us" | merged into CTA band | one sentence + link to /infrastructure deployment models |
 | Testimonial grid | vertical/industry pages + /work | see §5 |
 
-## 5 · Video testimonials & GEO
+## 5 · Video testimonials & GEO — proof adjacency
 
-**Rule:** every placed video gets its **full transcript on-page** + `VideoObject` schema (and `Review` schema where the content is a review). AI engines don't watch video; they read transcripts and schema. Humans watch video where trust decisions happen.
+**Rule 1 — transcript + schema:** every placed video gets its **full transcript on-page** + `VideoObject` schema (and `Review` schema where the content is a review). AI engines don't watch video; they read transcripts and schema. Humans watch video where trust decisions happen.
 
-**Current inventory and placement** (only 3 videos exist; none match the 10 verticals — be honest about that):
+**Rule 2 — proof adjacency:** place each voice next to the **claim it corroborates**, not just its industry label. A testimonial about a workflow (timesheets, quoting, admin) belongs wherever that workflow is claimed, with honest attribution. One video can serve multiple pages with *different pull-quotes* from the same transcript.
 
-| Video | Speaker / flavour | Placement |
+**Current inventory** (3 videos; transcribing them is a prerequisite task — the transcripts will surface the richer lines):
+
+| Video | Speaker / actual substance | Placements |
 |---|---|---|
-| `2mO4qxvQTx4` | Joanne Hill, KPPQLD — training, "where to start" | `/training/sunshine-coast` (moves off homepage) |
-| `M8WoVjZ3niY` | Participant, FireUP Coaching — "orchestration I hadn't seen" | `/academy` |
-| `k_FAP3jF7Ls` | Tour Operator, Tourism Noosa — "saved me a day's work" | `/locations/sunshine-coast` |
+| `2mO4qxvQTx4` | Joanne Hill, KPPQLD — **construction/finance context; timesheet workflow + admin relief; cross-vertical admin story** (the current on-page quote only captures the training angle) | `/industries/construction` (timesheet/admin pull-quote) · `/training/sunshine-coast` (training pull-quote) · homepage proof band candidate (see below) |
+| `M8WoVjZ3niY` | Participant, FireUP Coaching (a training company) — "orchestration of multiple AI models I hadn't seen" | `/academy` (training-buyer proof) · `/about` (capability credibility) |
+| `k_FAP3jF7Ls` | Tour Operator, Tourism Noosa — "saved me at least a day's work from two hours" | `/locations/sunshine-coast` · time-saved claims elsewhere as text pull-quote |
 | Founder video (to be recorded) | Huxley — who you'd be working with | `/about` + `/contact` |
 
 - `/work` additionally embeds all client videos (the complete set).
-- Vertical/industry pages carry text quotes only until a matched video exists; as new videos are recorded they slot in under the same rule.
-- Homepage keeps exactly one text quote in the proof band — proposed: the compliance/clarity quote ("Real clarity on the options. Compliance, data residency, extensibility…"), which lands across the mixed audience.
+- Vertical/industry pages without a matched voice carry text quotes only until one exists; new videos slot in under the two rules.
+- **Homepage proof-band quote:** Jo's admin/timesheet line is the most universal SMB pain and corroborates the "40% admin cut" metric class — once her transcript yields a strong one-liner, it becomes the homepage quote (proof adjacency at the metric band). Fallback until then: the compliance/clarity quote ("Real clarity on the options…").
+- Jo's timesheet workflow is also **scope evidence** (see §7): proof that the install continues past GTM into the admin systems underneath — the anatomy face or method line may reference "timesheets, quoting, reporting" as installed-workflow examples.
 
 ## 6 · Conversion flow (existing assets only)
 
@@ -100,18 +103,27 @@ All 10 scripts are static HTML (one visible, nine hidden via `hidden`/CSS state)
 
 Homepage demo → chip/playbook CTA → vertical page (matched video proof) → assessment (ungated results) → book-a-call; report = nurture asset for not-ready visitors. Implementation wires edges only: each replay ends in its playbook link; vertical pages lead follow-up CTAs with the assessment; assessment results lead with booking.
 
-## 7 · ColdIQ differentiation checklist (hard requirements)
+## 7 · Category differentiation (hard requirements)
 
-ColdIQ (coldiq.com, June 2026): "Tomorrow's GTM Systems Built for You Today" / "We build B2B Revenue Engines that sell for you." Agency retainers, 3-month minimum, proof = client logos + pipeline dollars ($7.83M etc.), targets >$100K/mo B2B, expertise framing = Clay + deliverability, "GTM Flywheel" = outbound/ads/content integration.
+Differentiate against the **category patterns**, not one brand. Four competitor categories the homepage must visibly beat (June 2026 sweep):
 
-The homepage must:
+| Category | Pattern (2026) | What survives as THL's edge |
+|---|---|---|
+| Outbound/GTM agencies — ColdIQ as the worked example | "Revenue engines built for you", retainers + 3-mo minimums, proof = logo walls + pipeline dollars ($7.83M etc.) | Precision-honesty numbers; rails *shown*, not claimed; scope past pipeline |
+| GTM-engineering shops — DevCommX, The Kiln, devlo wave | **Now claim ownership too** ("no dependency cliff", "systems your team owns permanently") — ownership talk is becoming table-stakes | Claims are copyable; *demos aren't*. The run-log + anatomy + append-only log make governance inspectable. And they all stop at pipeline — THL's install continues into admin/ops/service systems (Jo's timesheet workflow is the evidence, §5) |
+| AI automation agencies (n8n/Make genre) | $2.5–15K builds + $0.5–5K/mo monitoring, "automate 2–3 processes, reclaim 10–20 hrs/wk", thin governance, project-shop handoffs | Governed fleet vs glue; five guarantees enforced in tooling; training-led handover (Academy); vertical playbooks; production GTM proof |
+| DIY tools / IT consultancies adding AI | Tools leave you the wiring; consultancies fund months of plumbing on faith | Revenue-first install (GTM pays, then funds the rest); fixed-price gates; assessment funnel catches the DIY visitor |
 
-1. **Never read as an agency.** No "we run your campaigns" language. The offer is installed, owned infrastructure. One explicit contrast line on the homepage: *"Agencies rent you an engine and keep it. We install one you own."* (Full comparison table stays on /infrastructure.)
-2. **Not compete on pipeline dollars or logo walls.** THL's proof is precision-honesty: 3-of-50, 100% verified before drafting, real sender identity, append-only log. Small numbers, stated plainly, beat big numbers visitors discount.
-3. **Show the rails, don't claim them.** The run-log's `human · approved — a person presses send` beat and the anatomy face are the demo of governance. ColdIQ cannot show this; a rented SaaS stack has no inspectable rails. This is the killer-demo thesis.
-4. **Flywheel inversion.** ColdIQ's flywheel integrates marketing channels. THL's flywheel funds the business: GTM install pays for itself, then funds data/service/scale systems. One line on the homepage (§4.2), full narrative on /infrastructure.
-5. **Audience honesty.** ColdIQ filters for >$100K/mo. THL is AU-grounded (Spam Act 2003 compliance line stays on /infrastructure), vertical-fluent, on-site capable — the chips and locations grid carry this without copy bloat.
-6. **Frontier-native line stays visible** somewhere on the page (method section or anatomy face): the rails are model-agnostic; the fleet improves as models do — vs 2020-era stack wiring.
+Homepage requirements distilled:
+
+1. **Never read as an agency or a platform.** One category-generic contrast line on the homepage (not anti-ColdIQ specifically): *"Not an agency retainer, not another platform — infrastructure you own, with the run log to prove it."* Full comparison table stays on /infrastructure.
+2. **Don't compete on pipeline dollars or logo walls.** Precision-honesty: 3-of-50, 100% verified, real identity, append-only log.
+3. **Show the rails.** The `human · approved` beat + anatomy face are the demo of governance — the one thing claims-copiers can't replicate without building it. This is the killer-demo thesis.
+4. **Scope past pipeline.** GTM install pays for itself, then funds the admin/data/service systems underneath (timesheets, quoting, reporting). One line in §4.2; Jo's workflow as evidence.
+5. **Audience honesty.** AU-grounded, vertical-fluent, on-site capable — chips + locations grid carry it; Spam Act line stays on /infrastructure.
+6. **Frontier-native line stays visible** (method section or anatomy face): model-agnostic rails, fleet improves as models do — vs 2020-era stack wiring.
+
+Sources for the sweep: [DevCommX vs ColdIQ](https://www.devcommx.com/blogs/devcommx-vs-coldiq), [ColdIQ alternatives (Utmost)](https://utmost.agency/blogs/coldiq-alternatives/), [Best GTM agencies 2026 (SyncGTM)](https://syncgtm.com/blog/best-gtm-agencies-2026), [AI automation agencies 2026 guide (JADA)](https://www.jadasquad.com/blog/ai-automation-agencies), [Kaizen — AI agents for small business 2026](https://kaizenaiconsulting.com/ai-agents-small-business-2026-what-works/).
 
 ## 8 · SEO/GEO guarantees
 
