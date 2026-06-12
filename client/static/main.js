@@ -934,7 +934,7 @@
     tooltipId: 'valuation-tooltip',
     wrapId: 'valuation-race-wrap',
     legendId: 'valuation-legend',
-    xLabels: ['2014-01', '2019-01', '2021-01', '2023-01', '2024-01', '2025-01', '2026-01', '2026-04'],
+    xLabels: ['2014-01', '2019-01', '2021-01', '2023-01', '2024-01', '2025-01', '2026-01', '2026-06'],
     formatY: function(v) {
       if (v >= 1000) return '$' + (v / 1000).toFixed(1) + 'T';
       if (v >= 1) return '$' + Math.round(v) + 'B';
@@ -963,7 +963,8 @@
           { date: '2025-01', val: 60, label: 'Series D ext.' },
           { date: '2025-03', val: 61.5, label: 'Series E' },
           { date: '2025-09', val: 183, label: 'Series F' },
-          { date: '2026-02', val: 380, label: 'Series G' }
+          { date: '2026-02', val: 380, label: 'Series G' },
+          { date: '2026-05', val: 965, label: 'Series H' }
         ]
       },
       {
@@ -972,7 +973,8 @@
           { date: '2014-01', val: 0.5, label: 'Acquired' },
           { date: '2024-01', val: 1800, label: 'Alphabet cap' },
           { date: '2025-01', val: 2400, label: 'Alphabet cap' },
-          { date: '2026-03', val: 3600, label: 'Alphabet cap' }
+          { date: '2026-03', val: 3600, label: 'Alphabet cap' },
+          { date: '2026-06', val: 4300, label: 'Alphabet cap' }
         ]
       },
       {
@@ -980,7 +982,8 @@
         points: [
           { date: '2024-01', val: 900, label: 'Meta cap' },
           { date: '2025-01', val: 1400, label: 'Meta cap' },
-          { date: '2026-03', val: 1500, label: 'Meta cap' }
+          { date: '2026-03', val: 1450, label: 'Meta cap' },
+          { date: '2026-06', val: 1440, label: 'Meta cap' }
         ]
       },
       {
@@ -1014,7 +1017,7 @@
           { date: '2024-02', val: 2.5, label: 'Series A' },
           { date: '2025-10', val: 4.3, label: 'Series C' },
           { date: '2026-02', val: 10, label: 'Series D' },
-          { date: '2026-03', val: 18, label: 'Seeking $1B' }
+          { date: '2026-05', val: 20, label: 'Meituan-led $2B' }
         ]
       },
       {
@@ -1037,7 +1040,7 @@
     tooltipId: 'funding-tooltip',
     wrapId: 'funding-chart-wrap',
     legendId: 'funding-legend',
-    xLabels: ['2019-07', '2021-01', '2022-01', '2023-01', '2024-01', '2025-01', '2026-01', '2026-04'],
+    xLabels: ['2019-07', '2021-01', '2022-01', '2023-01', '2024-01', '2025-01', '2026-01', '2026-06'],
     companies: [
       {
         name: 'OpenAI', color: '#10A37F',
@@ -1067,7 +1070,8 @@
           { date: '2025-07', val: 18.704 },
           { date: '2025-09', val: 31.704 },
           { date: '2025-11', val: 37.204 },
-          { date: '2026-02', val: 67.3 }
+          { date: '2026-02', val: 67.3 },
+          { date: '2026-05', val: 132.3 }
         ]
       },
       {
@@ -1107,7 +1111,8 @@
           { date: '2023-06', val: 0.05 },
           { date: '2024-02', val: 1.05 },
           { date: '2025-10', val: 1.55 },
-          { date: '2026-02', val: 2.6 }
+          { date: '2026-02', val: 2.6 },
+          { date: '2026-05', val: 4.6 }
         ]
       }
     ]
@@ -1116,7 +1121,7 @@
 
 /* =====================================================
    ICP ROTATOR — Hero H1 stable-claimable rotating span
-   Cycles through 9 ICPs. Stable static H1 default
+   Cycles through 10 ICPs. Stable static H1 default
    ("growing businesses") is SSR'd for AEO/GEO.
    ===================================================== */
 (function () {
@@ -1133,7 +1138,8 @@
     'legal firms',
     'construction and trades',
     'healthcare and allied health',
-    'manufacturing'
+    'manufacturing',
+    'engineering and advisory firms'
   ];
 
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

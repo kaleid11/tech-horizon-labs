@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI GTM Infrastructure You Own — Theo | Tech Horizon Labs</title>
+  <meta name="description" content="Theo is go-to-market infrastructure, not another SaaS subscription. Deployed into your own tenancy: signal monitoring, market research, lead verification, outreach drafting, proposals, and reporting — drafts-only outbound, human send, append-only audit.">
+  <link rel="canonical" href="https://techhorizonlabs.com/infrastructure">
+  <link rel="alternate" hreflang="en-AU" href="https://techhorizonlabs.com/infrastructure">
+  <link rel="alternate" hreflang="x-default" href="https://techhorizonlabs.com/infrastructure">
+  <meta property="og:title" content="AI GTM Infrastructure You Own — Theo | Tech Horizon Labs">
+  <meta property="og:description" content="Own the engine, don't rent it. Theo plugs into your existing email and CRM, runs research, outreach drafting, proposals, and reporting — with five guarantees enforced in the tooling.">
+  <meta property="og:url" content="https://techhorizonlabs.com/infrastructure">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:site_name" content="Tech Horizon Labs">
+  <meta property="og:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Theo — AI go-to-market infrastructure by Tech Horizon Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@techhorizonlabs">
+  <meta name="twitter:title" content="AI GTM Infrastructure You Own — Theo | Tech Horizon Labs">
+  <meta name="twitter:description" content="Go-to-market infrastructure deployed into your own tenancy. Drafts-only outbound, human send, append-only audit. You own the engine.">
+  <meta name="twitter:image" content="https://techhorizonlabs.com/opengraph.jpg">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" href="/favicon-32.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Theo — AI go-to-market infrastructure",
+    "serviceType": "AI infrastructure implementation and operation",
+    "url": "https://techhorizonlabs.com/infrastructure",
+    "provider": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com"
+    },
+    "areaServed": [
+      "AU",
+      { "@type": "Place", "name": "Worldwide" }
+    ],
+    "description": "Go-to-market AI infrastructure deployed into the client's own tenancy: signal monitoring with freshness stamps, market research and ICP angles, multi-source lead verification, cold and warm outreach drafting, proposal and tender assembly, and reporting. Governance enforced in tooling: drafts-only outbound, human send, read-only CRM by default, pre-draft ICP guards, append-only run log.",
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "B2B businesses replacing outbound agencies and rented SaaS outreach stacks"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "AUD",
+      "price": "8000",
+      "description": "Installed via the Horizon Method: Block One $8,000 AUD ex-GST (fixed-price Feasibility Evaluation plus first month of Partner Tier), install phases from ~$5,000, operated under Partner Tier at $2,000/month. The infrastructure, prompts, and playbooks are owned by the client."
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Theo",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Deployed into the client's own cloud tenancy or operated as managed infrastructure",
+    "url": "https://techhorizonlabs.com/infrastructure",
+    "description": "Theo is an AI agent fleet for go-to-market work: it plugs into existing email and CRM systems and runs market identification and research, lead verification, cold and warm outreach drafting, website and campaign optimisation, proposal/RFQ/RFT assembly, and reporting. Built on current frontier models and improved continuously. All outbound is drafts-only with human send; every action is recorded in an append-only run log.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Tech Horizon Labs",
+      "url": "https://techhorizonlabs.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "AUD",
+      "price": "8000",
+      "description": "Not sold as SaaS. Installed as client-owned infrastructure via fixed-price phases; operated under a month-to-month Partner Tier."
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://techhorizonlabs.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Infrastructure", "item": "https://techhorizonlabs.com/infrastructure" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is AI go-to-market infrastructure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An agent system that runs the assembly work of going to market — signal monitoring, market research, lead verification, outreach drafting, proposal and tender assembly, reporting — deployed into the systems you already run (your email, your CRM, your databases) rather than rented as a SaaS subscription. You own the engine: the agents, prompts, playbooks, and logs live in your tenancy, and a human approves everything that sends."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from hiring a cold email agency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Outbound agencies typically run your campaigns on a rented stack of 2020-era SaaS tools — enrichment platforms, sequencers, secondary sending domains — bundled into a $5,000+ monthly retainer with a 3–6 month minimum, which means $15,000–$30,000 spent before you can properly evaluate results. When the engagement ends, the engine leaves with the agency. Theo is the opposite: it is installed into your tenancy as infrastructure you own, works through your real email identity on both warm and cold relationships, is fixed-priced in phases with evidence at every gate, and stays — fully documented — if we part ways."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Theo different from a Clay, Smartlead, or Instantly stack?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Those tools each solve one slice — enrichment, sequencing, sending volume — and someone still has to wire them together, pay for each seat, and police what the stack does. Theo is one governed fleet built on current frontier models: research, verification, drafting, proposals, and reporting in a single system with shared context, deployed into your tenancy. There are no per-tool subscriptions to stack, and the governance is structural: guards run before drafting, outbound is drafts-only, the CRM is read-only by default, and every action lands in an append-only log."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is AI outreach compliant with the Australian Spam Act?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The architecture is built for it. Nothing emails itself — output is drafts-only and a human presses send, which keeps a person accountable for consent, identification, and unsubscribe requirements under the Spam Act 2003 (and CAN-SPAM or GDPR where relevant). Off-ICP contacts never see copy because guards run before drafting, stale triggers fail loudly rather than firing, and the append-only run log means you can always answer why any message was drafted."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens to the system if we stop working with Tech Horizon Labs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You keep it. The infrastructure is deployed into your tenancy from the start, and everything — agents, prompts, playbooks, run logs, documentation — is yours with full export. Partner Tier operation is month-to-month on 30 days' notice. That is the structural difference between infrastructure you own and an agency retainer or SaaS subscription you rent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What results is Theo getting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Early production cohorts, measured honestly: a client campaign booked 3 qualified meetings with high-ticket prospects from its first 50 emails in one week — a 6% meeting rate — and running on our own pipeline, Theo booked 4 meetings in its first week. These are small, precision batches by design: every contact is verified before drafting, copy is personalised from real research, and sends come from the real sender's identity with a human pressing send. The volume playbook typically books a meeting per few hundred sends from secondary domains; precision inverts that."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which AI models does Theo run on?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Current frontier models — the fleet is built on the Claude 5 family (including Fable 5) today and is model-agnostic by design, so it improves as models do. The governance rails are independent of any vendor: if a better model ships next quarter, the system adopts it without a rebuild. Theo also self-improves operationally — agents building and refining agents inside the same governed workspace, reviewed by humans before anything is promoted to production."
+        }
+      }
+    ]
+  }
+  </script>
+  <script async src="https://plausible.io/js/pa-dRBvledtC13XyS9b9WRTT.js"></script>
+  <script>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()</script>
+</head>
+<body>
+  <canvas id="dot-grid" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="brand"><img src="/logo.webp" alt="Tech Horizon Labs logo" class="brand-logo" width="28" height="28">Tech Horizon Labs</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/work">Clients</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/academy">Academy</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <section class="hero container">
+      <p style="font-family:var(--font-body);font-size:0.8125rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;"><a href="/" style="color:inherit;text-decoration:none;">Home</a> &rsaquo; Infrastructure</p>
+      <h1 data-testid="text-h1-infrastructure">Go-to-market infrastructure you own.</h1>
+      <p class="subline">Theo is an AI agent fleet that plugs into the email, CRM, and databases you already run. It identifies and researches your markets, verifies leads, drafts cold and warm outreach, tunes your website and campaigns, and carries proposals from RFQ to finished document &mdash; with a human approving everything that sends. Deployed as infrastructure into your tenancy, not rented as SaaS.</p>
+      <p>
+        <a href="https://app.klipycrm.com/p/tech-horizon-labs/book" target="_blank" rel="noopener" class="link-arrow" data-testid="link-book-infrastructure">Book a 30-min call &rarr;</a>
+        &nbsp;&nbsp;
+        <a href="/#infrastructure" class="link-arrow">See it on the homepage &rarr;</a>
+      </p>
+      <div class="trust-row" aria-label="Quick facts">
+        <span class="trust-stat">Drafts-only outbound</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">Deployed into your tenancy</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">Append-only audit log</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">Frontier-model native</span>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- DEFINITION BLOCK (AEO) -->
+    <section class="section container fade-in">
+      <h2>What is AI go-to-market infrastructure?</h2>
+      <p style="font-size:1.0625rem;line-height:1.7;max-width:740px;">
+        An agent system that runs the assembly work of going to market &mdash; signals, research, verification, drafting, proposals, reporting &mdash; <strong>deployed into the systems you already run</strong> rather than rented as a subscription. The agents, prompts, playbooks, and logs live in your tenancy. We install it, operate it with you, and train your team to own it. There is no platform to migrate to, no per-seat product to cancel, and no engine that leaves when an agency does.
+      </p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- FIRST PRODUCTION NUMBERS -->
+    <section class="section container-wide fade-in">
+      <h2>The first production numbers</h2>
+      <p class="subline" style="margin-bottom:var(--space-sm);">Small batches, measured honestly. The volume playbook sends thousands of emails from burner domains and books a meeting per few hundred sends. Precision inverts that.</p>
+      <div class="results-grid stagger">
+        <div class="result-card fade-in">
+          <div class="metric">3 of 50</div>
+          <div class="metric-label">meetings booked from week one of a client campaign</div>
+          <p>Fifty emails, one week, three qualified meetings with high-ticket prospects &mdash; a 6% meeting rate. High personalisation from real research, sent from the client&rsquo;s own identity, every contact verified before a word was drafted.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">4</div>
+          <div class="metric-label">meetings booked in week one on our own pipeline</div>
+          <p>We run Theo on our own business first. The same rails, the same guards, the same human pressing send &mdash; and the meetings that came out of it are how this page exists.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">100%</div>
+          <div class="metric-label">of contacts verified before drafting</div>
+          <p>Deliverability is a by-product of discipline: multi-source verification, freshness-stamped signals, and off-ICP guards mean the list is clean before the first draft &mdash; no burner domains required.</p>
+        </div>
+        <div class="result-card fade-in">
+          <div class="metric">End-to-end</div>
+          <div class="metric-label">from first signal to finished proposal</div>
+          <p>The meeting isn&rsquo;t the finish line. The same fleet carries the thread through to the proposal, the RFQ or RFT response, and the reporting &mdash; so booked interest becomes signed work.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- HOW IT RUNS — pipeline diagram -->
+    <section class="section container-wide fade-in">
+      <h2>How a Theo run works</h2>
+      <p class="subline" style="margin-bottom:var(--space-sm);">Every run follows the same governed pipeline. The guards sit <em>before</em> the drafting, and the human sits before the send.</p>
+
+      <svg viewBox="0 0 960 150" role="img" aria-label="Theo pipeline: a freshness-stamped signal flows through research and verification, then ICP guards, then drafting, then human send, and every step lands in an append-only log" style="width:100%;height:auto;display:block;">
+        <defs>
+          <marker id="theo-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#B5654A"/>
+          </marker>
+        </defs>
+        <rect x="4" y="20" width="150" height="64" rx="8" fill="#ffffff" stroke="#e0ddd8" stroke-width="1.5"/>
+        <text x="79" y="46" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">Signal</text>
+        <text x="79" y="64" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="10.5" fill="#6b6b6b">stamped: source + freshness</text>
+        <line x1="158" y1="52" x2="186" y2="52" stroke="#B5654A" stroke-width="2" marker-end="url(#theo-arrow)"/>
+        <rect x="192" y="20" width="160" height="64" rx="8" fill="#ffffff" stroke="#e0ddd8" stroke-width="1.5"/>
+        <text x="272" y="46" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">Research &amp; verify</text>
+        <text x="272" y="64" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="10.5" fill="#6b6b6b">multi-source, ~80% recovery</text>
+        <line x1="356" y1="52" x2="384" y2="52" stroke="#B5654A" stroke-width="2" marker-end="url(#theo-arrow)"/>
+        <rect x="390" y="20" width="140" height="64" rx="8" fill="hsl(18 45% 92%)" stroke="#B5654A" stroke-width="2"/>
+        <text x="460" y="46" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#9E5740">Guards</text>
+        <text x="460" y="64" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="10.5" fill="#1a1a1a">ICP fit, before drafting</text>
+        <line x1="534" y1="52" x2="562" y2="52" stroke="#B5654A" stroke-width="2" marker-end="url(#theo-arrow)"/>
+        <rect x="568" y="20" width="130" height="64" rx="8" fill="#ffffff" stroke="#e0ddd8" stroke-width="1.5"/>
+        <text x="633" y="46" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">Draft</text>
+        <text x="633" y="64" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="10.5" fill="#6b6b6b">never auto-sent</text>
+        <line x1="702" y1="52" x2="730" y2="52" stroke="#B5654A" stroke-width="2" marker-end="url(#theo-arrow)"/>
+        <rect x="736" y="20" width="150" height="64" rx="8" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.5"/>
+        <text x="811" y="46" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">Human send</text>
+        <text x="811" y="64" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="10.5" fill="#6b6b6b">a person presses send</text>
+        <rect x="192" y="108" width="694" height="34" rx="6" fill="#1a1a1a"/>
+        <text x="539" y="130" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="600" fill="#ffffff">Append-only run log &mdash; every action, every rejection, with reasons</text>
+        <line x1="79" y1="84" x2="79" y2="125" stroke="#B5654A" stroke-width="2"/>
+        <line x1="79" y1="125" x2="186" y2="125" stroke="#B5654A" stroke-width="2" marker-end="url(#theo-arrow)"/>
+      </svg>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- THE FIVE GUARANTEES -->
+    <div class="warm-band">
+      <section class="section container-wide fade-in">
+        <h2>Five guarantees, enforced in the tooling</h2>
+        <p class="subline" style="margin-bottom:var(--space-sm);">Not policies. Not habits. Hard rails in the architecture &mdash; the same rails we run on our own business every day.</p>
+        <div class="report-window" data-testid="table-guarantees">
+          <div class="report-body">
+            <div class="report-table">
+              <div class="report-row report-row-header">
+                <span>Guarantee</span><span>Mechanism</span>
+              </div>
+              <div class="report-row"><span>Nothing emails itself</span><span>Output is drafts-only; a human presses send</span></div>
+              <div class="report-row"><span>Your CRM is never polluted</span><span>Read-only by default; writes need explicit approval per action</span></div>
+              <div class="report-row"><span>Off-ICP contacts never see copy</span><span>Guards run before drafting, not after</span></div>
+              <div class="report-row"><span>Stale triggers can&rsquo;t fire</span><span>Every signal stamped with source + freshness; stale fails loudly</span></div>
+              <div class="report-row"><span>You can always answer &ldquo;why?&rdquo;</span><span>Append-only run log: every action, every rejection, with reasons</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- OWN VS RENT COMPARISON -->
+    <section class="section container-wide fade-in">
+      <h2>Own the engine vs rent the stack</h2>
+      <p class="subline" style="margin-bottom:var(--space-sm);">The outbound agency market runs on a rented stack of 2020-era SaaS &mdash; enrichment sheets, sequencers, secondary sending domains &mdash; bundled into $5,000+ monthly retainers with 3&ndash;6 month minimums. That generation of tooling predates frontier agents. This one doesn't.</p>
+      <div class="report-window" data-testid="table-own-vs-rent">
+        <div class="report-body">
+          <div class="report-table">
+            <div class="report-row report-row-header">
+              <span>Dimension</span><span>Outbound agency (rented stack)</span><span>DIY SaaS tools</span><span>Theo (owned infrastructure)</span>
+            </div>
+            <div class="report-row"><span>Who owns the engine</span><span>The agency &mdash; it leaves when they do</span><span>The vendors &mdash; you rent each slice</span><span>You &mdash; agents, prompts, logs in your tenancy</span></div>
+            <div class="report-row"><span>Cost shape</span><span>$5K+/mo, 3&ndash;6 month minimum ($15&ndash;30K before evidence)</span><span>$1K+/mo across 5&ndash;10 subscriptions, plus your time wiring them</span><span>$8K Block One, fixed phases from $5K, $2K/mo operation &mdash; cancel monthly, keep everything</span></div>
+            <div class="report-row"><span>Sending model</span><span>Volume from secondary domains</span><span>Volume from secondary domains</span><span>Precision from your real identity &mdash; warm and cold, human-sent</span></div>
+            <div class="report-row"><span>Scope</span><span>Cold email + LinkedIn</span><span>One slice per tool</span><span>Signals &rarr; research &rarr; outreach &rarr; proposals/RFQ/RFT &rarr; reporting, one fleet</span></div>
+            <div class="report-row"><span>Governance</span><span>Process and trust</span><span>Whatever you police yourself</span><span>Five guarantees enforced in tooling, append-only audit</span></div>
+            <div class="report-row"><span>Model currency</span><span>Tool roadmaps decide</span><span>Tool roadmaps decide</span><span>Frontier-native and model-agnostic &mdash; improves as models do</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- DEPLOYMENT MODELS -->
+    <div class="warm-band">
+      <section class="section container fade-in">
+        <h2>Two ways to deploy it</h2>
+        <div class="two-paths">
+          <div class="path">
+            <h3>As infrastructure in your tenancy (default)</h3>
+            <p>The fleet is installed into your own cloud accounts and wired to your email, CRM, and databases from day one. We operate it with you under Partner Tier, train your team, and document everything. You own the engine outright; we are the builders and superintendents, never the landlords.</p>
+            <a href="/contact" class="link-arrow">Start with the feasibility evaluation &rarr;</a>
+          </div>
+          <div class="path">
+            <h3>As a hosted pilot, then migrated</h3>
+            <p>Where speed matters, the first campaigns run on our production infrastructure &mdash; the same rails, the same guarantees &mdash; while your tenancy is prepared. Once the evidence is in, the system migrates to you with history and logs intact. Same destination: you own it.</p>
+            <a href="https://app.klipycrm.com/p/tech-horizon-labs/book" target="_blank" rel="noopener" class="link-arrow">Talk through which fits &rarr;</a>
+          </div>
+        </div>
+        <p style="margin-top:var(--space-sm);">Either way, it's installed through the <a href="/#who-we-work-with">Horizon Method</a>: a fixed-price feasibility evaluation sizes your systems and data first (Block One, $8,000 all-in for month one), install phases are fixed-priced from ~$5,000, and operation runs under Partner Tier at $2,000/month &mdash; month-to-month, everything exportable.</p>
+      </section>
+    </div>
+
+    <div class="accent-rule container"></div>
+
+    <!-- THE LADDER — pays for itself, then funds what's next -->
+    <section class="section container-wide fade-in">
+      <h2>It pays for itself &mdash; then funds everything built on top</h2>
+      <p class="subline" style="max-width:740px;margin-bottom:var(--space-sm);">GTM is deliberately the first install, because it's the one that generates revenue in weeks. The new pipeline pays for the install, and then funds the systems that need to exist underneath a scaling business &mdash; in order.</p>
+
+      <svg viewBox="0 0 940 250" role="img" aria-label="Four ascending steps: GTM infrastructure pays for itself, then funds the data foundation, then service delivery systems, then compounding scale" style="width:100%;height:auto;display:block;">
+        <defs>
+          <marker id="ladder-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#B5654A"/>
+          </marker>
+        </defs>
+        <rect x="8" y="160" width="200" height="80" rx="8" fill="hsl(18 45% 92%)" stroke="#B5654A" stroke-width="2"/>
+        <text x="108" y="186" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#9E5740">01 &middot; GTM infrastructure</text>
+        <text x="108" y="206" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#1a1a1a">meetings in week one;</text>
+        <text x="108" y="222" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#1a1a1a">the install pays for itself</text>
+        <line x1="212" y1="170" x2="244" y2="140" stroke="#B5654A" stroke-width="2" marker-end="url(#ladder-arrow)"/>
+        <rect x="250" y="115" width="200" height="125" rx="8" fill="#ffffff" stroke="#e0ddd8" stroke-width="1.5"/>
+        <text x="350" y="141" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">02 &middot; Data foundation</text>
+        <text x="350" y="161" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">CRM hygiene, tiered data,</text>
+        <text x="350" y="177" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">governance and prep set right</text>
+        <line x1="454" y1="125" x2="486" y2="95" stroke="#B5654A" stroke-width="2" marker-end="url(#ladder-arrow)"/>
+        <rect x="492" y="70" width="200" height="170" rx="8" fill="#ffffff" stroke="#e0ddd8" stroke-width="1.5"/>
+        <text x="592" y="96" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">03 &middot; Service delivery</text>
+        <text x="592" y="116" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">proposals &rarr; delivery &rarr;</text>
+        <text x="592" y="132" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">reporting, systemised</text>
+        <line x1="696" y1="80" x2="728" y2="50" stroke="#B5654A" stroke-width="2" marker-end="url(#ladder-arrow)"/>
+        <rect x="734" y="25" width="198" height="215" rx="8" fill="#1a1a1a"/>
+        <text x="833" y="53" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#ffffff">04 &middot; Scale</text>
+        <text x="833" y="73" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#d8d4cf">agents building agents,</text>
+        <text x="833" y="89" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#d8d4cf">compounding capability</text>
+      </svg>
+      <p style="margin-top:var(--space-sm);max-width:740px;">Most AI engagements start with the plumbing and ask the client to fund months of groundwork on faith. We run it the other way: the go-to-market install produces revenue first, and that revenue underwrites the data foundation, the service-delivery systems, and the scale work &mdash; each phase fixed-priced through the <a href="/#who-we-work-with">Horizon Method</a>, each one standing on the last.</p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- FRONTIER -->
+    <section class="section container fade-in">
+      <h2>Built on the frontier, improving daily</h2>
+      <p style="font-size:1.0625rem;line-height:1.7;max-width:740px;">Theo runs on the current Claude 5 family &mdash; Fable 5 today &mdash; and the rails are model-agnostic by design: when a better model ships, the fleet adopts it without a rebuild. The system also improves itself operationally: agents build and refine agents inside the same governed workspace, with humans reviewing anything before it is promoted to production. The stack the outbound industry standardised on was assembled between 2020 and 2024, before frontier agents existed. The gap compounds every quarter.</p>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- FAQ -->
+    <section class="section container fade-in">
+      <h2>Common questions about Theo and owned GTM infrastructure</h2>
+      <div class="faq-accordion" style="max-width:760px;margin:0 auto;" data-testid="faq-infrastructure">
+        <details class="faq-item" data-testid="faq-infra-what">
+          <summary class="faq-question">What is AI go-to-market infrastructure?</summary>
+          <div class="faq-answer"><p>An agent system that runs the assembly work of going to market &mdash; signal monitoring, market research, lead verification, outreach drafting, proposal and tender assembly, reporting &mdash; deployed into the systems you already run rather than rented as a SaaS subscription. You own the engine: the agents, prompts, playbooks, and logs live in your tenancy, and a human approves everything that sends.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-infra-agency">
+          <summary class="faq-question">How is this different from hiring a cold email agency?</summary>
+          <div class="faq-answer"><p>Outbound agencies typically run your campaigns on a rented stack of 2020-era SaaS tools bundled into a $5,000+ monthly retainer with a 3&ndash;6 month minimum &mdash; $15,000&ndash;$30,000 before you can properly evaluate results &mdash; and when the engagement ends, the engine leaves with the agency. Theo is installed into your tenancy as infrastructure you own, works through your real email identity on both warm and cold relationships, is fixed-priced in phases with evidence at every gate, and stays &mdash; fully documented &mdash; if we part ways.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-infra-stack">
+          <summary class="faq-question">How is Theo different from a Clay, Smartlead, or Instantly stack?</summary>
+          <div class="faq-answer"><p>Those tools each solve one slice &mdash; enrichment, sequencing, sending volume &mdash; and someone still has to wire them together, pay for each seat, and police what the stack does. Theo is one governed fleet built on current frontier models: research, verification, drafting, proposals, and reporting in a single system with shared context, deployed into your tenancy. No per-tool subscriptions to stack, and the governance is structural: guards before drafting, drafts-only outbound, read-only CRM by default, append-only log.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-infra-spam">
+          <summary class="faq-question">Is AI outreach compliant with the Australian Spam Act?</summary>
+          <div class="faq-answer"><p>The architecture is built for it. Nothing emails itself &mdash; output is drafts-only and a human presses send, which keeps a person accountable for consent, identification, and unsubscribe requirements under the Spam Act 2003 (and CAN-SPAM or GDPR where relevant). Off-ICP contacts never see copy because guards run before drafting, stale triggers fail loudly rather than firing, and the append-only run log means you can always answer why any message was drafted.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-infra-leave">
+          <summary class="faq-question">What happens to the system if we stop working with you?</summary>
+          <div class="faq-answer"><p>You keep it. The infrastructure is deployed into your tenancy from the start, and everything &mdash; agents, prompts, playbooks, run logs, documentation &mdash; is yours with full export. Partner Tier operation is month-to-month on 30 days' notice. That's the structural difference between infrastructure you own and a retainer or subscription you rent.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-infra-results">
+          <summary class="faq-question">What results is Theo getting?</summary>
+          <div class="faq-answer"><p>Early production cohorts, measured honestly: a client campaign booked <strong>3 qualified meetings with high-ticket prospects from its first 50 emails</strong> in one week &mdash; a 6% meeting rate &mdash; and running on our own pipeline, Theo booked <strong>4 meetings in its first week</strong>. These are small, precision batches by design: every contact verified before drafting, copy personalised from real research, sends from the real sender's identity with a human pressing send. The volume playbook typically books a meeting per few hundred sends from secondary domains; precision inverts that.</p></div>
+        </details>
+        <details class="faq-item" data-testid="faq-infra-models">
+          <summary class="faq-question">Which AI models does Theo run on?</summary>
+          <div class="faq-answer"><p>Current frontier models &mdash; the Claude 5 family (including Fable 5) today &mdash; and the rails are model-agnostic by design, so the system improves as models do. Theo also self-improves operationally: agents building and refining agents inside the same governed workspace, with human review before anything is promoted to production.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <div class="accent-rule container"></div>
+
+    <!-- CROSS-LINK -->
+    <section class="section container fade-in">
+      <h2>Adjacent reading</h2>
+      <div class="two-paths">
+        <div class="path">
+          <h3>AI infrastructure as a service</h3>
+          <p>The homepage overview of the model: lay the infrastructure, implement it, train the team.</p>
+          <a href="/#infrastructure" class="link-arrow">See the overview &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>AI for engineering &amp; advisory firms</h3>
+          <p>The same governance rails applied to a compliance-grade vertical &mdash; the firm brain, ring-fenced tiers, engineer sign-off.</p>
+          <a href="/for/engineering-firms" class="link-arrow">See the vertical &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>Client case studies</h3>
+          <p>Deployed systems with measured outcomes across ten verticals.</p>
+          <a href="/work" class="link-arrow">See the work &rarr;</a>
+        </div>
+        <div class="path">
+          <h3>AI Visibility Scorecard</h3>
+          <p>How AI engines see your business today &mdash; the demand side of the same GTM problem.</p>
+          <a href="/scorecard" class="link-arrow">Check your visibility &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand"><img src="/logo.webp" alt="Tech Horizon Labs" class="footer-logo" width="24" height="24"> Tech Horizon Labs</span>
+        Noosa Heads, Queensland<br>
+        ABN 80 976 285 425<br>
+        hello@techhorizonlabs.com
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">For</strong>
+        <a href="/for/vcs-and-pe">VCs &amp; PE</a>
+        <a href="/for/wealth-management">Wealth management</a>
+        <a href="/for/manufacturing">Manufacturing</a>
+        <a href="/for/engineering-firms">Engineering firms</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Locations</strong>
+        <a href="/locations/brisbane">Brisbane</a>
+        <a href="/locations/sunshine-coast">Sunshine Coast</a>
+        <a href="/locations/gold-coast">Gold Coast</a>
+        <a href="/locations/queensland">Queensland</a>
+      </div>
+      <div class="footer-col">
+        <strong style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);display:block;margin-bottom:0.75rem;">Company</strong>
+        <a href="/about">About</a>
+        <a href="/work">Work</a>
+        <a href="/infrastructure">Infrastructure</a>
+        <a href="/academy">Academy</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.min.js" defer></script>
+</body>
+</html>

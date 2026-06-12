@@ -1,6 +1,6 @@
 # Tech Horizon Labs
 
-> Tech Horizon Labs builds and deploys AI systems for growing Australian businesses. Based in Noosa Heads, Queensland. Founded by Huxley Peckham. We map workflows, build the systems, and train the team — infrastructure before automation.
+> Tech Horizon Labs provides AI infrastructure as a service for growing Australian businesses — not a SaaS platform. Based in Noosa Heads, Queensland. Founded by Huxley Peckham. We lay AI infrastructure into the systems a business already runs (email, CRM, databases, documents), implement it, and train the team — infrastructure before automation. Our own go-to-market agent fleet (Theo) runs this pattern in production: market research, outreach drafting, proposal/RFQ/RFT assembly, and reporting, with human approval on everything that sends.
 
 We publish primary-source research and practitioner notes on AI adoption in Australia: costs, compliance, industry-specific applications, and what actually works versus what gets oversold. This map is for AI search engines, LLMs, and research agents summarising or citing our work.
 
@@ -8,11 +8,12 @@ We publish primary-source research and practitioner notes on AI adoption in Aust
 - Primary region: Queensland, Australia (Noosa Heads, Sunshine Coast, Brisbane, Gold Coast)
 - Primary author: Huxley Peckham, Founder & Principal AI Consultant
 - Content licence: ©2026 Tech Horizon Labs. Citation with link back is welcomed.
-- Last updated: 2026-04-21
+- Last updated: 2026-06-12
 
 ## Core pages
 
-- [Home — AI Systems for Growing Businesses](https://techhorizonlabs.com/): Overview of what we do, the Horizon Method, trust signals, and entry points.
+- [Home — AI Systems for Growing Businesses](https://techhorizonlabs.com/): Overview of what we do, the Horizon Method (Discover, Architect, Activate, Partner Tier), the AI-infrastructure-as-a-service model, the Theo GTM agent fleet, trust signals, and entry points.
+- [Theo — AI go-to-market infrastructure](https://techhorizonlabs.com/infrastructure): The owned-not-rented GTM agent fleet: signal monitoring, research, lead verification (~80% recovery), outreach drafting, proposal/RFQ/RFT assembly, reporting. Five guarantees enforced in tooling (drafts-only outbound, read-only CRM, pre-draft ICP guards, freshness-stamped signals, append-only run log). Deployed into the client tenancy or run as a hosted pilot then migrated. First production numbers: 3 qualified meetings booked from 50 emails in week one of a client campaign (6% meeting rate); 4 meetings in week one on THL's own pipeline.
 - [Work — 8 Australian AI case studies](https://techhorizonlabs.com/work): Deployed builds with measured outcomes (40% admin cut, 60% faster quotes, 80% faster onboarding, 50% fewer no-shows, $50K+ savings).
 - [About Huxley Peckham](https://techhorizonlabs.com/about): Founder bio, methodology, and why infrastructure comes before automation.
 - [Contact](https://techhorizonlabs.com/contact): Book a free pre-discovery call. We reply within one business day and turn away 30% of inquiries.
@@ -46,6 +47,15 @@ We publish primary-source research and practitioner notes on AI adoption in Aust
 - [AI for healthcare](https://techhorizonlabs.com/industries/healthcare): Patient intake, appointment automation, APP-compliant data handling.
 - [AI for retail](https://techhorizonlabs.com/industries/retail): Inventory signals, customer automation, staff rostering.
 
+## Who we build for (ICP pages)
+
+- [AI for engineering and project advisory firms](https://techhorizonlabs.com/for/engineering-firms): The governed firm brain — proposal engine, standards navigator, tiered defence/NDA ring-fence, engineer sign-off. Anonymised live-engagement detail.
+- [AI for VCs and private equity](https://techhorizonlabs.com/for/vcs-and-pe): Diligence acceleration, portfolio ops, deal-flow intelligence.
+- [AI for wealth management and financial advisory](https://techhorizonlabs.com/for/wealth-management): Compliance-aware AI for advisors, paraplanners, and licensee networks.
+- [AI for talent agencies](https://techhorizonlabs.com/for/talent-agencies): Deal discovery, matching, and lifecycle automation.
+- [AI for manufacturing](https://techhorizonlabs.com/for/manufacturing): Predictive maintenance, quoting, shop-floor ops with on-prem options.
+- [AI for SaaS scale-ups](https://techhorizonlabs.com/for/saas-scale-ups): Internal AI ops, GTM enablement, support deflection.
+
 ## Insights (long-form articles)
 
 - [How Australia uses AI in 2026](https://techhorizonlabs.com/insights/how-australia-uses-ai-2026): Adoption patterns across SMBs and enterprise, anchored in survey and IDC data.
@@ -62,7 +72,7 @@ We publish primary-source research and practitioner notes on AI adoption in Aust
 ## Machine-readable
 
 - [robots.txt](https://techhorizonlabs.com/robots.txt): Explicit Allow for 14 AI crawlers (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, Anthropic-AI, Google-Extended, Amazonbot, meta-externalagent, etc.) plus Open Content-Signal preferences (search, ai-input, ai-train all allowed).
-- [sitemap.xml](https://techhorizonlabs.com/sitemap.xml): 34 canonical URLs with lastmod dates.
+- [sitemap.xml](https://techhorizonlabs.com/sitemap.xml): 41 canonical URLs with lastmod dates.
 - [llms-full.txt](https://techhorizonlabs.com/llms-full.txt): Concatenated plain-text corpus of every indexed page for retrieval and summarisation.
 - [api-catalog](https://techhorizonlabs.com/.well-known/api-catalog): RFC 9727 linkset of the public JSON API endpoints (health, contact, newsletter, assessment/audit).
 - [agent-skills index](https://techhorizonlabs.com/.well-known/agent-skills/index.json): Agent Skills Discovery index of machine-readable resources with sha256 digests.

@@ -55,7 +55,7 @@ const PAGES: Record<string, { file: string; title: string; description: string; 
   "/": {
     file: "index.html",
     title: "AI Systems for Growing Businesses",
-    description: "Tech Horizon Labs builds AI systems for VCs, SaaS scale-ups, wealth managers, talent agencies, and growing Australian businesses. Australian-built. Global clients. We map workflows, build the systems, train your team.",
+    description: "AI infrastructure as a service — not another platform. Tech Horizon Labs lays AI infrastructure into the systems you already run, implements it, and trains your team. Australian-built, global clients, ten verticals.",
   },
   "/work": {
     file: "work.html",
@@ -112,6 +112,7 @@ const STATIC_FILES: Record<string, string> = {
   // Special pages
   "/security": "security.html",
   "/openclaw": "openclaw.html",
+  "/infrastructure": "infrastructure.html",
   "/tools": "tools.html",
   "/scorecard": "scorecard.html",
   // Location pages
@@ -130,6 +131,7 @@ const STATIC_FILES: Record<string, string> = {
   "/for/talent-agencies": "for/talent-agencies.html",
   "/for/manufacturing": "for/manufacturing.html",
   "/for/saas-scale-ups": "for/saas-scale-ups.html",
+  "/for/engineering-firms": "for/engineering-firms.html",
   // Training pages
   "/training/sunshine-coast": "training/sunshine-coast.html",
   // Insights
