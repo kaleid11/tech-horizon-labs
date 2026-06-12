@@ -265,21 +265,35 @@
 
     <!-- HERO — particles are in chaos mode here -->
     <section class="hero container">
-      <h1>AI systems that work for <span class="icp-rotator" aria-live="polite" data-testid="icp-rotator">growing businesses</span>.</h1>
-      <noscript>
-        <p class="icp-noscript">We build AI systems for: growing businesses, VCs and private equity, wealth managers and financial advisors, SaaS scale-ups, talent agencies, legal firms, construction and trades, healthcare and allied health, manufacturing, and engineering and project advisory firms.</p>
-      </noscript>
-      <p class="subline">We map your workflows, find the bottleneck, build the fix, and train your team to run it.</p>
-      <p class="trust-proof" data-testid="text-trust-proof">Working with VC firms, SaaS scale-ups, talent agencies, wealth advisors and Australian SMBs.</p>
-      <p><a href="/contact" class="link-arrow">Book a free discovery call &rarr;</a></p>
-      <div class="trust-row" aria-label="Quick facts">
-        <span class="trust-stat">15+ deployments</span>
+      <div class="hero-split">
+        <div class="hero-copy">
+          <h1>AI systems that work for <span class="icp-rotator" aria-live="polite" data-testid="icp-rotator">growing businesses</span>.</h1>
+          <noscript>
+            <p class="icp-noscript">We build AI systems for: growing businesses, VCs and private equity, wealth managers and financial advisors, SaaS scale-ups, talent agencies, legal firms, construction and trades, healthcare and allied health, manufacturing, and engineering and project advisory firms.</p>
+          </noscript>
+          <p class="subline">We map your workflows, find the bottleneck, build the fix, and train your team to run it. AI infrastructure you own &mdash; not another platform.</p>
+          <p><a href="/contact" class="link-arrow">Book a free discovery call &rarr;</a></p>
+        </div>
+        <aside class="hero-runlog" id="hero-runlog" aria-label="Theo agent run log — the governed outreach pattern, replayed">
+          <div class="hero-runlog-head"><span class="hero-runlog-dot" aria-hidden="true"></span>Theo &middot; run log &mdash; the pattern, replayed</div>
+          <div class="hero-runlog-body" data-testid="hero-runlog">
+            <div class="runlog-line"><span class="rl-mark">&#10003;</span><span class="rl-step">signal</span><span class="rl-text">pricing-page revisit &middot; fresh (2h)</span></div>
+            <div class="runlog-line"><span class="rl-mark">&#10003;</span><span class="rl-step">verify</span><span class="rl-text">lead confirmed &middot; 3 sources</span></div>
+            <div class="runlog-line"><span class="rl-mark">&#10003;</span><span class="rl-step">guard</span><span class="rl-text">ICP fit &middot; proceed</span></div>
+            <div class="runlog-line"><span class="rl-mark">&#9998;</span><span class="rl-step">draft</span><span class="rl-text">outreach v1 &rarr; review queue</span></div>
+            <div class="runlog-line rl-human"><span class="rl-mark">&#9679;</span><span class="rl-step">human</span><span class="rl-text">approved &middot; a person presses send</span></div>
+            <div class="runlog-line"><span class="rl-mark">&#8635;</span><span class="rl-step">log</span><span class="rl-text">appended &middot; reasons recorded</span></div>
+          </div>
+        </aside>
+      </div>
+      <div class="trust-row" aria-label="Proof at a glance" style="margin-top:2rem;">
+        <span class="trust-stat">3 meetings from 50 emails</span>
         <span class="trust-sep" aria-hidden="true">·</span>
-        <span class="trust-stat">9 verticals</span>
+        <span class="trust-stat">40% admin cut</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-stat">15+ deployments &middot; 10 verticals</span>
         <span class="trust-sep" aria-hidden="true">·</span>
         <a class="trust-stat" href="https://aidirectory.industry.gov.au/organisation/tech-horizon-labs" target="_blank" rel="noopener noreferrer">Listed on industry.gov.au</a>
-        <span class="trust-sep" aria-hidden="true">·</span>
-        <span class="trust-stat">Australian-built · Global clients</span>
       </div>
     </section>
 
@@ -288,160 +302,97 @@
     <!-- WHO WE WORK WITH — ICP grid (crawlable static text for every rotator value) -->
     <section class="section container-wide fade-in" id="who-we-work-with" aria-labelledby="who-we-work-with-heading">
       <h2 id="who-we-work-with-heading">Who we work with</h2>
-      <p class="subline" style="margin-bottom: var(--space-sm);">Ten verticals. One method. Australian-built, working with clients globally.</p>
-      <div class="icp-grid stagger">
-        <a class="icp-card fade-in" href="/assessment" data-testid="icp-card-growing-businesses">
-          <div class="icp-card-title">Growing businesses</div>
-          <p>SMBs and scale-ups with workflow friction. Start with the AI Readiness Assessment.</p>
-        </a>
-        <a class="icp-card fade-in" href="/for/vcs-and-pe" data-testid="icp-card-vcs-and-pe">
-          <div class="icp-card-title">VCs and private equity</div>
-          <p>Diligence acceleration, portfolio ops, deal-flow intelligence. Built for investment teams.</p>
-        </a>
-        <a class="icp-card fade-in" href="/for/wealth-management" data-testid="icp-card-wealth-management">
-          <div class="icp-card-title">Wealth management &amp; financial advisory</div>
-          <p>Compliance-aware AI for advisors, paraplanners, and licensee networks.</p>
-        </a>
-        <a class="icp-card fade-in" href="/for/saas-scale-ups" data-testid="icp-card-saas-scale-ups">
-          <div class="icp-card-title">SaaS scale-ups</div>
-          <p>Internal AI ops, GTM enablement, support deflection. Without burning your dev team.</p>
-        </a>
-        <a class="icp-card fade-in" href="/for/talent-agencies" data-testid="icp-card-talent-agencies">
-          <div class="icp-card-title">Talent agencies</div>
-          <p>Deal discovery, matching, intel, deal lifecycle automation. See the live engagement.</p>
-        </a>
-        <a class="icp-card fade-in" href="/industries/legal" data-testid="icp-card-legal">
-          <div class="icp-card-title">Legal firms</div>
-          <p>Data-residency-conscious AI for principals and practice managers.</p>
-        </a>
-        <a class="icp-card fade-in" href="/industries/construction" data-testid="icp-card-construction">
-          <div class="icp-card-title">Construction &amp; trades</div>
-          <p>Offline quoting, doc processing, site-to-office workflow automation.</p>
-        </a>
-        <a class="icp-card fade-in" href="/industries/healthcare" data-testid="icp-card-healthcare">
-          <div class="icp-card-title">Healthcare &amp; allied health</div>
-          <p>Private, on-device AI that respects clinical data sensitivity.</p>
-        </a>
-        <a class="icp-card fade-in" href="/for/manufacturing" data-testid="icp-card-manufacturing">
-          <div class="icp-card-title">Manufacturing</div>
-          <p>Predictive maintenance, sensor data, downtime reduction.</p>
-        </a>
-        <a class="icp-card fade-in" href="/for/engineering-firms" data-testid="icp-card-engineering">
-          <div class="icp-card-title">Engineering &amp; project advisory</div>
-          <p>The governed firm brain: proposal engine, standards navigator, defence-grade ring-fencing.</p>
-        </a>
+      <p class="subline" style="margin-bottom: var(--space-sm);">Ten verticals. One method. Each link goes to the playbook for that world.</p>
+      <div class="chip-grid" data-testid="vertical-chips">
+        <a class="chip" href="/assessment" data-testid="icp-card-growing-businesses">Growing businesses</a>
+        <a class="chip" href="/for/vcs-and-pe" data-testid="icp-card-vcs-and-pe">VCs &amp; private equity</a>
+        <a class="chip" href="/for/wealth-management" data-testid="icp-card-wealth-management">Wealth management</a>
+        <a class="chip" href="/for/saas-scale-ups" data-testid="icp-card-saas-scale-ups">SaaS scale-ups</a>
+        <a class="chip" href="/for/talent-agencies" data-testid="icp-card-talent-agencies">Talent agencies</a>
+        <a class="chip" href="/industries/legal" data-testid="icp-card-legal">Legal firms</a>
+        <a class="chip" href="/industries/construction" data-testid="icp-card-construction">Construction &amp; trades</a>
+        <a class="chip" href="/industries/healthcare" data-testid="icp-card-healthcare">Healthcare &amp; allied health</a>
+        <a class="chip" href="/for/manufacturing" data-testid="icp-card-manufacturing">Manufacturing</a>
+        <a class="chip chip-accent" href="/for/engineering-firms" data-testid="icp-card-engineering">Engineering &amp; project advisory</a>
       </div>
     </section>
 
     <div class="accent-rule container"></div>
 
-    <!-- THE HORIZON METHOD — particles organize into clusters -->
+    <!-- THE SYSTEM — Horizon Method installs infrastructure you own -->
     <div class="warm-band">
-      <section class="section container-wide fade-in">
-        <h2>The Horizon Method</h2>
-        <p class="subline" style="margin-bottom:var(--space-sm);">In plain terms: map the work, build the system, train the team &mdash; then stay on as your standing AI partner. Fixed-priced at every gate.</p>
-        <div class="method-grid stagger">
-          <div class="method-phase fade-in">
-            <div class="method-number" aria-hidden="true">01</div>
-            <div class="method-title">Discover</div>
-            <div class="method-duration">2&ndash;3 weeks &middot; $6,000 fixed</div>
-            <p>The feasibility evaluation: every tool, workflow, and bottleneck mapped, data tiered, use cases ranked. You get the architecture, a prioritised roadmap, a working pilot, and a fixed build quote &mdash; yours to keep regardless.</p>
-          </div>
-          <div class="method-phase fade-in">
-            <div class="method-number" aria-hidden="true">02</div>
-            <div class="method-title">Architect</div>
-            <div class="method-duration">Fixed phases from $5,000</div>
-            <p>The governed foundation &mdash; workspace, AI policy, security layer &mdash; then a skills library built on your real material. Each phase fixed-priced after Discover sizes it, approved one at a time.</p>
-          </div>
-          <div class="method-phase fade-in">
-            <div class="method-number" aria-hidden="true">03</div>
-            <div class="method-title">Activate</div>
-            <div class="method-duration">From ~$4,000</div>
-            <p>Working systems in your workflow. Training, a pilot group on live work, written playbooks your team keeps. We don't leave until the team owns it.</p>
-          </div>
-          <div class="method-phase fade-in">
-            <div class="method-number" aria-hidden="true">04</div>
-            <div class="method-title">Partner Tier</div>
-            <div class="method-duration">$2,000/mo &middot; month-to-month</div>
-            <p>We stay on as the standing superintendent: strategy sessions, same or next business day support, and a work-credit pool. 30 days' notice, no lock-in.</p>
-          </div>
+      <section class="section container-wide fade-in" id="infrastructure" aria-labelledby="infrastructure-heading">
+        <h2 id="infrastructure-heading">One method. Infrastructure you own.</h2>
+        <p class="subline" style="max-width:740px;margin-bottom:var(--space-sm);">The Horizon Method &mdash; map the work, build the system, train the team &mdash; installs AI infrastructure as a service across the email, CRM, and documents you already run. Not a SaaS platform. Fixed-priced at every gate, owned by you at every step.</p>
+
+        <svg class="sys-diagram-svg" viewBox="0 0 940 300" role="img" aria-label="The Horizon Method — Discover, Architect, Activate, Partner Tier — installs the Theo agent fleet across your existing systems, with human approval before anything ships" style="width:100%;height:auto;display:block;">
+          <defs>
+            <marker id="sys-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#B5654A"/>
+            </marker>
+          </defs>
+          <!-- Row 1: the method -->
+          <rect x="4" y="14" width="212" height="78" rx="8" fill="hsl(18 45% 92%)" stroke="#B5654A" stroke-width="2"/>
+          <text x="110" y="40" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#9E5740">01 &middot; Discover</text>
+          <text x="110" y="59" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#1a1a1a">feasibility evaluation &middot; $6K fixed</text>
+          <text x="110" y="76" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">2&ndash;3 weeks, ends in a working pilot</text>
+          <line x1="220" y1="53" x2="248" y2="53" stroke="#B5654A" stroke-width="2" marker-end="url(#sys-arrow)"/>
+          <rect x="254" y="14" width="212" height="78" rx="8" fill="#ffffff" stroke="#e0ddd8" stroke-width="1.5"/>
+          <text x="360" y="40" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">02 &middot; Architect</text>
+          <text x="360" y="59" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">governed build &middot; phases from $5K</text>
+          <text x="360" y="76" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">approved one gate at a time</text>
+          <line x1="470" y1="53" x2="498" y2="53" stroke="#B5654A" stroke-width="2" marker-end="url(#sys-arrow)"/>
+          <rect x="504" y="14" width="212" height="78" rx="8" fill="#ffffff" stroke="#e0ddd8" stroke-width="1.5"/>
+          <text x="610" y="40" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">03 &middot; Activate</text>
+          <text x="610" y="59" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">training &amp; playbooks &middot; from $4K</text>
+          <text x="610" y="76" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">your team owns it</text>
+          <line x1="720" y1="53" x2="748" y2="53" stroke="#B5654A" stroke-width="2" marker-end="url(#sys-arrow)"/>
+          <rect x="754" y="14" width="182" height="78" rx="8" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.5"/>
+          <text x="845" y="40" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">04 &middot; Partner Tier</text>
+          <text x="845" y="59" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">$2K/mo &middot; month-to-month</text>
+          <text x="845" y="76" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">30 days' notice, no lock-in</text>
+          <!-- Connector -->
+          <line x1="110" y1="92" x2="110" y2="142" stroke="#B5654A" stroke-width="2" marker-end="url(#sys-arrow)"/>
+          <text x="126" y="124" font-family="Instrument Sans, sans-serif" font-size="11" font-style="italic" fill="#6b6b6b">the method installs the infrastructure</text>
+          <!-- Row 2: the infrastructure -->
+          <rect x="4" y="148" width="212" height="78" rx="8" fill="#ffffff" stroke="#e0ddd8" stroke-width="1.5"/>
+          <text x="110" y="178" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">Your existing systems</text>
+          <text x="110" y="198" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">email &middot; CRM &middot; databases &middot; docs</text>
+          <line x1="220" y1="187" x2="248" y2="187" stroke="#B5654A" stroke-width="2" marker-end="url(#sys-arrow)"/>
+          <rect x="254" y="140" width="212" height="94" rx="8" fill="hsl(18 45% 92%)" stroke="#B5654A" stroke-width="2"/>
+          <text x="360" y="170" text-anchor="middle" font-family="Fraunces, serif" font-size="17" font-weight="600" fill="#9E5740">Theo</text>
+          <text x="360" y="191" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#1a1a1a">the agent fleet</text>
+          <text x="360" y="208" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">research &middot; outreach &middot; proposals &middot; admin</text>
+          <line x1="470" y1="187" x2="498" y2="187" stroke="#B5654A" stroke-width="2" marker-end="url(#sys-arrow)"/>
+          <rect x="504" y="148" width="212" height="78" rx="8" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.5"/>
+          <text x="610" y="178" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">Human approval</text>
+          <text x="610" y="198" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">nothing sends without sign-off</text>
+          <line x1="720" y1="187" x2="748" y2="187" stroke="#B5654A" stroke-width="2" marker-end="url(#sys-arrow)"/>
+          <rect x="754" y="148" width="182" height="78" rx="8" fill="#ffffff" stroke="#e0ddd8" stroke-width="1.5"/>
+          <text x="845" y="178" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="13.5" font-weight="600" fill="#1a1a1a">What ships</text>
+          <text x="845" y="198" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11" fill="#6b6b6b">pipeline &middot; proposals &middot; reports</text>
+          <!-- Rail -->
+          <rect x="4" y="254" width="932" height="34" rx="6" fill="#1B2733"/>
+          <text x="470" y="276" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="600" fill="#ffffff">Owned by you at every step &mdash; agents, prompts, playbooks, and logs live in your tenancy</text>
+        </svg>
+
+        <!-- Compact fallback: shown under 640px where the SVG text is illegible;
+             also the crawlable/agent-readable copy of the diagram (SVG is stripped from .md) -->
+        <div class="sys-diagram-mobile">
+          <ol class="sys-steps">
+            <li><strong>01 &middot; Discover</strong> &mdash; feasibility evaluation, $6K fixed. 2&ndash;3 weeks, ends in a working pilot.</li>
+            <li><strong>02 &middot; Architect</strong> &mdash; governed build, phases from $5K, approved one gate at a time.</li>
+            <li><strong>03 &middot; Activate</strong> &mdash; training and playbooks from $4K. Your team owns it.</li>
+            <li><strong>04 &middot; Partner Tier</strong> &mdash; $2K/mo, month-to-month, 30 days' notice, no lock-in.</li>
+          </ol>
+          <p class="sys-flow">Your existing systems (email &middot; CRM &middot; databases &middot; docs) feed <strong>Theo, the agent fleet</strong> (research &middot; outreach &middot; proposals &middot; admin). A human approves &mdash; nothing sends without sign-off &mdash; and what ships is pipeline, proposals, and reports.</p>
+          <p class="sys-rail">Owned by you at every step &mdash; agents, prompts, playbooks, and logs live in your tenancy.</p>
         </div>
+
+        <p style="margin-top:var(--space-sm);max-width:740px;">First production numbers: <strong>3 qualified meetings from 50 emails</strong> in week one of a client campaign; 4 meetings in week one on our own pipeline. Precision, not volume.</p>
+        <p style="margin-top:var(--space-xs);"><a href="/infrastructure" class="link-arrow">Explore the full GTM infrastructure &mdash; results, guarantees, pipeline, deployment models &rarr;</a></p>
       </section>
     </div>
-
-    <div class="accent-rule container"></div>
-
-    <!-- AI INFRASTRUCTURE AS A SERVICE + THEO -->
-    <section class="section container-wide fade-in" id="infrastructure" aria-labelledby="infrastructure-heading">
-      <h2 id="infrastructure-heading">AI infrastructure as a service &mdash; not another platform</h2>
-      <p class="subline" style="max-width:740px;margin-bottom:var(--space-sm);">We don't operate on a SaaS model. There is no platform to migrate to and no per-seat product we're reselling. We lay AI infrastructure across the systems you already run &mdash; your email, your CRM, your databases, your document estate &mdash; implement it into your workflows, and train your staff to run it. You own the result.</p>
-
-      <svg viewBox="0 0 920 130" role="img" aria-label="Flow diagram: your existing systems feed the Theo agent fleet, a human approves every output, and pipeline, proposals, and reports come out" style="width:100%;height:auto;display:block;margin-bottom:var(--space-sm);">
-        <defs>
-          <marker id="flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#B5654A"/>
-          </marker>
-        </defs>
-        <rect x="4" y="30" width="200" height="70" rx="8" fill="#ffffff" stroke="#e0ddd8" stroke-width="1.5"/>
-        <text x="104" y="58" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="14" font-weight="600" fill="#1a1a1a">Your existing systems</text>
-        <text x="104" y="78" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11.5" fill="#6b6b6b">email &middot; CRM &middot; databases &middot; docs</text>
-        <line x1="208" y1="65" x2="246" y2="65" stroke="#B5654A" stroke-width="2" marker-end="url(#flow-arrow)"/>
-        <rect x="252" y="22" width="216" height="86" rx="8" fill="hsl(18 45% 92%)" stroke="#B5654A" stroke-width="2"/>
-        <text x="360" y="50" text-anchor="middle" font-family="Fraunces, serif" font-size="17" font-weight="600" fill="#9E5740">Theo</text>
-        <text x="360" y="70" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11.5" fill="#1a1a1a">the GTM agent fleet</text>
-        <text x="360" y="88" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11.5" fill="#6b6b6b">research &middot; outreach &middot; proposals &middot; admin</text>
-        <line x1="472" y1="65" x2="510" y2="65" stroke="#B5654A" stroke-width="2" marker-end="url(#flow-arrow)"/>
-        <rect x="516" y="30" width="178" height="70" rx="8" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="605" y="58" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="14" font-weight="600" fill="#1a1a1a">Human approval</text>
-        <text x="605" y="78" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11.5" fill="#6b6b6b">nothing sends without sign-off</text>
-        <line x1="698" y1="65" x2="736" y2="65" stroke="#B5654A" stroke-width="2" marker-end="url(#flow-arrow)"/>
-        <rect x="742" y="30" width="174" height="70" rx="8" fill="#ffffff" stroke="#e0ddd8" stroke-width="1.5"/>
-        <text x="829" y="58" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="14" font-weight="600" fill="#1a1a1a">What ships</text>
-        <text x="829" y="78" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="11.5" fill="#6b6b6b">pipeline &middot; proposals &middot; reports</text>
-      </svg>
-
-      <div class="report-preview fade-in">
-        <div class="report-window">
-          <div class="report-header">
-            <span class="report-badge">LIVE</span>
-            <span class="report-title">Theo &mdash; the go-to-market infrastructure we run on our own business</span>
-          </div>
-          <div class="report-body">
-            <div class="report-section report-section-1">
-              <div class="report-section-label">1 &middot; Plugs into what you already run</div>
-              <div class="report-phases">
-                <div class="report-phase"><strong>Email &amp; inboxes</strong><br>Your existing addresses and history &mdash; not a new sending platform. Cold and warm outreach drafted in your voice.</div>
-                <div class="report-phase"><strong>CRM &amp; databases</strong><br>Reads and updates the systems of record you already have. No migration, no parallel pipeline.</div>
-                <div class="report-phase"><strong>Website &amp; document estate</strong><br>Your site, your proposals, your templates &mdash; the raw material the agents work from.</div>
-              </div>
-            </div>
-            <div class="report-section report-section-2">
-              <div class="report-section-label">2 &middot; What the agent fleet does</div>
-              <div class="report-table">
-                <div class="report-row report-row-header">
-                  <span>Capability</span><span>What it looks like in production</span>
-                </div>
-                <div class="report-row"><span>Market identification &amp; research</span><span>Finds and researches your markets, surfaces ICP angles, and monitors buying signals continuously</span></div>
-                <div class="report-row"><span>Lead verification</span><span>Multi-source checks recover roughly 80% of the leads single-source verification wrongly rejects</span></div>
-                <div class="report-row"><span>Outreach &amp; campaign optimisation</span><span>Cold and warm sequences drafted for approval; campaign and website angles tuned from what the research finds</span></div>
-                <div class="report-row"><span>Proposals &amp; tenders</span><span>RFQ, RFT, and RFP responses assembled from your own corpus, through to the finished proposal</span></div>
-                <div class="report-row"><span>Reporting &amp; admin</span><span>The paperwork around the real work &mdash; reports drafted, records filed back, nothing lost</span></div>
-              </div>
-            </div>
-            <div class="report-section report-section-3">
-              <div class="report-section-label">3 &middot; The rails (always on)</div>
-              <div class="report-phases">
-                <div class="report-phase"><strong>Human approval</strong><br>Drafts-only outbound is a hard rail in the tooling, not a habit. A person signs off everything that sends.</div>
-                <div class="report-phase"><strong>Disclosed identity</strong><br>Theo operates under his own AI-disclosed identity. No pretending to be human, ever.</div>
-                <div class="report-phase"><strong>Owned by you</strong><br>When we install this pattern for a client, the infrastructure, prompts, and playbooks are yours &mdash; documented, exportable, no lock-in.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p style="margin-top:var(--space-sm);">This is the system that produced our own proposals, audits, and outreach &mdash; running in production, not a demo. In its first production week on a client campaign, Theo booked <strong>3 qualified meetings from just 50 emails</strong>; on our own pipeline, 4 meetings in week one. Precision, not volume. We install the same pattern into your business through the <a href="/#who-we-work-with">vertical engagements</a> above, sized by the Horizon Method.</p>
-      <p style="margin-top:var(--space-xs);"><a href="/infrastructure" class="link-arrow">Explore the full GTM infrastructure &mdash; results, guarantees, pipeline, and deployment models &rarr;</a></p>
-    </section>
 
     <div class="accent-rule container"></div>
 
@@ -495,32 +446,30 @@
 
     <!-- RESULTS — particles form tight network here -->
     <section class="section container-wide fade-in">
-      <h2>Results</h2>
-
+      <h2>Measured results</h2>
       <div class="results-grid stagger">
         <div class="result-card fade-in">
           <div class="metric" data-value="40" data-suffix="%">40%</div>
           <div class="metric-label">admin workload cut</div>
-          <p>Accounting firm, Noosa. Private on-device AI for document processing. Data never leaves the building.</p>
+          <p>Accounting firm, Noosa. Private on-device document AI.</p>
         </div>
         <div class="result-card fade-in">
           <div class="metric" data-value="60" data-suffix="%">60%</div>
           <div class="metric-label">faster quotes</div>
-          <p>Builder, Sunshine Coast. Offline quoting app on tablets. Works without reception.</p>
+          <p>Builder, Sunshine Coast. Offline quoting app on tablets.</p>
         </div>
         <div class="result-card fade-in">
           <div class="metric" data-value="50" data-prefix="$" data-suffix="K+">$50K+</div>
           <div class="metric-label">annual savings</div>
-          <p>Manufacturer, Brisbane. AI sensors for predictive maintenance. 30% reduced downtime.</p>
+          <p>Manufacturer, Brisbane. Predictive maintenance, 30% less downtime.</p>
         </div>
         <div class="result-card fade-in">
           <div class="metric" data-value="80" data-suffix="%">80%</div>
           <div class="metric-label">faster onboarding</div>
-          <p>Real estate agency, Noosa. Automated applications, leases, communications.</p>
+          <p>Real estate agency, Noosa. Applications, leases, comms automated.</p>
         </div>
       </div>
-
-      <p style="margin-top: var(--space-sm);"><a href="/work" class="link-arrow">See all our work &rarr;</a></p>
+      <p style="margin-top: var(--space-sm);"><a href="/work" class="link-arrow">See all eight case studies &rarr;</a></p>
     </section>
 
     <div class="accent-rule container"></div>
@@ -553,52 +502,6 @@
           </div>
         </div>
 
-        <div class="testimonial-card testimonial-card--video fade-in">
-          <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
-          <div class="testimonial-video-slot">
-            <iframe
-              class="testimonial-video-iframe"
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/M8WoVjZ3niY?si=AX1ghIgJ_vSvPn6T"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
-          </div>
-          <blockquote class="testimonial-quote">You combine everything. Different platforms for different things. It&rsquo;s the orchestration of multiple AI models that I hadn&rsquo;t seen before.</blockquote>
-          <div class="testimonial-attribution">
-            <span class="testimonial-name">Participant</span>
-            <span class="testimonial-role">FireUP Coaching</span>
-          </div>
-        </div>
-
-        <div class="testimonial-card testimonial-card--video fade-in" data-testid="card-testimonial-tourism-noosa-video">
-          <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
-          <div class="testimonial-video-slot">
-            <iframe
-              class="testimonial-video-iframe"
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/k_FAP3jF7Ls?si=d4-rqZ7ZRpNjeJ-h"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              data-testid="video-embed-tourism-noosa"
-            ></iframe>
-          </div>
-          <blockquote class="testimonial-quote" data-testid="text-quote-tourism-noosa-video">The depth you go to. I didn&rsquo;t realise AI was integrated in so many things I already use. Just learning how to create FAQs for each of our tools using a few prompts. How little work I&rsquo;m going to have to do now. You&rsquo;ve saved me at least a day&rsquo;s work from just two hours together.</blockquote>
-          <div class="testimonial-attribution">
-            <span class="testimonial-name" data-testid="text-name-tourism-noosa-video">Tour Operator</span>
-            <span class="testimonial-role" data-testid="text-role-tourism-noosa-video">Tourism Noosa Event</span>
-          </div>
-        </div>
       </div>
 
       <div class="testimonial-quotes-row stagger">
@@ -613,28 +516,19 @@
 
         <div class="testimonial-card testimonial-card--quote fade-in">
           <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote class="testimonial-quote">People coming to the realisation they can use these platforms to save time and resources so they can work on their business more rather than in their business. That&rsquo;s the big takeaway.</blockquote>
+          <blockquote class="testimonial-quote">You combine everything. Different platforms for different things. It&rsquo;s the orchestration of multiple AI models that I hadn&rsquo;t seen before.</blockquote>
           <div class="testimonial-attribution">
-            <span class="testimonial-name">Workshop Organiser</span>
-            <span class="testimonial-role">Tourism Noosa</span>
+            <span class="testimonial-name">Participant</span>
+            <span class="testimonial-role">FireUP Coaching</span>
           </div>
         </div>
 
         <div class="testimonial-card testimonial-card--quote fade-in">
           <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote class="testimonial-quote">A bit of a wake-up call on security and backups. Definitely enjoying the workshops and finding that time to then do this stuff.</blockquote>
+          <blockquote class="testimonial-quote">You&rsquo;ve saved me at least a day&rsquo;s work from just two hours together.</blockquote>
           <div class="testimonial-attribution">
-            <span class="testimonial-name">Owner</span>
-            <span class="testimonial-role">Construction Company</span>
-          </div>
-        </div>
-
-        <div class="testimonial-card testimonial-card--quote fade-in">
-          <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
-          <blockquote class="testimonial-quote">I was a bit afraid. Now understanding the safety parameters and the things you can do. It&rsquo;s very clear.</blockquote>
-          <div class="testimonial-attribution">
-            <span class="testimonial-name">Client</span>
-            <span class="testimonial-role">Private Session</span>
+            <span class="testimonial-name">Tour Operator</span>
+            <span class="testimonial-role">Tourism Noosa Event</span>
           </div>
         </div>
       </div>
@@ -646,119 +540,33 @@
     <div class="warm-band">
       <section class="section container-wide fade-in">
         <h2>Tools we deploy</h2>
-        <p class="subline" style="margin-bottom:var(--space-sm);">Vendor-neutral. Ranked by AI integratability. We recommend what actually fits your use case, data sensitivity, and budget.</p>
-
-        <div class="tool-category-grid stagger">
-
-          <div class="tool-category fade-in">
-            <h3 class="tool-category-label">AI Models &amp; Reasoning</h3>
-            <p class="tool-category-purpose">Writing, code, analysis, multimodal tasks</p>
-            <div class="tool-pill-list">
-              <span class="tool-pill">Claude</span>
-              <span class="tool-pill">ChatGPT</span>
-              <span class="tool-pill">Perplexity</span>
-              <span class="tool-pill">DeepSeek</span>
-              <span class="tool-pill">LLaMA</span>
-            </div>
-          </div>
-
-          <div class="tool-category fade-in">
-            <h3 class="tool-category-label">AI Development</h3>
-            <p class="tool-category-purpose">Building, prototyping, deploying AI systems</p>
-            <div class="tool-pill-list">
-              <span class="tool-pill">Claude Code</span>
-              <span class="tool-pill">Replit</span>
-              <span class="tool-pill">Google AI Studio</span>
-            </div>
-          </div>
-
-          <div class="tool-category fade-in">
-            <h3 class="tool-category-label">Content &amp; Media</h3>
-            <p class="tool-category-purpose">Video, image generation, creative production</p>
-            <div class="tool-pill-list">
-              <span class="tool-pill">Opus.pro</span>
-              <span class="tool-pill">Opus Agent</span>
-              <span class="tool-pill">Higgsfield.ai</span>
-              <span class="tool-pill">Google Flow</span>
-              <span class="tool-pill">Google Stitch</span>
-            </div>
-          </div>
-
-          <div class="tool-category fade-in">
-            <h3 class="tool-category-label">Data &amp; Research</h3>
-            <p class="tool-category-purpose">Web scraping, live data, agent-driven research</p>
-            <div class="tool-pill-list">
-              <span class="tool-pill">Firecrawl</span>
-              <span class="tool-pill">Tavily</span>
-              <span class="tool-pill">OpenClaw</span>
-            </div>
-          </div>
-
-          <div class="tool-category fade-in">
-            <h3 class="tool-category-label">Automation &amp; Workflows</h3>
-            <p class="tool-category-purpose">Connecting tools to AI models without code</p>
-            <div class="tool-pill-list">
-              <span class="tool-pill tool-pill--primary">n8n</span>
-              <span class="tool-pill tool-pill--alt">over Zapier / Make</span>
-            </div>
-          </div>
-
-          <div class="tool-category fade-in">
-            <h3 class="tool-category-label">CRM &amp; Business</h3>
-            <p class="tool-category-purpose">Pipeline, invoicing, payments, banking</p>
-            <div class="tool-pill-list">
-              <span class="tool-pill tool-pill--primary">Attio</span>
-              <span class="tool-pill tool-pill--alt">over HubSpot</span>
-              <span class="tool-pill">Xero</span>
-              <span class="tool-pill">Stripe</span>
-              <span class="tool-pill">Revolut</span>
-            </div>
-          </div>
-
-          <div class="tool-category fade-in">
-            <h3 class="tool-category-label">Communication</h3>
-            <p class="tool-category-purpose">Team coordination and client channels</p>
-            <div class="tool-pill-list">
-              <span class="tool-pill tool-pill--primary">Telegram</span>
-              <span class="tool-pill tool-pill--primary">Slack</span>
-              <span class="tool-pill tool-pill--alt">over WhatsApp</span>
-              <span class="tool-pill tool-pill--note">Discord: less secure</span>
-            </div>
-          </div>
-
-          <div class="tool-category fade-in">
-            <h3 class="tool-category-label">Productivity</h3>
-            <p class="tool-category-purpose">Documents, email, collaboration</p>
-            <div class="tool-pill-list">
-              <span class="tool-pill tool-pill--primary">Google Workspace</span>
-              <span class="tool-pill tool-pill--alt">over Microsoft</span>
-            </div>
-          </div>
-
-          <div class="tool-category fade-in">
-            <h3 class="tool-category-label">Security &amp; Access</h3>
-            <p class="tool-category-purpose">Deployed before AI touches your data</p>
-            <div class="tool-pill-list">
-              <span class="tool-pill">Keeper Security</span>
-              <span class="tool-pill">1Password</span>
-              <span class="tool-pill">AvePoint</span>
-              <span class="tool-pill">Acronis Cyber Protect</span>
-            </div>
-          </div>
-
-          <div class="tool-category fade-in">
-            <h3 class="tool-category-label">SEO &amp; Growth</h3>
-            <p class="tool-category-purpose">Search visibility, keyword research, AI citations</p>
-            <div class="tool-pill-list">
-              <span class="tool-pill">AnswerThePublic</span>
-              <span class="tool-pill">SemRush</span>
-              <span class="tool-pill">Ahrefs</span>
-            </div>
-          </div>
-
+        <p class="subline" style="margin-bottom:var(--space-sm);">Vendor-neutral, ranked by AI integratability. Security tooling lands before AI touches your data.</p>
+        <div class="pill-wall fade-in">
+          <span class="tool-pill tool-pill--primary">Claude</span>
+          <span class="tool-pill tool-pill--primary">Claude Code</span>
+          <span class="tool-pill">ChatGPT</span>
+          <span class="tool-pill">Perplexity</span>
+          <span class="tool-pill">DeepSeek</span>
+          <span class="tool-pill">LLaMA</span>
+          <span class="tool-pill">Replit</span>
+          <span class="tool-pill">Google AI Studio</span>
+          <span class="tool-pill tool-pill--primary">n8n</span>
+          <span class="tool-pill tool-pill--primary">Attio</span>
+          <span class="tool-pill">Xero</span>
+          <span class="tool-pill">Stripe</span>
+          <span class="tool-pill">Firecrawl</span>
+          <span class="tool-pill">Tavily</span>
+          <span class="tool-pill">OpenClaw</span>
+          <span class="tool-pill tool-pill--primary">Google Workspace</span>
+          <span class="tool-pill tool-pill--primary">Slack</span>
+          <span class="tool-pill">Telegram</span>
+          <span class="tool-pill">Keeper Security</span>
+          <span class="tool-pill">1Password</span>
+          <span class="tool-pill">Acronis Cyber Protect</span>
+          <span class="tool-pill">Ahrefs</span>
+          <span class="tool-pill">SemRush</span>
         </div>
-
-        <p style="margin-top:var(--space-sm);"><a href="/tools" class="link-arrow">See our full tool recommendations &rarr;</a></p>
+        <p style="margin-top:var(--space-sm);"><a href="/tools" class="link-arrow">See all 30+ tools, ranked, with our reasoning &rarr;</a></p>
       </section>
     </div>
 
@@ -767,49 +575,29 @@
     <!-- DATA SECURITY -->
     <section class="section container-wide fade-in">
       <h2>Your data stays yours</h2>
-      <div class="security-grid stagger">
-        <div class="security-item fade-in">
-          <div class="security-badge">Private-first</div>
-          <p>Sensitive data stays on your hardware. We deploy local models and Acronis Cyber Protect backs everything up locally and to AU-region cloud. Nothing leaves without your say.</p>
-        </div>
-        <div class="security-item fade-in">
-          <div class="security-badge">AU compliant</div>
-          <p>Privacy Act 1988 mapped into every build. Acronis data residency in Australia. NDIS, health data, financial records &mdash; we know the rules. <a href="/security" class="link-arrow">See how we handle compliance &rarr;</a></p>
-        </div>
-        <div class="security-item fade-in">
-          <div class="security-badge">No lock-in</div>
-          <p>Open standards. If a vendor changes pricing, we swap the model. Your architecture survives.</p>
-        </div>
-        <div class="security-item fade-in">
-          <div class="security-badge">Zero-trust access</div>
-          <p>KeeperPAM controls who sees what. Role-based vaults, MFA enforcement, session recording. Access revoked in seconds when someone leaves. <a href="/tools" class="link-arrow">See our security tool stack &rarr;</a></p>
-        </div>
+      <div class="badge-row" style="margin-top:var(--space-xs);">
+        <span class="security-badge">Private-first &middot; local models, AU backup</span>
+        <span class="security-badge">Privacy Act 1988 mapped into every build</span>
+        <span class="security-badge">Zero-trust access &middot; revoked in seconds</span>
+        <span class="security-badge">No lock-in &middot; your architecture survives vendor swaps</span>
       </div>
+      <p style="margin-top:var(--space-sm);"><a href="/security" class="link-arrow">How we handle data and compliance &rarr;</a></p>
     </section>
 
     <div class="accent-rule container"></div>
 
-    <!-- ASSESSMENT CTA -->
+    <!-- FREE TOOLS CTA -->
     <section class="section container fade-in">
-      <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:2.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+      <div class="cta-double">
         <div>
-          <span style="display:inline-block;font-family:var(--font-body);font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Free Tool</span>
-          <h2 style="font-size:1.375rem;margin-bottom:0.5rem;">AI Readiness Self-Assessment</h2>
-          <p style="color:var(--text-secondary);line-height:1.6;max-width:520px;margin:0;">10 questions. 3 minutes. Find out which of the 4 AI Maturity Stages your business is in and what to prioritise first. Instant personalised results.</p>
+          <span style="display:inline-block;font-family:var(--font-body);font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Free &middot; No email gate on results</span>
+          <h2 style="font-size:1.375rem;margin-bottom:0.5rem;">Find out where your business stands</h2>
+          <p style="color:var(--text-secondary);line-height:1.6;max-width:520px;margin:0;">The 3-minute self-assessment maps you to one of 4 AI maturity stages. The 2026 report shows where 54 Australian SMBs actually sit &mdash; and what moves the needle.</p>
         </div>
-        <a href="/assessment" style="flex-shrink:0;display:inline-block;background:var(--accent);color:#ffffff;padding:0.8125rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.9375rem;white-space:nowrap;">Take the assessment &rarr;</a>
-      </div>
-    </section>
-
-    <!-- REPORT CTA -->
-    <section class="section container fade-in">
-      <div style="background:var(--accent-light);border:1px solid var(--border);border-radius:12px;padding:2.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
-        <div>
-          <span style="display:inline-block;font-family:var(--font-body);font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Free Report — April 2026</span>
-          <h2 style="font-size:1.375rem;margin-bottom:0.5rem;">State of AI Readiness: Australian SMB 2026</h2>
-          <p style="color:var(--text-secondary);line-height:1.6;max-width:520px;margin:0;">54 businesses surveyed. 5% fully AI-enabled. $44B GDP opportunity sitting unclaimed. First-party research on where Australian SMBs actually stand — and what moves the needle.</p>
+        <div class="cta-buttons">
+          <a href="/assessment" class="cta-button-primary">Take the assessment &rarr;</a>
+          <a href="/report" class="cta-button-secondary">Get the 2026 report</a>
         </div>
-        <a href="/report" style="flex-shrink:0;display:inline-block;background:var(--accent);color:#ffffff;padding:0.8125rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.9375rem;white-space:nowrap;">Download free report</a>
       </div>
     </section>
 
@@ -833,67 +621,18 @@
     <div class="accent-rule container"></div>
 
     <section class="section container-wide fade-in">
-      <h2>Industries we work with</h2>
-      <p style="color:var(--text-secondary);max-width:640px;margin-bottom:var(--space-sm);">AI opportunities differ by sector. We build private, compliant AI systems tailored to each industry's workflows, data requirements, and compliance constraints.</p>
-      <div class="tool-grid stagger" style="margin-top:var(--space-sm);">
-        <div class="tool-item fade-in">
-          <div class="tool-name">Legal</div>
-          <div class="tool-tag">81% AI task coverage</div>
-          <p>Precedent search, document drafting, and client intake automation for Australian law firms. Privilege-aware, on-premise AI.</p>
-          <p style="margin-top:0.75rem;"><a href="/industries/legal" class="link-arrow">AI for law firms &rarr;</a></p>
-        </div>
-        <div class="tool-item fade-in">
-          <div class="tool-name">Construction</div>
-          <div class="tool-tag">Quote &amp; invoice automation</div>
-          <p>Quote preparation, invoice processing, and project documentation for builders and project managers across Queensland.</p>
-          <p style="margin-top:0.75rem;"><a href="/industries/construction" class="link-arrow">AI for construction &rarr;</a></p>
-        </div>
-        <div class="tool-item fade-in">
-          <div class="tool-name">Healthcare</div>
-          <div class="tool-tag">Clinical admin automation</div>
-          <p>Patient intake, clinical note processing, and referral workflows for clinics and allied health. Australian health data compliant.</p>
-          <p style="margin-top:0.75rem;"><a href="/industries/healthcare" class="link-arrow">AI for healthcare &rarr;</a></p>
-        </div>
-        <div class="tool-item fade-in">
-          <div class="tool-name">Retail</div>
-          <div class="tool-tag">Inventory &amp; operations</div>
-          <p>Demand forecasting, inventory management, and customer communications automation for Australian retailers.</p>
-          <p style="margin-top:0.75rem;"><a href="/industries/retail" class="link-arrow">AI for retail &rarr;</a></p>
-        </div>
-      </div>
-    </section>
-
-    <div class="accent-rule container"></div>
-
-    <section class="section container-wide fade-in">
-      <h2>Where we work</h2>
-      <p style="color:var(--text-secondary);max-width:640px;margin-bottom:var(--space-sm);">Based on the Sunshine Coast, serving businesses across South East Queensland and Australia-wide. On-site available for SEQ clients.</p>
-      <div class="tool-grid stagger" style="margin-top:var(--space-sm);">
-        <div class="tool-item fade-in">
-          <div class="tool-name">Brisbane</div>
-          <div class="tool-tag">Regular on-site</div>
-          <p>AI consulting for Brisbane manufacturers, professional services, and construction firms. Just over an hour from our Sunshine Coast HQ.</p>
-          <p style="margin-top:0.75rem;"><a href="/locations/brisbane" class="link-arrow">AI consultant Brisbane &rarr;</a></p>
-        </div>
-        <div class="tool-item fade-in">
-          <div class="tool-name">Sunshine Coast</div>
-          <div class="tool-tag">Home base</div>
-          <p>Our headquarters in Noosa Heads. On-site discovery, implementation, and training for Sunshine Coast businesses from Noosa to Caloundra.</p>
-          <p style="margin-top:0.75rem;"><a href="/locations/sunshine-coast" class="link-arrow">AI consulting Sunshine Coast &rarr;</a></p>
-          <p style="margin-top:0.5rem;"><a href="/training/sunshine-coast" class="link-arrow">AI training workshops &rarr;</a></p>
-        </div>
-        <div class="tool-item fade-in">
-          <div class="tool-name">Gold Coast</div>
-          <div class="tool-tag">Regular on-site</div>
-          <p>AI systems for Gold Coast tourism, property management, and professional services businesses. Privacy-first, locally supported.</p>
-          <p style="margin-top:0.75rem;"><a href="/locations/gold-coast" class="link-arrow">AI consulting Gold Coast &rarr;</a></p>
-        </div>
-        <div class="tool-item fade-in">
-          <div class="tool-name">Queensland</div>
-          <div class="tool-tag">Statewide coverage</div>
-          <p>Remote AI consulting for Queensland businesses outside SEQ. Townsville, Cairns, Toowoomba, and regional Queensland.</p>
-          <p style="margin-top:0.75rem;"><a href="/locations/queensland" class="link-arrow">AI consulting Queensland &rarr;</a></p>
-        </div>
+      <h2>Industries and where we work</h2>
+      <p style="color:var(--text-secondary);max-width:640px;margin-bottom:var(--space-sm);">Private, compliant AI tailored to each sector's data rules. Based in Noosa Heads &mdash; on-site across South East Queensland, remote Australia-wide and globally.</p>
+      <div class="chip-grid" data-testid="industry-location-chips">
+        <a class="chip" href="/industries/legal">AI for law firms</a>
+        <a class="chip" href="/industries/construction">AI for construction</a>
+        <a class="chip" href="/industries/healthcare">AI for healthcare</a>
+        <a class="chip" href="/industries/retail">AI for retail</a>
+        <a class="chip chip-accent" href="/locations/brisbane">AI consultant Brisbane</a>
+        <a class="chip" href="/locations/sunshine-coast">AI consulting Sunshine Coast</a>
+        <a class="chip" href="/locations/gold-coast">AI consulting Gold Coast</a>
+        <a class="chip" href="/locations/queensland">AI consulting Queensland</a>
+        <a class="chip" href="/training/sunshine-coast">AI training workshops</a>
       </div>
     </section>
 

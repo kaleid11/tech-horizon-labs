@@ -82,7 +82,10 @@
       "Bash(sed -n 120,400p /home/runner/workspace/client/static/for/manufacturing.html)",
       "Bash(PORT=5058 NODE_ENV=production node dist/index.cjs)",
       "Bash(PORT=5059 NODE_ENV=production node dist/index.cjs)",
-      "Bash(PORT=5061 NODE_ENV=production node dist/index.cjs)"
+      "Bash(PORT=5061 NODE_ENV=production node dist/index.cjs)",
+      "Bash(kill 233 222 221)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(PORT=5064 NODE_ENV=production node dist/index.cjs)"
     ]
   }
 }

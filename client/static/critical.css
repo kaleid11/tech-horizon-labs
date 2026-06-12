@@ -131,3 +131,14 @@ a.trust-stat:hover { color: var(--accent); text-decoration-color: var(--accent);
   .nav-toggle { display: block; }
   .site-nav { position: relative; }
 }
+
+/* Above-the-fold: split hero + run-log panel (homepage rebuild) */
+.hero-split { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr); gap: 2.5rem; align-items: center; }
+.hero-runlog { background: #1B2733; border-radius: 12px; padding: 1.1rem 1.25rem 1.25rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.8125rem; line-height: 1.7; color: #d8d4cf; min-height: 232px; }
+.hero-runlog-head { display: flex; align-items: center; gap: 0.5rem; font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8b949e; margin-bottom: 0.75rem; }
+.hero-runlog-dot { width: 8px; height: 8px; border-radius: 50%; background: #B5654A; flex-shrink: 0; }
+.runlog-line { display: flex; gap: 0.6rem; white-space: nowrap; overflow: hidden; }
+.runlog-line .rl-mark { color: #B5654A; flex-shrink: 0; width: 1ch; }
+.runlog-line .rl-step { color: #8b949e; flex-shrink: 0; width: 6ch; }
+.runlog-line.rl-human .rl-mark, .runlog-line.rl-human .rl-text { color: #ffffff; }
+@media (max-width: 860px) { .hero-split { grid-template-columns: 1fr; gap: 1.75rem; } .hero-runlog { min-height: 0; } }

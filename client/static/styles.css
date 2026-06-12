@@ -2380,3 +2380,60 @@ blockquote cite {
 @media (prefers-reduced-motion: reduce) {
   .icp-rotator { transition: none; }
 }
+
+/* =====================================================
+   HOMEPAGE 2026-06 REBUILD — run-log hero, chip grids,
+   pill wall, badge row, double CTA band
+   ===================================================== */
+
+/* Split hero: copy left, Theo run-log panel right */
+.hero-split { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr); gap: 2.5rem; align-items: center; }
+.hero-split .hero-copy { min-width: 0; }
+
+.hero-runlog { background: #1B2733; border-radius: 12px; padding: 1.1rem 1.25rem 1.25rem; box-shadow: 0 18px 44px rgba(27, 39, 51, 0.22); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.8125rem; line-height: 1.7; color: #d8d4cf; min-height: 232px; }
+.hero-runlog-head { display: flex; align-items: center; gap: 0.5rem; font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8b949e; margin-bottom: 0.75rem; font-family: var(--font-body); }
+.hero-runlog-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: runlog-pulse 2.4s ease-in-out infinite; }
+@keyframes runlog-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.runlog-line { display: flex; gap: 0.6rem; white-space: nowrap; overflow: hidden; }
+.runlog-line .rl-mark { color: var(--accent); flex-shrink: 0; width: 1ch; }
+.runlog-line .rl-step { color: #8b949e; flex-shrink: 0; width: 6ch; }
+.runlog-line.rl-human .rl-mark, .runlog-line.rl-human .rl-text { color: #ffffff; }
+.runlog-caret { display: inline-block; width: 1ch; animation: runlog-caret 1s steps(1) infinite; color: var(--accent); }
+@keyframes runlog-caret { 50% { opacity: 0; } }
+@media (max-width: 860px) {
+  .hero-split { grid-template-columns: 1fr; gap: 1.75rem; }
+  .hero-runlog { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-runlog-dot, .runlog-caret { animation: none; }
+}
+
+/* Chip grids — verticals, industries, locations */
+.chip-grid { display: flex; flex-wrap: wrap; gap: 0.625rem; }
+a.chip { display: inline-block; padding: 0.55rem 1rem; border: 1px solid var(--border); border-radius: 999px; background: var(--white); font-size: 0.9375rem; color: var(--text); text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
+a.chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+a.chip.chip-accent { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+/* Pill wall — flat tool list */
+.pill-wall { display: flex; flex-wrap: wrap; gap: 0.5rem; max-width: 880px; }
+
+/* Badge row — security strip */
+.badge-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.badge-row .security-badge { margin-bottom: 0; }
+
+/* Method/infrastructure diagram — compact fallback under 640px,
+   where the 940-unit SVG's text scales below legibility */
+.sys-diagram-mobile { display: none; }
+.sys-diagram-mobile .sys-steps { margin: 0 0 1rem; padding-left: 1.25rem; display: grid; gap: 0.625rem; }
+.sys-diagram-mobile .sys-flow { margin: 0 0 0.875rem; color: var(--text-secondary); }
+.sys-diagram-mobile .sys-rail { margin: 0; background: #1B2733; color: #ffffff; border-radius: 6px; padding: 0.625rem 0.875rem; font-size: 0.875rem; font-weight: 600; }
+@media (max-width: 640px) {
+  .sys-diagram-svg { display: none; }
+  .sys-diagram-mobile { display: block; }
+}
+
+/* Double CTA band */
+.cta-double { background: var(--accent-light); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.cta-double .cta-buttons { display: flex; gap: 0.875rem; flex-wrap: wrap; flex-shrink: 0; }
+.cta-button-primary { display: inline-block; background: var(--accent); color: #ffffff; padding: 0.8125rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9375rem; white-space: nowrap; }
+.cta-button-secondary { display: inline-block; background: var(--white); color: var(--accent); border: 1px solid var(--accent); padding: 0.8125rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9375rem; white-space: nowrap; }

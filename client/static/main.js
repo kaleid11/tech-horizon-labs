@@ -1205,6 +1205,65 @@
 })();
 
 /* =====================================================
+   HERO RUN-LOG REPLAY — reveals the Theo run-log lines
+   one by one with a trailing caret, like a log replaying.
+   Lines are SSR'd visible for crawlers and no-JS; JS hides
+   them at startup and replays once when the panel is seen.
+   ===================================================== */
+(function () {
+  'use strict';
+  const body = document.querySelector('#hero-runlog .hero-runlog-body');
+  if (!body) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return; // honour reduced motion — keep the full log static
+  }
+
+  const lines = Array.from(body.querySelectorAll('.runlog-line'));
+  if (!lines.length) return;
+
+  const STEP_MS = 480;
+  const HUMAN_PAUSE_MS = 950; // a beat before the human-approval line lands
+  const caret = document.createElement('span');
+  caret.className = 'runlog-caret';
+  caret.setAttribute('aria-hidden', 'true');
+  caret.textContent = '▌';
+
+  lines.forEach((l) => { l.style.visibility = 'hidden'; });
+
+  let started = false;
+  function play() {
+    if (started) return;
+    started = true;
+    let i = 0;
+    function step() {
+      if (i >= lines.length) {
+        if (caret.parentNode) caret.parentNode.removeChild(caret);
+        return;
+      }
+      const line = lines[i];
+      line.style.visibility = '';
+      line.appendChild(caret);
+      i++;
+      const next = lines[i];
+      const delay = next && next.classList.contains('rl-human') ? HUMAN_PAUSE_MS : STEP_MS;
+      setTimeout(step, delay);
+    }
+    step();
+  }
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { play(); io.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    io.observe(body);
+  } else {
+    play();
+  }
+})();
+
+/* =====================================================
    WEBMCP — expose interactive tools to in-browser AI agents
 
    Registers WebMCP tools on navigator.modelContext so AI
