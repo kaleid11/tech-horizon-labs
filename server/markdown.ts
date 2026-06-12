@@ -153,6 +153,30 @@ export function htmlToMarkdown(html: string, title?: string): string {
     .replace(/<form[\s\S]*?<\/form>/gi, " ")
     .replace(/<!--[\s\S]*?-->/g, " ");
 
+  // Code blocks (<pre>) → fenced ``` blocks. Extracted to placeholders *before*
+  // any other conversion so their original line breaks and indentation survive
+  // the whitespace-collapsing pass at the end. Restored after normalisation.
+  const codeBlocks: string[] = [];
+  s = s.replace(/<pre\b[^>]*>([\s\S]*?)<\/pre>/gi, (_m, inner) => {
+    let code = inner
+      .replace(/<\/?code\b[^>]*>/gi, "") // unwrap an inner <code>
+      .replace(/<br\s*\/?>/gi, "\n") // <br> inside code → newline
+      .replace(/<[^>]+>/g, ""); // drop any remaining tags
+    code = decodeEntities(code);
+    // Trim surrounding blank lines but keep internal indentation intact.
+    code = code.replace(/^\n+/, "").replace(/[ \t]*\n+$/, "").replace(/\s+$/, "");
+    const placeholder = `\u0000CODEBLOCK${codeBlocks.length}\u0000`;
+    codeBlocks.push("```\n" + code + "\n```");
+    return `\n\n${placeholder}\n\n`;
+  });
+
+  // Inline <code> → `backticks` (kept before stripInline-style passes so the
+  // backticks survive tag stripping).
+  s = s.replace(
+    /<code\b[^>]*>([\s\S]*?)<\/code>/gi,
+    (_m, inner) => `\`${stripInline(inner)}\``,
+  );
+
   // Links → [text](href) (done before block conversions so the text survives).
   s = s.replace(
     /<a\b[^>]*\bhref=["']([^"']*)["'][^>]*>([\s\S]*?)<\/a>/gi,
@@ -197,6 +221,12 @@ export function htmlToMarkdown(html: string, title?: string): string {
 
   if (title && !s.startsWith("# ")) {
     s = `# ${title}\n\n${s}`;
+  }
+
+  // Restore fenced code blocks *after* whitespace normalisation so their
+  // indentation and internal blank lines are not collapsed.
+  for (let i = 0; i < codeBlocks.length; i++) {
+    s = s.replace(`\u0000CODEBLOCK${i}\u0000`, () => codeBlocks[i]);
   }
 
   return s + "\n";

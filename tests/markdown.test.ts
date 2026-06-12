@@ -217,4 +217,50 @@ describe("htmlToMarkdown", () => {
     expect(md).toContain("> One");
     expect(md).toContain("> Two");
   });
+
+  it("wraps a <pre><code> block in a fenced code block preserving line breaks", () => {
+    const html =
+      "<main><pre><code>function add(a, b) {\n  return a + b;\n}</code></pre></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("```\nfunction add(a, b) {\n  return a + b;\n}\n```");
+  });
+
+  it("preserves indentation inside a <pre> block", () => {
+    const html =
+      "<main><pre>line one\n    indented two\n        deeper three</pre></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("```\nline one\n    indented two\n        deeper three\n```");
+  });
+
+  it("preserves internal blank lines inside a <pre> block", () => {
+    const html = "<main><pre>first\n\n\nlast</pre></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("```\nfirst\n\n\nlast\n```");
+  });
+
+  it("decodes HTML entities inside a <pre> block", () => {
+    const html = "<main><pre><code>if (a &lt; b &amp;&amp; b &gt; c) {}</code></pre></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("```\nif (a < b && b > c) {}\n```");
+  });
+
+  it("renders inline <code> with backticks", () => {
+    const html = "<main><p>Run <code>npm install</code> first.</p></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("Run `npm install` first.");
+  });
+
+  it("keeps inline <code> backticks inside list items and headings", () => {
+    const html =
+      "<main><h2>The <code>build</code> step</h2><ul><li>Use <code>db:push</code></li></ul></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("## The `build` step");
+    expect(md).toContain("- Use `db:push`");
+  });
+
+  it("converts <br> inside a <pre> block into newlines", () => {
+    const html = "<main><pre>alpha<br>beta<br>gamma</pre></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("```\nalpha\nbeta\ngamma\n```");
+  });
 });
