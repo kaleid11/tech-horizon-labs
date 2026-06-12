@@ -238,7 +238,7 @@ export function htmlToMarkdown(html: string, title?: string): string {
     code = decodeEntities(code);
     // Trim surrounding blank lines but keep internal indentation intact.
     code = code.replace(/^\n+/, "").replace(/[ \t]*\n+$/, "").replace(/\s+$/, "");
-    const placeholder = `\u0000CODEBLOCK${codeBlocks.length}\u0000`;
+    const placeholder = `\u0002CODEBLOCK${codeBlocks.length}\u0002`;
     codeBlocks.push("```\n" + code + "\n```");
     return `\n\n${placeholder}\n\n`;
   });
@@ -303,7 +303,7 @@ export function htmlToMarkdown(html: string, title?: string): string {
   // Restore fenced code blocks *after* whitespace normalisation so their
   // indentation and internal blank lines are not collapsed.
   for (let i = 0; i < codeBlocks.length; i++) {
-    s = s.replace(`\u0000CODEBLOCK${i}\u0000`, () => codeBlocks[i]);
+    s = s.replace(`\u0002CODEBLOCK${i}\u0002`, () => codeBlocks[i]);
   }
 
   return s + "\n";
