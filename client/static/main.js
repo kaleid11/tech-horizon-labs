@@ -1446,8 +1446,53 @@
     }];
   }
 
+  // ── Site-wide tools (every page) ──
+  function buildSiteTools() {
+    return [{
+      name: 'get_company_overview',
+      description: 'Get an overview of Tech Horizon Labs: what the company does, who it serves, where it operates, and how to make contact or book a call.',
+      annotations: { readOnlyHint: true },
+      inputSchema: { type: 'object', properties: {} },
+      execute: function () {
+        return textResult([
+          'Tech Horizon Labs — AI infrastructure as a service (not a SaaS platform).',
+          '',
+          'What we do: we lay AI infrastructure into the systems a business already runs (email, CRM, databases, documents), implement it into workflows, and train the team to own it. Engagements follow the Horizon Method: Discover (fixed-price feasibility evaluation) → Architect (fixed-priced build phases) → Activate (training and handover) → Partner Tier (ongoing support).',
+          '',
+          'Theo, our go-to-market agent fleet, runs this pattern in production: market research, lead verification, cold and warm outreach drafting, proposal/RFQ/RFT assembly, and reporting — drafts-only outbound, a human presses send, append-only audit log. First production numbers: 3 qualified meetings booked from 50 emails in week one of a client campaign; 4 meetings in week one on our own pipeline. Details: https://techhorizonlabs.com/infrastructure',
+          '',
+          'Verticals: growing businesses, VCs and private equity, wealth management, SaaS scale-ups, talent agencies, legal, construction and trades, healthcare and allied health, manufacturing, engineering and project advisory firms.',
+          '',
+          'Location: Noosa Heads, Queensland, Australia. On-site across Brisbane, Sunshine Coast, and Gold Coast; remote Australia-wide and globally.',
+          '',
+          'Contact: hello@techhorizonlabs.com · Book a free pre-discovery call (30 min, human-run): https://app.klipycrm.com/book/pre-discovery/free-pre-discovery',
+          'Site map for agents: https://techhorizonlabs.com/llms.txt'
+        ].join('\n'));
+      }
+    }, {
+      name: 'get_engagement_pricing',
+      description: 'Get Tech Horizon Labs engagement pricing: the Horizon Method phases, Block One entry price, build-phase pricing, and ongoing Partner Tier. All prices AUD ex-GST.',
+      annotations: { readOnlyHint: true },
+      inputSchema: { type: 'object', properties: {} },
+      execute: function () {
+        return textResult([
+          'Tech Horizon Labs pricing (AUD, ex-GST):',
+          '',
+          '- Pre-discovery call: free, 30 minutes.',
+          '- Block One: $8,000 — a fixed-price Feasibility Evaluation ($6,000, 2–3 weeks, ends with a working pilot and a fixed build quote) plus the first month of Partner Tier. The only commitment to start.',
+          '- Architect/Activate build phases: fixed-priced from ~$5,000 each (skills libraries, governance packs, data tooling; enablement from ~$4,000), sized by the evaluation and approved one at a time.',
+          '- Partner Tier: $2,000/month from month two — strategy sessions, same/next business day support, work-credit pool. Month-to-month, 30 days notice.',
+          '- Ad-hoc beyond credit: $210/hour.',
+          '- AI Workshop Academy membership: from $197/month.',
+          '',
+          'Software licences (e.g. Claude seats) are purchased by the client direct at vendor list price — no margin added. All deliverables are client-owned with full export; no lock-in.'
+        ].join('\n'));
+      }
+    }];
+  }
+
   function boot() {
-    var tools = []
+    var tools = buildSiteTools()
       .concat(buildAssessmentTools())
       .concat(buildScorecardTools())
       .concat(buildToolsTools());

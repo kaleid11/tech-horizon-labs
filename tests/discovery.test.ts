@@ -27,6 +27,17 @@ describe("robots.txt content signals", () => {
   });
 });
 
+describe("GET /auth.md", () => {
+  it("serves agent access notes as markdown", async () => {
+    const res = await request(app).get("/auth.md");
+    expect(res.status).toBe(200);
+    expect(res.headers["content-type"]).toMatch(/text\/markdown/);
+    expect(res.text).toContain("# Agent access & authentication");
+    expect(res.text).toContain("Turnstile");
+    expect(res.text).toContain("/llms.txt");
+  });
+});
+
 describe("GET /.well-known/api-catalog", () => {
   it("returns an application/linkset+json catalog of the public API", async () => {
     const res = await request(app).get("/.well-known/api-catalog");

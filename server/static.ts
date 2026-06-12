@@ -376,6 +376,13 @@ function buildSkillsIndex(publicDir: string): unknown {
     "/.well-known/api-catalog",
     sha256OfString(JSON.stringify(buildApiCatalog(), null, 2)),
   );
+  add(
+    "auth.md",
+    "documentation",
+    "Agent access and authentication notes: public reads, human-gated form POSTs, handoff paths.",
+    "/auth.md",
+    sha256OfFile(path.resolve(publicDir, "auth.md")),
+  );
 
   return {
     schema: "https://agentskills.org/schemas/agent-skills-discovery/v0.2.0",
@@ -428,6 +435,19 @@ export function serveStatic(app: Express) {
       }
     });
   }
+
+  // auth.md — agent access & authentication notes (workos/auth.md convention).
+  // States plainly that reads are public, form POSTs are human-gated, and how
+  // an agent should hand off to a human.
+  app.get("/auth.md", (_req, res) => {
+    const filePath = path.resolve(publicDir, "auth.md");
+    if (fs.existsSync(filePath)) {
+      res.setHeader("Content-Type", "text/markdown; charset=utf-8");
+      res.sendFile(filePath);
+    } else {
+      res.status(404).send("auth.md not found");
+    }
+  });
 
   // ===== Agent discovery endpoints =====
   // Registered before the catch-all 404 and the static middleware so they are
