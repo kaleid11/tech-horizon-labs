@@ -25,6 +25,19 @@ const ENTITIES: Record<string, string> = {
   "&copy;": "©",
   "&trade;": "™",
   "&reg;": "®",
+  "&middot;": "·",
+  "&bull;": "•",
+  "&rarr;": "→",
+  "&larr;": "←",
+  "&uarr;": "↑",
+  "&darr;": "↓",
+  "&rsaquo;": "›",
+  "&lsaquo;": "‹",
+  "&times;": "×",
+  "&euro;": "€",
+  "&asymp;": "≈",
+  "&uuml;": "ü",
+  "&eacute;": "é",
 };
 
 function decodeEntities(input: string): string {

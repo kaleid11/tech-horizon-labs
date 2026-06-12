@@ -94,6 +94,14 @@ describe("htmlToMarkdown", () => {
     expect(md).toContain("- Second");
   });
 
+  it("decodes the named entities used across the site", () => {
+    const html =
+      "<main><p>Discover &middot; $6K &rarr; pilot &bull; 7&euro; &times; 2 &rsaquo; more &asymp; done</p></main>";
+    const md = htmlToMarkdown(html);
+    expect(md).toContain("Discover · $6K → pilot • 7€ × 2 › more ≈ done");
+    expect(md).not.toMatch(/&[a-z]{2,8};/);
+  });
+
   it("numbers items inside an ordered list", () => {
     const html = "<main><ol><li>Step one</li><li>Step two</li><li>Step three</li></ol></main>";
     const md = htmlToMarkdown(html);
